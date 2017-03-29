@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Copyright 2017, Earthfiredrake (Peloprata)
+     Released under the terms of the MIT License
+     https://github.com/Earthfiredrake/TSW-Cartographer -->
+
+<!-- The attributes "de", and "fr" can be used for translations of each string, if needed -->
+<!-- They can also be customized as desired, though GUI elements do not expand to fit them -->
+<!-- Category names and string tags are referenced from the mod, and should not be changed -->
+<!-- Strings themselves should be compatible with boost::format for inserting further data -->
+<!-- See http://www.boost.org/doc/libs/1_63_0/libs/format/doc/format.html#syntax for details (TSW likely uses earlier version, unsure which)-->
+<!-- For customized strings, replacement values may be skipped or duplicated without issue -->
+<!-- Any replacement values beyond the number of provided parameters will display as 'undefined' -->
+<!-- Extra parameters are detailed after the string. Debug and trace messages are not localized -->
+<StringCategories>
+	<Category name="General"> <!-- Used for standard messages created as part of my mod framework -->
+		<String tag="Installed"
+				en="Has been installed" />
+		<String tag="Update"
+				en="Updated to v%1%" /> <!-- %1% = ModVersion -->
+		<String tag="Revert"
+				en="Reverted to v%1%" /> <!-- %1% = ModVersion -->
+		<String tag="NoMigration"
+				en="Setting migration from %1% is not possible, settings will be reset to defaults." /> <!-- %1% = PriorVersion -->
+		<String tag="ReviewSettings"
+				en="Please take a moment to review the settings" />
+		<String tag="ModMessagePrefix"
+				en="&lt;font color='#00FFFF'&gt;%1%&lt;/font&gt;: " /> <!-- %1% = ModName; Yeah it's ugly, xml is not great for storing html -->
+		<String tag="SubsystemMessagePrefix"
+				en="%1% - " /> <!-- %1% = Subsystem name -->
+		<!-- Message format strings recieve the following values in standard positions -->
+		<!-- %1% = Message content -->
+		<!-- %2% = ModMessagePrefix (as above or "" if not provided) -->
+		<!-- %3% = SubsystemMessagePrefix (as above or "" if not provided) -->
+		<!-- Further parameters may be provided by the mod, as detailed -->
+		<String tag="FifoMessage"
+				en="%1%" /> <!-- Minimalist output, no non-standard parameters available -->
+		<String tag="ChatMessage"
+				en="%2%%3%%1%" />
+		 <!-- Used by console style mods that lack icon notification -->
+		<String tag="Enabled"
+				en="Has been enabled" />
+		<String tag="Disabled"
+				en="Has been disabled" />
+	</Category>
+	<Category name="GUI"> <!-- Used for all GUI strings. GUI may not expand nicely for longer text -->
+		<String tag="ConfigWindowTitle"
+				en="%1% Settings" /> <!-- %1% = ModName -->
+		<String tag="TooltipCredit"
+				en="v%1% by %2%" /> <!-- %1% = ModVersion; %2% = DevName -->
+		<String tag="TooltipLeft"
+				en="Left Click: Open Map" />
+		<String tag="TooltipRightEnable"
+				en="Right Click: Show Settings" />
+		<String tag="TooltipRightDisable"
+				en="Right Click: Show Settings" />
+	</Category>
+	<Category name="AutoReport"> <!-- Only used for player notifications, report content is internal -->
+		<String tag="ReportQueued"
+				en="A report has been generated and will be sent when you are next at the bank" />
+		<String tag="Submitted"
+				en="All queued reports have been sent. Thank you for your assistance" />
+		<String tag="FailSend"
+				en="One or more reports failed to send and will remain queued" />
+		<String tag="FailDeliver"
+				en="One or more reports could not be delivered and will remain queued" />
+		<String tag="ErrorDesc"
+				en="Reason: %1%" /> <!-- %1% = game provided error message, unknown localization -->
+	</Category>
+	<Category name="Cartographer"> <!-- Chat and fifo messages specific to this mod -->
+	</Category>
+</StringCategories>
