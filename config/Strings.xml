@@ -11,6 +11,7 @@
 <!-- For customized strings, replacement values may be skipped or duplicated without issue -->
 <!-- Any replacement values beyond the number of provided parameters will display as 'undefined' -->
 <!-- Extra parameters are detailed after the string. Debug and trace messages are not localized -->
+<!-- Some strings in General and GUI categories may not be used by a particular mod, but are included to support alternate development from the framework -->
 <StringCategories>
 	<Category name="General"> <!-- Used for standard messages created as part of my mod framework -->
 		<String tag="Installed"
@@ -48,11 +49,17 @@
 		<String tag="TooltipCredit"
 				en="v%1% by %2%" /> <!-- %1% = ModVersion; %2% = DevName -->
 		<String tag="TooltipLeft"
-				en="Left Click: Open Map" />
-		<String tag="TooltipRightEnable"
-				en="Right Click: Show Settings" />
-		<String tag="TooltipRightDisable"
-				en="Right Click: Show Settings" />
+				en="Left Click: %1%" /> <!-- %1% = Tooltip for bound action -->
+		<String tag="TooltipRight"
+				en="Right Click: %1%" /> <!-- %1% = Tooltip for bound action -->
+		<String tag="TooltipModOn"
+				en="Enable Mod" />
+		<String tag="TooltipModOff"
+				en="Disable Mod" />
+		<String tag="TooltipShowSettings"
+				en="Show Settings" />
+		<String tag="TooltipShowInterface"
+				en="Display Maps" />
 	</Category>
 	<Category name="AutoReport"> <!-- Only used for player notifications, report content is internal -->
 		<String tag="ReportQueued"
