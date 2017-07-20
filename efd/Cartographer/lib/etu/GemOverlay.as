@@ -19,7 +19,7 @@ import flash.geom.Point;
  */
 class efd.Cartographer.lib.etu.GemOverlay extends UIComponent {
 
-	public static var __className:String = "efd.Cartographer.lib.etModUtils.GemOverlay";
+	public static var __className:String = "efd.Cartographer.lib.etu.GemOverlay";
 
 	public function GemOverlay() {
 

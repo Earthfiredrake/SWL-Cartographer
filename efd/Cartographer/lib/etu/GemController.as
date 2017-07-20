@@ -26,7 +26,7 @@ import efd.Cartographer.lib.etu.GemOverlay;
  */
 class efd.Cartographer.lib.etu.GemController extends UIComponent {
 
-	public static var __className:String = "efd.Cartographer.lib.etModUtils.GemController";
+	public static var __className:String = "efd.Cartographer.lib.etu.GemController";
 
 	/**
 	 * do not call this directly

@@ -19,8 +19,6 @@ class efd.Cartographer.Cartographer extends Mod {
 	public function Cartographer(hostMovie:MovieClip) {
 		super(ModInfo, hostMovie);
 		// Ingame debug menu registers variables that are initialized here, but not those initialized at class scope
-		// - Perhaps flash does static evaluation and decides to collapse constant variables?
-		// - Regardless of the why, this will let me tweak these at runtime
 
 		InitializeConfig();
 		TraceMsg("Initialized");

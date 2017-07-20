@@ -10,6 +10,7 @@ import com.GameInterface.Tooltip.TooltipData;
 import com.GameInterface.Tooltip.TooltipInterface;
 import com.GameInterface.Tooltip.TooltipManager;
 import com.Utils.GlobalSignal;
+import com.Utils.Signal;
 
 import efd.Cartographer.lib.etu.GemController;
 
@@ -31,6 +32,7 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 		ScreenResScaleDV = DistributedValue.Create("GUIResolutionScale");
 		ScreenResScaleDV.SignalChanged.Connect(UpdateScale, this);
 		GlobalSignal.SignalSetGUIEditMode.Connect(ManageGEM, this);
+		SignalGeometryChanged = new Signal();
 
 		UpdateScale();
 		// UpdateState customization won't be completed anyway
@@ -93,7 +95,7 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 
 	/// Config and state changes
 	private function ConfigChanged(setting:String, newValue, oldValue):Void {
-		if (setting == "Enabled") {	UpdateState(); }
+		if (setting == "Enabled") { UpdateState(); }
 		if (!IsTopbarIcon) {
 			switch (setting) {
 				case "IconPosition":
@@ -139,7 +141,7 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 		var newScale:Number = Config.GetValue("IconScale") + event.delta * 5;
 		newScale = Math.min(200, Math.max(30, newScale));
 		Config.SetValue("IconScale", newScale);
-		GemManager.invalidate(); // Otherwise GEM overlay doesn't update to reflect new size
+		SignalGeometryChanged.Emit();
 	}
 
 	/// Input event handlers
@@ -236,6 +238,7 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 	private var HostMovie:MovieClip;
 	private var GemManager:GemController;
 	private var ScreenResScaleDV:DistributedValue;
+	private var SignalGeometryChanged:Signal;
 
 	private var Tooltip:TooltipInterface;
 }

@@ -333,8 +333,8 @@ class efd.Cartographer.lib.Mod {
 
 	private function LoadComplete():Void {
 		delete SystemsLoaded; // No longer required
-		Icon.UpdateState();
 		UpdateInstall();
+		Icon.UpdateState();
 		ModLoadedDV.SetValue(true);
 	}
 
