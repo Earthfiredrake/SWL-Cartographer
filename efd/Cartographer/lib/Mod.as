@@ -396,12 +396,12 @@ class efd.Cartographer.lib.Mod {
 	private function ToggleInterface():Void {
 		if (!ShowInterface) { // Show the interface
 			if (InterfaceWindowClip == null) {
-				InterfaceWindowClip = OpenWindow("InterfaceWindow", InterfaceWindowLoaded, CloseInterfaceWindow, InterfaceWindowEscTrigger);
+				InterfaceWindowClip = OpenWindow("InterfaceWindow", InterfaceWindowLoaded, CloseInterfaceWindow, InterfaceWindowEscTrigger);				
 			}
+			ShowInterface = true;
 		} else { // Close the interface
 			CloseInterfaceWindow();
-		}
-		ShowInterface == !ShowInterface;
+		}		
 	}
 	private static function ToggleInterfaceTooltip():String { return LocaleManager.GetString("GUI", "TooltipShowInterface"); }
 
@@ -481,8 +481,9 @@ class efd.Cartographer.lib.Mod {
 	private function CloseInterfaceWindow():Void {
 		if (InterfaceWindowClip != null) {
 			CloseWindow(InterfaceWindowClip, "InterfaceWindow", CloseInterfaceWindow, InterfaceWindowEscTrigger);
-			InterfaceWindowClip = null;
+			InterfaceWindowClip = null;			
 		}
+		ShowInterface = false;
 	}
 
 	// The game itself toggles the mod's activation state (based on modules.xml criteria)
