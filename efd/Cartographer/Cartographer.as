@@ -9,7 +9,7 @@ import efd.Cartographer.lib.Mod;
 class efd.Cartographer.Cartographer extends Mod {
 	private static var ModInfo:Object = {
 		// Debug settings at top so that commenting out leaves no hanging ','
-		// Trace : true,		
+		Trace : true,		
 		// GuiFlags : ef_ModGui_NoConfigWindow,
 		Name : "Cartographer",
 		Version : "0.0.1.alpha"

@@ -126,7 +126,7 @@ class efd.Cartographer.lib.Mod {
 			ModEnabledDV.SignalChanged.Connect(ChangeModEnabled, this);
 		}
 
-		LocaleManager.Initialize(ModName + "/Strings.xml");
+		LocaleManager.Initialize(ModName + "\\Strings.xml");
 		LocaleManager.SignalStringsLoaded.Connect(StringsLoaded, this);
 
 		if ((modInfo.GuiFlags & ef_ModGui_Console) != ef_ModGui_Console) {
