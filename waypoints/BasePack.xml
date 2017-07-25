@@ -5,7 +5,7 @@
 
 <Waypoints>
 	<Zone id="3030"> <!-- KM -->
-		<Category type="AnimaWells" icon="well.png"> <!-- Anima well locations verified with character location immediately after teleportation -->
+		<Category type="AnimaWell" icon="well.png"> <!-- Anima well locations verified with character location immediately after teleportation -->
 			<Waypoint x="16.0" y="159.8"> <!-- Agartha Entrance -->
 				<Name rdb="&lt;localized id=5228519 category=270 /&gt;" />
 			</Waypoint>
@@ -40,13 +40,136 @@
 				<Name rdb="&lt;localized id=5998843 category=270 /&gt;" />
 			</Waypoint>
 		</Category>
-		<Category type="Vendors" icon="vendor.png"> <!-- Locations pulled from Default waypoints -->
+		<Category type="Vendor" icon="vendor.png"> <!-- Locations pulled from Default waypoints -->
 			<Waypoint x="154" y="373"> <!-- CoV vendor near police station -->
 				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
 			</Waypoint>
 			<Waypoint x="393" y="979"> <!-- Orochi vendor at bridge -->
 				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
-			</Waypoint>			
+			</Waypoint>
+		</Category>
+		<Category type="Transition" icon="exit_zone.png"> <!-- Locations pulled from Default waypoints -->
+			<Waypoint x="123.1" y="34.6"> <!-- To SC -->
+				<Name rdb="&lt;localized id=203932440 category=50025 /&gt;" />
+				<Transit zone="3040" />
+			</Waypoint>
+			<Waypoint x="22.8" y="683.7"> <!-- To BM -->
+				<Name rdb="&lt;localized id=64760864 category=50025 /&gt;" />
+				<Transit zone="3050" />
+			</Waypoint>
+		</Category>
+	</Zone>
+	<Zone id="3040"> <!-- SC -->
+		<Category type="AnimaWell" icon="well.png"> <!-- Anima well locations verified with character location immediately after teleportation -->
+			<Waypoint x="658.2" y="1007.8"> <!-- Road to Kingsmouth -->
+				<Name rdb="&lt;localized id=6061607 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="703.9" y="845.2"> <!-- The Overlook Motel -->
+				<Name rdb="&lt;localized id=6122520 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="889.9" y="779.8"> <!-- The Lowland -->
+				<Name rdb="&lt;localized id=7912981 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="576.7" y="602.3"> <!-- Atlantic Island Park - Main Gate -->
+				<Name rdb="&lt;localized id=6060752 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="647.0" y="329.4"> <!-- Atlantic Island Park - Service Entrance -->
+				<Name rdb="&lt;localized id=6060751 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="784.3" y="405.2"> <!-- The Threshing Fields -->
+				<Name rdb="&lt;localized id=9279109 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="846.3" y="223.9"> <!-- Lighthouse Approach -->
+				<Name rdb="&lt;localized id=6063586 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="496.1" y="86.5"> <!-- Mason's Crescent -->
+				<Name rdb="&lt;localized id=9279110 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="345.3" y="418.9"> <!-- Innsmouth Academy - Entrance -->
+				<Name rdb="&lt;localized id=9279111 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="260.2" y="157.4"> <!-- Innsmouth Academy - Recreation Center -->
+				<Name rdb="&lt;localized id=6371566 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="458.1" y="761.8"> <!-- The Black House -->
+				<Name rdb="&lt;localized id=9279108 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="253.6" y="773.7"> <!-- Miskatonic Cave Agartha Entrance -->
+				<Name rdb="&lt;localized id=6060700 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="55.3" y="619.5"> <!-- Vinterskog Woods -->
+				<Name rdb="&lt;localized id=6061606 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="110.1" y="924.8"> <!-- Tolba Bay -->
+				<Name rdb="&lt;localized id=6700560 category=270 /&gt;" />
+			</Waypoint>
+		</Category>
+		<Category type="Vendor" icon="vendor.png"> <!-- Locations pulled from Default waypoints -->
+			<Waypoint x="487" y="664"> <!-- CoV vendor in town -->
+				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
+			</Waypoint>
+		</Category>
+		<Category type="Transition" icon="exit_zone.png"> <!-- Locations pulled from Default waypoints -->
+			<Waypoint x="629.1" y="998.3"> <!-- To KM -->
+				<Name rdb="&lt;localized id=64760866 category=50025 /&gt;" />
+				<Transit zone="3030" />
+			</Waypoint>
+			<Waypoint x="116.5" y="969.8"> <!-- To BM -->
+				<Name rdb="&lt;localized id=64760864 category=50025 /&gt;" />
+				<Transit zone="3050" />
+			</Waypoint>
+		</Category>
+	</Zone>
+	<Zone id="3050"> <!-- BM -->
+		<Category type="AnimaWell" icon="well.png"> <!-- Anima well locations verified with character location immediately after teleportation -->
+			<Waypoint x="504.7" y="27.3"> <!-- Devore Bridge -->
+				<Name rdb="&lt;localized id=7583174 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="355.8" y="277.3"> <!-- Old Asylum Approach -->
+				<Name rdb="&lt;localized id=5997294 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="722.4" y="147.7"> <!-- Sasquatch Glade -->
+				<Name rdb="&lt;localized id=5997293 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="826.1" y="311.3"> <!-- Franklin Mansion -->
+				<Name rdb="&lt;localized id=9284035 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="810.3" y="757.3"> <!-- Moon Cove -->
+				<Name rdb="&lt;localized id=5997245 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="238.1" y="871.5"> <!-- Agartha Entrance -->
+				<Name rdb="&lt;localized id=5228519 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="208.1" y="681.5"> <!-- Trailer Park -->
+				<Name rdb="&lt;localized id=4138765 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="472.0" y="579.4"> <!-- The Blue Ridge Mine -->
+				<Name rdb="&lt;localized id=9284422 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="665.1" y="589.3"> <!-- Wabanaki Sacred Site -->
+				<Name rdb="&lt;localized id=5997292 category=270 /&gt;" />
+			</Waypoint>
+		</Category>
+		<Category type="Vendor" icon="vendor.png"> <!-- Locations pulled from Default waypoints -->
+			<Waypoint x="450.9" y="226.3"> <!-- ?? -->
+				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
+			</Waypoint>
+			<Waypoint x="247" y="641"> <!-- ?? -->
+				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
+			</Waypoint>
+			<Waypoint x="809" y="727"> <!-- ?? -->
+				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
+			</Waypoint>
+		</Category>
+		<Category type="Transition" icon="exit_zone.png"> <!-- Locations pulled from Default waypoints -->
+			<Waypoint x="535.6" y="1.5"> <!-- To SC -->
+				<Name rdb="&lt;localized id=203932440 category=50025 /&gt;" />
+				<Transit zone="3040" />
+			</Waypoint>
+			<Waypoint x="1020.0" y="719.5"> <!-- To KM -->
+				<Name rdb="&lt;localized id=64760866 category=50025 /&gt;" />
+				<Transit zone="3030" />
+			</Waypoint>
 		</Category>
 	</Zone>
 </Waypoints>
