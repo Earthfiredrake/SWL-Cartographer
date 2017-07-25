@@ -33,15 +33,16 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		if (success) {
 			Mod.TraceMsg("Waypoints loaded");
 			var xmlRoot:XMLNode = DefaultWaypointFile.firstChild;
-			var category:XMLNode = xmlRoot.firstChild;
-			var iconFilename:String = category.attributes.icon;
-			var zone:XMLNode = category.firstChild;
+			var zone:XMLNode = xmlRoot.firstChild;			
 			for (var i:Number = 0; i < zone.childNodes.length; ++i) {
-				var data:Waypoint = new Waypoint(zone.childNodes[i]);
-				var mapPos:Point = WorldToWindowCoords(data.Position);
-				var icon:MovieClip = MovieClipHelper.createMovieWithClass(WaypointIcon, "AnimaWell" + i, this, getNextHighestDepth(), {Data : data, IconFilename : iconFilename, _x : mapPos.x, _y : mapPos.y});
-				icon.swapDepths(PlayerMarker); //HACK: A slow way of pushing the player marker to the top, will re-evaluate once actual layers are being implemented
-				Waypoints.push({Data: data, Icon: icon});
+				var category:XMLNode = zone.childNodes[i];
+				for (var j:Number = 0; j < category.childNodes.length; ++j) {
+					var data:Waypoint = new Waypoint(category.childNodes[j]);
+					var mapPos:Point = WorldToWindowCoords(data.Position);
+					var icon:MovieClip = MovieClipHelper.createMovieWithClass(WaypointIcon, category.attributes.type + j, this, getNextHighestDepth(), {Data : data, IconFilename : category.attributes.icon, _x : mapPos.x, _y : mapPos.y});
+					icon.swapDepths(PlayerMarker); //HACK: A slow way of pushing the player marker to the top, will re-evaluate once actual layers are being implemented
+					Waypoints.push({Data: data, Icon: icon});
+				}
 			}
 		} else {
 			Mod.ErrorMsg("Could not load default waypoint file");

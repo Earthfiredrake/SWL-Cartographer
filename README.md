@@ -15,6 +15,8 @@ This mod intends to provide a supplement to the ingame regional and dungeon maps
     + This may result in one or more utility mods designed to provide absolute locations of various game objects
     + This will also likely result in an automatic marking system from LoreHound
   + While the native format will likely not be compatible with existing waypoint packs (Lassie's etc.), I may see if I can handle their format as well at least on a transition basis
+  + I'd love for this to be a full plugin system, where a map-pack could be provided as a standalone mod adding its own logic to the provided waypoints
+    + I have no idea where to even begin with this part of the concept
 + Filter, highlight and search for particular map marks:
   + ex: Unclaimed lore, missing rare spawn achivements
 
@@ -37,9 +39,9 @@ The mod is currently in pre-alpha prototyping and proof of concept stages, and h
 All settings are saved account wide and will be shared across characters. If you'd rather have different settings for each character, renaming the file "LoginPrefs.xml" to "CharPrefs.xml" when installing/upgrading the mod should work without any problems. A clean install of the mod is recommended if doing this, as it will be unable to transfer existing settings anyway.
 
 ## Installation
-Any packaged release (including the internal Cartographer folder) should be unzipped into the appropriate folder and the client restarted.
-TSW: [TSW Directory]\Data\Gui\Customized\Flash.
-SWL: [SWL Directory]\Data\Gui\Custom\Flash.
+Any packaged release should be unzipped (including the internal Cartographer folder) into the appropriate folder and the client restarted.
+<br/>TSW: [TSW Directory]\Data\Gui\Customized\Flash.
+<br/>SWL: [SWL Directory]\Data\Gui\Custom\Flash.
 
 When upgrading, existing .bxml files in the Cartographer directory should be deleted to ensure changes in the .xml files are loaded (whichever is newer seems to take precedence).
 
@@ -55,6 +57,14 @@ Version 0.0.2-alpha
   + Localized waypoint labels (to be converted to tooltips)
   + Waypoints for KM anima wells as test set
 
+## Testing and Further Developments
+
+Initial feedback has provided the following suggestions:
++ Mouse coordinates should be clearly displayed someplace obvious
++ Map zooming should be a feature if at all possible
++ Current default window size is still too large, 1600x900 resolution cuts things off
++ I should consider moving some releases to Curse as well, once things are at a level of quality I'm content with (LoreHound's probably there)
+  
 As always, defect reports, suggestions, and contributions are welcome. They can be sent to Peloprata in SWL (by mail or pm), via the github issues system, or in the official forum post.
 
 Source Repository: https://github.com/Earthfiredrake/TSW-Cartographer

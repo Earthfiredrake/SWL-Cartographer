@@ -4,8 +4,8 @@
      https://github.com/Earthfiredrake/TSW-Cartographer -->
 
 <Waypoints>
-	<Category type="AnimaWells" icon="well.png"> <!-- Anima well locations verified with character location immediately after teleportation -->
-		<Zone id="3030"> <!-- KM -->
+	<Zone id="3030"> <!-- KM -->
+		<Category type="AnimaWells" icon="well.png"> <!-- Anima well locations verified with character location immediately after teleportation -->
 			<Waypoint x="16.0" y="159.8"> <!-- Agartha Entrance -->
 				<Name rdb="&lt;localized id=5228519 category=270 /&gt;" />
 			</Waypoint>
@@ -39,6 +39,14 @@
 			<Waypoint x="1007.4" y="702.1"> <!-- Kingsmouth Municipal Airport Runway -->
 				<Name rdb="&lt;localized id=5998843 category=270 /&gt;" />
 			</Waypoint>
-		</Zone>
-	</Category>
+		</Category>
+		<Category type="Vendors" icon="vendor.png"> <!-- Locations pulled from Default waypoints -->
+			<Waypoint x="154" y="373"> <!-- CoV vendor near police station -->
+				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
+			</Waypoint>
+			<Waypoint x="393" y="979"> <!-- Orochi vendor at bridge -->
+				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
+			</Waypoint>			
+		</Category>
+	</Zone>
 </Waypoints>
