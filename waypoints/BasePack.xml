@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Copyright 2017, Earthfiredrake (Peloprata)
+     Released under the terms of the MIT License
+     https://github.com/Earthfiredrake/TSW-Cartographer -->
+
+<Waypoints>
+	<Category type="AnimaWells" icon="well.png"> <!-- Anima well locations verified with character location immediately after teleportation -->
+		<Zone id="3030"> <!-- KM -->
+			<Waypoint x="16.0" y="159.8"> <!-- Agartha Entrance -->
+				<Name rdb="&lt;localized id=5228519 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="178.3" y="337.1"> <!-- Sheriff's Department -->
+				<Name rdb="&lt;localized id=5998841 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="324.1" y="459.7"> <!-- Kingsmouth Congregational -->
+				<Name rdb="&lt;localized id=9279086 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="342.6" y="142.4"> <!-- 6 Poe Cove -->
+				<Name rdb="&lt;localized id=5998842 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="576.4" y="395.5"> <!-- Belmont Ave -->
+				<Name rdb="&lt;localized id=9279087 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="125.5" y="671.7"> <!-- Camping Grounds -->
+				<Name rdb="&lt;localized id=9279088 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="381.0" y="992.2"> <!-- New Colony Span Bridge -->
+				<Name rdb="&lt;localized id=5998844 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="528.8" y="624.6"> <!-- King's Strait -->
+				<Name rdb="&lt;localized id=9279089 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="830.3" y="448.3"> <!-- Fletcher Island -->
+				<Name rdb="&lt;localized id=9279091 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="773.0" y="786.4"> <!-- Kingsmouth Municipal Airport Gate -->
+				<Name rdb="&lt;localized id=9279090 category=270 /&gt;" />
+			</Waypoint>
+			<Waypoint x="1007.4" y="702.1"> <!-- Kingsmouth Municipal Airport Runway -->
+				<Name rdb="&lt;localized id=5998843 category=270 /&gt;" />
+			</Waypoint>
+		</Zone>
+	</Category>
+</Waypoints>
