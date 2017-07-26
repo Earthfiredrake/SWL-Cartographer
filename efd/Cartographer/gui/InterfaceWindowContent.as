@@ -4,8 +4,6 @@
 
 import flash.geom.Point;
 
-import gfx.utils.Delegate;
-
 import com.Components.WindowComponentContent;
 import com.GameInterface.Game.Character;
 import com.GameInterface.MathLib.Vector3;
@@ -23,29 +21,26 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		CurrentMapWorldSize = new Point(1024, 1024);
 		ClientChar = Character.GetClientCharacter();
 		Waypoints = new Array();
-		DefaultWaypointFile = new XML();
-		DefaultWaypointFile.ignoreWhite = true;
-		DefaultWaypointFile.onLoad = Delegate.create(this, WaypointsLoaded);
-		DefaultWaypointFile.load("Cartographer\\waypoints\\BasePack.xml");
+		RenderedWaypoints = new Array();
 	}
 
-	private function WaypointsLoaded(success:Boolean):Void {
-		if (success) {
-			Mod.TraceMsg("Waypoints loaded");
-			var xmlRoot:XMLNode = DefaultWaypointFile.firstChild;
-			var zone:XMLNode = xmlRoot.firstChild;			
-			for (var i:Number = 0; i < zone.childNodes.length; ++i) {
-				var category:XMLNode = zone.childNodes[i];
-				for (var j:Number = 0; j < category.childNodes.length; ++j) {
-					var data:Waypoint = new Waypoint(category.childNodes[j]);
-					var mapPos:Point = WorldToWindowCoords(data.Position);
-					var icon:MovieClip = MovieClipHelper.createMovieWithClass(WaypointIcon, category.attributes.type + j, this, getNextHighestDepth(), {Data : data, IconFilename : category.attributes.icon, _x : mapPos.x, _y : mapPos.y});
-					icon.swapDepths(PlayerMarker); //HACK: A slow way of pushing the player marker to the top, will re-evaluate once actual layers are being implemented
-					Waypoints.push({Data: data, Icon: icon});
-				}
-			}
-		} else {
-			Mod.ErrorMsg("Could not load default waypoint file");
+	public function SetWaypoints(waypoints:Array):Void {
+		Mod.TraceMsg("Adding waypoint zones to list.");
+		Waypoints = waypoints;
+		RenderWaypoints();
+	}
+
+	private function RenderWaypoints():Void {
+		var zone:Array = Waypoints[CurrentZoneID];
+		Mod.TraceMsg("Rendering " + zone.length + " waypoints for current zone.");
+		for (var i:Number = 0; i < zone.length; ++i) {
+			var wp:Waypoint = zone[i];
+			var mapPos:Point = WorldToWindowCoords(wp.Position);
+			Mod.TraceMsg("Creating waypoint: " + wp.Name);
+			Mod.TraceMsg("  @ " + mapPos.toString());
+			var icon:MovieClip = MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + i, this, getNextHighestDepth(), {Data : wp, _x : mapPos.x, _y : mapPos.y});
+			icon.swapDepths(PlayerMarker);
+			RenderedWaypoints.push(icon);
 		}
 	}
 
@@ -54,7 +49,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	}
 
 	private function UpdateClientCharMarker():Void {
-		if (ClientChar.GetPlayfieldID() == CurrentMapID) {
+		if (ClientChar.GetPlayfieldID() == CurrentZoneID) {
 			PlayerMarker._visible = true;
 			var worldPos:Vector3 = ClientChar.GetPosition(0);
 			var mapPos:Point = WorldToWindowCoords(new Point(worldPos.x, worldPos.z));
@@ -79,18 +74,18 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 			(CurrentMapDisplaySize.y - windowCoords.y) * CurrentMapWorldSize.y / CurrentMapDisplaySize.y);
 	}
 
-	private function RadToDegRotation(radians:Number):Number {
+	private static function RadToDegRotation(radians:Number):Number {
 		return radians * 180 / Math.PI;
 	}
 
 	/// TODO: Data outsourcing
-	private var CurrentMapID:Number = 3030; // Currently locked to KM
+	private var CurrentZoneID:Number = 3030; // Currently locked to KM
 	private var CurrentMapDisplaySize:Point;
 	private var CurrentMapWorldSize:Point;
 	private var ClientChar:Character;
 
-	private var DefaultWaypointFile:XML;
 	private var Waypoints:Array;
+	private var RenderedWaypoints:Array;
 
 	/// GUI Elements
 	private var PlayerMarker:MovieClip;

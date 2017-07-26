@@ -24,8 +24,8 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		};
 		Loader.addListener(listener);
 
-		Mod.TraceMsg("Loading waypoint icon: Cartographer\\Icons\\" + IconFilename);
-		Loader.loadClip("Cartographer\\icons\\" + IconFilename, Icon);
+		Mod.TraceMsg("Loading waypoint icon: Cartographer\\Icons\\" + Data.Icon);
+		Loader.loadClip("Cartographer\\icons\\" + Data.Icon, Icon);
 
 		Label = CreateLabel();
 	}
@@ -45,7 +45,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	private var Loader:MovieClipLoader;
 	private var Icon:MovieClip;
-	private var IconFilename:String;
 
 	private var Label:TextField;
 }

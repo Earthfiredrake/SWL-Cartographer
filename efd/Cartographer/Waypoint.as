@@ -44,8 +44,9 @@ import com.Utils.LDBFormat
 import efd.Cartographer.lib.Mod;
 
 class efd.Cartographer.Waypoint {
-	public function Waypoint(xml:XMLNode) {
+	public function Waypoint(xml:XMLNode, icon:String) {
 		Position = new Point(xml.attributes.x, xml.attributes.y);
+		Icon = icon;
 		for (var i:Number = 0; i < xml.childNodes.length; ++i) {
 			var subNode:XMLNode = xml.childNodes[i];
 			switch (subNode.nodeName) {
@@ -68,5 +69,6 @@ class efd.Cartographer.Waypoint {
 	// ZoneID:Number; // Maintained at higher level of data hierarchy
 	public var Position:Point; // World space coordinates
 	public var Name:String; // Waypoint name
+	public var Icon:String; // Icon file name
 	// Category:?; // Maintainted at higher level of data hierarchy
 }
