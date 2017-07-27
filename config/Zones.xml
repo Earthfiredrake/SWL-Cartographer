@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Copyright 2017, Earthfiredrake (Peloprata)
+     Released under the terms of the MIT License
+     https://github.com/Earthfiredrake/TSW-Cartographer -->
+
+<!-- While not actually in use yet, this file is included to provide zone id#s for anybody interested in adjusting the waypoint files-->
+<!-- Note that any zone (Hubs, SD, Trans) whose world coordinates do not match up to the Agartha standard will have misplaced pins until support is added -->
+
+ <Zones>
+	<Zone code="Agartha" id="5060" worldX="1024" worldY="1024" />
+	<Zone code="Venice" id="1300" worldX="512" worldY="512" />
+	<Zone code="NY" id="1100" worldX="512" worldY="512" />
+	<Zone code="London" id="1000" worldX="512" worldY="512" />
+	<Zone code="Seoul" id="1200" worldX="512" worldY="512" />
+	<Zone code="KM" id="3030" worldX="1024" worldY="1024" />
+	<Zone code="SC" id="3040" worldX="1024" worldY="1024" />
+	<Zone code="BM" id="3050" worldX="1024" worldY="1024" />
+	<Zone code="SD" id="3090" worldX="1024" worldY="1536" />
+	<Zone code="CotSG" id="3100" worldX="1024" worldY="1024" />
+	<Zone code="BF" id="3120" worldX="1536" worldY="1536" />
+	<Zone code="SF" id="3130" worldX="1536" worldY="1536" />
+	<Zone code="CF" id="3140" worldX="1536" worldY="1536" />
+ </Zones>

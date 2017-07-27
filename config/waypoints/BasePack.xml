@@ -3,13 +3,23 @@
      Released under the terms of the MIT License
      https://github.com/Earthfiredrake/TSW-Cartographer -->
 
+<!-- Basic waypoints for Secret World Legends
+	
+	Contains: Anima wells, respawn points, zone transitions and vendors
+
+	To keep sizes managable and offer selective data loading, it is recommended that other categories be given their own files (support pending).
+	The exception is critical waypoint types (such as zone transitions) which are fundamental to the use of the map interface. 
+	
+	As this file contains critical waypoints, there will not be an option to skip loading it.
+	-->
+
 <Waypoints>
     <Zone id="5060"> <!-- Agartha -->
 		<Category type="Respawn" icon="well.png"> <!-- Respawn locations verified with character location immediately after teleportation -->
 			<Waypoint x="502.3" y="412.0"/> <!-- Hub platform -->
 			<Waypoint x="519.5" y="221.8"/> <!-- Mallgartha tree -->
 		</Category>
-		<Category type="Transition" icon="exit_zone.png"> <!-- Rough estimates, based on character location for confirmation popup when approaching gate -->		
+		<Category type="Transition" icon="exit_zone.png"> <!-- Rough estimates, based on character location for confirmation popup when approaching gate -->
 			<Waypoint x="423.1" y="138.2">
 				<Name rdb="&lt;localized id=147548725 category=50025 /&gt;" />
 				<Transition zone="3030" />
