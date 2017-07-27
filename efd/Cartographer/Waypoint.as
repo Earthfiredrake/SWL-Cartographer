@@ -11,7 +11,7 @@
 // The following waypoint types have been observed in the default file:
 //   Point of interest: Does not have a visible overlay, but does provide a tooltip for streetnames and locations etc.
 //   Transitions: Region, Agartha, and Dungeon transition waypoints
-//   Vendors
+//   Vendors: Though not all of them
 // In all cases they provide localized text through the rdb
 // Standard waypoints which appear to be provided entirely from the backend side:
 //   Anima Wells: And the anima leap subsystem
@@ -46,7 +46,7 @@ import efd.Cartographer.lib.Mod;
 class efd.Cartographer.Waypoint {
 	public function Waypoint(xml:XMLNode, icon:String) {
 		Position = new Point(xml.attributes.x, xml.attributes.y);
-		Icon = icon;
+		Icon = xml.attributes.icon ? xml.attributes.icon : icon;
 		for (var i:Number = 0; i < xml.childNodes.length; ++i) {
 			var subNode:XMLNode = xml.childNodes[i];
 			switch (subNode.nodeName) {
@@ -59,6 +59,8 @@ class efd.Cartographer.Waypoint {
 						// TODO: Support for this
 					}
 					break;
+				case "Transition":
+					this["TargetZone"] = subNode.attributes.zone;
 				default:
 					Mod.TraceMsg("Unexpected waypoint data: " + subNode.nodeName);
 			}

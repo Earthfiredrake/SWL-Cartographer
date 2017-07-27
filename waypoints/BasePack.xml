@@ -4,6 +4,27 @@
      https://github.com/Earthfiredrake/TSW-Cartographer -->
 
 <Waypoints>
+    <Zone id="5060"> <!-- Agartha -->
+		<Category type="Respawn" icon="well.png"> <!-- Respawn locations verified with character location immediately after teleportation -->
+			<Waypoint x="502.3" y="412.0"/> <!-- Hub platform -->
+			<Waypoint x="519.5" y="221.8"/> <!-- Mallgartha tree -->
+		</Category>
+		<Category type="Transition" icon="exit_zone.png"> <!-- Rough estimates, based on character location for confirmation popup when approaching gate -->		
+			<Waypoint x="423.1" y="138.2">
+				<Name rdb="&lt;localized id=147548725 category=50025 /&gt;" />
+				<Transition zone="3030" />
+			</Waypoint>
+			<Waypoint x="403.7" y="147.8">
+				<Name rdb="&lt;localized id=147548727 category=50025 /&gt;" />
+				<Transition zone="3040" />
+			</Waypoint>
+			<Waypoint x="395.9" y="168.1">
+				<Name rdb="&lt;localized id=147548729 category=50025 /&gt;" />
+				<Transition zone="3050" />
+			</Waypoint>
+		</Category>
+		<Category type="Vendor" icon="vendor.png" /> <!-- Vendor waypoints tbd, need to track down coordinates, and decide on names -->
+	</Zone>
 	<Zone id="3030"> <!-- KM -->
 		<Category type="AnimaWell" icon="well.png"> <!-- Anima well locations verified with character location immediately after teleportation -->
 			<Waypoint x="16.0" y="159.8"> <!-- Agartha Entrance -->
@@ -40,22 +61,26 @@
 				<Name rdb="&lt;localized id=5998843 category=270 /&gt;" />
 			</Waypoint>
 		</Category>
+		<Category type="Transition" icon="exit_zone.png"> <!-- Locations pulled from Default waypoints -->
+			<Waypoint x="31.7" y="181.8" icon="exit_agartha.png">
+				<Name rdb="&lt;localized id=212867377 category=260 /&gt;" />
+				<Transition zone="5060" />
+			</Waypoint>
+			<Waypoint x="123.1" y="34.6"> <!-- To SC -->
+				<Name rdb="&lt;localized id=203932440 category=50025 /&gt;" />
+				<Transition zone="3040" />
+			</Waypoint>
+			<Waypoint x="22.8" y="683.7"> <!-- To BM -->
+				<Name rdb="&lt;localized id=64760864 category=50025 /&gt;" />
+				<Transition zone="3050" />
+			</Waypoint>
+		</Category>
 		<Category type="Vendor" icon="vendor.png"> <!-- Locations pulled from Default waypoints -->
 			<Waypoint x="154" y="373"> <!-- CoV vendor near police station -->
 				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
 			</Waypoint>
 			<Waypoint x="393" y="979"> <!-- Orochi vendor at bridge -->
 				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
-			</Waypoint>
-		</Category>
-		<Category type="Transition" icon="exit_zone.png"> <!-- Locations pulled from Default waypoints -->
-			<Waypoint x="123.1" y="34.6"> <!-- To SC -->
-				<Name rdb="&lt;localized id=203932440 category=50025 /&gt;" />
-				<Transit zone="3040" />
-			</Waypoint>
-			<Waypoint x="22.8" y="683.7"> <!-- To BM -->
-				<Name rdb="&lt;localized id=64760864 category=50025 /&gt;" />
-				<Transit zone="3050" />
 			</Waypoint>
 		</Category>
 	</Zone>
@@ -104,19 +129,29 @@
 				<Name rdb="&lt;localized id=6700560 category=270 /&gt;" />
 			</Waypoint>
 		</Category>
+		<Category type="Transition" icon="exit_zone.png"> <!-- Locations pulled from Default waypoints -->
+			<Waypoint x="229.2" y="775.5" icon="exit_agartha.png">
+				<Name rdb="&lt;localized id=212867377 category=260 /&gt;" />
+				<Transition zone="5060" />
+			</Waypoint>
+			<Waypoint x="629.1" y="998.3"> <!-- To KM -->
+				<Name rdb="&lt;localized id=64760866 category=50025 /&gt;" />
+				<Transition zone="3030" />
+			</Waypoint>
+			<Waypoint x="116.5" y="969.8"> <!-- To BM -->
+				<Name rdb="&lt;localized id=64760864 category=50025 /&gt;" />
+				<Transition zone="3050" />
+			</Waypoint>
+		</Category>
 		<Category type="Vendor" icon="vendor.png"> <!-- Locations pulled from Default waypoints -->
 			<Waypoint x="487" y="664"> <!-- CoV vendor in town -->
 				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
 			</Waypoint>
-		</Category>
-		<Category type="Transition" icon="exit_zone.png"> <!-- Locations pulled from Default waypoints -->
-			<Waypoint x="629.1" y="998.3"> <!-- To KM -->
-				<Name rdb="&lt;localized id=64760866 category=50025 /&gt;" />
-				<Transit zone="3030" />
+			<Waypoint x="296" y="400"> <!-- CoV vendor at Innsmouth Academy -->
+				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
 			</Waypoint>
-			<Waypoint x="116.5" y="969.8"> <!-- To BM -->
-				<Name rdb="&lt;localized id=64760864 category=50025 /&gt;" />
-				<Transit zone="3050" />
+			<Waypoint x="176" y="854"> <!-- Wabanaki vendor at Red's -->
+				<Name rdb="&lt;localized id=14163 category=51000 /&gt;" />
 			</Waypoint>
 		</Category>
 	</Zone>
@@ -150,6 +185,20 @@
 				<Name rdb="&lt;localized id=5997292 category=270 /&gt;" />
 			</Waypoint>
 		</Category>
+		<Category type="Transition" icon="exit_zone.png"> <!-- Locations pulled from Default waypoints -->
+			<Waypoint x="265.8" y="909.9" icon="exit_agartha.png">
+				<Name rdb="&lt;localized id=212867377 category=260 /&gt;" />
+				<Transition zone="5060" />
+			</Waypoint>
+			<Waypoint x="535.6" y="1.5"> <!-- To SC -->
+				<Name rdb="&lt;localized id=203932440 category=50025 /&gt;" />
+				<Transition zone="3040" />
+			</Waypoint>
+			<Waypoint x="1020.0" y="719.5"> <!-- To KM -->
+				<Name rdb="&lt;localized id=64760866 category=50025 /&gt;" />
+				<Transition zone="3030" />
+			</Waypoint>
+		</Category>
 		<Category type="Vendor" icon="vendor.png"> <!-- Locations pulled from Default waypoints -->
 			<Waypoint x="450.9" y="226.3"> <!-- ?? -->
 				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
@@ -159,16 +208,6 @@
 			</Waypoint>
 			<Waypoint x="809" y="727"> <!-- ?? -->
 				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
-			</Waypoint>
-		</Category>
-		<Category type="Transition" icon="exit_zone.png"> <!-- Locations pulled from Default waypoints -->
-			<Waypoint x="535.6" y="1.5"> <!-- To SC -->
-				<Name rdb="&lt;localized id=203932440 category=50025 /&gt;" />
-				<Transit zone="3040" />
-			</Waypoint>
-			<Waypoint x="1020.0" y="719.5"> <!-- To KM -->
-				<Name rdb="&lt;localized id=64760866 category=50025 /&gt;" />
-				<Transit zone="3030" />
 			</Waypoint>
 		</Category>
 	</Zone>
