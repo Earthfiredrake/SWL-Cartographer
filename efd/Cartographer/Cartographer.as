@@ -26,7 +26,7 @@ class efd.Cartographer.Cartographer extends Mod {
 		InitializeConfig();
 
 		Waypoints = new Object();
-		LoadWaypoints();
+		WaypointLoader = LoadXmlAsynch("Cartographer\\waypoints\\BasePack.xml", Delegate.create(this, ParseWaypoints));
 
 		TraceMsg("Initialized");
 	}
@@ -34,16 +34,9 @@ class efd.Cartographer.Cartographer extends Mod {
 	private function InitializeConfig(arConfig:ConfigWrapper):Void {
 	}
 
-	private function LoadWaypoints():Void {
-		FileLoader = new XML();
-		FileLoader.ignoreWhite = true;
-		FileLoader.onLoad = Delegate.create(this, ParseWaypoints);
-		FileLoader.load("Cartographer\\waypoints\\BasePack.xml");
-	}
-
 	private function ParseWaypoints(success:Boolean):Void {
 		if (success) {
-			var xmlRoot:XMLNode = FileLoader.firstChild;
+			var xmlRoot:XMLNode = WaypointLoader.firstChild;
 			for (var i:Number = 0; i < xmlRoot.childNodes.length; ++i) {
 				var zone:XMLNode = xmlRoot.childNodes[i];
 				if (Waypoints[zone.attributes.id] == undefined) {
@@ -56,7 +49,7 @@ class efd.Cartographer.Cartographer extends Mod {
 					}
 				}
 			}
-			delete FileLoader;
+			delete WaypointLoader;
 			TraceMsg("Waypoints loaded");
 		} else {
 			ErrorMsg("Unable to load waypoint file");
@@ -89,6 +82,6 @@ class efd.Cartographer.Cartographer extends Mod {
 	}
 
 	/// Variables
-	private var FileLoader:XML;
+	private var WaypointLoader:XML;
 	private var Waypoints:Object; // Multi level array/map (Zone->Layer/Type->WaypointData) Note: Layer/Type not yet in use
 }

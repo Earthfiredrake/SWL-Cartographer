@@ -500,6 +500,15 @@ class efd.Cartographer.lib.Mod {
 
 	private function SetDebugMode(dv:DistributedValue):Void { DebugTrace = dv.GetValue(); }
 
+	/// Data file loading
+	public static function LoadXmlAsynch(fileName:String, callback:Function):XML {
+		var loader:XML = new XML();
+		loader.ignoreWhite = true;
+		loader.onLoad = callback;
+		loader.load(fileName);
+		return loader;
+	}
+
 	/// Text output utility functions
 	// Options object supports the following properties:
 	//   system:String - Name of subsystem to include in the prefix

@@ -21,10 +21,7 @@ class efd.Cartographer.lib.LocaleManager {
 
 		SignalStringsLoaded = new Signal();
 
-		StringFile = new XML();
-		StringFile.ignoreWhite = true;
-		StringFile.onLoad = StringsLoaded;
-		StringFile.load(fileName);
+		StringFile = Mod.LoadXmlAsynch(fileName, StringsLoaded);
 	}
 
 	public static function GetString(category:String, tag:String):String { return StringDict[category][tag]; }
