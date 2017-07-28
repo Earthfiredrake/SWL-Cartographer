@@ -25,6 +25,9 @@ class efd.Cartographer.Cartographer extends Mod {
 
 		InitializeConfig();
 
+		ZoneIndex = new Object();
+		ZoneIndexLoader = LoadXmlAsynch("Cartographer\\Zones.xml", Delegate.create(this, LoadZoneInfo));
+
 		Waypoints = new Object();
 		WaypointLoader = LoadXmlAsynch("Cartographer\\waypoints\\BasePack.xml", Delegate.create(this, ParseWaypoints));
 
@@ -32,6 +35,20 @@ class efd.Cartographer.Cartographer extends Mod {
 	}
 
 	private function InitializeConfig(arConfig:ConfigWrapper):Void {
+	}
+
+	private function LoadZoneInfo(success:Boolean):Void {
+		if (success) {
+			var xmlRoot:XMLNode = ZoneIndexLoader.firstChild;
+			for (var i:Number = 0; i < xmlRoot.childNodes.length; ++i) {
+				var zone:XMLNode = xmlRoot.childNodes[i];
+				ZoneIndex[zone.attributes.id] = { worldX : zone.attributes.worldX, worldY : zone.attributes.worldY };
+			}
+			delete ZoneIndexLoader;
+			TraceMsg("Zone index loaded");
+		} else {
+			ErrorMsg("Unable to load zone index");
+		}
 	}
 
 	private function ParseWaypoints(success:Boolean):Void {
@@ -78,10 +95,13 @@ class efd.Cartographer.Cartographer extends Mod {
 
 	private function InterfaceWindowLoaded():Void {
 		TraceMsg("Opening interface window");
-		InterfaceWindowClip.m_Content.SetWaypoints(Waypoints);
+		InterfaceWindowClip.m_Content.SetData(ZoneIndex, Waypoints);
 	}
 
 	/// Variables
+	private var ZoneIndexLoader:XML;
+	private var ZoneIndex:Object;
+
 	private var WaypointLoader:XML;
 	private var Waypoints:Object; // Multi level array/map (Zone->Layer/Type->WaypointData) Note: Layer/Type not yet in use
 }

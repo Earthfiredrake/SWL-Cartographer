@@ -3,8 +3,11 @@
      Released under the terms of the MIT License
      https://github.com/Earthfiredrake/TSW-Cartographer -->
 
-<!-- While not actually in use yet, this file is included to provide zone id#s for anybody interested in adjusting the waypoint files-->
-<!-- Note that any zone (Hubs, SD, Trans) whose world coordinates do not match up to the Agartha standard will have misplaced pins until support is added -->
+<!-- Provides world map sizes for zones, permitting coordinate conversion between waypoint data (stored in world coordinates) and onscreen maps
+
+	For new zones with maps, can be determined by moving the mouse to the top left corner of the default game map and recording the coordinates listed. -->
+
+<!-- "code" attribute is currently unused, maintained for easier identification of IDs -->
 
  <Zones>
 	<Zone code="Agartha" id="5060" worldX="1024" worldY="1024" />

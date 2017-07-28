@@ -23,7 +23,6 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		CurrentMapDisplaySize = new Point(768, 768);
 		CurrentMapWorldSize = new Point(1024, 1024);
 		ClientChar = Character.GetClientCharacter();
-		Waypoints = new Array();
 		RenderedWaypoints = new Array();
 
 		MapLayer = createEmptyMovieClip("MapLayer", getNextHighestDepth());
@@ -32,14 +31,14 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		var listener:Object = new Object();
 		listener.onLoadComplete = Delegate.create(this, MapLoaded);
 		Loader.addListener(listener);
-		// This should defer until after the waypoints are actually loaded
-		// If bugs crop up where waypoints are failing to load properly, re-evaluate this
+		// This should defer until after the waypoints and zone index are available
+		// If bugs crop up where waypoints are failing to load properly, consider moving this
 		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
 	}
 
 	private function MapLoaded(target:MovieClip):Void {
-		target._height = CurrentMapDisplaySize.y;
-		target._width = CurrentMapDisplaySize.x;
+		target._width = target._width / target._height * MaxMapHeight;
+		target._height = MaxMapHeight;
 		SignalSizeChanged.Emit();
 		RenderWaypoints();
 	}
@@ -51,7 +50,8 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
 	}
 
-	private function SetWaypoints(waypoints:Array):Void {
+	private function SetData(zoneIndex:Object, waypoints:Object):Void {
+		ZoneIndex = zoneIndex;
 		Waypoints = waypoints;
 	}
 
@@ -96,32 +96,33 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	/// Conversion routines
 	private function WorldToWindowCoords(worldCoords:Point):Point {
 		return new Point(
-			worldCoords.x * CurrentMapDisplaySize.x / CurrentMapWorldSize.x,
-			CurrentMapDisplaySize.y - (worldCoords.y * CurrentMapDisplaySize.y / CurrentMapWorldSize.y));
+			worldCoords.x * MapLayer._width / ZoneIndex[CurrentZoneID].worldX,
+			MapLayer._height - (worldCoords.y * MapLayer._height / ZoneIndex[CurrentZoneID].worldY));
 	}
 
 	private function WindowToWorldCoords(windowCoords:Point):Point {
 		return new Point(
-			windowCoords.x * CurrentMapWorldSize.x / CurrentMapDisplaySize.x ,
-			(CurrentMapDisplaySize.y - windowCoords.y) * CurrentMapWorldSize.y / CurrentMapDisplaySize.y);
+			windowCoords.x * ZoneIndex[CurrentZoneID].worldX / MapLayer._width ,
+			(MapLayer._height - windowCoords.y) * ZoneIndex[CurrentZoneID].worldY / MapLayer._height);
 	}
 
 	private static function RadToDegRotation(radians:Number):Number {
 		return radians * 180 / Math.PI;
 	}
 
-	/// TODO: Data outsourcing
-	private var CurrentZoneID:Number;
-	private var CurrentMapDisplaySize:Point;
-	private var CurrentMapWorldSize:Point;
-	private var ClientChar:Character;
+	private var ZoneIndex:Object;
+	private var CurrentZoneID:Number;	
 
-	private var Waypoints:Array;
+	private var Waypoints:Object;
 	private var RenderedWaypoints:Array;
+	
+	private var ClientChar:Character;
 
 	/// GUI Elements
 	private var Loader:MovieClipLoader;
 
 	private var MapLayer:MovieClip;
 	private var PlayerMarker:MovieClip;
+	
+	private static var MaxMapHeight:Number = 768;
 }

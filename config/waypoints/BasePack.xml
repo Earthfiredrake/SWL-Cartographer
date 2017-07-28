@@ -24,17 +24,21 @@
 			<Waypoint x="519.5" y="221.8" /> <!-- Mallgartha tree -->
 		</Category>
 		<Category type="Transition" icon="exit_zone.png"> <!-- Rough estimates, based on character location for confirmation popup when approaching gate -->
-			<Waypoint x="423.1" y="138.2">
+			<Waypoint x="423.1" y="138.2"> <!-- KM -->
 				<Name rdb="&lt;localized id=147548725 category=50025 /&gt;" />
 				<Transition zone="3030" />
 			</Waypoint>
-			<Waypoint x="403.7" y="147.8">
+			<Waypoint x="403.7" y="147.8"> <!-- SC -->
 				<Name rdb="&lt;localized id=147548727 category=50025 /&gt;" />
 				<Transition zone="3040" />
 			</Waypoint>
-			<Waypoint x="395.9" y="168.1">
+			<Waypoint x="395.9" y="168.1"> <!-- BM -->
 				<Name rdb="&lt;localized id=147548729 category=50025 /&gt;" />
 				<Transition zone="3050" />
+			</Waypoint>
+			<Waypoint x="438.8" y="283.4"> <!-- SD -->
+				<Name rdb="&lt;localized id=147548705 category=50025 /&gt;" />
+				<Transition zone="3090" />
 			</Waypoint>
 		</Category>
 		<Category type="Vendor" icon="vendor.png" /> <!-- Vendor waypoints tbd, need to track down coordinates, and decide on names -->
@@ -256,6 +260,14 @@
 			</Waypoint>
 			<Waypoint x="809" y="727"> <!-- ?? -->
 				<Name rdb="&lt;localized id=29788 category=51000 /&gt;" />
+			</Waypoint>
+		</Category>
+	</Zone>
+	<Zone id="3090"> <!-- SD -->
+		<Category type="Transition" icon="exit_zone.png"> <!-- Locations pulled from Default waypoints -->
+			<Waypoint x="519.2" y="90.1" icon="exit_agartha.png">
+				<Name rdb="&lt;localized id=212867377 category=260 /&gt;" />
+				<Transition zone="5060" />
 			</Waypoint>
 		</Category>
 	</Zone>
