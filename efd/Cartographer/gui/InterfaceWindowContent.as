@@ -32,6 +32,8 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		var listener:Object = new Object();
 		listener.onLoadComplete = Delegate.create(this, MapLoaded);
 		Loader.addListener(listener);
+		// This should defer until after the waypoints are actually loaded
+		// If bugs crop up where waypoints are failing to load properly, re-evaluate this
 		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
 	}
 
@@ -39,6 +41,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		target._height = CurrentMapDisplaySize.y;
 		target._width = CurrentMapDisplaySize.x;
 		SignalSizeChanged.Emit();
+		RenderWaypoints();
 	}
 
 	private function ChangeMap(newZone:Number):Void {
@@ -46,13 +49,11 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		Loader.unloadClip(MapLayer);
 		CurrentZoneID = newZone;
 		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
-		RenderWaypoints();
 	}
 
 	private function SetWaypoints(waypoints:Array):Void {
 		Mod.TraceMsg("Adding waypoint zones to list.");
 		Waypoints = waypoints;
-		RenderWaypoints();
 	}
 
 	private function RenderWaypoints():Void {
