@@ -58,9 +58,13 @@ class efd.Cartographer.Waypoint {
 						// Requires manual localization if available
 						// TODO: Support for this
 					}
+					ShowLabel = subNode.attributes.showLabel == "true";
 					break;
-				case "Transition":
+				case "Transition": // Extension tag for map swapping
 					this["TargetZone"] = subNode.attributes.zone;
+					break;
+				case "Teleport": // Placeholder tag for anima leap and regional teleport info
+					break;
 				default:
 					Mod.TraceMsg("Unexpected waypoint data: " + subNode.nodeName);
 			}
@@ -71,6 +75,7 @@ class efd.Cartographer.Waypoint {
 	// ZoneID:Number; // Maintained at higher level of data hierarchy
 	public var Position:Point; // World space coordinates
 	public var Name:String; // Waypoint name
+	public var ShowLabel:Boolean; // Display the label on the map or only as a tooltip
 	public var Icon:String; // Icon file name
 	// Category:?; // Maintainted at higher level of data hierarchy
 }

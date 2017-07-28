@@ -52,7 +52,6 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	}
 
 	private function SetWaypoints(waypoints:Array):Void {
-		Mod.TraceMsg("Adding waypoint zones to list.");
 		Waypoints = waypoints;
 	}
 
@@ -62,8 +61,6 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		for (var i:Number = 0; i < zone.length; ++i) {
 			var data:Waypoint = zone[i];
 			var mapPos:Point = WorldToWindowCoords(data.Position);
-			Mod.TraceMsg("Creating waypoint: " + data.Name);
-			Mod.TraceMsg("  @ " + mapPos.toString());
 			var waypoint:MovieClip = MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + i, this, getNextHighestDepth(), {Data : data, _x : mapPos.x, _y : mapPos.y});
 			RenderedWaypoints.push(waypoint);
 		}

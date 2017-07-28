@@ -31,6 +31,7 @@ Due to limitations with the API, it does not seem to be possible to:
   + This mod will be duplicating as much existing functionality as is possible and be a second map window in game
 + Entirely replace the existing map's functionality
   + Anima leap and the long range detection of champion monsters and world bosses is not yet understood
+    + Oddly it may be possible to integrate zone teleportation (the Shift-T menu). I've stuck in some preliminary placeholder stuff in relation to these, and will revisit them later
 + Directly save player added waypoints to the xml files containing pre-packaged info
   + Manual export and sharing features may be supported
   + Custom waypoints will have to be saved with the rest of the mod settings
@@ -66,7 +67,7 @@ Initial feedback has provided the following suggestions:
 + Map zooming should be a feature if at all possible
 + Current default window size is still too large, 1600x900 resolution cuts things off
 + I should consider moving some releases to Curse as well, once things are at a level of quality I'm content with (LoreHound's probably there)
-  
+
 As always, defect reports, suggestions, and contributions are welcome. They can be sent to Peloprata in SWL (by mail or pm), via the github issues system, or in the official forum post.
 
 Source Repository: https://github.com/Earthfiredrake/TSW-Cartographer

@@ -21,10 +21,11 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		};
 		Loader.addListener(listener);
 
-		Mod.TraceMsg("Loading waypoint icon: Cartographer\\Icons\\" + Data.Icon);
 		Loader.loadClip("Cartographer\\icons\\" + Data.Icon, Icon);
 
-		Label = CreateLabel();
+		if (Data.ShowLabel) {
+			Label = CreateLabel();
+		}
 	}
 
 	private function IconLoaded(target:MovieClip):Void {

@@ -4,20 +4,24 @@
      https://github.com/Earthfiredrake/TSW-Cartographer -->
 
 <!-- Basic waypoints for Secret World Legends
-	
+
 	Contains: Anima wells, respawn points, zone transitions and vendors
 
 	To keep sizes managable and offer selective data loading, it is recommended that other categories be given their own files (support pending).
-	The exception is critical waypoint types (such as zone transitions) which are fundamental to the use of the map interface. 
-	
+	The exception is critical waypoint types (such as zone transitions) which are fundamental to the use of the map interface.
+
 	As this file contains critical waypoints, there will not be an option to skip loading it.
 	-->
 
+<!-- The Teleport tag is currently a placeholder, and doesn't actually have any linked functionality -->
+
 <Waypoints>
     <Zone id="5060"> <!-- Agartha -->
-		<Category type="Respawn" icon="well.png"> <!-- Respawn locations verified with character location immediately after teleportation -->
-			<Waypoint x="502.3" y="412.0"/> <!-- Hub platform -->
-			<Waypoint x="519.5" y="221.8"/> <!-- Mallgartha tree -->
+		<Category type="AnimaWell" icon="well.png"> <!-- Respawn locations verified with character location immediately after teleportation -->
+			<Waypoint x="502.3" y="412.0" icon="well_zoneport.png"> <!-- Hub platform -->
+				<Teleport zonePort="true" />
+			</Waypoint>
+			<Waypoint x="519.5" y="221.8" /> <!-- Mallgartha tree -->
 		</Category>
 		<Category type="Transition" icon="exit_zone.png"> <!-- Rough estimates, based on character location for confirmation popup when approaching gate -->
 			<Waypoint x="423.1" y="138.2">
@@ -39,36 +43,47 @@
 		<Category type="AnimaWell" icon="well.png"> <!-- Anima well locations verified with character location immediately after teleportation -->
 			<Waypoint x="16.0" y="159.8"> <!-- Agartha Entrance -->
 				<Name rdb="&lt;localized id=5228519 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
-			<Waypoint x="178.3" y="337.1"> <!-- Sheriff's Department -->
+			<Waypoint x="178.3" y="337.1" icon="well_zoneport.png"> <!-- Sheriff's Department -->
 				<Name rdb="&lt;localized id=5998841 category=270 /&gt;" />
+				<Teleport leap="true" zonePort="true" />
 			</Waypoint>
 			<Waypoint x="324.1" y="459.7"> <!-- Kingsmouth Congregational -->
 				<Name rdb="&lt;localized id=9279086 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="342.6" y="142.4"> <!-- 6 Poe Cove -->
 				<Name rdb="&lt;localized id=5998842 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="576.4" y="395.5"> <!-- Belmont Ave -->
 				<Name rdb="&lt;localized id=9279087 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="125.5" y="671.7"> <!-- Camping Grounds -->
 				<Name rdb="&lt;localized id=9279088 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="381.0" y="992.2"> <!-- New Colony Span Bridge -->
 				<Name rdb="&lt;localized id=5998844 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="528.8" y="624.6"> <!-- King's Strait -->
 				<Name rdb="&lt;localized id=9279089 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="830.3" y="448.3"> <!-- Fletcher Island -->
 				<Name rdb="&lt;localized id=9279091 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="773.0" y="786.4"> <!-- Kingsmouth Municipal Airport Gate -->
 				<Name rdb="&lt;localized id=9279090 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="1007.4" y="702.1"> <!-- Kingsmouth Municipal Airport Runway -->
 				<Name rdb="&lt;localized id=5998843 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 		</Category>
 		<Category type="Transition" icon="exit_zone.png"> <!-- Locations pulled from Default waypoints -->
@@ -98,45 +113,59 @@
 		<Category type="AnimaWell" icon="well.png"> <!-- Anima well locations verified with character location immediately after teleportation -->
 			<Waypoint x="658.2" y="1007.8"> <!-- Road to Kingsmouth -->
 				<Name rdb="&lt;localized id=6061607 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="703.9" y="845.2"> <!-- The Overlook Motel -->
 				<Name rdb="&lt;localized id=6122520 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="889.9" y="779.8"> <!-- The Lowland -->
 				<Name rdb="&lt;localized id=7912981 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
-			<Waypoint x="576.7" y="602.3"> <!-- Atlantic Island Park - Main Gate -->
+			<Waypoint x="576.7" y="602.3" icon="well_zoneport.png"> <!-- Atlantic Island Park - Main Gate -->
 				<Name rdb="&lt;localized id=6060752 category=270 /&gt;" />
+				<Teleport leap="true" zonePort="true" />
 			</Waypoint>
 			<Waypoint x="647.0" y="329.4"> <!-- Atlantic Island Park - Service Entrance -->
 				<Name rdb="&lt;localized id=6060751 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="784.3" y="405.2"> <!-- The Threshing Fields -->
 				<Name rdb="&lt;localized id=9279109 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="846.3" y="223.9"> <!-- Lighthouse Approach -->
 				<Name rdb="&lt;localized id=6063586 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="496.1" y="86.5"> <!-- Mason's Crescent -->
 				<Name rdb="&lt;localized id=9279110 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="345.3" y="418.9"> <!-- Innsmouth Academy - Entrance -->
 				<Name rdb="&lt;localized id=9279111 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="260.2" y="157.4"> <!-- Innsmouth Academy - Recreation Center -->
 				<Name rdb="&lt;localized id=6371566 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="458.1" y="761.8"> <!-- The Black House -->
 				<Name rdb="&lt;localized id=9279108 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="253.6" y="773.7"> <!-- Miskatonic Cave Agartha Entrance -->
 				<Name rdb="&lt;localized id=6060700 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="55.3" y="619.5"> <!-- Vinterskog Woods -->
 				<Name rdb="&lt;localized id=6061606 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="110.1" y="924.8"> <!-- Tolba Bay -->
 				<Name rdb="&lt;localized id=6700560 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 		</Category>
 		<Category type="Transition" icon="exit_zone.png"> <!-- Locations pulled from Default waypoints -->
@@ -169,30 +198,39 @@
 		<Category type="AnimaWell" icon="well.png"> <!-- Anima well locations verified with character location immediately after teleportation -->
 			<Waypoint x="504.7" y="27.3"> <!-- Devore Bridge -->
 				<Name rdb="&lt;localized id=7583174 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="355.8" y="277.3"> <!-- Old Asylum Approach -->
 				<Name rdb="&lt;localized id=5997294 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="722.4" y="147.7"> <!-- Sasquatch Glade -->
 				<Name rdb="&lt;localized id=5997293 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="826.1" y="311.3"> <!-- Franklin Mansion -->
 				<Name rdb="&lt;localized id=9284035 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
-			<Waypoint x="810.3" y="757.3"> <!-- Moon Cove -->
+			<Waypoint x="810.3" y="757.3" icon="well_zoneport.png"> <!-- Moon Cove -->
 				<Name rdb="&lt;localized id=5997245 category=270 /&gt;" />
+				<Teleport leap="true" zonePort="true" />
 			</Waypoint>
 			<Waypoint x="238.1" y="871.5"> <!-- Agartha Entrance -->
 				<Name rdb="&lt;localized id=5228519 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="208.1" y="681.5"> <!-- Trailer Park -->
 				<Name rdb="&lt;localized id=4138765 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="472.0" y="579.4"> <!-- The Blue Ridge Mine -->
 				<Name rdb="&lt;localized id=9284422 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 			<Waypoint x="665.1" y="589.3"> <!-- Wabanaki Sacred Site -->
 				<Name rdb="&lt;localized id=5997292 category=270 /&gt;" />
+				<Teleport leap="true" />
 			</Waypoint>
 		</Category>
 		<Category type="Transition" icon="exit_zone.png"> <!-- Locations pulled from Default waypoints -->
