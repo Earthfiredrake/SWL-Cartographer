@@ -15,8 +15,10 @@ This mod intends to provide a supplement to the ingame regional and dungeon maps
     + This may result in one or more utility mods designed to provide absolute locations of various game objects
     + This will also likely result in an automatic marking system from LoreHound
   + While the native format will likely not be compatible with existing waypoint packs (Lassie's etc.), I may see if I can handle their format as well at least on a transition basis
-  + I'd love for this to be a full plugin system, where a map-pack could be provided as a standalone mod adding its own logic to the provided waypoints
-    + I have no idea where to even begin with this part of the concept
+  + I'd love for this to be a full plugin system, adding custom logic to the provided waypoints
+    + I have no idea where to even begin with this part of the concept but no shortage of random ideas if it can be made to work:
+	  + Extracting lore and worldboss packs, with the logic required to provide ids and verify completion into optional plugins
+      + A pack for the museum, showing exhibit locations and an overview of their levels, upgradability, requirements etc.
 + Filter, highlight and search for particular map marks:
   + ex: Unclaimed lore, missing rare spawn achivements
 
