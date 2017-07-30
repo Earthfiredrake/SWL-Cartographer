@@ -174,6 +174,8 @@ class efd.Cartographer.lib.Mod {
 		LoadComplete();
 	}
 
+	// TODO: Failure to clear the SystemsLoaded object seems to crash reliably when the interface window opens
+	//       Investigate and fix. Low priority, currently SystemsLoaded is being cleared/largely unused
 	private function LoadComplete():Void {
 		delete SystemsLoaded; // No longer required
 		UpdateInstall();
@@ -390,7 +392,13 @@ class efd.Cartographer.lib.Mod {
 		return LocaleManager.GetString("GUI", Config.GetValue("Enabled") ? "TooltipModOff" : "TooltipModOn");
 	}
 
-	private function ToggleConfigWindow():Void { ShowConfigDV.SetValue(!ShowConfigDV.GetValue()); }
+	private function ToggleConfigWindow():Void {
+		if (!ShowConfigDV.GetValue) {
+			ShowConfigDV.SetValue(true);
+		} else {
+			TriggerWindowClose.apply(ConfigWindowClip);
+		}
+	}
 	private static function ToggleConfigTooltip():String { return LocaleManager.GetString("GUI", "TooltipShowSettings"); }
 
 	private function ToggleInterface():Void {
@@ -400,7 +408,7 @@ class efd.Cartographer.lib.Mod {
 			}
 			ShowInterface = true;
 		} else { // Close the interface
-			CloseInterfaceWindow();
+			TriggerWindowClose.apply(InterfaceWindowClip);
 		}
 	}
 	private static function ToggleInterfaceTooltip():String { return LocaleManager.GetString("GUI", "TooltipShowInterface"); }
@@ -424,15 +432,15 @@ class efd.Cartographer.lib.Mod {
 		clip._x = position.x;
 		clip._y = position.y;
 
-		escNode.SignalEscapePressed.Connect(closeEvent, this);
+		escNode.SignalEscapePressed.Connect(TriggerWindowClose, clip);
 		EscapeStack.Push(escNode);
 		clip.SignalClose.Connect(closeEvent, this);
 
 		return clip;
 	}
 
-	private function CloseWindow(windowClip:MovieClip, windowName:String, closeEvent:Function, escNode:EscapeStackNode):Void {
-		escNode.SignalEscapePressed.Disconnect(closeEvent, this);
+	private function WindowClosed(windowClip:MovieClip, windowName:String, escNode:EscapeStackNode):Void {
+		escNode.SignalEscapePressed.Disconnect(TriggerWindowClose, windowClip);
 
 		ReturnWindowToVisibleBounds(windowClip, Config.GetDefault(windowName + "Position"));
 		Config.SetValue(windowName + "Position", new Point(windowClip._x, windowClip._y));
@@ -452,6 +460,12 @@ class efd.Cartographer.lib.Mod {
 		}
 	}
 
+	private function TriggerWindowClose():Void {
+		var target:Object = this;
+		target.SignalClose.Emit(target);
+		target.m_Content.Close();
+	}
+
 	private function SetWindowScale(scaleDV:DistributedValue):Void {
 		var scale:Number = scaleDV.GetValue() * 100;
 		var target:Object = this;
@@ -466,7 +480,7 @@ class efd.Cartographer.lib.Mod {
 			}
 		} else { // Close window
 			if (ConfigWindowClip != null) {
-				CloseWindow(ConfigWindowClip, "ConfigWindow", CloseConfigWindow, ConfigWindowEscTrigger);
+				WindowClosed(ConfigWindowClip, "ConfigWindow", ConfigWindowEscTrigger);
 				ConfigWindowClip = null;
 			}
 		}
@@ -480,7 +494,7 @@ class efd.Cartographer.lib.Mod {
 
 	private function CloseInterfaceWindow():Void {
 		if (InterfaceWindowClip != null) {
-			CloseWindow(InterfaceWindowClip, "InterfaceWindow", CloseInterfaceWindow, InterfaceWindowEscTrigger);
+			WindowClosed(InterfaceWindowClip, "InterfaceWindow", InterfaceWindowEscTrigger);
 			InterfaceWindowClip = null;
 		}
 		ShowInterface = false;

@@ -17,7 +17,8 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		var listener:Object = new Object();
 		listener.onLoadComplete = Delegate.create(this, IconLoaded);
 		listener.onLoadError = function(target:MovieClip, error:String):Void {
-			Mod.ErrorMsg("Unable to load icon: " + error);
+			Mod.LogMsg("Icon (" + Data.Icon + ") failed to load: " + error);
+			Mod.ErrorMsg("Unable to load icon (" + Data.Icon + "): " + error);
 		};
 		Loader.addListener(listener);
 
@@ -82,3 +83,20 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	private static var FocusScale:Number = 110;
 }
+
+/// Notes:
+//   I've been experiencing some instablity that randomly crashes the game when opening/changing maps
+//   The cause has not yet been determined, and the process of narrowing it down has proven challenging, as it exits immediately with limited feedback
+//   Current hypothesis is that it is related to io failure or delay, possibly caused by trying to read too much data from disk too quickly
+//   Unfortunately there does not seem to be a convenient solution:
+//     Flash requires that the icons be reloaded every time they are used unless they are defined as part of a library type
+//       Defining them as part of a library type means that they will no longer be available to the user for customization/extension
+//       Movie clips, once created, are locked to their parent, and without the library type can only be duplicated as children of their own
+//       Duplicated movie clips do not contain dynamically loaded content from their parent, it must be re-loaded
+//       The window system expects that the window content be a child element of it, and that it be destroyed and re-created each time the window is closed
+//     A similar set of arguments is present for the map files, though the motivation there is more an ease of extension than actual customization
+//   The current strategy for dealing with this is attempted mitigation, with stability to be assessed as development approaches a more complete product:
+//     Attemptng to be clean with the code, explicitly tidy up memory leaks and close things off when they are no longer in use
+//     Avoid loading more than required, notation layers can defer loading of markers if they are hidden and can reuse existing markers when changing maps
+//     Stage the loading, ensure that the map and layers load sequentially rather than asynchronously, possibly with delays so that large data sets don't devour entire time blocks
+//     Extensive use of Mod.LogMsg() in an effort to trace/locate any replicatable crash locations
