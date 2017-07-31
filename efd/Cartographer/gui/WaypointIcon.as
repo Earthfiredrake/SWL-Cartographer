@@ -11,6 +11,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	public static var __className:String = "efd.Cartographer.gui.WaypointIcon";
 
 	private function WaypointIcon() { // Indirect construction only
+		super();
 		Icon = createEmptyMovieClip("Icon", getNextHighestDepth());
 		Loader = new MovieClipLoader();
 
@@ -50,7 +51,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	private function IconAction():Void {
 		if (Data["TargetZone"] != undefined) {
-			_parent.ChangeMap(Data["TargetZone"]);
+			_parent._parent.ChangeMap(Data["TargetZone"]);
 		}
 	}
 

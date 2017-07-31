@@ -12,7 +12,10 @@ import com.GameInterface.MathLib.Vector3;
 
 import efd.Cartographer.lib.etu.MovieClipHelper
 import efd.Cartographer.lib.Mod;
+
 import efd.Cartographer.Waypoint;
+
+import efd.Cartographer.gui.NotationLayer;
 import efd.Cartographer.gui.WaypointIcon;
 
 class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent {
@@ -22,10 +25,8 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		Mod.LogMsg("Interface Window Content Constructor");
 		CurrentZoneID = 3030;
 		ClientChar = Character.GetClientCharacter();
-		RenderedWaypoints = new Array();
 
-		MapLayer = createEmptyMovieClip("MapLayer", getNextHighestDepth());
-		MapLayer.swapDepths(PlayerMarker);
+		MapLayer = createEmptyMovieClip("MapLayerClip", getNextHighestDepth());
 		Loader = new MovieClipLoader();
 		var listener:Object = new Object();
 		listener.onLoadComplete = Delegate.create(this, MapLoaded);
@@ -34,9 +35,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 			Mod.ErrorMsg("Unable to load map: " + error);
 		};
 		Loader.addListener(listener);
-		// This should defer until after the waypoints and zone index are available
-		// If bugs crop up where waypoints are failing to load properly, consider moving this
-		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
+
 		Mod.LogMsg("Interface Window Content Constructor Complete");
 	}
 
@@ -48,13 +47,13 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		target._width = target._width / target._height * MaxMapHeight;
 		target._height = MaxMapHeight;
 		SignalSizeChanged.Emit();
-		RenderWaypoints();
+		WaypointLayer.RenderWaypoints(CurrentZoneID);
 		Mod.LogMsg("Map Load Complete");
 	}
 
 	private function ChangeMap(newZone:Number):Void {
 		Mod.LogMsg("Changing Map:" + newZone);
-		ClearWaypoints();
+		WaypointLayer.ClearDisplay();
 		Loader.unloadClip(MapLayer);
 		CurrentZoneID = newZone;
 		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
@@ -64,31 +63,9 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	private function SetData(zoneIndex:Object, waypoints:Object):Void {
 		ZoneIndex = zoneIndex;
 		Waypoints = waypoints;
-	}
-
-	private function RenderWaypoints():Void {
-		Mod.LogMsg("RenderWP");
-		var zone:Array = Waypoints[CurrentZoneID];
-		Mod.TraceMsg("Rendering " + zone.length + " waypoints for current zone.");
-		for (var i:Number = 0; i < zone.length; ++i) {
-			var data:Waypoint = zone[i];
-			var mapPos:Point = WorldToWindowCoords(data.Position);
-			var waypoint:MovieClip = MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + i, this, getNextHighestDepth(), {Data : data, _x : mapPos.x, _y : mapPos.y});
-			RenderedWaypoints.push(waypoint);
-		}
-		RenderedWaypoints[RenderedWaypoints.length-1].swapDepths(PlayerMarker); // TEMP HACK
-		Mod.LogMsg("RenderWP End");
-	}
-
-	private function ClearWaypoints():Void {
-		Mod.LogMsg("Clearing");
-		RenderedWaypoints[RenderedWaypoints.length - 1].swapDepths(PlayerMarker); // TEMP HACK
-		for (var i:Number = 0; i < RenderedWaypoints.length; ++i) {
-			var waypoint:MovieClip = RenderedWaypoints[i];
-			waypoint.Unload();
-			waypoint.removeMovieClip();
-		}
-		Mod.LogMsg("Cleared");
+		WaypointLayer = NotationLayer(MovieClipHelper.createMovieWithClass(NotationLayer, "WaypointLayerClip", this, getNextHighestDepth(), {WaypointData : Waypoints}));
+		PlayerMarker.swapDepths(getNextHighestDepth());
+		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
 	}
 
 	private function onEnterFrame():Void {
@@ -111,7 +88,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 
 	public function Close():Void {
 		Mod.LogMsg("Closing");
-		ClearWaypoints();
+		WaypointLayer.ClearDisplay();
 		Loader.unloadClip(MapLayer);
 		super();
 	}
@@ -137,15 +114,15 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	private var ZoneIndex:Object;
 	private var CurrentZoneID:Number;
 
+	private var MapLayer:MovieClip;
+	private var WaypointLayer:NotationLayer;
 	private var Waypoints:Object;
-	private var RenderedWaypoints:Array;
 
 	private var ClientChar:Character;
 
 	/// GUI Elements
 	private var Loader:MovieClipLoader;
 
-	private var MapLayer:MovieClip;
 	private var PlayerMarker:MovieClip;
 
 	private static var MaxMapHeight:Number = 768;
