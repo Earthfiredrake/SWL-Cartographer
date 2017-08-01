@@ -12,6 +12,8 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	private function WaypointIcon() { // Indirect construction only
 		super();
+		Mod.LogMsg("Waypoint Icon Constructor");
+		Mod.LogMsg("Icon file: " + Data.Icon);
 		Icon = createEmptyMovieClip("Icon", getNextHighestDepth());
 		Loader = new MovieClipLoader();
 
@@ -28,9 +30,11 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		if (Data.ShowLabel) {
 			Label = CreateLabel();
 		}
+		Mod.LogMsg("Waypoint Icon Constructed");
 	}
 
 	private function IconLoaded(target:MovieClip):Void {
+			Mod.LogMsg("Waypoint Icon Loaded");
 			CenterIcon(target);
 
 			target.onRollOver = function():Void {
@@ -47,9 +51,11 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 			target.onReleaseOutside = rollOut;
 
 			target.onPress = Delegate.create(this, IconAction);
+			Mod.LogMsg("Waypoint Icon Initialization finished");
 	}
 
 	private function IconAction():Void {
+		Mod.LogMsg("Waypoint Icon Clicked");
 		if (Data["TargetZone"] != undefined) {
 			_parent._parent.ChangeMap(Data["TargetZone"]);
 		}
@@ -61,6 +67,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	}
 
 	private function CreateLabel():TextField {
+		Mod.LogMsg("Creating Label");
 		var label:TextField = createTextField("Label", getNextHighestDepth(), 0, 0, 50, 15);
 		label.embedFonts = true;
 		label.selectable = false;
@@ -72,6 +79,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	}
 
 	public function Unload():Void {
+		Mod.LogMsg("Unloading mod Icon");
 		Loader.unloadClip(Icon);
 	}
 
