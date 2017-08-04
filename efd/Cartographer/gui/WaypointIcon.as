@@ -2,6 +2,8 @@
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
+import flash.geom.Point;
+
 import gfx.utils.Delegate;
 
 import efd.Cartographer.lib.Mod;
@@ -14,21 +16,21 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		super();
 		Mod.LogMsg("Waypoint Icon Constructor");
 		Mod.LogMsg("Icon file: " + Data.Icon);
-		Icon = createEmptyMovieClip("Icon", getNextHighestDepth());
+		var icon:MovieClip = createEmptyMovieClip("Icon", getNextHighestDepth());
 		Loader = new MovieClipLoader();
 
 		var listener:Object = new Object();
 		listener.onLoadComplete = Delegate.create(this, IconLoaded);
 		listener.onLoadError = function(target:MovieClip, error:String):Void {
-			Mod.LogMsg("Icon (" + Data.Icon + ") failed to load: " + error);
-			Mod.ErrorMsg("Unable to load icon (" + Data.Icon + "): " + error);
+			Mod.LogMsg("Icon (" + target._parent.Data.Icon + ") failed to load: " + error);
+			Mod.ErrorMsg("Unable to load icon (" + target._parent.Data.Icon + "): " + error);
 		};
 		Loader.addListener(listener);
 
-		Loader.loadClip("Cartographer\\icons\\" + Data.Icon, Icon);
+		Loader.loadClip("Cartographer\\icons\\" + Data.Icon, icon);
 
 		if (Data.ShowLabel) {
-			Label = CreateLabel();
+			Label = CreateLabel(Data.Name);
 		}
 		Mod.LogMsg("Waypoint Icon Constructed");
 	}
@@ -66,16 +68,37 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		target._y = -target._height / 2;
 	}
 
-	private function CreateLabel():TextField {
+	private function CreateLabel(name:String):TextField {
 		Mod.LogMsg("Creating Label");
-		var label:TextField = createTextField("Label", getNextHighestDepth(), 0, 0, 50, 15);
+		var label:TextField = createTextField("LabelTxt", getNextHighestDepth(), 0, 0, 50, 15);
 		label.embedFonts = true;
 		label.selectable = false;
 		label.autoSize = "left";
 		var fmt:TextFormat = new TextFormat("_StandardFont");
 		label.setNewTextFormat(fmt);
-		label.text = Data.Name ? Data.Name : "";
+		label.text = name ? name : "";
 		return label;
+	}
+
+	public function Reassign(data:Waypoint, pos:Point):Void {
+		if (Data.Icon != data.Icon) {
+			Mod.TraceMsg("Waypoint icon swapping");
+			Loader.loadClip("Cartographer\\icons\\" + data.Icon, Icon);
+		}
+		if (data.ShowLabel) {
+			if (Data.ShowLabel) {
+				Label.text = data.Name ? data.Name : "";
+			} else {
+				Label = CreateLabel(data.Name);
+			}
+		} else {
+			if (Data.ShowLabel) {
+				// TODO:Destroy label
+			}
+		}
+		Data = data;
+		_x = pos.x;
+		_y = pos.y;
 	}
 
 	public function Unload():Void {

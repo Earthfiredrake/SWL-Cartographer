@@ -26,7 +26,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		CurrentZoneID = 3030;
 		ClientChar = Character.GetClientCharacter();
 
-		MapLayer = createEmptyMovieClip("MapLayerClip", getNextHighestDepth());
+		createEmptyMovieClip("MapLayer", getNextHighestDepth());
 		Loader = new MovieClipLoader();
 		var listener:Object = new Object();
 		listener.onLoadComplete = Delegate.create(this, MapLoaded);
@@ -53,7 +53,6 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 
 	private function ChangeMap(newZone:Number):Void {
 		Mod.LogMsg("Changing Map:" + newZone);
-		WaypointLayer.ClearDisplay();
 		Loader.unloadClip(MapLayer);
 		CurrentZoneID = newZone;
 		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);

@@ -27,25 +27,35 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 		for (var i:Number = 0; i < waypoints.length; ++i) {
 			var data:Waypoint = waypoints[i];
 			var mapPos:Point = _parent.WorldToWindowCoords(data.Position);
-			RenderedWaypoints.push(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + getNextHighestDepth(), this, getNextHighestDepth(), {Data : data, _x : mapPos.x, _y : mapPos.y}));
+			if (RenderedWaypoints[i]) {
+				Mod.TraceMsg("Waypoint being reassigned:" + i);
+				RenderedWaypoints[i].Reassign(data, mapPos);
+			} else {
+				Mod.TraceMsg("Waypoint being loaded:" + i);
+				RenderedWaypoints.push(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + getNextHighestDepth(), this, getNextHighestDepth(), {Data : data, _x : mapPos.x, _y : mapPos.y}));
+			}
 		}
+		ClearDisplay(waypoints.length);
 		Mod.LogMsg("Waypoints have been created");
 	}
 
-	public function ClearDisplay() {
+	public function ClearDisplay(firstIndex:Number) {
 		Mod.LogMsg("Clearing displayed waypoints");
-		for (var i:Number = 0; i < RenderedWaypoints.length; ++i) {
+		Mod.TraceMsg("Clearing waypoints after index: " + firstIndex);
+		for (var i:Number = firstIndex ? firstIndex : 0; i < RenderedWaypoints.length; ++i) {
+			Mod.TraceMsg("Clearing waypoint: " + i);
 			var waypoint:MovieClip = RenderedWaypoints[i];
 			waypoint.Unload();
 			waypoint.removeMovieClip();
 		}
-		RenderedWaypoints = new Array();
+		RenderedWaypoints.splice(firstIndex);
 		Mod.LogMsg("Cleared");
 	}
 
 	/// Variables
 	var WaypointData:Object; // Zone indexed map of waypoint data arrays
 	var RenderedWaypoints:Array; // Array of currently displayed waypoints for this layer
+	// TODO: Consider doing some sorting of waypoints based on icon, in an effort to minimize reloads
 }
 
 /// Notes:

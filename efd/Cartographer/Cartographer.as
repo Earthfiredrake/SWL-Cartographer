@@ -103,5 +103,5 @@ class efd.Cartographer.Cartographer extends Mod {
 	private var ZoneIndex:Object;
 
 	private var WaypointLoader:XML;
-	private var Waypoints:Object; // Multi level array/map (Zone->Layer/Type->WaypointData) Note: Layer/Type not yet in use
+	private var Waypoints:Object; // Multi level array/map (Layer/Type->Zone->WaypointData) Note: Layer/Type not yet in use
 }
