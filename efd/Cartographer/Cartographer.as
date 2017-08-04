@@ -15,7 +15,7 @@ class efd.Cartographer.Cartographer extends Mod {
 		//Trace : true,
 		GuiFlags : ef_ModGui_NoConfigWindow,
 		Name : "Cartographer",
-		Version : "0.0.3.alpha"
+		Version : "0.0.4.alpha"
 	};
 
 	/// Initialization
@@ -56,13 +56,16 @@ class efd.Cartographer.Cartographer extends Mod {
 			var xmlRoot:XMLNode = WaypointLoader.firstChild;
 			for (var i:Number = 0; i < xmlRoot.childNodes.length; ++i) {
 				var zone:XMLNode = xmlRoot.childNodes[i];
-				if (Waypoints[zone.attributes.id] == undefined) {
-					Waypoints[zone.attributes.id] = new Array();
-				}
 				for (var j:Number = 0; j < zone.childNodes.length; ++j) {
 					var category:XMLNode = zone.childNodes[j];
+					if (Waypoints[category.attributes.type] == undefined) {
+						Waypoints[category.attributes.type] = new Object();
+					}
+					if (Waypoints[category.attributes.type][zone.attributes.id] == undefined) {
+						Waypoints[category.attributes.type][zone.attributes.id] = new Array();
+					}
 					for (var k:Number = 0; k < category.childNodes.length; ++k) {
-						Waypoints[zone.attributes.id].push(new Waypoint(category.childNodes[k], category.attributes.icon));
+						Waypoints[category.attributes.type][zone.attributes.id].push(new Waypoint(category.childNodes[k], category.attributes.icon));
 					}
 				}
 			}
@@ -103,5 +106,5 @@ class efd.Cartographer.Cartographer extends Mod {
 	private var ZoneIndex:Object;
 
 	private var WaypointLoader:XML;
-	private var Waypoints:Object; // Multi level array/map (Layer/Type->Zone->WaypointData) Note: Layer/Type not yet in use
+	private var Waypoints:Object; // Multi level array/map (Layer/Type->Zone->WaypointData)
 }

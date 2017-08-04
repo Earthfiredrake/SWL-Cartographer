@@ -20,13 +20,19 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		Loader = new MovieClipLoader();
 
 		var listener:Object = new Object();
-		listener.onLoadComplete = Delegate.create(this, IconLoaded);
+		listener.onLoadInit = Delegate.create(this, IconLoaded);
 		listener.onLoadError = function(target:MovieClip, error:String):Void {
 			Mod.LogMsg("Icon (" + target._parent.Data.Icon + ") failed to load: " + error);
 			Mod.ErrorMsg("Unable to load icon (" + target._parent.Data.Icon + "): " + error);
 		};
 		Loader.addListener(listener);
 
+		// NOTE: It seems that loadClip can also be used to access the rdb
+		//   Path syntax is "rdb:[Type]:[ID]"
+		//   Type 1000624 contains swf files
+		//   Type 1000636 contains png files
+		//   Not sure how useful this is, as I have limited knowledge of what is actually tucked away in there
+		// TODO: Wonder if other paths could be loaded from the rdb in a similar fashion
 		Loader.loadClip("Cartographer\\icons\\" + Data.Icon, icon);
 
 		if (Data.ShowLabel) {

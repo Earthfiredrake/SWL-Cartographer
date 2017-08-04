@@ -29,12 +29,14 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		createEmptyMovieClip("MapLayer", getNextHighestDepth());
 		Loader = new MovieClipLoader();
 		var listener:Object = new Object();
-		listener.onLoadComplete = Delegate.create(this, MapLoaded);
+		listener.onLoadInit = Delegate.create(this, MapLoaded);
 		listener.onLoadError = function(target:MovieClip, error:String):Void {
 			Mod.LogMsg("Map failed to load: " + error);
 			Mod.ErrorMsg("Unable to load map: " + error);
 		};
 		Loader.addListener(listener);
+
+		NotationLayers = new Object();
 
 		Mod.LogMsg("Interface Window Content Constructor Complete");
 	}
@@ -47,7 +49,9 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		target._width = target._width / target._height * MaxMapHeight;
 		target._height = MaxMapHeight;
 		SignalSizeChanged.Emit();
-		WaypointLayer.RenderWaypoints(CurrentZoneID);
+		for (var s:String in NotationLayers) {
+			NotationLayers[s].RenderWaypoints(CurrentZoneID);
+		}
 		Mod.LogMsg("Map Load Complete");
 	}
 
@@ -62,9 +66,13 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	private function SetData(zoneIndex:Object, waypoints:Object):Void {
 		ZoneIndex = zoneIndex;
 		Waypoints = waypoints;
-		WaypointLayer = NotationLayer(MovieClipHelper.createMovieWithClass(NotationLayer, "WaypointLayerClip", this, getNextHighestDepth(), {WaypointData : Waypoints}));
+		for (var s:String in waypoints) {
+			NotationLayers[s] = NotationLayer(MovieClipHelper.createMovieWithClass(NotationLayer, s + "Layer", this, getNextHighestDepth(), {WaypointData : Waypoints[s]}));
+		}
 		PlayerMarker.swapDepths(getNextHighestDepth());
+		// TODO: See if I can source maps from the RDB in any way
 		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
+		//Loader.loadClip("rdb:1000636:9247193", MapLayer); // English map for Museum
 	}
 
 	private function onEnterFrame():Void {
@@ -87,7 +95,9 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 
 	public function Close():Void {
 		Mod.LogMsg("Closing");
-		WaypointLayer.ClearDisplay();
+		for (var s:String in NotationLayers) {
+			NotationLayers[s].ClearDisplay();
+		}
 		Loader.unloadClip(MapLayer);
 		super();
 	}
@@ -114,7 +124,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	private var CurrentZoneID:Number;
 
 	private var MapLayer:MovieClip;
-	private var WaypointLayer:NotationLayer;
+	private var NotationLayers:Object;
 	private var Waypoints:Object;
 
 	private var ClientChar:Character;
