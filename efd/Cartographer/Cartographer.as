@@ -28,13 +28,27 @@ class efd.Cartographer.Cartographer extends Mod {
 		ZoneIndex = new Object();
 		ZoneIndexLoader = LoadXmlAsynch("Cartographer\\Zones.xml", Delegate.create(this, LoadZoneInfo));
 
+		OverlayList = new Array("BasePack");
 		Waypoints = new Object();
-		WaypointLoader = LoadXmlAsynch("Cartographer\\waypoints\\BasePack.xml", Delegate.create(this, ParseWaypoints));
 
 		TraceMsg("Initialized");
 	}
 
 	private function InitializeConfig(arConfig:ConfigWrapper):Void {
+		var defaultPacks:Array = new Array();
+		defaultPacks.push({ name : "Missions", load : true });
+		defaultPacks.push({ name : "Lore", load : true });
+		Config.NewSetting("OverlayPacks", defaultPacks);
+	}
+
+	private function ConfigLoaded():Void {
+		var packList:Array = Config.GetValue("OverlayPacks");
+		TraceMsg("OverlayPacks to load: " + (packList.length + 1));
+		for (var i:Number = 0; i < packList.length; ++i) {
+			if (packList[i].load) { OverlayList.push(packList[i].name); }
+		}
+		OverlayLoader = LoadXmlAsynch("Cartographer\\waypoints\\" + OverlayList[0] + ".xml", Delegate.create(this, ParseWaypoints));
+		super.ConfigLoaded();
 	}
 
 	private function LoadZoneInfo(success:Boolean):Void {
@@ -53,7 +67,7 @@ class efd.Cartographer.Cartographer extends Mod {
 
 	private function ParseWaypoints(success:Boolean):Void {
 		if (success) {
-			var xmlRoot:XMLNode = WaypointLoader.firstChild;
+			var xmlRoot:XMLNode = OverlayLoader.firstChild;
 			for (var i:Number = 0; i < xmlRoot.childNodes.length; ++i) {
 				var zone:XMLNode = xmlRoot.childNodes[i];
 				for (var j:Number = 0; j < zone.childNodes.length; ++j) {
@@ -69,10 +83,16 @@ class efd.Cartographer.Cartographer extends Mod {
 					}
 				}
 			}
-			delete WaypointLoader;
-			TraceMsg("Waypoints loaded");
+			TraceMsg("Loaded waypoint file: "  + OverlayList.shift() + ".xml");
 		} else {
-			ErrorMsg("Unable to load waypoint file");
+			ErrorMsg("Unable to load waypoint file: " + OverlayList.shift() + ".xml");
+		}
+		if (OverlayList.length > 0) {
+			OverlayLoader = LoadXmlAsynch("Cartographer\\waypoints\\" + OverlayList[0] + ".xml", Delegate.create(this, ParseWaypoints));
+		} else {
+			//delete OverlayList;
+			delete OverlayLoader;
+			TraceMsg("Waypoints loaded");
 		}
 	}
 
@@ -105,6 +125,7 @@ class efd.Cartographer.Cartographer extends Mod {
 	private var ZoneIndexLoader:XML;
 	private var ZoneIndex:Object;
 
-	private var WaypointLoader:XML;
+	private var OverlayList:Array;
+	private var OverlayLoader:XML;
 	private var Waypoints:Object; // Multi level array/map (Layer/Type->Zone->WaypointData)
 }
