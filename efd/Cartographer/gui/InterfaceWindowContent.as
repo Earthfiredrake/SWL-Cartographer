@@ -99,7 +99,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 			NotationLayers[s].ClearDisplay();
 		}
 		Loader.unloadClip(MapLayer);
-		super();
+		super.Close();
 	}
 
 	/// Conversion routines
