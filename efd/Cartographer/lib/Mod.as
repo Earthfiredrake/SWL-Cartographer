@@ -100,6 +100,8 @@ class efd.Cartographer.lib.Mod {
 		TraceMsg = Delegate.create(this, _TraceMsg);
 		LogMsg = Delegate.create(this, _LogMsg);
 
+		LoadXmlAsynch = Delegate.create(this, _LoadXmlAsynch);
+
 		GlobalDebugDV = DistributedValue.Create(DVPrefix + "DebugMode");
 		GlobalDebugDV.SignalChanged.Connect(SetDebugMode, this);
 		DebugTrace = modInfo.Trace || GlobalDebugDV.GetValue();
@@ -126,7 +128,7 @@ class efd.Cartographer.lib.Mod {
 			ModEnabledDV.SignalChanged.Connect(ChangeModEnabled, this);
 		}
 
-		LocaleManager.Initialize(ModName + "\\Strings.xml");
+		LocaleManager.Initialize("Strings");
 		LocaleManager.SignalStringsLoaded.Connect(StringsLoaded, this);
 
 		if ((modInfo.GuiFlags & ef_ModGui_Console) != ef_ModGui_Console) {
@@ -523,13 +525,20 @@ class efd.Cartographer.lib.Mod {
 	private function SetDebugMode(dv:DistributedValue):Void { DebugTrace = dv.GetValue(); }
 
 	/// Data file loading
-	public static function LoadXmlAsynch(fileName:String, callback:Function):XML {
+
+	// Loads an XML file from a path local to the mod's directory
+	// The '.xml' suffix is added if not present
+	public function _LoadXmlAsynch(fileName:String, callback:Function):XML {
+		if (fileName.substr(-4) != ".xml") {
+			fileName += ".xml";
+		}
 		var loader:XML = new XML();
 		loader.ignoreWhite = true;
 		loader.onLoad = callback;
-		loader.load(fileName);
+		loader.load(ModName + "\\" + fileName);
 		return loader;
 	}
+	public static var LoadXmlAsynch:Function; // Static delegate
 
 	/// Text output utility functions
 	// Options object supports the following properties:

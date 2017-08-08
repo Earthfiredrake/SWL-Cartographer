@@ -26,7 +26,7 @@ class efd.Cartographer.Cartographer extends Mod {
 		InitializeConfig();
 
 		ZoneIndex = new Object();
-		ZoneIndexLoader = LoadXmlAsynch("Cartographer\\Zones.xml", Delegate.create(this, LoadZoneInfo));
+		ZoneIndexLoader = LoadXmlAsynch("Zones", Delegate.create(this, LoadZoneInfo));
 
 		OverlayList = new Array("BasePack");
 		Waypoints = new Object();
@@ -47,7 +47,7 @@ class efd.Cartographer.Cartographer extends Mod {
 		for (var i:Number = 0; i < packList.length; ++i) {
 			if (packList[i].load) { OverlayList.push(packList[i].name); }
 		}
-		OverlayLoader = LoadXmlAsynch("Cartographer\\waypoints\\" + OverlayList[0] + ".xml", Delegate.create(this, ParseWaypoints));
+		OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseWaypoints));
 		super.ConfigLoaded();
 	}
 
@@ -88,7 +88,7 @@ class efd.Cartographer.Cartographer extends Mod {
 			ErrorMsg("Unable to load waypoint file: " + OverlayList.shift() + ".xml");
 		}
 		if (OverlayList.length > 0) {
-			OverlayLoader = LoadXmlAsynch("Cartographer\\waypoints\\" + OverlayList[0] + ".xml", Delegate.create(this, ParseWaypoints));
+			OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseWaypoints));
 		} else {
 			//delete OverlayList;
 			delete OverlayLoader;
