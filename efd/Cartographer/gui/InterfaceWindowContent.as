@@ -57,7 +57,6 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 
 	private function ChangeMap(newZone:Number):Void {
 		Mod.LogMsg("Changing Map:" + newZone);
-		Loader.unloadClip(MapLayer);
 		CurrentZoneID = newZone;
 		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
 		Mod.LogMsg("Map Change Complete");

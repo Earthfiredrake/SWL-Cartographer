@@ -6,6 +6,8 @@ import flash.geom.Point;
 
 import gfx.utils.Delegate;
 
+import com.Utils.Signal;
+
 import efd.Cartographer.lib.Mod;
 import efd.Cartographer.Waypoint;
 
@@ -16,7 +18,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		super();
 		Mod.LogMsg("Waypoint Icon Constructor");
 		Mod.LogMsg("Icon file: " + Data.Icon);
-		var icon:MovieClip = createEmptyMovieClip("Icon", getNextHighestDepth());
+		SignalWaypointLoaded = new Signal();
 		Loader = new MovieClipLoader();
 
 		var listener:Object = new Object();
@@ -27,6 +29,14 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		};
 		Loader.addListener(listener);
 
+		if (Data.ShowLabel) {
+			Label = CreateLabel(Data.Name);
+		}
+		Mod.LogMsg("Waypoint Icon Constructed");
+	}
+
+	public function LoadIcon():Void {
+		var icon:MovieClip = createEmptyMovieClip("Icon", getNextHighestDepth());
 		// NOTE: It seems that loadClip can also be used to access the rdb
 		//   Path syntax is "rdb:[Type]:[ID]"
 		//   Type 1000624 contains swf files
@@ -34,11 +44,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		//   Not sure how useful this is, as I have limited knowledge of what is actually tucked away in there
 		// TODO: Wonder if other paths could be loaded from the rdb in a similar fashion
 		Loader.loadClip("Cartographer\\icons\\" + Data.Icon, icon);
-
-		if (Data.ShowLabel) {
-			Label = CreateLabel(Data.Name);
-		}
-		Mod.LogMsg("Waypoint Icon Constructed");
 	}
 
 	private function IconLoaded(target:MovieClip):Void {
@@ -59,6 +64,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 			target.onReleaseOutside = rollOut;
 
 			target.onPress = Delegate.create(this, IconAction);
+			SignalWaypointLoaded.Emit();
 			Mod.LogMsg("Waypoint Icon Initialization finished");
 	}
 
@@ -87,34 +93,40 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	}
 
 	public function Reassign(data:Waypoint, pos:Point):Void {
-		if (Data.Icon != data.Icon) {
-			Mod.TraceMsg("Waypoint icon swapping");
-			Loader.loadClip("Cartographer\\icons\\" + data.Icon, Icon);
-		}
-		if (data.ShowLabel) {
-			if (Data.ShowLabel) {
+		var oldData:Waypoint = Data;
+		Data = data;
+		if (Data.ShowLabel) {
+			if (oldData.ShowLabel) {
 				Label.text = data.Name ? data.Name : "";
 			} else {
 				Label = CreateLabel(data.Name);
 			}
 		} else {
-			if (Data.ShowLabel) {
+			if (oldData.ShowLabel) {
 				// TODO:Destroy label
 			}
 		}
-		Data = data;
 		_x = pos.x;
 		_y = pos.y;
+		if (oldData.Icon != data.Icon) {
+			Mod.TraceMsg("Waypoint icon swapping");
+			Loader.loadClip("Cartographer\\icons\\" + data.Icon, Icon);
+		} else {
+			SignalWaypointLoaded.Emit();
+		}
 	}
 
 	public function Unload():Void {
+		// TODO:Destroy label?
 		Mod.LogMsg("Unloading mod Icon");
 		Loader.unloadClip(Icon);
 	}
 
 	private var Data:Waypoint;
 
+	public var SignalWaypointLoaded:Signal;
 	private var Loader:MovieClipLoader;
+
 	private var Icon:MovieClip;
 
 	private var Label:TextField;
