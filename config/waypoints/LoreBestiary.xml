@@ -9,19 +9,19 @@
 			zone="3040"
 			x="626" y="577" z="139" >
 			<!-- Sideshow shacks east of entrance -->
-			<Notes en="Random spawn point 1/5"/>
+			<Notes en="Random spawn point 1/5" />
 		</Waypoint>
 		<Waypoint waypointID="2534"
 			zone="3040"
 			x="597" y="507" z="142" >
 		<!-- Arch near Ferris Wheel -->
-			<Notes en="Random spawn point 2/5"/>
+			<Notes en="Random spawn point 2/5" />
 		</Waypoint>
 		<Waypoint waypointID="2535"
 			zone="3040"
 			x="620" y="480" z="142" >
 			<!-- Central shack -->
-			<Notes en="Random spawn point 3/5"/>
+			<Notes en="Random spawn point 3/5" />
 		</Waypoint>
 		<Waypoint waypointID="2536"
 			zone="3040"
@@ -33,7 +33,7 @@
 			zone="3040"
 			x="570" y="389" z="142" >
 			<!-- Shed north of Lover's Lake -->
-			<Notes en="Random spawn point 5/5"/>
+			<Notes en="Random spawn point 5/5" />
 		</Waypoint>
 	  </Entry>
 	</Topic>

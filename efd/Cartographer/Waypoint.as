@@ -53,7 +53,7 @@ class efd.Cartographer.Waypoint {
 				case "Name":
 					if (subNode.attributes.rdb != undefined) {
 						// Is localized in game resource database
-						Name = LDBFormat.Translate(subNode.attributes.rdb);
+						Name = LDBFormat.Translate("<localized " + subNode.attributes.rdb + " />");
 					} else {
 						// Requires manual localization if available
 						// TODO: Support for this
