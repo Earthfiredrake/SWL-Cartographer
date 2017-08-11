@@ -48,10 +48,10 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		}
 		target._width = target._width / target._height * MaxMapHeight;
 		target._height = MaxMapHeight;
-		SignalSizeChanged.Emit();
 		for (var s:String in NotationLayers) {
 			NotationLayers[s].RenderWaypoints(CurrentZoneID);
 		}
+		SignalSizeChanged.Emit();
 		Mod.LogMsg("Map Load Complete");
 	}
 
