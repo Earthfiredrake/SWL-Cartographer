@@ -54,11 +54,13 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 				target._xscale = FocusScale;
 				target._yscale = FocusScale;
 				CenterIcon(target);
+				target._parent.ShowTooltip();
 			};
 			var rollOut:Function = function():Void {
 				target._xscale = 100;
 				target._yscale = 100;
 				CenterIcon(target);
+				target._parent.RemoveTooltip();
 			}
 			target.onRollOut = rollOut;
 			target.onReleaseOutside = rollOut;
@@ -93,6 +95,8 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	}
 
 	public function Reassign(data:Waypoint, pos:Point):Void {
+		RemoveTooltip();
+
 		var oldData:Waypoint = Data;
 		Data = data;
 		if (Data.ShowLabel) {
@@ -116,6 +120,23 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		}
 	}
 
+	private function ShowTooltip():Void {
+		if (!Tooltip) {
+			Tooltip = attachMovie("CartographerWaypointTooltip", "Tooltip", getNextHighestDepth());
+			Tooltip.TF_Name.backgroundColor = 0x333333;
+			Tooltip.TF_Name.background = true;
+			Tooltip.TF_Name.autoSize = "left";
+			Tooltip.TF_Name.text = Data.Name;
+		}
+	}
+
+	private function RemoveTooltip():Void {
+		if (Tooltip) {
+			Tooltip.removeMovieClip();
+			Tooltip = null;
+		}
+	}
+
 	public function Unload():Void {
 		// TODO:Destroy label?
 		Mod.LogMsg("Unloading mod Icon");
@@ -130,6 +151,8 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	private var Icon:MovieClip;
 
 	private var Label:TextField;
+
+	private var Tooltip:MovieClip;
 
 	private static var FocusScale:Number = 110;
 }
