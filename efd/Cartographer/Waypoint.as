@@ -43,39 +43,66 @@ import com.Utils.LDBFormat
 
 import efd.Cartographer.lib.Mod;
 
+import efd.Cartographer.Waypoints.TransitPoint;
+
 class efd.Cartographer.Waypoint {
-	public function Waypoint(xml:XMLNode, icon:String) {
+	public static function Create(xml:XMLNode):Waypoint {
+		switch (xml.nodeName) {
+			//TODO: Subclasses for these
+			case "Lore":
+			case "Transit": return new TransitPoint(xml);
+			default: return new Waypoint(xml);
+		}
+	}
+
+	public function Waypoint(xml:XMLNode) {
+		Layer = xml.attributes.layer ? xml.attributes.layer : xml.nodeName;
+		Icon = xml.attributes.icon ? xml.attributes.icon : GetDefaultIcon(xml.nodeName);
+
+		ZoneID = xml.attributes.zone;
 		Position = new Point(xml.attributes.x, xml.attributes.y);
-		Icon = xml.attributes.icon ? xml.attributes.icon : icon;
+
 		for (var i:Number = 0; i < xml.childNodes.length; ++i) {
 			var subNode:XMLNode = xml.childNodes[i];
 			switch (subNode.nodeName) {
 				case "Name":
-					if (subNode.attributes.rdb != undefined) {
-						// Is localized in game resource database
-						Name = LDBFormat.Translate("<localized " + subNode.attributes.rdb + " />");
-					} else {
-						// Requires manual localization if available
-						// TODO: Support for this
-					}
+					Name = ParseLocalizedText(subNode);
 					ShowLabel = subNode.attributes.showLabel == "true";
 					break;
-				case "Transition": // Extension tag for map swapping
-					this["TargetZone"] = subNode.attributes.zone;
+				case "Notes":
+					Notes = ParseLocalizedText(subNode);
 					break;
-				case "Teleport": // Placeholder tag for anima leap and regional teleport info
-					break;
-				default:
-					Mod.TraceMsg("Unexpected waypoint data: " + subNode.nodeName);
 			}
 		}
 	}
 
+	private static function GetDefaultIcon(typeName:String):String {
+		switch (typeName) {
+			case "AnimaWell": return "well.png";
+			case "Vendor": return "vendor.png";
+			default: return undefined;
+		}
+	}
+
+	private static function ParseLocalizedText(xml:XMLNode):String {
+		if (xml.attributes.rdb != undefined) {
+			// Is localized in game resource database
+			return LDBFormat.Translate("<localized " + xml.attributes.rdb + " />");
+		} else {
+			// Requires manual localization if available
+			// TODO: Full support for this
+			return xml.attributes.en;
+		}
+	}
+
 	/// Data fields
-	// ZoneID:Number; // Maintained at higher level of data hierarchy
+	public var ZoneID:Number; // Map instance
 	public var Position:Point; // World space coordinates
+
+	public var Layer:String; // Layer category name
+	public var Icon:String; // Icon file name
+
 	public var Name:String; // Waypoint name
 	public var ShowLabel:Boolean; // Display the label on the map or only as a tooltip
-	public var Icon:String; // Icon file name
-	// Category:?; // Maintainted at higher level of data hierarchy
+	public var Notes:String; // Detail notes
 }

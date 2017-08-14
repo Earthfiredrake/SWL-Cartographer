@@ -2,39 +2,31 @@
 <!-- Copyright 2017, Earthfiredrake (Peloprata)
      Released under the terms of the MIT License
      https://github.com/Earthfiredrake/TSW-Cartographer -->
-<Waypoints parser="Lore" iconBZ="lore_buzz.png" iconBS="lore_sig.png" iconKnown="lore_claimed.png">
-	<Topic loreID="8478"> <!-- Bogeyman -->
-	  <Entry loreID="8482"> <!-- #4 -->
-	  	<Waypoint waypointID="2533"
-			zone="3040"
-			x="626" y="577" z="139" >
-			<!-- Sideshow shacks east of entrance -->
-			<Notes en="Random spawn point 1/5" />
-		</Waypoint>
-		<Waypoint waypointID="2534"
-			zone="3040"
-			x="597" y="507" z="142" >
+<OverlayPack>
+	<!-- Bogeyman #4 -->
+	<Lore zone="3040" x="626" y="577" z="139"
+		loreID="8482">
+		<!-- Sideshow shacks east of entrance -->
+		<Notes en="Random spawn point 1/5" />
+	</Lore>
+	<Lore zone="3040" x="597" y="507" z="142"
+		loreID="8482">
 		<!-- Arch near Ferris Wheel -->
-			<Notes en="Random spawn point 2/5" />
-		</Waypoint>
-		<Waypoint waypointID="2535"
-			zone="3040"
-			x="620" y="480" z="142" >
-			<!-- Central shack -->
-			<Notes en="Random spawn point 3/5" />
-		</Waypoint>
-		<Waypoint waypointID="2536"
-			zone="3040"
-			x="691" y="459" z="145" >
-			<!-- Cliff, SE of Flamer -->
-			<Notes en="Random spawn point 4/5"/>
-		</Waypoint>
-		<Waypoint waypointID="2537"
-			zone="3040"
-			x="570" y="389" z="142" >
-			<!-- Shed north of Lover's Lake -->
-			<Notes en="Random spawn point 5/5" />
-		</Waypoint>
-	  </Entry>
-	</Topic>
-</Waypoints>
+		<Notes en="Random spawn point 2/5" />
+	</Lore>
+	<Lore zone="3040" x="620" y="480" z="142"
+		loreID="8482">
+		<!-- Central shack -->
+		<Notes en="Random spawn point 3/5" />
+	</Lore>
+	<Lore zone="3040" x="691" y="459" z="145"
+		loreID="8482">
+		<!-- Cliff, SE of Flamer -->
+		<Notes en="Random spawn point 4/5"/>
+	</Lore>
+	<Lore zone="3040" x="570" y="389" z="142"
+		loreID="8482">
+		<!-- Shed north of Lover's Lake -->
+		<Notes en="Random spawn point 5/5" />
+	</Lore>
+</OverlayPack>

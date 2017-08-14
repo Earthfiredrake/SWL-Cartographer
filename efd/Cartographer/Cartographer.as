@@ -47,7 +47,7 @@ class efd.Cartographer.Cartographer extends Mod {
 		for (var i:Number = 0; i < packList.length; ++i) {
 			if (packList[i].load) { OverlayList.push(packList[i].name); }
 		}
-		OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseWaypoints));
+		OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack));
 		super.ConfigLoaded();
 	}
 
@@ -65,35 +65,48 @@ class efd.Cartographer.Cartographer extends Mod {
 		}
 	}
 
-	private function ParseWaypoints(success:Boolean):Void {
+	private function ParseOverlayPack(success:Boolean):Void {
 		if (success) {
-			var xmlRoot:XMLNode = OverlayLoader.firstChild;
-			for (var i:Number = 0; i < xmlRoot.childNodes.length; ++i) {
-				var zone:XMLNode = xmlRoot.childNodes[i];
-				for (var j:Number = 0; j < zone.childNodes.length; ++j) {
-					var category:XMLNode = zone.childNodes[j];
-					if (Waypoints[category.attributes.type] == undefined) {
-						Waypoints[category.attributes.type] = new Object();
-					}
-					if (Waypoints[category.attributes.type][zone.attributes.id] == undefined) {
-						Waypoints[category.attributes.type][zone.attributes.id] = new Array();
-					}
-					for (var k:Number = 0; k < category.childNodes.length; ++k) {
-						Waypoints[category.attributes.type][zone.attributes.id].push(new Waypoint(category.childNodes[k], category.attributes.icon));
-					}
+			var waypoints:Array = ParseSection(OverlayLoader.firstChild);
+			TraceMsg("Sorting " + waypoints.length + " waypoints");
+			for (var i:Number = 0; i < waypoints.length; ++i) {
+				var layer:String = waypoints[i].Layer;
+				var zone:Number = waypoints[i].ZoneID;
+				if (Waypoints[layer] == undefined) {
+					Waypoints[layer] = new Object();
 				}
+				if (Waypoints[layer][zone] == undefined) {
+					Waypoints[layer][zone] = new Array();
+				}
+				Waypoints[layer][zone].push(waypoints[i]);
 			}
 			TraceMsg("Loaded waypoint file: "  + OverlayList.shift() + ".xml");
 		} else {
 			ErrorMsg("Unable to load waypoint file: " + OverlayList.shift() + ".xml");
 		}
 		if (OverlayList.length > 0) {
-			OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseWaypoints));
+			OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack));
 		} else {
-			//delete OverlayList;
+			delete OverlayList;
 			delete OverlayLoader;
 			TraceMsg("Waypoints loaded");
 		}
+	}
+
+	private static function ParseSection(section:XMLNode):Array {
+		var waypoints:Array = new Array();
+		TraceMsg("Parsing " + section.childNodes.length + " entries at this level");
+		for (var i:Number = 0; i < section.childNodes.length; ++i) {
+			var node:XMLNode = section.childNodes[i];
+			if (node.nodeName == "Section") {
+				TraceMsg("Parsing nested section.");
+				waypoints = waypoints.concat(ParseSection(node));
+			} else {
+				TraceMsg("Parsing waypoint.");
+				waypoints.push(Waypoint.Create(node));
+			}
+		}
+		return waypoints;
 	}
 
 	/// Mod framework extensions and overrides
