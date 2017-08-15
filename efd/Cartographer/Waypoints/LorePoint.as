@@ -18,8 +18,13 @@ class efd.Cartographer.Waypoints.LorePoint extends Waypoint {
 		Name = GetLoreName(LoreID);
 
 		if (Icon == undefined) {
-			// TODO: Further icon support
-			Icon = "lore_buzz.png";
+			// TODO: Going to need to query the IsLocked more than just when loaded
+			if (LoreID != undefined) {
+				if (Lore.IsLocked(LoreID)) {
+					if (Lore.GetTagViewpoint(LoreID) == 1) { Icon = "lore_sig.png"; }
+					else { Icon = "lore_buzz.png"; }
+				} else { Icon = "lore_claimed.png"; }
+			} else { Icon = "lore_buzz.png"; }
 		}
 	}
 

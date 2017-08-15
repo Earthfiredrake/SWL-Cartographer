@@ -52,9 +52,25 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
+Version 0.0.4-alpha
++ Stability much improved, concept may actually be approaching viable
++ Waypoint data files significantly reworked
++ Features included:
+	+ First sample lore markers (Bogeyman #4 spawn locations becase the numbers were convenient)
+	  + Note: Currently pickups will not be reflected until datafiles are reloaded (on /reloadui)
+	+ Very basic tooltips
+	+ Backend support for multiple overlay layers, multiple data files (no actual customization in current interface)
+
+Version 0.0.3-alpha
++ Unstable release continuing proof of concept stages
++ Features included:
+  + Map swapping using transitional waypoints
+  + Additional waypoints added (Vendors and Transitions on Solomon Island, Some Agartha markers, one transition to SD)
+  + Hides labels by default
+
 Version 0.0.2-alpha
 + Initial proof of concept and feedback query
-+ Features included
++ Features included:
   + Player location tracking when in zone
   + Customizable waypoint marker (parser limited to single waypoint group)
   + Localized waypoint labels (to be converted to tooltips)
@@ -65,14 +81,15 @@ Version 0.0.2-alpha
 Initial feedback has provided the following suggestions:
 + Mouse coordinates should be clearly displayed someplace obvious
 + Map zooming should be a feature if at all possible
-+ Current default window size is still too large, 1600x900 resolution cuts things off
-+ I should consider moving some releases to Curse as well, once things are at a level of quality I'm content with (LoreHound's probably there)
++ Window size should account for lower resolutions (1600x900 resolution was cutting things off)
 
 As always, defect reports, suggestions, and contributions are welcome. They can be sent to Peloprata in SWL (by mail or pm), via the github issues system, or in the official forum post.
 
 Source Repository: https://github.com/Earthfiredrake/TSW-Cartographer
 
 Forum Post: TBD
+
+Curse Mirror: TBD
 
 ## Building from Source
 Requires copies of the TSW and Scaleform CLIK APIs. Existing project files are configured for Flash Pro CS5.5.
