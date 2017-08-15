@@ -25,33 +25,14 @@ class efd.Cartographer.Waypoints.LorePoint extends Waypoint {
 
 	private static function GetLoreName(loreID:Number):String {
 		var topic:String = Lore.GetDataNodeById(loreID).m_Parent.m_Name;
-		var source:Number = Lore.GetTagViewpoint(loreID);
-		var index:Number = GetLoreIndex(loreID, source);
+		var index:Number = GetLoreIndex(loreID, Lore.GetTagViewpoint(loreID));
 		if (!(topic && index)) {
 			Mod.TraceMsg("Unknown topic or entry #, malformed lore ID: " + loreID);
 			//return LocaleManager.GetString("LoreHound", "InvalidLoreID");
 			return "Unknown LoreID";
 		}
-		var catCode:String;
-		switch (source) {
-			case 0: // Buzzing
-				//catCode = LocaleManager.GetString("LoreHound", "BuzzingSource");
-				catCode = " ";
-				break;
-			case 1: // Black Signal
-				//catCode = LocaleManager.GetString("LoreHound", "BlackSignalSource");
-				catCode = " BS ";
-				break;
-			default: // Unknown source
-				// Consider setting up a report here, with LoreID as tag
-				// Low probability of it actually occuring, but knowing sooner rather than later might be nice
-				//catCode = LocaleManager.GetString("LoreHound", "UnknownSource");
-				catCode = " ?? ";
-				Mod.TraceMsg("Lore has unknown source: " + source);
-				break;
-		}
 		//return LocaleManager.FormatString("LoreHound", "LoreName", topic, catCode, index);
-		return topic + catCode + "#" + index;
+		return topic + " #" + index;
 	}
 
 	private static function GetLoreIndex(loreID:Number, source:Number):Number {
