@@ -37,11 +37,13 @@ class efd.Cartographer.Cartographer extends Mod {
 	private function InitializeConfig(arConfig:ConfigWrapper):Void {
 		var defaultPacks:Array = new Array();
 		defaultPacks.push({ name : "Missions", load : true });
-		defaultPacks.push({ name : "Lore", load : true });
+		defaultPacks.push({ name : "LoreBasic", load : true });
+		defaultPacks.push({ name : "LoreBestiary", load : true });
 		Config.NewSetting("OverlayPacks", defaultPacks);
 	}
 
 	private function ConfigLoaded():Void {
+		Config.ResetValue("OverlayPacks"); // TEMP: Not actually saving this while files are in flux/no config UI
 		var packList:Array = Config.GetValue("OverlayPacks");
 		TraceMsg("OverlayPacks to load: " + (packList.length + 1));
 		for (var i:Number = 0; i < packList.length; ++i) {

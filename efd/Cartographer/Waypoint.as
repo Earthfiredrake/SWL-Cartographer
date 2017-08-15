@@ -43,13 +43,13 @@ import com.Utils.LDBFormat
 
 import efd.Cartographer.lib.Mod;
 
+import efd.Cartographer.Waypoints.LorePoint;
 import efd.Cartographer.Waypoints.TransitPoint;
 
 class efd.Cartographer.Waypoint {
 	public static function Create(xml:XMLNode):Waypoint {
 		switch (xml.nodeName) {
-			//TODO: Subclasses for these
-			case "Lore":
+			case "Lore": return new LorePoint(xml);
 			case "Transit": return new TransitPoint(xml);
 			default: return new Waypoint(xml);
 		}
