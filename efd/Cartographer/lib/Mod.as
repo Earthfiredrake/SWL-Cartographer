@@ -397,7 +397,7 @@ class efd.Cartographer.lib.Mod {
 	}
 
 	private function ToggleConfigWindow():Void {
-		if (!ShowConfigDV.GetValue) {
+		if (!ShowConfigDV.GetValue()) {
 			ShowConfigDV.SetValue(true);
 		} else {
 			TriggerWindowClose.apply(ConfigWindowClip);
