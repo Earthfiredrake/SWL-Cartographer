@@ -41,6 +41,7 @@ import flash.geom.Point;
 
 import com.Utils.LDBFormat
 
+import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
 
 import efd.Cartographer.Waypoints.LorePoint;
@@ -57,7 +58,7 @@ class efd.Cartographer.Waypoint {
 
 	public function Waypoint(xml:XMLNode) {
 		Layer = xml.attributes.layer ? xml.attributes.layer : xml.nodeName;
-		Icon = xml.attributes.icon ? xml.attributes.icon : GetDefaultIcon(xml.nodeName);
+		_Icon = xml.attributes.icon ? xml.attributes.icon : GetDefaultIcon(xml.nodeName);
 
 		ZoneID = xml.attributes.zone;
 		Position = new Point(xml.attributes.x, xml.attributes.y);
@@ -90,8 +91,7 @@ class efd.Cartographer.Waypoint {
 			return LDBFormat.Translate("<localized " + xml.attributes.rdb + " />");
 		} else {
 			// Requires manual localization if available
-			// TODO: Full support for this
-			return xml.attributes.en;
+			return LocaleManager.GetLocaleString(xml);
 		}
 	}
 
@@ -100,7 +100,8 @@ class efd.Cartographer.Waypoint {
 	public var Position:Point; // World space coordinates
 
 	public var Layer:String; // Layer category name
-	public var Icon:String; // Icon file name
+	private var _Icon:String;
+	public function get Icon():String { return _Icon; }// Icon file name
 
 	public var Name:String; // Waypoint name
 	public var ShowLabel:Boolean; // Display the label on the map or only as a tooltip

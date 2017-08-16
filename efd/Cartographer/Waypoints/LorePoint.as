@@ -16,16 +16,6 @@ class efd.Cartographer.Waypoints.LorePoint extends Waypoint {
 		LoreID = xml.attributes.loreID;
 
 		Name = GetLoreName(LoreID);
-
-		if (Icon == undefined) {
-			// TODO: Going to need to query the IsLocked more than just when loaded
-			if (LoreID != undefined) {
-				if (Lore.IsLocked(LoreID)) {
-					if (Lore.GetTagViewpoint(LoreID) == 1) { Icon = "lore_sig.png"; }
-					else { Icon = "lore_buzz.png"; }
-				} else { Icon = "lore_claimed.png"; }
-			} else { Icon = "lore_buzz.png"; }
-		}
 	}
 
 	private static function GetLoreName(loreID:Number):String {
@@ -49,6 +39,18 @@ class efd.Cartographer.Waypoints.LorePoint extends Waypoint {
 			if (Lore.GetTagViewpoint(sibling) == source) {
 				++index;
 			}
+		}
+	}
+
+	public function get Icon():String {
+		if (_Icon) { return _Icon; }
+		if (LoreID) {
+			if (Lore.IsLocked(LoreID)) {
+				if (Lore.GetTagViewpoint(LoreID) == 1) { return "lore_sig.png"; }
+				else { return "lore_buzz.png"; }
+			} else { return "lore_claimed.png"; }
+		} else {
+			return "lore_buzz.png";
 		}
 	}
 

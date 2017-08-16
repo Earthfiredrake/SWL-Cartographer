@@ -11,7 +11,7 @@ class efd.Cartographer.Waypoints.TransitPoint extends Waypoint {
 
 		TargetZone = xml.attributes.targetZone;
 		if (Icon == undefined) {
-			Icon = TargetZone == 5060 ? "exit_agartha.png" : "exit_zone.png";
+			_Icon = TargetZone == 5060 ? "exit_agartha.png" : "exit_zone.png";
 		}
 	}
 
