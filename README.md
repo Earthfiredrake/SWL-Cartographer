@@ -52,12 +52,18 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
+Version 0.0.5-alpha
++ Most lore locations in Agartha KM, KD added as continuing stress test
+  + All locations added have been verified with LoreHound, and should be fixed location placed or triggered lore (some drops might have ended up in by accident)
++ Lore pickup status should now be reflected on map change or re-open
++ Now opens to current region if a map is available (as defined in Zones.xml)
+
 Version 0.0.4-alpha
 + Stability much improved, concept may actually be approaching viable
 + Waypoint data files significantly reworked
 + Features included:
 	+ First sample lore markers (Bogeyman #4 spawn locations becase the numbers were convenient)
-	  + Note: Currently pickups will not be reflected until datafiles are reloaded (on /reloadui)
+	  + Note: Recent pickups will not be reflected until datafiles are reloaded (on /reloadui)
 	+ Very basic tooltips
 	+ Backend support for multiple overlay layers, multiple data files (no actual customization in current interface)
 

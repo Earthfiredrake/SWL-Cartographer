@@ -23,8 +23,8 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	private function InterfaceWindowContent() { // Indirect construction only
 		super();
 		Mod.LogMsg("Interface Window Content Constructor");
-		CurrentZoneID = 3030;
 		ClientChar = Character.GetClientCharacter();
+		CurrentZoneID = ClientChar.GetPlayfieldID();
 
 		createEmptyMovieClip("MapLayer", getNextHighestDepth());
 		Loader = new MovieClipLoader();
@@ -64,6 +64,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 
 	private function SetData(zoneIndex:Object, waypoints:Object):Void {
 		ZoneIndex = zoneIndex;
+		if (!ZoneIndex[CurrentZoneID]) { CurrentZoneID = 5060; } // Current zone does not have map support, reset to Agartha
 		Waypoints = waypoints;
 		for (var s:String in waypoints) {
 			NotationLayers[s] = NotationLayer(MovieClipHelper.createMovieWithClass(NotationLayer, s + "Layer", this, getNextHighestDepth(), {WaypointData : Waypoints[s]}));

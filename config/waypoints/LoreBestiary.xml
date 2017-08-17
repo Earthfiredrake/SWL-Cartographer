@@ -4,7 +4,7 @@
      https://github.com/Earthfiredrake/TSW-Cartographer -->
 <!-- Lore locations verified with LoreHound -->
 <OverlayPack>
-	<!-- Bogeyman #4 -->
+	<!-- Bogeyman 1/4 (muli-spawn) -->
 	<Lore zone="3040" x="626" y="577" z="139" loreID="8482">
 		<!-- Sideshow shacks east of entrance -->
 		<Notes en="Random spawn point 1/5" />
@@ -25,31 +25,41 @@
 		<!-- Shed north of Lover's Lake -->
 		<Notes en="Random spawn point 5/5" />
 	</Lore>
-	<!-- Draug - Deep Ones -->
+	<!-- Draug - Deep Ones 1/7-->
 	<Lore zone="3070" x="909" y="866" z="76" loreID="8526">
 		<Notes en="Inaccessible" />
 	</Lore>
-	<!-- Draug - Drones -->
+	<!-- Draug - Drones 3/9 -->
 	<Lore zone="3030" x="75" y="579" z="188" loreID="8534" />
 	<Lore zone="3030" x="515" y="253" z="129" loreID="8536" />
 	<Lore zone="3030" x="487" y="172" z="129" loreID="8537" />
-	<!-- Draug - Leaders -->
+	<!-- Draug - Leaders 1/7 -->
 	<Lore zone="3030" x="510" y="922" z="130" loreID="8542" />
-	<!-- Golems -->
+	<!-- Golems 2/8 -->
 	<Lore zone="3030" x="662" y="692" z="135" loreID="9268" />
 	<Lore zone="5060" x="553" y="22" z="225" loreID="9275">
 		<Notes en="Spawns for 2 min when custodian near." />
 	</Lore>
-	<!-- Rakshasa -->
+	<!-- Kyonshi 3/4 -->
+		<!-- #1 -->
+	<Lore zone="3070" x="820" y="603" z="93" loreID="8818" />
+	<Lore zone="3070" x="728" y="742" z="86" loreID="8819" />
+	<Lore zone="3070" x="829" y="566" z="93" loreID="8820" />
+	<!-- Oni 2/4 -->
+	<Lore zone="3070" x="96" y="861" z="103" loreID="9251" />
+		<!-- #2 -->
+	<Lore zone="3070" x="131" y="989" z="74" loreID="9253" />
+		<!-- #4 -->
+	<!-- Rakshasa 1/ 6-->
 	<Lore zone="3070" x="276" y="718" z="90" loreID="9244" />
-	<!-- Revenants -->
+	<!-- Revenants 2/8 -->
 	<Lore zone="3030" x="494" y="456" z="136" loreID="8510" />
 	<Lore zone="3030" x="257" y="409" z="146" loreID="8511" />
-	<!-- Wendigo -->
+	<!-- Wendigo 1/10 -->
 	<Lore zone="3030" x="174" y="78" z="152" loreID="8495" />
-	<!-- Wisps -->
+	<!-- Wisps 2/7 -->
 	<Lore zone="3030" x="206" y="72" z="156" loreID="8550" />
 	<Lore zone="3030" x="254" y="126" z="144" loreID="8551" />
-	<!-- Zombies -->
+	<!-- Zombies 1/13 -->
 	<Lore zone="3030" x="697" y="403" z="134" loreID="8582" />
 </OverlayPack>
