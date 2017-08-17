@@ -2,31 +2,54 @@
 <!-- Copyright 2017, Earthfiredrake (Peloprata)
      Released under the terms of the MIT License
      https://github.com/Earthfiredrake/TSW-Cartographer -->
+<!-- Lore locations verified with LoreHound -->
 <OverlayPack>
 	<!-- Bogeyman #4 -->
-	<Lore zone="3040" x="626" y="577" z="139"
-		loreID="8482">
+	<Lore zone="3040" x="626" y="577" z="139" loreID="8482">
 		<!-- Sideshow shacks east of entrance -->
 		<Notes en="Random spawn point 1/5" />
 	</Lore>
-	<Lore zone="3040" x="597" y="507" z="142"
-		loreID="8482">
+	<Lore zone="3040" x="597" y="507" z="142" loreID="8482">
 		<!-- Arch near Ferris Wheel -->
 		<Notes en="Random spawn point 2/5" />
 	</Lore>
-	<Lore zone="3040" x="620" y="480" z="142"
-		loreID="8482">
+	<Lore zone="3040" x="620" y="480" z="142" loreID="8482">
 		<!-- Central shack -->
 		<Notes en="Random spawn point 3/5" />
 	</Lore>
-	<Lore zone="3040" x="691" y="459" z="145"
-		loreID="8482">
+	<Lore zone="3040" x="691" y="459" z="145" loreID="8482">
 		<!-- Cliff, SE of Flamer -->
-		<Notes en="Random spawn point 4/5"/>
+		<Notes en="Random spawn point 4/5" />
 	</Lore>
-	<Lore zone="3040" x="570" y="389" z="142"
-		loreID="8482">
+	<Lore zone="3040" x="570" y="389" z="142" loreID="8482">
 		<!-- Shed north of Lover's Lake -->
 		<Notes en="Random spawn point 5/5" />
 	</Lore>
+	<!-- Draug - Deep Ones -->
+	<Lore zone="3070" x="909" y="866" z="76" loreID="8526">
+		<Notes en="Inaccessible" />
+	</Lore>
+	<!-- Draug - Drones -->
+	<Lore zone="3030" x="75" y="579" z="188" loreID="8534" />
+	<Lore zone="3030" x="515" y="253" z="129" loreID="8536" />
+	<Lore zone="3030" x="487" y="172" z="129" loreID="8537" />
+	<!-- Draug - Leaders -->
+	<Lore zone="3030" x="510" y="922" z="130" loreID="8542" />
+	<!-- Golems -->
+	<Lore zone="3030" x="662" y="692" z="135" loreID="9268" />
+	<Lore zone="5060" x="553" y="22" z="225" loreID="9275">
+		<Notes en="Spawns for 2 min when custodian near." />
+	</Lore>
+	<!-- Rakshasa -->
+	<Lore zone="3070" x="276" y="718" z="90" loreID="9244" />
+	<!-- Revenants -->
+	<Lore zone="3030" x="494" y="456" z="136" loreID="8510" />
+	<Lore zone="3030" x="257" y="409" z="146" loreID="8511" />
+	<!-- Wendigo -->
+	<Lore zone="3030" x="174" y="78" z="152" loreID="8495" />
+	<!-- Wisps -->
+	<Lore zone="3030" x="206" y="72" z="156" loreID="8550" />
+	<Lore zone="3030" x="254" y="126" z="144" loreID="8551" />
+	<!-- Zombies -->
+	<Lore zone="3030" x="697" y="403" z="134" loreID="8582" />
 </OverlayPack>

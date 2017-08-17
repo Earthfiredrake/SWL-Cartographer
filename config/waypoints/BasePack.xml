@@ -52,6 +52,10 @@
 			targetZone="3090"> <!-- SD -->
 			<Name rdb="id=147548705 category=50025" />
 		</Transit>
+		<Transit zone="5060" x="258.8" y="233.1" z="368.2"
+			targetZone="3070"> <!-- KD -->
+			<Name rdb="id=147549093 category=50025" />
+		</Transit>
 		<!-- TODO: Vendor waypoints, need to track down coordinates, and decide on names -->
 	</Section>
 	<Section>  <!-- KM -->
@@ -232,6 +236,12 @@
 	</Section>
 	<Section> <!-- SD -->
 		<Transit zone="3090" x="519.2" y="90.1"
+			targetZone="5060">
+			<Name rdb="id=212867377 category=260" />
+		</Transit>
+	</Section>
+	<Section> <!-- KD -->
+		<Transit zone="3070" x="949.8" y="749.0"
 			targetZone="5060">
 			<Name rdb="id=212867377 category=260" />
 		</Transit>

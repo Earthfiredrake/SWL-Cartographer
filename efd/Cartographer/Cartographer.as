@@ -37,7 +37,8 @@ class efd.Cartographer.Cartographer extends Mod {
 	private function InitializeConfig(arConfig:ConfigWrapper):Void {
 		var defaultPacks:Array = new Array();
 		//defaultPacks.push({ name : "Missions", load : true });
-		//defaultPacks.push({ name : "LoreBasic", load : true });
+		defaultPacks.push({ name : "LoreGlobal", load : true });
+		defaultPacks.push({ name : "LoreRegional", load : true });
 		defaultPacks.push({ name : "LoreBestiary", load : true });
 		Config.NewSetting("OverlayPacks", defaultPacks);
 	}

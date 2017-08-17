@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Copyright 2017, Earthfiredrake (Peloprata)
+     Released under the terms of the MIT License
+     https://github.com/Earthfiredrake/TSW-Cartographer -->
+<!-- Lore locations verified with LoreHound -->
+<OverlayPack>
+	<Section> <!-- Global -->
+		<!-- Agartha -->
+		<Lore zone="5060" x="545" y="420" z="409" loreID="4158" />
+		<Lore zone="5060" x="490" y="432" z="223" loreID="4187" />
+		<Lore zone="5060" x="443" y="144" z="189" loreID="4188" />
+		<Lore zone="5060" x="280" y="407" z="201" loreID="4189" />
+		<Lore zone="5060" x="536" y="440" z="307" loreID="4190" />
+		<Lore zone="5060" x="567" y="176" z="408" loreID="4191" />
+		<Lore zone="5060" x="542" y="156" z="394" loreID="4192" />
+		<Lore zone="5060" x="631" y="120" z="394" loreID="4193" />
+		<!-- The Buzzing -->
+		<Lore zone="1100" x="288" y="368" z="46" loreID="3572" />
+		<Lore zone="1100" x="259" y="307" z="35" loreID="3573" />
+		<Lore zone="1100" x="360" y="325" z="50" loreID="3574" />
+		<Lore zone="5060" x="505" y="383" z="405" loreID="3575" />
+		<Lore zone="5060" x="423" y="146" z="414" loreID="3576" />
+		<Lore zone="3030" x="22" y="164" z="165" loreID="3577" />
+		<Lore zone="3030" x="59" y="142" z="154" loreID="3578" />
+		<Lore zone="3030" x="90" y="188" z="153" loreID="3579" />
+		<!-- Council of Venice -->
+		<Lore zone="3030" x="155" y="377" z="149" loreID="4138" />
+		<!-- The Flith -->
+		<Lore zone="5060" x="258" y="220" z="368" loreID="3495" />
+		<Lore zone="3030" x="390" y="315" z="136" loreID="3496" />
+		<!-- Illuminati -->
+		<Lore zone="1100" x="443" y="325" z="50" loreID="3536" />
+		<Lore zone="1100" x="381" y="442" z="56" loreID="3542" />
+		<Lore zone="1100" x="398" y="438" z="51" loreID="3543" />
+		<Lore zone="1100" x="389" y="457" z="51" loreID="3544" />
+		<Lore zone="1100" x="354" y="439" z="50" loreID="3545" />
+		<Lore zone="1100" x="294" y="400" z="55" loreID="3546" />
+		<Lore zone="1100" x="328" y="360" z="50" loreID="3547" />
+		<Lore zone="1100" x="334" y="336" z="50" loreID="3548" />
+		<Lore zone="1100" x="309" y="347" z="39" loreID="3549" />
+		<Lore zone="1100" x="335" y="321" z="39" loreID="3550" />
+		<Lore zone="1100" x="324" y="354" z="39" loreID="3551" />
+		<Lore zone="1100" x="290" y="286" z="55" loreID="3552" />
+		<Lore zone="1100" x="281" y="392" z="55" loreID="3553" />
+		<Lore zone="1100" x="308" y="263" z="50" loreID="3554" />
+		<Lore zone="1100" x="358" y="334" z="50" loreID="3555" />
+		<!-- Morninglight -->
+		<Lore zone="1100" x="401" y="343" z="50" loreID="4041" />
+		<Lore zone="1100" x="336" y="427" z="50" loreID="4038" />
+		<Lore zone="3030" x="140" y="689" z="158" loreID="4039" />
+		<!-- The Orochi Group -->
+		<Lore zone="3030" x="386" y="997" z="144" loreID="1477" />
+		<Lore zone="1100" x="293" y="286" z="50" loreID="1471" />
+		<Lore zone="3030" x="398" y="314" z="140" loreID="1467" />
+		<!-- The Sinking City -->
+		<Lore zone="1300" x="257" y="165" z="24" loreID="6459" />
+		<Lore zone="5060" x="454" y="459" z="415" loreID="6460" />
+		<Lore zone="1300" x="237" y="242" z="32" loreID="6461" />
+		<Lore zone="1300" x="281" y="249" z="32" loreID="6462" />
+		<Lore zone="7640" x="83" y="273" z="10" loreID="6463" />
+		<Lore zone="7640" x="387" y="150" z="11" loreID="6464" />
+	</Section>
+	</Section>
+	<Section> <!-- Events -->
+		<!-- Whispering Tide -->
+		<Lore zone="5060" x="405" y="320" z="240" loreID="6323" />
+		<Lore zone="5060" x="557" y="228" z="394" loreID="6324" />
+		<Lore zone="5060" x="593" y="367" z="298" loreID="6325" />
+		<Lore zone="5060" x="394" y="334" z="236" loreID="6326" />
+		<Lore zone="5060" x="545" y="292" z="287" loreID="6327" />
+		<Lore zone="5060" x="257" y="245" z="368" loreID="6328" />
+		<Lore zone="5060" x="489" y="433" z="344" loreID="6329" />
+		<Lore zone="5060" x="521" y="182" z="394" loreID="6330" />
+	</Section>
+</OverlayPack>
