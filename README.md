@@ -52,6 +52,10 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
+Version Next
++ Fixed the bug with icon not staying with UI edit mode overlay
++ More lore added in KD
+
 Version 0.0.5-alpha
 + Most lore locations in Agartha KM, KD added as continuing stress test
   + All locations added have been verified with LoreHound, and should be fixed location placed or triggered lore (some drops might have ended up in by accident)
@@ -82,6 +86,11 @@ Version 0.0.2-alpha
   + Localized waypoint labels (to be converted to tooltips)
   + Waypoints for KM anima wells as test set
 
+## Known Issues
+
+This is a very early version of this mod. Everything is an issue, some of them are known.
+I'm always open to hearing comments and suggestions though, better to start with the good ideas than rewrite from the bad ones.
+  
 ## Testing and Further Developments
 
 Initial feedback has provided the following suggestions:

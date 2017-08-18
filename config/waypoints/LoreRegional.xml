@@ -78,13 +78,14 @@
 		<Lore zone="3070" x="779" y="839" z="83" loreID="7046" />
 		<Lore zone="3070" x="728" y="592" z="88" loreID="7047" />
 		<Lore zone="3070" x="957" y="732" z="77" loreID="7048" />
-		<!-- The Hierarchy of Oni 5/9 -->
+		<!-- The Hierarchy of Oni 6/9 -->
 		<Lore zone="3070" x="188" y="852" z="93" loreID="7148" />
 		<Lore zone="3070" x="97" y="722" z="99" loreID="7149" />
 		<Lore zone="3070" x="33" y="867" z="95" loreID="7150" />
 			<!-- #4 -->
 		<Lore zone="3070" x="256" y="826" z="101" loreID="7152" />
-			<!-- #6-8 -->
+		<Lore zone="3070" x="276" y="920" z="85" loreID="7153" />
+			<!-- #7-8 -->
 		<Lore zone="3070" x="36" y="971" z="79" loreID="7156" />
 		<!-- Jigoku no Yu Bathhouse -->
 		<Lore zone="3070" x="213" y="783" z="93" loreID="7121" />
@@ -93,18 +94,21 @@
 		<Lore zone="3070" x="203" y="786" z="94" loreID="7124" />
 		<Lore zone="3070" x="181" y="798" z="94" loreID="7125" />
 		<Lore zone="3070" x="174" y="810" z="107" loreID="7126" />
-		<!-- Kaidan 11/14 -->
+		<!-- Kaidan 12/14 -->
 		<Lore zone="3070" x="378" y="665" z="83" loreID="7158" />
 		<Lore zone="3070" x="574" y="492" z="83" loreID="7159" />
 		<Lore zone="3070" x="660" y="677" z="87" loreID="7160" />
 		<Lore zone="3070" x="744" y="648" z="90" loreID="7161" />
 		<Lore zone="3070" x="499" y="592" z="83" loreID="7162" />
 		<Lore zone="3070" x="721" y="531" z="83" loreID="7163" />
+		<Lore zone="3070" x="305" y="844" z="83" loreID="7164" />
+			<!-- #8 -->
 		<Lore zone="3070" x="851" y="680" z="93" loreID="7166" />
 		<Lore zone="3070" x="748" y="750" z="86" loreID="7167" />
 		<Lore zone="3070" x="565" y="915" z="73" loreID="7168" />
 		<Lore zone="3070" x="114" y="640" z="93" loreID="7169" />
 		<Lore zone="3070" x="822" y="709" z="92" loreID="7170" />
+			<!-- BS#3 -->
 		<!-- Nightmares in the Dream Palace 2/11 -->
 		<Lore zone="3070" x="675" y="632" z="83" loreID="7608" />
 		<Lore zone="3070" x="672" y="645" z="86" loreID="7613" />
