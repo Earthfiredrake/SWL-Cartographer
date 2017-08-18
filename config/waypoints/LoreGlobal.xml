@@ -41,7 +41,9 @@
 		<Lore zone="3070" x="128" y="915" z="100" loreID="6989" />
 		<Lore zone="3070" x="458" y="666" z="83" loreID="6990" />
 		<Lore zone="3070" x="362" y="817" z="85" loreID="6991" />
-		<Lore zone="3070" x="169" y="813" z="94" loreID="6992" />
+		<Lore zone="3070" x="169" y="813" z="94" loreID="6992">
+			<Note en="Talk to Inbeda" />
+		</Lore>
 		<Lore zone="3070" x="830" y="654" z="93" loreID="6993" />
 			<!-- #8 -->
 		<Lore zone="3070" x="685" y="792" z="83" loreID="6995" />
@@ -71,7 +73,9 @@
 		<Lore zone="3070" x="93" y="868" z="94" loreID="6964" />
 		<Lore zone="3070" x="442" y="562" z="83" loreID="6965" />
 		<Lore zone="3070" x="468" y="524" z="83" loreID="6966" />
-		<Lore zone="3070" x="277" y="558" z="83" loreID="6967" />
+		<Lore zone="3070" x="277" y="558" z="83" loreID="6967">
+			<Note en="Talk to Gozen" />
+		<Lore>
 		<Lore zone="3070" x="386" y="706" z="83" loreID="6968" />
 		<Lore zone="3070" x="386" y="706" z="83" loreID="7199" />
 		<Lore zone="3070" x="318" y="941" z="70" loreID="7200" />
@@ -86,7 +90,9 @@
 		<Lore zone="3070" x="770" y="592" z="91" loreID="7029" />
 		<Lore zone="3070" x="344" y="455" z="86" loreID="7030" />
 		<Lore zone="3070" x="234" y="872" z="84" loreID="7031" />
-		<Lore zone="3070" x="448" y="808" z="86" loreID="7032" />
+		<Lore zone="3070" x="448" y="808" z="86" loreID="7032">
+			<Note en="Talk to Daimon"/>
+		</Lore>
 		<Lore zone="3070" x="532" y="748" z="83" loreID="7033" />
 		<Lore zone="3070" x="532" y="748" z="83" loreID="7034" />
 			<!-- BS#2 -->

@@ -122,7 +122,9 @@
 		<Lore zone="3070" x="279" y="520" z="83" loreID="7108" />
 		<Lore zone="3070" x="300" y="544" z="83" loreID="7109" />
 		<Lore zone="3070" x="273" y="551" z="87" loreID="7110" />
-		<Lore zone="3070" x="279" y="552" z="83" loreID="7111" />
+		<Lore zone="3070" x="279" y="552" z="83" loreID="7111">
+			<Note en="Take a seat, politely" />
+		</Lore>
 		<Lore zone="3070" x="271" y="553" z="87" loreID="7112" />
 		<!-- Tale of Momotaro 1/5 -->
 		<Lore zone="3070" x="90" y="862" z="94" loreID="7283" />
@@ -148,7 +150,9 @@
 		<Lore zone="3070" x="466" y="812" z="83" loreID="7115" />
 		<Lore zone="3070" x="440" y="798" z="83" loreID="7116" />
 		<Lore zone="3070" x="450" y="809" z="83" loreID="7117" />
-		<Lore zone="3070" x="450" y="813" z="87" loreID="7118" />
+		<Lore zone="3070" x="450" y="813" z="87" loreID="7118">
+			<Note en="Trigger condition?" />
+		</Lore>
 		<Lore zone="3070" x="444" y="806" z="87" loreID="7119" />
 	</Section>
 </OverlayPack>

@@ -70,7 +70,7 @@ class efd.Cartographer.Waypoint {
 					Name = ParseLocalizedText(subNode);
 					ShowLabel = subNode.attributes.showLabel == "true";
 					break;
-				case "Notes":
+				case "Note":
 					Notes = ParseLocalizedText(subNode);
 					break;
 			}

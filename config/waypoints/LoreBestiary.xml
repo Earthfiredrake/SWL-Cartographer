@@ -7,27 +7,27 @@
 	<!-- Bogeyman 1/4 (muli-spawn) -->
 	<Lore zone="3040" x="626" y="577" z="139" loreID="8482">
 		<!-- Sideshow shacks east of entrance -->
-		<Notes en="Random spawn point 1/5" />
+		<Note en="Random spawn point 1/5" />
 	</Lore>
 	<Lore zone="3040" x="597" y="507" z="142" loreID="8482">
 		<!-- Arch near Ferris Wheel -->
-		<Notes en="Random spawn point 2/5" />
+		<Note en="Random spawn point 2/5" />
 	</Lore>
 	<Lore zone="3040" x="620" y="480" z="142" loreID="8482">
 		<!-- Central shack -->
-		<Notes en="Random spawn point 3/5" />
+		<Note en="Random spawn point 3/5" />
 	</Lore>
 	<Lore zone="3040" x="691" y="459" z="145" loreID="8482">
 		<!-- Cliff, SE of Flamer -->
-		<Notes en="Random spawn point 4/5" />
+		<Note en="Random spawn point 4/5" />
 	</Lore>
 	<Lore zone="3040" x="570" y="389" z="142" loreID="8482">
 		<!-- Shed north of Lover's Lake -->
-		<Notes en="Random spawn point 5/5" />
+		<Note en="Random spawn point 5/5" />
 	</Lore>
 	<!-- Draug - Deep Ones 1/7-->
 	<Lore zone="3070" x="909" y="866" z="76" loreID="8526">
-		<Notes en="Inaccessible" />
+		<Note en="Inaccessible" />
 	</Lore>
 	<!-- Draug - Drones 3/9 -->
 	<Lore zone="3030" x="75" y="579" z="188" loreID="8534" />
@@ -38,7 +38,7 @@
 	<!-- Golems 2/8 -->
 	<Lore zone="3030" x="662" y="692" z="135" loreID="9268" />
 	<Lore zone="5060" x="553" y="22" z="225" loreID="9275">
-		<Notes en="Spawns for 2 min when custodian near." />
+		<Note en="Spawns for 2 min when custodian near." />
 	</Lore>
 	<!-- Kyonshi 3/4 -->
 		<!-- #1 -->
