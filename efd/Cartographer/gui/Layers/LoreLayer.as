@@ -23,39 +23,34 @@ class efd.Cartographer.gui.Layers.LoreLayer extends NotationLayer {
 		createEmptyMovieClip("UnclaimedLoreSublayer", getNextHighestDepth());
 		RenderedClaimedWaypoints = new Array();
 		RenderedUnclaimedWaypoints = new Array();
+		Lore.SignalTagAdded.Connect(LorePickedUp, this);
 	}
 
 	public function RenderWaypoints(newZone:Number):Void {
 		ClaimedCount = 0;
 		UnclaimedCount = 0;
-		RenderedWaypoints = new Array();
 		super.RenderWaypoints(newZone);
 	}
 
 	private function AttachWaypoint(data:LorePoint, mapPos:Point):Void {
 		var claim:String = Lore.IsLocked(data.LoreID) ? "Unclaimed" : "Claimed";
 		var existing:WaypointIcon = this["Rendered" + claim + "Waypoints"][this[claim + "Count"]];
+		this[claim + "Count"] += 1;
 		if (existing) {
-			Mod.TraceMsg("Waypoint being reassigned:" + WaypointCount);
 			existing.Reassign(data, mapPos);
-			RenderedWaypoints.push(existing);
 		} else {
-			Mod.TraceMsg("Waypoint being loaded:" + WaypointCount);
 			var targetClip:MovieClip = this[claim + "LoreSublayer"];
 			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + targetClip.getNextHighestDepth(), targetClip, targetClip.getNextHighestDepth(), {Data : data, _x : mapPos.x, _y : mapPos.y}));
 			wp.SignalWaypointLoaded.Connect(LoadSequential, this);
 			wp.LoadIcon();
 			this["Rendered" + claim + "Waypoints"].push(wp);
-			RenderedWaypoints.push(wp);
 		}
-		this[claim + "Count"] += 1;
 	}
 
 	private function ClearDisplay(partialClear:Number):Void {
 		if (partialClear == undefined) {
 			ClaimedCount = 0;
 			UnclaimedCount = 0;
-			RenderedWaypoints = new Array();
 		}
 		for (var i:Number = ClaimedCount; i < RenderedClaimedWaypoints.length; ++i) {
 			var waypoint:MovieClip = RenderedClaimedWaypoints[i];
@@ -69,6 +64,30 @@ class efd.Cartographer.gui.Layers.LoreLayer extends NotationLayer {
 			waypoint.removeMovieClip();
 		}
 		RenderedUnclaimedWaypoints.splice(UnclaimedCount);
+	}
+
+	// First param appears to be tagID (loreID)
+	// Second param has value 50000:16779181 on both tested values (unsure what info this is just yet)
+	private function LorePickedUp(loreID:Number):Void {
+		if (Lore.GetTagType(loreID) == _global.Enums.LoreNodeType.e_Lore) {
+			Mod.TraceMsg("Lore Picked Up!");
+			var matches:Number = 0;
+			for (var i:Number = 0; i < RenderedUnclaimedWaypoints.length; ++i) {
+				// Front load all the matching waypoints
+				if (RenderedUnclaimedWaypoints[i].Data.LoreID == loreID) {
+					var temp:WaypointIcon = RenderedUnclaimedWaypoints[matches];
+					RenderedUnclaimedWaypoints[matches] = RenderedUnclaimedWaypoints[i];
+					RenderedUnclaimedWaypoints[i] = temp;
+					matches += 1;
+				}
+			}
+		} else {
+			Mod.TraceMsg("Logic Failure?");
+		}
+	}
+
+	public function get RenderedWaypoints():Array {
+		return RenderedClaimedWaypoints.concat(RenderedUnclaimedWaypoints);
 	}
 
 	private var ClaimedLoreSublayer:MovieClip;

@@ -73,7 +73,6 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	}
 
 	private function onEnterFrame():Void {
-		Mod.LogMsg("Frame Entered");
 		UpdateClientCharMarker();
 	}
 
@@ -91,7 +90,6 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	}
 
 	public function Close():Void {
-		Mod.LogMsg("Closing");
 		for (var s:String in NotationLayers) {
 			NotationLayers[s].ClearDisplay();
 		}
@@ -101,7 +99,6 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 
 	/// Conversion routines
 	private function WorldToWindowCoords(worldCoords:Point):Point {
-		Mod.LogMsg("Converting point (world x/y is: " +  ZoneIndex[CurrentZoneID].worldX + "/" + ZoneIndex[CurrentZoneID].worldY);
 		return new Point(
 			worldCoords.x * MapLayer._width / ZoneIndex[CurrentZoneID].worldX,
 			MapLayer._height - (worldCoords.y * MapLayer._height / ZoneIndex[CurrentZoneID].worldY));

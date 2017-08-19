@@ -16,7 +16,7 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 
 	private function NotationLayer() { // Indirect construction only
 		super();
-		RenderedWaypoints = new Array();
+		_RenderedWaypoints = new Array();
 	}
 
 	public function RenderWaypoints(newZone:Number):Void {
@@ -60,7 +60,9 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 
 	private var WaypointCount:Number;
 	private var WaypointData:Object; // Zone indexed map of waypoint data arrays
-	private var RenderedWaypoints:Array; // Array of currently displayed waypoints for this layer
+	private var _RenderedWaypoints:Array;
+	public function get RenderedWaypoints():Array {	return _RenderedWaypoints; }
+	// Array of currently displayed waypoints for this layer
 
 	// TODO: Consider doing some sorting of waypoints based on icon, in an effort to minimize reloads
 }
