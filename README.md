@@ -54,7 +54,11 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 Version Next
 + Fixed the bug with icon not staying with UI edit mode overlay
++ Picking up lore now immediately updates the map if it's open
++ Icons for lore that has been picked up now renders behind unclaimed lore icons
++ Slight data schema change ("Notes" tag -> "Note")
 + More lore added in KD
++ Spends less time spamming the log file
 
 Version 0.0.5-alpha
 + Most lore locations in Agartha KM, KD added as continuing stress test

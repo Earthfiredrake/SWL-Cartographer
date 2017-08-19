@@ -61,7 +61,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 			target.onReleaseOutside = rollOut;
 
 			target.onPress = Delegate.create(this, IconAction);
-			SignalWaypointLoaded.Emit();
+			SignalWaypointLoaded.Emit(this);
 	}
 
 	private function IconAction():Void {
@@ -133,7 +133,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		Loader.unloadClip(Icon);
 	}
 
-	private var Data:Waypoint;
+	public var Data:Waypoint;
 
 	public var SignalWaypointLoaded:Signal;
 	private var Loader:MovieClipLoader;

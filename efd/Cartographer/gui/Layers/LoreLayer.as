@@ -4,7 +4,9 @@
 
 import flash.geom.Point;
 
+import com.GameInterface.Game.Character;
 import com.GameInterface.Lore;
+import com.Utils.ID32;
 
 import efd.Cartographer.lib.etu.MovieClipHelper;
 import efd.Cartographer.lib.Mod;
@@ -67,23 +69,40 @@ class efd.Cartographer.gui.Layers.LoreLayer extends NotationLayer {
 	}
 
 	// First param appears to be tagID (loreID)
-	// Second param has value 50000:16779181 on both tested values (unsure what info this is just yet)
-	private function LorePickedUp(loreID:Number):Void {
-		if (Lore.GetTagType(loreID) == _global.Enums.LoreNodeType.e_Lore) {
-			Mod.TraceMsg("Lore Picked Up!");
+	// Second param is referred to as character ID, copying the verification from elsewhere in the game library, uncertain if it's actualy needed
+	private function LorePickedUp(loreID:Number, character:ID32):Void {
+		if (Lore.GetTagType(loreID) == _global.Enums.LoreNodeType.e_Lore && character.Equal(Character.GetClientCharID())) {
 			var matches:Number = 0;
 			for (var i:Number = 0; i < RenderedUnclaimedWaypoints.length; ++i) {
-				// Front load all the matching waypoints
-				if (RenderedUnclaimedWaypoints[i].Data.LoreID == loreID) {
-					var temp:WaypointIcon = RenderedUnclaimedWaypoints[matches];
-					RenderedUnclaimedWaypoints[matches] = RenderedUnclaimedWaypoints[i];
-					RenderedUnclaimedWaypoints[i] = temp;
+				var targetWP:WaypointIcon = RenderedUnclaimedWaypoints[i];
+				if (targetWP.Data["LoreID"] == loreID) {
+					// Create new waypoint on the claimed list
+					var targetClip:MovieClip = ClaimedLoreSublayer;
+					var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
+						WaypointIcon, "WP" + targetClip.getNextHighestDepth(), targetClip, targetClip.getNextHighestDepth(),
+						{Data : targetWP.Data, _x : targetWP._x, _y : targetWP._y}));
+					wp.SignalWaypointLoaded.Connect(DeferLoaderHook, this);
+					wp.LoadIcon();
+					RenderedClaimedWaypoints.push(wp);
+					// Remove the old waypoint
+					RenderedUnclaimedWaypoints[i].Unload();
+					RenderedUnclaimedWaypoints[i].removeMovieClip();
+					// Copy a low index waypoint overtop
+					RenderedUnclaimedWaypoints[i] = RenderedUnclaimedWaypoints[matches];
 					matches += 1;
 				}
 			}
-		} else {
-			Mod.TraceMsg("Logic Failure?");
+			// Clear the bottom x indicies
+			RenderedUnclaimedWaypoints.splice(0, matches);
 		}
+	}
+
+	private function DeferLoaderHook(waypoint:WaypointIcon):Void {
+		// HACK: Adding and removing signals during the signal handling is risky
+		//   It only really works because this is the last(only) signal in the queue
+		//   So it is processing slot i, which is disconnected then replaced, and the new slot is skipped
+		waypoint.SignalWaypointLoaded.Disconnect(DeferLoaderHook, this);
+		waypoint.SignalWaypointLoaded.Connect(LoadSequential, this);
 	}
 
 	public function get RenderedWaypoints():Array {
