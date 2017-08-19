@@ -16,52 +16,43 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 
 	private function NotationLayer() { // Indirect construction only
 		super();
-		Mod.LogMsg("Creating new notation layer");
 		RenderedWaypoints = new Array();
-		Mod.LogMsg("Notation layer initialized.");
 	}
 
 	public function RenderWaypoints(newZone:Number):Void {
-		Mod.TraceMsg("Rendering new set of waypoints");
 		WaypointCount = -1;
 		Zone = newZone;
 		LoadSequential();
 	}
 
 	private function LoadSequential():Void {
-		Mod.TraceMsg("LoadSequential");
 		WaypointCount += 1;
 		var waypoints:Array = WaypointData[Zone];
 		if (WaypointCount < waypoints.length) {
-			var data:Waypoint = waypoints[WaypointCount];
-			var mapPos:Point = _parent.WorldToWindowCoords(data.Position);
-			if (RenderedWaypoints[WaypointCount]) {
-				Mod.TraceMsg("Waypoint being reassigned:" + WaypointCount);
-				RenderedWaypoints[WaypointCount].Reassign(data, mapPos);
-			} else {
-				Mod.TraceMsg("Waypoint being loaded:" + WaypointCount);
-				var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + getNextHighestDepth(), this, getNextHighestDepth(), {Data : data, _x : mapPos.x, _y : mapPos.y}));
-				wp.SignalWaypointLoaded.Connect(LoadSequential, this);
-				wp.LoadIcon();
-				RenderedWaypoints.push(wp);
-			}
+			AttachWaypoint(waypoints[WaypointCount], _parent.WorldToWindowCoords(waypoints[WaypointCount].Position));
 		} else {
 			ClearDisplay(waypoints.length);
-			Mod.TraceMsg("All waypoints have been created.");
+		}
+	}
+
+	private function AttachWaypoint(data:Waypoint, mapPos:Point):Void {
+		if (RenderedWaypoints[WaypointCount]) {
+			RenderedWaypoints[WaypointCount].Reassign(data, mapPos);
+		} else {
+			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + getNextHighestDepth(), this, getNextHighestDepth(), {Data : data, _x : mapPos.x, _y : mapPos.y}));
+			wp.SignalWaypointLoaded.Connect(LoadSequential, this);
+			wp.LoadIcon();
+			RenderedWaypoints.push(wp);
 		}
 	}
 
 	public function ClearDisplay(firstIndex:Number):Void {
-		Mod.LogMsg("Clearing displayed waypoints");
-		Mod.TraceMsg("Clearing waypoints after index: " + firstIndex);
 		for (var i:Number = firstIndex ? firstIndex : 0; i < RenderedWaypoints.length; ++i) {
-			Mod.TraceMsg("Clearing waypoint: " + i);
 			var waypoint:MovieClip = RenderedWaypoints[i];
 			waypoint.Unload();
 			waypoint.removeMovieClip();
 		}
 		RenderedWaypoints.splice(firstIndex);
-		Mod.LogMsg("Cleared");
 	}
 
 	/// Variables

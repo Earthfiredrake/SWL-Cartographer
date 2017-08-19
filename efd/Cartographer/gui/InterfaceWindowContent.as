@@ -16,13 +16,13 @@ import efd.Cartographer.lib.Mod;
 import efd.Cartographer.Waypoint;
 
 import efd.Cartographer.gui.NotationLayer;
+import efd.Cartographer.gui.Layers.LoreLayer;
 import efd.Cartographer.gui.WaypointIcon;
 
 class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent {
 
 	private function InterfaceWindowContent() { // Indirect construction only
 		super();
-		Mod.LogMsg("Interface Window Content Constructor");
 		ClientChar = Character.GetClientCharacter();
 		CurrentZoneID = ClientChar.GetPlayfieldID();
 
@@ -31,35 +31,25 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		var listener:Object = new Object();
 		listener.onLoadInit = Delegate.create(this, MapLoaded);
 		listener.onLoadError = function(target:MovieClip, error:String):Void {
-			Mod.LogMsg("Map failed to load: " + error);
 			Mod.ErrorMsg("Unable to load map: " + error);
 		};
 		Loader.addListener(listener);
 
 		NotationLayers = new Object();
-
-		Mod.LogMsg("Interface Window Content Constructor Complete");
 	}
 
 	private function MapLoaded(target:MovieClip):Void {
-		Mod.LogMsg("Map Loaded");
-		if (!target._height) {
-			Mod.LogMsg("Map loaded, but failed to update height: DivZero");
-		}
 		target._width = target._width / target._height * MaxMapHeight;
 		target._height = MaxMapHeight;
 		for (var s:String in NotationLayers) {
 			NotationLayers[s].RenderWaypoints(CurrentZoneID);
 		}
 		SignalSizeChanged.Emit();
-		Mod.LogMsg("Map Load Complete");
 	}
 
 	private function ChangeMap(newZone:Number):Void {
-		Mod.LogMsg("Changing Map:" + newZone);
 		CurrentZoneID = newZone;
 		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
-		Mod.LogMsg("Map Change Complete");
 	}
 
 	private function SetData(zoneIndex:Object, waypoints:Object):Void {
@@ -67,7 +57,14 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		if (!ZoneIndex[CurrentZoneID]) { CurrentZoneID = 5060; } // Current zone does not have map support, reset to Agartha
 		Waypoints = waypoints;
 		for (var s:String in waypoints) {
-			NotationLayers[s] = NotationLayer(MovieClipHelper.createMovieWithClass(NotationLayer, s + "Layer", this, getNextHighestDepth(), {WaypointData : Waypoints[s]}));
+			switch (s) {
+				case "Lore":
+					NotationLayers[s] = MovieClipHelper.createMovieWithClass(LoreLayer, s + "Layer", this, getNextHighestDepth(), {WaypointData : Waypoints[s]});
+					break;
+				default:
+					NotationLayers[s] = MovieClipHelper.createMovieWithClass(NotationLayer, s + "Layer", this, getNextHighestDepth(), {WaypointData : Waypoints[s]});
+					break;
+			}
 		}
 		PlayerMarker.swapDepths(getNextHighestDepth());
 		// TODO: See if I can source maps from the RDB in any way

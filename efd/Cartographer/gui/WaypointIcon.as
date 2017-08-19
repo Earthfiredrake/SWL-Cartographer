@@ -16,15 +16,12 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	private function WaypointIcon() { // Indirect construction only
 		super();
-		Mod.LogMsg("Waypoint Icon Constructor");
-		Mod.LogMsg("Icon file: " + Data.Icon);
 		SignalWaypointLoaded = new Signal();
 		Loader = new MovieClipLoader();
 
 		var listener:Object = new Object();
 		listener.onLoadInit = Delegate.create(this, IconLoaded);
 		listener.onLoadError = function(target:MovieClip, error:String):Void {
-			Mod.LogMsg("Icon (" + target._parent.Data.Icon + ") failed to load: " + error);
 			Mod.ErrorMsg("Unable to load icon (" + target._parent.Data.Icon + "): " + error);
 		};
 		Loader.addListener(listener);
@@ -32,7 +29,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		if (Data.ShowLabel) {
 			Label = CreateLabel(Data.Name);
 		}
-		Mod.LogMsg("Waypoint Icon Constructed");
 	}
 
 	public function LoadIcon():Void {
@@ -47,7 +43,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	}
 
 	private function IconLoaded(target:MovieClip):Void {
-			Mod.LogMsg("Waypoint Icon Loaded");
 			CenterIcon(target);
 
 			target.onRollOver = function():Void {
@@ -67,11 +62,9 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 			target.onPress = Delegate.create(this, IconAction);
 			SignalWaypointLoaded.Emit();
-			Mod.LogMsg("Waypoint Icon Initialization finished");
 	}
 
 	private function IconAction():Void {
-		Mod.LogMsg("Waypoint Icon Clicked");
 		if (Data["TargetZone"] != undefined) {
 			_parent._parent.ChangeMap(Data["TargetZone"]);
 		}
@@ -83,7 +76,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	}
 
 	private function CreateLabel(name:String):TextField {
-		Mod.LogMsg("Creating Label");
 		var label:TextField = createTextField("LabelTxt", getNextHighestDepth(), 0, 0, 50, 15);
 		label.embedFonts = true;
 		label.selectable = false;
@@ -113,7 +105,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		_x = pos.x;
 		_y = pos.y;
 		if (oldData.Icon != data.Icon) {
-			Mod.TraceMsg("Waypoint icon swapping");
 			Loader.loadClip("Cartographer\\icons\\" + data.Icon, Icon);
 		} else {
 			SignalWaypointLoaded.Emit();
@@ -139,7 +130,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	public function Unload():Void {
 		// TODO:Destroy label?
-		Mod.LogMsg("Unloading mod Icon");
 		Loader.unloadClip(Icon);
 	}
 
