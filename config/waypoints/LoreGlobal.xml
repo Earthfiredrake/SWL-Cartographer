@@ -35,9 +35,9 @@
 		<!-- Gaia Engines (no pickup) -->
 		<!-- The Hell Dimensions 0/29 -->
 		<!-- The Host (no pickup?) -->
-		<!-- The House-in-Exile 8/12 -->
+		<!-- The House-in-Exile -->
 		<Lore zone="3070" x="382" y="911" z="73" loreID="6987" />
-			<!-- #2 -->
+		<Lore zone="6630" x="152" y="191" z="14" loreID="6988" />
 		<Lore zone="3070" x="128" y="915" z="100" loreID="6989" />
 		<Lore zone="3070" x="458" y="666" z="83" loreID="6990" />
 		<Lore zone="3070" x="362" y="817" z="85" loreID="6991" />
@@ -45,9 +45,10 @@
 			<Note en="Talk to Inbeda" />
 		</Lore>
 		<Lore zone="3070" x="830" y="654" z="93" loreID="6993" />
-			<!-- #8 -->
+		<Lore zone="6630" x="142" y="200" z="18" loreID="6994" />
 		<Lore zone="3070" x="685" y="792" z="83" loreID="6995" />
-			<!-- BS#1-2 -->
+		<Lore zone="6630" x="119" y="165" z="15" loreID="7202" />
+		<Lore zone="6630" x="155" y="217" z="18" loreID="7203" />
 		<Lore zone="3070" x="40" y="1010" z="71" loreID="7204" />
 		<!-- Illuminati -->
 		<Lore zone="1100" x="443" y="325" z="50" loreID="3536" />
@@ -75,7 +76,7 @@
 		<Lore zone="3070" x="468" y="524" z="83" loreID="6966" />
 		<Lore zone="3070" x="277" y="558" z="83" loreID="6967">
 			<Note en="Talk to Gozen" />
-		<Lore>
+		</Lore>
 		<Lore zone="3070" x="386" y="706" z="83" loreID="6968" />
 		<Lore zone="3070" x="386" y="706" z="83" loreID="7199" />
 		<Lore zone="3070" x="318" y="941" z="70" loreID="7200" />
@@ -85,7 +86,7 @@
 		<!-- The Korinto-kai 15/16 -->
 		<Lore zone="3070" x="484" y="817" z="83" loreID="7025" />
 		<Lore zone="3070" x="450" y="886" z="79" loreID="7026" />
-		<Lore zone="3070" x="302" y="710" z="91" loreID="7027" />.
+		<Lore zone="3070" x="302" y="710" z="91" loreID="7027" />
 		<Lore zone="3070" x="670" y="592" z="83" loreID="7028" />
 		<Lore zone="3070" x="770" y="592" z="91" loreID="7029" />
 		<Lore zone="3070" x="344" y="455" z="86" loreID="7030" />

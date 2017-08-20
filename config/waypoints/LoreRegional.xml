@@ -40,12 +40,14 @@
 	<Section> <!-- Transylvania -->
 	</Section>
 	<Section> <!-- Tokyo -->
-		<!-- The Black Signal 8/13 (+1 duplicated)-->
+		<!-- The Black Signal 10/13 (+1 duplicated)-->
 		<Lore zone="7640" x="286" y="157" z="22" loreID="7186" />
 		<Lore zone="7640" x="363" y="132" z="17" loreID="7187" />
 		<Lore zone="7640" x="220" y="307" z="18" loreID="7188" />
 		<Lore zone="6620" x="207" y="248" z="19" loreID="7189" />
 		<Lore zone="3070" x="329" y="587" z="87" loreID="7190" />
+		<Lore zone="6660" x="318" y="100" z="6" loreID="7191" />
+		<Lore zone="6630" x="120" y="186" z="4" loreID="7192" />
 		<Lore zone="3070" x="348" y="828" z="83" loreID="7193" />
 		<Lore zone="3070" x="354" y="771" z="83" loreID="7193" />
 		<Lore zone="5060" x="252" y="246" z="368" loreID="7196" />
@@ -73,19 +75,32 @@
 		<Lore zone="3070" x="677" y="640" z="93" loreID="7554" />
 		<Lore zone="3070" x="680" y="638" z="83" loreID="7555" />
 		<Lore zone="3070" x="672" y="639" z="88" loreID="7556" />
+		<!-- Fear Nothing Foundation -->
+		<Lore zone="6640" x="285" y="276" z="8" loreID="7174" />
+		<Lore zone="6640" x="213" y="251" z="15" loreID="7175" />
+		<Lore zone="6640" x="295" y="273" z="15" loreID="7176" />
+		<Lore zone="6640" x="265" y="284" z="15" loreID="7177" />
+		<Lore zone="6640" x="213" y="229" z="8" loreID="7178" />
+		<Lore zone="6640" x="257" y="237" z="23" loreID="7179" />
+		<Lore zone="6640" x="265" y="219" z="23" loreID="7180" />
+		<Lore zone="6640" x="287" y="265" z="52" loreID="7181" />
+		<Lore zone="6640" x="295" y="243" z="15" loreID="7182" />
+		<Lore zone="6640" x="219" y="237" z="23" loreID="7183" />
+		<Lore zone="6640" x="223" y="228" z="52" loreID="7184" />
 		<!-- Ginpachi Park 4/6 -->
 		<Lore zone="3070" x="923" y="787" z="74" loreID="7045" />
 		<Lore zone="3070" x="779" y="839" z="83" loreID="7046" />
 		<Lore zone="3070" x="728" y="592" z="88" loreID="7047" />
 		<Lore zone="3070" x="957" y="732" z="77" loreID="7048" />
-		<!-- The Hierarchy of Oni 6/9 -->
+		<!-- The Hierarchy of Oni -->
 		<Lore zone="3070" x="188" y="852" z="93" loreID="7148" />
 		<Lore zone="3070" x="97" y="722" z="99" loreID="7149" />
 		<Lore zone="3070" x="33" y="867" z="95" loreID="7150" />
-			<!-- #4 -->
+		<Lore zone="6660" x="351" y="65" z="9" loreID="7151" />
 		<Lore zone="3070" x="256" y="826" z="101" loreID="7152" />
 		<Lore zone="3070" x="276" y="920" z="85" loreID="7153" />
-			<!-- #7-8 -->
+		<Lore zone="3070" x="168" y="905" z="102" loreID="7154" />
+		<Lore zone="6660" x="321" y="118" z="89" loreID="7155" />
 		<Lore zone="3070" x="36" y="971" z="79" loreID="7156" />
 		<!-- Jigoku no Yu Bathhouse -->
 		<Lore zone="3070" x="213" y="783" z="93" loreID="7121" />
@@ -94,7 +109,7 @@
 		<Lore zone="3070" x="203" y="786" z="94" loreID="7124" />
 		<Lore zone="3070" x="181" y="798" z="94" loreID="7125" />
 		<Lore zone="3070" x="174" y="810" z="107" loreID="7126" />
-		<!-- Kaidan 12/14 -->
+		<!-- Kaidan 13/14 -->
 		<Lore zone="3070" x="378" y="665" z="83" loreID="7158" />
 		<Lore zone="3070" x="574" y="492" z="83" loreID="7159" />
 		<Lore zone="3070" x="660" y="677" z="87" loreID="7160" />
@@ -102,7 +117,7 @@
 		<Lore zone="3070" x="499" y="592" z="83" loreID="7162" />
 		<Lore zone="3070" x="721" y="531" z="83" loreID="7163" />
 		<Lore zone="3070" x="305" y="844" z="83" loreID="7164" />
-			<!-- #8 -->
+		<Lore zone="6630" x="152" y="168" z="0" loreID="7165" />
 		<Lore zone="3070" x="851" y="680" z="93" loreID="7166" />
 		<Lore zone="3070" x="748" y="750" z="86" loreID="7167" />
 		<Lore zone="3070" x="565" y="915" z="73" loreID="7168" />
@@ -151,7 +166,7 @@
 		<Lore zone="3070" x="440" y="798" z="83" loreID="7116" />
 		<Lore zone="3070" x="450" y="809" z="83" loreID="7117" />
 		<Lore zone="3070" x="450" y="813" z="87" loreID="7118">
-			<Note en="Trigger condition?" />
+			<Note en="Requires Mission: The Pachinko Model" />
 		</Lore>
 		<Lore zone="3070" x="444" y="806" z="87" loreID="7119" />
 	</Section>

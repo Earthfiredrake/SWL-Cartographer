@@ -45,12 +45,18 @@
 	<Lore zone="3070" x="820" y="603" z="93" loreID="8818" />
 	<Lore zone="3070" x="728" y="742" z="86" loreID="8819" />
 	<Lore zone="3070" x="829" y="566" z="93" loreID="8820" />
+	<!-- Little Ones 1/4 -->
+		<!-- #1 -->
+	<Lore zone="6630" x="110" y="165" z="5" loreID="8823" />
+		<!-- #3-4 -->
 	<!-- Oni 2/4 -->
 	<Lore zone="3070" x="96" y="861" z="103" loreID="9251" />
 		<!-- #2 -->
 	<Lore zone="3070" x="131" y="989" z="74" loreID="9253" />
 		<!-- #4 -->
-	<!-- Rakshasa 1/ 6-->
+	<!-- Spectres 1/10 -->
+	<Lore zone="6640" x="218" y="270" z="23" loreID="8835" /> <!-- #9 -->
+	<!-- Rakshasa 1/6 -->
 	<Lore zone="3070" x="276" y="718" z="90" loreID="9244" />
 	<!-- Revenants 2/8 -->
 	<Lore zone="3030" x="494" y="456" z="136" loreID="8510" />
