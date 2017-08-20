@@ -15,9 +15,59 @@
 		<Lore zone="3030" x="39" y="746" z="163" loreID="490" />
 		<Lore zone="3030" x="227" y="783" z="136" loreID="489" />
 		<Lore zone="3030" x="49" y="651" z="174" loreID="488" />
-		<!-- The Fog 2/7 -->
+		<!-- The Black House 9/10 -->
+			<!-- #1 -->
+		<Lore zone="3040" x="453" y="760" z="143" loreID="582" />
+		<Lore zone="3040" x="441" y="767" z="147" loreID="581" />
+		<Lore zone="3040" x="453" y="764" z="138" loreID="580" />
+		<Lore zone="3040" x="440" y="768" z="141" loreID="585" />
+		<Lore zone="3040" x="390" y="711" z="141" loreID="584" />
+		<Lore zone="3040" x="395" y="738" z="138" loreID="595" />
+		<Lore zone="3040" x="460" y="819" z="149" loreID="594" />
+		<Lore zone="3040" x="504" y="656" z="141" loreID="593" />
+		<Lore zone="3040" x="463" y="671" z="140" loreID="592" />
+		<!-- Blue Ridge Mine 7/12 -->
+		<Lore zone="3050" x="506" y="527" z="184" loreID="605" />
+		<Lore zone="3050" x="470" y="574" z="190" loreID="604" />
+		<Lore zone="3050" x="519" y="596" z="182" loreID="603" />
+		<Lore zone="3050" x="512" y="591" z="189" loreID="602" />
+		<Lore zone="3050" x="532" y="598" z="192" loreID="601" />
+		<Lore zone="3050" x="566" y="605" z="201" loreID="600" />
+		<Lore zone="3050" x="837" y="277" z="169" loreID="599" />
+			<!-- #8-12 -->
+		<!-- The Fog -->
 		<Lore zone="3030" x="351" y="92" z="137" loreID="853" />
 		<Lore zone="3030" x="360" y="99" z="137" loreID="852" />
+		<Lore zone="3040" x="435" y="653" z="140" loreID="851" />
+		<Lore zone="3040" x="845" y="275" z="168" loreID="850" />
+		<Lore zone="3040" x="379" y="128" z="155" loreID="849" />
+		<Lore zone="3050" x="151" y="905" z="139" loreID="848" />
+		<Lore zone="3050" x="109" y="795" z="130" loreID="847" />
+		<!-- The Franklin Mansion 7/10 -->
+		<Lore zone="3050" x="819" y="540" z="154" loreID="633" />
+		<Lore zone="3050" x="880" y="5" z="145" loreID="632" />
+		<Lore zone="3050" x="566" y="345" z="186" loreID="631" />
+		<Lore zone="3050" x="983" y="533" z="140" loreID="630" />
+			<!-- #5-6 -->
+		<Lore zone="3050" x="855" y="201" z="159" loreID="627" />
+			<!-- #8 -->
+		<Lore zone="3050" x="612" y="601" z="178" loreID="625" />
+		<Lore zone="3050" x="494" y="118" z="129" loreID="624" />
+		<!-- Innsmouth Academy 13/14 -->
+		<Lore zone="3040" x="211" y="223" z="141" loreID="677" />
+		<Lore zone="3040" x="294" y="392" z="150" loreID="676" />
+		<Lore zone="3040" x="308" y="299" z="149" loreID="675" />
+		<Lore zone="3040" x="195" y="387" z="142" loreID="674" />
+		<Lore zone="3040" x="282" y="330" z="150" loreID="673" />
+		<Lore zone="3040" x="268" y="379" z="146" loreID="672" />
+		<Lore zone="3040" x="292" y="345" z="159" loreID="671" />
+		<Lore zone="3040" x="292" y="392" z="158" loreID="670" />
+		<Lore zone="3040" x="346" y="336" z="141" loreID="669" />
+		<Lore zone="3040" x="299" y="381" z="151" loreID="668" />
+		<Lore zone="3040" x="281" y="219" z="141" loreID="667" />
+		<Lore zone="3040" x="314" y="435" z="141" loreID="666" />
+			<!-- #13 -->
+		<Lore zone="3040" x="290" y="405" z="145" loreID="664" />
 		<!-- The Lady Margaret -->
 		<Lore zone="3030" x="505" y="248" z="135" loreID="866" />
 		<Lore zone="3030" x="588" y="306" z="137" loreID="865" />
@@ -32,6 +82,18 @@
 		<Lore zone="3030" x="571" y="398" z="139" loreID="856" />
 		<Lore zone="3030" x="532" y="440" z="139" loreID="855" />
 		<Lore zone="3030" x="461" y="380" z="146" loreID="854" />
+		<!-- League of Monster Slayers 10/11 -->
+		<Lore zone="3040" x="482" y="797" z="145" loreID="572" />
+		<Lore zone="3040" x="491" y="897" z="172" loreID="571" />
+		<Lore zone="3040" x="492" y="894" z="167" loreID="570" />
+			<!-- #4 -->
+		<Lore zone="3040" x="412" y="989" z="154" loreID="568" />
+		<Lore zone="3040" x="356" y="906" z="142" loreID="567" />
+		<Lore zone="3040" x="242" y="779" z="137" loreID="566" />
+		<Lore zone="3040" x="586" y="691" z="152" loreID="565" />
+		<Lore zone="3040" x="314" y="588" z="141" loreID="564" />
+		<Lore zone="3040" x="239" y="636" z="142" loreID="563" />
+		<Lore zone="3030" x="412" y="680" z="138" loreID="562" />
 	</Section>
 	<Section> <!-- Valley of the Sun God -->
 		<!-- The Call of the Nameless 1/9 -->
@@ -75,18 +137,6 @@
 		<Lore zone="3070" x="677" y="640" z="93" loreID="7554" />
 		<Lore zone="3070" x="680" y="638" z="83" loreID="7555" />
 		<Lore zone="3070" x="672" y="639" z="88" loreID="7556" />
-		<!-- Fear Nothing Foundation -->
-		<Lore zone="6640" x="285" y="276" z="8" loreID="7174" />
-		<Lore zone="6640" x="213" y="251" z="15" loreID="7175" />
-		<Lore zone="6640" x="295" y="273" z="15" loreID="7176" />
-		<Lore zone="6640" x="265" y="284" z="15" loreID="7177" />
-		<Lore zone="6640" x="213" y="229" z="8" loreID="7178" />
-		<Lore zone="6640" x="257" y="237" z="23" loreID="7179" />
-		<Lore zone="6640" x="265" y="219" z="23" loreID="7180" />
-		<Lore zone="6640" x="287" y="265" z="52" loreID="7181" />
-		<Lore zone="6640" x="295" y="243" z="15" loreID="7182" />
-		<Lore zone="6640" x="219" y="237" z="23" loreID="7183" />
-		<Lore zone="6640" x="223" y="228" z="52" loreID="7184" />
 		<!-- Ginpachi Park 4/6 -->
 		<Lore zone="3070" x="923" y="787" z="74" loreID="7045" />
 		<Lore zone="3070" x="779" y="839" z="83" loreID="7046" />

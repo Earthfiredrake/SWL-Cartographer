@@ -4,7 +4,18 @@
      https://github.com/Earthfiredrake/TSW-Cartographer -->
 <!-- Lore locations verified with LoreHound -->
 <OverlayPack>
-	<!-- Bogeyman 1/4 (muli-spawn) -->
+	<!-- Ak'ab 4/8 -->
+	<Lore zone="3040" x="420" y="947" z="153" loreID="8485" />
+		<!-- #2 -->
+	<Lore zone="3040" x="568" y="923" z="158" loreID="8487" />
+		<!-- #4-5 -->
+	<Lore zone="3050" x="459" y="647" z="190" loreID="8490" />
+	<Lore zone="3050" x="975" y="56" z="145" loreID="8491" />
+		<!-- #8 -->
+	<!-- Bogeyman 3/4 (muli-spawn) -->
+		<!-- #1 -->
+	<Lore zone="3040" x="662" y="547" z="142" loreID="8480" />
+	<Lore zone="3040" x="525" y="502" z="142" loreID="8481" />
 	<Lore zone="3040" x="626" y="577" z="139" loreID="8482">
 		<!-- Sideshow shacks east of entrance -->
 		<Note en="Random spawn point 1/5" />
@@ -25,16 +36,43 @@
 		<!-- Shed north of Lover's Lake -->
 		<Note en="Random spawn point 5/5" />
 	</Lore>
-	<!-- Draug - Deep Ones 1/7-->
+	<!-- Draug - Deep Ones 4/7-->
+	<Lore zone="3050" x="57" y="672" z="130" loreID="8524" />
+		<!-- #2 -->
 	<Lore zone="3070" x="909" y="866" z="76" loreID="8526">
 		<Note en="Inaccessible" />
 	</Lore>
-	<!-- Draug - Drones 3/9 -->
+	<Lore zone="3050" x="55" y="291" z="131" loreID="8527" />
+		<!-- #5 -->
+	<Lore zone="3050" x="98" y="434" z="140" loreID="8529" />
+		<!-- #7 -->
+	<!-- Draug - Drones 8/9 -->
+	<Lore zone="3050" x="446" y="14" z="131" loreID="8532" />
+	<Lore zone="3050" x="349" y="191" z="135" loreID="8533" />
 	<Lore zone="3030" x="75" y="579" z="188" loreID="8534" />
+		<!-- #4 -->
 	<Lore zone="3030" x="515" y="253" z="129" loreID="8536" />
 	<Lore zone="3030" x="487" y="172" z="129" loreID="8537" />
-	<!-- Draug - Leaders 1/7 -->
+	<Lore zone="3050" x="173" y="908" z="141" loreID="8538" />
+	<Lore zone="3050" x="324" y="91" z="144" loreID="8539" />
+	<Lore zone="3050" x="80" y="772" z="139" loreID="8540" />
+	<!-- Draug - Leaders 6/7 -->
 	<Lore zone="3030" x="510" y="922" z="130" loreID="8542" />
+	<Lore zone="3030" x="759" y="937" z="130" loreID="8543" />
+	<Lore zone="3050" x="853" y="955" z="131" loreID="8544" />
+	<Lore zone="3050" x="638" y="450" z="194" loreID="8545" />
+	<Lore zone="3050" x="616" y="544" z="167" loreID="8546" />
+	<Lore zone="3050" x="886" y="828" z="141" loreID="8547" />
+		<!-- #7 -->
+	<!-- Familiars 3/6 -->
+	<Lore zone="3040" x="258" y="177" z="141" loreID="8570" />
+		<!-- #2 -->
+	<Lore zone="3040" x="272" y="343" z="145" loreID="8572" />
+		<!-- #4 -->
+	<Lore zone="3040" x="277" y="363" z="160" loreID="8574" />
+		<!-- #6 -->
+	<!-- Filth Guardians 1/8 -->
+	<Lore zone="6075" x="265" y="290" z="31" loreID="9295" /> <!-- #1 -->
 	<!-- Golems 2/8 -->
 	<Lore zone="3030" x="662" y="692" z="135" loreID="9268" />
 	<Lore zone="5060" x="553" y="22" z="225" loreID="9275">
@@ -54,18 +92,58 @@
 		<!-- #2 -->
 	<Lore zone="3070" x="131" y="989" z="74" loreID="9253" />
 		<!-- #4 -->
-	<!-- Spectres 1/10 -->
-	<Lore zone="6640" x="218" y="270" z="23" loreID="8835" /> <!-- #9 -->
-	<!-- Rakshasa 1/6 -->
+	<!-- Rakshasa 2/6 -->
 	<Lore zone="3070" x="276" y="718" z="90" loreID="9244" />
-	<!-- Revenants 2/8 -->
+	<Lore zone="3040" x="805" y="999" z="147" loreID="9245" />
+		<!-- 3-6 -->
+	<!-- Revenants 6/8 -->
 	<Lore zone="3030" x="494" y="456" z="136" loreID="8510" />
 	<Lore zone="3030" x="257" y="409" z="146" loreID="8511" />
-	<!-- Wendigo 1/10 -->
+	<Lore zone="3040" x="693" y="287" z="146" loreID="8512" />
+	<Lore zone="3040" x="475" y="294" z="147" loreID="8513" />
+	<Lore zone="3040" x="439" y="822" z="148" loreID="8514" />
+	<Lore zone="3040" x="166" y="67" z="133" loreID="8515" />
+		<!-- 7-8 -->
+	<!-- Sasquatch -->
+	<Lore zone="3050" x="603" y="386" z="182" loreID="8474" />
+	<Lore zone="3050" x="693" y="506" z="196" loreID="8475" />
+	<Lore zone="3050" x="782" y="80" z="157" loreID="8476" />
+	<!-- Scarecrows 5/8 -->
+	<Lore zone="3040" x="869" y="437" z="154" loreID="8561" />
+		<!-- #2 -->
+	<Lore zone="3040" x="116" y="268" z="131" loreID="8563" />
+	<Lore zone="3050" x="519" y="683" z="193" loreID="8564" />
+	<Lore zone="3040" x="495" y="531" z="138" loreID="8565" />
+	<Lore zone="3040" x="829" y="367" z="160" loreID="8566" />
+		<!-- #7-8 -->
+	<!-- Spectres 1/10 -->
+	<Lore zone="3050" x="309" y="496" z="172" loreID="8828" /> <!-- #2 -->
+	<Lore zone="3050" x="366" y="525" z="154" loreID="8831" /> <!-- #5 -->
+	<Lore zone="6640" x="218" y="270" z="23" loreID="8835" /> <!-- #9 -->
+	<!-- Wendigo 9/10 -->
+	<Lore zone="3030" x="125" y="450" z="155" loreID="8494" />
 	<Lore zone="3030" x="174" y="78" z="152" loreID="8495" />
-	<!-- Wisps 2/7 -->
+	<Lore zone="3050" x="172" y="392" z="166" loreID="8496" />
+	<Lore zone="3050" x="296" y="598" z="175" loreID="8497" />
+	<Lore zone="3050" x="574" y="132" z="158" loreID="8498" />
+	<Lore zone="3050" x="355" y="664" z="175" loreID="8499" />
+	<Lore zone="3050" x="669" y="418" z="193" loreID="8500" />
+		<!-- #8 -->
+	<Lore zone="3050" x="725" y="247" z="170" loreID="8502" />
+	<Lore zone="3050" x="612" y="122" z="150" loreID="8503" />
+		<!-- #3-10 -->
+	<!-- Wisps 5/7 -->
 	<Lore zone="3030" x="206" y="72" z="156" loreID="8550" />
 	<Lore zone="3030" x="254" y="126" z="144" loreID="8551" />
-	<!-- Zombies 1/13 -->
+		<!-- #3 (#4 Drop) -->
+	<Lore zone="3040" x="512" y="296" z="154" loreID="8555" />
+	<Lore zone="3030" x="408" y="811" z="145" loreID="8556" />
+	<Lore zone="3040" x="589" y="188" z="172" loreID="8557" />
+	<!-- Zombies 3/13 -->
+		<!-- #1-2 -->
 	<Lore zone="3030" x="697" y="403" z="134" loreID="8582" />
+	<Lore zone="3040" x="472" y="723" z="140" loreID="8583" />
+		<!-- #5-11 -->
+	<Lore zone="3040" x="722" y="241" z="146" loreID="8591" />
+		<!-- #13 -->
 </OverlayPack>

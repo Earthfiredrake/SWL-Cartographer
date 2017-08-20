@@ -15,9 +15,13 @@
 		<Lore zone="5060" x="542" y="156" z="394" loreID="4192" />
 		<Lore zone="5060" x="631" y="120" z="394" loreID="4193" />
 		<!-- The Buzzing 8/8 (duplicates expected) -->
+		<Lore zone="1000" x="227" y="383" z="28" loreID="3572" />
 		<Lore zone="1100" x="288" y="368" z="46" loreID="3572" />
+		<Lore zone="1200" x="342" y="299" z="43" loreID="3572" />
+		<Lore zone="1000" x="198" y="262" z="28" loreID="3573" />
 		<Lore zone="1100" x="259" y="307" z="35" loreID="3573" />
 		<Lore zone="1100" x="360" y="325" z="50" loreID="3574" />
+		<Lore zone="1200" x="345" y="336" z="43" loreID="3574" />
 		<Lore zone="5060" x="505" y="383" z="405" loreID="3575" />
 		<Lore zone="5060" x="423" y="146" z="414" loreID="3576" />
 		<Lore zone="3030" x="22" y="164" z="165" loreID="3577" />
@@ -26,12 +30,39 @@
 		<!-- The Collective Unconsious 0/4 -->
 		<!-- Council of Venice 1/9 -->
 		<Lore zone="3030" x="155" y="377" z="149" loreID="4138" />
+		<Lore zone="3040" x="488" y="652" z="141" loreID="4137" />
 		<!-- Draculesti 0/9 -->
-		<!-- Dragon 0/13 -->
-		<!-- Fear Nothing Foundation 0/11 -->
-		<!-- The Flith 2/12 -->
+		<!-- Dragon -->
+		<Lore zone="1200" x="342" y="320" z="43" loreID="3617" />
+		<Lore zone="1200" x="362" y="311" z="45" loreID="3618" />
+		<Lore zone="1200" x="385" y="271" z="50" loreID="3619" />
+		<Lore zone="1200" x="390" y="261" z="55" loreID="3620" />
+		<Lore zone="1200" x="385" y="185" z="56" loreID="3621" />
+		<Lore zone="1200" x="314" y="171" z="46" loreID="3622" />
+		<Lore zone="1200" x="333" y="199" z="50" loreID="3623" />
+		<Lore zone="1200" x="349" y="273" z="50" loreID="3624" />
+		<Lore zone="1200" x="338" y="287" z="44" loreID="3625" />
+		<Lore zone="1200" x="353" y="242" z="46" loreID="3626" />
+		<Lore zone="1200" x="329" y="176" z="47" loreID="3627" />
+		<Lore zone="1200" x="374" y="226" z="53" loreID="3628" />
+		<Lore zone="1200" x="354" y="257" z="50" loreID="3976" />
+		<!-- Fear Nothing Foundation -->
+		<Lore zone="6640" x="285" y="276" z="8" loreID="7174" />
+		<Lore zone="6640" x="213" y="251" z="15" loreID="7175" />
+		<Lore zone="6640" x="295" y="273" z="15" loreID="7176" />
+		<Lore zone="6640" x="265" y="284" z="15" loreID="7177" />
+		<Lore zone="6640" x="213" y="229" z="8" loreID="7178" />
+		<Lore zone="6640" x="257" y="237" z="23" loreID="7179" />
+		<Lore zone="6640" x="265" y="219" z="23" loreID="7180" />
+		<Lore zone="6640" x="287" y="265" z="52" loreID="7181" />
+		<Lore zone="6640" x="295" y="243" z="15" loreID="7182" />
+		<Lore zone="6640" x="219" y="237" z="23" loreID="7183" />
+		<Lore zone="6640" x="223" y="228" z="52" loreID="7184" />
+		<!-- The Flith 4/12 -->
+		<Lore zone="3050" x="873" y="593" z="138" loreID="3487" /> <!-- #3 -->
 		<Lore zone="5060" x="258" y="220" z="368" loreID="3495" />
 		<Lore zone="3030" x="390" y="315" z="136" loreID="3496" />
+		<Lore zone="3040" x="862" y="567" z="131" loreID="3497" /> <!-- #12 -->
 		<!-- Gaia Engines (no pickup) -->
 		<!-- The Hell Dimensions 0/29 -->
 		<!-- The Host (no pickup?) -->
@@ -105,16 +136,32 @@
 		<!-- Lilith 0/12 -->
 		<!-- The Marya 0/10 -->
 		<!-- The Mitsubachi 0/7 -->
-		<!-- Morninglight 3/10 -->
+		<!-- Morninglight 4/10 -->
+			<!-- #1 -->
 		<Lore zone="1100" x="401" y="343" z="50" loreID="4041" />
+		<Lore zone="1000" x="145" y="252" z="28" loreID="4037" />
 		<Lore zone="1100" x="336" y="427" z="50" loreID="4038" />
 		<Lore zone="3030" x="140" y="689" z="158" loreID="4039" />
-		<!-- Museum of the Occult 0/4 -->
-		<!-- The Orochi Group 3/17 -->
+			<!-- 6-10 -->
+		<!-- Museum of the Occult 1/4 -->
+		<Lore zone="1000" x="314" y="268" z="28" loreID="9304" /> <!-- #1 -->
+		<!-- The Orochi Group 11/17 -->
 		<Lore zone="3030" x="386" y="997" z="144" loreID="1477" />
+		<Lore zone="3040" x="908" y="95" z="226" loreID="1476" />
+		<Lore zone="3050" x="745" y="791" z="156" loreID="1475" />
+		<Lore zone="1000" x="226" y="268" z="17" loreID="1472" />
 		<Lore zone="1100" x="293" y="286" z="50" loreID="1471" />
+		<Lore zone="3040" x="343" y="730" z="146" loreID="1468" />
 		<Lore zone="3030" x="398" y="314" z="140" loreID="1467" />
-		<!-- Phoenicians 0/13 -->
+		<Lore zone="3030" x="697" y="908" z="130" loreID="1466" />
+		<Lore zone="3050" x="657" y="745" z="157" loreID="1465" />
+		<Lore zone="1000" x="162" y="364" z="28" loreID="1464" />
+		<Lore zone="3050" x="689" y="397" z="175" loreID="1463" />
+		<!-- Phoenicians 3/13 -->
+		<Lore zone="3030" x="905" y="697" z="143" loreID="1401" />
+		<Lore zone="3040" x="573" y="456" z="154" loreID="1400" />
+		<Lore zone="3050" x="566" y="371" z="190" loreID="1399" />
+			<!-- #4-13 -->
 		<!-- The Sinking City -->
 		<Lore zone="1300" x="257" y="165" z="24" loreID="6459" />
 		<Lore zone="5060" x="454" y="459" z="415" loreID="6460" />
@@ -122,13 +169,44 @@
 		<Lore zone="1300" x="281" y="249" z="32" loreID="6462" />
 		<Lore zone="7640" x="83" y="273" z="10" loreID="6463" />
 		<Lore zone="7640" x="387" y="150" z="11" loreID="6464" />
-		<!-- Templars 0/15 -->
+		<!-- Templars -->
+		<Lore zone="1000" x="310" y="349" z="28" loreID="3504" />
+		<Lore zone="1000" x="207" y="293" z="28" loreID="3505" />
+		<Lore zone="1000" x="254" y="209" z="26" loreID="3506" />
+		<Lore zone="1000" x="151" y="161" z="29" loreID="3507" />
+		<Lore zone="1000" x="219" y="165" z="25" loreID="3508" />
+		<Lore zone="1000" x="173" y="213" z="33" loreID="3509" />
+		<Lore zone="1000" x="378" y="385" z="28" loreID="3511" />
+		<Lore zone="1000" x="206" y="198" z="19" loreID="3516" />
+		<Lore zone="1000" x="247" y="398" z="23" loreID="3517" />
+		<Lore zone="1000" x="242" y="195" z="17" loreID="3518" />
+		<Lore zone="1000" x="198" y="152" z="20" loreID="3519" />
+		<Lore zone="1000" x="287" y="268" z="28" loreID="3520" />
+		<Lore zone="1000" x="207" y="309" z="28" loreID="3521" />
+		<Lore zone="1000" x="249" y="280" z="19" loreID="3522" />
+		<Lore zone="1000" x="275" y="260" z="15" loreID="3523" />
 		<!-- The Third Age 0/3 -->
 		<!-- Uta Bloody Valentine 0/3 -->
-		<!-- Wabanaki 0/13 -->
+		<!-- Wabanaki 12/13 -->
+		<Lore zone="3040" x="160" y="858" z="135" loreID="1491" />
+		<Lore zone="3040" x="131" y="842" z="130" loreID="1490" />
+		<Lore zone="3040" x="192" y="915" z="160" loreID="1489" />
+		<Lore zone="3040" x="294" y="1019" z="161" loreID="1488" />
+		<Lore zone="3040" x="363" y="946" z="158" loreID="1487" />
+			<!-- #6 -->
+		<Lore zone="3050" x="187" y="630" z="146" loreID="1485" />
+		<Lore zone="3050" x="254" y="387" z="130" loreID="1484" />
+		<Lore zone="3050" x="326" y="372" z="149" loreID="1483" />
+		<Lore zone="3050" x="842" y="297" z="162" loreID="1482" />
+		<Lore zone="3050" x="323" y="857" z="185" loreID="1481" />
+		<Lore zone="3050" x="201" y="742" z="159" loreID="1480" />
+		<Lore zone="3050" x="631" y="639" z="215" loreID="1479" />
 	</Section>
 	<Section> <!-- Events -->
-		<!-- Opening Night 0/3 -->
+		<!-- Opening Night -->
+		<Lore zone="1000" x="160" y="280" z="30" loreID="5702" />
+		<Lore zone="7070" x="130" y="214" z="33" loreID="5701" />
+		<Lore zone="7070" x="108" y="216" z="30" loreID="5700" />
 		<!-- Whispering Tide -->
 		<Lore zone="5060" x="405" y="320" z="240" loreID="6323" />
 		<Lore zone="5060" x="557" y="228" z="394" loreID="6324" />
