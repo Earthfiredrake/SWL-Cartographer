@@ -33,9 +33,25 @@
 <!-- Agartha outbound transit points are rough estimates, based on character location at confirmation popup when approaching gate -->
 <!-- Other waypoints pulled from default map waypoint files -->
 <OverlayPack>
-    <Section> <!-- Agartha -->
+    <Section> <!-- Agartha -->	
 		<AnimaWell zone="5060" x="502.3" y="412.0" /> <!-- Hub platform -->
 		<AnimaWell zone="5060" x="519.5" y="221.8" /> <!-- Mallgartha tree -->
+		<Transit zone="5060" x="465.8" y="443.6" z="415.1"
+			targetZone="1300"> <!-- Venice -->
+			<Name rdb="id=147549091 category=50025" />
+		</Transit>		 
+		 <Transit zone="5060" x="488.3" y="436.1" z="415.1"
+			targetZone="1100"> <!-- NYC -->
+			<Name rdb="id=147548723 category=50025" />
+		</Transit>		
+		<Transit zone="5060" x="507.9" y="433.5" z="414.6"
+			targetZone="1000"> <!-- London -->
+			<Name rdb="id=147548681 category=50025" />
+		</Transit>
+		<Transit zone="5060" x="528.1" y="437" z="415"
+			targetZone="1200"> <!-- Seoul -->
+			<Name rdb="id=147548721 category=50025" />
+		</Transit>
 		<Transit zone="5060" x="423.1" y="138.2"
 			targetZone="3030"> <!-- KM -->
 			<Name rdb="id=147548725 category=50025" />
@@ -48,15 +64,55 @@
 			targetZone="3050"> <!-- BM -->
 			<Name rdb="id=147548729 category=50025" />
 		</Transit>
-		<Transit zone="5060" x="438.8" y="283.4"
+		<Transit zone="5060" x="438.8" y="283.4" z="425.1"
 			targetZone="3090"> <!-- SD -->
 			<Name rdb="id=147548705 category=50025" />
 		</Transit>
+		<Transit zone="5060" x="450.3" y="311.6" z="425.1"
+			targetZone="3100"> <!-- CotSG -->
+			<Name rdb="id=147548707 category=50025" />
+		</Transit>
+		<Transit zone="5060" x="555.8" y="339.1" z="411.9"
+			targetZone="3120"> <!-- BF -->
+			<Name rdb="id=147548709 category=50025" />
+		</Transit>
+		<Transit zone="5060" x="566.8" y="319.8" z="411.9"
+			targetZone="3130"> <!-- SF -->
+			<Name rdb="id=147548711 category=50025" />
+		</Transit>
+		<Transit zone="5060" x="561.8" y="298.5" z="411.9"
+			targetZone="3140"> <!-- CF -->
+			<Name rdb="id=147548713 category=50025" />
+		</Transit>		
 		<Transit zone="5060" x="258.8" y="233.1" z="368.2"
 			targetZone="3070"> <!-- KD -->
 			<Name rdb="id=147549093 category=50025" />
-		</Transit>
+		</Transit>		
 		<!-- TODO: Vendor waypoints, need to track down coordinates, and decide on names -->
+	</Section>
+	<Section> <!-- Venice -->
+		<Transit zone="1300" x="276.9" y="130.3"
+			targetZone="5060">
+			<Name rdb="id=212867377 category=260" />
+		</Transit>
+	</Section>
+	<Section> <!-- NYC -->
+		<Transit zone="1100" x="359.3" y="342.4"
+			targetZone="5060">
+			<Name rdb="id=212867377 category=260" />
+		</Transit>
+	</Section>
+	<Section> <!-- London -->	
+		<Transit zone="1000" x="194.6" y="294.3"
+			targetZone="5060">
+			<Name rdb="id=212867377 category=260" />
+		</Transit>
+	</Section>
+	<Section> <!-- Seoul -->
+		<Transit zone="1200" x="346.6" y="358.8"
+			targetZone="5060">
+			<Name rdb="id=212867377 category=260" />
+		</Transit>
 	</Section>
 	<Section>  <!-- KM -->
 		<AnimaWell zone="3030" x="16.0" y="159.8"> <!-- Agartha Entrance -->
@@ -239,7 +295,55 @@
 			targetZone="5060">
 			<Name rdb="id=212867377 category=260" />
 		</Transit>
+		<Transit zone="3090" x="737.3" y="1152.8"
+			targetZone="3100">
+			<Name rdb="id=248747298 category=50025" />
+		</Transit>
 	</Section>
+	<Section> <!-- CotSG -->	
+		<Transit zone="3100" x="772.0" y="98.9"
+			targetZone="5060">			
+			<Name rdb="id=212867377 category=260" />
+		</Transit>		
+		<Transit zone="3100" x="303.6" y="16.7"
+			targetZone="3090">
+			<Name rdb="id=248747296 category=50025" />
+		</Transit>
+	</Section>
+	<Section> <!-- BF -->
+		<Transit zone="3120" x="1238.6" y="1281.8"
+			targetZone="5060">
+			<Name rdb="id=212867377 category=260" />
+		</Transit>
+		<Transit zone="3120" x="304.1" y="445.2"
+			targetZone="3130">
+			<Name rdb="id=249979848 category=50025" />
+		</Transit>
+	</Section>
+	<Section> <!-- SF -->
+		<Transit zone="3130" x="928.8" y="903.1"
+			targetZone="5060">
+			<Name rdb="id=212867377 category=260" />
+		</Transit>
+		<Transit zone="3130" x="1034.6" y="1225.6"
+			targetZone="3120">
+			<Name rdb="id=251342055 category=50025" />
+		</Transit>
+		<Transit zone="3130" x="569.3" y="307.5"
+			targetZone="3140">
+			<Name rdb="id=251341841 category=50025" />
+		</Transit>
+	</Section>
+	<Section> <!-- CF -->
+		<Transit zone="3140" x="497.1" y="1351.9"
+			targetZone="5060">
+			<Name rdb="id=212867377 category=260" />
+		</Transit>
+		<Transit zone="3140" x="446.2" y="1328.0"
+			targetZone="3130">
+			<Name rdb="id=249979848 category=50025" />
+		</Transit>
+	</Section>	
 	<Section> <!-- KD -->
 		<Transit zone="3070" x="949.8" y="749.0"
 			targetZone="5060">
