@@ -5,8 +5,9 @@
 <!-- Lore locations verified with LoreHound -->
 <OverlayPack>
 	<Section> <!-- Global -->
-		<!-- Agartha 8/9 -->
+		<!-- Agartha -->
 		<Lore zone="5060" x="545" y="420" z="409" loreID="4158" />
+		<Lore zone="5060" x="378" y="347" z="363" loreID="4186" />
 		<Lore zone="5060" x="490" y="432" z="223" loreID="4187" />
 		<Lore zone="5060" x="443" y="144" z="189" loreID="4188" />
 		<Lore zone="5060" x="280" y="407" z="201" loreID="4189" />
@@ -14,12 +15,14 @@
 		<Lore zone="5060" x="567" y="176" z="408" loreID="4191" />
 		<Lore zone="5060" x="542" y="156" z="394" loreID="4192" />
 		<Lore zone="5060" x="631" y="120" z="394" loreID="4193" />
-		<!-- The Buzzing 8/8 (duplicates expected) -->
+		<!-- The Buzzing -->
 		<Lore zone="1000" x="227" y="383" z="28" loreID="3572" />
 		<Lore zone="1100" x="288" y="368" z="46" loreID="3572" />
 		<Lore zone="1200" x="342" y="299" z="43" loreID="3572" />
 		<Lore zone="1000" x="198" y="262" z="28" loreID="3573" />
 		<Lore zone="1100" x="259" y="307" z="35" loreID="3573" />
+		<Lore zone="1200" x="283" y="288" z="35" loreID="3573" />
+		<Lore zone="1000" x="379" y="305" z="34" loreID="3574" />
 		<Lore zone="1100" x="360" y="325" z="50" loreID="3574" />
 		<Lore zone="1200" x="345" y="336" z="43" loreID="3574" />
 		<Lore zone="5060" x="505" y="383" z="405" loreID="3575" />
@@ -27,11 +30,26 @@
 		<Lore zone="3030" x="22" y="164" z="165" loreID="3577" />
 		<Lore zone="3030" x="59" y="142" z="154" loreID="3578" />
 		<Lore zone="3030" x="90" y="188" z="153" loreID="3579" />
-		<!-- The Collective Unconsious 0/4 -->
-		<!-- Council of Venice 1/9 -->
+		<!-- The Collective Unconsious 0/4 (NYA) -->
+		<!-- Council of Venice -->
 		<Lore zone="3030" x="155" y="377" z="149" loreID="4138" />
 		<Lore zone="3040" x="488" y="652" z="141" loreID="4137" />
-		<!-- Draculesti 0/9 -->
+		<Lore zone="3050" x="821" y="644" z="147" loreID="4139" />
+		<Lore zone="3090" x="596" y="433" z="76" loreID="4140" />
+		<Lore zone="3100" x="632" y="915" z="77" loreID="4141" />
+		<Lore zone="3120" x="497" y="1108" z="102" loreID="4142" />
+		<Lore zone="3130" x="844" y="887" z="31" loreID="4143" />
+		<Lore zone="3090" x="602" y="436" z="71" loreID="4144" />
+		<Lore zone="3140" x="712" y="679" z="46" loreID="4145" />
+		<!-- Draculesti 7/9 -->
+		<Lore zone="3120" x="442" y="613" z="69" loreID="1503" />
+		<Lore zone="3120" x="320" y="723" z="68" loreID="1502" />
+		<Lore zone="3130" x="824" y="848" z="47" loreID="1501" />
+		<Lore zone="3130" x="785" y="552" z="46" loreID="1500" />
+		<Lore zone="3130" x="663" y="589" z="38" loreID="1499" />
+		<Lore zone="3130" x="831" y="850" z="31" loreID="1498" />
+		<Lore zone="3140" x="386" y="973" z="56" loreID="1497" />
+			<!-- #8-9 (Instance: Castle) -->
 		<!-- Dragon -->
 		<Lore zone="1200" x="342" y="320" z="43" loreID="3617" />
 		<Lore zone="1200" x="362" y="311" z="45" loreID="3618" />
@@ -58,14 +76,32 @@
 		<Lore zone="6640" x="295" y="243" z="15" loreID="7182" />
 		<Lore zone="6640" x="219" y="237" z="23" loreID="7183" />
 		<Lore zone="6640" x="223" y="228" z="52" loreID="7184" />
-		<!-- The Flith 4/12 -->
-		<Lore zone="3050" x="873" y="593" z="138" loreID="3487" /> <!-- #3 -->
+		<!-- The Flith -->
+		<Lore zone="6600" x="251" y="216" z="14" loreID="3486" />
+		<Lore zone="6003" x="288" y="223" z="5" loreID="3486" />
 		<Lore zone="5060" x="258" y="220" z="368" loreID="3495" />
+		<Lore zone="3050" x="873" y="593" z="138" loreID="3487" />
+		<Lore zone="3050" x="856" y="634" z="138" loreID="3488" />
+		<Lore zone="3050" x="880" y="476" z="138" loreID="3489" />
+		<Lore zone="3090" x="311" y="805" z="49" loreID="3490" />
+		<Lore zone="3120" x="862" y="146" z="105" loreID="3491" />
+		<Lore zone="3100" x="340" y="915" z="53" loreID="3492" />
+		<Lore zone="3130" x="810" y="458" z="29" loreID="3493" />
+		<Lore zone="3140" x="323" y="587" z="55" loreID="3494" />
 		<Lore zone="3030" x="390" y="315" z="136" loreID="3496" />
-		<Lore zone="3040" x="862" y="567" z="131" loreID="3497" /> <!-- #12 -->
-		<!-- Gaia Engines (no pickup) -->
-		<!-- The Hell Dimensions 0/29 -->
-		<!-- The Host (no pickup?) -->
+		<Lore zone="3040" x="862" y="567" z="131" loreID="3497" />
+		<!-- Gaia Engines (Auto/Story) -->
+		<!-- The Hell Dimensions 7/29 -->
+			<!-- #1-15 (HR) -->
+		<Lore zone="5150" x="203" y="724" z="9" loreID="4822" />
+		<Lore zone="5150" x="350" y="718" z="23" loreID="4823" />
+		<Lore zone="5150" x="374" y="659" z="45" loreID="4824" />
+		<Lore zone="5150" x="321" y="633" z="58" loreID="4825" />
+		<Lore zone="5150" x="491" y="541" z="70" loreID="4826" />
+		<Lore zone="5150" x="524" y="660" z="93" loreID="4827" />
+		<Lore zone="5150" x="514" y="674" z="93" loreID="4828" />
+			<!-- #23-29 (HE) -->
+		<!-- The Host (Auto/Story) -->
 		<!-- The House-in-Exile -->
 		<Lore zone="3070" x="382" y="911" z="73" loreID="6987" />
 		<Lore zone="6630" x="152" y="191" z="14" loreID="6988" />
@@ -112,9 +148,16 @@
 		<Lore zone="3070" x="386" y="706" z="83" loreID="7199" />
 		<Lore zone="3070" x="318" y="941" z="70" loreID="7200" />
 		<Lore zone="3070" x="809" y="546" z="93" loreID="7201" />
-		<!-- The Jinn and the Third Age 0/1 -->
-		<!-- King Solomon 0/8 -->
-		<!-- The Korinto-kai 15/16 -->
+		<!-- The Jinn and the Third Age 0/1 (NYA) -->
+		<!-- King Solomon 4/8 -->
+		<Lore zone="3100" x="610" y="693" z="73" loreID="8246" />
+			<!-- #2 (Instance: Dusty Dark) -->
+		<Lore zone="3090" x="743" y="1116" z="46" loreID="8248" />
+			<!-- #4 (Instance: Angry Earth) -->
+		<Lore zone="3100" x="864" y="881" z="76" loreID="8250" />
+		<Lore zone="3100" x="184" y="736" z="85" loreID="8251" />
+			<!-- #7-8 (Instance: Dusty Dark) -->
+		<!-- The Korinto-kai -->
 		<Lore zone="3070" x="484" y="817" z="83" loreID="7025" />
 		<Lore zone="3070" x="450" y="886" z="79" loreID="7026" />
 		<Lore zone="3070" x="302" y="710" z="91" loreID="7027" />
@@ -127,41 +170,74 @@
 		</Lore>
 		<Lore zone="3070" x="532" y="748" z="83" loreID="7033" />
 		<Lore zone="3070" x="532" y="748" z="83" loreID="7034" />
-			<!-- BS#2 -->
+		<Lore zone="3070" x="779" y="917" z="70" loreID="7035" />
 		<Lore zone="3070" x="744" y="565" z="91" loreID="7036" />
 		<Lore zone="3070" x="388" y="791" z="83" loreID="7037" />
 		<Lore zone="3070" x="511" y="747" z="83" loreID="7038" />
 		<Lore zone="3070" x="874" y="711" z="88" loreID="7039" />
 		<Lore zone="3070" x="455" y="542" z="83" loreID="7040" />
-		<!-- Lilith 0/12 -->
-		<!-- The Marya 0/10 -->
-		<!-- The Mitsubachi 0/7 -->
-		<!-- Morninglight 4/10 -->
-			<!-- #1 -->
+		<!-- Lilith 0/12 (NYA) -->
+		<!-- The Marya -->
+		<Lore zone="3090" x="534" y="174" z="57" loreID="1462" />
+		<Lore zone="3090" x="579" y="445" z="71" loreID="1461" />
+		<Lore zone="3090" x="886" y="292" z="54" loreID="1460" />
+		<Lore zone="3090" x="516" y="360" z="76" loreID="1459" />
+		<Lore zone="3090" x="615" y="458" z="51" loreID="1458" />
+		<Lore zone="3090" x="809" y="230" z="48" loreID="1457" />
+		<Lore zone="3100" x="404" y="40" z="77" loreID="1456" />
+		<Lore zone="3100" x="491" y="204" z="90" loreID="1455" />
+		<Lore zone="3100" x="944" y="367" z="54" loreID="1454" />
+		<Lore zone="3100" x="106" y="71" z="80" loreID="1453" />
+		<!-- The Mitsubachi 0/7 (NYA) -->
+		<!-- Morninglight -->
+		<Lore zone="1000" x="143" y="248" z="29" loreID="4017">
+			<Note en="Literature" />
+		</Lore>
+		<Lore zone="1100" x="397" y="343" z="51" loreID="4017" />
 		<Lore zone="1100" x="401" y="343" z="50" loreID="4041" />
 		<Lore zone="1000" x="145" y="252" z="28" loreID="4037" />
 		<Lore zone="1100" x="336" y="427" z="50" loreID="4038" />
 		<Lore zone="3030" x="140" y="689" z="158" loreID="4039" />
-			<!-- 6-10 -->
+		<Lore zone="3090" x="494" y="311" z="71" loreID="4040" />
+		<Lore zone="3120" x="631" y="656" z="87" loreID="4043" />
+		<Lore zone="3130" x="712" y="1134" z="31" loreID="4042" />
+		<Lore zone="3140" x="314" y="711" z="37" loreID="4044" />
+		<Lore zone="3140" x="516" y="769" z="53" loreID="4045" />
 		<!-- Museum of the Occult 1/4 -->
-		<Lore zone="1000" x="314" y="268" z="28" loreID="9304" /> <!-- #1 -->
-		<!-- The Orochi Group 11/17 -->
+		<Lore zone="1000" x="314" y="268" z="28" loreID="9304" />
+			<!-- #2-4 (Instance: Museum) -->
+		<!-- The Orochi Group -->
 		<Lore zone="3030" x="386" y="997" z="144" loreID="1477" />
 		<Lore zone="3040" x="908" y="95" z="226" loreID="1476" />
 		<Lore zone="3050" x="745" y="791" z="156" loreID="1475" />
+		<Lore zone="3090" x="262" y="765" z="62" loreID="1474" />
+		<Lore zone="3120" x="812" y="518" z="72" loreID="1473" />
 		<Lore zone="1000" x="226" y="268" z="17" loreID="1472" />
 		<Lore zone="1100" x="293" y="286" z="50" loreID="1471" />
+		<Lore zone="3100" x="226" y="844" z="77" loreID="1470" />
+		<Lore zone="3100" x="72" y="987" z="57" loreID="1469" />
 		<Lore zone="3040" x="343" y="730" z="146" loreID="1468" />
 		<Lore zone="3030" x="398" y="314" z="140" loreID="1467" />
 		<Lore zone="3030" x="697" y="908" z="130" loreID="1466" />
 		<Lore zone="3050" x="657" y="745" z="157" loreID="1465" />
 		<Lore zone="1000" x="162" y="364" z="28" loreID="1464" />
 		<Lore zone="3050" x="689" y="397" z="175" loreID="1463" />
-		<!-- Phoenicians 3/13 -->
+		<Lore zone="3090" x="647" y="329" z="56" loreID="3978" />
+		<Lore zone="3140" x="409" y="408" z="47" loreID="3977" />
+		<!-- Phoenicians -->
 		<Lore zone="3030" x="905" y="697" z="143" loreID="1401" />
 		<Lore zone="3040" x="573" y="456" z="154" loreID="1400" />
 		<Lore zone="3050" x="566" y="371" z="190" loreID="1399" />
-			<!-- #4-13 -->
+		<Lore zone="3090" x="548" y="448" z="81" loreID="1397" />
+		<Lore zone="3090" x="487" y="209" z="64" loreID="1396" />
+		<Lore zone="3100" x="48" y="80" z="86" loreID="1395" />
+		<Lore zone="3100" x="425" y="500" z="81" loreID="1394" />
+		<Lore zone="3120" x="1310" y="205" z="64" loreID="1393" />
+		<Lore zone="3120" x="805" y="388" z="82" loreID="1392" />
+		<Lore zone="3130" x="1157" y="1112" z="39" loreID="1391" />
+		<Lore zone="3130" x="1208" y="642" z="36" loreID="1390" />
+		<Lore zone="3140" x="1005" y="921" z="42" loreID="1389" />
+		<Lore zone="3140" x="897" y="644" z="63" loreID="1388" />
 		<!-- The Sinking City -->
 		<Lore zone="1300" x="257" y="165" z="24" loreID="6459" />
 		<Lore zone="5060" x="454" y="459" z="415" loreID="6460" />
@@ -185,15 +261,18 @@
 		<Lore zone="1000" x="207" y="309" z="28" loreID="3521" />
 		<Lore zone="1000" x="249" y="280" z="19" loreID="3522" />
 		<Lore zone="1000" x="275" y="260" z="15" loreID="3523" />
-		<!-- The Third Age 0/3 -->
-		<!-- Uta Bloody Valentine 0/3 -->
+		<!-- The Third Age -->
+		<Lore zone="3090" x="197" y="481" z="70" loreID="5058" />
+		<Lore zone="3100" x="849" y="938" z="91" loreID="5059" />
+		<Lore zone="3100" x="186" y="443" z="100" loreID="5060" />
+		<!-- Uta Bloody Valentine 0/3 (NYA) -->
 		<!-- Wabanaki 12/13 -->
 		<Lore zone="3040" x="160" y="858" z="135" loreID="1491" />
 		<Lore zone="3040" x="131" y="842" z="130" loreID="1490" />
 		<Lore zone="3040" x="192" y="915" z="160" loreID="1489" />
 		<Lore zone="3040" x="294" y="1019" z="161" loreID="1488" />
 		<Lore zone="3040" x="363" y="946" z="158" loreID="1487" />
-			<!-- #6 -->
+			<!-- #6 (Instance: Ami Legend) -->
 		<Lore zone="3050" x="187" y="630" z="146" loreID="1485" />
 		<Lore zone="3050" x="254" y="387" z="130" loreID="1484" />
 		<Lore zone="3050" x="326" y="372" z="149" loreID="1483" />

@@ -54,10 +54,11 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 Version Next
 + Fixed the bug with icon not staying with UI edit mode overlay
++ Config can now be manually reset (/setoption efdCartographerResetConfig true) WARNING: Until further notice, this will delete any custom waypoints, once they are implemented
 + Picking up lore now immediately updates the map if it's open
 + Icons for lore that has been picked up now renders behind unclaimed lore icons
 + Slight data schema change ("Notes" tag -> "Note")
-+ More lore added in KD
++ All placed lore added to mapped zones (also some instances/dungeons)
 + Spends less time spamming the log file
 
 Version 0.0.5-alpha

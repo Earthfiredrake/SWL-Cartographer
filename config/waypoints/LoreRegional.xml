@@ -5,18 +5,21 @@
 <!-- Lore locations verified with LoreHound -->
 <OverlayPack>
 	<Section> <!-- Solomon Island -->
-		<!-- 1712 Fire 9/10 -->
+		<!-- 1712 Fire -->
 		<Lore zone="3030" x="252" y="511" z="144" loreID="481" />
 		<Lore zone="3030" x="469" y="524" z="144" loreID="484" />
 		<Lore zone="3030" x="175" y="616" z="165" loreID="483" />
 		<Lore zone="3030" x="167" y="564" z="162" loreID="482" />
+		<Lore zone="3030" x="362" y="349" z="143" loreID="487" />
 		<Lore zone="3030" x="387" y="258" z="133" loreID="486" />
 		<Lore zone="3030" x="340" y="456" z="143" loreID="485" />
 		<Lore zone="3030" x="39" y="746" z="163" loreID="490" />
 		<Lore zone="3030" x="227" y="783" z="136" loreID="489" />
 		<Lore zone="3030" x="49" y="651" z="174" loreID="488" />
-		<!-- The Black House 9/10 -->
-			<!-- #1 -->
+		<!-- The Black House -->
+		<Lore zone="3040" x="443" y="774" z="138" loreID="583">
+			<Note en="Strange Candle" />
+		</Lore>
 		<Lore zone="3040" x="453" y="760" z="143" loreID="582" />
 		<Lore zone="3040" x="441" y="767" z="147" loreID="581" />
 		<Lore zone="3040" x="453" y="764" z="138" loreID="580" />
@@ -34,7 +37,9 @@
 		<Lore zone="3050" x="532" y="598" z="192" loreID="601" />
 		<Lore zone="3050" x="566" y="605" z="201" loreID="600" />
 		<Lore zone="3050" x="837" y="277" z="169" loreID="599" />
-			<!-- #8-12 -->
+			<!-- #8-12 (Instance: Mine) -->
+		<!-- The Darkness War 0/12 -->
+			<!-- #1-12 (DW) -->
 		<!-- The Fog -->
 		<Lore zone="3030" x="351" y="92" z="137" loreID="853" />
 		<Lore zone="3030" x="360" y="99" z="137" loreID="852" />
@@ -48,12 +53,12 @@
 		<Lore zone="3050" x="880" y="5" z="145" loreID="632" />
 		<Lore zone="3050" x="566" y="345" z="186" loreID="631" />
 		<Lore zone="3050" x="983" y="533" z="140" loreID="630" />
-			<!-- #5-6 -->
+			<!-- #5-6 (Instance: Haunting) -->
 		<Lore zone="3050" x="855" y="201" z="159" loreID="627" />
-			<!-- #8 -->
+			<!-- #8 (Instance: Haunting) -->
 		<Lore zone="3050" x="612" y="601" z="178" loreID="625" />
 		<Lore zone="3050" x="494" y="118" z="129" loreID="624" />
-		<!-- Innsmouth Academy 13/14 -->
+		<!-- Innsmouth Academy -->
 		<Lore zone="3040" x="211" y="223" z="141" loreID="677" />
 		<Lore zone="3040" x="294" y="392" z="150" loreID="676" />
 		<Lore zone="3040" x="308" y="299" z="149" loreID="675" />
@@ -66,7 +71,7 @@
 		<Lore zone="3040" x="299" y="381" z="151" loreID="668" />
 		<Lore zone="3040" x="281" y="219" z="141" loreID="667" />
 		<Lore zone="3040" x="314" y="435" z="141" loreID="666" />
-			<!-- #13 -->
+		<Lore zone="3040" x="176" y="253" z="134" loreID="665" />
 		<Lore zone="3040" x="290" y="405" z="145" loreID="664" />
 		<!-- The Lady Margaret -->
 		<Lore zone="3030" x="505" y="248" z="135" loreID="866" />
@@ -82,11 +87,11 @@
 		<Lore zone="3030" x="571" y="398" z="139" loreID="856" />
 		<Lore zone="3030" x="532" y="440" z="139" loreID="855" />
 		<Lore zone="3030" x="461" y="380" z="146" loreID="854" />
-		<!-- League of Monster Slayers 10/11 -->
+		<!-- League of Monster Slayers -->
 		<Lore zone="3040" x="482" y="797" z="145" loreID="572" />
 		<Lore zone="3040" x="491" y="897" z="172" loreID="571" />
 		<Lore zone="3040" x="492" y="894" z="167" loreID="570" />
-			<!-- #4 -->
+		<Lore zone="3040" x="563" y="968" z="159" loreID="569" />
 		<Lore zone="3040" x="412" y="989" z="154" loreID="568" />
 		<Lore zone="3040" x="356" y="906" z="142" loreID="567" />
 		<Lore zone="3040" x="242" y="779" z="137" loreID="566" />
@@ -94,15 +99,158 @@
 		<Lore zone="3040" x="314" y="588" z="141" loreID="564" />
 		<Lore zone="3040" x="239" y="636" z="142" loreID="563" />
 		<Lore zone="3030" x="412" y="680" z="138" loreID="562" />
+		<!-- The Polaris 0/5 -->
+			<!-- #1-5 (Pol; crate code 5756) -->
 	</Section>
 	<Section> <!-- Valley of the Sun God -->
-		<!-- The Call of the Nameless 1/9 -->
+		<!-- The Ankh 7/11 -->
+		<Lore zone="5080" x="425" y="241" z="197" loreID="974" />
+		<Lore zone="5080" x="346" y="209" z="185" loreID="973" />
+		<Lore zone="5080" x="495" y="262" z="136" loreID="972" />
+		<Lore zone="5080" x="447" y="302" z="124" loreID="971" />
+			<!-- #5-8 (Ankh; Drops)-->
+		<Lore zone="5080" x="386" y="238" z="112" loreID="966" />
+		<Lore zone="5080" x="436" y="202" z="57" loreID="965" />
+		<Lore zone="5080" x="173" y="240" z="50" loreID="964" />
+		<!-- The Breaks in Time 1/6 -->
+			<!-- #1 (Instance: City Before Us) -->
+		<Lore zone="3090" x="313" y="544" z="60" loreID="5879" />
+			<!-- #3 (Instance: Time to Every Purpose) -->
+			<!-- #4 (Instance: Prisoner) -->
+			<!-- #5 (Instance: City Beneath Us) -->
+			<!-- #6 (Instance: Last Train) -->
+		<!-- The Call of the Nameless 5/9 -->
+		<Lore zone="3100" x="972" y="612" z="78" loreID="8235" />
+			<!-- #2 (Instance: Angry Earth) -->
 		<Lore zone="5060" x="442" y="297" z="425" loreID="8237" />
+		<Lore zone="3100" x="830" y="247" z="76" loreID="8238" />
+		<Lore zone="3100" x="1001" y="772" z="79" loreID="8239" />
+		<Lore zone="3100" x="859" y="102" z="122" loreID="8240" />
+			<!-- #7-9 (Instance: Dusty Dark/Beneath You) -->
+		<!-- The Kingdom 9/10 -->
+		<Lore zone="3090" x="829" y="619" z="47" loreID="1452" />
+		<Lore zone="3090" x="550" y="382" z="73" loreID="1451" />
+		<Lore zone="3090" x="839" y="587" z="62" loreID="1450" />
+		<Lore zone="3090" x="625" y="791" z="39" loreID="1449" />
+			<!-- #5 (Instance: High Cost of Dying) -->
+		<Lore zone="3090" x="429" y="408" z="50" loreID="1447" />
+		<Lore zone="3090" x="829" y="549" z="49" loreID="1446" />
+		<Lore zone="3090" x="563" y="389" z="78" loreID="1445" />
+		<Lore zone="3090" x="515" y="412" z="73" loreID="1444">
+			<Note en="Requires Mission: The Traitor" />
+		</Lore>
+		<Lore zone="3090" x="820" y="1069" z="59" loreID="1443" />
+		<!-- The Pyramid -->
+		<Lore zone="3100" x="702" y="769" z="80" loreID="989" />
+		<Lore zone="3100" x="664" y="587" z="66" loreID="988" />
+		<Lore zone="3100" x="683" y="336" z="64" loreID="987" />
+		<Lore zone="3100" x="809" y="291" z="54" loreID="986" />
+		<Lore zone="3100" x="839" y="565" z="70" loreID="985" />
+		<Lore zone="3100" x="853" y="462" z="72" loreID="984" />
+		<Lore zone="3100" x="706" y="694" z="54" loreID="983" />
+		<Lore zone="3100" x="737" y="595" z="54" loreID="982" />
+		<Lore zone="3100" x="749" y="467" z="68" loreID="981" />
+		<!-- The Sentinels -->
+		<Lore zone="3100" x="101" y="918" z="81" loreID="935" />
+		<Lore zone="3100" x="831" y="1006" z="64" loreID="934" />
+		<Lore zone="3100" x="198" y="935" z="55" loreID="933" />
+		<Lore zone="3100" x="340" y="58" z="79" loreID="932" />
+		<Lore zone="3100" x="13" y="664" z="83" loreID="931" />
+		<Lore zone="3100" x="969" y="585" z="78" loreID="930" />
+		<Lore zone="3100" x="390" y="450" z="81" loreID="929" />
+		<Lore zone="3100" x="627" y="898" z="77" loreID="928" />
+		<Lore zone="3100" x="287" y="906" z="77" loreID="927" />
+		<Lore zone="3100" x="829" y="242" z="77" loreID="926" />
+		<Lore zone="3100" x="51" y="282" z="77" loreID="925" />
+		<Lore zone="3100" x="130" y="452" z="81" loreID="924" />
+		<Lore zone="3100" x="341" y="422" z="90" loreID="923" />
+		<Lore zone="3100" x="291" y="729" z="72" loreID="922" />
+		<Lore zone="3100" x="11" y="17" z="93" loreID="921" />
+		<!-- Temple City Discovery -->
+		<Lore zone="3100" x="699" y="729" z="54" loreID="1036" />
+		<Lore zone="3100" x="615" y="823" z="91" loreID="1035" />
+		<Lore zone="3100" x="223" y="733" z="69" loreID="1034" />
+		<Lore zone="3090" x="831" y="991" z="54" loreID="1033" />
+		<Lore zone="3090" x="726" y="857" z="51" loreID="1032">
+			<Note en="Requires Mission: The Big Terrible Picture" />
+		</Lore>
+		<Lore zone="3100" x="566" y="176" z="56" loreID="1031" />
+		<Lore zone="3090" x="602" y="440" z="71" loreID="1030" />
+		<Lore zone="3090" x="758" y="1115" z="43" loreID="1029" />
+		<Lore zone="3100" x="59" y="877" z="55" loreID="1028" />
+		<Lore zone="3100" x="477" y="444" z="102" loreID="1027" />
 	</Section>
 	<Section> <!-- Transylvania -->
+		<!-- The Abandoned (No lore location, use Mosul??) -->
+		<!-- Anastasia's Wagon -->
+		<Lore zone="3130" x="1035" y="787" z="41" loreID="4506" />
+		<Lore zone="3130" x="934" y="812" z="28" loreID="4507" />
+		<Lore zone="3130" x="1089" y="637" z="31" loreID="4508" />
+		<Lore zone="3130" x="1037" y="494" z="40" loreID="4509" />
+		<Lore zone="3130" x="1003" y="501" z="28" loreID="4510" />
+		<Lore zone="3130" x="1081" y="355" z="36" loreID="4511" />
+		<Lore zone="3130" x="915" y="356" z="29" loreID="4512" />
+		<Lore zone="3130" x="857" y="545" z="37" loreID="4513" />
+		<!-- The Breach -->
+		<Lore zone="3140" x="907" y="936" z="110" loreID="4180" />
+		<Lore zone="3130" x="907" y="477" z="27" loreID="4181" />
+		<Lore zone="3140" x="1087" y="803" z="41" loreID="4182" />
+		<Lore zone="3140" x="1222" y="745" z="28" loreID="4183" />
+		<Lore zone="3140" x="1201" y="724" z="38" loreID="4184" />
+		<Lore zone="3140" x="1161" y="662" z="15" loreID="4185" />
+		<!-- The Facility 1/8 -->
+		<Lore zone="3120" x="555" y="1125" z="105" loreID="4893" />
+			<!-- #2-8 (Fac) -->
+		<!-- Iazmăciune -->
+		<Lore zone="3120" x="987" y="348" z="76" loreID="4497" />
+		<Lore zone="3120" x="1287" y="367" z="51" loreID="4498" />
+		<Lore zone="3130" x="392" y="837" z="32" loreID="4499" />
+		<Lore zone="3130" x="250" y="738" z="43" loreID="4500" />
+		<Lore zone="3130" x="248" y="830" z="29" loreID="4501" />
+		<Lore zone="3130" x="378" y="951" z="9" loreID="4502" />
+		<Lore zone="3130" x="300" y="740" z="19" loreID="4503" />
+		<Lore zone="3130" x="282" y="727" z="30" loreID="4504" />
+		<Lore zone="3130" x="480" y="899" z="8" loreID="4505" />
+		<!-- Roman Baths -->
+		<Lore zone="3140" x="632" y="483" z="61" loreID="4304" />
+		<Lore zone="3140" x="648" y="376" z="41" loreID="4305" />
+		<Lore zone="3140" x="692" y="334" z="43" loreID="4306" />
+		<Lore zone="3140" x="807" y="308" z="41" loreID="4307" />
+		<Lore zone="3140" x="816" y="413" z="34" loreID="4308" />
+		<Lore zone="3120" x="1425" y="310" z="79" loreID="4309" />
+		<Lore zone="3140" x="663" y="428" z="65" loreID="4310" />
+		<!-- The Slaughterhouse 0/10 -->
+			<!-- #1-10 (SH) -->
+		<!-- The Sleepless Lullaby 3/8 -->
+		<Lore zone="3120" x="309" y="464" z="54" loreID="6179" />
+		<Lore zone="3130" x="718" y="856" z="27" loreID="6180" />
+			<!-- #3 (Instance: Hatchet Falls) -->
+		<Lore zone="3140" x="217" y="178" z="39" loreID="6182" />
+			<!-- #5 (Instance: Nursery) -->
+			<!-- #6 (Instance: Hatchet Falls) -->
+			<!-- #7-8 (Instance: Walk into Empty) -->
+		<!-- The Truce -->
+		<Lore zone="3120" x="1119" y="1100" z="117" loreID="4514" />
+		<Lore zone="3120" x="846" y="1290" z="130" loreID="4515" />
+		<Lore zone="3120" x="398" y="1038" z="125" loreID="4517" />
+		<Lore zone="3120" x="307" y="979" z="151" loreID="4518" />
+		<Lore zone="3120" x="590" y="900" z="108" loreID="4519" />
+		<Lore zone="3120" x="334" y="614" z="61" loreID="4520" />
+		<Lore zone="3120" x="691" y="535" z="102" loreID="4522" />
+		<Lore zone="3120" x="1213" y="790" z="108" loreID="4523" />
+		<Lore zone="3120" x="876" y="235" z="80" loreID="4524" />
+		<Lore zone="3120" x="1278" y="155" z="84" loreID="4525" />
+		<!-- Vampire Crusades 6/7 -->
+		<Lore zone="3120" x="828" y="1100" z="125" loreID="4378" />
+		<Lore zone="3120" x="695" y="1184" z="105" loreID="4379" />
+		<Lore zone="3130" x="863" y="810" z="36" loreID="4380" />
+		<Lore zone="3130" x="619" y="980" z="39" loreID="4381" />
+		<Lore zone="3130" x="458" y="413" z="42" loreID="4382" />
+		<Lore zone="3140" x="439" y="1013" z="37" loreID="4383" />
+			<!-- #7 (Instance: Castle) -->
 	</Section>
 	<Section> <!-- Tokyo -->
-		<!-- The Black Signal 10/13 (+1 duplicated)-->
+		<!-- The Black Signal -->
 		<Lore zone="7640" x="286" y="157" z="22" loreID="7186" />
 		<Lore zone="7640" x="363" y="132" z="17" loreID="7187" />
 		<Lore zone="7640" x="220" y="307" z="18" loreID="7188" />
@@ -112,36 +260,54 @@
 		<Lore zone="6630" x="120" y="186" z="4" loreID="7192" />
 		<Lore zone="3070" x="348" y="828" z="83" loreID="7193" />
 		<Lore zone="3070" x="354" y="771" z="83" loreID="7193" />
+		<Lore zone="6670" x="329" y="220" z="9" loreID="7194" />
+		<Lore zone="6670" x="252" y="220" z="15" loreID="7195" />
 		<Lore zone="5060" x="252" y="246" z="368" loreID="7196" />
 		<Lore zone="3070" x="396" y="649" z="83" loreID="7197" />
+		<Lore zone="6670" x="283" y="210" z="6" loreID="7198" />
 		<!-- The Bomb 7/11 -->
 		<Lore zone="7640" x="220" y="149" z="17" loreID="7129" />
 		<Lore zone="6620" x="262" y="286" z="8" loreID="7130" />
 		<Lore zone="6620" x="182" y="220" z="28" loreID="7131" />
+			<!-- #4-7 (NYA) -->
 		<Lore zone="6620" x="182" y="220" z="28" loreID="7132" />
 		<Lore zone="6620" x="230" y="216" z="14" loreID="7133" />
 		<Lore zone="3070" x="771" y="485" z="79" loreID="7134" />
 		<Lore zone="3070" x="230" y="446" z="79" loreID="7135" />
-		<!-- Breach of the First Wall 3/6 -->
+		<!-- Breach of the First Wall 3/6 (NYA) -->
 		<Lore zone="3070" x="887" y="412" z="85" loreID="7596" />
 		<Lore zone="3070" x="253" y="412" z="86" loreID="7598" />
 		<Lore zone="3070" x="333" y="413" z="83" loreID="7600" />
-		<!-- The Dream Palace 8/10 -->
+		<!-- The Cargo 0/6 (NYA) -->
+		<!-- The Dream Palace 9/10 -->
 		<Lore zone="3070" x="680" y="632" z="88" loreID="7547" />
 		<Lore zone="3070" x="685" y="642" z="88" loreID="7548" />
-			<!-- #3 -->
+		<Lore zone="3070" x="920" y="569" z="83" loreID="7549" />
 		<Lore zone="3070" x="681" y="635" z="93" loreID="7550" />
 		<Lore zone="3070" x="687" y="633" z="83" loreID="7551" />
 		<Lore zone="3070" x="676" y="636" z="93" loreID="7552" />
-			<!-- BS#1 -->
-		<Lore zone="3070" x="677" y="640" z="93" loreID="7554" />
-		<Lore zone="3070" x="680" y="638" z="83" loreID="7555" />
-		<Lore zone="3070" x="672" y="639" z="88" loreID="7556" />
-		<!-- Ginpachi Park 4/6 -->
+			<!-- BS#1 (NYA) -->
+		<Lore zone="3070" x="677" y="640" z="93" loreID="7554">
+			<Note en="Requires Mission: Nightmare in the Dream Palace" />
+		</Lore>
+		<Lore zone="3070" x="680" y="638" z="83" loreID="7555">
+			<Note en="Requires Mission: Nightmare in the Dream Palace" />
+		</Lore>
+		<Lore zone="3070" x="672" y="639" z="88" loreID="7556">
+			<Note en="Requires Mission: Nightmare in the Dream Palace" />
+		</Lore>
+		<!-- Ginpachi Park -->
 		<Lore zone="3070" x="923" y="787" z="74" loreID="7045" />
 		<Lore zone="3070" x="779" y="839" z="83" loreID="7046" />
 		<Lore zone="3070" x="728" y="592" z="88" loreID="7047" />
 		<Lore zone="3070" x="957" y="732" z="77" loreID="7048" />
+		<Lore zone="3070" x="786" y="1009" z="72" loreID="7049">
+			<Note en="Inaccessible" />
+		</Lore>
+		<Lore zone="3070" x="1000" y="871" z="72" loreID="7050">
+			<Note en="Inaccessible" />
+		</Lore>
+		<!-- The Gungne 0/4  (NYA)-->
 		<!-- The Hierarchy of Oni -->
 		<Lore zone="3070" x="188" y="852" z="93" loreID="7148" />
 		<Lore zone="3070" x="97" y="722" z="99" loreID="7149" />
@@ -173,15 +339,21 @@
 		<Lore zone="3070" x="565" y="915" z="73" loreID="7168" />
 		<Lore zone="3070" x="114" y="640" z="93" loreID="7169" />
 		<Lore zone="3070" x="822" y="709" z="92" loreID="7170" />
-			<!-- BS#3 -->
-		<!-- Nightmares in the Dream Palace 2/11 -->
-		<Lore zone="3070" x="675" y="632" z="83" loreID="7608" />
-		<Lore zone="3070" x="672" y="645" z="86" loreID="7613" />
+			<!-- BS#3 (Drop: Hyperinfected/Commuter?) -->
+		<!-- The Maiden Shrine 0/10 (NYA) -->
+		<!-- The Manufactory 0/7 (NYA) -->
+		<!-- Manufactory Breached 0/12 (NYA) -->
+		<!-- Nightmares in the Dream Palace 2/11 (NYA) -->
+		<Lore zone="3070" x="675" y="632" z="83" loreID="7608" /> <!-- #6 -->
+		<Lore zone="3070" x="672" y="645" z="86" loreID="7613" /> <!-- BS#4 -->
 		<!-- The Ofuda 2/6 -->
-			<!-- #1 -->
+			<!-- #1 (NYA) -->
 		<Lore zone="3070" x="828" y="618" z="93" loreID="7564" />
-			<!-- #3-5 -->
+			<!-- #3-5 (NYA) -->
 		<Lore zone="3070" x="824" y="608" z="93" loreID="7568" />
+		<!-- Orochi Housing Projects 0/6 (NYA) -->
+		<!-- Orochi Tower 0/11 (NYA) -->
+		<!-- Reaping the Whirlwind 0/10 (NYA) -->
 		<!-- Susanoo's Diner -->
 		<Lore zone="3070" x="284" y="583" z="83" loreID="7107" />
 		<Lore zone="3070" x="279" y="520" z="83" loreID="7108" />
@@ -192,14 +364,25 @@
 		</Lore>
 		<Lore zone="3070" x="271" y="553" z="87" loreID="7112" />
 		<!-- Tale of Momotaro 1/5 -->
-		<Lore zone="3070" x="90" y="862" z="94" loreID="7283" />
+			<!-- #1-3 (Instance: Brotherly Loathe) -->
+		<Lore zone="3070" x="90" y="862" z="94" loreID="7283">
+			<Note en="Requires Mission: Brotherly Loathe" />
+		</Lore>
+			<!-- #5 (Drop, Mission: Brotherly Loathe) -->
 		<!-- The Tragical History of Doctor Faustus 1/5 -->
 		<Lore zone="3070" x="465" y="612" z="83" loreID="7392" />
+			<!-- #2-3 (Instance: Bank Heist) -->
+		<Lore zone="3070" x="395" y="551" z="112" loreID="7395">
+			<Note en="Requires Mission: The All-Seeing Kawaii" />
+		</Lore>
+		<Lore zone="3070" x="378" y="812" z="121" loreID="7396">
+			<Note en="Requires Mission: The All-Seeing Kawaii" />
+		</Lore>
 		<!-- Trail of Shadows 2/10 -->
 		<Lore zone="3070" x="636" y="722" z="120" loreID="8137" />
-			<!-- #2-3 -->
+			<!-- #2-3 (NYA) -->
 		<Lore zone="3070" x="438" y="423" z="100" loreID="8140" />
-			<!-- #5-8 BS#1-2 -->
+			<!-- #5-8 BS#1-2 (NYA) -->
 		<!-- The Wall 8/9 -->
 		<Lore zone="3070" x="864" y="716" z="89" loreID="7136" />
 		<Lore zone="3070" x="398" y="417" z="89" loreID="7137" />
@@ -209,7 +392,7 @@
 		<Lore zone="3070" x="750" y="425" z="83" loreID="7141" />
 		<Lore zone="3070" x="539" y="447" z="89" loreID="7142" />
 		<Lore zone="3070" x="127" y="420" z="91" loreID="7143" />
-			<!-- BS#4 -->
+			<!-- BS#4 (Drop: Behemoth of the Devouring Plague) -->
 		<!-- Zeroes Wild Pachinko -->
 		<Lore zone="3070" x="537" y="819" z="88" loreID="7114" />
 		<Lore zone="3070" x="466" y="812" z="83" loreID="7115" />
