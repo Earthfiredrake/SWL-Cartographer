@@ -9,6 +9,7 @@ import gfx.utils.Delegate;
 import com.Components.WindowComponentContent;
 import com.GameInterface.Game.Character;
 import com.GameInterface.MathLib.Vector3;
+import com.GameInterface.WaypointInterface;
 
 import efd.Cartographer.lib.etu.MovieClipHelper
 import efd.Cartographer.lib.Mod;
@@ -24,7 +25,6 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	private function InterfaceWindowContent() { // Indirect construction only
 		super();
 		ClientChar = Character.GetClientCharacter();
-		CurrentZoneID = ClientChar.GetPlayfieldID();
 
 		createEmptyMovieClip("MapLayer", getNextHighestDepth());
 		Loader = new MovieClipLoader();
@@ -36,25 +36,14 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		Loader.addListener(listener);
 
 		NotationLayers = new Object();
-	}
 
-	private function MapLoaded(target:MovieClip):Void {
-		target._width = target._width / target._height * MaxMapHeight;
-		target._height = MaxMapHeight;
-		for (var s:String in NotationLayers) {
-			NotationLayers[s].RenderWaypoints(CurrentZoneID);
-		}
-		SignalSizeChanged.Emit();
-	}
-
-	private function ChangeMap(newZone:Number):Void {
-		CurrentZoneID = newZone;
-		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
+		WaypointInterface.SignalPlayfieldChanged.Connect(onPlayfieldChanged, this);
 	}
 
 	private function SetData(zoneIndex:Object, waypoints:Object):Void {
 		ZoneIndex = zoneIndex;
-		if (!ZoneIndex[CurrentZoneID]) { CurrentZoneID = 5060; } // Current zone does not have map support, reset to Agartha
+		var targetZone:Number = ClientChar.GetPlayfieldID();
+		if (!ZoneIndex[targetZone]) { targetZone = 5060; } // Current zone does not have map support, reset to Agartha
 		Waypoints = waypoints;
 		for (var s:String in waypoints) {
 			switch (s) {
@@ -67,9 +56,21 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 			}
 		}
 		PlayerMarker.swapDepths(getNextHighestDepth());
+		ChangeMap(targetZone);
+	}
+
+	private function ChangeMap(newZone:Number):Void {
+		var charZone:Number = ClientChar.GetPlayfieldID();
+		if (charZone == CurrentZoneID) {
+			PlayerMarker._visible = false;
+		}
+		if (charZone == newZone) {
+			PlayerMarker._visible = true;
+		}
+		CurrentZoneID = newZone;
 		// TODO: See if I can source maps from the RDB in any way
-		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
 		//Loader.loadClip("rdb:1000636:9247193", MapLayer); // English map for Museum
+		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
 	}
 
 	private function onEnterFrame():Void {
@@ -78,15 +79,33 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 
 	private function UpdateClientCharMarker():Void {
 		if (ClientChar.GetPlayfieldID() == CurrentZoneID) {
-			PlayerMarker._visible = true;
 			var worldPos:Vector3 = ClientChar.GetPosition(0);
 			var mapPos:Point = WorldToWindowCoords(new Point(worldPos.x, worldPos.z));
 			PlayerMarker._x = mapPos.x;
 			PlayerMarker._y = mapPos.y;
 			PlayerMarker._rotation = RadToDegRotation(-ClientChar.GetRotation());
-		} else {
-			PlayerMarker._visible = false;
 		}
+	}
+
+	private function onPlayfieldChanged(newZone:Number):Void {
+		if (PlayerMarker._visible) { // Player was on the old map
+			if (ZoneIndex[newZone]) { // Map exists for the new zone
+				ChangeMap(newZone);
+			} else { PlayerMarker._visible = false; }
+		} else {
+			if (newZone == CurrentZoneID) { // Player now on the current map
+				PlayerMarker._visible = true;
+			}
+		}
+	}
+
+	private function MapLoaded(target:MovieClip):Void {
+		target._width = target._width / target._height * MaxMapHeight;
+		target._height = MaxMapHeight;
+		for (var s:String in NotationLayers) {
+			NotationLayers[s].RenderWaypoints(CurrentZoneID);
+		}
+		SignalSizeChanged.Emit();
 	}
 
 	public function Close():Void {

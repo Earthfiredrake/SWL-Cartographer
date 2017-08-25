@@ -52,6 +52,9 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
+Version Next
++ Now stalks the player, changing automatically if they leave the current displayed zone
+
 Version 0.0.6-alpha
 + Fixed the bug with icon not staying with UI edit mode overlay
 + Config can now be manually reset (/setoption efdCartographerResetConfig true) WARNING: Until further notice, this will delete any custom waypoints, once they are implemented
@@ -135,4 +138,5 @@ CC0 1.0 Public Domain Dedication
 
 Special Thanks to:<br/>
 The TSW modding community for neglecting to properly secure important intel in their faction vaults<br/>
-AliceOrwell for https://aliceorwell.github.io/TSW-Mapper/ from which much of the inspiration came
+AliceOrwell for https://aliceorwell.github.io/TSW-Mapper/ from which much of the inspiration came<br/>
+Everyone who provided suggestions, testing and feedback
