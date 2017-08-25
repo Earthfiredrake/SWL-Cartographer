@@ -268,7 +268,10 @@
 	<Lore zone="3100" x="405" y="884" z="77" loreID="8834" />
 	<Lore zone="6640" x="218" y="270" z="23" loreID="8835" />
 		<!-- #10 (NYA) -->
-		<!-- #11 (Dearly Departed) -->
+	<Lore zone="3070" x="809" y="645" z="93" loreID="8837">
+		<Note en="Midnight game time, in anima form, possible spawn 1/2" />
+	</Lore>
+		<!-- #11 (Alternate Spawn, NYA) -->
 	<!-- Spirits of Flame -->
 	<Lore zone="3090" x="530" y="669" z="65" loreID="8662" />
 	<Lore zone="3090" x="442" y="976" z="79" loreID="8663" />

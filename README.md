@@ -52,13 +52,13 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
-Version Next
+Version 0.0.6-alpha
 + Fixed the bug with icon not staying with UI edit mode overlay
 + Config can now be manually reset (/setoption efdCartographerResetConfig true) WARNING: Until further notice, this will delete any custom waypoints, once they are implemented
 + Picking up lore now immediately updates the map if it's open
 + Icons for lore that has been picked up now renders behind unclaimed lore icons
 + Slight data schema change ("Notes" tag -> "Note")
-+ All placed lore added to mapped zones (also some instances/dungeons)
++ All placed lore added to currently mapped zones (also some instances/dungeons)
 + Spends less time spamming the log file
 
 Version 0.0.5-alpha
@@ -95,7 +95,7 @@ Version 0.0.2-alpha
 
 This is a very early version of this mod. Everything is an issue, some of them are known.
 I'm always open to hearing comments and suggestions though, better to start with the good ideas than rewrite from the bad ones.
-  
+
 ## Testing and Further Developments
 
 Initial feedback has provided the following suggestions:

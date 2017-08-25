@@ -22,14 +22,20 @@ import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.ModIcon;
 
 // Base class with general mod utility functions
-// The Mod framework reserves the following Config setting names for internal use:
+// The framework reserves the following Config setting names for internal use:
 //   "Installed": Used to trigger first run events
 //   "Version": Used to detect upgrades (and rollbacks, but that's of limited use)
 //   "Enabled": Provides a "soft" disable for the user that doesn't interfere with loading on restart (the config based toggle var does prevent loading if false)
 //   "IconPosition": Only used if topbar is not handling icon layout
 //   "IconScale": Only used if topbar is not handling icon layout
-//   "InterfaceWindowPostion"
-//   "ConfigWindowPosition"
+// The framework reserves the following DistributedValue names (where [pfx] is a developer specific prefix (I use 'efd'), and [name] is the mod name):
+//   "[pfx][Name]Loaded": Set to true when the mod is fully loaded and initialized
+//   "[pfx][Name]Enabled": If the mod is a reactive mod which can be disabled by the user
+//   "[pfx][Name]ResetConfig": Toggle used to reset the mod config to default states from chat
+//   "VTIO_IsLoaded", "meeehrUI_IsLoaded" and "VTIO_RegisterAddon": Provide VTIO/Meeehr compatible topbar integration
+// If an interace or config window is provided, the following settings and DVs are defined:
+//   "[Interface|Config]WindowPostion": Config setting
+//   "[pfx]Show[Name][ConfigUI|Interface]": Toggle DV
 class efd.Cartographer.lib.Mod {
 	// Mod info flags for disabling certain gui elements
 	// Passed as GuiFlags member

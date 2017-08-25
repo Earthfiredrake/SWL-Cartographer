@@ -12,7 +12,7 @@ import efd.Cartographer.Waypoint;
 class efd.Cartographer.Cartographer extends Mod {
 	private static var ModInfo:Object = {
 		// Debug settings at top so that commenting out leaves no hanging ','
-		//Trace : true,
+		// Trace : true,
 		GuiFlags : ef_ModGui_NoConfigWindow,
 		Name : "Cartographer",
 		Version : "0.0.6.alpha"
@@ -98,14 +98,11 @@ class efd.Cartographer.Cartographer extends Mod {
 
 	private static function ParseSection(section:XMLNode):Array {
 		var waypoints:Array = new Array();
-		TraceMsg("Parsing " + section.childNodes.length + " entries at this level");
 		for (var i:Number = 0; i < section.childNodes.length; ++i) {
 			var node:XMLNode = section.childNodes[i];
 			if (node.nodeName == "Section") {
-				TraceMsg("Parsing nested section.");
 				waypoints = waypoints.concat(ParseSection(node));
 			} else {
-				TraceMsg("Parsing waypoint.");
 				waypoints.push(Waypoint.Create(node));
 			}
 		}
@@ -133,7 +130,6 @@ class efd.Cartographer.Cartographer extends Mod {
 	}
 
 	private function InterfaceWindowLoaded():Void {
-		TraceMsg("Opening interface window");
 		InterfaceWindowClip.m_Content.SetData(ZoneIndex, Waypoints);
 	}
 
