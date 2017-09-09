@@ -364,7 +364,9 @@
 		</Lore>
 		<Lore zone="3070" x="271" y="553" z="87" loreID="7112" />
 		<!-- Tale of Momotaro 1/5 -->
-			<!-- #1-3 (Instance: Brotherly Loathe) -->
+		<Lore zone="6710" x="523" y="764" z="74" loreID="7280" />
+		<Lore zone="6710" x="511" y="821" z="82" loreID="7281" />
+		<Lore zone="6710" x="577" y="887" z="74" loreID="7282" />
 		<Lore zone="3070" x="90" y="862" z="94" loreID="7283">
 			<Note en="Requires Mission: Brotherly Loathe" />
 		</Lore>
