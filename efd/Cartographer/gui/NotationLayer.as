@@ -23,7 +23,10 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 	public function RenderWaypoints(newZone:Number):Void {
 		WaypointCount = -1;
 		Zone = newZone;
-		LoadSequential();
+		if (_visible) {
+			// Defer this if the layer has been hidden, for faster loading of visible layers
+			LoadSequential();
+		}
 	}
 
 	private function LoadSequential():Void {
@@ -66,6 +69,13 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 	private var _RenderedWaypoints:Array;
 	public function get RenderedWaypoints():Array {	return _RenderedWaypoints; }
 	// Array of currently displayed waypoints for this layer
+
+	public function set Visible(value:Boolean):Void {
+		if (value && !_visible) {
+			LoadSequential(); // Refresh the waypoints, as they may be out of date
+		}
+		_visible = value;
+	}
 
 	// TODO: Consider doing some sorting of waypoints based on icon, in an effort to minimize reloads
 }

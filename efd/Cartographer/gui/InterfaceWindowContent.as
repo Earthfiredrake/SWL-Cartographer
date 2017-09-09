@@ -112,7 +112,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	    // TODO: This is needlessly redundant, can I work out a way of triggering on more specific settings
 		if (setting == "LayerSettings" || setting == undefined) {
 			for (var i:Number = 0; i < Waypoints.length; ++i) {
-				NotationLayers[i]._visible = Waypoints[i].Settings.ShowLayer;
+				NotationLayers[i].Visible = Waypoints[i].Settings.ShowLayer;
 			}
 		}
 	}
