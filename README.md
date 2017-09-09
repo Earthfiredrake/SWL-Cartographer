@@ -1,5 +1,6 @@
 # TSW-Cartographer
-Supplementary world maps for The Secret World and Secret World Legends
+Supplementary world maps for Secret World Legends
+Legacy support for The Secret World is largely untested and the provided waypoint packs reflect locations in SWL. While alternate waypoint sets are perfectly possible, I will not be taking the time to generate them for TSW myself, but would be willing to include such a pack if one was volunteered.
 
 ## Overview
 This mod intends to provide a supplement to the ingame regional and dungeon maps, with various improvements:
@@ -53,7 +54,8 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 ## Change Log
 
 Version Next
-+ Now stalks the player, changing automatically if they leave the current displayed zone
++ Now stalks the player, changing automatically if they leave the current displayed zone for another mapped zone
++ Sidebar lists all layers and allows them to be selectively hidden
 
 Version 0.0.6-alpha
 + Fixed the bug with icon not staying with UI edit mode overlay
@@ -130,7 +132,7 @@ Both copyright (c) 2015 eltorqiro and used under the terms of the MIT License<br
 https://github.com/eltorqiro/TSW-Utils <br/>
 https://github.com/eltorqiro/TSW-UITweaks
 
-TSW, the related API, and most graphics elements, including all maps are copyright (c) 2012 Funcom GmBH<br/>
+TSW, SWL, the related API, and most graphics elements, including all maps and current waypoint icons are copyright (c) 2012 Funcom GmBH<br/>
 Used under the terms of the Funcom UI License<br/>
 
 Current Icon sourced from https://openclipart.org/detail/233062/compass-rose <br/>
