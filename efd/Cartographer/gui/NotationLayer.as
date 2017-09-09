@@ -17,6 +17,7 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 	private function NotationLayer() { // Indirect construction only
 		super();
 		_RenderedWaypoints = new Array();
+		_visible = Config.ShowLayer;
 	}
 
 	public function RenderWaypoints(newZone:Number):Void {
@@ -57,6 +58,8 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 
 	/// Variables
 	private var Zone:Number;
+
+	private var Config:Object;
 
 	private var WaypointCount:Number;
 	private var WaypointData:Object; // Zone indexed map of waypoint data arrays
