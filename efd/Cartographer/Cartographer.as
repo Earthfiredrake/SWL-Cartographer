@@ -4,6 +4,8 @@
 
 import gfx.utils.Delegate;
 
+import com.GameInterface.DistributedValue;
+
 import efd.Cartographer.lib.ConfigWrapper;
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
@@ -49,8 +51,7 @@ class efd.Cartographer.Cartographer extends Mod {
 	private function ConfigLoaded():Void {
 		var layerConfig:Object = Config.GetValue("LayerSettings");
 		for (var key:String in layerConfig) {
-			var depth:Number = layerConfig[key].Depth;
-			Waypoints[depth] = { Layer : key, Settings : layerConfig[key] };
+			Waypoints[layerConfig[key].Depth] = { Layer : key, Settings : layerConfig[key] };
 		}
 
 		Config.ResetValue("OverlayPacks"); // TEMP: Not actually saving this while files are in flux/no config UI
@@ -62,6 +63,19 @@ class efd.Cartographer.Cartographer extends Mod {
 		OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack));
 
 		super.ConfigLoaded();
+	}
+
+	private function ResetConfig(dv:DistributedValue):Void {
+		if (dv.GetValue()) {
+			super.ResetConfig(dv);
+			var layerConfig:Object = Config.GetValue("LayerSettings");
+			for (var i:Number = 0; i < Waypoints.length; ++i) {
+				Waypoints[i].Settings.ShowLayer = true;
+				Waypoints[i].Settings.Depth = i;
+				layerConfig[Waypoints[i].Layer] = Waypoints[i].Settings;
+			}
+			Config.NotifyChange("LayerSettings");
+		}
 	}
 
 	private function LoadZoneInfo(success:Boolean):Void {
