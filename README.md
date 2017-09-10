@@ -54,8 +54,10 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 ## Change Log
 
 Version Next
-+ Now stalks the player, changing automatically if they leave the current displayed zone for another mapped zone
-+ Sidebar lists all layers and allows them to be selectively hidden
++ Champion waypoints, with similar completion tracking as Lore
+  + All known champions with fixed locations are included, roaming ones are waiting on additional display options (zones and paths) and tools
++ Map now stalks the player, changing automatically if they leave the current displayed zone for another mapped zone
++ Sidebar list of layers; allows them to be selectively hidden; may have other uses in the future
 
 Version 0.0.6-alpha
 + Fixed the bug with icon not staying with UI edit mode overlay

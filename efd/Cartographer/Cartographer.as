@@ -14,7 +14,7 @@ import efd.Cartographer.Waypoint;
 class efd.Cartographer.Cartographer extends Mod {
 	private static var ModInfo:Object = {
 		// Debug settings at top so that commenting out leaves no hanging ','
-		// Trace : true,
+		Trace : true,
 		GuiFlags : ef_ModGui_NoConfigWindow,
 		Name : "Cartographer",
 		Version : "0.0.6.alpha"
@@ -39,7 +39,7 @@ class efd.Cartographer.Cartographer extends Mod {
 	private function InitializeConfig():Void {
 		var defaultPacks:Array = new Array();
 		//defaultPacks.push({ name : "Missions", load : true });
-		//defaultPacks.push({ name : "Champions", load : true });
+		defaultPacks.push({ name : "Champions", load : true });
 		defaultPacks.push({ name : "LoreGlobal", load : true });
 		defaultPacks.push({ name : "LoreRegional", load : true });
 		defaultPacks.push({ name : "LoreBestiary", load : true });
@@ -101,7 +101,9 @@ class efd.Cartographer.Cartographer extends Mod {
 				var zone:Number = waypoints[i].ZoneID;
 				var layerConfig:Object = Config.GetValue("LayerSettings")[layer];
 				if (layerConfig == undefined) {
-					layerConfig = { ShowLayer : true, Depth : Waypoints.push({ Layer : layer, Settings : layerConfig }) - 1 };
+					layerConfig = new Object();
+					layerConfig.ShowLayer = true;
+					layerConfig.Depth = Waypoints.push({ Layer : layer, Settings : layerConfig}) - 1;
 					Config.GetValue("LayerSettings")[layer] = layerConfig;
 					Config.NotifyChange("LayerSettings");
 				}

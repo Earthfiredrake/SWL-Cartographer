@@ -44,12 +44,15 @@ import com.Utils.LDBFormat
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
 
+// TODO: A registration system so that I can add these without changing the factory method
+import efd.Cartographer.Waypoints.ChampPoint;
 import efd.Cartographer.Waypoints.LorePoint;
 import efd.Cartographer.Waypoints.TransitPoint;
 
 class efd.Cartographer.Waypoint {
 	public static function Create(xml:XMLNode):Waypoint {
 		switch (xml.nodeName) {
+			case "Champ": return new ChampPoint(xml);
 			case "Lore": return new LorePoint(xml);
 			case "Transit": return new TransitPoint(xml);
 			default: return new Waypoint(xml);
