@@ -63,7 +63,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 				case "Lore": { layerType = LoreLayer; break; }
 				default: { layerType = NotationLayer; break; }
 			}
-			NotationLayers[i] = MovieClipHelper.createMovieWithClass(layerType, layerName + "Layer", this, getNextHighestDepth(), {WaypointData : Waypoints[i], Config : config.GetValue("LayerSettings")[layerName]});
+			NotationLayers[i] = MovieClipHelper.createMovieWithClass(layerType, layerName + "Layer", this, getNextHighestDepth(), { WaypointData : Waypoints[i], Config : config.GetValue("LayerSettings")[layerName], HostClip : this });
 		}
 
 		PlayerMarker.swapDepths(getNextHighestDepth());

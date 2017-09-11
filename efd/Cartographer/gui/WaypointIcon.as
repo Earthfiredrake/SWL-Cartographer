@@ -117,11 +117,13 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	private function ShowTooltip():Void {
 		if (!Tooltip) {
-			Tooltip = attachMovie("CartographerWaypointTooltip", "Tooltip", getNextHighestDepth());
+			Tooltip = LayerClip.HostClip.attachMovie("CartographerWaypointTooltip", "Tooltip", LayerClip.HostClip.getNextHighestDepth());
 			Tooltip.TF_Name.backgroundColor = 0x333333;
 			Tooltip.TF_Name.background = true;
 			Tooltip.TF_Name.autoSize = "left";
 			Tooltip.TF_Name.text = Data.Name;
+			Tooltip._x = _x;
+			Tooltip._y = _y;
 		}
 	}
 
@@ -135,6 +137,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	public function Unload():Void {
 		// TODO:Destroy label?
 		Loader.unloadClip(Icon);
+		RemoveTooltip();
 	}
 
 	public var Data:Waypoint;
@@ -146,6 +149,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	private var Label:TextField;
 
+	private var LayerClip:MovieClip; // The clip containing all of this layer's waypoints (equivalent to _parent on simple layers, but there may be intermediate clips in other layers)
 	private var Tooltip:MovieClip;
 
 	private static var FocusScale:Number = 110;

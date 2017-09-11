@@ -42,7 +42,7 @@ class efd.Cartographer.gui.Layers.LoreLayer extends NotationLayer {
 			existing.Reassign(data, mapPos);
 		} else {
 			var targetClip:MovieClip = this[claim + "LoreSublayer"];
-			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + targetClip.getNextHighestDepth(), targetClip, targetClip.getNextHighestDepth(), {Data : data, _x : mapPos.x, _y : mapPos.y}));
+			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + targetClip.getNextHighestDepth(), targetClip, targetClip.getNextHighestDepth(), {Data : data, _x : mapPos.x, _y : mapPos.y, LayerClip: this}));
 			wp.SignalWaypointLoaded.Connect(LoadSequential, this);
 			wp.LoadIcon();
 			this["Rendered" + claim + "Waypoints"].push(wp);

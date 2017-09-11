@@ -43,7 +43,7 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 		if (RenderedWaypoints[WaypointCount]) {
 			RenderedWaypoints[WaypointCount].Reassign(data, mapPos);
 		} else {
-			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + getNextHighestDepth(), this, getNextHighestDepth(), {Data : data, _x : mapPos.x, _y : mapPos.y}));
+			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + getNextHighestDepth(), this, getNextHighestDepth(), { Data : data, _x : mapPos.x, _y : mapPos.y, LayerClip: this}));
 			wp.SignalWaypointLoaded.Connect(LoadSequential, this);
 			wp.LoadIcon();
 			RenderedWaypoints.push(wp);
@@ -60,6 +60,7 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 	}
 
 	/// Variables
+	private var HostClip:MovieClip; // The movie clip that contains all the layers, on which tooltips will be placed
 	private var Zone:Number;
 
 	private var Config:Object;

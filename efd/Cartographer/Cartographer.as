@@ -17,7 +17,7 @@ class efd.Cartographer.Cartographer extends Mod {
 		// Trace : true,
 		GuiFlags : ef_ModGui_NoConfigWindow,
 		Name : "Cartographer",
-		Version : "0.0.6.alpha"
+		Version : "0.1.0.alpha"
 	};
 
 	/// Initialization
