@@ -102,7 +102,7 @@ class efd.Cartographer.Cartographer extends Mod {
 				var layerConfig:Object = Config.GetValue("LayerSettings")[layer];
 				if (layerConfig == undefined) {
 					layerConfig = new Object();
-					layerConfig.ShowLayer = true;
+					layerConfig.ShowLayer = OverlayList[0] == "BasePack"; // Only shows layers defined in the base pack by default
 					layerConfig.Depth = Waypoints.push({ Layer : layer, Settings : layerConfig}) - 1;
 					Config.GetValue("LayerSettings")[layer] = layerConfig;
 					Config.NotifyChange("LayerSettings");

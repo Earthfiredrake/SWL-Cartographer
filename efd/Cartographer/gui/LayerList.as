@@ -6,6 +6,7 @@ import gfx.core.UIComponent;
 import gfx.utils.Delegate;
 
 import efd.Cartographer.lib.ConfigWrapper;
+import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
 
 class efd.Cartographer.gui.LayerList extends UIComponent {
@@ -37,7 +38,8 @@ class efd.Cartographer.gui.LayerList extends UIComponent {
 			label.selectable = false;
 			label.autoSize = "left";
 			label.setNewTextFormat(LayerLabelFormat);
-			label.text = layers[i].Layer;
+			var text = LocaleManager.GetString("GUI", "LayerLabel" + layers[i].Layer);
+			label.text = text ? text : layers[i].Layer;
 			if (!layers[i].Settings.ShowLayer) {
 				label.setTextFormat(HiddenLayerLabelFormat);
 			}

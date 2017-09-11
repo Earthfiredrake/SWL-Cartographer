@@ -62,6 +62,16 @@
 				en="Show Settings" />
 		<String tag="TooltipShowInterface"
 				en="Display Maps" />
+		<String tag="LayerLabelAnimaWell"
+				en="Anima Wells" />
+		<String tag="LayerLabelChamp"
+				en="Champions" />
+		<String tag="LayerLabelLore"
+				en="Lore" /> <!-- Almost trolling here, 'Lore' would be the default is included for lost souls who insist on calling them 'Legends'. -->
+		<String tag="LayerLabelTransit"
+				en="Zone Transitions" />
+		<String tag="LayerLabelVendor"
+				en="Vendors" />
 	</Category>
 	<Category name="AutoReport"> <!-- Only used for player notifications, report content is internal -->
 		<String tag="ReportQueued"

@@ -22,7 +22,11 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		var listener:Object = new Object();
 		listener.onLoadInit = Delegate.create(this, IconLoaded);
 		listener.onLoadError = function(target:MovieClip, error:String):Void {
-			Mod.ErrorMsg("Unable to load icon (" + target._parent.Data.Icon + "): " + error);
+			// Attempt to filter out spurious error messsages caused by closing the window during loading
+			// While still detecting conditions where Data is corrupt or missing.
+			if (target._parent) {
+				Mod.ErrorMsg("Unable to load icon (" + target._parent.Data.Icon + "): " + error);
+			}
 		};
 		Loader.addListener(listener);
 
