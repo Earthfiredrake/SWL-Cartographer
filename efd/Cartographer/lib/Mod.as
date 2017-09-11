@@ -328,6 +328,7 @@ class efd.Cartographer.lib.Mod {
 		// Current theory is there's some type of process time limiter on callbacks before they get discarded
 		// As this framework does some potentially heavy lifting during this stage (adjusting clip layer)
 		// Defer it slightly to give the program more time to deal with other mods
+		// TODO: Revisit this assumption, speculation is that the act of disconnecting from the DV signal was messing with the index during iteration.
 		setTimeout(Delegate.create(this, DoTopbarRegistration), 1, dv);
 	}
 

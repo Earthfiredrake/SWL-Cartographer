@@ -19,6 +19,7 @@ import efd.Cartographer.Waypoint;
 
 import efd.Cartographer.gui.NotationLayer;
 import efd.Cartographer.gui.LayerList;
+import efd.Cartographer.gui.Layers.ChampLayer;
 import efd.Cartographer.gui.Layers.LoreLayer;
 import efd.Cartographer.gui.WaypointIcon;
 
@@ -58,6 +59,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 			var layerName:String = Waypoints[i].Layer;
 			var layerType:Function;
 			switch (layerName) {
+				case "Champ": { layerType = ChampLayer; break; }
 				case "Lore": { layerType = LoreLayer; break; }
 				default: { layerType = NotationLayer; break; }
 			}
