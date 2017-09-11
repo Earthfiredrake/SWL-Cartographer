@@ -1,6 +1,6 @@
 # TSW-Cartographer
 Supplementary world maps for Secret World Legends
-Legacy support for The Secret World is largely untested and the provided waypoint packs reflect locations in SWL. While alternate waypoint sets are perfectly possible, I will not be taking the time to generate them for TSW myself, but would be willing to include such a pack if one was volunteered.
+Legacy support for The Secret World is largely untested and provided waypoint packs use SWL locations. I will not be taking the time to generate waypoints for TSW myself, but would be willing to include an alternative pack if one was volunteered.
 
 ## Overview
 This mod intends to provide a supplement to the ingame regional and dungeon maps, with various improvements:
@@ -32,13 +32,13 @@ Due to limitations with the API, it does not seem to be possible to:
   + This mod will be duplicating as much existing functionality as is possible and be a second map window in game
 + Entirely replace the existing map's functionality
   + Anima leap and the long range detection of champion monsters and world bosses is not yet understood
-    + Oddly it may be possible to integrate zone teleportation (the Shift-T menu). I've stuck in some preliminary placeholder stuff in relation to these, and will revisit them later
+    + It may be easier to integrate zone teleportation (the Shift-T menu).
 + Directly save player added waypoints to the xml files containing pre-packaged info
   + Manual export and sharing features may be supported
   + Custom waypoints will have to be saved with the rest of the mod settings
     + This will likely have a slightly different data layout than the waypoint pack files, because the universe enjoys making me write parsers
 
-The mod is currently in pre-alpha prototyping and proof of concept stages, and has minimal functionality. Graphics are temporary placeholders of less than desired quality.
+The mod is currently in alpha, with limited functionality. Graphics are temporary placeholders of less than desired quality. Settings may be reset while upgrading.
 
 All settings are saved account wide and will be shared across characters. If you'd rather have different settings for each character, renaming the file "LoginPrefs.xml" to "CharPrefs.xml" when installing/upgrading the mod should work without any problems. A clean install of the mod is recommended if doing this, as it will be unable to transfer existing settings anyway.
 
@@ -53,11 +53,12 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
-Version Next
+Version 0.1.0-alpha
 + Champion waypoints, with similar completion tracking as Lore
   + All known champions with fixed locations are included, roaming ones are waiting on additional display options (zones and paths) and tools
-+ Map now stalks the player, changing automatically if they leave the current displayed zone for another mapped zone
 + Sidebar list of layers; allows them to be selectively hidden; may have other uses in the future
++ Tooltips are less shy, no longer hide behind other waypoints randomly
++ Map now stalks the player, changing automatically if they leave the current displayed zone for another mapped zone
 
 Version 0.0.6-alpha
 + Fixed the bug with icon not staying with UI edit mode overlay
@@ -104,6 +105,13 @@ This is a very early version of this mod. Everything is an issue, some of them a
 I'm always open to hearing comments and suggestions though, better to start with the good ideas than rewrite from the bad ones.
 
 ## Testing and Further Developments
+
+Current goals for the next version:
++ Path and Zone map markers
++ Expanding tooltips
+  + Making more info available (note fields, coordinates, etc.)
+  + Handling stacked waypoints
++ A proper map viewport system (with zoom and scrolling)
 
 Initial feedback has provided the following suggestions:
 + Mouse coordinates should be clearly displayed someplace obvious
