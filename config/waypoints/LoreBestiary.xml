@@ -2,7 +2,10 @@
 <!-- Copyright 2017, Earthfiredrake (Peloprata)
      Released under the terms of the MIT License
      https://github.com/Earthfiredrake/TSW-Cartographer -->
-<!-- Lore locations verified with LoreHound -->
+<!--
+	Fixed Lore locations verified with LoreHound
+	Drops from champion mobs use their waypoint locations
+-->
 <OverlayPack>
 	<!-- Ak'ab 5/8 -->
 	<Lore zone="3040" x="420" y="947" z="153" loreID="8485" />
@@ -38,12 +41,19 @@
 	<Lore zone="3100" x="192" y="309" z="62" loreID="8660">
 		<Note en="Collect one of each colour: Green"/>
 	</Lore>
-	<Lore zone="3100" x="611" y="678" z="71" loreID="8660" />
+	<Lore zone="3100" x="435" y="145" z="87" loreID="8660">
+		<Note en="Collect one of each colour: Green"/>
+	</Lore>
+	<Lore zone="3100" x="611" y="678" z="71" loreID="8660">
+		<Note en="Collect one of each colour: Green"/>
+	</Lore>
 		<!-- Red -->
 	<Lore zone="3100" x="263" y="899" z="89" loreID="8660">
 		<Note en="Collect one of each colour: Red"/>
 	</Lore>
-	<Lore zone="3100" x="594" y="301" z="77" loreID="8660" />
+	<Lore zone="3100" x="594" y="301" z="77" loreID="8660">
+		<Note en="Collect one of each colour: Red"/>
+	</Lore>
 	<Lore zone="3100" x="822" y="637" z="83" loreID="8660">
 		<Note en="Collect one of each colour: Red"/>
 	</Lore>
@@ -104,7 +114,9 @@
 	<Lore zone="3050" x="55" y="291" z="131" loreID="8527" />
 		<!-- #5 (BM, Drop: Deep Ones) -->
 	<Lore zone="3050" x="98" y="434" z="140" loreID="8529" />
-		<!-- #7 (KD, Drop: Squamous Host Lord) -->
+	<Lore zone="3070" x="781" y="916" z="72" loreID="8530">
+		<Note en="Champion mob drop" />
+	</Lore>
 	<!-- Draug - Drones 8/9 -->
 	<Lore zone="3050" x="446" y="14" z="131" loreID="8532" />
 	<Lore zone="3050" x="349" y="191" z="135" loreID="8533" />
@@ -198,9 +210,16 @@
 		<!-- #6 (CotSG, Drop: Embalmed Emptiness) -->
 	<Lore zone="3100" x="158" y="807" z="95" loreID="8617" />
 	<Lore zone="3090" x="793" y="878" z="65" loreID="8619" />
-		<!-- #9 (CotSG, Drop: Black Pharaoh's Pride, Guardian of the Valley -->
+	<Lore zone="3100" x="629" y="720" z="82" loreID="8621">
+		<Note en="Champion mob drop" />
+	</Lore>
+	<Lore zone="3100" x="645" y="640" z="82" loreID="8621">
+		<Note en="Champion mob drop" />
+	</Lore>
 	<Lore zone="3100" x="669" y="764" z="78" loreID="8624" />
-		<!-- #11 (SD, Drop: Tribunus Ortho) -->
+	<Lore zone="3090" x="161" y="574" z="67" loreID="8627">
+		<Note en="Champion mob drop" />
+	</Lore>
 		<!-- #12 (SD, Instance, PITA) -->
 	<!-- Namahage 0/3 (NYA) -->
 	<!-- Oni 3/4 -->
@@ -214,7 +233,9 @@
 		<!-- #1-2 (NYA) -->
 	<Lore zone="3100" x="15" y="808" z="54" loreID="8743" />
 		<!-- #4-5 (NYA) -->
-		<!-- #6 (KD, Drop: Protoype Smiler) -->
+	<Lore zone="3070" x="128" y="517" z="85" loreID="8746">
+		<Note en="Champion mob drop; Kill fast" />
+	</Lore>
 	<!-- Padurii 2/7 -->
 		<!-- #1 (Drop: Keening) -->
 	<Lore zone="3130" x="1138" y="745" z="50" loreID="8880" />
@@ -305,10 +326,14 @@
 		<!-- #5 (CF, Drop: Pain Artist) -->
 		<!-- #6-7 (Instance: Castle) -->
 	<Lore zone="3120" x="250" y="866" z="76" loreID="9084" />
-		<!-- #9 (CF, Drop: Survivalist) -->
+	 <Lore zone="3140" x="919" y="1030" z="51" loreID="9237">
+		<Note en="Chase down vampire survivalist" />
+	 </Lore>
 	<!-- Vampire Super Soliders 0/5 -->
 		<!-- #1 (SH) -->
-		<!-- #2 (BF, Drop: Cannibal Prince) -->
+	<Lore zone="3120" x="338" y="918" z="130" loreID="8904">
+		<Note en="Champion mob drop" />
+	</Lore>
 		<!-- #3 (Fac) -->
 		<!-- #4-5 (SH) -->
 	<!-- Wendigo -->
@@ -330,6 +355,9 @@
 	<Lore zone="3120" x="662" y="683" z="102" loreID="8871" />
 		<!-- #6 (BF, Drop: Scalpers) -->
 		<!-- #7 (CF, Drop: Frostbite) -->
+	<Lore zone="3140" x="344" y="1199" z="34" loreID="8873">
+		<Note en="Champion mob drop" />
+	</Lore>
 	<Lore zone="3120" x="955" y="218" z="84" loreID="8874" />
 	<!-- Wisps 5/7 -->
 	<Lore zone="3030" x="206" y="72" z="156" loreID="8550" />

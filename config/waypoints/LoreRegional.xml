@@ -2,7 +2,10 @@
 <!-- Copyright 2017, Earthfiredrake (Peloprata)
      Released under the terms of the MIT License
      https://github.com/Earthfiredrake/TSW-Cartographer -->
-<!-- Lore locations verified with LoreHound -->
+<!--
+	Fixed Lore locations verified with LoreHound
+	Drops from champion mobs use their waypoint locations
+-->
 <OverlayPack>
 	<Section> <!-- Solomon Island -->
 		<!-- 1712 Fire -->
@@ -339,7 +342,32 @@
 		<Lore zone="3070" x="565" y="915" z="73" loreID="7168" />
 		<Lore zone="3070" x="114" y="640" z="93" loreID="7169" />
 		<Lore zone="3070" x="822" y="709" z="92" loreID="7170" />
-			<!-- BS#3 (Drop: Hyperinfected/Commuter?) -->
+			<!-- BS#3 (Drop: Hyperinfected/Commuter multiple spawns) -->
+			<!-- TODO: Verify that both drop it -->
+		<Lore zone="3070" x="344" y="768" z="85" loreID="7171"> <!-- Bubbles -->
+			<Note en="Champion mob drop" />
+		</Lore>
+		<Lore zone="3070" x="410" y="564" z="85" loreID="7171">
+			<Note en="Champion mob drop" />
+		</Lore>
+		<Lore zone="3070" x="444" y="612" z="85" loreID="7171"> <!-- Bubbles -->
+			<Note en="Champion mob drop" />
+		</Lore>
+		<Lore zone="3070" x="539" y="424" z="85" loreID="7171">
+			<Note en="Champion mob drop" />
+		</Lore>
+		<Lore zone="3070" x="583" y="795" z="85" loreID="7171">
+			<Note en="Champion mob drop" />
+		</Lore>
+		<Lore zone="3070" x="649" y="854" z="85" loreID="7171"> <!-- Bubbles -->
+			<Note en="Champion mob drop" />
+		</Lore>
+		<Lore zone="3070" x="744" y="791" z="85" loreID="7171">
+			<Note en="Champion mob drop" />
+		</Lore>
+		<Lore zone="3070" x="761" y="776" z="85" loreID="7171">
+			<Note en="Champion mob drop" />
+		</Lore>
 		<!-- The Maiden Shrine 0/10 (NYA) -->
 		<!-- The Manufactory 0/7 (NYA) -->
 		<!-- Manufactory Breached 0/12 (NYA) -->
@@ -363,7 +391,7 @@
 			<Note en="Take a seat, politely" />
 		</Lore>
 		<Lore zone="3070" x="271" y="553" z="87" loreID="7112" />
-		<!-- Tale of Momotaro 1/5 -->
+		<!-- Tale of Momotaro 4/5 -->
 		<Lore zone="6710" x="523" y="764" z="74" loreID="7280" />
 		<Lore zone="6710" x="511" y="821" z="82" loreID="7281" />
 		<Lore zone="6710" x="577" y="887" z="74" loreID="7282" />
