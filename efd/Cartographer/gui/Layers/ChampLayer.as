@@ -39,7 +39,10 @@ class efd.Cartographer.gui.Layers.ChampLayer extends NotationLayer {
 		var existing:WaypointIcon = this["Rendered" + status + "Waypoints"][this[status + "Count"]];
 		this[status + "Count"] += 1;
 		if (existing) {
-			existing.Reassign(data, mapPos);
+			if (Refresh) {
+				existing.UpdatePosition(mapPos);
+				LoadSequential();
+			} else { existing.Reassign(data, mapPos); }
 		} else {
 			var targetClip:MovieClip = this[status + "ChampionsSublayer"];
 			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + targetClip.getNextHighestDepth(), targetClip, targetClip.getNextHighestDepth(), { Data : data, _x : mapPos.x, _y : mapPos.y, LayerClip: this }));

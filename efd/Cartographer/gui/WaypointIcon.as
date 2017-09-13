@@ -90,6 +90,11 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		return label;
 	}
 
+	public function UpdatePosition(pos:Point):Void {
+		_x = pos.x;
+		_y = pos.y;
+	}
+
 	public function Reassign(data:Waypoint, pos:Point):Void {
 		RemoveTooltip();
 
@@ -106,8 +111,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 				// TODO:Destroy label
 			}
 		}
-		_x = pos.x;
-		_y = pos.y;
+		UpdatePosition(pos);
 		if (oldData.Icon != data.Icon) {
 			Loader.loadClip("Cartographer\\icons\\" + data.Icon, Icon);
 		} else {
@@ -136,8 +140,8 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	public function Unload():Void {
 		// TODO:Destroy label?
-		Loader.unloadClip(Icon);
 		RemoveTooltip();
+		Loader.unloadClip(Icon);
 	}
 
 	public var Data:Waypoint;

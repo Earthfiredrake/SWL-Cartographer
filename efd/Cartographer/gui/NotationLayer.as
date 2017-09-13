@@ -22,6 +22,9 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 
 	public function RenderWaypoints(newZone:Number):Void {
 		WaypointCount = -1;
+		// Map hasn't changed, waypoints will still have right data, just need refreshing
+		// If the map ever changes, refresh stays false until a full reload is completed
+		Refresh = Refresh && (Zone == newZone);
 		Zone = newZone;
 		if (_visible) {
 			// Defer this if the layer has been hidden, for faster loading of visible layers
@@ -29,19 +32,23 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 		}
 	}
 
-	private function LoadSequential():Void {
+	public function LoadSequential():Void {
 		WaypointCount += 1;
 		var waypoints:Array = WaypointData[Zone];
 		if (WaypointCount < waypoints.length) {
 			AttachWaypoint(waypoints[WaypointCount], _parent.WorldToWindowCoords(waypoints[WaypointCount].Position));
 		} else {
 			ClearDisplay(waypoints.length);
+			Refresh = true;
 		}
 	}
 
 	private function AttachWaypoint(data:Waypoint, mapPos:Point):Void {
 		if (RenderedWaypoints[WaypointCount]) {
-			RenderedWaypoints[WaypointCount].Reassign(data, mapPos);
+			if (Refresh) {
+				RenderedWaypoints[WaypointCount].UpdatePosition(mapPos);
+				LoadSequential(); // We better be able to barrel through basic updates
+			} else { RenderedWaypoints[WaypointCount].Reassign(data, mapPos); }
 		} else {
 			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + getNextHighestDepth(), this, getNextHighestDepth(), { Data : data, _x : mapPos.x, _y : mapPos.y, LayerClip: this}));
 			wp.SignalWaypointLoaded.Connect(LoadSequential, this);
@@ -62,6 +69,7 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 	/// Variables
 	private var HostClip:MovieClip; // The movie clip that contains all the layers, on which tooltips will be placed
 	private var Zone:Number;
+	private var Refresh:Boolean;
 
 	private var Config:Object;
 
@@ -71,9 +79,17 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 	public function get RenderedWaypoints():Array {	return _RenderedWaypoints; }
 	// Array of currently displayed waypoints for this layer
 
+	public function get RefreshIncomplete():Boolean {
+		// Adding a check of Refresh here prevents it from trying to hijack the initial zone load
+		// However letting the hijack occur seems to significantly decrease load times
+		// Have not noticed any instability as a result, but will monitor
+		return _visible && WaypointCount < WaypointData[Zone].length;
+	}
+
 	public function set Visible(value:Boolean):Void {
 		if (value && !_visible) {
 			LoadSequential(); // Refresh the waypoints, as they may be out of date
+			// RenderWaypoints(Zone); Do I need to force a hard refresh of the full layer?
 		}
 		_visible = value;
 	}

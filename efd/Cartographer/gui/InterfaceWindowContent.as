@@ -86,6 +86,12 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 
 	private function onEnterFrame():Void {
 		UpdateClientCharMarker();
+
+		for (var i:Number = 0; i < NotationLayers.length; ++i) {
+			if (NotationLayers[i].RefreshIncomplete) {
+				NotationLayers[i].LoadSequential();
+			}
+		}
 	}
 
 	private function UpdateClientCharMarker():Void {
@@ -120,8 +126,24 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	}
 
 	private function MapLoaded(target:MovieClip):Void {
-		target._width = target._width / target._height * MaxMapHeight;
-		target._height = MaxMapHeight;
+		target.onMouseWheel = Delegate.create(target._parent, HandleMapScaling);
+
+		// Return the image to its natural size and calculate if it needs to be scaled down at "default" size
+		target._xscale = 100;
+		target._yscale = 100;
+		target._parent.MapImageScale = Math.min(1, MaxMapHeight / target._height) * 100;
+		// Restore the proper zoom level
+		target._parent.HandleMapScaling(0); // Need
+	}
+
+	private function HandleMapScaling(delta:Number):Void {
+		ZoomLevel = Math.min(100, Math.max(0, ZoomLevel + delta * 2));
+		MapLayer._xscale = MapImageScale + ZoomLevel;
+		MapLayer._yscale = MapImageScale + ZoomLevel;
+		Refresh();
+	}
+
+	private function Refresh():Void {
 		for (var i:Number = 0; i < NotationLayers.length; ++i) {
 			NotationLayers[i].RenderWaypoints(CurrentZoneID);
 		}
@@ -156,6 +178,9 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 
 	private var ZoneIndex:Object;
 	private var CurrentZoneID:Number;
+
+	private var MapImageScale:Number;
+	private var ZoomLevel:Number = 0;
 
 	private var LayerListDisplay:LayerList;
 	private var MapLayer:MovieClip;
