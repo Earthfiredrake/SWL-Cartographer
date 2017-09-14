@@ -36,7 +36,7 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 		WaypointCount += 1;
 		var waypoints:Array = WaypointData[Zone];
 		if (WaypointCount < waypoints.length) {
-			AttachWaypoint(waypoints[WaypointCount], _parent.WorldToWindowCoords(waypoints[WaypointCount].Position));
+			AttachWaypoint(waypoints[WaypointCount], _parent.WorldToMapCoords(waypoints[WaypointCount].Position));
 		} else {
 			ClearDisplay(waypoints.length);
 			Refresh = true;

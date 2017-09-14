@@ -97,7 +97,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	private function UpdateClientCharMarker():Void {
 		if (ClientChar.GetPlayfieldID() == CurrentZoneID) {
 			var worldPos:Vector3 = ClientChar.GetPosition(0);
-			var mapPos:Point = WorldToWindowCoords(new Point(worldPos.x, worldPos.z));
+			var mapPos:Point = WorldToViewCoords(new Point(worldPos.x, worldPos.z));
 			PlayerMarker._x = mapPos.x;
 			PlayerMarker._y = mapPos.y;
 			PlayerMarker._rotation = RadToDegRotation(-ClientChar.GetRotation());
@@ -127,6 +127,10 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 
 	private function MapLoaded(target:MovieClip):Void {
 		target.onMouseWheel = Delegate.create(target._parent, HandleMapScaling);
+		target.onPress = Delegate.create(target._parent, HandleMapScrollStart);
+		var releaseHandler:Function = Delegate.create(target._parent, HandleMapScrollEnd);
+		target.onRelease = releaseHandler;
+		target.onReleaseOutside = releaseHandler;
 
 		// Return the image to its natural size and calculate if it needs to be scaled down at "default" size
 		target._xscale = 100;
@@ -140,10 +144,48 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		ZoomLevel = Math.min(100, Math.max(0, ZoomLevel + delta * 2));
 		MapLayer._xscale = MapImageScale + ZoomLevel;
 		MapLayer._yscale = MapImageScale + ZoomLevel;
-		Refresh();
+		// Confirm that current position meets the constraints at the new zoom level
+		UpdatePosition(new Point(MapLayer._x, MapLayer._y));
+		// Update all the waypoints
+		RefreshLayers();
 	}
 
-	private function Refresh():Void {
+	private function HandleMapScrollStart():Void {
+		PrevMousePos = new Point(_xmouse, _ymouse);
+
+		onMouseMove = HandleMapScroll;
+	}
+
+	private function HandleMapScroll():Void {
+		var diff:Point = new Point(_xmouse - PrevMousePos.x, _ymouse - PrevMousePos.y);
+		PrevMousePos = new Point(_xmouse, _ymouse);
+		UpdatePosition(new Point(MapLayer._x + diff.x, MapLayer._y + diff.y));
+	}
+
+	private function UpdatePosition(targetPos:Point):Void {
+		// Constrain the edges of the map to the viewport
+		// Map can scroll only if it is wider/taller than the viewport (limits of 0 trump)
+		// Max scroll value is 0; Min scroll value is viewport-map
+		// TEMP: Likely to be replaced by an actual viewport/clipping frame
+		var viewportHeight = MaxMapHeight;
+		var viewportWidth = MaxMapHeight;
+		targetPos.x = Math.min(0, Math.max(viewportWidth - MapLayer._width, targetPos.x));
+		targetPos.y = Math.min(0, Math.max(viewportHeight - MapLayer._height, targetPos.y));
+
+		// Update the map and layer positions
+		MapLayer._x = targetPos.x;
+		MapLayer._y = targetPos.y;
+		for (var i:Number = 0; i < NotationLayers.length; ++i) {
+			NotationLayers[i]._x = targetPos.x;
+			NotationLayers[i]._y = targetPos.y;
+		}
+	}
+
+	private function HandleMapScrollEnd():Void {
+		onMouseMove = undefined;
+	}
+
+	private function RefreshLayers():Void {
 		for (var i:Number = 0; i < NotationLayers.length; ++i) {
 			NotationLayers[i].RenderWaypoints(CurrentZoneID);
 		}
@@ -158,16 +200,29 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 	}
 
 	/// Conversion routines
-	private function WorldToWindowCoords(worldCoords:Point):Point {
+	// Converts from world coordinates to a coordinate set based on the full map image size
+	// Any layer which uses this should make sure to lock its origin point to the map's origin when scrolling
+	private function WorldToMapCoords(worldCoords:Point):Point {
 		return new Point(
 			worldCoords.x * MapLayer._width / ZoneIndex[CurrentZoneID].worldX,
 			MapLayer._height - (worldCoords.y * MapLayer._height / ZoneIndex[CurrentZoneID].worldY));
 	}
 
-	private function WindowToWorldCoords(windowCoords:Point):Point {
+	// Adjusts map coordinates to account for a scrolled map when rendering to the viewport
+	// Used for objects which are positioned relative to the viewport
+	private function MapToViewCoords(mapCoords:Point):Point {
+		return new Point(mapCoords.x + MapLayer._x, mapCoords.y + MapLayer._y);
+	}
+
+	// Converts from world coordinates to ones relative to the viewport
+	private function WorldToViewCoords(worldCoords:Point):Point {
+		return MapToViewCoords(WorldToMapCoords(worldCoords));
+	}
+
+	private function MapToWorldCoords(mapCoords:Point):Point {
 		return new Point(
-			windowCoords.x * ZoneIndex[CurrentZoneID].worldX / MapLayer._width ,
-			(MapLayer._height - windowCoords.y) * ZoneIndex[CurrentZoneID].worldY / MapLayer._height);
+			mapCoords.x * ZoneIndex[CurrentZoneID].worldX / MapLayer._width ,
+			(MapLayer._height - mapCoords.y) * ZoneIndex[CurrentZoneID].worldY / MapLayer._height);
 	}
 
 	private static function RadToDegRotation(radians:Number):Number {
@@ -181,6 +236,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 
 	private var MapImageScale:Number;
 	private var ZoomLevel:Number = 0;
+	private var PrevMousePos:Point;
 
 	private var LayerListDisplay:LayerList;
 	private var MapLayer:MovieClip;

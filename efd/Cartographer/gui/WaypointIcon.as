@@ -126,8 +126,9 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 			Tooltip.TF_Name.background = true;
 			Tooltip.TF_Name.autoSize = "left";
 			Tooltip.TF_Name.text = Data.Name;
-			Tooltip._x = _x;
-			Tooltip._y = _y;
+			var pos:Point = LayerClip.HostClip.MapToViewCoords(new Point(_x, _y));
+			Tooltip._x = pos.x;
+			Tooltip._y = pos.y;
 		}
 	}
 
