@@ -115,13 +115,13 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		if (oldData.Icon != data.Icon) {
 			Loader.loadClip("Cartographer\\icons\\" + data.Icon, Icon);
 		} else {
-			SignalWaypointLoaded.Emit();
+			SignalWaypointLoaded.Emit(this);
 		}
 	}
 
 	private function ShowTooltip():Void {
 		if (!Tooltip) {
-			Tooltip = LayerClip.HostClip.attachMovie("CartographerWaypointTooltip", "Tooltip", LayerClip.HostClip.getNextHighestDepth());
+			Tooltip = LayerClip.HostClip._parent.attachMovie("CartographerWaypointTooltip", "Tooltip", LayerClip.HostClip.getNextHighestDepth());
 			Tooltip.TF_Name.backgroundColor = 0x333333;
 			Tooltip.TF_Name.background = true;
 			Tooltip.TF_Name.autoSize = "left";

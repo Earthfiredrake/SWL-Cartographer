@@ -53,6 +53,9 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
+Version Next
++ It zooms, it scrolls, hopefully it doesn't shuffle the waypoints when it does
+
 Version 0.1.0-alpha
 + Champion waypoints, with similar completion tracking as Lore
   + All known champions with fixed locations are included, roaming ones are waiting on additional display options (zones and paths) and tools
@@ -111,7 +114,6 @@ Current goals for the next version:
 + Expanding tooltips
   + Making more info available (note fields, coordinates, etc.)
   + Handling stacked waypoints
-+ A proper map viewport system (with zoom and scrolling)
 
 Initial feedback has provided the following suggestions:
 + Mouse coordinates should be clearly displayed someplace obvious

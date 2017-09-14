@@ -34,19 +34,24 @@ class efd.Cartographer.gui.Layers.LoreLayer extends NotationLayer {
 		super.RenderWaypoints(newZone);
 	}
 
+	private function LoadNextSequential(icon:WaypointIcon) {
+		var claim:String = Lore.IsLocked(icon.Data["LoreID"]) ? "Unclaimed" : "Claimed";
+		this[claim + "Count"] += 1;
+		super.LoadNextSequential(icon);
+	}
+
 	private function AttachWaypoint(data:LorePoint, mapPos:Point):Void {
 		var claim:String = Lore.IsLocked(data.LoreID) ? "Unclaimed" : "Claimed";
-		var existing:WaypointIcon = this["Rendered" + claim + "Waypoints"][this[claim + "Count"]];
-		this[claim + "Count"] += 1;
-		if (existing) {
+		var wp:WaypointIcon = this["Rendered" + claim + "Waypoints"][this[claim + "Count"]];
+		if (wp) {
 			if (Refresh) {
-				existing.UpdatePosition(mapPos);
-				LoadSequential();
-			} else { existing.Reassign(data, mapPos); }
+				wp.UpdatePosition(mapPos);
+				LoadNextSequential(wp);
+			} else { wp.Reassign(data, mapPos); }
 		} else {
 			var targetClip:MovieClip = this[claim + "LoreSublayer"];
-			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + targetClip.getNextHighestDepth(), targetClip, targetClip.getNextHighestDepth(), {Data : data, _x : mapPos.x, _y : mapPos.y, LayerClip: this}));
-			wp.SignalWaypointLoaded.Connect(LoadSequential, this);
+			wp = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + targetClip.getNextHighestDepth(), targetClip, targetClip.getNextHighestDepth(), {Data : data, _x : mapPos.x, _y : mapPos.y, LayerClip: this}));
+			wp.SignalWaypointLoaded.Connect(LoadNextSequential, this);
 			wp.LoadIcon();
 			this["Rendered" + claim + "Waypoints"].push(wp);
 		}
@@ -96,6 +101,8 @@ class efd.Cartographer.gui.Layers.LoreLayer extends NotationLayer {
 				}
 			}
 			// Clear the bottom x indicies
+			ClaimedCount += matches;
+			UnclaimedCount -= matches;
 			RenderedUnclaimedWaypoints.splice(0, matches);
 		}
 	}
@@ -105,7 +112,7 @@ class efd.Cartographer.gui.Layers.LoreLayer extends NotationLayer {
 		//   It only really works because this is the last(only) signal in the queue
 		//   So it is processing slot i, which is disconnected then replaced, and the new slot is skipped
 		waypoint.SignalWaypointLoaded.Disconnect(DeferLoaderHook, this);
-		waypoint.SignalWaypointLoaded.Connect(LoadSequential, this);
+		waypoint.SignalWaypointLoaded.Connect(LoadNextSequential, this);
 	}
 
 	public function get RenderedWaypoints():Array {

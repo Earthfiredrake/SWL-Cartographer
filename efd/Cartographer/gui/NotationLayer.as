@@ -21,7 +21,7 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 	}
 
 	public function RenderWaypoints(newZone:Number):Void {
-		WaypointCount = -1;
+		WaypointCount = 0;
 		// Map hasn't changed, waypoints will still have right data, just need refreshing
 		// If the map ever changes, refresh stays false until a full reload is completed
 		Refresh = Refresh && (Zone == newZone);
@@ -33,7 +33,6 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 	}
 
 	public function LoadSequential():Void {
-		WaypointCount += 1;
 		var waypoints:Array = WaypointData[Zone];
 		if (WaypointCount < waypoints.length) {
 			AttachWaypoint(waypoints[WaypointCount], _parent.WorldToMapCoords(waypoints[WaypointCount].Position));
@@ -43,15 +42,21 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 		}
 	}
 
+	private function LoadNextSequential(icon:WaypointIcon):Void {
+		WaypointCount += 1;
+		LoadSequential();
+	}
+
 	private function AttachWaypoint(data:Waypoint, mapPos:Point):Void {
-		if (RenderedWaypoints[WaypointCount]) {
+		var wp:WaypointIcon = RenderedWaypoints[WaypointCount];
+		if (wp) {
 			if (Refresh) {
-				RenderedWaypoints[WaypointCount].UpdatePosition(mapPos);
-				LoadSequential(); // We better be able to barrel through basic updates
-			} else { RenderedWaypoints[WaypointCount].Reassign(data, mapPos); }
+				wp.UpdatePosition(mapPos);
+				LoadNextSequential(wp); // We better be able to barrel through basic updates
+			} else { wp.Reassign(data, mapPos); }
 		} else {
-			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + getNextHighestDepth(), this, getNextHighestDepth(), { Data : data, _x : mapPos.x, _y : mapPos.y, LayerClip: this}));
-			wp.SignalWaypointLoaded.Connect(LoadSequential, this);
+			wp = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + getNextHighestDepth(), this, getNextHighestDepth(), { Data : data, _x : mapPos.x, _y : mapPos.y, LayerClip: this}));
+			wp.SignalWaypointLoaded.Connect(LoadNextSequential, this);
 			wp.LoadIcon();
 			RenderedWaypoints.push(wp);
 		}
@@ -80,10 +85,7 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 	// Array of currently displayed waypoints for this layer
 
 	public function get RefreshIncomplete():Boolean {
-		// Adding a check of Refresh here prevents it from trying to hijack the initial zone load
-		// However letting the hijack occur seems to significantly decrease load times
-		// Have not noticed any instability as a result, but will monitor
-		return _visible && WaypointCount < WaypointData[Zone].length;
+		return _visible && Refresh && WaypointCount < WaypointData[Zone].length;
 	}
 
 	public function set Visible(value:Boolean):Void {

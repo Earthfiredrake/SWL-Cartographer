@@ -34,19 +34,24 @@ class efd.Cartographer.gui.Layers.ChampLayer extends NotationLayer {
 		super.RenderWaypoints(newZone);
 	}
 
+	private function LoadNextSequential(icon:WaypointIcon) {
+		var status:String = Lore.IsLocked(icon.Data["ChampID"]) ? "Undefeated" : "Defeated";
+		this[status + "Count"] += 1;
+		super.LoadNextSequential(icon);
+	}
+
 	private function AttachWaypoint(data:ChampPoint, mapPos:Point):Void {
 		var status:String = Lore.IsLocked(data.ChampID) ? "Undefeated" : "Defeated";
-		var existing:WaypointIcon = this["Rendered" + status + "Waypoints"][this[status + "Count"]];
-		this[status + "Count"] += 1;
-		if (existing) {
+		var wp:WaypointIcon = this["Rendered" + status + "Waypoints"][this[status + "Count"]];
+		if (wp) {
 			if (Refresh) {
-				existing.UpdatePosition(mapPos);
-				LoadSequential();
-			} else { existing.Reassign(data, mapPos); }
+				wp.UpdatePosition(mapPos);
+				LoadNextSequential(wp);
+			} else { wp.Reassign(data, mapPos); }
 		} else {
 			var targetClip:MovieClip = this[status + "ChampionsSublayer"];
-			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + targetClip.getNextHighestDepth(), targetClip, targetClip.getNextHighestDepth(), { Data : data, _x : mapPos.x, _y : mapPos.y, LayerClip: this }));
-			wp.SignalWaypointLoaded.Connect(LoadSequential, this);
+			wp = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + targetClip.getNextHighestDepth(), targetClip, targetClip.getNextHighestDepth(), { Data : data, _x : mapPos.x, _y : mapPos.y, LayerClip: this }));
+			wp.SignalWaypointLoaded.Connect(LoadNextSequential, this);
 			wp.LoadIcon();
 			this["Rendered" + status + "Waypoints"].push(wp);
 		}
@@ -76,7 +81,7 @@ class efd.Cartographer.gui.Layers.ChampLayer extends NotationLayer {
 		//   It only really works because this is the last(only) signal in the queue
 		//   So it is processing slot i, which is disconnected then replaced, and the new slot is skipped
 		waypoint.SignalWaypointLoaded.Disconnect(DeferLoaderHook, this);
-		waypoint.SignalWaypointLoaded.Connect(LoadSequential, this);
+		waypoint.SignalWaypointLoaded.Connect(LoadNextSequential, this);
 	}
 
 	private function AchievementUnlocked(cheevID:Number, character:ID32):Void {
@@ -107,6 +112,8 @@ class efd.Cartographer.gui.Layers.ChampLayer extends NotationLayer {
 				}
 			}
 			// Clear the bottom x indicies
+			DefeatedCount += matches;
+			UndefeatedCount -= matches;
 			RenderedUndefeatedWaypoints.splice(0, matches);
 		}
 	}
