@@ -54,5 +54,10 @@ class efd.Cartographer.Waypoints.LorePoint extends Waypoint {
 		}
 	}
 
+
+	public function get IsCollected():Boolean {
+		return !Lore.IsLocked(LoreID);
+	}
+
 	public var LoreID:Number;
 }

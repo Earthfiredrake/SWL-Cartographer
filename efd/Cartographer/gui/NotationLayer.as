@@ -5,11 +5,16 @@
 import flash.geom.Point;
 
 import efd.Cartographer.lib.etu.MovieClipHelper;
-import efd.Cartographer.lib.Mod;
-
-import efd.Cartographer.Waypoint;
 
 import efd.Cartographer.gui.WaypointIcon;
+import efd.Cartographer.Waypoint;
+
+// Implementation Plan:
+// Each notation layer is actually three seperate movie clips, at significantly different depth levels (to permit interleaving of those layers)
+// The lowest layer contains the zone or area markings
+// The next layer contains the path and line markings
+// The top layer contains the waypoint markings
+// This is done so that area markings don't interfere significantly with waypoints on lower level layers
 
 class efd.Cartographer.gui.NotationLayer extends MovieClip {
 	public static var __className:String = "efd.Cartographer.gui.NotationLayer";
@@ -20,55 +25,83 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 		_visible = Config.ShowLayer;
 	}
 
-	public function RenderWaypoints(newZone:Number):Void {
-		WaypointCount = 0;
+	public function RenderLayer(newZone:Number):Void {
 		// Map hasn't changed, waypoints will still have right data, just need refreshing
-		// If the map ever changes, refresh stays false until a full reload is completed
+		// If the map ever changes, refresh stays false until a full reload is started
 		Refresh = Refresh && (Zone == newZone);
 		Zone = newZone;
 		if (_visible) {
 			// Defer this if the layer has been hidden, for faster loading of visible layers
-			LoadSequential();
+			if (Refresh) { RefreshPositions(); }
+			else { ReloadAll(); }
 		}
 	}
 
-	public function LoadSequential():Void {
-		var waypoints:Array = WaypointData[Zone];
-		if (WaypointCount < waypoints.length) {
-			AttachWaypoint(waypoints[WaypointCount], _parent.WorldToMapCoords(waypoints[WaypointCount].Position));
-		} else {
-			ClearDisplay(waypoints.length);
-			Refresh = true;
+	private function RefreshPositions() {
+		var waypointList:Array = RenderedWaypoints; // Cache this, some variants have to merge multiple lists for it
+		for (var i:Number = 0; i < waypointList.length; ++i) {
+			var wp:WaypointIcon = waypointList[i];
+			wp.UpdatePosition(_parent.WorldToMapCoords(wp.Data.Position));
 		}
 	}
 
-	private function LoadNextSequential(icon:WaypointIcon):Void {
-		WaypointCount += 1;
-		LoadSequential();
+	private function ReloadAll():Void {
+		WaypointCount = 0;
+		Refresh = true; // Unless they actually change maps, we only want one reload process to be running at a time
+		TrimDisplayList(); // Trim excess waypoints
+		LoadDataBlock(); // Start the loading process
 	}
 
-	private function AttachWaypoint(data:Waypoint, mapPos:Point):Void {
-		var wp:WaypointIcon = RenderedWaypoints[WaypointCount];
-		if (wp) {
-			if (Refresh) {
-				wp.UpdatePosition(mapPos);
-				LoadNextSequential(wp); // We better be able to barrel through basic updates
-			} else { wp.Reassign(data, mapPos); }
-		} else {
-			wp = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + getNextHighestDepth(), this, getNextHighestDepth(), { Data : data, _x : mapPos.x, _y : mapPos.y, LayerClip: this}));
-			wp.SignalWaypointLoaded.Connect(LoadNextSequential, this);
-			wp.LoadIcon();
-			RenderedWaypoints.push(wp);
-		}
-	}
-
-	public function ClearDisplay(firstIndex:Number):Void {
-		for (var i:Number = firstIndex ? firstIndex : 0; i < RenderedWaypoints.length; ++i) {
+	public function TrimDisplayList():Void {
+		var length:Number = WaypointData[Zone].length;
+		for (var i:Number = length; i < RenderedWaypoints.length; ++i) {
 			var waypoint:MovieClip = RenderedWaypoints[i];
 			waypoint.Unload();
 			waypoint.removeMovieClip();
 		}
-		RenderedWaypoints.splice(firstIndex);
+		RenderedWaypoints.splice(length);
+	}
+
+	public function LoadDataBlock():Void {
+		var data:Array = WaypointData[Zone];
+		var renderList:Array = RenderedWaypoints;
+		// Attempt to reassign as many existing waypoints as possible
+		// If an image needs loading, load will defer and resume through callback for stability reasons
+		for (WaypointCount; WaypointCount < renderList.length; ++WaypointCount) {
+			if (renderList[WaypointCount].Reassign(data[WaypointCount], _parent.WorldToMapCoords(data[WaypointCount].Position))) {
+				// Image load requested exit early and wait for callback
+				return;
+			}
+		}
+		// Load any new waypoints required
+		// Each of these will trigger an image load, so will be done sequentially through callback
+		if (WaypointCount < data.length) {
+			var mapPos:Point = _parent.WorldToMapCoords(data[WaypointCount].Position);
+			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
+				WaypointIcon, "WP" + getNextHighestDepth(), this, getNextHighestDepth(),
+				{ Data : data[WaypointCount], _x : mapPos.x, _y : mapPos.y, LayerClip : this }));
+			wp.SignalWaypointLoaded.Connect(LoadNextBlock, this);
+			wp.LoadIcon();
+			renderList.push(wp);
+		}
+	}
+
+	// Loader callback
+	private function LoadNextBlock(icon:WaypointIcon):Void {
+		WaypointCount += 1;
+		LoadDataBlock();
+	}
+
+	/// Properties
+	public function get RenderedWaypoints():Array {	return _RenderedWaypoints; }
+	// Array of currently displayed waypoints for this layer
+
+	public function set Visible(value:Boolean):Void {
+		var prev:Boolean = _visible;
+		_visible = value;
+		if (value && !prev) {
+			RenderLayer(Zone); // Do whatever redraw is needed
+		}
 	}
 
 	/// Variables
@@ -78,27 +111,7 @@ class efd.Cartographer.gui.NotationLayer extends MovieClip {
 
 	private var Config:Object;
 
-	private var WaypointCount:Number;
+	private var WaypointCount:Number; // Number of loaded waypoints, used exclusively during load, may not be valid
 	private var WaypointData:Object; // Zone indexed map of waypoint data arrays
 	private var _RenderedWaypoints:Array;
-	public function get RenderedWaypoints():Array {	return _RenderedWaypoints; }
-	// Array of currently displayed waypoints for this layer
-
-	public function get RefreshIncomplete():Boolean {
-		return _visible && Refresh && WaypointCount < WaypointData[Zone].length;
-	}
-
-	public function set Visible(value:Boolean):Void {
-		if (value && !_visible) {
-			LoadSequential(); // Refresh the waypoints, as they may be out of date
-			// RenderWaypoints(Zone); Do I need to force a hard refresh of the full layer?
-		}
-		_visible = value;
-	}
-
-	// TODO: Consider doing some sorting of waypoints based on icon, in an effort to minimize reloads
 }
-
-/// Notes:
-//  A brief experiment with placing the ClearDisplay call within RenderWaypoints resulted in some very odd behaviour
-//  There seem to be some definite timing issues involved with the creation and destruction of movie clips

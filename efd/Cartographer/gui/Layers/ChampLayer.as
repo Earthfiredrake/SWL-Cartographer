@@ -2,6 +2,8 @@
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
+// No longer in use, retained on temporary basis for code vultures
+
 import flash.geom.Point;
 
 import com.GameInterface.Game.Character;
@@ -28,10 +30,10 @@ class efd.Cartographer.gui.Layers.ChampLayer extends NotationLayer {
 		Lore.SignalTagAdded.Connect(AchievementUnlocked, this);
 	}
 
-	public function RenderWaypoints(newZone:Number):Void {
+	public function ReloadAll():Void {
 		DefeatedCount = 0;
 		UndefeatedCount = 0;
-		super.RenderWaypoints(newZone);
+		super.ReloadAll();
 	}
 
 	private function LoadNextSequential(icon:WaypointIcon) {
@@ -43,12 +45,8 @@ class efd.Cartographer.gui.Layers.ChampLayer extends NotationLayer {
 	private function AttachWaypoint(data:ChampPoint, mapPos:Point):Void {
 		var status:String = Lore.IsLocked(data.ChampID) ? "Undefeated" : "Defeated";
 		var wp:WaypointIcon = this["Rendered" + status + "Waypoints"][this[status + "Count"]];
-		if (wp) {
-			if (Refresh) {
-				wp.UpdatePosition(mapPos);
-				LoadNextSequential(wp);
-			} else { wp.Reassign(data, mapPos); }
-		} else {
+		if (wp) { wp.Reassign(data, mapPos); }
+		else {
 			var targetClip:MovieClip = this[status + "ChampionsSublayer"];
 			wp = WaypointIcon(MovieClipHelper.createMovieWithClass(WaypointIcon, "WP" + targetClip.getNextHighestDepth(), targetClip, targetClip.getNextHighestDepth(), { Data : data, _x : mapPos.x, _y : mapPos.y, LayerClip: this }));
 			wp.SignalWaypointLoaded.Connect(LoadNextSequential, this);

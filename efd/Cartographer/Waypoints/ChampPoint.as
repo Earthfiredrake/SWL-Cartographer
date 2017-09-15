@@ -38,6 +38,10 @@ class efd.Cartographer.Waypoints.ChampPoint extends Waypoint {
 		return filename + ".png";
 	}
 
+	public function get IsCollected():Boolean {
+		return !Lore.IsLocked(ChampID);
+	}
+
 	public var ChampID:Number;
 	public var IsGroup:Boolean;
 }

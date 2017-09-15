@@ -95,7 +95,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		_y = pos.y;
 	}
 
-	public function Reassign(data:Waypoint, pos:Point):Void {
+	public function Reassign(data:Waypoint, pos:Point):Boolean {
 		RemoveTooltip();
 
 		var oldData:Waypoint = Data;
@@ -114,8 +114,9 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		UpdatePosition(pos);
 		if (oldData.Icon != data.Icon) {
 			Loader.loadClip("Cartographer\\icons\\" + data.Icon, Icon);
+			return true;
 		} else {
-			SignalWaypointLoaded.Emit(this);
+			return false;
 		}
 	}
 

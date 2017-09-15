@@ -15,8 +15,7 @@ import efd.Cartographer.lib.etu.MovieClipHelper;
 import efd.Cartographer.lib.Mod;
 
 import efd.Cartographer.gui.NotationLayer;
-import efd.Cartographer.gui.Layers.ChampLayer;
-import efd.Cartographer.gui.Layers.LoreLayer;
+import efd.Cartographer.gui.Layers.CollectibleLayer;
 
 class efd.Cartographer.gui.MapView extends MovieClip {
 	public static var __className:String = "efd.Cartographer.gui.MapView"; // For elT's clip helper library
@@ -65,8 +64,8 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 			var layerName:String = NotationLayerData[i].Layer;
 			var layerType:Function;
 			switch (layerName) {
-				case "Champ": { layerType = ChampLayer; break; }
-				case "Lore": { layerType = LoreLayer; break; }
+				case "Champ":
+				case "Lore": { layerType = CollectibleLayer; break; }
 				default: { layerType = NotationLayer; break; }
 			}
 			NotationLayerViews[i] = MovieClipHelper.createMovieWithClass(layerType, layerName + "Layer", this, getNextHighestDepth(),
@@ -111,9 +110,9 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		MapLayer._yscale = MapImageScale + ZoomLevel;
 		// Confirm that current position meets the constraints at the new zoom level
 		UpdatePosition(new Point(MapLayer._x, MapLayer._y));
-		// Update all the waypoints
+		// Update all the notation layers
 		for (var i:Number = 0; i < NotationLayerViews.length; ++i) {
-			NotationLayerViews[i].RenderWaypoints(CurrentZoneID);
+			NotationLayerViews[i].RenderLayer(CurrentZoneID);
 		}
 	}
 
@@ -152,14 +151,6 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 
 	private function onEnterFrame():Void {
 		UpdateClientCharMarker();
-
-		// Occasionally not all waypoints manage to be rendered during the first call
-		// This finishes off any that were missed
-		for (var i:Number = 0; i < NotationLayerViews.length; ++i) {
-			if (NotationLayerViews[i].RefreshIncomplete) {
-				NotationLayerViews[i].LoadSequential();
-			}
-		}
 	}
 
 	private function UpdateClientCharMarker():Void {
