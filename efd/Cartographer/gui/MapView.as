@@ -14,7 +14,7 @@ import efd.Cartographer.lib.ConfigWrapper;
 import efd.Cartographer.lib.etu.MovieClipHelper;
 import efd.Cartographer.lib.Mod;
 
-import efd.Cartographer.gui.NotationLayer;
+import efd.Cartographer.gui.Layers.NotationLayer;
 import efd.Cartographer.gui.Layers.CollectibleLayer;
 
 class efd.Cartographer.gui.MapView extends MovieClip {

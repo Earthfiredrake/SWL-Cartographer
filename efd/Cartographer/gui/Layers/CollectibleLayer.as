@@ -6,7 +6,7 @@ import flash.geom.Point;
 
 import efd.Cartographer.lib.etu.MovieClipHelper;
 
-import efd.Cartographer.gui.NotationLayer;
+import efd.Cartographer.gui.Layers.NotationLayer;
 import efd.Cartographer.gui.WaypointIcon;
 import efd.Cartographer.Waypoint;
 
@@ -86,8 +86,8 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
 				WaypointIcon, "WP" + sublayer.getNextHighestDepth(), sublayer, sublayer.getNextHighestDepth(),
 				{ Data : data[i], _x : mapPos.x, _y : mapPos.y, LayerClip : this }));
+			wp.SignalIconChanged.Connect(ChangeIcon, this);
 			wp.SignalWaypointLoaded.Connect(LoadNextBlock, this);
-			// wp.SignalCollected.Connect(ChangeState, this);
 			wp.LoadIcon();
 			renderList.push(wp);
 			return false;
@@ -99,6 +99,39 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 		var state:String = icon.Data["IsCollected"] ? "Collected" : "Uncollected";
 		this[state + "Count"] += 1;
 		LoadDataBlock();
+	}
+
+	private function ChangeIcon(icon:WaypointIcon):Void {
+		// Create a replacement icon on the collected sublayer
+		var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
+			WaypointIcon, "WP" + CollectedSublayer.getNextHighestDepth(), CollectedSublayer, CollectedSublayer.getNextHighestDepth(),
+			{ Data : icon.Data, _x : icon._x, _y : icon._y, LayerClip : this }));
+		wp.SignalIconChanged.Connect(ChangeIcon, this);
+		wp.SignalWaypointLoaded.Connect(DeferLoadBehaviour, this);
+		wp.LoadIcon();
+		RenderedCollected.push(wp);
+
+		// Find and remove the existing waypoint from the render list
+		// The splice call may not be the most efficient method, but it does retain the order
+		// If the order doesn't really matter (likely) and more efficiency is needed (unlikely)
+		// Copying the last element into that slot then removing the original is likely to be quicker
+		var index:Number;
+		for (var i:Number = 0; i < RenderedUncollected.length; ++i) {
+			if (RenderedUncollected[i] == icon) { index = i; break; }
+		}
+		if (index) { RenderedUncollected.splice(index, 1); }
+
+		// Remove the existing waypoint movie clip
+		icon.Unload();
+		icon.removeMovieClip();
+	}
+
+	private function DeferLoadBehaviour(icon:WaypointIcon):Void {
+		// HACK: Adding and removing signals during the signal handling is risky
+		//   It only really works because this is the last(only) signal in the queue
+		//   So it is processing slot i, which is disconnected then replaced, and the new slot is skipped
+		icon.SignalWaypointLoaded.Disconnect(DeferLoadBehaviour, this);
+		icon.SignalWaypointLoaded.Connect(LoadNextBlock, this);
 	}
 
 	public function get RenderedWaypoints():Array { return RenderedUncollected.concat(RenderedCollected); }

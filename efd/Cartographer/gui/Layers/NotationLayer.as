@@ -16,8 +16,8 @@ import efd.Cartographer.Waypoint;
 // The top layer contains the waypoint markings
 // This is done so that area markings don't interfere significantly with waypoints on lower level layers
 
-class efd.Cartographer.gui.NotationLayer extends MovieClip {
-	public static var __className:String = "efd.Cartographer.gui.NotationLayer";
+class efd.Cartographer.gui.Layers.NotationLayer extends MovieClip {
+	public static var __className:String = "efd.Cartographer.gui.Layers.NotationLayer";
 
 	private function NotationLayer() { // Indirect construction only
 		super();

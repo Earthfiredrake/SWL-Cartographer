@@ -2,6 +2,8 @@
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
+import gfx.utils.Delegate;
+
 import efd.Cartographer.Waypoint;
 
 class efd.Cartographer.Waypoints.TransitPoint extends Waypoint {
@@ -13,6 +15,19 @@ class efd.Cartographer.Waypoints.TransitPoint extends Waypoint {
 		if (Icon == undefined) {
 			_Icon = TargetZone == 5060 ? "exit_agartha.png" : "exit_zone.png";
 		}
+	}
+
+	/// Supplementary icon event handlers
+	public function HookIconEvents(icon:MovieClip, context:Object) {
+		icon.onPress = Delegate.create(context, OnIconClick);
+	}
+
+	public function UnhookIconEvents(icon:MovieClip) {
+		icon.onPress = undefined;
+	}
+
+	private function OnIconClick():Void {
+		this["LayerClip"]._parent.ChangeMap(this["Data"].TargetZone);
 	}
 
 	public var TargetZone:Number;

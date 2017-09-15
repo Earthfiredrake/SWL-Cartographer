@@ -2,7 +2,9 @@
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
+import com.GameInterface.Game.Character;
 import com.GameInterface.Lore;
+import com.Utils.ID32;
 
 import efd.Cartographer.lib.Mod;
 
@@ -36,6 +38,29 @@ class efd.Cartographer.Waypoints.ChampPoint extends Waypoint {
 			if (!Lore.IsLocked(ChampID)) { filename += "_defeated"; }
 		}
 		return filename + ".png";
+	}
+
+	/// Supplementary icon event handlers
+	public function HookIconEvents(icon:MovieClip, context:Object) {
+		if (!IsCollected) { // Only applies to uncollected items
+			Lore.SignalTagAdded.Connect(CollectibleUnlocked, context);
+		}
+	}
+
+	public function UnhookIconEvents(icon:MovieClip, context:Object) {
+		if (!IsCollected) {
+			// Should only be connected on uncollected items
+			// The change of icon/layering when collected should destroy the old icon and connections
+			Lore.SignalTagAdded.Disconnect(CollectibleUnlocked, context);
+		}
+	}
+
+	private function CollectibleUnlocked(unlockedID:Number, charID:ID32):Void {
+		// I have no idea why this event might be triggered for a non-client character
+		// Am following the examples in the existing API code
+		if (unlockedID == this["Data"].ChampID && charID.Equal(Character.GetClientCharID())) {
+			this["SignalIconChanged"].Emit(this);
+		}
 	}
 
 	public function get IsCollected():Boolean {

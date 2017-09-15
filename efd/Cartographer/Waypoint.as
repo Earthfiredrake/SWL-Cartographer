@@ -98,6 +98,12 @@ class efd.Cartographer.Waypoint {
 		}
 	}
 
+	/// Hooking functions for icon event handlers
+	/// Provided for extension use
+	/// Icon will be the actual icon image, while context will be the WaypointIcon wrapper object
+	public function HookIconEvents(icon:MovieClip, context:Object) { }
+	public function UnhookIconEvents(icon:MovieClip, context:Object) { }
+
 	/// Data fields
 	public var ZoneID:Number; // Map instance
 	public var Position:Point; // World space coordinates

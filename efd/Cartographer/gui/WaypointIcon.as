@@ -17,6 +17,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	private function WaypointIcon() { // Indirect construction only
 		super();
 		SignalWaypointLoaded = new Signal();
+		SignalIconChanged = new Signal();
 		Loader = new MovieClipLoader();
 
 		var listener:Object = new Object();
@@ -63,17 +64,12 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 			}
 			target.onRollOut = rollOut;
 			target.onReleaseOutside = rollOut;
+			target._parent.Data.HookIconEvents(target, target._parent);
 
-			target.onPress = Delegate.create(this, IconAction);
 			SignalWaypointLoaded.Emit(this);
 	}
 
-	private function IconAction():Void {
-		if (Data["TargetZone"] != undefined) {
-			_parent._parent.ChangeMap(Data["TargetZone"]);
-		}
-	}
-
+	// This doesn't actually center the registration point, so it has to be called whenever the icon changes size
 	private static function CenterIcon(target:MovieClip):Void {
 		target._x = -target._width / 2;
 		target._y = -target._height / 2;
@@ -97,6 +93,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	public function Reassign(data:Waypoint, pos:Point):Boolean {
 		RemoveTooltip();
+		Data.UnhookIconEvents(Icon, this);
 
 		var oldData:Waypoint = Data;
 		Data = data;
@@ -116,6 +113,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 			Loader.loadClip("Cartographer\\icons\\" + data.Icon, Icon);
 			return true;
 		} else {
+			Data.HookIconEvents(Icon, this); // Hook in other case will be handled by loader callback
 			return false;
 		}
 	}
@@ -148,6 +146,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	public var Data:Waypoint;
 
+	public var SignalIconChanged:Signal; // Used to notify host layer that this icon has changed due to outside events
 	public var SignalWaypointLoaded:Signal;
 	private var Loader:MovieClipLoader;
 
