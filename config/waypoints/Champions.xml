@@ -236,6 +236,7 @@
 		<!-- Sergeant Enrique NYA #10206 -->
 		<!-- Sinner's Torment (multiple spawns) #10193 -->
 		<Champ zone="3070" x="144" y="669" z="95" champID="10193" />
+		<Champ zone="3070" x="272" y="716" z="92" champID="10193" />
 		<Champ zone="3070" x="376" y="785" z="85" champID="10193" />
 		<Champ zone="3070" x="721" y="802" z="85" champID="10193" />
 		<Champ zone="3070" x="781" y="916" z="72" champID="10194" /> <!-- Squamous Host Lord -->

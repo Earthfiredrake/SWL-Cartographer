@@ -5,6 +5,7 @@
 import flash.geom.Point;
 
 import efd.Cartographer.lib.etu.MovieClipHelper;
+import efd.Cartographer.lib.Mod;
 
 import efd.Cartographer.gui.Layers.NotationLayer;
 import efd.Cartographer.gui.WaypointIcon;
@@ -15,13 +16,12 @@ import efd.Cartographer.Waypoint;
 // TODO: Automatic icon updates when a collectible is claimed
 
 class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
-	public static var __className:String = "efd.Cartographer.gui.Layers.CollectibleLayer"; // For elT's clip helper library
 
-	private function CollectibleLayer() { // Indirect construction only
-		super();
+	public function CollectibleLayer(hostClip:MovieClip, notationData:Object, visible:Boolean) {
+		super(hostClip, notationData, visible);
 
-		createEmptyMovieClip("CollectedSublayer", getNextHighestDepth());
-		createEmptyMovieClip("UncollectedSublayer", getNextHighestDepth());
+		WaypointLayer.createEmptyMovieClip("CollectedSublayer", WaypointLayer.getNextHighestDepth());
+		WaypointLayer.createEmptyMovieClip("UncollectedSublayer", WaypointLayer.getNextHighestDepth());
 
 		RenderedUncollected = new Array();
 		RenderedCollected = new Array();
@@ -35,7 +35,7 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 		CollectedData = new Array();
 
 		// Split the data on collection status
-		var waypoints:Array = WaypointData[Zone];
+		var waypoints:Array = NotationData[Zone];
 		for (var i:Number = 0; i < waypoints.length; ++i) {
 			if (waypoints[i].IsCollected) { CollectedData.push(waypoints[i]); }
 			else { UncollectedData.push(waypoints[i]); }
@@ -60,31 +60,35 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 
 	private function LoadDataBlock():Void {
 		// Load both data sets, prioritizing the uncollected
-		// TODO: Consider revising this to prioritize reassignments,
-		//       clearing the old map's data off the new map faster
-		if (LoadDataImpl("Uncollected")) {
-			LoadDataImpl("Collected");
-		}
+		// Intentional use of short circuit processing
+		ReassignPoints("Uncollected") && ReassignPoints("Collected") &&
+			LoadPoints("Uncollected") && LoadPoints("Collected");
 	}
 
 	// Load data, return false on early exits
-	private function LoadDataImpl(state:String):Boolean {
+	private function ReassignPoints(state:String):Boolean {
 		var data:Array = this[state + "Data"];
 		var renderList:Array = this["Rendered" + state];
 		// Reassignment of existing waypoints
 		for (var i:Number = this[state + "Count"]; i < renderList.length; ++i) {
-			if (renderList[i].Reassign(data[i], _parent.WorldToMapCoords(data[i].Position))) {
+			if (renderList[i].Reassign(data[i], HostClip.WorldToMapCoords(data[i].Position))) {
 				return false;
 			}
 			this[state + "Count"] += 1;
 		}
+		return true;
+	}
+
+	private function LoadPoints(state:String):Boolean {
 		// New waypoints
-		var i:Number = this[state + "Count"]; // This will no longer be changed for lifetime of function, can cache
+		var data:Array = this[state + "Data"];
+		var renderList:Array = this["Rendered" + state];
+		var i:Number = this[state + "Count"]; // This will not change for lifetime of function, can cache
 		if (i < data.length) {
-			var mapPos:Point = _parent.WorldToMapCoords(data[i].Position);
-			var sublayer:MovieClip = this[state + "Sublayer"];
+			var mapPos:Point = HostClip.WorldToMapCoords(data[i].Position);
+			var targetLayer:MovieClip = WaypointLayer[state + "Sublayer"];
 			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
-				WaypointIcon, "WP" + sublayer.getNextHighestDepth(), sublayer, sublayer.getNextHighestDepth(),
+				WaypointIcon, "WP" + targetLayer.getNextHighestDepth(), targetLayer, targetLayer.getNextHighestDepth(),
 				{ Data : data[i], _x : mapPos.x, _y : mapPos.y, LayerClip : this }));
 			wp.SignalIconChanged.Connect(ChangeIcon, this);
 			wp.SignalWaypointLoaded.Connect(LoadNextBlock, this);
@@ -103,8 +107,9 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 
 	private function ChangeIcon(icon:WaypointIcon):Void {
 		// Create a replacement icon on the collected sublayer
+		var targetLayer:MovieClip = WaypointLayer.CollectedSublayer;
 		var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
-			WaypointIcon, "WP" + CollectedSublayer.getNextHighestDepth(), CollectedSublayer, CollectedSublayer.getNextHighestDepth(),
+			WaypointIcon, "WP" + targetLayer.getNextHighestDepth(), targetLayer, targetLayer.getNextHighestDepth(),
 			{ Data : icon.Data, _x : icon._x, _y : icon._y, LayerClip : this }));
 		wp.SignalIconChanged.Connect(ChangeIcon, this);
 		wp.SignalWaypointLoaded.Connect(DeferLoadBehaviour, this);
@@ -138,11 +143,9 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 
 	private var UncollectedData:Array;
 	private var UncollectedCount:Number;
-	private var UncollectedSublayer:MovieClip;
 	private var RenderedUncollected:Array;
 
 	private var CollectedData:Array;
 	private var CollectedCount:Number;
-	private var CollectedSublayer:MovieClip;
 	private var RenderedCollected:Array;
 }

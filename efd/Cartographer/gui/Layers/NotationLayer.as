@@ -16,13 +16,22 @@ import efd.Cartographer.Waypoint;
 // The top layer contains the waypoint markings
 // This is done so that area markings don't interfere significantly with waypoints on lower level layers
 
-class efd.Cartographer.gui.Layers.NotationLayer extends MovieClip {
-	public static var __className:String = "efd.Cartographer.gui.Layers.NotationLayer";
+class efd.Cartographer.gui.Layers.NotationLayer {
 
-	private function NotationLayer() { // Indirect construction only
+	public function NotationLayer(hostClip:MovieClip, notationData:Object, visible:Boolean) {
 		super();
+		HostClip = hostClip;
+		NotationData = notationData;
+
+		ZoneLayer = HostClip.NewLayer("Zone");
+		PathLayer = HostClip.NewLayer("Path");
+		WaypointLayer = HostClip.NewLayer("Waypoint");
+
 		_RenderedWaypoints = new Array();
-		_visible = Config.ShowLayer;
+		_visible = visible;
+		ZoneLayer._visible = visible;
+		PathLayer._visible = visible;
+		WaypointLayer._visible = visible;
 	}
 
 	public function RenderLayer(newZone:Number):Void {
@@ -41,7 +50,7 @@ class efd.Cartographer.gui.Layers.NotationLayer extends MovieClip {
 		var waypointList:Array = RenderedWaypoints; // Cache this, some variants have to merge multiple lists for it
 		for (var i:Number = 0; i < waypointList.length; ++i) {
 			var wp:WaypointIcon = waypointList[i];
-			wp.UpdatePosition(_parent.WorldToMapCoords(wp.Data.Position));
+			wp.UpdatePosition(HostClip.WorldToMapCoords(wp.Data.Position));
 		}
 	}
 
@@ -53,7 +62,7 @@ class efd.Cartographer.gui.Layers.NotationLayer extends MovieClip {
 	}
 
 	public function TrimDisplayList():Void {
-		var length:Number = WaypointData[Zone].length;
+		var length:Number = NotationData[Zone].length;
 		for (var i:Number = length; i < RenderedWaypoints.length; ++i) {
 			var waypoint:MovieClip = RenderedWaypoints[i];
 			waypoint.Unload();
@@ -63,12 +72,12 @@ class efd.Cartographer.gui.Layers.NotationLayer extends MovieClip {
 	}
 
 	public function LoadDataBlock():Void {
-		var data:Array = WaypointData[Zone];
+		var data:Array = NotationData[Zone];
 		var renderList:Array = RenderedWaypoints;
 		// Attempt to reassign as many existing waypoints as possible
 		// If an image needs loading, load will defer and resume through callback for stability reasons
 		for (WaypointCount; WaypointCount < renderList.length; ++WaypointCount) {
-			if (renderList[WaypointCount].Reassign(data[WaypointCount], _parent.WorldToMapCoords(data[WaypointCount].Position))) {
+			if (renderList[WaypointCount].Reassign(data[WaypointCount], HostClip.WorldToMapCoords(data[WaypointCount].Position))) {
 				// Image load requested exit early and wait for callback
 				return;
 			}
@@ -76,9 +85,10 @@ class efd.Cartographer.gui.Layers.NotationLayer extends MovieClip {
 		// Load any new waypoints required
 		// Each of these will trigger an image load, so will be done sequentially through callback
 		if (WaypointCount < data.length) {
-			var mapPos:Point = _parent.WorldToMapCoords(data[WaypointCount].Position);
+			var mapPos:Point = HostClip.WorldToMapCoords(data[WaypointCount].Position);
+			var targetClip:MovieClip = WaypointLayer;
 			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
-				WaypointIcon, "WP" + getNextHighestDepth(), this, getNextHighestDepth(),
+				WaypointIcon, "WP" + targetClip.getNextHighestDepth(), targetClip, targetClip.getNextHighestDepth(),
 				{ Data : data[WaypointCount], _x : mapPos.x, _y : mapPos.y, LayerClip : this }));
 			wp.SignalWaypointLoaded.Connect(LoadNextBlock, this);
 			wp.LoadIcon();
@@ -99,19 +109,36 @@ class efd.Cartographer.gui.Layers.NotationLayer extends MovieClip {
 	public function set Visible(value:Boolean):Void {
 		var prev:Boolean = _visible;
 		_visible = value;
+		ZoneLayer._visible = value;
+		PathLayer._visible = value;
+		WaypointLayer._visible = value;
 		if (value && !prev) {
 			RenderLayer(Zone); // Do whatever redraw is needed
 		}
 	}
 
+	public function set Position(pos:Point):Void {
+		ZoneLayer._x = pos.x;
+		ZoneLayer._y = pos.y;
+		PathLayer._x = pos.x;
+		PathLayer._y = pos.y;
+		WaypointLayer._x = pos.x;
+		WaypointLayer._y = pos.y;
+	}
+
 	/// Variables
-	private var HostClip:MovieClip; // The movie clip that contains all the layers, on which tooltips will be placed
 	private var Zone:Number;
 	private var Refresh:Boolean;
-
-	private var Config:Object;
-
 	private var WaypointCount:Number; // Number of loaded waypoints, used exclusively during load, may not be valid
-	private var WaypointData:Object; // Zone indexed map of waypoint data arrays
+	private var _visible:Boolean;
+
+	// External data caches
+	private var NotationData:Object; // Zone indexed map of waypoint data arrays
+	private var HostClip:MovieClip; // The movie clip that contains all the layers, on which tooltips will be placed
+
+	// Display layers
+	private var ZoneLayer:MovieClip;
+	private var PathLayer:MovieClip;
+	private var WaypointLayer:MovieClip;
 	private var _RenderedWaypoints:Array;
 }

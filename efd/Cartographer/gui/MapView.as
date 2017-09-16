@@ -58,18 +58,24 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		WaypointInterface.SignalPlayfieldChanged.Connect(PlayerZoneChanged, this);
 
 		// Init notation layers
+		NextPathDepth = NextZoneDepth + MaxLayerCount;
+		NextWaypointDepth = NextPathDepth + MaxLayerCount;
 		NotationLayerViews = new Array();
+		if (NotationLayerData.length > MaxLayerCount) {
+			Mod.ErrorMsg("Too many layers loaded");
+		}
 		for (var i:Number = NotationLayerData.length -1; i >= 0; --i) {
 			// In reverse so that the depths here match the order on the sidebar list
 			var layerName:String = NotationLayerData[i].Layer;
+			// TODO: This info should be provided by the layer data object as part of the
+			//       extension registry system
 			var layerType:Function;
 			switch (layerName) {
 				case "Champ":
 				case "Lore": { layerType = CollectibleLayer; break; }
 				default: { layerType = NotationLayer; break; }
 			}
-			NotationLayerViews[i] = MovieClipHelper.createMovieWithClass(layerType, layerName + "Layer", this, getNextHighestDepth(),
-				 { WaypointData : NotationLayerData[i], Config : Config.GetValue("LayerSettings")[layerName], HostClip : this });
+			NotationLayerViews[i] = new layerType(this, NotationLayerData[i], Config.GetValue("LayerSettings")[layerName].ShowLayer);
 		}
 
 		// Init top level elements (player marker)
@@ -77,6 +83,13 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 
 		// Initialization finished, request map load
 		ChangeMap(targetZone);
+	}
+
+	/// Notation layer construction callback
+	// Valid types = "Zone", "Path", "Waypoint"
+	public function NewLayer(type:String):MovieClip {
+		var depth:Number = this["Next" + type + "Depth"]++;
+		return createEmptyMovieClip(type + "Layer" + depth, depth);
 	}
 
 	/// Map manipulation
@@ -142,13 +155,11 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		MapLayer._x = targetPos.x;
 		MapLayer._y = targetPos.y;
 		for (var i:Number = 0; i < NotationLayerViews.length; ++i) {
-			NotationLayerViews[i]._x = targetPos.x;
-			NotationLayerViews[i]._y = targetPos.y;
+			NotationLayerViews[i].Position = targetPos;
 		}
 	}
 
 	/// Event handlers
-
 	private function onEnterFrame():Void {
 		UpdateClientCharMarker();
 	}
@@ -230,6 +241,9 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	// Notation layers
 	private var NotationLayerData:Array;
 	private var NotationLayerViews:Array;
+	private var NextZoneDepth:Number = 100;
+	private var NextPathDepth:Number;
+	private var NextWaypointDepth:Number;
 
 	// Auxillary markings
 	private var ClientCharMarker:MovieClip;
@@ -241,4 +255,5 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 
 	// Constants
 	private static var MaxZoomLevel:Number = 100;
+	private static var MaxLayerCount:Number = 50;
 }

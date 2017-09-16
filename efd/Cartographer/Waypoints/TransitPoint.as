@@ -27,7 +27,7 @@ class efd.Cartographer.Waypoints.TransitPoint extends Waypoint {
 	}
 
 	private function OnIconClick():Void {
-		this["LayerClip"]._parent.ChangeMap(this["Data"].TargetZone);
+		this["LayerClip"].HostClip.ChangeMap(this["Data"].TargetZone);
 	}
 
 	public var TargetZone:Number;

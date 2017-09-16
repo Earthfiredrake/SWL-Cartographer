@@ -119,6 +119,7 @@ Initial feedback has provided the following suggestions:
 + Mouse coordinates should be clearly displayed someplace obvious
 + Map zooming should be a feature if at all possible
 + Window size should account for lower resolutions (1600x900 resolution was cutting things off)
++ Mission markers should be filterable by main/side for challenge completion
 
 As always, defect reports, suggestions, and contributions are welcome. They can be sent to Peloprata in SWL (by mail or pm), via the github issues system, or in the official forum post.
 
