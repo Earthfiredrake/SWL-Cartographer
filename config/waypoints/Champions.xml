@@ -44,7 +44,7 @@
 		<!-- Innsmouth Track Captain (roams) #9511 -->
 		<Champ zone="3040" x="548" y="190" z="154" champID="9508" /> <!-- Lab Meat -->
 		<Champ zone="3040" x="430" y="810" champID="4841" /> <!-- Lurking Revenant -->
-		<Champ zone="3040" x="985" y="960" champID="9494" /> <!-- The Marooned Oarsmand (roams) -->
+		<Champ zone="3040" x="985" y="960" champID="9494" /> <!-- The Marooned Oarsman (roams) -->
 		<Champ zone="3040" x="700" y="115" champID="9513" /> <!-- Necrotic Mutation -->
 		<Champ zone="3040" x="865" y="875" champID="9499" /> <!-- Rift Rancour -->
 		<Champ zone="3040" x="280" y="990" champID="9510" /> <!-- The Sleeping One -->
@@ -69,8 +69,9 @@
 		<Champ zone="3050" x="185" y="755" champID="9531" /> <!-- Mutated Corpse -->
 		<Champ zone="3050" x="595" y="95" champID="9539" /> <!-- Nubilous Brood Prince -->
 		<Champ zone="3050" x="870" y="15" champID="4849" /> <!-- Penumbral Elevated Caste -->
-		<Champ zone="3050" x="245" y="550" champID="9535" /> <!-- Pestilent Revenant (spawn 1) -->
-		<Champ zone="3050" x="575" y="360" champID="9535" /> <!-- Pestilent Revenant (spawn 2) -->
+		<!-- Pestilent Revenant (multi-spawn) -->
+		<Champ zone="3050" x="245" y="550" champID="9535" />
+		<Champ zone="3050" x="575" y="360" champID="9535" />
 		<Champ zone="3050" x="510" y="580" champID="9543" /> <!-- Rusted Machinery -->
 		<Champ zone="3050" x="395" y="505" champID="9536" /> <!-- Scarlet Conductor -->
 		<Champ zone="3050" x="440" y="920" champID="9544" /> <!-- Sorrow Harbinger -->
@@ -110,7 +111,7 @@
 		<Champ zone="3090" x="585" y="875" champID="9560" group="true" /> <!-- Mak'aal the Hellfire -->
 		<Champ zone="3100" x="785" y="205" champID="4096" /> <!-- Adrameloch, Chancellor of Hell -->
 		<Champ zone="3100" x="715" y="1000" champID="4098" /> <!-- Akir, the Sun Guardian -->
-		<Champ zone="3100" x="180" y="245" champID="9624" /> <!-- Anum, Changed One (or 4099) -->
+		<Champ zone="3100" x="180" y="245" champID="9624" /> <!-- Anum, Changed One -->
 		<Champ zone="3100" x="629" y="720" z="82" champID="9613" /> <!-- The Black Pharaoh's Pride -->
 		<Champ zone="3100" x="120" y="50" champID="4093" /> <!-- Corrupted Egyptologist -->
 		<Champ zone="3100" x="355" y="145" champID="9622" /> <!-- Corvanius the Observer -->
@@ -130,8 +131,9 @@
 		<Champ zone="3100" x="345" y="725" champID="9612" group="true" /> <!-- The Bone Harvester -->
 	</Section>
 	<Section> <!-- Transylvania -->
-		<Champ zone="3120" x="435" y="1050" champID="9876" /> <!-- Bitter Harvest Messenger (spawn 1) -->
-		<Champ zone="3120" x="1170" y="800" champID="9876" /> <!-- Bitter Harvest Messenger (spawn 2) -->
+		<!-- Bitter Harvest Messenger (multi-spawn) -->
+		<Champ zone="3120" x="435" y="1050" champID="9876" />
+		<Champ zone="3120" x="1170" y="800" champID="9876" />
 		<Champ zone="3120" x="1415" y="165" champID="4861" /> <!-- Brother Razvan -->
 		<Champ zone="3120" x="338" y="918" z="130" champID="9869" /> <!-- Cannibal Prince -->
 		<Champ zone="3120" x="1250" y="390" champID="9878" /> <!-- Corrupted Keeper -->
@@ -200,7 +202,7 @@
 		<Champ zone="3070" x="730" y="410" champID="10215" /> <!-- Behemoth of the Devouring Plague (roams) -->
 		<!-- Blue Namahage NYA #10204 -->
 		<!-- The Broken Vow (roams) #10199 -->
-		<!-- Bubbling Commuter (multiple spawns) #10191 -->
+		<!-- Bubbling Commuter (multi-spawn) -->
 		<Champ zone="3070" x="344" y="768" z="85" champID="10191" />
 		<Champ zone="3070" x="444" y="612" z="85" champID="10191" />
 		<Champ zone="3070" x="649" y="854" z="85" champID="10191" />
@@ -213,7 +215,7 @@
 		<!-- Futakuchi-onna NYA #7628 -->
 		<Champ zone="3070" x="620" y="580" champID="10202" /> <!-- Grasping Infection -->
 		<Champ zone="3070" x="765" y="615" champID="10197" /> <!-- Hungry Jikininki -->
-		<!-- Hyper-Infected Citizen (multiple spawns) #10190 -->
+		<!-- Hyper-Infected Citizen (multi-spawn) -->
 		<Champ zone="3070" x="410" y="564" z="85" champID="10190" />
 		<Champ zone="3070" x="539" y="424" z="85" champID="10190" />
 		<Champ zone="3070" x="583" y="795" z="85" champID="10190" />
@@ -221,7 +223,7 @@
 		<Champ zone="3070" x="761" y="776" z="85" champID="10190" />
 		<!-- Inventory Infector NYA #10211 -->
 		<!-- Nkadi the Fungal Lord NYA #10217 -->
-		<!-- The Opener of Kimon (mulitple spawns) -->
+		<!-- The Opener of Kimon (multi-spawn) -->
 		<Champ zone="3070" x="150" y="930" champID="7075" />
 		<Champ zone="3070" x="200" y="900" champID="7075" />
 		<Champ zone="3070" x="320" y="920" champID="7075" />
@@ -229,12 +231,12 @@
 		<Champ zone="3070" x="610" y="890" champID="7075" />
 		<Champ zone="3070" x="750" y="900" champID="7075" />
 		<Champ zone="3070" x="128" y="517" z="85" champID="7074" /> <!-- Orochi Prototype Smiler Mark 1.1 -->
-		<!-- Roving Rager (roams) #10192 -->
+		<!-- Roving Rager (multi-spawn roams) #10192 -->
 		<!-- Red Namahage NYA #10203 -->
 		<Champ zone="3070" x="560" y="400" champID="7630" /> <!-- The Ruinous Road -->
 		<!-- Safety Inspector NYA #10212 -->
 		<!-- Sergeant Enrique NYA #10206 -->
-		<!-- Sinner's Torment (multiple spawns) #10193 -->
+		<!-- Sinner's Torment (multi-spawn) -->
 		<Champ zone="3070" x="144" y="669" z="95" champID="10193" />
 		<Champ zone="3070" x="272" y="716" z="92" champID="10193" />
 		<Champ zone="3070" x="376" y="785" z="85" champID="10193" />

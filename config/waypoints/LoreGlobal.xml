@@ -91,8 +91,22 @@
 		<Lore zone="3030" x="390" y="315" z="136" loreID="3496" />
 		<Lore zone="3040" x="862" y="567" z="131" loreID="3497" />
 		<!-- Gaia Engines (Auto/Story) -->
-		<!-- The Hell Dimensions 7/29 -->
-			<!-- #1-15 (HR) -->
+		<!-- The Hell Dimensions 20/29 -->
+			<!-- #1 (HR) -->
+		<Lore zone="5140" x="375" y="273" z="105" loreID="4808" />
+		<Lore zone="5140" x="387" y="340" z="84" loreID="4809" />
+		<Lore zone="5140" x="308" y="319" z="92" loreID="4810" />
+		<Lore zone="5140" x="220" y="295" z="85" loreID="4811" />
+		<Lore zone="5140" x="504" y="384" z="55" loreID="4812" />
+		<Lore zone="5140" x="390" y="284" z="98" loreID="4813" />
+		<Lore zone="5140" x="298" y="318" z="109" loreID="4814" />
+		<Lore zone="5140" x="399" y="334" z="75" loreID="4815" />
+		<Lore zone="5140" x="570" y="493" z="78" loreID="4816" />
+		<Lore zone="5140" x="386" y="352" z="78" loreID="4817" />
+		<Lore zone="5140" x="251" y="264" z="85" loreID="4818" />
+		<Lore zone="5140" x="587" y="528" z="82" loreID="4819" />
+			<!-- #14 (HR) -->
+		<Lore zone="5140" x="379" y="437" z="111" loreID="4821" />
 		<Lore zone="5150" x="203" y="724" z="9" loreID="4822" />
 		<Lore zone="5150" x="350" y="718" z="23" loreID="4823" />
 		<Lore zone="5150" x="374" y="659" z="45" loreID="4824" />

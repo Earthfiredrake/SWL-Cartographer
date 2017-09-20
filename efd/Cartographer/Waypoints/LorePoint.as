@@ -55,6 +55,10 @@ class efd.Cartographer.Waypoints.LorePoint extends Waypoint {
 			return "lore_buzz.png";
 		}
 	}
+	
+	// Concept: To reduce the number of icon permutations required, see about applying icon effects and overlays through code
+	// Possible filter for greyscale
+	// new ColorMatrixFilter([0.3086, 0.6094, 0.0820, 0, 0, 0.3086, 0.6094, 0.0820, 0, 0, 0.3086, 0.6094, 0.0820, 0, 0, 0, 0, 0, 1, 0])
 
 	/// Supplementary icon event handlers
 	public function HookIconEvents(icon:MovieClip, context:Object) {

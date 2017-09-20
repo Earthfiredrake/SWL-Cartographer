@@ -42,7 +42,15 @@
 		<Lore zone="3050" x="837" y="277" z="169" loreID="599" />
 			<!-- #8-12 (Instance: Mine) -->
 		<!-- The Darkness War 0/12 -->
-			<!-- #1-12 (DW) -->
+			<!-- #1-4 (DW) -->
+		<Lore zone="5170" x="96" y="507" z="130" loreID="831" />
+		<Lore zone="5170" x="103" y="601" z="136" loreID="830" />
+			<!-- #7 -->
+		<Lore zone="5170" x="57" y="571" z="132" loreID="828" />
+		<Lore zone="5170" x="139" y="804" z="131" loreID="827" />
+			<!-- #10 -->
+		<Lore zone="5170" x="586" y="509" z="184" loreID="825" />
+			<!-- #12 -->
 		<!-- The Fog -->
 		<Lore zone="3030" x="351" y="92" z="137" loreID="853" />
 		<Lore zone="3030" x="360" y="99" z="137" loreID="852" />
@@ -102,8 +110,17 @@
 		<Lore zone="3040" x="314" y="588" z="141" loreID="564" />
 		<Lore zone="3040" x="239" y="636" z="142" loreID="563" />
 		<Lore zone="3030" x="412" y="680" z="138" loreID="562" />
-		<!-- The Polaris 0/5 -->
-			<!-- #1-5 (Pol; crate code 5756) -->
+		<!-- The Polaris -->
+		<Lore zone="5040" x="58" y="247" z="197" loreID="5018" />
+		<Lore zone="5040" x="186" y="229" z="208" loreID="5017">		
+			<Note en="Drops from: Broken Corpse" />
+		</Lore>
+		<Lore zone="5040" x="284" y="313" z="197" loreID="5019" />
+		<Lore zone="5040" x="315" y="197" z="199" loreID="5020">
+			<Note en="Code: 5756" />
+		</Lore>
+		<Lore zone="5040" x="363" y="221" z="197" loreID="5020" />
+		<Lore zone="5040" x="446" y="154" z="198" loreID="5021" />
 	</Section>
 	<Section> <!-- Valley of the Sun God -->
 		<!-- The Ankh 7/11 -->
@@ -398,7 +415,9 @@
 		<Lore zone="3070" x="90" y="862" z="94" loreID="7283">
 			<Note en="Requires Mission: Brotherly Loathe" />
 		</Lore>
-			<!-- #5 (Drop, Mission: Brotherly Loathe) -->
+		<Lore zone="3070" x="89" y="859" z="105" loreID="7285">
+			<Note en="Requires Mission: Brotherly Loathe, Drops from Boss" />
+		</Lore>
 		<!-- The Tragical History of Doctor Faustus 1/5 -->
 		<Lore zone="3070" x="465" y="612" z="83" loreID="7392" />
 			<!-- #2-3 (Instance: Bank Heist) -->

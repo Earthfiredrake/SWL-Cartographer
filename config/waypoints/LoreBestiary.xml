@@ -249,7 +249,10 @@
 	<Lore zone="3040" x="805" y="999" z="147" loreID="9245" />
 	<Lore zone="5150" x="169" y="713" z="20" loreID="9246" />
 		<!-- #4-5 (Drops, KD/CotSG) -->
-		<!-- #6 (HR/HE (HF done)) -->
+		<!-- #6 (HE (HR|HF done)) -->
+	<Lore zone="5140" x="448" y="459" z="115" loreID="9249">
+		<Note en="Use all three within 2h" />
+	</Lore>
 	<Lore zone="5150" x="494" y="671" z="93" loreID="9249">
 		<Note en="Use all three within 2h" />
 	</Lore>
@@ -300,10 +303,12 @@
 	<Lore zone="3090" x="538" y="915" z="66" loreID="8665" />
 	<!-- Succubi and Incubi 1/7 -->
 	<Lore zone="3040" x="766" y="951" z="160" loreID="9210" />
-		<!-- #2-3 HR -->
+	<Lore zone="5140" x="486" y="375" z="67" loreID="9211" />
+		<!-- #3 HR -->
 		<!-- #4 HE -->
 		<!-- #5 (SC, Drop: Rift Martyr) -->
-		<!-- #6-7 HR -->
+	<Lore zone="5140" x="555" y="468" z="73" loreID="9215" />
+	<Lore zone="5140" x="299" y="292" z="110" loreID="9216" />
 	<!-- Vampires 9/13 -->
 	<Lore zone="3140" x="1073" y="897" z="48" loreID="8889" />
 	<Lore zone="3140" x="884" y="930" z="81" loreID="8890" />
@@ -347,14 +352,13 @@
 	<Lore zone="3050" x="583" y="206" z="157" loreID="8501" />
 	<Lore zone="3050" x="725" y="247" z="170" loreID="8502" />
 	<Lore zone="3050" x="612" y="122" z="150" loreID="8503" />
-	<!-- Werewolves 5/8 -->
+	<!-- Werewolves 7/8 -->
 	<Lore zone="3130" x="793" y="1117" z="57" loreID="8867" />
 	<Lore zone="3140" x="387" y="1178" z="48" loreID="8868" />
 	<Lore zone="3120" x="938" y="216" z="84" loreID="8869" />
 	<Lore zone="3130" x="936" y="1072" z="51" loreID="8870" />
 	<Lore zone="3120" x="662" y="683" z="102" loreID="8871" />
 		<!-- #6 (BF, Drop: Scalpers) -->
-		<!-- #7 (CF, Drop: Frostbite) -->
 	<Lore zone="3140" x="344" y="1199" z="34" loreID="8873">
 		<Note en="Champion mob drop" />
 	</Lore>
