@@ -709,6 +709,18 @@
 		<AnimaWell zone="3070" x="143.1" y="770.7" z="93.6"> <!-- Jigoku no Yu Bathhouse -->
 			<Name rdb="id=8471706 category=270" />
 		</AnimaWell>
+		<AnimaWell zone="3070" x="945.8" y="349.9" z="74.7"> <!-- CDC Camp -->
+			<Name rdb="id=8805158 category=270" />
+		</AnimaWell>
+		<AnimaWell zone="3070" x="717.1" y="33.1" z="73.6"> <!-- Shinto Shrine -->
+			<Name rdb="id=8805160 category=270" />
+		</AnimaWell>
+		<AnimaWell zone="3070" x="533.4" y="97.4" z="74.5"> <!-- The Docks -->
+			<Name rdb="id=9338810 category=270" />
+		</AnimaWell>
+		<AnimaWell zone="3070" x="384.8" y="412.0" z="82.8"> <!-- The Wall -->
+			<Name rdb="id=8805159 category=270" />
+		</AnimaWell>
 		<Transit zone="3070" x="949.8" y="749.0"
 			targetZone="5060">
 			<Name rdb="id=212867377 category=260" />

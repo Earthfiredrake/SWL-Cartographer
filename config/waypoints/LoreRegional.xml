@@ -289,16 +289,27 @@
 		<Lore zone="7640" x="220" y="149" z="17" loreID="7129" />
 		<Lore zone="6620" x="262" y="286" z="8" loreID="7130" />
 		<Lore zone="6620" x="182" y="220" z="28" loreID="7131" />
-			<!-- #4-7 (NYA) -->
+			<!-- #4 Instance: AV Suite -->
+		<Lore zone="3070" x="497" y="204" z="85" loreID="7588" />
+			<!-- #6-7  (NYA) -->
 		<Lore zone="6620" x="182" y="220" z="28" loreID="7132" />
 		<Lore zone="6620" x="230" y="216" z="14" loreID="7133" />
 		<Lore zone="3070" x="771" y="485" z="79" loreID="7134" />
 		<Lore zone="3070" x="230" y="446" z="79" loreID="7135" />
-		<!-- Breach of the First Wall 3/6 (NYA) -->
+		<!-- Breach of the First Wall -->
 		<Lore zone="3070" x="887" y="412" z="85" loreID="7596" />
+		<Lore zone="3070" x="702" y="391" z="88" loreID="7597" />
 		<Lore zone="3070" x="253" y="412" z="86" loreID="7598" />
+		<Lore zone="3070" x="991" y="489" z="85" loreID="7599" />
 		<Lore zone="3070" x="333" y="413" z="83" loreID="7600" />
-		<!-- The Cargo 0/6 (NYA) -->
+		<Lore zone="3070" x="609" y="415" z="93" loreID="7601" />
+		<!-- The Cargo -->
+		<Lore zone="3070" x="355" y="304" z="78" loreID="7581" />
+		<Lore zone="3070" x="478" y="95" z="76" loreID="7582" />
+		<Lore zone="3070" x="412" y="153" z="95" loreID="7583" />
+		<Lore zone="3070" x="566" y="182" z="75" loreID="7584" />
+		<Lore zone="3070" x="533" y="147" z="81" loreID="7585" />
+		<Lore zone="3070" x="534" y="348" z="94" loreID="7586" />
 		<!-- The Dream Palace 9/10 -->
 		<Lore zone="3070" x="680" y="632" z="88" loreID="7547" />
 		<Lore zone="3070" x="685" y="642" z="88" loreID="7548" />
@@ -306,7 +317,7 @@
 		<Lore zone="3070" x="681" y="635" z="93" loreID="7550" />
 		<Lore zone="3070" x="687" y="633" z="83" loreID="7551" />
 		<Lore zone="3070" x="676" y="636" z="93" loreID="7552" />
-			<!-- BS#1 (NYA) -->
+			<!-- BS#1 Instance: AV Suite -->
 		<Lore zone="3070" x="677" y="640" z="93" loreID="7554">
 			<Note en="Requires Mission: Nightmare in the Dream Palace" />
 		</Lore>
@@ -327,7 +338,11 @@
 		<Lore zone="3070" x="1000" y="871" z="72" loreID="7050">
 			<Note en="Inaccessible" />
 		</Lore>
-		<!-- The Gungne 0/4  (NYA)-->
+		<!-- The Gungne -->
+		<Lore zone="3070" x="387" y="307" z="81" loreID="7558" />
+		<Lore zone="3070" x="309" y="234" z="84" loreID="7559" />
+		<Lore zone="3070" x="251" y="212" z="82" loreID="7560" />
+		<Lore zone="3070" x="250" y="184" z="77" loreID="7561" />
 		<!-- The Hierarchy of Oni -->
 		<Lore zone="3070" x="188" y="852" z="93" loreID="7148" />
 		<Lore zone="3070" x="97" y="722" z="99" loreID="7149" />
@@ -345,7 +360,7 @@
 		<Lore zone="3070" x="203" y="786" z="94" loreID="7124" />
 		<Lore zone="3070" x="181" y="798" z="94" loreID="7125" />
 		<Lore zone="3070" x="174" y="810" z="107" loreID="7126" />
-		<!-- Kaidan 13/14 -->
+		<!-- Kaidan -->
 		<Lore zone="3070" x="378" y="665" z="83" loreID="7158" />
 		<Lore zone="3070" x="574" y="492" z="83" loreID="7159" />
 		<Lore zone="3070" x="660" y="677" z="87" loreID="7160" />
@@ -385,19 +400,45 @@
 		<Lore zone="3070" x="761" y="776" z="85" loreID="7171">
 			<Note en="Champion mob drop" />
 		</Lore>
-		<!-- The Maiden Shrine 0/10 (NYA) -->
+		<!-- The Maiden Shrine -->
+		<Lore zone="3070" x="695" y="83" z="71" loreID="7570" />
+		<Lore zone="3070" x="831" y="259" z="83" loreID="7571" />
+		<Lore zone="3070" x="844" y="82" z="73" loreID="7572" />
+		<Lore zone="3070" x="892" y="105" z="73" loreID="7573" />
+		<Lore zone="3070" x="766" y="41" z="71" loreID="7574" />
+		<Lore zone="3070" x="786" y="107" z="77" loreID="7575" />
+		<Lore zone="3070" x="754" y="140" z="78" loreID="7576" />
+		<Lore zone="3070" x="751" y="39" z="71" loreID="7577" /> <!-- Has Trigger Condition? -->
+		<Lore zone="3070" x="921" y="139" z="73" loreID="7578" />
+		<Lore zone="3070" x="702" y="162" z="71" loreID="7579" />		
 		<!-- The Manufactory 0/7 (NYA) -->
 		<!-- Manufactory Breached 0/12 (NYA) -->
-		<!-- Nightmares in the Dream Palace 2/11 (NYA) -->
-		<Lore zone="3070" x="675" y="632" z="83" loreID="7608" /> <!-- #6 -->
+		<!-- Nightmares in the Dream Palace 5/11 -->
+		<Lore zone="3070" x="928" y="437" z="83" loreID="7603" />
+		<Lore zone="3070" x="517" y="158" z="75" loreID="7604" />
+		<Lore zone="3070" x="937" y="542" z="83" loreID="7605" />
+			<!-- #4 Instance: Safehouse -->
+			<!-- #5 Instance: Clubhouse -->
+		<Lore zone="3070" x="675" y="632" z="83" loreID="7608" />
+			<!-- #7 Instance: Safehouse -->
+			<!-- BS#1-2 Instance: AV Suite -->
+			<!-- BS#3 Instance: Clubhouse -->
 		<Lore zone="3070" x="672" y="645" z="86" loreID="7613" /> <!-- BS#4 -->
-		<!-- The Ofuda 2/6 -->
-			<!-- #1 (NYA) -->
+		<!-- The Ofuda 5/6 -->
+		<Lore zone="3070" x="752" y="179" z="75" loreID="7563" />
 		<Lore zone="3070" x="828" y="618" z="93" loreID="7564" />
-			<!-- #3-5 (NYA) -->
+		<Lore zone="3070" x="745" y="21" z="73" loreID="7565" />
+		<Lore zone="3070" x="728" y="170" z="76" loreID="7566" />
+			<!-- #5 Instance: Safehouse -->
 		<Lore zone="3070" x="824" y="608" z="93" loreID="7568" />
-		<!-- Orochi Housing Projects 0/6 (NYA) -->
-		<!-- Orochi Tower 0/11 (NYA) -->
+		<!-- Orochi Housing Projects 3/6 -->
+		<Lore zone="3070" x="834" y="331" z="76" loreID="7615" />
+		<Lore zone="3070" x="857" y="250" z="77" loreID="7616" />
+			<!-- #3 Instance: Clubhouse -->
+		<Lore zone="3070" x="853" y="203" z="76" loreID="7618" />
+			<!-- #5-6 Instance: Safehouse -->
+		<!-- Orochi Tower 1/11 (NYA) -->
+		<Lore zone="3070" x="392" y="360" z="75" loreID="7838" />
 		<!-- Reaping the Whirlwind 0/10 (NYA) -->
 		<!-- Susanoo's Diner -->
 		<Lore zone="3070" x="284" y="583" z="83" loreID="7107" />
@@ -408,7 +449,7 @@
 			<Note en="Take a seat, politely" />
 		</Lore>
 		<Lore zone="3070" x="271" y="553" z="87" loreID="7112" />
-		<!-- Tale of Momotaro 4/5 -->
+		<!-- Tale of Momotaro -->
 		<Lore zone="6710" x="523" y="764" z="74" loreID="7280" />
 		<Lore zone="6710" x="511" y="821" z="82" loreID="7281" />
 		<Lore zone="6710" x="577" y="887" z="74" loreID="7282" />
@@ -418,7 +459,7 @@
 		<Lore zone="3070" x="89" y="859" z="105" loreID="7285">
 			<Note en="Requires Mission: Brotherly Loathe, Drops from Boss" />
 		</Lore>
-		<!-- The Tragical History of Doctor Faustus 1/5 -->
+		<!-- The Tragical History of Doctor Faustus 3/5 -->
 		<Lore zone="3070" x="465" y="612" z="83" loreID="7392" />
 			<!-- #2-3 (Instance: Bank Heist) -->
 		<Lore zone="3070" x="395" y="551" z="112" loreID="7395">
@@ -427,11 +468,14 @@
 		<Lore zone="3070" x="378" y="812" z="121" loreID="7396">
 			<Note en="Requires Mission: The All-Seeing Kawaii" />
 		</Lore>
-		<!-- Trail of Shadows 2/10 -->
+		<!-- Trail of Shadows 4/10 -->
 		<Lore zone="3070" x="636" y="722" z="120" loreID="8137" />
-			<!-- #2-3 (NYA) -->
+		<Lore zone="3070" x="937" y="440" z="113" loreID="8138" />
+		<Lore zone="3070" x="296" y="97" z="71" loreID="8139" />
 		<Lore zone="3070" x="438" y="423" z="100" loreID="8140" />
-			<!-- #5-8 BS#1-2 (NYA) -->
+			<!-- #5-8 Instances: Hospital|Shadow(#7) -->
+		<Lore zone="3070" x="481" y="330" z="79" loreID="8145" />
+			<!-- BS#2 Instance: Hospital -->
 		<!-- The Wall 8/9 -->
 		<Lore zone="3070" x="864" y="716" z="89" loreID="7136" />
 		<Lore zone="3070" x="398" y="417" z="89" loreID="7137" />

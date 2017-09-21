@@ -108,9 +108,7 @@
 	<!-- Draug - Deep Ones 4/7-->
 	<Lore zone="3050" x="57" y="672" z="130" loreID="8524" />
 		<!-- #2 (BM, Drop: Tide Lurker) -->
-	<Lore zone="3070" x="909" y="866" z="76" loreID="8526">
-		<Note en="Inaccessible" />
-	</Lore>
+	<Lore zone="3070" x="909" y="866" z="76" loreID="8526" />
 	<Lore zone="3050" x="55" y="291" z="131" loreID="8527" />
 		<!-- #5 (BM, Drop: Deep Ones) -->
 	<Lore zone="3050" x="98" y="434" z="140" loreID="8529" />
@@ -142,22 +140,31 @@
 	<Lore zone="3100" x="132" y="26" z="86" loreID="8573" />
 	<Lore zone="3040" x="277" y="363" z="160" loreID="8574" />
 		<!-- #6 (Instance: Carter Unleashed) -->
-	<!-- Fauns 3/5 -->
+	<!-- Fauns 4/5 -->
 	<Lore zone="3130" x="323" y="548" z="51" loreID="9222" />
-		<!-- #2-3 (SF, Drop: Fauns and Black Antlers) -->
+		<!-- #2 (SF, Drop: Fauns) -->
+	<Lore zone="3130" x="418" y="555" z="37" loreID="9224">
+		<Note en="Champion mob drop" />
+	</Lore>
 	<Lore zone="3120" x="1182" y="511" z="55" loreID="9225" />
 	<Lore zone="3120" x="1040" y="1010" z="115" loreID="9226" />
-	<!-- Filth and Humans 3/8 -->
-		<!-- #1 (NYA) -->
+	<!-- Filth and Humans 6/8 -->
+		<!-- #1 Instance: Clubhouse -->
 	<Lore zone="3090" x="361" y="850" z="66" loreID="9286" />
-		<!-- #3-6 (NYA) -->
+	<Lore zone="3070" x="980" y="410" z="87" loreID="9287" />
+	<Lore zone="3070" x="458" y="260" z="95" loreID="9288" />
+	<Lore zone="3070" x="344" y="186" z="85" loreID="9289" />	
+		<!-- #6 (NYA) -->
 	<Lore zone="3090" x="270" y="855" z="64" loreID="9291" />
 	<Lore zone="3100" x="205" y="1022" z="60" loreID="9292" />
-	<!-- Filth and Nature 1/5 -->
-		<!-- #1 (NYA) -->
+	<!-- Filth and Nature -->
+	<Lore zone="3070" x="251" y="206" z="85" loreID="9278" />
 	<Lore zone="3100" x="147" y="950" z="55" loreID="9279" />
-		<!-- #3 (SF, Drop: Vagrant Colonist) -->
-		<!-- #4-5 (NYA) -->
+	<Lore zone="3130" x="784" y="470" z="32" champID="9280">
+		<Note en="Champion mob drop" />
+	</Lore>
+	<Lore zone="3070" x="463" y="178" z="81" loreID="9281" />
+	<Lore zone="3070" x="554" y="246" z="89" loreID="9282" />
 	<!-- Filth Guardians 5/8 -->
 	<Lore zone="6075" x="265" y="290" z="31" loreID="9295" />
 	<Lore zone="3140" x="625" y="650" z="65" loreID="9296" />
@@ -185,22 +192,23 @@
 	<Lore zone="5060" x="553" y="22" z="225" loreID="9275">
 		<Note en="Spawns for 2 min when custodian near." />
 	</Lore>
-	<!-- Jinn 0/9 -->
+	<!-- Jinn 1/9 -->
 	<Lore zone="3100" x="823" y="711" z="73" loreID="9200" />
 		<!-- #2 (HE, Drop) -->
 		<!-- #3-6 (HE) -->
 		<!-- #7 (SD, Drop: Hellfire) -->
 		<!-- #8 (Instance: Eats Its Name) -->
 		<!-- #9 (HE) -->
-	<!-- Kyonshi 3/4 -->
-		<!-- #1 (NYA) -->
+	<!-- Kyonshi -->
+	<Lore zone="3070" x="782" y="171" z="76" loreID="8817" />
 	<Lore zone="3070" x="820" y="603" z="93" loreID="8818" />
 	<Lore zone="3070" x="728" y="742" z="86" loreID="8819" />
 	<Lore zone="3070" x="829" y="566" z="93" loreID="8820" />
-	<!-- Little Ones 1/4 -->
-		<!-- #1 (NYA) -->
+	<!-- Little Ones -->
+	<Lore zone="3070" x="879" y="146" z="80" loreID="8822" />
 	<Lore zone="6630" x="110" y="165" z="5" loreID="8823" />
-		<!-- #3-4 (NYA) -->
+	<Lore zone="3070" x="911" y="230" z="77" loreID="8824" />
+	<Lore zone="3070" x="721" y="308" z="79" loreID="8825" />
 	<!-- Mummies 3/12 -->
 	<Lore zone="3090" x="359" y="660" z="58" loreID="8603" />
 		<!-- #2 (Instance: Time to Every Purpose) -->
@@ -221,18 +229,22 @@
 		<Note en="Champion mob drop" />
 	</Lore>
 		<!-- #12 (SD, Instance, PITA) -->
-	<!-- Namahage 0/3 (NYA) -->
-	<!-- Oni 3/4 -->
+	<!-- Namahage 2/3 -->
+	<Lore zone="3070" x="815" y="218" z="76" loreID="8748" />
+	<Lore zone="3070" x="771" y="282" z="83" loreID="8749" />
+		<!-- #3 Champ Drop -->
+	<!-- Oni -->
 	<Lore zone="3070" x="96" y="861" z="103" loreID="9251">
 		<Note en="Requires Mission: Brotherly Loathe"/>
 	</Lore>
 	<Lore zone="5150" x="491" y="668" z="80" loreID="9252" />
 	<Lore zone="3070" x="131" y="989" z="74" loreID="9253" />
-		<!-- #4 (NYA) -->
-	<!-- Orochi Tech 1/6 -->
+	<Lore zone="3070" x="957" y="20" z="74" loreID="9254" />
+	<!-- Orochi Tech 3/6 -->
 		<!-- #1-2 (NYA) -->
 	<Lore zone="3100" x="15" y="808" z="54" loreID="8743" />
-		<!-- #4-5 (NYA) -->
+		<!-- #4 Instance: Hospital -->
+	<Lore zone="3070" x="319" y="351" z="84" loreID="8745" />
 	<Lore zone="3070" x="128" y="517" z="85" loreID="8746">
 		<Note en="Champion mob drop; Kill fast" />
 	</Lore>
@@ -276,32 +288,35 @@
 	<Lore zone="3050" x="519" y="683" z="193" loreID="8564" />
 	<Lore zone="3040" x="495" y="531" z="138" loreID="8565" />
 	<Lore zone="3040" x="829" y="367" z="160" loreID="8566" />
-		<!-- #7-8 (SC, Drop: Old Barn-->
+		<!-- #7-8 (SC, Drop: Old Barn -->
 	<!-- Soldiers of Hell -->
 	<Lore zone="3130" x="609" y="370" z="37" loreID="9239" />
 	<Lore zone="3130" x="406" y="438" z="40" loreID="9240" />
 	<Lore zone="5150" x="341" y="611" z="32" loreID="9241" />
 	<Lore zone="5150" x="360" y="549" z="68" loreID="9242" />
-	<!-- Spectres 5/10 -->
+	<!-- Spectres 8/11 -->
 	<Lore zone="3140" x="648" y="850" z="51" loreID="8827" />
 	<Lore zone="3050" x="309" y="496" z="172" loreID="8828" />
-		<!-- #3-4 (NYA) -->
+	<Lore zone="3070" x="906" y="132" z="77" loreID="8829" />
+		<!-- #4 (NYA) -->
 	<Lore zone="3050" x="366" y="525" z="154" loreID="8831" />
 		<!-- #6 (KD, Drop: Onryo in North KD) -->
 		<!-- #7 (SF, Drop, Mission: Breadcrumbs) -->
 	<Lore zone="3100" x="405" y="884" z="77" loreID="8834" />
 	<Lore zone="6640" x="218" y="270" z="23" loreID="8835" />
-		<!-- #10 (NYA) -->
+	<Lore zone="3070" x="886" y="178" z="76" loreID="8836" />
 	<Lore zone="3070" x="809" y="645" z="93" loreID="8837">
-		<Note en="Midnight game time, in anima form, possible spawn 1/2" />
+		<Note en="Midnight game time, in anima form" />
 	</Lore>
-		<!-- #11 (Alternate Spawn, NYA) -->
+	<Lore zone="3070" x="735" y="154" z="75" loreID="8837">
+		<Note en="Midnight game time, in anima form" />
+	</Lore>
 	<!-- Spirits of Flame -->
 	<Lore zone="3090" x="530" y="669" z="65" loreID="8662" />
 	<Lore zone="3090" x="442" y="976" z="79" loreID="8663" />
 	<Lore zone="3090" x="553" y="625" z="46" loreID="8664" />
 	<Lore zone="3090" x="538" y="915" z="66" loreID="8665" />
-	<!-- Succubi and Incubi 1/7 -->
+	<!-- Succubi and Incubi 4/7 -->
 	<Lore zone="3040" x="766" y="951" z="160" loreID="9210" />
 	<Lore zone="5140" x="486" y="375" z="67" loreID="9211" />
 		<!-- #3 HR -->
@@ -323,18 +338,20 @@
 	<Lore zone="3120" x="478" y="1094" z="102" loreID="8899" />
 		<!-- #12 (CF, Drop: Type-X Controllers -->
 	<Lore zone="3120" x="898" y="1214" z="124" loreID="8901" />
-	<!-- Vampire Masters 4/9 -->
+	<!-- Vampire Masters 5/9 -->
 	<Lore zone="3140" x="355" y="996" z="110" loreID="9077" />
 	<Lore zone="3120" x="263" y="755" z="95" loreID="9078" />
 		<!-- #3 (BF, Drop: Frontline Engorged) -->
-	<Lore zone="3140" x="547" y="983" z="64" loreID="9080" />
-		<!-- #5 (CF, Drop: Pain Artist) -->
+	<Lore zone="3140" x="547" y="983" z="64" loreID="9080" />		
+	<Lore zone="3140" x="540" y="1056" z="75" loreID="9081">
+		<Note en="Champion mob drop" />
+	</Lore>
 		<!-- #6-7 (Instance: Castle) -->
 	<Lore zone="3120" x="250" y="866" z="76" loreID="9084" />
 	 <Lore zone="3140" x="919" y="1030" z="51" loreID="9237">
 		<Note en="Chase down vampire survivalist" />
 	 </Lore>
-	<!-- Vampire Super Soliders 0/5 -->
+	<!-- Vampire Super Soliders 1/5 -->
 		<!-- #1 (SH) -->
 	<Lore zone="3120" x="338" y="918" z="130" loreID="8904">
 		<Note en="Champion mob drop" />
@@ -371,7 +388,7 @@
 	<Lore zone="3040" x="512" y="296" z="154" loreID="8555" />
 	<Lore zone="3030" x="408" y="811" z="145" loreID="8556" />
 	<Lore zone="3040" x="589" y="188" z="172" loreID="8557" />
-	<!-- Zmeu 1/3 -->
+	<!-- Zmeu 2/3 -->
 	<Lore zone="3140" x="775" y="495" z="52" loreID="9234" />
 	<Lore zone="3140" x="862" y="559" z="16" loreID="9235" />
 		<!-- #3 (CF, Drop: Black Springs Zmeu) -->

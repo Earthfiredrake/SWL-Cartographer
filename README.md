@@ -53,8 +53,9 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
-Version Next
+Version 0.1.1-alpha
 + It zooms, it scrolls, hopefully it doesn't shuffle the waypoints when it does
++ Outer KD waypoint update, all open world lore, most champs
 
 Version 0.1.0-alpha
 + Champion waypoints, with similar completion tracking as Lore
