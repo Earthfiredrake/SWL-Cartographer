@@ -285,11 +285,11 @@
 		<Lore zone="5060" x="252" y="246" z="368" loreID="7196" />
 		<Lore zone="3070" x="396" y="649" z="83" loreID="7197" />
 		<Lore zone="6670" x="283" y="210" z="6" loreID="7198" />
-		<!-- The Bomb 7/11 -->
+		<!-- The Bomb 9/11 -->
 		<Lore zone="7640" x="220" y="149" z="17" loreID="7129" />
 		<Lore zone="6620" x="262" y="286" z="8" loreID="7130" />
 		<Lore zone="6620" x="182" y="220" z="28" loreID="7131" />
-			<!-- #4 Instance: AV Suite -->
+		<Lore zone="6740" x="762" y="271" z="20" loreID="7587" />
 		<Lore zone="3070" x="497" y="204" z="85" loreID="7588" />
 			<!-- #6-7  (NYA) -->
 		<Lore zone="6620" x="182" y="220" z="28" loreID="7132" />
@@ -310,14 +310,14 @@
 		<Lore zone="3070" x="566" y="182" z="75" loreID="7584" />
 		<Lore zone="3070" x="533" y="147" z="81" loreID="7585" />
 		<Lore zone="3070" x="534" y="348" z="94" loreID="7586" />
-		<!-- The Dream Palace 9/10 -->
+		<!-- The Dream Palace -->
 		<Lore zone="3070" x="680" y="632" z="88" loreID="7547" />
 		<Lore zone="3070" x="685" y="642" z="88" loreID="7548" />
 		<Lore zone="3070" x="920" y="569" z="83" loreID="7549" />
 		<Lore zone="3070" x="681" y="635" z="93" loreID="7550" />
 		<Lore zone="3070" x="687" y="633" z="83" loreID="7551" />
 		<Lore zone="3070" x="676" y="636" z="93" loreID="7552" />
-			<!-- BS#1 Instance: AV Suite -->
+		<Lore zone="6740" x="819" y="436" z="121" loreID="7553" />
 		<Lore zone="3070" x="677" y="640" z="93" loreID="7554">
 			<Note en="Requires Mission: Nightmare in the Dream Palace" />
 		</Lore>
@@ -413,30 +413,32 @@
 		<Lore zone="3070" x="702" y="162" z="71" loreID="7579" />		
 		<!-- The Manufactory 0/7 (NYA) -->
 		<!-- Manufactory Breached 0/12 (NYA) -->
-		<!-- Nightmares in the Dream Palace 5/11 -->
+		<!-- Nightmares in the Dream Palace -->
 		<Lore zone="3070" x="928" y="437" z="83" loreID="7603" />
 		<Lore zone="3070" x="517" y="158" z="75" loreID="7604" />
 		<Lore zone="3070" x="937" y="542" z="83" loreID="7605" />
-			<!-- #4 Instance: Safehouse -->
-			<!-- #5 Instance: Clubhouse -->
+		<Lore zone="6672" x="285" y="213" z="30" loreID="7606" />
+		<Lore zone="6730" x="207" y="415" z="20" loreID="7607" />
 		<Lore zone="3070" x="675" y="632" z="83" loreID="7608" />
-			<!-- #7 Instance: Safehouse -->
-			<!-- BS#1-2 Instance: AV Suite -->
-			<!-- BS#3 Instance: Clubhouse -->
-		<Lore zone="3070" x="672" y="645" z="86" loreID="7613" /> <!-- BS#4 -->
-		<!-- The Ofuda 5/6 -->
+		<Lore zone="6672" x="295" y="217" z="24" loreID="7609" />
+		<Lore zone="6740" x="255" y="545" z="210" loreID="7610" />
+		<Lore zone="6740" x="817" y="283" z="20" loreID="7611" />
+		<Lore zone="6730" x="94" y="260" z="20" loreID="7612" />
+		<Lore zone="3070" x="672" y="645" z="86" loreID="7613" />
+		<!-- The Ofuda -->
 		<Lore zone="3070" x="752" y="179" z="75" loreID="7563" />
 		<Lore zone="3070" x="828" y="618" z="93" loreID="7564" />
 		<Lore zone="3070" x="745" y="21" z="73" loreID="7565" />
 		<Lore zone="3070" x="728" y="170" z="76" loreID="7566" />
-			<!-- #5 Instance: Safehouse -->
+		<Lore zone="6672" x="322" y="225" z="18" loreID="7567" />
 		<Lore zone="3070" x="824" y="608" z="93" loreID="7568" />
-		<!-- Orochi Housing Projects 3/6 -->
+		<!-- Orochi Housing Projects -->
 		<Lore zone="3070" x="834" y="331" z="76" loreID="7615" />
 		<Lore zone="3070" x="857" y="250" z="77" loreID="7616" />
-			<!-- #3 Instance: Clubhouse -->
+		<Lore zone="6730" x="228" y="214" z="20" loreID="7617" />
 		<Lore zone="3070" x="853" y="203" z="76" loreID="7618" />
-			<!-- #5-6 Instance: Safehouse -->
+		<Lore zone="6672" x="266" y="228" z="0" loreID="7619" />
+		<Lore zone="6672" x="328" y="224" z="7" loreID="7620" />
 		<!-- Orochi Tower 1/11 (NYA) -->
 		<Lore zone="3070" x="392" y="360" z="75" loreID="7838" />
 		<!-- Reaping the Whirlwind 0/10 (NYA) -->
@@ -473,9 +475,12 @@
 		<Lore zone="3070" x="937" y="440" z="113" loreID="8138" />
 		<Lore zone="3070" x="296" y="97" z="71" loreID="8139" />
 		<Lore zone="3070" x="438" y="423" z="100" loreID="8140" />
-			<!-- #5-8 Instances: Hospital|Shadow(#7) -->
+		<Lore zone="6770" x="247" y="229" z="234" loreID="8141" />
+		<Lore zone="6770" x="245" y="251" z="274" loreID="8142" />
+			<!-- #7 Instance: Shadow -->
+		<Lore zone="6770" x="262" y="255" z="234" loreID="8144" />
 		<Lore zone="3070" x="481" y="330" z="79" loreID="8145" />
-			<!-- BS#2 Instance: Hospital -->
+		<Lore zone="6770" x="243" y="257" z="288" loreID="8146" />
 		<!-- The Wall 8/9 -->
 		<Lore zone="3070" x="864" y="716" z="89" loreID="7136" />
 		<Lore zone="3070" x="398" y="417" z="89" loreID="7137" />

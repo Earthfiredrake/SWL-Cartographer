@@ -132,7 +132,9 @@
 	<Lore zone="3050" x="638" y="450" z="194" loreID="8545" />
 	<Lore zone="3050" x="616" y="544" z="167" loreID="8546" />
 	<Lore zone="3050" x="886" y="828" z="141" loreID="8547" />
-		<!-- #7 (KM/BM, Drop: Lord of Headcolds) -->
+	<Lore zone="3030" x="705" y="164" z="132" loreID="8548">
+		<Note en="Summon point, requires 5 people + beating heart from BM" />
+	</Lore>
 	<!-- Familiars 4/6 -->
 	<Lore zone="3040" x="258" y="177" z="141" loreID="8570" />
 		<!-- #2 (SC Drop: Corrective Familiars) -->
@@ -148,8 +150,8 @@
 	</Lore>
 	<Lore zone="3120" x="1182" y="511" z="55" loreID="9225" />
 	<Lore zone="3120" x="1040" y="1010" z="115" loreID="9226" />
-	<!-- Filth and Humans 6/8 -->
-		<!-- #1 Instance: Clubhouse -->
+	<!-- Filth and Humans 7/8 -->
+	<Lore zone="6730" x="408" y="330" z="20" loreID="9285" />
 	<Lore zone="3090" x="361" y="850" z="66" loreID="9286" />
 	<Lore zone="3070" x="980" y="410" z="87" loreID="9287" />
 	<Lore zone="3070" x="458" y="260" z="95" loreID="9288" />
@@ -160,7 +162,7 @@
 	<!-- Filth and Nature -->
 	<Lore zone="3070" x="251" y="206" z="85" loreID="9278" />
 	<Lore zone="3100" x="147" y="950" z="55" loreID="9279" />
-	<Lore zone="3130" x="784" y="470" z="32" champID="9280">
+	<Lore zone="3130" x="784" y="470" z="32" loreID="9280">
 		<Note en="Champion mob drop" />
 	</Lore>
 	<Lore zone="3070" x="463" y="178" z="81" loreID="9281" />
@@ -243,7 +245,7 @@
 	<!-- Orochi Tech 3/6 -->
 		<!-- #1-2 (NYA) -->
 	<Lore zone="3100" x="15" y="808" z="54" loreID="8743" />
-		<!-- #4 Instance: Hospital -->
+	<Lore zone="6770" x="247" y="240" z="274" loreID="8744" />
 	<Lore zone="3070" x="319" y="351" z="84" loreID="8745" />
 	<Lore zone="3070" x="128" y="517" z="85" loreID="8746">
 		<Note en="Champion mob drop; Kill fast" />
@@ -300,8 +302,10 @@
 	<Lore zone="3070" x="906" y="132" z="77" loreID="8829" />
 		<!-- #4 (NYA) -->
 	<Lore zone="3050" x="366" y="525" z="154" loreID="8831" />
-		<!-- #6 (KD, Drop: Onryo in North KD) -->
-		<!-- #7 (SF, Drop, Mission: Breadcrumbs) -->
+		<!-- #6 (KD, Drop: Onryo in KD) -->
+	<Lore zone="3130" x="724" y="852" z="31" loreID="8833">
+		<Note en="Requires Mission: A Trail of Breadcrumbs, Drops from Boss" />
+	</Lore>
 	<Lore zone="3100" x="405" y="884" z="77" loreID="8834" />
 	<Lore zone="6640" x="218" y="270" z="23" loreID="8835" />
 	<Lore zone="3070" x="886" y="178" z="76" loreID="8836" />

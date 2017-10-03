@@ -224,12 +224,11 @@
 		<Champ zone="3070" x="344" y="186" z="87" champID="10211" /> <!-- Inventory Infector -->
 		<Champ zone="3070" x="343" y="108" z="76" champID="10217" /> <!-- Nkadi the Fungal Lord -->
 		<!-- The Opener of Kimon (multi-spawn) -->
-		<Champ zone="3070" x="150" y="930" champID="7075" />
-		<Champ zone="3070" x="200" y="900" champID="7075" />
-		<Champ zone="3070" x="320" y="920" champID="7075" />
-		<Champ zone="3070" x="450" y="890" champID="7075" />
-		<Champ zone="3070" x="610" y="890" champID="7075" />
-		<Champ zone="3070" x="750" y="900" champID="7075" />
+		<Champ zone="3070" x="34" y="835" z="95" champID="7075" />
+		<Champ zone="3070" x="141" y="938" z="81" champID="7075" />
+		<Champ zone="3070" x="326" y="919" z="81" champID="7075" />
+		<Champ zone="3070" x="538" y="896" z="81" champID="7075" />
+		<Champ zone="3070" x="736" y="897" z="81" champID="7075" />
 		<Champ zone="3070" x="128" y="517" z="85" champID="7074" /> <!-- Orochi Prototype Smiler Mark 1.1 -->
 		<!-- Roving Rager (multi-spawn roams) #10192 -->
 		<!-- Red Namahage (roams) #10203 -->
