@@ -73,11 +73,11 @@ class efd.Cartographer.notations.BasicPoint {
 			var subNode:XMLNode = xml.childNodes[i];
 			switch (subNode.nodeName) {
 				case "Name":
-					Name = ParseLocalizedText(subNode);
+					Name = LocaleManager.GetLocaleString(subNode);
 					ShowLabel = subNode.attributes.showLabel == "true";
 					break;
 				case "Note":
-					Note = ParseLocalizedText(subNode);
+					Note = LocaleManager.GetLocaleString(subNode);
 					break;
 			}
 		}
@@ -88,16 +88,6 @@ class efd.Cartographer.notations.BasicPoint {
 			case "AnimaWell": return "well.png";
 			case "Vendor": return "vendor.png";
 			default: return undefined;
-		}
-	}
-
-	private static function ParseLocalizedText(xml:XMLNode):String {
-		if (xml.attributes.rdb != undefined) {
-			// Is localized in game resource database
-			return LDBFormat.Translate("<localized " + xml.attributes.rdb + " />");
-		} else {
-			// Requires manual localization if available
-			return LocaleManager.GetLocaleString(xml);
 		}
 	}
 
