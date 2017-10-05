@@ -27,7 +27,7 @@
 // Descriptive text, preferably localized as much as possible
 //   Label: Appears on the map. Use minimally to avoid excessive clutter. In most cases this should only be a copy of the tooltip title (would a checkbox be enough?)
 //   Name: Tooltip title. Game localization can be used for many of these when provided by the mod, including: Lore topics, monsters, anything from the default file, missions and sources
-//   Details: Further details contained in tooltip. Manual localization support
+//   Note: Further details contained in tooltip. Manual localization support
 // Category: How to group the waypoint for filtering or other purposes. Support for multiple categories (ie: samhain + lore)? How many custom categories can/should be provided?
 //   Category may also affect some background processing, which would restrict the user from adding their own waypoints directly for certain things
 //     - Lore, mobs, missions... Should I bake autopopulation tools into this mod, or provide them as utlity mods on the side?
@@ -45,21 +45,21 @@ import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
 
 // TODO: A registration system so that I can add these without changing the factory method
-import efd.Cartographer.Waypoints.ChampPoint;
-import efd.Cartographer.Waypoints.LorePoint;
-import efd.Cartographer.Waypoints.TransitPoint;
+import efd.Cartographer.notations.ChampPoint;
+import efd.Cartographer.notations.LorePoint;
+import efd.Cartographer.notations.TransitPoint;
 
-class efd.Cartographer.Waypoint {
-	public static function Create(xml:XMLNode):Waypoint {
+class efd.Cartographer.notations.BasicPoint {
+	public static function Create(xml:XMLNode):BasicPoint {
 		switch (xml.nodeName) {
 			case "Champ": return new ChampPoint(xml);
 			case "Lore": return new LorePoint(xml);
 			case "Transit": return new TransitPoint(xml);
-			default: return new Waypoint(xml);
+			default: return new BasicPoint(xml);
 		}
 	}
 
-	public function Waypoint(xml:XMLNode) {
+	public function BasicPoint(xml:XMLNode) {
 		Layer = xml.attributes.layer ? xml.attributes.layer : xml.nodeName;
 		_Icon = xml.attributes.icon ? xml.attributes.icon : GetDefaultIcon(xml.nodeName);
 
@@ -74,7 +74,7 @@ class efd.Cartographer.Waypoint {
 					ShowLabel = subNode.attributes.showLabel == "true";
 					break;
 				case "Note":
-					Notes = ParseLocalizedText(subNode);
+					Note = ParseLocalizedText(subNode);
 					break;
 			}
 		}
@@ -114,5 +114,5 @@ class efd.Cartographer.Waypoint {
 
 	public var Name:String; // Waypoint name
 	public var ShowLabel:Boolean; // Display the label on the map or only as a tooltip
-	public var Notes:String; // Detail notes
+	public var Note:String; // Detail notes
 }

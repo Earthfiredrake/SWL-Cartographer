@@ -9,7 +9,7 @@ import gfx.utils.Delegate;
 import com.Utils.Signal;
 
 import efd.Cartographer.lib.Mod;
-import efd.Cartographer.Waypoint;
+import efd.Cartographer.notations.BasicPoint;
 
 class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	public static var __className:String = "efd.Cartographer.gui.WaypointIcon";
@@ -91,11 +91,11 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		_y = pos.y;
 	}
 
-	public function Reassign(data:Waypoint, pos:Point):Boolean {
+	public function Reassign(data:BasicPoint, pos:Point):Boolean {
 		RemoveTooltip();
 		Data.UnhookIconEvents(Icon, this);
 
-		var oldData:Waypoint = Data;
+		var oldData:BasicPoint = Data;
 		Data = data;
 		if (Data.ShowLabel) {
 			if (oldData.ShowLabel) {
@@ -144,7 +144,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		Loader.unloadClip(Icon);
 	}
 
-	public var Data:Waypoint;
+	public var Data:BasicPoint;
 
 	public var SignalIconChanged:Signal; // Used to notify host layer that this icon has changed due to outside events
 	public var SignalWaypointLoaded:Signal;

@@ -9,7 +9,7 @@ import com.GameInterface.DistributedValue;
 import efd.Cartographer.lib.ConfigWrapper;
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
-import efd.Cartographer.Waypoint;
+import efd.Cartographer.notations.BasicPoint;
 
 class efd.Cartographer.Cartographer extends Mod {
 	private static var ModInfo:Object = {
@@ -135,7 +135,7 @@ class efd.Cartographer.Cartographer extends Mod {
 			if (node.nodeName == "Section") {
 				waypoints = waypoints.concat(ParseSection(node));
 			} else {
-				waypoints.push(Waypoint.Create(node));
+				waypoints.push(BasicPoint.Create(node));
 			}
 		}
 		return waypoints;

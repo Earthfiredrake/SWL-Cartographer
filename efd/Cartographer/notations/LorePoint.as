@@ -8,9 +8,9 @@ import com.Utils.ID32;
 
 import efd.Cartographer.lib.Mod;
 
-import efd.Cartographer.Waypoint;
+import efd.Cartographer.notations.BasicPoint;
 
-class efd.Cartographer.Waypoints.LorePoint extends Waypoint {
+class efd.Cartographer.notations.LorePoint extends BasicPoint {
 
 	public function LorePoint(xml:XMLNode) {
 		super(xml);

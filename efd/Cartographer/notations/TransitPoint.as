@@ -4,9 +4,9 @@
 
 import gfx.utils.Delegate;
 
-import efd.Cartographer.Waypoint;
+import efd.Cartographer.notations.BasicPoint;
 
-class efd.Cartographer.Waypoints.TransitPoint extends Waypoint {
+class efd.Cartographer.notations.TransitPoint extends BasicPoint {
 
 	public function TransitPoint(xml:XMLNode) {
 		super(xml);
