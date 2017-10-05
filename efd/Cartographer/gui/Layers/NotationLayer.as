@@ -5,9 +5,10 @@
 import flash.geom.Point;
 
 import efd.Cartographer.lib.etu.MovieClipHelper;
+import efd.Cartographer.lib.Mod;
 
+import efd.Cartographer.LayerData;
 import efd.Cartographer.gui.WaypointIcon;
-import efd.Cartographer.Waypoint;
 
 // Implementation Plan:
 // Each notation layer is actually three seperate movie clips, at significantly different depth levels (to permit interleaving of those layers)
@@ -18,18 +19,18 @@ import efd.Cartographer.Waypoint;
 
 class efd.Cartographer.gui.Layers.NotationLayer {
 
-	public function NotationLayer(hostClip:MovieClip, notationData:Object, visible:Boolean) {
+	public function NotationLayer(hostClip:MovieClip, data:LayerData, visible:Boolean) {
 		super();
 		HostClip = hostClip;
-		NotationData = notationData;
+		NotationData = data;
 
-		ZoneLayer = HostClip.NewLayer("Zone");
+		AreaLayer = HostClip.NewLayer("Area");
 		PathLayer = HostClip.NewLayer("Path");
 		WaypointLayer = HostClip.NewLayer("Waypoint");
 
 		_RenderedWaypoints = new Array();
 		_visible = visible;
-		ZoneLayer._visible = visible;
+		AreaLayer._visible = visible;
 		PathLayer._visible = visible;
 		WaypointLayer._visible = visible;
 	}
@@ -62,7 +63,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 	}
 
 	public function TrimDisplayList():Void {
-		var length:Number = NotationData[Zone].length;
+		var length:Number = NotationData.GetWaypoints(Zone).length;
 		for (var i:Number = length; i < RenderedWaypoints.length; ++i) {
 			var waypoint:MovieClip = RenderedWaypoints[i];
 			waypoint.Unload();
@@ -72,7 +73,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 	}
 
 	public function LoadDataBlock():Void {
-		var data:Array = NotationData[Zone];
+		var data:Array = NotationData.GetWaypoints(Zone);
 		var renderList:Array = RenderedWaypoints;
 		// Attempt to reassign as many existing waypoints as possible
 		// If an image needs loading, load will defer and resume through callback for stability reasons
@@ -109,7 +110,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 	public function set Visible(value:Boolean):Void {
 		var prev:Boolean = _visible;
 		_visible = value;
-		ZoneLayer._visible = value;
+		AreaLayer._visible = value;
 		PathLayer._visible = value;
 		WaypointLayer._visible = value;
 		if (value && !prev) {
@@ -118,8 +119,8 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 	}
 
 	public function set Position(pos:Point):Void {
-		ZoneLayer._x = pos.x;
-		ZoneLayer._y = pos.y;
+		AreaLayer._x = pos.x;
+		AreaLayer._y = pos.y;
 		PathLayer._x = pos.x;
 		PathLayer._y = pos.y;
 		WaypointLayer._x = pos.x;
@@ -133,11 +134,11 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 	private var _visible:Boolean;
 
 	// External data caches
-	private var NotationData:Object; // Zone indexed map of waypoint data arrays
+	private var NotationData:LayerData;
 	private var HostClip:MovieClip; // The movie clip that contains all the layers, on which tooltips will be placed
 
 	// Display layers
-	private var ZoneLayer:MovieClip;
+	private var AreaLayer:MovieClip;
 	private var PathLayer:MovieClip;
 	private var WaypointLayer:MovieClip;
 	private var _RenderedWaypoints:Array;

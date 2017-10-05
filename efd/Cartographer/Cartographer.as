@@ -9,6 +9,8 @@ import com.GameInterface.DistributedValue;
 import efd.Cartographer.lib.ConfigWrapper;
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
+
+import efd.Cartographer.LayerData;
 import efd.Cartographer.notations.BasicPoint;
 
 class efd.Cartographer.Cartographer extends Mod {
@@ -31,7 +33,7 @@ class efd.Cartographer.Cartographer extends Mod {
 		ZoneIndexLoader = LoadXmlAsynch("Zones", Delegate.create(this, LoadZoneInfo));
 
 		OverlayList = new Array("BasePack");
-		Waypoints = new Array();
+		LayerDataList = new Array();
 
 		TraceMsg("Initialized");
 	}
@@ -51,7 +53,7 @@ class efd.Cartographer.Cartographer extends Mod {
 	private function ConfigLoaded():Void {
 		var layerConfig:Object = Config.GetValue("LayerSettings");
 		for (var key:String in layerConfig) {
-			Waypoints[layerConfig[key].Depth] = { Layer : key, Settings : layerConfig[key] };
+			LayerDataList[layerConfig[key].Depth] = new LayerData(key, layerConfig[key]);
 		}
 
 		Config.ResetValue("OverlayPacks"); // TEMP: Not actually saving this while files are in flux/no config UI
@@ -69,10 +71,12 @@ class efd.Cartographer.Cartographer extends Mod {
 		if (dv.GetValue()) {
 			super.ResetConfig(dv);
 			var layerConfig:Object = Config.GetValue("LayerSettings");
-			for (var i:Number = 0; i < Waypoints.length; ++i) {
-				Waypoints[i].Settings.ShowLayer = true;
-				Waypoints[i].Settings.Depth = i;
-				layerConfig[Waypoints[i].Layer] = Waypoints[i].Settings;
+			// Rebuild the layer config based on the existing cached views in the LayerData structures
+			for (var i:Number = 0; i < LayerDataList.length; ++i) {
+				var settings:Object = LayerDataList[i].ConfigView;
+				settings.ShowLayer = true; // Not sure if this is the best choice
+				settings.Depth = i;
+				layerConfig[LayerDataList[i].LayerName] = settings;
 			}
 			Config.NotifyChange("LayerSettings");
 		}
@@ -94,26 +98,19 @@ class efd.Cartographer.Cartographer extends Mod {
 
 	private function ParseOverlayPack(success:Boolean):Void {
 		if (success) {
-			var waypoints:Array = ParseSection(OverlayLoader.firstChild);
-			TraceMsg("Sorting " + waypoints.length + " waypoints");
-			for (var i:Number = 0; i < waypoints.length; ++i) {
-				var layer:String = waypoints[i].Layer;
-				var zone:Number = waypoints[i].ZoneID;
+			var pack:Array = ParseSection(OverlayLoader.firstChild);
+			TraceMsg("Sorting " + pack.length + " entries");
+			for (var i:Number = 0; i < pack.length; ++i) {
+				var layer:String = pack[i].Layer;
 				var layerConfig:Object = Config.GetValue("LayerSettings")[layer];
 				if (layerConfig == undefined) {
 					layerConfig = new Object();
 					layerConfig.ShowLayer = OverlayList[0] == "BasePack"; // Only shows layers defined in the base pack by default
-					layerConfig.Depth = Waypoints.push({ Layer : layer, Settings : layerConfig}) - 1;
+					layerConfig.Depth = LayerDataList.push(new LayerData(layer, layerConfig)) - 1;
 					Config.GetValue("LayerSettings")[layer] = layerConfig;
 					Config.NotifyChange("LayerSettings");
 				}
-				if (Waypoints[layerConfig.Depth] == undefined) {
-					TraceMsg("Layer config has invalid depth!");
-				}
-				if (Waypoints[layerConfig.Depth][zone] == undefined) {
-					Waypoints[layerConfig.Depth][zone] = new Array();
-				}
-				Waypoints[layerConfig.Depth][zone].push(waypoints[i]);
+				LayerDataList[layerConfig.Depth].AddNotation(pack[i]);
 			}
 			TraceMsg("Loaded waypoint file: "  + OverlayList.shift() + ".xml");
 		} else {
@@ -129,16 +126,16 @@ class efd.Cartographer.Cartographer extends Mod {
 	}
 
 	private static function ParseSection(section:XMLNode):Array {
-		var waypoints:Array = new Array();
+		var entries:Array = new Array();
 		for (var i:Number = 0; i < section.childNodes.length; ++i) {
 			var node:XMLNode = section.childNodes[i];
 			if (node.nodeName == "Section") {
-				waypoints = waypoints.concat(ParseSection(node));
+				entries = entries.concat(ParseSection(node));
 			} else {
-				waypoints.push(BasicPoint.Create(node));
+				entries.push(BasicPoint.Create(node));
 			}
 		}
-		return waypoints;
+		return entries;
 	}
 
 	/// Mod framework extensions and overrides
@@ -162,7 +159,7 @@ class efd.Cartographer.Cartographer extends Mod {
 	}
 
 	private function InterfaceWindowLoaded():Void {
-		InterfaceWindowClip.m_Content.SetData(ZoneIndex, Waypoints, Config);
+		InterfaceWindowClip.m_Content.SetData(ZoneIndex, LayerDataList, Config);
 	}
 
 	/// Variables
@@ -171,5 +168,5 @@ class efd.Cartographer.Cartographer extends Mod {
 
 	private var OverlayList:Array;
 	private var OverlayLoader:XML;
-	private var Waypoints:Array; // Multi level array/map (LayerDepth->Zone->WaypointData)
+	private var LayerDataList:Array; // Array of LayerData objects
 }

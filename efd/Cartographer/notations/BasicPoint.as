@@ -44,11 +44,13 @@ import com.Utils.LDBFormat
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
 
-// TODO: A registration system so that I can add these without changing the factory method
+// TODO: Plugin System
+// A registration system so that I can add these without changing the factory method
 import efd.Cartographer.notations.ChampPoint;
 import efd.Cartographer.notations.LorePoint;
 import efd.Cartographer.notations.TransitPoint;
 
+// TODO: This needs to be expanded and abstracted to allow for alternate notation types
 class efd.Cartographer.notations.BasicPoint {
 	public static function Create(xml:XMLNode):BasicPoint {
 		switch (xml.nodeName) {
@@ -60,6 +62,7 @@ class efd.Cartographer.notations.BasicPoint {
 	}
 
 	public function BasicPoint(xml:XMLNode) {
+		Type = xml.attributes.type ? xml.attributes.type : "wp"; // Untyped entries are considered to be waypoints
 		Layer = xml.attributes.layer ? xml.attributes.layer : xml.nodeName;
 		_Icon = xml.attributes.icon ? xml.attributes.icon : GetDefaultIcon(xml.nodeName);
 
@@ -105,6 +108,7 @@ class efd.Cartographer.notations.BasicPoint {
 	public function UnhookIconEvents(icon:MovieClip, context:Object) { }
 
 	/// Data fields
+	public var Type:String; // One of area, path, or wp. (Note: For Point types it should always be wp)
 	public var ZoneID:Number; // Map instance
 	public var Position:Point; // World space coordinates
 

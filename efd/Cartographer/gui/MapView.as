@@ -14,8 +14,7 @@ import efd.Cartographer.lib.ConfigWrapper;
 import efd.Cartographer.lib.etu.MovieClipHelper;
 import efd.Cartographer.lib.Mod;
 
-import efd.Cartographer.gui.Layers.NotationLayer;
-import efd.Cartographer.gui.Layers.CollectibleLayer;
+import efd.Cartographer.LayerData;
 
 class efd.Cartographer.gui.MapView extends MovieClip {
 	public static var __className:String = "efd.Cartographer.gui.MapView"; // For elT's clip helper library
@@ -25,7 +24,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		// Requires following parameters passed via init object
 		//   Height, Width: Viewport dimensions
 		//   ZoneIndex: Zone index data
-		//   NotationLayerData: Waypoint data
+		//   LayerDataList: Waypoint data
 		//   Config: Mod config record
 		super();
 
@@ -61,21 +60,13 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		NextPathDepth = NextZoneDepth + MaxLayerCount;
 		NextWaypointDepth = NextPathDepth + MaxLayerCount;
 		NotationLayerViews = new Array();
-		if (NotationLayerData.length > MaxLayerCount) {
+		if (LayerDataList.length > MaxLayerCount) {
 			Mod.ErrorMsg("Too many layers loaded");
 		}
-		for (var i:Number = NotationLayerData.length -1; i >= 0; --i) {
+		for (var i:Number = LayerDataList.length -1; i >= 0; --i) {
 			// In reverse so that the depths here match the order on the sidebar list
-			var layerName:String = NotationLayerData[i].Layer;
-			// TODO: This info should be provided by the layer data object as part of the
-			//       extension registry system
-			var layerType:Function;
-			switch (layerName) {
-				case "Champ":
-				case "Lore": { layerType = CollectibleLayer; break; }
-				default: { layerType = NotationLayer; break; }
-			}
-			NotationLayerViews[i] = new layerType(this, NotationLayerData[i], Config.GetValue("LayerSettings")[layerName].ShowLayer);
+			var layer:LayerData = LayerDataList[i];
+			NotationLayerViews[i] = new layer.LayerType(this, layer, layer.IsVisible);
 		}
 
 		// Init top level elements (player marker)
@@ -99,6 +90,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		CurrentZoneID = newZone;
 		// TODO: See if I can source maps from the RDB in any way
 		// Loader.loadClip("rdb:1000636:9247193", MapLayer); // English map for Museum
+		//Loader.loadClip("rdb:1010013:" + CurrentZoneID, MapLayer); // In theory the right rdb index for a zone map, but doesn't load
 		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
 	}
 
@@ -187,8 +179,8 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	    // TODO: This is needlessly redundant, can I work out a way of triggering on more specific settings
 		// At the very least this can be done at the notation layer level, it should have access to the config somehow
 		if (setting == "LayerSettings" || setting == undefined) {
-			for (var i:Number = 0; i < NotationLayerData.length; ++i) {
-				NotationLayerViews[i].Visible = NotationLayerData[i].Settings.ShowLayer;
+			for (var i:Number = 0; i < LayerDataList.length; ++i) {
+				NotationLayerViews[i].Visible = LayerDataList[i].IsVisible;
 			}
 		}
 	}
@@ -239,7 +231,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	private var MapImageScale:Number;
 
 	// Notation layers
-	private var NotationLayerData:Array;
+	private var LayerDataList:Array;
 	private var NotationLayerViews:Array;
 	private var NextZoneDepth:Number = 100;
 	private var NextPathDepth:Number;

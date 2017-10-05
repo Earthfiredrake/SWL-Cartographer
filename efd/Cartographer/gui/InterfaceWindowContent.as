@@ -16,12 +16,12 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 		super();
 	}
 
-	private function SetData(zoneIndex:Object, notationLayerData:Array, config:ConfigWrapper):Void {
+	private function SetData(zoneIndex:Object, layerDataList:Array, config:ConfigWrapper):Void {
 		MovieClipHelper.createMovieWithClass(MapView, "MapViewport", this, getNextHighestDepth(),
-			{ ZoneIndex : zoneIndex, NotationLayerData : notationLayerData, Config : config, Height : ViewportHeight, Width : ViewportWidth });
+			{ ZoneIndex : zoneIndex, LayerDataList : layerDataList, Config : config, Height : ViewportHeight, Width : ViewportWidth });
 
 		LayerListDisplay.SetConfig(config);
-		LayerListDisplay.AddLayers(notationLayerData);
+		LayerListDisplay.AddLayers(layerDataList);
 	}
 
 	private var MapViewport:MapView;

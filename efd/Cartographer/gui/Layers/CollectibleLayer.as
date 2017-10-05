@@ -7,9 +7,9 @@ import flash.geom.Point;
 import efd.Cartographer.lib.etu.MovieClipHelper;
 import efd.Cartographer.lib.Mod;
 
+import efd.Cartographer.LayerData;
 import efd.Cartographer.gui.Layers.NotationLayer;
 import efd.Cartographer.gui.WaypointIcon;
-import efd.Cartographer.Waypoint;
 
 // Layer type supporting waypoints that can be collected to unlock entries in the lore or achievements
 // Splits waypoint icons between two layers, so that collected entries don't hide uncollected ones
@@ -17,8 +17,8 @@ import efd.Cartographer.Waypoint;
 
 class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 
-	public function CollectibleLayer(hostClip:MovieClip, notationData:Object, visible:Boolean) {
-		super(hostClip, notationData, visible);
+	public function CollectibleLayer(hostClip:MovieClip, data:LayerData, visible:Boolean) {
+		super(hostClip, data, visible);
 
 		WaypointLayer.createEmptyMovieClip("CollectedSublayer", WaypointLayer.getNextHighestDepth());
 		WaypointLayer.createEmptyMovieClip("UncollectedSublayer", WaypointLayer.getNextHighestDepth());
@@ -35,7 +35,7 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 		CollectedData = new Array();
 
 		// Split the data on collection status
-		var waypoints:Array = NotationData[Zone];
+		var waypoints:Array = NotationData.GetWaypoints(Zone);
 		for (var i:Number = 0; i < waypoints.length; ++i) {
 			if (waypoints[i].IsCollected) { CollectedData.push(waypoints[i]); }
 			else { UncollectedData.push(waypoints[i]); }

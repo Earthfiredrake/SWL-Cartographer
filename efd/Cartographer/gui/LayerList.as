@@ -38,12 +38,12 @@ class efd.Cartographer.gui.LayerList extends UIComponent {
 			label.selectable = false;
 			label.autoSize = "left";
 			label.setNewTextFormat(LayerLabelFormat);
-			var text = LocaleManager.GetString("GUI", "LayerLabel" + layers[i].Layer);
-			label.text = text ? text : layers[i].Layer;
-			if (!layers[i].Settings.ShowLayer) {
+			var text = LocaleManager.GetString("GUI", "LayerLabel" + layers[i].LayerName);
+			label.text = text ? text : layers[i].LayerName;
+			if (!layers[i].IsVisible) {
 				label.setTextFormat(HiddenLayerLabelFormat);
 			}
-			layerClip.Settings = layers[i].Settings;
+			layerClip.Settings = layers[i].ConfigView;
 			layerClip.onPress = Delegate.create(layerClip, LabelPressed);
 			LayerLabelTest.push(layerClip);
 		}
