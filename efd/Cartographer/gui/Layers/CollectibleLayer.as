@@ -27,7 +27,7 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 		RenderedCollected = new Array();
 	}
 
-	private function ReloadAll():Void {
+	private function ReloadAllWaypoints():Void {
 		// Reset some local copies
 		UncollectedCount = 0;
 		CollectedCount = 0;
@@ -41,7 +41,7 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 			else { UncollectedData.push(waypoints[i]); }
 		}
 
-		super.ReloadAll();
+		super.ReloadAllWaypoints();
 	}
 
 	private function TrimDisplayList():Void {

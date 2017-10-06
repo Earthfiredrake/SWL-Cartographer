@@ -9,7 +9,7 @@ import gfx.utils.Delegate;
 import com.Utils.Signal;
 
 import efd.Cartographer.lib.Mod;
-import efd.Cartographer.notations.BasicPoint;
+import efd.Cartographer.inf.IWaypoint;
 
 class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	public static var __className:String = "efd.Cartographer.gui.WaypointIcon";
@@ -31,9 +31,9 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		};
 		Loader.addListener(listener);
 
-		if (Data.ShowLabel) {
-			Label = CreateLabel(Data.Name);
-		}
+//		if (Data.ShowLabel) {
+//			Label = CreateLabel(Data.Name);
+//		}
 	}
 
 	public function LoadIcon():Void {
@@ -44,7 +44,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		//   Type 1000636 contains png files
 		//   Not sure how useful this is, as I have limited knowledge of what is actually tucked away in there
 		// TODO: Wonder if other paths could be loaded from the rdb in a similar fashion
-		Loader.loadClip("Cartographer\\icons\\" + Data.Icon, icon);
+		Loader.loadClip("Cartographer\\icons\\" + Data.GetIcon(), icon);
 	}
 
 	private function IconLoaded(target:MovieClip):Void {
@@ -64,7 +64,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 			}
 			target.onRollOut = rollOut;
 			target.onReleaseOutside = rollOut;
-			target._parent.Data.HookIconEvents(target, target._parent);
+			target._parent.Data.HookEvents(target, target._parent);
 
 			SignalWaypointLoaded.Emit(this);
 	}
@@ -75,45 +75,45 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		target._y = -target._height / 2;
 	}
 
-	private function CreateLabel(name:String):TextField {
-		var label:TextField = createTextField("LabelTxt", getNextHighestDepth(), 0, 0, 50, 15);
-		label.embedFonts = true;
-		label.selectable = false;
-		label.autoSize = "left";
-		var fmt:TextFormat = new TextFormat("_StandardFont");
-		label.setNewTextFormat(fmt);
-		label.text = name ? name : "";
-		return label;
-	}
+//	private function CreateLabel(name:String):TextField {
+//		var label:TextField = createTextField("LabelTxt", getNextHighestDepth(), 0, 0, 50, 15);
+//		label.embedFonts = true;
+//		label.selectable = false;
+//		label.autoSize = "left";
+//		var fmt:TextFormat = new TextFormat("_StandardFont");
+//		label.setNewTextFormat(fmt);
+//		label.text = name ? name : "";
+//		return label;
+//	}
 
 	public function UpdatePosition(pos:Point):Void {
 		_x = pos.x;
 		_y = pos.y;
 	}
 
-	public function Reassign(data:BasicPoint, pos:Point):Boolean {
+	public function Reassign(data:IWaypoint, pos:Point):Boolean {
 		RemoveTooltip();
-		Data.UnhookIconEvents(Icon, this);
+		Data.UnhookEvents(Icon, this);
 
-		var oldData:BasicPoint = Data;
+		var oldData:IWaypoint = Data;
 		Data = data;
-		if (Data.ShowLabel) {
-			if (oldData.ShowLabel) {
-				Label.text = data.Name ? data.Name : "";
-			} else {
-				Label = CreateLabel(data.Name);
-			}
-		} else {
-			if (oldData.ShowLabel) {
-				// TODO:Destroy label
-			}
-		}
+//		if (Data.ShowLabel) {
+//			if (oldData.ShowLabel) {
+//				Label.text = data.Name ? data.Name : "";
+//			} else {
+//				Label = CreateLabel(data.Name);
+//			}
+//		} else {
+//			if (oldData.ShowLabel) {
+//				// TODO:Destroy label
+//			}
+//		}
 		UpdatePosition(pos);
-		if (oldData.Icon != data.Icon) {
-			Loader.loadClip("Cartographer\\icons\\" + data.Icon, Icon);
+		if (oldData.GetIcon() != data.GetIcon()) {
+			Loader.loadClip("Cartographer\\icons\\" + data.GetIcon(), Icon);
 			return true;
 		} else {
-			Data.HookIconEvents(Icon, this); // Hook in other case will be handled by loader callback
+			Data.HookEvents(Icon, this); // Hook in other case will be handled by loader callback
 			return false;
 		}
 	}
@@ -124,7 +124,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 			Tooltip.TF_Name.backgroundColor = 0x333333;
 			Tooltip.TF_Name.background = true;
 			Tooltip.TF_Name.autoSize = "left";
-			Tooltip.TF_Name.text = Data.Name;
+			Tooltip.TF_Name.text = Data.GetName();
 			var pos:Point = LayerClip.HostClip.MapToViewCoords(new Point(_x, _y));
 			Tooltip._x = pos.x;
 			Tooltip._y = pos.y;
@@ -144,7 +144,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		Loader.unloadClip(Icon);
 	}
 
-	public var Data:BasicPoint;
+	public var Data:IWaypoint;
 
 	public var SignalIconChanged:Signal; // Used to notify host layer that this icon has changed due to outside events
 	public var SignalWaypointLoaded:Signal;

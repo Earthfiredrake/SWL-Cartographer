@@ -39,48 +39,14 @@
 
 import flash.geom.Point;
 
-import com.Utils.LDBFormat
+import efd.Cartographer.inf.IWaypoint;
+import efd.Cartographer.notations.NotationBase;
 
-import efd.Cartographer.lib.LocaleManager;
-import efd.Cartographer.lib.Mod;
-
-// TODO: Plugin System
-// A registration system so that I can add these without changing the factory method
-import efd.Cartographer.notations.ChampPoint;
-import efd.Cartographer.notations.LorePoint;
-import efd.Cartographer.notations.TransitPoint;
-
-// TODO: This needs to be expanded and abstracted to allow for alternate notation types
-class efd.Cartographer.notations.BasicPoint {
-	public static function Create(xml:XMLNode):BasicPoint {
-		switch (xml.nodeName) {
-			case "Champ": return new ChampPoint(xml);
-			case "Lore": return new LorePoint(xml);
-			case "Transit": return new TransitPoint(xml);
-			default: return new BasicPoint(xml);
-		}
-	}
-
+class efd.Cartographer.notations.BasicPoint extends NotationBase implements IWaypoint {
 	public function BasicPoint(xml:XMLNode) {
-		Type = xml.attributes.type ? xml.attributes.type : "wp"; // Untyped entries are considered to be waypoints
-		Layer = xml.attributes.layer ? xml.attributes.layer : xml.nodeName;
-		_Icon = xml.attributes.icon ? xml.attributes.icon : GetDefaultIcon(xml.nodeName);
-
-		ZoneID = xml.attributes.zone;
-		Position = new Point(xml.attributes.x, xml.attributes.y);
-
-		for (var i:Number = 0; i < xml.childNodes.length; ++i) {
-			var subNode:XMLNode = xml.childNodes[i];
-			switch (subNode.nodeName) {
-				case "Name":
-					Name = LocaleManager.GetLocaleString(subNode);
-					ShowLabel = subNode.attributes.showLabel == "true";
-					break;
-				case "Note":
-					Note = LocaleManager.GetLocaleString(subNode);
-					break;
-			}
-		}
+		super(xml);
+		Icon = xml.attributes.icon ? xml.attributes.icon : GetDefaultIcon(xml.nodeName);
+		Position = new Point(Number(xml.attributes.x), Number(xml.attributes.y));
 	}
 
 	private static function GetDefaultIcon(typeName:String):String {
@@ -91,22 +57,22 @@ class efd.Cartographer.notations.BasicPoint {
 		}
 	}
 
+	// Interface implementation
+	public function GetType():String { return "wp"; }
+
+	public function GetPosition():Point { return Position; }
+	public function GetIcon():String { return Icon; }
+
 	/// Hooking functions for icon event handlers
 	/// Provided for extension use
 	/// Icon will be the actual icon image, while context will be the WaypointIcon wrapper object
-	public function HookIconEvents(icon:MovieClip, context:Object) { }
-	public function UnhookIconEvents(icon:MovieClip, context:Object) { }
+	public function HookEvents(icon:MovieClip, context:Object):Void { }
+	public function UnhookEvents(icon:MovieClip, context:Object):Void { }
 
 	/// Data fields
-	public var Type:String; // One of area, path, or wp. (Note: For Point types it should always be wp)
-	public var ZoneID:Number; // Map instance
-	public var Position:Point; // World space coordinates
+	private var Position:Point; // World space coordinates
 
-	public var Layer:String; // Layer category name
-	private var _Icon:String;
-	public function get Icon():String { return _Icon; }// Icon file name
+	private var Icon:String;
 
-	public var Name:String; // Waypoint name
-	public var ShowLabel:Boolean; // Display the label on the map or only as a tooltip
-	public var Note:String; // Detail notes
+	//private var ShowLabel:Boolean; // Display the label on the map or only as a tooltip
 }

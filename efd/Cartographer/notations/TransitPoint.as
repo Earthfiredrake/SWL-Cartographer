@@ -13,16 +13,16 @@ class efd.Cartographer.notations.TransitPoint extends BasicPoint {
 
 		TargetZone = xml.attributes.targetZone;
 		if (Icon == undefined) {
-			_Icon = TargetZone == 5060 ? "exit_agartha.png" : "exit_zone.png";
+			Icon = TargetZone == 5060 ? "exit_agartha.png" : "exit_zone.png";
 		}
 	}
 
 	/// Supplementary icon event handlers
-	public function HookIconEvents(icon:MovieClip, context:Object) {
+	public function HookEvents(icon:MovieClip, context:Object):Void {
 		icon.onPress = Delegate.create(context, OnIconClick);
 	}
 
-	public function UnhookIconEvents(icon:MovieClip) {
+	public function UnhookEvents(icon:MovieClip):Void {
 		icon.onPress = undefined;
 	}
 
@@ -30,5 +30,5 @@ class efd.Cartographer.notations.TransitPoint extends BasicPoint {
 		this["LayerClip"].HostClip.ChangeMap(this["Data"].TargetZone);
 	}
 
-	public var TargetZone:Number;
+	private var TargetZone:Number;
 }

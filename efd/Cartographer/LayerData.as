@@ -7,6 +7,8 @@ import efd.Cartographer.lib.Mod;
 import efd.Cartographer.gui.Layers.NotationLayer;
 import efd.Cartographer.gui.Layers.CollectibleLayer;
 
+import efd.Cartographer.inf.INotation;
+
 // Holds notation data and config information for a map notation layer
 class efd.Cartographer.LayerData {
 	public function LayerData(layer:String, config:Object) {
@@ -16,12 +18,12 @@ class efd.Cartographer.LayerData {
 		NotationsByZone = new Object();
 	}
 
-	public function AddNotation(notation:Object) {
-		var zoneID:Number = notation.ZoneID;
+	public function AddNotation(notation:INotation) {
+		var zoneID:Number = notation.GetZoneID();
 		if (NotationsByZone[zoneID] == undefined) {
 			NotationsByZone[zoneID] = { Areas: new Array(), Paths: new Array(), Waypoints: new Array() };
 		}
-		switch (notation.Type) {
+		switch (notation.GetType()) {
 			case "area":
 				NotationsByZone[zoneID].Areas.push(notation);
 				break;
@@ -32,10 +34,12 @@ class efd.Cartographer.LayerData {
 				NotationsByZone[zoneID].Waypoints.push(notation);
 				break;
 			default:
-				Mod.TraceMsg('A notation of unknown type="' + notation.Type + '" could not be sorted.');
+				Mod.TraceMsg('A notation class declared an unknown Type="' + notation.GetType() + '" and could not be sorted.');
 		}
 	}
 
+	public function GetAreas(zoneID:Number):Array { return NotationsByZone[zoneID].Areas; }
+	public function GetPaths(zoneID:Number):Array { return NotationsByZone[zoneID].Paths; }
 	public function GetWaypoints(zoneID:Number):Array { return NotationsByZone[zoneID].Waypoints; }
 
 	public function get LayerName():String { return Layer; }

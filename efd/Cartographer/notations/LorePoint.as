@@ -44,8 +44,8 @@ class efd.Cartographer.notations.LorePoint extends BasicPoint {
 		}
 	}
 
-	public function get Icon():String {
-		if (_Icon) { return _Icon; }
+	public function GetIcon():String {
+		if (Icon) { return Icon; }
 		if (LoreID) {
 			if (Lore.IsLocked(LoreID)) {
 				if (Lore.GetTagViewpoint(LoreID) == 1) { return "lore_sig.png"; }
@@ -55,19 +55,19 @@ class efd.Cartographer.notations.LorePoint extends BasicPoint {
 			return "lore_buzz.png";
 		}
 	}
-	
+
 	// Concept: To reduce the number of icon permutations required, see about applying icon effects and overlays through code
 	// Possible filter for greyscale
 	// new ColorMatrixFilter([0.3086, 0.6094, 0.0820, 0, 0, 0.3086, 0.6094, 0.0820, 0, 0, 0.3086, 0.6094, 0.0820, 0, 0, 0, 0, 0, 1, 0])
 
 	/// Supplementary icon event handlers
-	public function HookIconEvents(icon:MovieClip, context:Object) {
+	public function HookEvents(icon:MovieClip, context:Object):Void {
 		if (!IsCollected) { // Only applies to uncollected items
 			Lore.SignalTagAdded.Connect(CollectibleUnlocked, context);
 		}
 	}
 
-	public function UnhookIconEvents(icon:MovieClip, context:Object) {
+	public function UnhookEvents(icon:MovieClip, context:Object):Void {
 		if (!IsCollected) {
 			// Should only be connected on uncollected items
 			// The change of icon/layering when collected should destroy the old icon and connections
@@ -87,5 +87,5 @@ class efd.Cartographer.notations.LorePoint extends BasicPoint {
 		return !Lore.IsLocked(LoreID);
 	}
 
-	public var LoreID:Number;
+	private var LoreID:Number;
 }

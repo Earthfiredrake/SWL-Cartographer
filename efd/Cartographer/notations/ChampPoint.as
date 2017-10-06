@@ -30,8 +30,8 @@ class efd.Cartographer.notations.ChampPoint extends BasicPoint {
 		return name;
 	}
 
-	public function get Icon():String {
-		if (_Icon) { return _Icon; }
+	public function GetIcon():String {
+		if (Icon) { return Icon; }
 		var filename:String = "champ"
 		if (IsGroup) { filename += "_group"; }
 		if (ChampID) {
@@ -41,13 +41,13 @@ class efd.Cartographer.notations.ChampPoint extends BasicPoint {
 	}
 
 	/// Supplementary icon event handlers
-	public function HookIconEvents(icon:MovieClip, context:Object) {
+	public function HookEvents(icon:MovieClip, context:Object):Void {
 		if (!IsCollected) { // Only applies to uncollected items
 			Lore.SignalTagAdded.Connect(CollectibleUnlocked, context);
 		}
 	}
 
-	public function UnhookIconEvents(icon:MovieClip, context:Object) {
+	public function UnhookEvents(icon:MovieClip, context:Object):Void {
 		if (!IsCollected) {
 			// Should only be connected on uncollected items
 			// The change of icon/layering when collected should destroy the old icon and connections
@@ -67,6 +67,6 @@ class efd.Cartographer.notations.ChampPoint extends BasicPoint {
 		return !Lore.IsLocked(ChampID);
 	}
 
-	public var ChampID:Number;
-	public var IsGroup:Boolean;
+	private var ChampID:Number;
+	private var IsGroup:Boolean;
 }

@@ -57,7 +57,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		WaypointInterface.SignalPlayfieldChanged.Connect(PlayerZoneChanged, this);
 
 		// Init notation layers
-		NextPathDepth = NextZoneDepth + MaxLayerCount;
+		NextPathDepth = NextAreaDepth + MaxLayerCount;
 		NextWaypointDepth = NextPathDepth + MaxLayerCount;
 		NotationLayerViews = new Array();
 		if (LayerDataList.length > MaxLayerCount) {
@@ -233,7 +233,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	// Notation layers
 	private var LayerDataList:Array;
 	private var NotationLayerViews:Array;
-	private var NextZoneDepth:Number = 100;
+	private var NextAreaDepth:Number = 100;
 	private var NextPathDepth:Number;
 	private var NextWaypointDepth:Number;
 

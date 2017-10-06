@@ -10,8 +10,10 @@ import efd.Cartographer.lib.ConfigWrapper;
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
 
+import efd.Cartographer.inf.INotation;
+
 import efd.Cartographer.LayerData;
-import efd.Cartographer.notations.BasicPoint;
+import efd.Cartographer.notations.NotationBase;
 
 class efd.Cartographer.Cartographer extends Mod {
 	private static var ModInfo:Object = {
@@ -132,7 +134,10 @@ class efd.Cartographer.Cartographer extends Mod {
 			if (node.nodeName == "Section") {
 				entries = entries.concat(ParseSection(node));
 			} else {
-				entries.push(BasicPoint.Create(node));
+				var entry:INotation = NotationBase.Create(node);
+				if (entry != undefined) {
+					entries.push(entry);
+				}
 			}
 		}
 		return entries;
