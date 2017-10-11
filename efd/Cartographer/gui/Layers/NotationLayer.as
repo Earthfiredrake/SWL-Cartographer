@@ -87,7 +87,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 
 	private function RedrawPaths():Void {
 		PathLayer.clear();
-		PathLayer.lineStyle(5, 0x000000, 100, true, "none", "round", "round");
+		PathLayer.lineStyle(3, 0x000000, 100, true, "none", "round", "round");
 		var paths:Array = NotationData.GetPaths(Zone);
 		for (var i:Number = 0; i < paths.length; ++i) {
 			var points:Array = paths[i].GetPathPoints();

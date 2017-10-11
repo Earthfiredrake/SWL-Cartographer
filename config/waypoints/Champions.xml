@@ -5,13 +5,30 @@
 <!--
 	Coordinates originally sourced from TSWDB
 	Targets with Z coordinates have been updated to match game data
-	As much as possible coordinates reflect the initial spawn point or idle location of stationary bosses
-	This has been difficult to reliably replicate with roaming/patrolling bosses
+	Coordinates reflect the idle location or spawn point of stationary bosses and those with small movement areas
+	Longer patrol paths are sampled, though some amount of coercion and cherry-picking has been applied for data size and clarity
 -->
 <OverlayPack>
 	<Section> <!-- Solomon Island -->
 		<Champ zone="3030" x="301" y="231" z="136" champID="9478" /> <!-- Dumpster Diver -->
-		<!-- Dunwitch Road Horror (roams) #4848 -->
+		<!-- Dunwich Road Horror (patrol) -->
+		<Champ zone="3030" x="828" y="592" z="136" champID="4848" />
+		<Champ type="path" zone="3030" champID="4848">
+			<Point x="857" y="572" z="135" />
+			<Point x="788" y="582" z="136" />
+			<Point x="781" y="598" z="137" />
+			<Point x="764" y="598" z="138" />
+			<Point x="748" y="592" z="137" />
+			<Point x="733" y="600" z="137" />
+			<Point x="717" y="596" z="137" />
+			<Point x="727" y="585" z="138" />
+			<Point x="780" y="586" z="137" />
+			<Point x="794" y="595" z="136" />
+			<Point x="828" y="592" z="136" />
+			<Point x="841" y="563" z="136" />
+			<Point x="855" y="558" z="134" />
+			<Point x="857" y="572" z="135" />
+		</Champ>
 		<Champ zone="3030" x="693" y="405" z="134" champID="9477" /> <!-- Faithful Husband -->
 		<Champ zone="3030" x="575" y="815" champID="9482" /> <!-- Fallen Thane -->
 		<Champ zone="3030" x="390" y="23" z="140" champID="9490" /> <!-- Father Appleby-->
@@ -30,7 +47,7 @@
 		<Champ zone="3030" x="30" y="845" champID="4846" /> <!-- Solomon's Omen -->
 		<Champ zone="3030" x="40" y="1000" champID="9481" /> <!-- Surf Nasty -->
 		<Champ zone="3030" x="394" y="318" z="138" champID="9519" /> <!-- Suzie -->
-		<Champ zone="3030" x="262" y="113" z="139" champID="9607" /> <!-- Traveler's Torment (short patrol midpoint) -->
+		<Champ zone="3030" x="262" y="113" z="139" champID="9607" /> <!-- Traveler's Torment -->
 		<Champ zone="3030" x="685" y="690" champID="9484" /> <!-- Unearthed Rubble-->
 		<Champ zone="3030" x="885" y="165" champID="9487" group="true" /> <!-- Lutefisk-->
 		<Champ zone="3040" x="400" y="113" z="157" champID="9504" /> <!-- Ashen Son -->
@@ -41,7 +58,29 @@
 		<Champ zone="3040" x="590" y="685" champID="4842" /> <!-- The Collector -->
 		<Champ zone="3040" x="300" y="380" champID="9500" /> <!-- The Headmistress -->
 		<Champ zone="3040" x="175" y="570" champID="9509" /> <!-- Henderson's Horrors -->
-		<!-- Innsmouth Track Captain (roams) #9511 -->
+		<!-- Innsmouth Track Captain (patrol) -->
+		<Champ zone="3040" x="332" y="502" z="140" champID="9511" />
+		<Champ type="path" zone="3040" champID="9511">
+			<Point x="380" y="467" z="145" />
+			<Point x="332" y="502" z="140" />
+			<Point x="289" y="483" z="142" />
+			<Point x="281" y="488" z="138" />
+			<Point x="280" y="507" z="135" />
+			<Point x="289" y="526" z="138" />
+			<Point x="291" y="545" z="138" />
+			<Point x="285" y="565" z="138" />
+			<Point x="274" y="582" z="138" />
+			<Point x="289" y="593" z="139" />
+			<Point x="322" y="603" z="144" />
+			<Point x="361" y="572" z="143" />
+			<Point x="392" y="581" z="142" />
+			<Point x="407" y="591" z="143" />
+			<Point x="427" y="593" z="142" />
+			<Point x="451" y="568" z="142" />
+			<Point x="445" y="492" z="144" />
+			<Point x="431" y="471" z="145" />
+			<Point x="380" y="467" z="145" />
+		</Champ>
 		<Champ zone="3040" x="548" y="190" z="154" champID="9508" /> <!-- Lab Meat -->
 		<Champ zone="3040" x="430" y="810" champID="4841" /> <!-- Lurking Revenant -->
 		<Champ zone="3040" x="985" y="960" champID="9494" /> <!-- The Marooned Oarsman (roams) -->
@@ -88,15 +127,60 @@
 		<!-- Deathstalker (random spawn) #4080 -->
 		<Champ zone="3090" x="480" y="285" champID="9548" /> <!-- Deserter Sabah -->
 		<Champ zone="3090" x="755" y="1125" champID="9566" /> <!-- Disciple of the First Jinn -->
-		<!-- Elemental Scourge (roams) #9556 -->
-		<Champ zone="3090" x="295" y="495" champID="4081" /> <!-- The Errant Drifter (roams) -->
+		<!-- Elemental Scourge (patrol) -->
+		<Champ zone="3090" x="528" y="629" z="51" champID="9556" />
+		<Champ type="path" zone="3090" champID="9556">
+			<Point x="633" y="627" z="49" />
+			<Point x="580" y="620" z="49" />
+			<Point x="528" y="629" z="51" />
+			<Point x="484" y="674" z="55" />
+			<Point x="483" y="704" z="54" />
+		</Champ>
+		<!-- The Errant Drifter (patrol) -->
+		<Champ zone="3090" x="250" y="525" z="55" champID="4081" />
+		<Champ type="path" zone="3090" champID="4081">
+			<Point x="237" y="579" z="60" />
+			<Point x="238" y="543" z="56" />
+			<Point x="250" y="525" z="55" />
+			<Point x="272" y="506" z="54" />
+			<Point x="291" y="498" z="53" />
+			<Point x="303" y="498" z="54" />
+		</Champ>
 		<Champ zone="3090" x="635" y="280" champID="9547" /> <!-- Evangelist of Aten -->
 		<Champ zone="3090" x="720" y="680" champID="9553" /> <!-- Frenzied Tunneler -->
 		<Champ zone="3090" x="675" y="80" champID="4083" /> <!-- Gronarch the Exiled -->
 		<Champ zone="3090" x="345" y="95" champID="9550" /> <!-- Hanif the Repentant -->
 		<Champ zone="3090" x="645" y="180" champID="9546" /> <!-- Indoctrinator -->
 		<Champ zone="3090" x="340" y="765" champID="9557" /> <!-- Lieutenant Itori -->
-		<!-- The Lost One (roams) #4082 -->
+		<!-- The Lost One (patrol) -->
+		<Champ zone="3090" x="894" y="911" z="77" champID="4082" />
+		<Champ type="path" zone="3090" champID="4082">
+			<Point x="848" y="966" z="72" />
+			<Point x="854" y="943" z="65" />
+			<Point x="844" y="935" z="61" />
+			<Point x="799" y="937" z="51" />
+			<Point x="798" y="955" z="50" />
+			<Point x="833" y="958" z="57" />
+			<Point x="835" y="946" z="57" />
+			<Point x="848" y="948" z="64" />
+			<Point x="848" y="992" z="74" />
+			<Point x="858" y="992" z="74" />
+			<Point x="877" y="969" z="73" />
+			<Point x="894" y="911" z="77" />
+			<Point x="916" y="920" z="81" />
+			<Point x="928" y="960" z="83" />
+			<Point x="937" y="976" z="83" />
+			<Point x="950" y="992" z="83" />
+			<Point x="941" y="997" z="83" />
+			<Point x="917" y="993" z="83" />
+			<Point x="905" y="1012" z="82" />
+			<Point x="873" y="1000" z="77" />
+			<Point x="864" y="1006" z="75" />
+			<Point x="845" y="1007" z="73" />
+			<Point x="838" y="1002" z="73" />
+			<Point x="839" y="995" z="73" />
+			<Point x="848" y="992" z="73" />
+		</Champ>
 		<Champ zone="3090" x="795" y="1170" champID="9563" /> <!-- The Nameless Pharaoh -->
 		<Champ zone="3090" x="855" y="630" champID="9554" /> <!-- Og, the Ravenous -->
 		<Champ zone="3090" x="250" y="445" champID="9565" /> <!-- Plagued Nester -->
@@ -106,7 +190,18 @@
 		<Champ zone="3090" x="575" y="740" champID="9555" /> <!-- Savant Diviner -->
 		<Champ zone="3090" x="161" y="574" z="67" champID="9552" /> <!-- Tribunus Otho -->
 		<Champ zone="3090" x="735" y="1020" champID="9558" /> <!-- Vagrant Fiend -->
-		<!-- The Walking Drought (roams) #9559 -->
+		<!-- The Walking Drought (patrol) -->
+		<Champ zone="3090" x="468" y="449" z="46" champID="9559" />
+		<Champ type="path" zone="3090" champID="9559">
+			<Point x="432" y="340" z="46" />
+			<Point x="452" y="366" z="46" />
+			<Point x="465" y="398" z="45" />
+			<Point x="468" y="449" z="46" />
+			<Point x="516" y="514" z="45" />
+			<Point x="527" y="523" z="45" />
+			<Point x="571" y="523" z="46" />
+			<Point x="596" y="513" z="46" />
+		</Champ>
 		<Champ zone="3090" x="555" y="715" champID="9561" group="true" /> <!-- Cicatris -->
 		<Champ zone="3090" x="585" y="875" champID="9560" group="true" /> <!-- Mak'aal the Hellfire -->
 		<Champ zone="3100" x="785" y="205" champID="4096" /> <!-- Adrameloch, Chancellor of Hell -->
@@ -148,7 +243,18 @@
 		<Champ zone="3120" x="1185" y="1030" champID="9873" /> <!-- Rakhul -->
 		<Champ zone="3120" x="715" y="875" champID="9877" /> <!-- Sibriu's Teeth Vandal -->
 		<Champ zone="3120" x="430" y="620" champID="9883" /> <!-- Upright of Pnath -->
-		<Champ zone="3120" x="660" y="805" champID="4860" /> <!-- Ursine Horror -->
+		<!-- Ursine Horror (patrol) -->
+		<Champ zone="3120" x="599" y="786" z="107" champID="4860" />
+		<Champ type="path" zone="3120" champID="4860">
+			<Point x="626" y="823" z="105" />
+			<Point x="599" y="786" z="107" />
+			<Point x="601" y="718" z="104" />
+			<Point x="653" y="719" z="101" />
+			<Point x="677" y="782" z="97" />
+			<Point x="677" y="798" z="100" />
+			<Point x="650" y="821" z="104" />
+			<Point x="626" y="823" z="105" />
+		</Champ>
 		<Champ zone="3120" x="860" y="725" champID="9884" /> <!-- Valcean Dominator -->
 		<Champ zone="3120" x="985" y="725" champID="4862" /> <!-- Wailing Bride -->
 		<Champ zone="3120" x="180" y="695" champID="9880" /> <!-- Wallachian Juggernaut-->
@@ -161,7 +267,22 @@
 		<Champ zone="3130" x="245" y="950" champID="9886" /> <!-- Eternal Confessor -->
 		<Champ zone="3130" x="960" y="1215" champID="9896" /> <!-- Fang Run Primal-->
 		<Champ zone="3130" x="785" y="735" champID="4865" /> <!-- Fecund Changeling -->
-		<!-- Forest Lump (roams) #4864 -->
+		<!-- Forest Lump (patrol) -->
+		<Champ zone="3130" x="656" y="987" z="29" champID="4864" />
+		<Champ type="path" zone="3130" champID="4864">
+			<Point x="738" y="955" z="30" />
+			<Point x="742" y="962" z="29" />
+			<Point x="737" y="970" z="29" />
+			<Point x="716" y="980" z="29" />
+			<Point x="713" y="992" z="30" />
+			<Point x="708" y="1003" z="31" />
+			<Point x="651" y="1090" z="31" />
+			<Point x="611" y="1113" z="33" />
+			<Point x="595" y="1113" z="32" />
+			<Point x="590" y="1057" z="32" />
+			<Point x="656" y="987" z="29" />
+			<Point x="738" y="955" z="30" />
+		</Champ>
 		<Champ zone="3130" x="810" y="550" champID="9887" /> <!-- House of Danesti Vandal -->
 		<Champ zone="3130" x="1130" y="940" champID="9889" /> <!-- Hyperactive Ghoul -->
 		<Champ zone="3130" x="570" y="1040" champID="9890" /> <!-- It That Exudes Muck -->
@@ -183,7 +304,24 @@
 		<Champ zone="3140" x="910" y="725" champID="10111" /> <!-- Factory Model Cryo Operative -->
 		<Champ zone="3140" x="780" y="960" z="94" champID="10109" /> <!-- Factory Model Thermal Authority -->
 		<Champ zone="3140" x="344" y="1199" z="34" champID="10103" /> <!-- Frostbite -->
-		<Champ zone="3140" x="365" y="510" champID="10101" /> <!-- Frozen Hate (roams) -->
+		<!-- Frozen Hate (patrol) -->
+		<Champ zone="3140"  x="373" y="518" z="32" champID="10101" />
+		<Champ type="path" zone="3140" champID="10101">
+			<Point x="400" y="563" z="32" />
+			<Point x="407" y="584" z="32" />
+			<Point x="409" y="596" z="32" />
+			<Point x="402" y="615" z="32" />
+			<Point x="395" y="612" z="32" />
+			<Point x="391" y="601" z="32" />
+			<Point x="400" y="563" z="32" />
+			<Point x="373" y="518" z="32" />
+			<Point x="366" y="497" z="32" />
+			<Point x="332" y="429" z="32" />
+			<Point x="334" y="409" z="32" />
+			<Point x="353" y="408" z="32" />
+			<Point x="360" y="429" z="32" />
+			<Point x="366" y="497" z="32" />
+		</Champ>
 		<Champ zone="3140" x="820" y="355" champID="4858" /> <!-- General Blasius -->
 		<Champ zone="3140" x="475" y="360" champID="4856" /> <!-- Howler at the End -->
 		<Champ zone="3140" x="907" y="1020" z="51" champID="4855" /> <!-- Kuzma Prototype -->
@@ -199,9 +337,51 @@
 	<Section> <!-- Tokyo -->
 		<Champ zone="3070" x="873" y="170" z="78" champID="10207" /> <!-- Accountant Bocigammal -->
 		<Champ zone="3070" x="830" y="600" champID="10196" /> <!-- Ancient Kyonshi -->
-		<Champ zone="3070" x="730" y="410" champID="10215" /> <!-- Behemoth of the Devouring Plague (roams) -->
-		<!-- Blue Namahage (roams) #10204 -->
-		<!-- The Broken Vow (roams) #10199 -->
+		<!-- Behemoth of the Devouring Plague (patrol) -->
+		<Champ zone="3070" x="748" y="493" z="85" champID="10215" />
+		<Champ type="path" zone="3070" champID="10215">
+			<Point x="773" y="430" z="85" />
+			<Point x="726" y="432" z="85" />
+			<Point x="720" y="439" z="85" />
+			<Point x="716" y="481" z="85" />
+			<Point x="720" y="487" z="85" />
+			<Point x="737" y="491" z="85" />
+			<Point x="748" y="493" z="85" />
+			<Point x="775" y="490" z="85" />
+			<Point x="781" y="485" z="85" />
+			<Point x="781" y="445" z="85" />
+			<Point x="773" y="430" z="85" />
+		</Champ>
+		<!-- The Broken Vow (patrol) -->
+		<Champ zone="3070" x="751" y="665" z="95" champID="10199" />
+		<Champ type="path" zone="3070" champID="10199">
+			<Point x="819" y="560" z="100" />
+			<Point x="829" y="593" z="101" />
+			<Point x="850" y="593" z="98" />
+			<Point x="866" y="659" z="107" />
+			<Point x="850" y="673" z="107" />
+			<Point x="806" y="681" z="107" />
+			<Point x="751" y="665" z="95" />
+			<Point x="740" y="644" z="104" />
+			<Point x="745" y="622" z="103" />
+			<Point x="707" y="572" z="87" />
+			<Point x="760" y="569" z="104" />
+			<Point x="762" y="595" z="103" />
+			<Point x="793" y="664" z="100" />
+			<Point x="808" y="666" z="100" />
+			<Point x="808" y="718" z="104" />
+			<Point x="738" y="744" z="92" />
+			<Point x="702" y="722" z="100" />
+			<Point x="711" y="708" z="100" />
+			<Point x="711" y="636" z="91" />
+			<Point x="699" y="619" z="88" />
+			<Point x="703" y="611" z="88" />
+			<Point x="738" y="617" z="93" />
+			<Point x="730" y="607" z="91" />
+			<Point x="743" y="570" z="96" />
+			<Point x="786" y="556" z="97" />
+			<Point x="819" y="560" z="100" />
+		</Champ>
 		<!-- Bubbling Commuter (multi-spawn) -->
 		<Champ zone="3070" x="344" y="768" z="85" champID="10191" />
 		<Champ zone="3070" x="444" y="612" z="85" champID="10191" />
@@ -209,9 +389,9 @@
 		<Champ zone="3070" x="340" y="940" champID="10201" /> <!-- Byoudou -->
 		<Champ zone="3070" x="224" y="438" z="85" champID="10200" /> <!-- Compromised Effigy 832 -->
 		<Champ zone="3070" x="755" y="328" z="78" champID="10209" /> <!-- Conductor Topham -->
-		<!-- Congealed Disgust #10210 -->
+		<!-- Congealed Disgust (random spawn) #10210 -->
 		<Champ zone="3070" x="690" y="371" z="77" champID="10205" /> <!-- Corrupted Prototype Battlefield Barrager -->
-		<Champ zone="3070" x="484" y="215" z="76" champID="7629" /> <!-- Fungal Crawler of Leng (roams) -->
+		<Champ zone="3070" x="484" y="215" z="76" champID="7629" /> <!-- Fungal Crawler of Leng -->
 		<Champ zone="3070" x="872" y="21" z="75" champID="7628" /> <!-- Futakuchi-onna -->
 		<Champ zone="3070" x="620" y="580" champID="10202" /> <!-- Grasping Infection -->
 		<Champ zone="3070" x="765" y="615" champID="10197" /> <!-- Hungry Jikininki -->
@@ -222,6 +402,59 @@
 		<Champ zone="3070" x="744" y="791" z="85" champID="10190" />
 		<Champ zone="3070" x="761" y="776" z="85" champID="10190" />
 		<Champ zone="3070" x="344" y="186" z="87" champID="10211" /> <!-- Inventory Infector -->
+		<!-- Namahage, Red & Blue (multi-spawn; patrol) -->
+		<Champ zone="3070" x="830" y="147" z="77" champID="10204" />
+		<Champ zone="3070" x="826" y="147" z="77" champID="10203" />
+		<Champ type="path" zone="3070" champID="10203">
+			<!-- E wall to SW corner -->
+			<Point x="925" y="179" z="75" />
+			<Point x="904" y="179" z="75" />
+			<Point x="904" y="198" z="76" />
+			<Point x="897" y="220" z="78" />
+			<Point x="877" y="220" z="78" />
+			<Point x="877" y="193" z="77" />
+			<Point x="857" y="193" z="78" />
+			<Point x="857" y="147" z="77" />
+			<Point x="812" y="147" z="77" />
+			<Point x="800" y="152" z="77" />
+			<Point x="789" y="155" z="77" />
+			<Point x="770" y="150" z="76" />
+			<Point x="764" y="142" z="75" />
+			<Point x="761" y="125" z="75" />
+			<Point x="765" y="118" z="75" />
+		</Champ>
+		<Champ type="path" zone="3070" champID="10203">
+			<!-- SE courtyard to NW corner -->
+			<Point x="892" y="114" z="75" />
+			<Point x="866" y="118" z="75" />
+			<Point x="858" y="135" z="76" />
+			<Point x="853" y="147" z="77" />
+			<Point x="812" y="147" z="78" />
+			<Point x="800" y="152" z="77" />
+			<Point x="800" y="205" z="78" />
+			<Point x="793" y="212" z="78" />
+			<Point x="793" y="227" z="79" />
+			<Point x="805" y="271" z="80" />
+			<Point x="753" y="271" z="81" />
+		</Champ>
+		<Champ type="path" zone="3070" champID="10203">
+			<!-- Graveyard? to NE corner -->
+			<Point x="765" y="170" z="78" />
+			<Point x="773" y="170" z="78" />
+			<Point x="773" y="209" z="78" />
+			<Point x="858" y="209" z="78" />
+			<Point x="858" y="235" z="79" />
+			<Point x="842" y="235" z="79" />
+			<Point x="842" y="269" z="81" />
+			<Point x="867" y="270" z="81" />
+			<Point x="873" y="270" z="81" />
+			<Point x="887" y="273" z="81" />
+			<Point x="892" y="277" z="81" />
+			<Point x="894" y="279" z="81" />
+			<Point x="901" y="279" z="81" />
+			<Point x="916" y="273" z="81" />
+			<Point x="927" y="267" z="82" />
+		</Champ>
 		<Champ zone="3070" x="343" y="108" z="76" champID="10217" /> <!-- Nkadi the Fungal Lord -->
 		<!-- The Opener of Kimon (multi-spawn) -->
 		<Champ zone="3070" x="34" y="835" z="95" champID="7075" />
@@ -230,8 +463,54 @@
 		<Champ zone="3070" x="538" y="896" z="81" champID="7075" />
 		<Champ zone="3070" x="736" y="897" z="81" champID="7075" />
 		<Champ zone="3070" x="128" y="517" z="85" champID="7074" /> <!-- Orochi Prototype Smiler Mark 1.1 -->
-		<!-- Roving Rager (multi-spawn roams) #10192 -->
-		<!-- Red Namahage (roams) #10203 -->
+		<!-- Roving Rager (multi-spawn; patrol) -->
+		<Champ zone="3070" x="278" y="469" z="85" champID="10192" />
+		<Champ type="path" zone="3070" champID="10192">
+			<!-- Manticore Plaza -->
+			<Point x="410" y="511" z="85" />
+			<Point x="384" y="500" z="85" />
+			<Point x="297" y="493" z="85" />
+			<Point x="278" y="469" z="85" />
+			<Point x="278" y="445" z="85" />
+			<Point x="290" y="425" z="85" />
+			<Point x="354" y="421" z="85" />
+		</Champ>
+		<Champ zone="3070" x="333" y="835" z="85" champID="10192" />
+		<Champ type="path" zone="3070" champID="10192">
+			<!-- Northern loop -->
+			<Point x="499" y="837" z="85" />
+			<Point x="504" y="825" z="85" />
+			<Point x="505" y="799" z="85" />
+			<Point x="484" y="773" z="85" />
+			<Point x="460" y="764" z="85" />
+			<Point x="438" y="764" z="85" />
+			<Point x="377" y="778" z="85" />
+			<Point x="338" y="777" z="85" />
+			<Point x="317" y="766" z="88" />
+			<Point x="298" y="751" z="91" />
+			<Point x="227" y="681" z="92" />
+			<Point x="214" y="685" z="94" />
+			<Point x="205" y="702" z="95" />
+			<Point x="208" y="709" z="95" />
+			<Point x="333" y="835" z="85" />
+			<Point x="362" y="845" z="85" />
+			<Point x="477" y="845" z="85" />
+			<Point x="499" y="837" z="85" />
+		</Champ>
+		<Champ zone="3070" x="647" y="545" z="85" champID="10192" />
+		<Champ type="path" zone="3070" champID="10192">
+			<!-- Aijou Road -->
+			<Point x="715" y="723" z="87" />
+			<Point x="704" y="712" z="86" />
+			<Point x="697" y="678" z="85" />
+			<Point x="696" y="581" z="85" />
+			<Point x="664" y="570" z="85" />
+			<Point x="647" y="545" z="85" />
+			<Point x="657" y="521" z="85" />
+			<Point x="686" y="512" z="85" />
+			<Point x="702" y="494" z="85" />
+			<Point x="705" y="442" z="85" />
+		</Champ>
 		<Champ zone="3070" x="559" y="405" z="101" champID="7630" /> <!-- The Ruinous Road -->
 		<Champ zone="3070" x="1007" y="481" z="85" champID="10212" /> <!-- Safety Inspector -->
 		<Champ zone="3070" x="942" y="287" z="81" champID="10206" /> <!-- Sergeant Enrique -->
@@ -241,9 +520,24 @@
 		<Champ zone="3070" x="376" y="785" z="85" champID="10193" />
 		<Champ zone="3070" x="721" y="802" z="85" champID="10193" />
 		<Champ zone="3070" x="781" y="916" z="72" champID="10194" /> <!-- Squamous Host Lord -->
-		<Champ zone="3070" x="115" y="875" champID="10195" /> <!-- War Pyre of Jigoku -->
+		<!-- War Pyre of Jigoku (patrol) -->
+		<Champ zone="3070" x="103" y="772" z="94" champID="10195" />
+		<Champ type="path" zone="3070" champID="10195">
+			<Point x="73" y="842" z="94" />
+			<Point x="70" y="866" z="95" />
+			<Point x="82" y="881" z="94" />
+			<Point x="109" y="888" z="95" />
+			<Point x="116" y="881" z="95" />
+			<Point x="108" y="856" z="95" />
+			<Point x="103" y="772" z="94" />
+			<Point x="91" y="768" z="94" />
+			<Point x="81" y="774" z="94" />
+			<Point x="62" y="776" z="95" />
+			<Point x="45" y="819" z="94" />
+			<Point x="73" y="842" z="94" />
+		</Champ>
 		<Champ zone="3070" x="820" y="710" champID="10198" /> <!-- Wrathful Goryo -->
-		<Champ zone="3070" x="551" y="255" z="91" champID="10213" group="true" /> <!-- The Simian Horror -->		
+		<Champ zone="3070" x="551" y="255" z="91" champID="10213" group="true" /> <!-- The Simian Horror -->
 		<!-- Note: Simian Horror doesn't have a self-titled achivement... will have to provide a name override -->
 	</Section>
 </OverlayPack>

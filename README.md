@@ -53,6 +53,12 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
+Version Next
++ Path notations
+  + Patrolling champion bosses now included with patrol paths
+    + All champions except Deathstalker and Congealed Disgust accounted for
++ Area notations
+
 Version 0.1.1-alpha
 + It zooms, it scrolls, hopefully it doesn't shuffle the waypoints when it does
 + Outer KD waypoint update, all open world lore, most champs
