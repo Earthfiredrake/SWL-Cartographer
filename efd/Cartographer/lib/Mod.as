@@ -311,31 +311,20 @@ class efd.Cartographer.lib.Mod {
 /// Topbar registration
 
 	// MeeehrUI is legacy compatible with the VTIO interface,
-	// but explicit support will make solving unique issues easier
+	// but explicit support may make solving unique issues easier
 	// Meeehr's should always trigger first if present, and can be checked during the callback.
 	private function RegisterWithTopbar():Void {
 		MeeehrDV = DistributedValue.Create("meeehrUI_IsLoaded");
 		ViperDV = DistributedValue.Create("VTIO_IsLoaded");
 		// Try to register now, in case they loaded first, otherwise signup to detect if they load
 		if (!(DoTopbarRegistration(MeeehrDV) || DoTopbarRegistration(ViperDV))) {
-			MeeehrDV.SignalChanged.Connect(DeferRegistration, this);
-			ViperDV.SignalChanged.Connect(DeferRegistration, this);
+			MeeehrDV.SignalChanged.Connect(DoTopbarRegistration, this);
+			ViperDV.SignalChanged.Connect(DoTopbarRegistration, this);
 		}
-	}
-
-	private function DeferRegistration(dv:DistributedValue) {
-		// Running multiple mods based on this framework was causing other mods (TSWACT) to fail topbar registration
-		// Current theory is there's some type of process time limiter on callbacks before they get discarded
-		// As this framework does some potentially heavy lifting during this stage (adjusting clip layer)
-		// Defer it slightly to give the program more time to deal with other mods
-		// TODO: Revisit this assumption, speculation is that the act of disconnecting from the DV signal was messing with the index during iteration.
-		setTimeout(Delegate.create(this, DoTopbarRegistration), 1, dv);
 	}
 
 	private function DoTopbarRegistration(dv:DistributedValue):Boolean {
 		if (dv.GetValue() && !IsTopbarRegistered) {
-			MeeehrDV.SignalChanged.Disconnect(DoTopbarRegistration, this);
-			ViperDV.SignalChanged.Disconnect(DoTopbarRegistration, this);
 			// Adjust our default icon to be better suited for topbar integration
 			if (Icon != undefined) {
 				SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(HostMovie), _global.Enums.ViewLayer.e_ViewLayerTop, 2);
@@ -346,19 +335,32 @@ class efd.Cartographer.lib.Mod {
 			var topbarInfo:Array = new Array(ModName, DevName, Version, undefined, Icon.toString());
 			topbarInfo[3] = ShowConfigDV != undefined ? ConfigWindowVarName : ModEnabledVarName;
 			DistributedValue.SetDValue("VTIO_RegisterAddon", topbarInfo.join('|'));
-			// Topbar creates its own icon, use it as our target for changes instead
+			// VTIO creates its own icon, use it as our target for changes instead
 			// Can't actually remove ours though, Meeehr's redirects event handling oddly
 			// (It calls back to the original clip, using the new clip as the "this" instance)
-			Icon = Icon.CopyToTopbar(HostMovie.Icon);
+			// And just to be different, ModFolder doesn't create a copy at all, it just uses the one we give it
+			// In which case we don't want to lose our current reference
+			if (HostMovie.Icon != undefined) {
+				Icon = Icon.CopyToTopbar(HostMovie.Icon);
+			}
 			IsTopbarRegistered = true;
 			TopbarRegistered();
 			// Once registered, topbar DVs are no longer required
 			// If discrimination between Viper and Meeehr is needed, consider expanding TopbarRegistered to be an enum
-			delete MeeehrDV;
-			delete ViperDV;
+			// Deferred to prevent mangling the ongoing signal handling
+			setTimeout(Delegate.create(this, DetachTopbarListeners), 1, dv);
+
 			TraceMsg("Topbar registration complete");
 		}
 		return IsTopbarRegistered;
+	}
+
+	// This needs to be deferred so that the disconnection doesn't muddle the ongoing processing
+	private function DetachTopbarListeners():Void {
+		MeeehrDV.SignalChanged.Disconnect(DoTopbarRegistration, this);
+		ViperDV.SignalChanged.Disconnect(DoTopbarRegistration, this);
+		delete MeeehrDV;
+		delete ViperDV;
 	}
 
 /// Mod Icon
