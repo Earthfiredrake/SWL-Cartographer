@@ -120,7 +120,7 @@
 		<Champ zone="3050" x="125" y="435" champID="9537" /> <!-- Undying Postman -->
 		<Champ zone="3050" x="965" y="945" champID="9564" /> <!-- Vetr Berserker -->
 		<Champ zone="3050" x="250" y="505" champID="9534" group="true" /> <!-- Decomposed Kodiak -->
-		<Champ zone="3050" x="75" y="275" champID="9532" group="true" /> <!-- Tide Lurker -->
+		<Champ zone="3050" x="88" y="273" z="130" champID="9532" group="true" /> <!-- Tide Lurker -->
 	</Section>
 	<Section> <!-- Egypt -->
 		<Champ zone="3090" x="400" y="390" champID="4079" /> <!-- Ainn the Harbinger -->
@@ -236,7 +236,7 @@
 		<Champ zone="3120" x="680" y="920" champID="9881" /> <!-- Effigy of Evil -->
 		<Champ zone="3120" x="455" y="715" champID="9872" /> <!-- Erkug -->
 		<Champ zone="3120" x="795" y="250" champID="9870" /> <!-- Filthwolf -->
-		<Champ zone="3120" x="855" y="1150" champID="9874" /> <!-- Frontline Engorged -->
+		<Champ zone="3120" x="855" y="1160" z="147" champID="9874" /> <!-- Frontline Engorged -->
 		<Champ zone="3120" x="960" y="835" champID="9871" /> <!-- Gark -->
 		<Champ zone="3120" x="825" y="1040" champID="9885" /> <!-- Gurgl -->
 		<Champ zone="3120" x="905" y="215" champID="9882" /> <!-- Mark -->
@@ -518,6 +518,7 @@
 		<Champ zone="3070" x="144" y="669" z="95" champID="10193" />
 		<Champ zone="3070" x="272" y="716" z="92" champID="10193" />
 		<Champ zone="3070" x="376" y="785" z="85" champID="10193" />
+		<Champ zone="3070" x="546" y="783" z="85" champID="10193" />
 		<Champ zone="3070" x="721" y="802" z="85" champID="10193" />
 		<Champ zone="3070" x="781" y="916" z="72" champID="10194" /> <!-- Squamous Host Lord -->
 		<!-- War Pyre of Jigoku (patrol) -->

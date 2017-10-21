@@ -5,21 +5,50 @@
 <!--
 	Fixed Lore locations verified with LoreHound
 	Drops from champion mobs use their waypoint locations
+	Drops from general mobs use areas based on mob spawn locations
 -->
 <OverlayPack>
-	<!-- Ak'ab 5/8 -->
+	<!-- Ak'ab 7/8 -->
 	<Lore zone="3040" x="420" y="947" z="153" loreID="8485" />
-		<!-- #2 (BM, Drop: Brood Marks) -->
+	<Lore type="area" zone="3050" x="228.5" y="259.5" radius="41" loreID="8486">
+		<Note en="Drop: Broodmark" />
+	</Lore>
+	<Lore type="area" zone="3050" x="434.5" y="656" radius="89" loreID="8486">
+		<Note en="Drop: Broodmark" />
+	</Lore>
+	<Lore type="area" zone="3050" x="595" y="63.5" radius="31" loreID="8486">
+		<Note en="Drop: Broodmark" />
+	</Lore>
+	<Lore type="area" zone="3050" x="849" y="237" radius="203.5" loreID="8486">
+		<Note en="Drop: Broodmark" />
+	</Lore>
 	<Lore zone="3040" x="568" y="923" z="158" loreID="8487" />
 	<Lore zone="3050" x="883" y="116" z="156" loreID="8488" />
 		<!-- #5 (DW, Drop) -->
 	<Lore zone="3050" x="459" y="647" z="190" loreID="8490" />
 	<Lore zone="3050" x="975" y="56" z="145" loreID="8491" />
-		<!-- #8 (Instance: Ami Legend -->
-	<!-- Arthropods 5/7 -->
+	<Lore zone="6070" x="295" y="353" z="25" loreID="8492" />
+	<!-- Arthropods 6/7 -->
 	<Lore zone="3090" x="437" y="555" z="51" loreID="8654" />
 	<Lore zone="3100" x="545" y="488" z="54" loreID="8655" />
-		<!-- #3 (SD, Drop: Scorpions) -->
+	<Lore type="area" zone="3090" x="429" y="996.5" radius="44" loreID="8656">
+		<Note en="Drop: Burrowing Sunstalker" />
+	</Lore>
+	<Lore type="area" zone="3090" x="491" y="656" radius="67" loreID="8656">
+		<Note en="Drop: Burrowing Sunstalker" />
+	</Lore>
+	<Lore type="area" zone="3090" x="543.5" y="811.5" radius="67" loreID="8656">
+		<Note en="Drop: Burrowing Sunstalker" />
+	</Lore>
+	<Lore type="area" zone="3090" x="578" y="984" radius="37" loreID="8656">
+		<Note en="Drop: Burrowing Sunstalker" />
+	</Lore>
+	<Lore type="area" zone="3090" x="679" y="492.5" radius="91" loreID="8656">
+		<Note en="Drop: Burrowing Sunstalker" />
+	</Lore>
+	<Lore type="area" zone="3090" x="747.5" y="905" radius="25" loreID="8656">
+		<Note en="Drop: Burrowing Sunstalker" />
+	</Lore>
 	<Lore zone="3090" x="891" y="432" z="75" loreID="8657" />
 	<Lore zone="3090" x="906" y="457" z="62" loreID="8658" />
 		<!-- #6 (Instance: Dusty Dark) -->
@@ -85,47 +114,63 @@
 		<!-- Shed north of Lover's Lake -->
 		<Note en="Random spawn point 5/5" />
 	</Lore>
-	<!-- Cultists 4/6 -->
+	<!-- Cultists 5/6 -->
 	<Lore zone="3090" x="386" y="371" z="50" loreID="8632" />
-		<!-- #2 (CotSG, Drop: Bombermen) -->
+	<Lore type="area" zone="3100" x="715" y="308.5" radius="59" loreID="8633">
+		<Note en="Drop: Cultist Bomber" />
+	</Lore>
+	<Lore type="area" zone="3100" x="930" y="483" radius="30" loreID="8633">
+		<Note en="Drop: Cultist Bomber" />
+	</Lore>
 	<Lore zone="3100" x="155" y="89" z="79" loreID="8634" />
 	<Lore zone="3090" x="304" y="161" z="67" loreID="8635" />
 		<!-- #5 (Instance: Prisoner) -->
 	<Lore zone="3100" x="901" y="538" z="56" loreID="8637" />
-	<!-- Deathless 4/9 -->
+	<!-- Deathless -->
 	<Lore zone="3120" x="1369" y="147" z="43" loreID="8857" />
 	<Lore zone="3120" x="1417" y="283" z="61" loreID="8858" />
 	<Lore zone="3140" x="1055" y="346" z="40" loreID="8859" />
 	<Lore zone="3140" x="1078" y="386" z="44" loreID="8860" />
-		<!-- #5 (SF, Mission: Lurking Horrors) -->
 	<Lore zone="3130" x="212" y="855" z="30" loreID="8861">
 		<Note en="Requires Mission: The Lurking Horrors" />
 	</Lore>
-		<!-- #6 (CF, Drop: Damn Congregation?) -->
-		<!-- #7 (SF, Drop: Ascetic/Vigil) -->
-		<!-- #8 (SF, Drop: Preacher) -->
+	<Lore zone="3140" x="1121" y="372.5" z="55" loreID="8862">
+		<Note en="Drop: Damned Congregation" />
+	</Lore>
+	<Lore type="area" zone="3130" x="321.5" y="830.5" radius="153" loreID="8863">
+		<Note en="Drop: Ascetic or Bleeding Vigil" />
+	</Lore>
+	<Lore type="area" zone="3130" x="359" y="850.5" radius="116" loreID="8864">
+		<Note en="Drop: Stripped Preacher" />
+	</Lore>
 	<Lore zone="3130" x="305" y="826" z="24" loreID="8865" />
-	<!-- Draug - Deep Ones 4/7-->
+	<!-- Draug - Deep Ones -->
 	<Lore zone="3050" x="57" y="672" z="130" loreID="8524" />
-		<!-- #2 (BM, Drop: Tide Lurker) -->
+	<Lore zone="3050" x="88" y="273" z="130" loreID="8525">
+		<Note en="Champion mob drop" />
+	</Lore>
 	<Lore zone="3070" x="909" y="866" z="76" loreID="8526" />
 	<Lore zone="3050" x="55" y="291" z="131" loreID="8527" />
-		<!-- #5 (BM, Drop: Deep Ones) -->
+	<Lore type="area" zone="3050" x="81" y="607" radius="68" loreID="8528">
+		<Note en="Drop: Cold Seep Deep Ones" />
+	</Lore>
 	<Lore zone="3050" x="98" y="434" z="140" loreID="8529" />
 	<Lore zone="3070" x="781" y="916" z="72" loreID="8530">
 		<Note en="Champion mob drop" />
 	</Lore>
-	<!-- Draug - Drones 8/9 -->
+	<!-- Draug - Drones -->
 	<Lore zone="3050" x="446" y="14" z="131" loreID="8532" />
 	<Lore zone="3050" x="349" y="191" z="135" loreID="8533" />
 	<Lore zone="3030" x="75" y="579" z="188" loreID="8534" />
-		<!-- #4 (BM, Drop: Moon Cove Draug) -->
+	<Lore type="area" zone="3050" x="937" y="866" radius="76" loreID="8535">
+		<Note en="Drop: Vetr Bludgeoner &amp; Hacker" />
+	</Lore>
 	<Lore zone="3030" x="515" y="253" z="129" loreID="8536" />
 	<Lore zone="3030" x="487" y="172" z="129" loreID="8537" />
 	<Lore zone="3050" x="173" y="908" z="141" loreID="8538" />
 	<Lore zone="3050" x="324" y="91" z="144" loreID="8539" />
 	<Lore zone="3050" x="80" y="772" z="139" loreID="8540" />
-	<!-- Draug - Leaders 6/7 -->
+	<!-- Draug - Leaders -->
 	<Lore zone="3030" x="510" y="922" z="130" loreID="8542" />
 	<Lore zone="3030" x="759" y="937" z="130" loreID="8543" />
 	<Lore zone="3050" x="853" y="955" z="131" loreID="8544" />
@@ -135,16 +180,22 @@
 	<Lore zone="3030" x="705" y="164" z="132" loreID="8548">
 		<Note en="Summon point, requires 5 people + beating heart from BM" />
 	</Lore>
-	<!-- Familiars 4/6 -->
+	<!-- Familiars -->
 	<Lore zone="3040" x="258" y="177" z="141" loreID="8570" />
-		<!-- #2 (SC Drop: Corrective Familiars) -->
+	<Lore type="area" zone="3040" x="239" y="223.5" radius="71" loreID="8571">
+		<Note en="Drop: Corrective Familiar" />
+	</Lore>
 	<Lore zone="3040" x="272" y="343" z="145" loreID="8572" />
 	<Lore zone="3100" x="132" y="26" z="86" loreID="8573" />
-	<Lore zone="3040" x="277" y="363" z="160" loreID="8574" />
-		<!-- #6 (Instance: Carter Unleashed) -->
-	<!-- Fauns 4/5 -->
+	<Lore zone="3040" x="277" y="363" z="160" loreID="8574">
+		<Note en="Requires Mission: The Faculty" />
+	</Lore>
+	<Lore zone="6071" x="126" y="144" z="39" loreID="8575" />
+	<!-- Fauns -->
 	<Lore zone="3130" x="323" y="548" z="51" loreID="9222" />
-		<!-- #2 (SF, Drop: Fauns) -->
+	<Lore type="area" zone="3130" x="442.5" y="563.5" radius="106" loreID="9223">
+		<Note en="Drop: Turned Faun" />
+	</Lore>
 	<Lore zone="3130" x="418" y="555" z="37" loreID="9224">
 		<Note en="Champion mob drop" />
 	</Lore>
@@ -155,8 +206,8 @@
 	<Lore zone="3090" x="361" y="850" z="66" loreID="9286" />
 	<Lore zone="3070" x="980" y="410" z="87" loreID="9287" />
 	<Lore zone="3070" x="458" y="260" z="95" loreID="9288" />
-	<Lore zone="3070" x="344" y="186" z="85" loreID="9289" />	
-		<!-- #6 (NYA) -->
+	<Lore zone="3070" x="344" y="186" z="85" loreID="9289" />
+		<!-- #6 (Penthouse or All Seeing?, Drop) -->
 	<Lore zone="3090" x="270" y="855" z="64" loreID="9291" />
 	<Lore zone="3100" x="205" y="1022" z="60" loreID="9292" />
 	<!-- Filth and Nature -->
@@ -173,9 +224,10 @@
 	<Lore zone="3140" x="1233" y="675" z="31" loreID="9297" />
 	<Lore zone="3100" x="713" y="991" z="55" loreID="9298" />
 	<Lore zone="3100" x="32" y="686" z="83" loreID="9299" />
-		<!-- 6-7 (NYA) -->
-		<!-- 8 (Unknown/NYA/No Location) -->
-	<!-- Ghouls 9/11 -->
+		<!-- #6 (NYR) -->
+		<!-- #7 (NYA - Flappy Raid) -->
+		<!-- #8 (Unknown/NYA/No Location) -->
+	<!-- Ghouls -->
 	<Lore zone="3130" x="1103" y="1071" z="28" loreID="8642" />
 	<Lore zone="3130" x="568" y="1030" z="42" loreID="8643" />
 	<Lore zone="3090" x="906" y="552" z="53" loreID="8644" />
@@ -183,22 +235,69 @@
 	<Lore zone="3090" x="1009" y="703" z="54" loreID="8646" />
 	<Lore zone="3090" x="762" y="688" z="52" loreID="8647" />
 	<Lore zone="3100" x="629" y="204" z="86" loreID="8648" />
-		<!-- #8 (CotSG, Drop: Willbreaker) -->
+	<Lore type="area" zone="3100" x="847.5" y="485" radius="126" loreID="8649">
+		<Note en="Drop: Pnathian Willbreaker" />
+	</Lore>
 	<Lore zone="3130" x="1270" y="1052" z="78" loreID="8650" />
-		<!-- #10 (BF, Drop: Ringleader) -->
+	<Lore type="area" zone="3120" x="1098" y="1098" radius="74" loreID="8651">
+		<Note en="Drop: Ghoul Ringleader" />
+	</Lore>
 	<Lore zone="3120" x="673" y="1274" z="132" loreID="8652" />
-	<!-- Golems 3/8 -->
+	<!-- Golems -->
 	<Lore zone="3030" x="662" y="692" z="135" loreID="9268" />
 	<Lore zone="3090" x="344" y="513" z="57" loreID="9269" />
-		<!-- #3-7 (Various, Drops) -->
+	<Lore zone="3090" x="707" y="495" z="51" loreID="9270">
+		<Note en="Drop: Kaphiri, Moving Mountain" />
+	</Lore>
+	<Lore type="path" zone="3090" loreID="9270">
+		<Point x="738" y="409" z="50" />
+		<Point x="745" y="435" z="52" />
+		<Point x="707" y="495" z="51" />
+		<Point x="688" y="511" z="51" />
+		<Point x="684" y="625" z="51" />
+		<Point x="678" y="640" z="52" />
+		<Point x="669" y="631" z="51" />
+		<Point x="671" y="600" z="51" />
+		<Point x="680" y="587" z="52" />
+		<Point x="667" y="561" z="52" />
+		<Point x="675" y="513" z="51" />
+		<Point x="666" y="468" z="50" />
+		<Point x="669" y="435" z="51" />
+		<Point x="674" y="424" z="52" />
+		<Point x="697" y="425" z="52" />
+		<Point x="738" y="409" z="50" />
+	</Lore>
+	<Lore type="area" zone="3050" x="495.5" y="575.5" radius="50" loreID="9271">
+		<Note en="Drop: Junkpile Bombardier" />
+	</Lore>
+	<Lore type="area" zone="3100" x="738" y="866" radius="43" loreID="9272">
+		<Note en="Drop: Primary Melt; Requires Mission: Points of Impact" />
+	</Lore>
+	<Lore type="area" zone="3100" x="747.5" y="299" radius="128" loreID="9273">
+		<Note en="Drop: Mop Slop Riser" />
+	</Lore>
+	<Lore type="area" zone="3140" x="274" y="668.5" radius="28" loreID="9274">
+		<Note en="Drop: Accursed Ice" />
+	</Lore>
+	<Lore type="area" zone="3140" x="331.5" y="481" radius="20" loreID="9274">
+		<Note en="Drop: Accursed Ice" />
+	</Lore>
+	<Lore type="area" zone="3140" x="381.5" y="984" radius="95" loreID="9274">
+		<Note en="Drop: Accursed Ice" />
+	</Lore>
+	<Lore type="area" zone="3140" x="441" y="600" radius="80" loreID="9274">
+		<Note en="Drop: Accursed Ice" />
+	</Lore>
 	<Lore zone="5060" x="553" y="22" z="225" loreID="9275">
 		<Note en="Spawns for 2 min when custodian near." />
 	</Lore>
-	<!-- Jinn 1/9 -->
+	<!-- Jinn 2/9 -->
 	<Lore zone="3100" x="823" y="711" z="73" loreID="9200" />
 		<!-- #2 (HE, Drop) -->
 		<!-- #3-6 (HE) -->
-		<!-- #7 (SD, Drop: Hellfire) -->
+	<Lore zone="3090" x="585" y="875" loreID="9206">
+		<Note en="Champion mob drop" />
+	</Lore>
 		<!-- #8 (Instance: Eats Its Name) -->
 		<!-- #9 (HE) -->
 	<!-- Kyonshi -->
@@ -211,13 +310,15 @@
 	<Lore zone="6630" x="110" y="165" z="5" loreID="8823" />
 	<Lore zone="3070" x="911" y="230" z="77" loreID="8824" />
 	<Lore zone="3070" x="721" y="308" z="79" loreID="8825" />
-	<!-- Mummies 3/12 -->
+	<!-- Mummies 10/12 -->
 	<Lore zone="3090" x="359" y="660" z="58" loreID="8603" />
 		<!-- #2 (Instance: Time to Every Purpose) -->
 	<Lore zone="3100" x="58" y="505" z="69" loreID="8607" />
 	<Lore zone="3100" x="917" y="847" z="75" loreID="8611" />
 	<Lore zone="3090" x="153" y="733" z="58" loreID="8613" />
-		<!-- #6 (CotSG, Drop: Embalmed Emptiness) -->
+	<Lore type="area" zone="3100" x="156.5" y="729.5" radius="97" loreID="8615">
+		<Note en="Drop: Embalmed Emptiness" />
+	</Lore>
 	<Lore zone="3100" x="158" y="807" z="95" loreID="8617" />
 	<Lore zone="3090" x="793" y="878" z="65" loreID="8619" />
 	<Lore zone="3100" x="629" y="720" z="82" loreID="8621">
@@ -231,10 +332,12 @@
 		<Note en="Champion mob drop" />
 	</Lore>
 		<!-- #12 (SD, Instance, PITA) -->
-	<!-- Namahage 2/3 -->
+	<!-- Namahage -->
 	<Lore zone="3070" x="815" y="218" z="76" loreID="8748" />
 	<Lore zone="3070" x="771" y="282" z="83" loreID="8749" />
-		<!-- #3 Champ Drop -->
+	<Lore zone="3070" x="830" y="147" z="77" loreID="8750">
+		<Note en="Champion mob drop" />
+	</Lore>
 	<!-- Oni -->
 	<Lore zone="3070" x="96" y="861" z="103" loreID="9251">
 		<Note en="Requires Mission: Brotherly Loathe"/>
@@ -242,27 +345,50 @@
 	<Lore zone="5150" x="491" y="668" z="80" loreID="9252" />
 	<Lore zone="3070" x="131" y="989" z="74" loreID="9253" />
 	<Lore zone="3070" x="957" y="20" z="74" loreID="9254" />
-	<!-- Orochi Tech 3/6 -->
-		<!-- #1-2 (NYA) -->
+	<!-- Orochi Tech -->
+	<Lore zone="6830" x="205" y="211" z="64" loreID="8741" />
+	<Lore zone="6860" x="229" y="273" z="64" loreID="8742" />
 	<Lore zone="3100" x="15" y="808" z="54" loreID="8743" />
 	<Lore zone="6770" x="247" y="240" z="274" loreID="8744" />
 	<Lore zone="3070" x="319" y="351" z="84" loreID="8745" />
 	<Lore zone="3070" x="128" y="517" z="85" loreID="8746">
 		<Note en="Champion mob drop; Kill fast" />
 	</Lore>
-	<!-- Padurii 2/7 -->
-		<!-- #1 (Drop: Keening) -->
+	<!-- Padurii -->
+	<Lore type="area" zone="3130" x="1027" y="625" radius="117" loreID="8879">
+		<Note en="Drop: Keening Forest Spirit" />
+	</Lore>
 	<Lore zone="3130" x="1138" y="745" z="50" loreID="8880" />
 	<Lore zone="3130" x="1078" y="657" z="29" loreID="8881">
 		<Note en="Requires Mission: The Abandoned" />
 	</Lore>
-		<!-- #4-6 (Drop: Various spirits) -->
-		<!-- #7 (Drop: Padurii race) -->
-	<!-- Rakshasa 3/6 -->
+	<Lore type="area" zone="3130" x="1027" y="625" radius="117" loreID="8882">
+		<Note en="Drop: Clamouring Forest Spirit" />
+	</Lore>
+	<Lore type="area" zone="3130" x="1031.5" y="713" radius="97" loreID="8883" >
+		<Note en="Drop: Enslaved Forest Spirit" />
+	</Lore>
+	<Lore type="area" zone="3130" x="1027" y="625" radius="117" loreID="8884">
+		<Note en="Drop: Shrilling Forest Spirit" />
+	</Lore>
+		<!-- #7 (Padurii race, multiple initial spawns, figure the race path out yourself) -->
+	<Lore zone="3130" x="1084" y="519" z="58" loreID="8885">
+		<Note en="Possible spawn; Chase" />
+	</Lore>
+	<Lore zone="3130" x="1178" y="645" z="47" loreID="8885">
+		<Note en="Possible spawn; Chase" />
+	</Lore>
+	<Lore zone="3130" x="982" y="741" z="32" loreID="8885">
+		<Note en="Race Destination" />
+	</Lore>
+	<!-- Rakshasa 4/6 -->
 	<Lore zone="3070" x="276" y="718" z="90" loreID="9244" />
 	<Lore zone="3040" x="805" y="999" z="147" loreID="9245" />
 	<Lore zone="5150" x="169" y="713" z="20" loreID="9246" />
-		<!-- #4-5 (Drops, KD/CotSG) -->
+		<!-- #4 (Drop, KD) -->
+	<Lore type="area" zone="3100" x="862" y="150" radius="58" loreID="9248">
+		<Note en="Drop: Breachbeast" />
+	</Lore>
 		<!-- #6 (HE (HR|HF done)) -->
 	<Lore zone="5140" x="448" y="459" z="115" loreID="9249">
 		<Note en="Use all three within 2h" />
@@ -283,24 +409,31 @@
 	<Lore zone="3050" x="603" y="386" z="182" loreID="8474" />
 	<Lore zone="3050" x="693" y="506" z="196" loreID="8475" />
 	<Lore zone="3050" x="782" y="80" z="157" loreID="8476" />
-	<!-- Scarecrows 5/8 -->
+	<!-- Scarecrows -->
 	<Lore zone="3040" x="869" y="437" z="154" loreID="8561" />
-		<!-- #2 (SC, Drop: Sackcloth Haunt/Preacher) -->
+	<Lore type="area" zone="3040" x="471" y="334" radius="26" loreID="8562">
+		<Note en="Drop: Sackcloth Scarecrows" />
+	</Lore>
 	<Lore zone="3040" x="116" y="268" z="131" loreID="8563" />
 	<Lore zone="3050" x="519" y="683" z="193" loreID="8564" />
 	<Lore zone="3040" x="495" y="531" z="138" loreID="8565" />
 	<Lore zone="3040" x="829" y="367" z="160" loreID="8566" />
-		<!-- #7-8 (SC, Drop: Old Barn -->
+	<Lore type="area" zone="3040" x="509" y="564" radius="46" loreID="8567">
+		<Note en="Drop: His Daughter's Keepers" />
+	</Lore>
+	<Lore type="area" zone="3040" x="509" y="564" radius="46" loreID="8568">
+		<Note en="Drop: Henderson's Legacy or Night Watchman" />
+	</Lore>
 	<!-- Soldiers of Hell -->
 	<Lore zone="3130" x="609" y="370" z="37" loreID="9239" />
 	<Lore zone="3130" x="406" y="438" z="40" loreID="9240" />
 	<Lore zone="5150" x="341" y="611" z="32" loreID="9241" />
 	<Lore zone="5150" x="360" y="549" z="68" loreID="9242" />
-	<!-- Spectres 8/11 -->
+	<!-- Spectres 9/11 -->
 	<Lore zone="3140" x="648" y="850" z="51" loreID="8827" />
 	<Lore zone="3050" x="309" y="496" z="172" loreID="8828" />
 	<Lore zone="3070" x="906" y="132" z="77" loreID="8829" />
-		<!-- #4 (NYA) -->
+		<!-- #4 (NYA - MFB, Drop) -->
 	<Lore zone="3050" x="366" y="525" z="154" loreID="8831" />
 		<!-- #6 (KD, Drop: Onryo in KD) -->
 	<Lore zone="3130" x="724" y="852" z="31" loreID="8833">
@@ -320,15 +453,17 @@
 	<Lore zone="3090" x="442" y="976" z="79" loreID="8663" />
 	<Lore zone="3090" x="553" y="625" z="46" loreID="8664" />
 	<Lore zone="3090" x="538" y="915" z="66" loreID="8665" />
-	<!-- Succubi and Incubi 4/7 -->
+	<!-- Succubi and Incubi 6/7 -->
 	<Lore zone="3040" x="766" y="951" z="160" loreID="9210" />
 	<Lore zone="5140" x="486" y="375" z="67" loreID="9211" />
-		<!-- #3 HR -->
+	<Lore zone="5140" x="619" y="548" z="81" loreID="9212" />
 		<!-- #4 HE -->
-		<!-- #5 (SC, Drop: Rift Martyr) -->
+	<Lore type="area" zone="3040" x="871" y="901.5" radius="95" loreID="9214">
+		<Note en="Drop: Rift Martyr" />
+	</Lore>
 	<Lore zone="5140" x="555" y="468" z="73" loreID="9215" />
 	<Lore zone="5140" x="299" y="292" z="110" loreID="9216" />
-	<!-- Vampires 9/13 -->
+	<!-- Vampires -->
 	<Lore zone="3140" x="1073" y="897" z="48" loreID="8889" />
 	<Lore zone="3140" x="884" y="930" z="81" loreID="8890" />
 	<Lore zone="3140" x="896" y="434" z="43" loreID="8891" />
@@ -336,25 +471,31 @@
 	<Lore zone="3140" x="1080" y="993" z="46" loreID="8893" />
 	<Lore zone="3120" x="305" y="963" z="145" loreID="8894" />
 	<Lore zone="3120" x="288" y="1001" z="135" loreID="8895" />
-	 <Lore zone="3140" x="845" y="980" z="100" loreID="8896" />
-		<!-- #9 (BF, Drop: Blood Banks @ Observatory -->
+	<Lore zone="3140" x="845" y="980" z="100" loreID="8896" />
+	<Lore type="area" zone="3120" x="368" y="1054.5" radius="109" loreID="8897">
+		<Note en="Drop: Blood Stock" />
+	</Lore>
 	<Lore zone="3140" x="370" y="800" z="76" loreID="8898" />
 	<Lore zone="3120" x="478" y="1094" z="102" loreID="8899" />
-		<!-- #12 (CF, Drop: Type-X Controllers -->
+	<Lore type="area" zone="3140" x="1112.5" y="1008.5" radius="146" loreID="8900">
+		<Note en="Drop: Type-X Controller" />
+	</Lore>
 	<Lore zone="3120" x="898" y="1214" z="124" loreID="8901" />
-	<!-- Vampire Masters 5/9 -->
+	<!-- Vampire Masters 7/9 -->
 	<Lore zone="3140" x="355" y="996" z="110" loreID="9077" />
 	<Lore zone="3120" x="263" y="755" z="95" loreID="9078" />
-		<!-- #3 (BF, Drop: Frontline Engorged) -->
-	<Lore zone="3140" x="547" y="983" z="64" loreID="9080" />		
+	<Lore zone="3120" x="855" y="1160" z="147" loreID="9079">
+		<Note en="Champion mob drop" />
+	</Lore>
+	<Lore zone="3140" x="547" y="983" z="64" loreID="9080" />
 	<Lore zone="3140" x="540" y="1056" z="75" loreID="9081">
 		<Note en="Champion mob drop" />
 	</Lore>
 		<!-- #6-7 (Instance: Castle) -->
 	<Lore zone="3120" x="250" y="866" z="76" loreID="9084" />
-	 <Lore zone="3140" x="919" y="1030" z="51" loreID="9237">
+	<Lore zone="3140" x="919" y="1030" z="51" loreID="9237">
 		<Note en="Chase down vampire survivalist" />
-	 </Lore>
+	</Lore>
 	<!-- Vampire Super Soliders 1/5 -->
 		<!-- #1 (SH) -->
 	<Lore zone="3120" x="338" y="918" z="130" loreID="8904">
@@ -373,36 +514,61 @@
 	<Lore zone="3050" x="583" y="206" z="157" loreID="8501" />
 	<Lore zone="3050" x="725" y="247" z="170" loreID="8502" />
 	<Lore zone="3050" x="612" y="122" z="150" loreID="8503" />
-	<!-- Werewolves 7/8 -->
+	<!-- Werewolves -->
 	<Lore zone="3130" x="793" y="1117" z="57" loreID="8867" />
 	<Lore zone="3140" x="387" y="1178" z="48" loreID="8868" />
 	<Lore zone="3120" x="938" y="216" z="84" loreID="8869" />
 	<Lore zone="3130" x="936" y="1072" z="51" loreID="8870" />
 	<Lore zone="3120" x="662" y="683" z="102" loreID="8871" />
-		<!-- #6 (BF, Drop: Scalpers) -->
+	<Lore type="area" zone="3120" x="462" y="540.5" radius="52" loreID="8872">
+		<Note en="Drop: Custurii Scalper" />
+	</Lore>
 	<Lore zone="3140" x="344" y="1199" z="34" loreID="8873">
 		<Note en="Champion mob drop" />
 	</Lore>
 	<Lore zone="3120" x="955" y="218" z="84" loreID="8874" />
-	<!-- Wisps 5/7 -->
+	<!-- Wisps -->
 	<Lore zone="3030" x="206" y="72" z="156" loreID="8550" />
 	<Lore zone="3030" x="254" y="126" z="144" loreID="8551" />
-		<!-- #3 (SC, Drop: Ghostlights S patch) -->
-		<!-- #4 (SC, Drop: Ghostlights N patch) -->
+	<Lore type="area" zone="3040" x="451.5" y="278.5" radius="36" loreID="8552">
+		<Note en="Drop: Ghostlight" />
+	</Lore>
+	<Lore type="area" zone="3040" x="460" y="413" radius="26" loreID="8554">
+		<Note en="Drop: Ghostlight" />
+	</Lore>
 	<Lore zone="3040" x="512" y="296" z="154" loreID="8555" />
 	<Lore zone="3030" x="408" y="811" z="145" loreID="8556" />
 	<Lore zone="3040" x="589" y="188" z="172" loreID="8557" />
-	<!-- Zmeu 2/3 -->
+	<!-- Zmeu -->
 	<Lore zone="3140" x="775" y="495" z="52" loreID="9234" />
 	<Lore zone="3140" x="862" y="559" z="16" loreID="9235" />
-		<!-- #3 (CF, Drop: Black Springs Zmeu) -->
-	<!-- Zombies 7/13 -->
+	<Lore type="area" zone="3140" x="781.5" y="546.5" radius="92" loreID="9236">
+		<Note en="Drop: Black Springs Zmeu or Earthshaker" />
+	</Lore>
+	<!-- Zombies -->
 	<Lore zone="3030" x="513" y="99" z="134" loreID="8580" />
 	<Lore zone="3030" x="369" y="331" z="135" loreID="8581" />
 	<Lore zone="3030" x="697" y="403" z="134" loreID="8582" />
 	<Lore zone="3040" x="472" y="723" z="140" loreID="8583" />
 	<Lore zone="3040" x="359" y="522" z="148" loreID="8584" />
-		<!-- #6-11 (Various Drops) -->
+	<Lore type="area" zone="3040" x="399" y="359.5" radius="202" loreID="8585">
+		<Note en="Drop: Innsmouth Track &amp; Field" />
+	</Lore>
+	<Lore type="area" zone="3030" x="277" y="503" radius="35" loreID="8586">
+		<Note en="Drop: Dearly Departed" />
+	</Lore>
+	<Lore type="area" zone="3030" x="152" y="948.5" radius="122" loreID="8587">
+		<Note en="Drop: Zombie Hulks" />
+	</Lore>
+	<Lore type="area" zone="3030" x="466" y="208" radius="119" loreID="8588">
+		<Note en="Drop: Drowned Mariner" />
+	</Lore>
+	<Lore type="area" zone="3030" x="530.5" y="83.5" radius="115.5" loreID="8589">
+		<Note en="Drop: Zombie Cultists" />
+	</Lore>
+	<Lore zone="3050" x="250" y="505" loreID="8590">
+		<Note en="Champion mob drop" />
+	</Lore>
 	<Lore zone="3040" x="722" y="241" z="146" loreID="8591" />
 	<Lore zone="3050" x="492" y="125" z="129" loreID="8592">
 		<Note en="Head, part 1/6" />
@@ -423,6 +589,6 @@
 		<Note en="Right Leg, part 6/6" />
 	</Lore>
 	<Lore zone="3030" x="290" y="512" z="144" loreID="8592">
-		<Note en="Assemble Joe Here" />
+		<Note en="Assemble Joe here" />
 	</Lore>
 </OverlayPack>

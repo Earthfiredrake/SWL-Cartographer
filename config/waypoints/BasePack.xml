@@ -47,7 +47,7 @@
 <!-- Other waypoints pulled from default map waypoint files -->
 <OverlayPack>
     <Section> <!-- Agartha -->
-		<AnimaWell zone="5060" x="502.3" y="412.0"> <!-- Hub platform -->
+		<AnimaWell zone="5060" x="502.3" y="412"> <!-- Hub platform -->
 			<Name rdb="id=6719243 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="5060" x="519.5" y="221.8"> <!-- Mallgartha tree -->
@@ -217,7 +217,7 @@
 		<Vendor zone="1000" x="145.8" y="221.7">
 			<Name rdb="id=29792 category=51000" />
 		</Vendor>
-		<Vendor zone="1000" x="145.7" y="205.0">
+		<Vendor zone="1000" x="145.7" y="205">
 			<Name rdb="id=32097 category=51000" />
 		</Vendor>
 		<Vendor zone="1000" x="126.9" y="159.2">
@@ -236,7 +236,7 @@
 			<Name rdb="id=105862994 category=260" />
 		</Vendor>
 		<!-- Icons not yet included
-		<Vendor zone="1000" x="164.3" y="358.0" icon="vendor_bank.png">
+		<Vendor zone="1000" x="164.3" y="358" icon="vendor_bank.png">
 			<Name rdb="id=29867 category=51000" />
 		</Vendor>
 		<Vendor zone="1000" x="364.3" y="301.3" icon="vendor_bank.png">
@@ -260,7 +260,7 @@
 		<Vendor zone="1200" x="392.3" y="257.8">
 			<Name rdb="id=29792 category=51000" />
 		</Vendor>
-		<Vendor zone="1200" x="363.0" y="304.1">
+		<Vendor zone="1200" x="363" y="304.1">
 			<Name rdb="id=29801 category=51000" />
 		</Vendor>
 		<Vendor zone="1200" x="364.5" y="278.3">
@@ -272,7 +272,7 @@
 		</Vendor> -->
 	</Section>
 	<Section> <!-- KM -->
-		<AnimaWell zone="3030" x="16.0" y="159.8"> <!-- Agartha Entrance -->
+		<AnimaWell zone="3030" x="16" y="159.8"> <!-- Agartha Entrance -->
 			<Name rdb="id=5228519 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3030" x="178.3" y="337.1"> <!-- Sheriff's Department -->
@@ -290,7 +290,7 @@
 		<AnimaWell zone="3030" x="125.5" y="671.7"> <!-- Camping Grounds -->
 			<Name rdb="id=9279088 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3030" x="381.0" y="992.2"> <!-- New Colony Span Bridge -->
+		<AnimaWell zone="3030" x="381" y="992.2"> <!-- New Colony Span Bridge -->
 			<Name rdb="id=5998844 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3030" x="528.8" y="624.6"> <!-- King's Strait -->
@@ -299,7 +299,7 @@
 		<AnimaWell zone="3030" x="830.3" y="448.3"> <!-- Fletcher Island -->
 			<Name rdb="id=9279091 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3030" x="773.0" y="786.4"> <!-- Kingsmouth Municipal Airport Gate -->
+		<AnimaWell zone="3030" x="773" y="786.4"> <!-- Kingsmouth Municipal Airport Gate -->
 			<Name rdb="id=9279090 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3030" x="1007.4" y="702.1"> <!-- Kingsmouth Municipal Airport Runway -->
@@ -339,7 +339,7 @@
 		<AnimaWell zone="3040" x="576.7" y="602.3"> <!-- Atlantic Island Park - Main Gate -->
 			<Name rdb="id=6060752 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3040" x="647.0" y="329.4"> <!-- Atlantic Island Park - Service Entrance -->
+		<AnimaWell zone="3040" x="647" y="329.4"> <!-- Atlantic Island Park - Service Entrance -->
 			<Name rdb="id=6060751 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3040" x="784.3" y="405.2"> <!-- The Threshing Fields -->
@@ -416,7 +416,7 @@
 		<AnimaWell zone="3050" x="208.1" y="681.5"> <!-- Trailer Park -->
 			<Name rdb="id=4138765 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3050" x="472.0" y="579.4"> <!-- The Blue Ridge Mine -->
+		<AnimaWell zone="3050" x="472" y="579.4"> <!-- The Blue Ridge Mine -->
 			<Name rdb="id=9284422 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3050" x="665.1" y="589.3"> <!-- Wabanaki Sacred Site -->
@@ -430,7 +430,7 @@
 			targetZone="3040"> <!-- To SC -->
 			<Name rdb="id=203932440 category=50025" />
 		</Transit>
-		<Transit zone="3050" x="1020.0" y="719.5"
+		<Transit zone="3050" x="1020" y="719.5"
 			targetZone="3030"> <!-- To KM -->
 			<Name rdb="id=64760866 category=50025" />
 		</Transit>
@@ -457,16 +457,16 @@
 		<AnimaWell zone="3090" x="622.2" y="341.1" z="54.7"> <!-- Al-Merayah Outskirts-->
 			<Name rdb="id=6564540 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3090" x="561.7" y="469.4" z="70.0"> <!-- Al-Merayah-->
+		<AnimaWell zone="3090" x="561.7" y="469.4" z="70"> <!-- Al-Merayah-->
 			<Name rdb="id=6317872 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3090" x="910.0" y="344.7" z="57.7"> <!-- Marya Basecamp East-->
+		<AnimaWell zone="3090" x="910" y="344.7" z="57.7"> <!-- Marya Basecamp East-->
 			<Name rdb="id=6173850 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3090" x="805.7" y="514.5" z="46.9"> <!-- Hotel Wahid-->
 			<Name rdb="id=9287202 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3090" x="382.0" y="581.5" z="47.5"> <!-- Forsaken Oasis-->
+		<AnimaWell zone="3090" x="382" y="581.5" z="47.5"> <!-- Forsaken Oasis-->
 			<Name rdb="id=6173848 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3090" x="652.2" y="687.8" z="53.8"> <!-- Scorched Flats-->
@@ -500,16 +500,16 @@
 		<AnimaWell zone="3100" x="370.9" y="37.9" z="76.2"> <!-- The Remains-->
 			<Name rdb="id=6838396 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3100" x="878.0" y="240.6" z="78.4"> <!-- Coiled Spring-->
+		<AnimaWell zone="3100" x="878" y="240.6" z="78.4"> <!-- Coiled Spring-->
 			<Name rdb="id=6132854 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3100" x="364.7" y="308.9" z="78.3"> <!-- The Juncture-->
 			<Name rdb="id=6838395 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3100" x="10.5" y="221.0" z="77.5"> <!-- Stretch of the Lioness-->
+		<AnimaWell zone="3100" x="10.5" y="221" z="77.5"> <!-- Stretch of the Lioness-->
 			<Name rdb="id=6132858 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3100" x="134.6" y="459.4" z="81.0"> <!-- The Feet of Satis -->
+		<AnimaWell zone="3100" x="134.6" y="459.4" z="81"> <!-- The Feet of Satis -->
 			<Name rdb="id=6132859 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3100" x="551.6" y="564.2" z="81.9"> <!-- The Reformatory -->
@@ -518,7 +518,7 @@
 		<AnimaWell zone="3100" x="957.3" y="680.2" z="88.6"> <!-- The Stairway -->
 			<Name rdb="id=7383224 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3100" x="63.8" y="840.9" z="55.0"> <!-- Orochi Camp Entrance -->
+		<AnimaWell zone="3100" x="63.8" y="840.9" z="55"> <!-- Orochi Camp Entrance -->
 			<Name rdb="id=6838394 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3100" x="296.3" y="819.8" z="56.3"> <!-- The Boneyard -->
@@ -527,13 +527,13 @@
 		<AnimaWell zone="3100" x="480.5" y="784.4" z="75.4"> <!-- Vulture's Pass -->
 			<Name rdb="id=6838393 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3100" x="841.0" y="977.3" z="55.5"> <!-- The Maw -->
+		<AnimaWell zone="3100" x="841" y="977.3" z="55.5"> <!-- The Maw -->
 			<Name rdb="id=9287225 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3100" x="960.3" y="908.4" z="60.3"> <!-- Forking Sands -->
 			<Name rdb="id=6132860 category=270" />
 		</AnimaWell>
-		<Transit zone="3100" x="772.0" y="98.9"
+		<Transit zone="3100" x="772" y="98.9"
 			targetZone="5060">
 			<Name rdb="id=212867377 category=260" />
 		</Transit>
@@ -561,16 +561,16 @@
 		<AnimaWell zone="3120" x="874.8" y="1225.2" z="123.8"> <!-- St. Haralambie -->
 			<Name rdb="id=6886069 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3120" x="557.4" y="1107.0" z="102.6"> <!-- Red Hand Observatory -->
+		<AnimaWell zone="3120" x="557.4" y="1107" z="102.6"> <!-- Red Hand Observatory -->
 			<Name rdb="id=6886067 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3120" x="441.8" y="830.1" z="68.2"> <!-- The Perch -->
 			<Name rdb="id=6886070 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3120" x="648.2" y="610.0" z="107.2"> <!-- Hollander's Mill -->
+		<AnimaWell zone="3120" x="648.2" y="610" z="107.2"> <!-- Hollander's Mill -->
 			<Name rdb="id=6886071 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3120" x="999.7" y="563.0" z="62.7"> <!-- Cucuvea's Grove -->
+		<AnimaWell zone="3120" x="999.7" y="563" z="62.7"> <!-- Cucuvea's Grove -->
 			<Name rdb="id=7352406 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3120" x="1220.1" y="223.1" z="56.9"> <!-- Hermit's Crossing -->
@@ -593,7 +593,7 @@
 		<Vendor zone="3120" x="539.8" y="1105.2">
 			<Name rdb="id=14163 category=51000" />
 		</Vendor>
-		<Vendor zone="3120" x="948" y="542.0">
+		<Vendor zone="3120" x="948" y="542">
 			<Name rdb="id=14163 category=51000" />
 		</Vendor>
 	</Section>
@@ -601,7 +601,7 @@
 		<AnimaWell zone="3130" x="996.9" y="1169.9" z="48.2"> <!-- Fang-Tip Grove -->
 			<Name rdb="id=6885129 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3130" x="714.2" y="1068.2" z="29.0"> <!-- Whisperwoods -->
+		<AnimaWell zone="3130" x="714.2" y="1068.2" z="29"> <!-- Whisperwoods -->
 			<Name rdb="id=7409437 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3130" x="1023.6" y="938.3" z="33.3"> <!-- River of Life -->
@@ -610,10 +610,10 @@
 		<AnimaWell zone="3130" x="857.8" y="850.2" z="36.5"> <!-- Tree of Life -->
 			<Name rdb="id=6885126 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3130" x="515.7" y="881.2" z="12.0"> <!-- Hatchet Falls -->
+		<AnimaWell zone="3130" x="515.7" y="881.2" z="12"> <!-- Hatchet Falls -->
 			<Name rdb="id=6885127 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3130" x="903.2" y="680.0" z="28.1"> <!-- Mirewood -->
+		<AnimaWell zone="3130" x="903.2" y="680" z="28.1"> <!-- Mirewood -->
 			<Name rdb="id=6885130 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3130" x="981.4" y="501.1" z="28.6"> <!-- The Spoiled Garden -->
@@ -622,10 +622,10 @@
 		<AnimaWell zone="3130" x="343.8" y="574.5" z="46.5"> <!-- Foothills -->
 			<Name rdb="id=9297796 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3130" x="605.6" y="605.0" z="28.5"> <!-- Old Man's Bridge -->
+		<AnimaWell zone="3130" x="605.6" y="605" z="28.5"> <!-- Old Man's Bridge -->
 			<Name rdb="id=9297795 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3130" x="723.0" y="491.0" z="28.7"> <!-- Hell's Pass -->
+		<AnimaWell zone="3130" x="723" y="491" z="28.7"> <!-- Hell's Pass -->
 			<Name rdb="id=6885128 category=270" />
 		</AnimaWell>
 		<Transit zone="3130" x="928.8" y="903.1"
@@ -660,10 +660,10 @@
 		<AnimaWell zone="3140" x="898.3" y="1101.4" z="36.2"> <!-- Bunker Hill -->
 			<Name rdb="id=7112867 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3140" x="1168.0" y="1239.7" z="46.0"> <!-- Slaughterhouse Entrance -->
+		<AnimaWell zone="3140" x="1168" y="1239.7" z="46"> <!-- Slaughterhouse Entrance -->
 			<Name rdb="id=7112868 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3140" x="1040.0" y="900.8" z="47.9"> <!-- Chasm Entrance -->
+		<AnimaWell zone="3140" x="1040" y="900.8" z="47.9"> <!-- Chasm Entrance -->
 			<Name rdb="id=7112869 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3140" x="492.8" y="855.3" z="43.3"> <!-- Pricolesti -->
@@ -685,19 +685,19 @@
 			targetZone="5060">
 			<Name rdb="id=212867377 category=260" />
 		</Transit>
-		<Transit zone="3140" x="446.2" y="1328.0"
+		<Transit zone="3140" x="446.2" y="1328"
 			targetZone="3130">
 			<Name rdb="id=249979848 category=50025" />
 		</Transit>
 		<Vendor zone="3140" x="645.4" y="1086.9">
 			<Name rdb="id=14163 category=51000" />
 		</Vendor>
-		<Vendor zone="3140" x="717.0" y="678.3">
+		<Vendor zone="3140" x="717" y="678.3">
 			<Name rdb="id=14163 category=51000" />
 		</Vendor>
 	</Section>
 	<Section> <!-- KD -->
-		<AnimaWell zone="3070" x="948.0" y="760.1" z="74.7"> <!-- Ginpachi Park -->
+		<AnimaWell zone="3070" x="948" y="760.1" z="74.7"> <!-- Ginpachi Park -->
 			<Name rdb="id=7995190 category=270" />
 		</AnimaWell>
 		<AnimaWell zone="3070" x="679.4" y="623.3" z="82.8"> <!-- The Dream Palace -->
@@ -718,14 +718,14 @@
 		<AnimaWell zone="3070" x="533.4" y="97.4" z="74.5"> <!-- The Docks -->
 			<Name rdb="id=9338810 category=270" />
 		</AnimaWell>
-		<AnimaWell zone="3070" x="384.8" y="412.0" z="82.8"> <!-- The Wall -->
+		<AnimaWell zone="3070" x="384.8" y="412" z="82.8"> <!-- The Wall -->
 			<Name rdb="id=8805159 category=270" />
 		</AnimaWell>
-		<Transit zone="3070" x="949.8" y="749.0"
+		<Transit zone="3070" x="949.8" y="749"
 			targetZone="5060">
 			<Name rdb="id=212867377 category=260" />
 		</Transit>
-		<Vendor zone="3070" x="887.0" y="761.8">
+		<Vendor zone="3070" x="887" y="761.8">
 			<Name rdb="id=14163 category=51000" />
 		</Vendor>
 		<Vendor zone="3070" x="465.9" y="811.6">
