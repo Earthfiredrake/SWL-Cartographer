@@ -58,6 +58,14 @@ class efd.Cartographer.LayerData {
 		}
 	}
 
+	static function GetDefaultPenColour(layer:String):Number {
+		switch (layer) {
+			case "Champ": return 0xFF9000;
+			case "Lore": return 0xFFAA00;
+			default: return 0x000000;
+		}
+	}
+
 	private var Layer:String; // Name of this layer
 	// View of configuration settings for this layer; read access only, no change notification available
 	// Fields: ShowLayer:Boolean

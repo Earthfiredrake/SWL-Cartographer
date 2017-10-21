@@ -30,10 +30,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 			}
 		};
 		Loader.addListener(listener);
-
-//		if (Data.ShowLabel) {
-//			Label = CreateLabel(Data.Name);
-//		}
 	}
 
 	public function LoadIcon():Void {
@@ -75,17 +71,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		target._y = -target._height / 2;
 	}
 
-//	private function CreateLabel(name:String):TextField {
-//		var label:TextField = createTextField("LabelTxt", getNextHighestDepth(), 0, 0, 50, 15);
-//		label.embedFonts = true;
-//		label.selectable = false;
-//		label.autoSize = "left";
-//		var fmt:TextFormat = new TextFormat("_StandardFont");
-//		label.setNewTextFormat(fmt);
-//		label.text = name ? name : "";
-//		return label;
-//	}
-
 	public function UpdatePosition(pos:Point):Void {
 		_x = pos.x;
 		_y = pos.y;
@@ -97,17 +82,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 		var oldData:IWaypoint = Data;
 		Data = data;
-//		if (Data.ShowLabel) {
-//			if (oldData.ShowLabel) {
-//				Label.text = data.Name ? data.Name : "";
-//			} else {
-//				Label = CreateLabel(data.Name);
-//			}
-//		} else {
-//			if (oldData.ShowLabel) {
-//				// TODO:Destroy label
-//			}
-//		}
 		UpdatePosition(pos);
 		if (oldData.GetIcon() != data.GetIcon()) {
 			Loader.loadClip("Cartographer\\icons\\" + data.GetIcon(), Icon);
@@ -139,7 +113,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	}
 
 	public function Unload():Void {
-		// TODO:Destroy label?
 		RemoveTooltip();
 		Loader.unloadClip(Icon);
 	}

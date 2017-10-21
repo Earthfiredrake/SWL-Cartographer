@@ -21,7 +21,7 @@ class efd.Cartographer.Cartographer extends Mod {
 		// Trace : true,
 		GuiFlags : ef_ModGui_NoConfigWindow,
 		Name : "Cartographer",
-		Version : "0.1.1.alpha"
+		Version : "0.1.2.alpha"
 	};
 
 	/// Initialization
@@ -78,6 +78,7 @@ class efd.Cartographer.Cartographer extends Mod {
 				var settings:Object = LayerDataList[i].ConfigView;
 				settings.ShowLayer = true; // Not sure if this is the best choice
 				settings.Depth = i;
+				settings.PenColour = LayerData.GetDefaultPenColour(LayerDataList[i].LayerName);
 				layerConfig[LayerDataList[i].LayerName] = settings;
 			}
 			Config.NotifyChange("LayerSettings");
@@ -109,6 +110,7 @@ class efd.Cartographer.Cartographer extends Mod {
 					layerConfig = new Object();
 					layerConfig.ShowLayer = OverlayList[0] == "BasePack"; // Only shows layers defined in the base pack by default
 					layerConfig.Depth = LayerDataList.push(new LayerData(layer, layerConfig)) - 1;
+					layerConfig.PenColour = LayerData.GetDefaultPenColour(layer);
 					Config.GetValue("LayerSettings")[layer] = layerConfig;
 					Config.NotifyChange("LayerSettings");
 				}
@@ -155,6 +157,13 @@ class efd.Cartographer.Cartographer extends Mod {
 	private function DoUpdate(newVersion:String, oldVersion:String):Void {
 		// Version specific updates
 		//   Some upgrades may reflect unreleased builds, for consistency on develop branch
+		if (CompareVersions("0.1.2.alpha", oldVersion) > 0) {
+			// Adding pen colour to saved layer settings
+			var layerSettings:Object = Config.GetValue("LayerSettings");
+			for (var key:String in layerSettings) {
+				layerSettings[key].PenColour = LayerData.GetDefaultPenColour(key);
+			}
+		}
 	}
 
 	private function Activate():Void {

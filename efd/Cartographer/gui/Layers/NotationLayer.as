@@ -53,13 +53,14 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 	}
 
 	private function RedrawAreas():Void {
+		var colour:Number = NotationData.ConfigView.PenColour;
 		AreaLayer.clear();
-		AreaLayer.lineStyle(2, 0x000000, 100, true, "none", "round", "round");
+		AreaLayer.lineStyle(2, colour, 100, true, "none", "round", "round");
 		var areas:Array = NotationData.GetAreas(Zone);
 		for (var i:Number = 0; i < areas.length; ++i) {
 			var points:Array = GenerateCircle(areas[i]);
 			var start:Point = points[points.length -1];
-			AreaLayer.beginFill(0x000000, 20);
+			AreaLayer.beginFill(colour, 20);
 			AreaLayer.moveTo(start.x, start.y);
 			for (var p:Number = 0; p < points.length; p += 2) {
 				AreaLayer.curveTo(points[p].x, points[p].y,
@@ -87,7 +88,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 
 	private function RedrawPaths():Void {
 		PathLayer.clear();
-		PathLayer.lineStyle(3, 0x000000, 100, true, "none", "round", "round");
+		PathLayer.lineStyle(3, NotationData.ConfigView.PenColour, 100, true, "none", "round", "round");
 		var paths:Array = NotationData.GetPaths(Zone);
 		for (var i:Number = 0; i < paths.length; ++i) {
 			var points:Array = paths[i].GetPathPoints();
