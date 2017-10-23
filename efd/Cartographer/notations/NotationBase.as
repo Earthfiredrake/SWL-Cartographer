@@ -70,8 +70,8 @@ class efd.Cartographer.notations.NotationBase implements INotation {
 	public function GetName():String { return Name; }
 	public function GetNote():String { return Note; }
 
-	public function HookEvents(clipContext:MovieClip, dataContext:Object):Void { }
-	public function UnhookEvents(clipContext:MovieClip, dataContext:Object):Void { }
+	public function HookEvents(target:MovieClip):Void { }
+	public function UnhookEvents(target:MovieClip):Void { }
 
 	private var XmlCache:XMLNode; // Cache of xml data for mixin access to elements not stored by default constructor
 

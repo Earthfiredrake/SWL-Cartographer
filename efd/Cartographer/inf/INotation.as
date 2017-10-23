@@ -10,10 +10,9 @@
 interface efd.Cartographer.inf.INotation {
 
 	// GUI interaction hooks, to be called after notation is initialized
-	// clipContext will be the actual displayed element of the notation
-	// dataContext will be the relevant gui data wrapper class
-	public function HookEvents(clipContext:MovieClip, dataContext:Object):Void;
-	public function UnhookEvents(clipContext:MovieClip, dataContext:Object):Void;
+	// Target will be the gui data wrapper which is handling mouse events
+	public function HookEvents(target:MovieClip):Void;
+	public function UnhookEvents(target:MovieClip):Void;
 
 	// Data accessors
 	//   Annoying that properties can't be defined in interfaces

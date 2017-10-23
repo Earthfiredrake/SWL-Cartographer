@@ -20,6 +20,8 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		SignalIconChanged = new Signal();
 		Loader = new MovieClipLoader();
 
+		Data.HookEvents(this);
+
 		var listener:Object = new Object();
 		listener.onLoadInit = Delegate.create(this, IconLoaded);
 		listener.onLoadError = function(target:MovieClip, error:String):Void {
@@ -45,26 +47,26 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	}
 
 	private function IconLoaded(target:MovieClip):Void {
-			CenterIcon(target);
-
-			target.onRollOver = function():Void {
-				target._xscale = FocusScale;
-				target._yscale = FocusScale;
-				CenterIcon(target);
-				target._parent.ShowTooltip();
-			};
-			var rollOut:Function = function():Void {
-				target._xscale = 100;
-				target._yscale = 100;
-				CenterIcon(target);
-				target._parent.RemoveTooltip();
-			}
-			target.onRollOut = rollOut;
-			target.onReleaseOutside = rollOut;
-			target._parent.Data.HookEvents(target, target._parent);
-
-			SignalWaypointLoaded.Emit(this);
+		CenterIcon(target);
+		SignalWaypointLoaded.Emit(this);
 	}
+
+	private function onRollOver():Void {
+		Icon._xscale = FocusScale;
+		Icon._yscale = FocusScale;
+		CenterIcon(Icon);
+		ShowTooltip();
+	}
+
+	private function onRollOut():Void {
+		Icon._xscale = 100;
+		Icon._yscale = 100;
+		CenterIcon(Icon);
+		RemoveTooltip();
+	}
+	private function onReleaseOutside():Void { onRollOut(); }
+	private function onReleaseOutsideAux():Void { onRollOut(); }
+
 
 	// This doesn't actually center the registration point, so it has to be called whenever the icon changes size
 	private static function CenterIcon(target:MovieClip):Void {
@@ -79,18 +81,17 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	public function Reassign(data:IWaypoint, pos:Point):Boolean {
 		RemoveTooltip();
-		Data.UnhookEvents(Icon, this);
+		Data.UnhookEvents(this);
 
 		var oldData:IWaypoint = Data;
 		Data = data;
+		Data.HookEvents(this);
 		UpdatePosition(pos);
 		if (oldData.GetIcon() != data.GetIcon()) {
 			Loader.loadClip("Cartographer\\icons\\" + data.GetIcon(), Icon);
 			return true;
-		} else {
-			Data.HookEvents(Icon, this); // Hook in other case will be handled by loader callback
-			return false;
 		}
+		return false;
 	}
 
 	private function ShowTooltip():Void {

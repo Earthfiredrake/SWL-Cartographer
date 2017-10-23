@@ -61,17 +61,17 @@ class efd.Cartographer.notations.LorePoint extends BasicPoint {
 	// new ColorMatrixFilter([0.3086, 0.6094, 0.0820, 0, 0, 0.3086, 0.6094, 0.0820, 0, 0, 0.3086, 0.6094, 0.0820, 0, 0, 0, 0, 0, 1, 0])
 
 	/// Supplementary icon event handlers
-	public function HookEvents(icon:MovieClip, context:Object):Void {
+	public function HookEvents(target:MovieClip):Void {
 		if (!IsCollected) { // Only applies to uncollected items
-			Lore.SignalTagAdded.Connect(CollectibleUnlocked, context);
+			Lore.SignalTagAdded.Connect(CollectibleUnlocked, target);
 		}
 	}
 
-	public function UnhookEvents(icon:MovieClip, context:Object):Void {
+	public function UnhookEvents(target:MovieClip):Void {
 		if (!IsCollected) {
 			// Should only be connected on uncollected items
 			// The change of icon/layering when collected should destroy the old icon and connections
-			Lore.SignalTagAdded.Disconnect(CollectibleUnlocked, context);
+			Lore.SignalTagAdded.Disconnect(CollectibleUnlocked, target);
 		}
 	}
 

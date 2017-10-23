@@ -18,16 +18,13 @@ class efd.Cartographer.notations.TransitPoint extends BasicPoint {
 	}
 
 	/// Supplementary icon event handlers
-	public function HookEvents(icon:MovieClip, context:Object):Void {
-		icon.onPress = Delegate.create(context, OnIconClick);
+	public function HookEvents(target:MovieClip):Void {
+		target.onPress = function():Void
+			{ this["LayerClip"].HostClip.ChangeMap(this["Data"].TargetZone); };
 	}
 
-	public function UnhookEvents(icon:MovieClip):Void {
-		icon.onPress = undefined;
-	}
-
-	private function OnIconClick():Void {
-		this["LayerClip"].HostClip.ChangeMap(this["Data"].TargetZone);
+	public function UnhookEvents(target:MovieClip):Void {
+		target.onPress = undefined;
 	}
 
 	private var TargetZone:Number;
