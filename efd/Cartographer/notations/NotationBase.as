@@ -15,13 +15,18 @@ import efd.Cartographer.notations.BasicPoint;
 import efd.Cartographer.notations.ChampPoint;
 import efd.Cartographer.notations.LorePoint;
 import efd.Cartographer.notations.TransitPoint;
+import efd.Cartographer.notations.mixin.LoreMixIn;
 
 // Boilerplate implementation of INotation interface for use as base class to more complex types
 // Also contains the factory method for generating new notations
 class efd.Cartographer.notations.NotationBase implements INotation {
 		public static function Create(xml:XMLNode):INotation {
 		switch (xml.attributes.type) {
-			case "area": return new BasicArea(xml);
+			case "area": var area:BasicArea = new BasicArea(xml);
+				switch (xml.nodeName) {
+					case "Lore": LoreMixIn.ApplyMixIn(area); //Fallthrough temporarially intended
+					default: return area;
+				}
 			case "path": return new BasicPath(xml);
 			case "wp":
 			case undefined:

@@ -10,6 +10,7 @@ import efd.Cartographer.lib.Mod;
 import efd.Cartographer.inf.IArea;
 
 import efd.Cartographer.LayerData;
+import efd.Cartographer.gui.WaypointArea;
 import efd.Cartographer.gui.WaypointIcon;
 
 // Implementation Plan:
@@ -45,45 +46,35 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		if (_visible) { // Defer for hidden layers, for faster loading of visible layers
 			// NOTE: It may be possible to directly tie the Path layers scale to the Map layer scale
 			//       Which may be useful to reduce redraws when changing scale
-			RedrawAreas();
+			//		 Would result in paths getting wider as the zoom changes... probably not ideal
 			RedrawPaths();
-			if (Refresh) { RefreshWaypointPositions(); }
-			else { ReloadAllWaypoints(); }
+			if (Refresh) {
+				RefreshAreas();
+				RefreshWaypointPositions();
+			} else {
+				ReloadAreas();
+				ReloadAllWaypoints();
+			}
 		}
 	}
 
-	private function RedrawAreas():Void {
-		var colour:Number = NotationData.ConfigView.PenColour;
-		AreaLayer.clear();
-		AreaLayer.lineStyle(2, colour, 100, true, "none", "round", "round");
+	private function ReloadAreas():Void {
+		for (var i:Number = 0; i < AreaLayer.RenderList.length; ++i) {
+			AreaLayer.RenderList[i].removeMovieClip();
+		}
+		AreaLayer.RenderList = new Array();
 		var areas:Array = NotationData.GetAreas(Zone);
 		for (var i:Number = 0; i < areas.length; ++i) {
-			var points:Array = GenerateCircle(areas[i]);
-			var start:Point = points[points.length -1];
-			AreaLayer.beginFill(colour, 20);
-			AreaLayer.moveTo(start.x, start.y);
-			for (var p:Number = 0; p < points.length; p += 2) {
-				AreaLayer.curveTo(points[p].x, points[p].y,
-								  points[p+1].x, points[p+1].y);
-			}
-			AreaLayer.endFill();
+			AreaLayer.RenderList.push(MovieClipHelper.createMovieWithClass(
+				WaypointArea, "WPA" + AreaLayer.getNextHighestDepth(), AreaLayer, AreaLayer.getNextHighestDepth(),
+				{ Data : areas[i], LayerClip : this }));
 		}
 	}
 
-	// Rough, lazy circle approximation
-	private function GenerateCircle(data:IArea):Array {
-		var result = new Array();
-		var rad:Number = data.GetRadius();
-		var ctr:Point = data.GetCentre();
-		result.push(HostClip.WorldToMapCoords(new Point(ctr.x - rad, ctr.y + rad)));
-		result.push(HostClip.WorldToMapCoords(new Point(ctr.x, ctr.y + rad)));
-		result.push(HostClip.WorldToMapCoords(new Point(ctr.x + rad, ctr.y + rad)));
-		result.push(HostClip.WorldToMapCoords(new Point(ctr.x + rad, ctr.y)));
-		result.push(HostClip.WorldToMapCoords(new Point(ctr.x + rad, ctr.y - rad)));
-		result.push(HostClip.WorldToMapCoords(new Point(ctr.x, ctr.y - rad)));
-		result.push(HostClip.WorldToMapCoords(new Point(ctr.x - rad, ctr.y - rad)));
-		result.push(HostClip.WorldToMapCoords(new Point(ctr.x - rad, ctr.y)));
-		return result;
+	private function RefreshAreas():Void {
+		for (var i:Number = 0; i < AreaLayer.RenderList.length; ++i) {
+			AreaLayer.RenderList[i].Redraw();
+		}
 	}
 
 	private function RedrawPaths():Void {
