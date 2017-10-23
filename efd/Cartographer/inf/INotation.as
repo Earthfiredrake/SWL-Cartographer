@@ -17,9 +17,12 @@ interface efd.Cartographer.inf.INotation {
 
 	// Data accessors
 	//   Annoying that properties can't be defined in interfaces
+	public function GetXmlView():XMLNode;
 	public function GetType():String;
 	public function GetLayer():String;
 	public function GetZoneID():Number;
+
+	public function GetPenColour():Number; // Return undefined for layer defined colour
 
 	public function GetName():String;
 	public function GetNote():String;

@@ -15,7 +15,7 @@ class efd.Cartographer.notations.LorePoint extends BasicPoint {
 	public function LorePoint(xml:XMLNode) {
 		super(xml);
 
-		LoreID = xml.attributes.loreID;
+		LoreID = Number(xml.attributes.loreID);
 
 		Name = GetLoreName(LoreID);
 	}

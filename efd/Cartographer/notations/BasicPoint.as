@@ -63,16 +63,8 @@ class efd.Cartographer.notations.BasicPoint extends NotationBase implements IWay
 	public function GetPosition():Point { return Position; }
 	public function GetIcon():String { return Icon; }
 
-	/// Hooking functions for icon event handlers
-	/// Provided for extension use
-	/// Icon will be the actual icon image, while context will be the WaypointIcon wrapper object
-	public function HookEvents(icon:MovieClip, context:Object):Void { }
-	public function UnhookEvents(icon:MovieClip, context:Object):Void { }
-
 	/// Data fields
 	private var Position:Point; // World space coordinates
 
 	private var Icon:String;
-
-	//private var ShowLabel:Boolean; // Display the label on the map or only as a tooltip
 }

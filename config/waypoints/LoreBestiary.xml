@@ -8,6 +8,16 @@
 	Drops from general mobs use areas based on mob spawn locations
 -->
 <OverlayPack>
+	<!-- TEMP: Preloading for layering reasons -->
+	<Lore type="area" zone="3100" x="847.5" y="485" radius="126" loreID="8649">
+		<Note en="Drop: Pnathian Willbreaker" />
+	</Lore>
+	<Lore type="area" zone="3100" x="747.5" y="299" radius="128" loreID="9273">
+		<Note en="Drop: Mop Slop Riser" />
+	</Lore>
+	<Lore type="area" zone="3040" x="399" y="359.5" radius="202" loreID="8585">
+		<Note en="Drop: Innsmouth Track &amp; Field" />
+	</Lore>
 	<!-- Ak'ab 7/8 -->
 	<Lore zone="3040" x="420" y="947" z="153" loreID="8485" />
 	<Lore type="area" zone="3050" x="228.5" y="259.5" radius="41" loreID="8486">
@@ -235,9 +245,9 @@
 	<Lore zone="3090" x="1009" y="703" z="54" loreID="8646" />
 	<Lore zone="3090" x="762" y="688" z="52" loreID="8647" />
 	<Lore zone="3100" x="629" y="204" z="86" loreID="8648" />
-	<Lore type="area" zone="3100" x="847.5" y="485" radius="126" loreID="8649">
+	<!-- TEMP: Topload <Lore type="area" zone="3100" x="847.5" y="485" radius="126" loreID="8649">
 		<Note en="Drop: Pnathian Willbreaker" />
-	</Lore>
+	</Lore> -->
 	<Lore zone="3130" x="1270" y="1052" z="78" loreID="8650" />
 	<Lore type="area" zone="3120" x="1098" y="1098" radius="74" loreID="8651">
 		<Note en="Drop: Ghoul Ringleader" />
@@ -273,9 +283,9 @@
 	<Lore type="area" zone="3100" x="738" y="866" radius="43" loreID="9272">
 		<Note en="Drop: Primary Melt; Requires Mission: Points of Impact" />
 	</Lore>
-	<Lore type="area" zone="3100" x="747.5" y="299" radius="128" loreID="9273">
+	<!-- TEMP: topload <Lore type="area" zone="3100" x="747.5" y="299" radius="128" loreID="9273">
 		<Note en="Drop: Mop Slop Riser" />
-	</Lore>
+	</Lore> -->
 	<Lore type="area" zone="3140" x="274" y="668.5" radius="28" loreID="9274">
 		<Note en="Drop: Accursed Ice" />
 	</Lore>
@@ -551,9 +561,9 @@
 	<Lore zone="3030" x="697" y="403" z="134" loreID="8582" />
 	<Lore zone="3040" x="472" y="723" z="140" loreID="8583" />
 	<Lore zone="3040" x="359" y="522" z="148" loreID="8584" />
-	<Lore type="area" zone="3040" x="399" y="359.5" radius="202" loreID="8585">
+	<!-- TEMP: Topload <Lore type="area" zone="3040" x="399" y="359.5" radius="202" loreID="8585">
 		<Note en="Drop: Innsmouth Track &amp; Field" />
-	</Lore>
+	</Lore> -->
 	<Lore type="area" zone="3030" x="277" y="503" radius="35" loreID="8586">
 		<Note en="Drop: Dearly Departed" />
 	</Lore>

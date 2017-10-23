@@ -90,7 +90,7 @@ class efd.Cartographer.Cartographer extends Mod {
 			var xmlRoot:XMLNode = ZoneIndexLoader.firstChild;
 			for (var i:Number = 0; i < xmlRoot.childNodes.length; ++i) {
 				var zone:XMLNode = xmlRoot.childNodes[i];
-				ZoneIndex[zone.attributes.id] = { worldX : zone.attributes.worldX, worldY : zone.attributes.worldY };
+				ZoneIndex[zone.attributes.id] = { worldX : Number(zone.attributes.worldX), worldY : Number(zone.attributes.worldY) };
 			}
 			delete ZoneIndexLoader;
 			TraceMsg("Zone index loaded");

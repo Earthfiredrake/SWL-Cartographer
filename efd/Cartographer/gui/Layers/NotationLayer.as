@@ -120,7 +120,6 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		var length:Number = NotationData.GetWaypoints(Zone).length;
 		for (var i:Number = length; i < RenderedWaypoints.length; ++i) {
 			var waypoint:MovieClip = RenderedWaypoints[i];
-			waypoint.Unload();
 			waypoint.removeMovieClip();
 		}
 		RenderedWaypoints.splice(length);

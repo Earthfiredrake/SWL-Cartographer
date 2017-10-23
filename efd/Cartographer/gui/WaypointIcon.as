@@ -33,6 +33,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	}
 
 	public function LoadIcon():Void {
+		// Loading the icon overwrites the data in the clip, so wrap it in an empty subclip
 		var icon:MovieClip = createEmptyMovieClip("Icon", getNextHighestDepth());
 		// NOTE: It seems that loadClip can also be used to access the rdb
 		//   Path syntax is "rdb:[Type]:[ID]"
@@ -94,11 +95,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	private function ShowTooltip():Void {
 		if (!Tooltip) {
-			Tooltip = LayerClip.HostClip._parent.attachMovie("CartographerWaypointTooltip", "Tooltip", LayerClip.HostClip.getNextHighestDepth());
-			Tooltip.TF_Name.backgroundColor = 0x333333;
-			Tooltip.TF_Name.background = true;
-			Tooltip.TF_Name.autoSize = "left";
-			Tooltip.TF_Name.text = Data.GetName();
+			Tooltip = LayerClip.HostClip._parent.attachMovie("CartographerWaypointTooltip", "Tooltip", LayerClip.HostClip.getNextHighestDepth(), {Data : Data});
 			var pos:Point = LayerClip.HostClip.MapToViewCoords(new Point(_x, _y));
 			Tooltip._x = pos.x;
 			Tooltip._y = pos.y;
@@ -110,11 +107,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 			Tooltip.removeMovieClip();
 			Tooltip = null;
 		}
-	}
-
-	public function Unload():Void {
-		RemoveTooltip();
-		Loader.unloadClip(Icon);
 	}
 
 	public var Data:IWaypoint;

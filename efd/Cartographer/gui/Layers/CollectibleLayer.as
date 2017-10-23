@@ -52,7 +52,6 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 	private function TrimImpl(list:Array, length:Number):Void {
 		for (var i:Number = length; i < list.length; ++i) {
 			var wp:MovieClip = list[i];
-			wp.Unload();
 			wp.removeMovieClip();
 		}
 		list.splice(length);
@@ -127,7 +126,6 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 		if (index) { RenderedUncollected.splice(index, 1); }
 
 		// Remove the existing waypoint movie clip
-		icon.Unload();
 		icon.removeMovieClip();
 	}
 

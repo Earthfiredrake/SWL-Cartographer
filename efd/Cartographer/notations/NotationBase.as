@@ -38,6 +38,7 @@ class efd.Cartographer.notations.NotationBase implements INotation {
 	}
 
 	public function NotationBase(xml:XMLNode) {
+		XmlCache = xml;
 		Layer = xml.attributes.layer ? xml.attributes.layer : xml.nodeName;
 		ZoneID = xml.attributes.zone;
 
@@ -56,14 +57,18 @@ class efd.Cartographer.notations.NotationBase implements INotation {
 	}
 
 	// Interface implementation
+	public function GetXmlView():XMLNode { return XmlCache; }
 	public function GetType():String { return undefined; } // Lacks required subsidary interface
 	public function GetLayer():String { return Layer; }
 	public function GetZoneID():Number { return ZoneID; }
+	public function GetPenColour():Number { return undefined; } // Use the layer defined colour
 	public function GetName():String { return Name; }
 	public function GetNote():String { return Note; }
 
 	public function HookEvents(clipContext:MovieClip, dataContext:Object):Void { }
 	public function UnhookEvents(clipContext:MovieClip, dataContext:Object):Void { }
+
+	private var XmlCache:XMLNode; // Cache of xml data for mixin access to elements not stored by default constructor
 
 	private var ZoneID:Number; // Map instance
 	private var Layer:String; // Layer category name
