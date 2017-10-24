@@ -12,16 +12,46 @@ import efd.Cartographer.inf.INotation;
 
 class efd.Cartographer.notations.mix.LoreMixIn {
 	public static function ApplyMixIn(target:INotation):Void {
+		// General mixin parts, applied to all notation types
+		// Applies to required data members and INotation interface
 		target["LoreID"] = Number(target.GetXmlView().attributes.loreID);
+		target.addProperty("IsCollected", function():Boolean { return !Lore.IsLocked(this.LoreID); }, null);
 
-		target["GetName"] = function():String {
-			if (this["Name"] == undefined) { this["Name"] = LoreMixIn.GetLoreName(this["LoreID"]); }
-			return this["Name"]
+		target.GetName = function():String {
+			if (this.Name == undefined) { this.Name = LoreMixIn.GetLoreName(this.LoreID); }
+			return this.Name;
 		};
 
-		target["GetPenColour"] = function():Number {
-			if (!Lore.IsLocked(this["LoreID"])) { return 0x888888; }
+		target.GetPenColour = function():Number {
+			if (this.IsCollected) { return 0x888888; }
 			else { return undefined; }
+		};
+
+		target.HookEvents = function(uiElem:MovieClip):Void {
+			if (!this.IsCollected) { // No need to be notified for collected items
+				Lore.SignalTagAdded.Connect(this.CollectibleUnlocked, uiElem);
+			}
+		};
+		target.UnhookEvents = function(uiElem:MovieClip):Void {
+			Lore.SignalTagAdded.Disconnect(this.CollectibleUnlocked, uiElem);
+		};
+		target["CollectibleUnlocked"] = function(unlockedID:Number, charID:ID32):Void {
+			// I have no idea why this event might be triggered for a non-client character
+			// Am following the examples in the existing API code
+			if (unlockedID == this.Data.LoreID && charID.Equal(Character.GetClientCharID())) {
+				this.StateChanged();
+			}
+		};
+
+		// Override restricted mixin parts will only be applied if type already supports function
+		// Applies to interface specializations below INotation
+		if (target["GetIcon"] != undefined) {
+			target["GetIcon"] = function():String {
+				if (this.Icon) { return this.Icon; }
+				if (this.LoreID == undefined) { return "lore_buzz.png"; }
+				if (this.IsCollected) { return "lore_claimed.png"; }
+				return Lore.GetTagViewpoint(this.LoreID) == 1 ? "lore_sig.png" : "lore_buzz.png";
+			};
 		}
 	}
 
@@ -48,43 +78,4 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 			}
 		}
 	}
-/*
-	public function GetIcon():String {
-		if (Icon) { return Icon; }
-		if (LoreID) {
-			if (Lore.IsLocked(LoreID)) {
-				if (Lore.GetTagViewpoint(LoreID) == 1) { return "lore_sig.png"; }
-				else { return "lore_buzz.png"; }
-			} else { return "lore_claimed.png"; }
-		} else {
-			return "lore_buzz.png";
-		}
-	}
-
-	public function HookEvents(icon:MovieClip, context:Object):Void {
-		if (!IsCollected) { // Only applies to uncollected items
-			Lore.SignalTagAdded.Connect(CollectibleUnlocked, context);
-		}
-	}
-
-	public function UnhookEvents(icon:MovieClip, context:Object):Void {
-		if (!IsCollected) {
-			// Should only be connected on uncollected items
-			// The change of icon/layering when collected should destroy the old icon and connections
-			Lore.SignalTagAdded.Disconnect(CollectibleUnlocked, context);
-		}
-	}
-
-	private function CollectibleUnlocked(unlockedID:Number, charID:ID32):Void {
-		// I have no idea why this event might be triggered for a non-client character
-		// Am following the examples in the existing API code
-		if (unlockedID == this["Data"].LoreID && charID.Equal(Character.GetClientCharID())) {
-			this["SignalIconChanged"].Emit(this);
-		}
-	}
-
-	public function get IsCollected():Boolean {
-		return !Lore.IsLocked(LoreID);
-	}
-*/
 }

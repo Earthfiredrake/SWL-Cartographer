@@ -9,14 +9,13 @@ import efd.Cartographer.inf.INotation;
 
 // TODO: Plugin System
 // A registration system so that I can add these without changing the factory method
+// Seems that plugins will be creating mix-ins rather than directly overriding basic classes
 import efd.Cartographer.notations.BasicArea;
 import efd.Cartographer.notations.BasicPath;
 import efd.Cartographer.notations.BasicPoint;
-import efd.Cartographer.notations.ChampPoint;
-import efd.Cartographer.notations.LorePoint;
-import efd.Cartographer.notations.TransitPoint;
 import efd.Cartographer.notations.mix.ChampMixIn;
 import efd.Cartographer.notations.mix.LoreMixIn;
+import efd.Cartographer.notations.mix.TransitMixIn;
 
 // Boilerplate implementation of INotation interface for use as base class to more complex types
 // Also contains the factory method for generating new notations
@@ -33,13 +32,7 @@ class efd.Cartographer.notations.NotationBase implements INotation {
 			case "path": notation = new BasicPath(xml); break;
 			case "wp":
 			case undefined:
-				// TODO: Move this support into the mix-in system
-				switch (xml.nodeName) {
-					case "Champ": return new ChampPoint(xml);
-					case "Lore": return new LorePoint(xml);
-					case "Transit": return new TransitPoint(xml);
-					default: return new BasicPoint(xml);
-				}
+				notation = new BasicPoint(xml);	break;
 			default:
 				Mod.TraceMsg("Unknown notation type=" + xml.attributes.type);
 				return undefined;
@@ -47,6 +40,7 @@ class efd.Cartographer.notations.NotationBase implements INotation {
 		switch (xml.nodeName) {
 			case "Champ": ChampMixIn.ApplyMixIn(notation); break;
 			case "Lore": LoreMixIn.ApplyMixIn(notation); break;
+			case "Transit": TransitMixIn.ApplyMixIn(notation); break;
 		}
 		return notation;
 	}

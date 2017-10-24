@@ -67,7 +67,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	private function onReleaseOutside():Void { onRollOut(); }
 	private function onReleaseOutsideAux():Void { onRollOut(); }
 
-
 	// This doesn't actually center the registration point, so it has to be called whenever the icon changes size
 	private static function CenterIcon(target:MovieClip):Void {
 		target._x = -target._width / 2;
@@ -94,6 +93,11 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		return false;
 	}
 
+	// Usually means the icon or overlay needs to be changed
+	public function StateChanged():Void {
+		SignalIconChanged.Emit(this);
+	}
+
 	private function ShowTooltip():Void {
 		if (!Tooltip) {
 			Tooltip = LayerClip.HostClip._parent.attachMovie("CartographerWaypointTooltip", "Tooltip", LayerClip.HostClip.getNextHighestDepth(), {Data : Data});
@@ -108,6 +112,10 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 			Tooltip.removeMovieClip();
 			Tooltip = null;
 		}
+	}
+
+	private function onUnload():Void {
+		RemoveTooltip();
 	}
 
 	public var Data:IWaypoint;

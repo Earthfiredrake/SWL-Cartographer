@@ -12,6 +12,7 @@ class efd.Cartographer.gui.WaypointPath extends MovieClip {
 
 	private function WaypointPath() { // Indirect construction only
 		super();
+		Data.HookEvents(this); // Nothing reassigns data, so not too concerned about unhooking
 		Redraw();
 	}
 
@@ -54,6 +55,8 @@ class efd.Cartographer.gui.WaypointPath extends MovieClip {
 	private function onReleaseOutside():Void { onRollOut(); }
 	private function onReleaseOutsideAux():Void { onRollOut(); }
 
+	public function StateChanged():Void { Redraw(); }
+
 	private function ShowTooltip():Void {
 		if (!Tooltip) {
 			Tooltip = LayerClip.HostClip._parent.attachMovie("CartographerWaypointTooltip", "Tooltip", LayerClip.HostClip.getNextHighestDepth(), {Data : Data});
@@ -68,6 +71,10 @@ class efd.Cartographer.gui.WaypointPath extends MovieClip {
 			Tooltip.removeMovieClip();
 			Tooltip = null;
 		}
+	}
+
+	private function onUnload():Void {
+		RemoveTooltip();
 	}
 
 	private var Data:IPath;
