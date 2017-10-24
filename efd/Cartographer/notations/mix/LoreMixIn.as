@@ -10,7 +10,7 @@ import efd.Cartographer.lib.Mod;
 
 import efd.Cartographer.inf.INotation;
 
-class efd.Cartographer.notations.mixin.LoreMixIn {
+class efd.Cartographer.notations.mix.LoreMixIn {
 	public static function ApplyMixIn(target:INotation):Void {
 		target["LoreID"] = Number(target.GetXmlView().attributes.loreID);
 

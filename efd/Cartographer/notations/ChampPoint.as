@@ -15,8 +15,8 @@ class efd.Cartographer.notations.ChampPoint extends BasicPoint {
 	public function ChampPoint(xml:XMLNode) {
 		super(xml);
 
-		ChampID = xml.attributes.champID;
-		IsGroup = xml.attributes.group;
+		ChampID = Number(xml.attributes.champID);
+		IsGroup = Boolean(xml.attributes.group);
 
 		Name = GetChampName(ChampID);
 	}

@@ -11,6 +11,7 @@ import efd.Cartographer.inf.IArea;
 
 import efd.Cartographer.LayerData;
 import efd.Cartographer.gui.WaypointArea;
+import efd.Cartographer.gui.WaypointPath;
 import efd.Cartographer.gui.WaypointIcon;
 
 // Implementation Plan:
@@ -44,16 +45,16 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		Refresh = Refresh && (Zone == newZone);
 		Zone = newZone;
 		if (_visible) { // Defer for hidden layers, for faster loading of visible layers
-			// NOTE: It may be possible to directly tie the Path layers scale to the Map layer scale
-			//       Which may be useful to reduce redraws when changing scale
-			//		 Would result in paths getting wider as the zoom changes... probably not ideal
-			RedrawPaths();
 			if (Refresh) {
+				// Map hasn't changed, so data list is correct, rendering positions may need updating
 				RefreshAreas();
-				RefreshWaypointPositions();
+				RefreshPaths();
+				RefreshWaypoints();
 			} else {
+				// Map has changed, so data list likely to be incorrect, do a full reassignment
 				ReloadAreas();
-				ReloadAllWaypoints();
+				ReloadPaths()
+				ReloadWaypoints();
 			}
 		}
 	}
@@ -77,34 +78,38 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		}
 	}
 
-	private function RedrawPaths():Void {
-		PathLayer.clear();
-		PathLayer.lineStyle(3, NotationData.ConfigView.PenColour, 100, true, "none", "round", "round");
+	private function ReloadPaths():Void {
+		for (var i:Number = 0; i < PathLayer.RenderList.length; ++i) {
+			PathLayer.RenderList[i].removeMovieClip();
+		}
+		PathLayer.RenderList = new Array();
 		var paths:Array = NotationData.GetPaths(Zone);
 		for (var i:Number = 0; i < paths.length; ++i) {
-			var points:Array = paths[i].GetPathPoints();
-			var coords:Point = HostClip.WorldToMapCoords(points[0]);
-			PathLayer.moveTo(coords.x, coords.y);
-			for (var p:Number = 1; p < points.length; ++p) {
-				coords = HostClip.WorldToMapCoords(points[p]);
-				PathLayer.lineTo(coords.x, coords.y);
-			}
+			PathLayer.RenderList.push(MovieClipHelper.createMovieWithClass(
+				WaypointPath, "WPP" + PathLayer.getNextHighestDepth(), PathLayer, PathLayer.getNextHighestDepth(),
+				{ Data : paths[i], LayerClip : this }));
 		}
 	}
 
-	private function RefreshWaypointPositions():Void {
+	private function RefreshPaths():Void {
+		for (var i:Number = 0; i < PathLayer.RenderList.length; ++i) {
+			PathLayer.RenderList[i].Redraw();
+		}
+	}
+
+	private function ReloadWaypoints():Void {
+		WaypointCount = 0;
+		Refresh = true; // Unless they actually change maps, we only want one reload process to be running at a time
+		TrimDisplayList(); // Trim excess waypoints
+		LoadDataBlock(); // Start the loading process
+	}
+
+	private function RefreshWaypoints():Void {
 		var waypointList:Array = RenderedWaypoints; // Cache this, some variants have to merge multiple lists for it
 		for (var i:Number = 0; i < waypointList.length; ++i) {
 			var wp:WaypointIcon = waypointList[i];
 			wp.UpdatePosition(HostClip.WorldToMapCoords(wp.Data.GetPosition()));
 		}
-	}
-
-	private function ReloadAllWaypoints():Void {
-		WaypointCount = 0;
-		Refresh = true; // Unless they actually change maps, we only want one reload process to be running at a time
-		TrimDisplayList(); // Trim excess waypoints
-		LoadDataBlock(); // Start the loading process
 	}
 
 	private function TrimDisplayList():Void {

@@ -15,21 +15,25 @@ import efd.Cartographer.notations.BasicPoint;
 import efd.Cartographer.notations.ChampPoint;
 import efd.Cartographer.notations.LorePoint;
 import efd.Cartographer.notations.TransitPoint;
-import efd.Cartographer.notations.mixin.LoreMixIn;
+import efd.Cartographer.notations.mix.ChampMixIn;
+import efd.Cartographer.notations.mix.LoreMixIn;
 
 // Boilerplate implementation of INotation interface for use as base class to more complex types
 // Also contains the factory method for generating new notations
+// Each notation type has a further base implementation
+// Layer specific processing is extended onto those types using a series of mix-in classes
+//   (reduces per layer type creation to 1 instead of 3)
+// Note: Mix-ins may fully override base class behaviour, and are unlikely to cooperate if more than one is applied
+
 class efd.Cartographer.notations.NotationBase implements INotation {
 		public static function Create(xml:XMLNode):INotation {
+		var notation:INotation;
 		switch (xml.attributes.type) {
-			case "area": var area:BasicArea = new BasicArea(xml);
-				switch (xml.nodeName) {
-					case "Lore": LoreMixIn.ApplyMixIn(area); //Fallthrough temporarially intended
-					default: return area;
-				}
-			case "path": return new BasicPath(xml);
+			case "area": notation = new BasicArea(xml); break;
+			case "path": notation = new BasicPath(xml); break;
 			case "wp":
 			case undefined:
+				// TODO: Move this support into the mix-in system
 				switch (xml.nodeName) {
 					case "Champ": return new ChampPoint(xml);
 					case "Lore": return new LorePoint(xml);
@@ -38,8 +42,13 @@ class efd.Cartographer.notations.NotationBase implements INotation {
 				}
 			default:
 				Mod.TraceMsg("Unknown notation type=" + xml.attributes.type);
+				return undefined;
 		}
-		return undefined;
+		switch (xml.nodeName) {
+			case "Champ": ChampMixIn.ApplyMixIn(notation); break;
+			case "Lore": LoreMixIn.ApplyMixIn(notation); break;
+		}
+		return notation;
 	}
 
 	public function NotationBase(xml:XMLNode) {
