@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Copyright 2017, Earthfiredrake (Peloprata)
+     Released under the terms of the MIT License
+     https://github.com/Earthfiredrake/TSW-Cartographer -->
+<!--
+	Samhain event content
+	Currently invalid for loading
+-->
+<OverlayPack>
+	<!-- Samhain 2017 -->
+	<Lore zone="1000" x="129" y="155" z="24" loreID="5601" />
+	<Lore zone="3050" x="856" y="210" z="159" loreID="5600" />
+	<Lore zone="6030" x="213" y="219" z="20" loreID="5599" />
+	<Lore zone="3030" x="297" y="505" z="144" loreID="5603" />
+	<Lore zone="3030" x="705" y="420" z="130" loreID="5604" />
+
+	Madame Rogêt <QuestGiver zone="3030" x="290" y="334" z="140" >
+		<Name rdb="id=12928 category=51000" />
+		The Meowling <Quest id="3431" />
+		The Cat God <Quest id="3433" />
+	</QuestGiver>
+	Ritual stone <QuestGiver zone="3040" x="127" y="599" z="143" >
+		<Name rdb="id=9361566 category=50200" />
+		The Cat God <Quest id="3433" />
+	</QuestGiver>
+	Activities: Paragon <QuestGiver zone="5060" x="534" y="224" z="398" >
+		<Name rdb="id=9278885 category=50200" />
+		The Meowling <Quest id="4065" />
+	</QuestGiver>
+	Activities: Paragon <QuestGiver zone="5060" x="584" y="149" z="397" >
+		<Name rdb="id=9278885 category=50200" />
+		The Meowling <Quest id="4065" />
+	</QuestGiver>
+</OverlayPack>
