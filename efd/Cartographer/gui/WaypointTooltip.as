@@ -14,8 +14,15 @@ class efd.Cartographer.gui.WaypointTooltip extends MovieClip {
 		TF_Name.background = true;
 		TF_Name.autoSize = "left";
 		TF_Name.text = Data.GetName();
+		if (Data.GetNote()) {
+			TF_Note.backgroundColor = 0x333333;
+			TF_Note.background = true;
+			TF_Note.autoSize = "left";
+			TF_Note.text = Data.GetNote();
+		} else { TF_Note._visible = false; }
 	}
 
 	private var TF_Name:TextField;
+	private var TF_Note:TextField;
 	private var Data:INotation;
 }

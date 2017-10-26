@@ -64,9 +64,10 @@
 		<Lore zone="3050" x="880" y="5" z="145" loreID="632" />
 		<Lore zone="3050" x="566" y="345" z="186" loreID="631" />
 		<Lore zone="3050" x="983" y="533" z="140" loreID="630" />
-			<!-- #5-6 (Instance: Haunting) -->
+		<Lore zone="6163" x="250" y="420" z="155" loreID="629" />
+		<Lore zone="6163" x="526" y="822" z="187" loreID="628" />
 		<Lore zone="3050" x="855" y="201" z="159" loreID="627" />
-			<!-- #8 (Instance: Haunting) -->
+		<Lore zone="6163" x="887" y="326" z="159" loreID="626" />
 		<Lore zone="3050" x="612" y="601" z="178" loreID="625" />
 		<Lore zone="3050" x="494" y="118" z="129" loreID="624" />
 		<!-- Innsmouth Academy -->

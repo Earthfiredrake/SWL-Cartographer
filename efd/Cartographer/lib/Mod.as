@@ -332,7 +332,10 @@ class efd.Cartographer.lib.Mod {
 			}
 			// Note: Viper's *requires* all five values, regardless of whether the icon exists or not
 			//       Both are capable of handling "undefined" or otherwise invalid icon names
-			var topbarInfo:Array = new Array(ModName, DevName, Version, undefined, Icon.toString());
+			// Note: Using default version due to an observed instance where registration occured after settings load,
+			//       but before the update is processed, resulting in inaccurate version number
+			//       By extension registration may occur prior to any asynch data loading (such as localized strings)
+			var topbarInfo:Array = new Array(ModName, DevName, Config.GetDefault("Version"), undefined, Icon.toString());
 			topbarInfo[3] = ShowConfigDV != undefined ? ConfigWindowVarName : ModEnabledVarName;
 			DistributedValue.SetDValue("VTIO_RegisterAddon", topbarInfo.join('|'));
 			// VTIO creates its own icon, use it as our target for changes instead

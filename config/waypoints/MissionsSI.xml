@@ -5,8 +5,8 @@
 <!--
 	Tentative quest data layout
 	Coordinates and quest info sourced from ingame data
+	Currently invalid for loading
 -->
-
 <OverlayPack>
 	Jack Boone <QuestGiver zone="3030" x="62" y="136" z="156">
 		<Name rdb="id=12900 category=51000" />
@@ -35,6 +35,7 @@
 	</QuestGiver>
 	Sandy "Moose" Jansen <QuestGiver zone="3030" x="197" y="346" z="147">
 		<Name rdb="id=13467 category=51000" />
+		A Piece of the Road <Quest id="3707" />
 		Appetite for Destruction <Quest id="2342" />
 		Death, and the Instruments Thereof <Quest id="2676" />
 	</QuestGiver>

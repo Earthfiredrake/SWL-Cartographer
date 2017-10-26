@@ -119,7 +119,9 @@
 		<Champ zone="3050" x="315" y="665" champID="9538" /> <!-- Tourist Guide -->
 		<Champ zone="3050" x="125" y="435" champID="9537" /> <!-- Undying Postman -->
 		<Champ zone="3050" x="965" y="945" champID="9564" /> <!-- Vetr Berserker -->
-		<Champ zone="3050" x="250" y="505" champID="9534" group="true" /> <!-- Decomposed Kodiak -->
+		<Champ zone="3050" x="250" y="505" champID="9534" group="true"> <!-- Decomposed Kodiak -->
+			<Note en="N,S,E,W" />
+		</Champ>
 		<Champ zone="3050" x="88" y="273" z="130" champID="9532" group="true" /> <!-- Tide Lurker -->
 	</Section>
 	<Section> <!-- Egypt -->
@@ -202,8 +204,12 @@
 			<Point x="571" y="523" z="46" />
 			<Point x="596" y="513" z="46" />
 		</Champ>
-		<Champ zone="3090" x="555" y="715" champID="9561" group="true" /> <!-- Cicatris -->
-		<Champ zone="3090" x="585" y="875" champID="9560" group="true" /> <!-- Mak'aal the Hellfire -->
+		<Champ zone="3090" x="555" y="715" champID="9561" group="true"> <!-- Cicatris -->
+			<Note en="Requires summon, 5 people on blue patches" />
+		</Champ>
+		<Champ zone="3090" x="585" y="875" champID="9560" group="true"> <!-- Mak'aal the Hellfire -->
+			<Note en="Requires summon, all cultist wisps must arrive in group" />
+		</Champ>
 		<Champ zone="3100" x="785" y="205" champID="4096" /> <!-- Adrameloch, Chancellor of Hell -->
 		<Champ zone="3100" x="715" y="1000" champID="4098" /> <!-- Akir, the Sun Guardian -->
 		<Champ zone="3100" x="180" y="245" champID="9624" /> <!-- Anum, Changed One -->
@@ -235,7 +241,9 @@
 		<Champ zone="3120" x="680" y="1275" champID="9875" /> <!-- Dump Chief -->
 		<Champ zone="3120" x="680" y="920" champID="9881" /> <!-- Effigy of Evil -->
 		<Champ zone="3120" x="455" y="715" champID="9872" /> <!-- Erkug -->
-		<Champ zone="3120" x="795" y="250" champID="9870" /> <!-- Filthwolf -->
+		<Champ zone="3120" x="795" y="250" champID="9870"> <!-- Filthwolf -->
+			<Note en="Fight in pool" />
+		</Champ>
 		<Champ zone="3120" x="855" y="1160" z="147" champID="9874" /> <!-- Frontline Engorged -->
 		<Champ zone="3120" x="960" y="835" champID="9871" /> <!-- Gark -->
 		<Champ zone="3120" x="825" y="1040" champID="9885" /> <!-- Gurgl -->
@@ -256,7 +264,9 @@
 			<Point x="626" y="823" z="105" />
 		</Champ>
 		<Champ zone="3120" x="860" y="725" champID="9884" /> <!-- Valcean Dominator -->
-		<Champ zone="3120" x="985" y="725" champID="4862" /> <!-- Wailing Bride -->
+		<Champ zone="3120" x="985" y="725" champID="4862"> <!-- Wailing Bride -->
+			<Note en="Use skeletons on riverbank" />
+		</Champ>
 		<Champ zone="3120" x="180" y="695" champID="9880" /> <!-- Wallachian Juggernaut-->
 		<Champ zone="3120" x="165" y="665" champID="4863" group="true" /> <!-- Demolisher -->
 		<Champ zone="3120" x="1206" y="240" z="43" champID="4859" group="true" /> <!-- Village Eater -->
@@ -462,7 +472,9 @@
 		<Champ zone="3070" x="326" y="919" z="81" champID="7075" />
 		<Champ zone="3070" x="538" y="896" z="81" champID="7075" />
 		<Champ zone="3070" x="736" y="897" z="81" champID="7075" />
-		<Champ zone="3070" x="128" y="517" z="85" champID="7074" /> <!-- Orochi Prototype Smiler Mark 1.1 -->
+		<Champ zone="3070" x="128" y="517" z="85" champID="7074"> <!-- Orochi Prototype Smiler Mark 1.1 -->
+			<Note en="Kill drones to activate" />
+		</Champ>
 		<!-- Roving Rager (multi-spawn; patrol) -->
 		<Champ zone="3070" x="278" y="469" z="85" champID="10192" />
 		<Champ type="path" zone="3070" champID="10192">

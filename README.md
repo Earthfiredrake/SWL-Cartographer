@@ -53,11 +53,16 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
-Version Next
+Version 0.1.3-alpha
++ More detailed tooltips
++ Adds clutter; I've a couple ideas for how to reduce this, but it'll take a little while
 + Path notations
+  + No tooltips (or other mouse interaction) yet
   + Patrolling champion bosses now included with patrol paths
     + All champions except Deathstalker and Congealed Disgust accounted for
 + Area notations
+  + Mobs that drop bestiary lore have been surveyed and their habitats marked
+  + Most lore now accounted for (a few are still missing in mapped areas)
 
 Version 0.1.1-alpha
 + It zooms, it scrolls, hopefully it doesn't shuffle the waypoints when it does
@@ -114,18 +119,24 @@ Version 0.0.2-alpha
 This is a very early version of this mod. Everything is an issue, some of them are known.
 I'm always open to hearing comments and suggestions though, better to start with the good ideas than rewrite from the bad ones.
 
+There is a known bug when using this mod with ModFolder v1, which causes issues when using /reloadui or swapping characters. As a temporary workaround, use "/setoption VTIO_IsLoaded false" before /reloadui.
+
 ## Testing and Further Developments
 
 Current goals for the next version:
-+ Path and Zone map markers
-+ Expanding tooltips
++ Expanding tooltips (continuing)
   + Making more info available (note fields, coordinates, etc.)
   + Handling stacked waypoints
+  + Enabling tooltips on Paths
+  + Considering making path/area notations behave as tooltips for icons
++ Mission layer
++ Work on config settings
+  + Layer options (hiding the collected lore)
+  + Adding/Removing files (preferably without /reloadui)
 
-Initial feedback has provided the following suggestions:
+Initial feedback has provided the following suggestions which are not yet implemented:
 + Mouse coordinates should be clearly displayed someplace obvious
-+ Map zooming should be a feature if at all possible
-+ Window size should account for lower resolutions (1600x900 resolution was cutting things off)
++ Window size should account for lower resolutions (1600x900 resolution was cutting things off) (partially implemented, haven't heard any complaints lately)
 + Mission markers should be filterable by main/side for challenge completion
 
 As always, defect reports, suggestions, and contributions are welcome. They can be sent to Peloprata in SWL (by mail or pm), via the github issues system, or in the official forum post.
