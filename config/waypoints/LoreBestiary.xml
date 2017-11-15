@@ -301,15 +301,18 @@
 	<Lore zone="5060" x="553" y="22" z="225" loreID="9275">
 		<Note en="Spawns for 2 min when custodian near." />
 	</Lore>
-	<!-- Jinn 2/9 -->
+	<!-- Jinn 7/9 -->
 	<Lore zone="3100" x="823" y="711" z="73" loreID="9200" />
 		<!-- #2 (HE, Drop) -->
-		<!-- #3-6 (HE) -->
+	<Lore zone="5160" x="444" y="486" z="62" loreID="9202" />
+	<Lore zone="5160" x="378" y="439" z="37" loreID="9203" />
+	<Lore zone="5160" x="388" y="522" z="73" loreID="9204" />
+	<Lore zone="5160" x="691" y="281" z="103" loreID="9205" />
 	<Lore zone="3090" x="585" y="875" loreID="9206">
 		<Note en="Champion mob drop" />
 	</Lore>
 		<!-- #8 (Instance: Eats Its Name) -->
-		<!-- #9 (HE) -->
+	<Lore zone="5160" x="298" y="571" z="91" loreID="9208" />
 	<!-- Kyonshi -->
 	<Lore zone="3070" x="782" y="171" z="76" loreID="8817" />
 	<Lore zone="3070" x="820" y="603" z="93" loreID="8818" />
@@ -391,7 +394,7 @@
 	<Lore zone="3130" x="982" y="741" z="32" loreID="8885">
 		<Note en="Race Destination" />
 	</Lore>
-	<!-- Rakshasa 4/6 -->
+	<!-- Rakshasa 5/6 -->
 	<Lore zone="3070" x="276" y="718" z="90" loreID="9244" />
 	<Lore zone="3040" x="805" y="999" z="147" loreID="9245" />
 	<Lore zone="5150" x="169" y="713" z="20" loreID="9246" />
@@ -399,12 +402,14 @@
 	<Lore type="area" zone="3100" x="862" y="150" radius="58" loreID="9248">
 		<Note en="Drop: Breachbeast" />
 	</Lore>
-		<!-- #6 (HE (HR|HF done)) -->
 	<Lore zone="5140" x="448" y="459" z="115" loreID="9249">
 		<Note en="Use all three within 2h" />
 	</Lore>
 	<Lore zone="5150" x="494" y="671" z="93" loreID="9249">
 		<Note en="Use all three within 2h" />
+	</Lore>
+	<Lore zone="5160" x="666" y="553" z="197" loreID="9249">
+			<Note en="Use all three within 2h" />
 	</Lore>
 	<!-- Revenants 6/8 -->
 	<Lore zone="3030" x="494" y="456" z="136" loreID="8510" />

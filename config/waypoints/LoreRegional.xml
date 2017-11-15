@@ -32,7 +32,7 @@
 		<Lore zone="3040" x="460" y="819" z="149" loreID="594" />
 		<Lore zone="3040" x="504" y="656" z="141" loreID="593" />
 		<Lore zone="3040" x="463" y="671" z="140" loreID="592" />
-		<!-- Blue Ridge Mine 7/12 -->
+		<!-- Blue Ridge Mine -->
 		<Lore zone="3050" x="506" y="527" z="184" loreID="605" />
 		<Lore zone="3050" x="470" y="574" z="190" loreID="604" />
 		<Lore zone="3050" x="519" y="596" z="182" loreID="603" />
@@ -40,8 +40,12 @@
 		<Lore zone="3050" x="532" y="598" z="192" loreID="601" />
 		<Lore zone="3050" x="566" y="605" z="201" loreID="600" />
 		<Lore zone="3050" x="837" y="277" z="169" loreID="599" />
-			<!-- #8-12 (Instance: Mine) -->
-		<!-- The Darkness War 0/12 -->
+		<Lore zone="6152" x="239" y="227" z="2" loreID="598" />
+		<Lore zone="6152" x="179" y="197" z="6" loreID="597" />
+		<Lore zone="6152" x="242" y="163" z="2" loreID="596" />
+		<Lore zone="6152" x="161" y="246" z="2" loreID="615" />
+		<Lore zone="6152" x="217" y="165" z="1" loreID="614" />
+		<!-- The Darkness War 5/12 -->
 			<!-- #1-4 (DW) -->
 		<Lore zone="5170" x="96" y="507" z="130" loreID="831" />
 		<Lore zone="5170" x="103" y="601" z="136" loreID="830" />
@@ -59,7 +63,7 @@
 		<Lore zone="3040" x="379" y="128" z="155" loreID="849" />
 		<Lore zone="3050" x="151" y="905" z="139" loreID="848" />
 		<Lore zone="3050" x="109" y="795" z="130" loreID="847" />
-		<!-- The Franklin Mansion 7/10 -->
+		<!-- The Franklin Mansion -->
 		<Lore zone="3050" x="819" y="540" z="154" loreID="633" />
 		<Lore zone="3050" x="880" y="5" z="145" loreID="632" />
 		<Lore zone="3050" x="566" y="345" z="186" loreID="631" />
@@ -129,7 +133,11 @@
 		<Lore zone="5080" x="346" y="209" z="185" loreID="973" />
 		<Lore zone="5080" x="495" y="262" z="136" loreID="972" />
 		<Lore zone="5080" x="447" y="302" z="124" loreID="971" />
-			<!-- #5-8 (Ankh; Drops)-->
+			<!-- #5-6 (Ankh; Drops) -->
+		<Lore zone="5080" x="441" y="221" z="176" loreID="968">
+			<Note en="Drops from Metamorphosing Orochi Agent" />
+		</Lore>
+			<!-- #8 (Ankh; Drops) -->
 		<Lore zone="5080" x="386" y="238" z="112" loreID="966" />
 		<Lore zone="5080" x="436" y="202" z="57" loreID="965" />
 		<Lore zone="5080" x="173" y="240" z="50" loreID="964" />

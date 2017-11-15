@@ -95,7 +95,7 @@
 		<Lore zone="3030" x="390" y="315" z="136" loreID="3496" />
 		<Lore zone="3040" x="862" y="567" z="131" loreID="3497" />
 		<!-- Gaia Engines (Auto/Story) -->
-		<!-- The Hell Dimensions 22/29 -->
+		<!-- The Hell Dimensions -->
 		<Lore zone="5140" x="203" y="288" z="85" loreID="4807" />
 		<Lore zone="5140" x="375" y="273" z="105" loreID="4808" />
 		<Lore zone="5140" x="387" y="340" z="84" loreID="4809" />
@@ -118,7 +118,13 @@
 		<Lore zone="5150" x="491" y="541" z="70" loreID="4826" />
 		<Lore zone="5150" x="524" y="660" z="93" loreID="4827" />
 		<Lore zone="5150" x="514" y="674" z="93" loreID="4828" />
-			<!-- #23-29 (HE) -->
+		<Lore zone="5160" x="212" y="513" z="103" loreID="4829" />
+		<Lore zone="5160" x="407" y="478" z="63" loreID="4830" />
+		<Lore zone="5160" x="656" y="282" z="102" loreID="4831" />
+		<Lore zone="5160" x="273" y="569" z="96" loreID="4832" />
+		<Lore zone="5160" x="749" y="304" z="102" loreID="4833" />
+		<Lore zone="5160" x="702" y="553" z="196" loreID="4834" />
+		<Lore zone="5160" x="690" y="235" z="102" loreID="4835" />
 		<!-- The Host (Auto/Story) -->
 		<!-- The House-in-Exile -->
 		<Lore zone="3070" x="382" y="911" z="73" loreID="6987" />
