@@ -17,39 +17,18 @@ class efd.Cartographer.gui.WaypointArea extends MovieClip {
 	}
 
 	public function Redraw():Void {
-		var colour:Number = Data.GetPenColour() ? Data.GetPenColour() : LayerClip.NotationData.ConfigView.PenColour;
-		var points:Array = GenerateCircle();
-
 		var pos:Point = LayerClip.HostClip.WorldToMapCoords(Data.GetCentre());
 		_x = pos.x;
 		_y = pos.y;
 
+		// Using only x because y flips the coordinate frame
+		var scaleRad:Number = LayerClip.HostClip.WorldToMapCoords(new Point(Data.GetRadius(), 0)).x;
+		var colour:Number = Data.GetPenColour() ? Data.GetPenColour() : LayerClip.NotationData.ConfigView.PenColour;
 		clear();
 		lineStyle(2, colour, 100, true, "none", "round", "round");
-		var start:Point = points[points.length - 1];
-		moveTo(start.x, start.y);
 		beginFill(colour, 20);
-		for (var p:Number = 0; p < points.length; p += 2) {
-			curveTo(points[p].x, points[p].y,
-					points[p + 1].x, points[p + 1].y);
-		}
+		this["drawEllipse"](-scaleRad, -scaleRad, scaleRad * 2, scaleRad * 2);
 		endFill();
-	}
-
-	// Rough, lazy circle approximation
-	private function GenerateCircle():Array {
-		var result:Array = new Array();
-		var rad:Number = Data.GetRadius();
-		var yOffset:Number = LayerClip.HostClip.ZoneIndex[Data.GetZoneID()].worldY;
-		result.push(LayerClip.HostClip.WorldToMapCoords(new Point(-rad, yOffset + rad)));
-		result.push(LayerClip.HostClip.WorldToMapCoords(new Point(0, yOffset + rad)));
-		result.push(LayerClip.HostClip.WorldToMapCoords(new Point(rad, yOffset + rad)));
-		result.push(LayerClip.HostClip.WorldToMapCoords(new Point(rad, yOffset)));
-		result.push(LayerClip.HostClip.WorldToMapCoords(new Point(rad, yOffset - rad)));
-		result.push(LayerClip.HostClip.WorldToMapCoords(new Point(0, yOffset - rad)));
-		result.push(LayerClip.HostClip.WorldToMapCoords(new Point(-rad, yOffset - rad)));
-		result.push(LayerClip.HostClip.WorldToMapCoords(new Point(-rad, yOffset)));
-		return result;
 	}
 
 	private function onRollOver():Void {

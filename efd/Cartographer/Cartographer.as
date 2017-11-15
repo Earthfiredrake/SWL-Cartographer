@@ -6,6 +6,8 @@ import gfx.utils.Delegate;
 
 import com.GameInterface.DistributedValue;
 
+import efd.Cartographer.lib.ara.BasicMCGraphics;
+
 import efd.Cartographer.lib.ConfigWrapper;
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
@@ -36,6 +38,7 @@ class efd.Cartographer.Cartographer extends Mod {
 
 		OverlayList = new Array("BasePack");
 		LayerDataList = new Array();
+		BasicMCGraphics.setup();
 
 		TraceMsg("Initialized");
 	}

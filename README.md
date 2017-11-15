@@ -53,6 +53,9 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
+Version next
++ Circles now more circular
+
 Version 0.1.3-alpha
 + More detailed tooltips
 + Adds clutter; I've a couple ideas for how to reduce this, but it'll take a little while
@@ -156,6 +159,7 @@ Once built, 'Cartographer.swf', the contents of 'config' and 'resources' should 
 
 ## License and Attribution
 Copyright (c) 2017 Earthfiredrake<br/>
+Additional Contributions: Aralicia
 Software and source released under the MIT License
 
 Uses the TSW-AddonUtils library and graphical elements from the UI_Tweaks mod<br/>
