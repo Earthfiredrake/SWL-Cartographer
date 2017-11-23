@@ -19,33 +19,86 @@ class efd.Cartographer.gui.WaypointPath extends MovieClip {
 	public function Redraw():Void {
 		var colour:Number = Data.GetPenColour() ? Data.GetPenColour() : LayerClip.NotationData.ConfigView.PenColour;
 		var pathPoints:Array = Data.GetPathPoints();
-		var renderPoints:Array = new Array();
-		renderPoints.push(LayerClip.HostClip.WorldToMapCoords(pathPoints[0]));
-		var clipOrigin:Point = renderPoints[0].clone();
+		LocalPoints = new Array();
+		LocalPoints.push(LayerClip.HostClip.WorldToMapCoords(pathPoints[0]));
+		var clipOrigin:Point = LocalPoints[0].clone();
 
 		for (var i:Number = 1; i < pathPoints.length; ++i) {
 			var p:Point = LayerClip.HostClip.WorldToMapCoords(pathPoints[i]);
 			clipOrigin.x = Math.min(clipOrigin.x, p.x);
 			clipOrigin.y = Math.min(clipOrigin.y, p.y);
-			renderPoints.push(p);
+			LocalPoints.push(p);
 		}
 
 		_x = clipOrigin.x;
 		_y = clipOrigin.y;
 
 		clear();
-		lineStyle(3, colour, 100, true, "none", "round", "round");
-		renderPoints[0] = renderPoints[0].subtract(clipOrigin);
-		moveTo(renderPoints[0].x, renderPoints[0].y);
-		for (var i:Number = 1; i < renderPoints.length; i++) {
-			renderPoints[i] = renderPoints[i].subtract(clipOrigin);
-			lineTo(renderPoints[i].x, renderPoints[i].y);
+		lineStyle(LineThickness, colour, 100, true, "none", "round", "round");
+		LocalPoints[0] = LocalPoints[0].subtract(clipOrigin);
+		moveTo(LocalPoints[0].x, LocalPoints[0].y);
+		for (var i:Number = 1; i < LocalPoints.length; ++i) {
+			LocalPoints[i] = LocalPoints[i].subtract(clipOrigin);
+			lineTo(LocalPoints[i].x, LocalPoints[i].y);
+		}
+	}
+
+	public function hitTest():Boolean {
+		switch (arguments.length) {
+			case 1: Mod.TraceMsg("WaypointPath hitTest(Object) called"); return super.hitTest(arguments[0]); // Object comparison hit test, not sure how to implement but doesn't seem to be needed?
+			case 2: return super.hitTest(arguments[0], arguments[1]); // Basic bounding box hit test, works as advertisedish
+			case 3: return super.hitTest(arguments[0], arguments[1]) ? (arguments[2] ? DetailedHitTest(arguments[0], arguments[1]) : true) : false; // Do a basic bounding test before verifying with the detailed test, if needed
+			default: return false; // Bad call parameters
+		}
+	}
+
+	private function DetailedHitTest(x:Number, y:Number):Boolean {
+		var p:Point = new Point(x, y);
+		globalToLocal(p);
+		for (var i:Number = 1; i < LocalPoints.length; ++i) {
+			if (SqDist(LocalPoints[i-1], LocalPoints[i], p) <= LineThickness * LineThickness) { return true; }
+		}
+		return super.HitTest(x, y, true); // On off chance there actually is other content in the clip
+	}
+
+	// Calculates the squared distance between line segment (a-b) and point (c)
+	private static function SqDist(a:Point, b:Point, c:Point):Number {
+		var ab:Point = b.subtract(a);
+		var ac:Point = c.subtract(a);
+		var e:Number = Dot(ac, ab);
+		if (e <= 0) { return Dot(ac, ac); } // c is outside line segment, closest to a
+		var f:Number = Dot(ab, ab);
+		if (e >= f) { // c is outside line segment, closest to b
+			var bc:Point = c.subtract(b);
+			return Dot(bc, bc);
+		}
+		return Dot(ac, ac) - e * e / f; // c is within the line segment, calculate distance to internal point
+	}
+
+	private static function Dot(p1:Point, p2:Point):Number {
+		return p1.x * p2.x + p1.y * p2.y;
+	}
+
+	private function onMouseMove():Void {
+		var p:Point = new Point(_xmouse, _ymouse);
+		localToGlobal(p);
+		if (Mouse.getTopMostEntity() == LayerClip.HostClip.MapLayer && // Attempting to prevent (for now) path stealing focus from icons above it
+			hitTest(p.x, p.y, true)) {
+				if (!MouseOver) {
+					MouseOver = true;
+					onRollOver();
+				}
+		}
+		else {
+			if (MouseOver) {
+				MouseOver = false;
+				onRollOut();
+			}
 		}
 	}
 
 	private function onRollOver():Void {
-		// This isn't actually working, seems the unfilled path doesn't have mouse collision
-		Mod.TraceMsg("Rolled over a path! They do exist.");
+		// This doesn't actually work as a onRollOver event, so it's being manually forced (see above)
 		ShowTooltip();
 	}
 
@@ -77,7 +130,12 @@ class efd.Cartographer.gui.WaypointPath extends MovieClip {
 		RemoveTooltip();
 	}
 
+	private static var LineThickness:Number = 3;
+
 	private var Data:IPath;
+	private var LocalPoints:Array; // Copy of path in clip local coords, used for rendering and collision detection
 	private var LayerClip:MovieClip;
 	private var Tooltip:MovieClip;
+
+	private var MouseOver:Boolean = false;
 }
