@@ -55,7 +55,6 @@ class efd.Cartographer.notations.NotationBase implements INotation {
 			switch (subNode.nodeName) {
 				case "Name":
 					Name = LocaleManager.GetLocaleString(subNode);
-					//ShowLabel = subNode.attributes.showLabel == "true";
 					break;
 				case "Note":
 					Note = LocaleManager.GetLocaleString(subNode);

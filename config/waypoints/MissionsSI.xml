@@ -194,6 +194,7 @@
 	</QuestGiver>
 	Mound of red seaweed <QuestGiver zone="3030" x="885" y="863" z="131">
 		<Name rdb="id=7913935 category=50200" />
+		<Note en="Lair" />
 		Coralations <Quest id="3434" />
 		The Last Strand <Quest id="3445" />
 		Unto the Beach <Quest id="3422" />

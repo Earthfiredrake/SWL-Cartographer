@@ -118,7 +118,9 @@
 		<!-- The Polaris -->
 		<Lore zone="5040" x="58" y="247" z="197" loreID="5018" />
 		<Lore zone="5040" x="186" y="229" z="208" loreID="5017">
-			<Note en="Drops from: Broken Corpse" />
+			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+				<Param en="Broken Corpse" /> <!-- TODO: RDB -->
+			</Note>
 		</Lore>
 		<Lore zone="5040" x="284" y="313" z="197" loreID="5019" />
 		<Lore zone="5040" x="315" y="197" z="199" loreID="5020">
@@ -135,7 +137,9 @@
 		<Lore zone="5080" x="447" y="302" z="124" loreID="971" />
 			<!-- #5-6 (Ankh; Drops) -->
 		<Lore zone="5080" x="441" y="221" z="176" loreID="968">
-			<Note en="Drops from Metamorphosing Orochi Agent" />
+			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+				<Param en="Metamorphosing Orochi Agent" /> <!-- TODO: RBD -->
+			</Note>
 		</Lore>
 			<!-- #8 (Ankh; Drops) -->
 		<Lore zone="5080" x="386" y="238" z="112" loreID="966" />
@@ -166,7 +170,9 @@
 		<Lore zone="3090" x="829" y="549" z="49" loreID="1446" />
 		<Lore zone="3090" x="563" y="389" z="78" loreID="1445" />
 		<Lore zone="3090" x="515" y="412" z="73" loreID="1444">
-			<Note en="Requires Mission: The Traitor" />
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param en="The Traitor" /> <!-- TODO: RDB -->
+			</Note>
 		</Lore>
 		<Lore zone="3090" x="820" y="1069" z="59" loreID="1443" />
 		<!-- The Pyramid -->
@@ -201,7 +207,9 @@
 		<Lore zone="3100" x="223" y="733" z="69" loreID="1034" />
 		<Lore zone="3090" x="831" y="991" z="54" loreID="1033" />
 		<Lore zone="3090" x="726" y="857" z="51" loreID="1032">
-			<Note en="Requires Mission: The Big Terrible Picture" />
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param en="The Big Terrible Picture" /> <!-- TODO: RDB -->
+			</Note>
 		</Lore>
 		<Lore zone="3100" x="566" y="176" z="56" loreID="1031" />
 		<Lore zone="3090" x="602" y="440" z="71" loreID="1030" />
@@ -333,13 +341,19 @@
 		<Lore zone="3070" x="676" y="636" z="93" loreID="7552" />
 		<Lore zone="6740" x="819" y="436" z="121" loreID="7553" />
 		<Lore zone="3070" x="677" y="640" z="93" loreID="7554">
-			<Note en="Requires Mission: Nightmare in the Dream Palace" />
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param en="Nightmare in the Dream Palace" /> <!-- TODO: RDB -->
+			</Note>
 		</Lore>
 		<Lore zone="3070" x="680" y="638" z="83" loreID="7555">
-			<Note en="Requires Mission: Nightmare in the Dream Palace" />
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param en="Nightmare in the Dream Palace" /> <!-- TODO: RDB -->
+			</Note>
 		</Lore>
 		<Lore zone="3070" x="672" y="639" z="88" loreID="7556">
-			<Note en="Requires Mission: Nightmare in the Dream Palace" />
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param en="Nightmare in the Dream Palace" /> <!-- TODO: RDB -->
+			</Note>
 		</Lore>
 		<!-- Ginpachi Park -->
 		<Lore zone="3070" x="923" y="787" z="74" loreID="7045" />
@@ -387,28 +401,28 @@
 			<!-- BS#3 (Drop: Hyperinfected/Commuter multiple spawns) -->
 			<!-- TODO: Verify that both drop it -->
 		<Lore zone="3070" x="344" y="768" z="85" loreID="7171"> <!-- Bubbles -->
-			<Note en="Champion mob drop" />
+			<Note cat="MapNoteTooltip" str="ChampDrop" />
 		</Lore>
 		<Lore zone="3070" x="410" y="564" z="85" loreID="7171">
-			<Note en="Champion mob drop" />
+			<Note cat="MapNoteTooltip" str="ChampDrop" />
 		</Lore>
 		<Lore zone="3070" x="444" y="612" z="85" loreID="7171"> <!-- Bubbles -->
-			<Note en="Champion mob drop" />
+			<Note cat="MapNoteTooltip" str="ChampDrop" />
 		</Lore>
 		<Lore zone="3070" x="539" y="424" z="85" loreID="7171">
-			<Note en="Champion mob drop" />
+			<Note cat="MapNoteTooltip" str="ChampDrop" />
 		</Lore>
 		<Lore zone="3070" x="583" y="795" z="85" loreID="7171">
-			<Note en="Champion mob drop" />
+			<Note cat="MapNoteTooltip" str="ChampDrop" />
 		</Lore>
 		<Lore zone="3070" x="649" y="854" z="85" loreID="7171"> <!-- Bubbles -->
-			<Note en="Champion mob drop" />
+			<Note cat="MapNoteTooltip" str="ChampDrop" />
 		</Lore>
 		<Lore zone="3070" x="744" y="791" z="85" loreID="7171">
-			<Note en="Champion mob drop" />
+			<Note cat="MapNoteTooltip" str="ChampDrop" />
 		</Lore>
 		<Lore zone="3070" x="761" y="776" z="85" loreID="7171">
-			<Note en="Champion mob drop" />
+			<Note cat="MapNoteTooltip" str="ChampDrop" />
 		</Lore>
 		<!-- The Maiden Shrine -->
 		<Lore zone="3070" x="695" y="83" z="71" loreID="7570" />
@@ -487,19 +501,32 @@
 		<Lore zone="6710" x="511" y="821" z="82" loreID="7281" />
 		<Lore zone="6710" x="577" y="887" z="74" loreID="7282" />
 		<Lore zone="3070" x="90" y="862" z="94" loreID="7283">
-			<Note en="Requires Mission: Brotherly Loathe" />
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param en="Brotherly Loathe" /> <!-- TODO: RDB -->
+			</Note>
 		</Lore>
 		<Lore zone="3070" x="89" y="859" z="105" loreID="7285">
-			<Note en="Requires Mission: Brotherly Loathe, Drops from Boss" />
+			<Note en="%1%; %2%" fmt="true">
+				<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+					<Param en="Brotherly Loathe" /> <!-- TODO: RDB -->
+				</Param>
+				<Param cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+					<Param en="Boss" /> <!-- TODO: RDB -->
+				</Param>
+			</Note>
 		</Lore>
 		<!-- The Tragical History of Doctor Faustus 3/5 -->
 		<Lore zone="3070" x="465" y="612" z="83" loreID="7392" />
 			<!-- #2-3 (Instance: Bank Heist) -->
 		<Lore zone="3070" x="395" y="551" z="112" loreID="7395">
-			<Note en="Requires Mission: The All-Seeing Kawaii" />
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param en="The All-Seeing Kawaii" /> <!-- TODO: RDB -->
+			</Note>
 		</Lore>
 		<Lore zone="3070" x="378" y="812" z="121" loreID="7396">
-			<Note en="Requires Mission: The All-Seeing Kawaii" />
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param en="The All-Seeing Kawaii" /> <!-- TODO: RDB -->
+			</Note>
 		</Lore>
 		<!-- Trail of Shadows -->
 		<Lore zone="3070" x="636" y="722" z="120" loreID="8137" />
@@ -522,7 +549,7 @@
 		<Lore zone="3070" x="539" y="447" z="89" loreID="7142" />
 		<Lore zone="3070" x="127" y="420" z="91" loreID="7143" />
 		<Lore zone="3070" x="748" y="493" z="85" loreID="7144">
-			<Note en="Champion mob drop" />
+			<Note cat="MapNoteTooltip" str="ChampDrop" />
 		</Lore>
 		<!-- Zeroes Wild Pachinko -->
 		<Lore zone="3070" x="537" y="819" z="88" loreID="7114" />
@@ -530,7 +557,9 @@
 		<Lore zone="3070" x="440" y="798" z="83" loreID="7116" />
 		<Lore zone="3070" x="450" y="809" z="83" loreID="7117" />
 		<Lore zone="3070" x="450" y="813" z="87" loreID="7118">
-			<Note en="Requires Mission: The Pachinko Model" />
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param en="The Pachinko Model" /> <!-- TODO: RDB -->
+			</Note>
 		</Lore>
 		<Lore zone="3070" x="444" y="806" z="87" loreID="7119" />
 	</Section>

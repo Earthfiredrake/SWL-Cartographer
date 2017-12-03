@@ -5,7 +5,7 @@
 
 <!-- The attributes "de", and "fr" can be used for translations of each string, if needed -->
 <!-- They can also be customized as desired, though GUI elements do not expand to fit them -->
-<!-- Category names and string tags are referenced from the mod, and should not be changed -->
+<!-- Category and string tag names are referenced from the mod, and should not be changed -->
 <!-- Strings themselves should be compatible with boost::format for inserting further data -->
 <!-- See http://www.boost.org/doc/libs/1_63_0/libs/format/doc/format.html#syntax for details (TSW likely uses earlier version, unsure which)-->
 <!-- For customized strings, replacement values may be skipped or duplicated without issue -->
@@ -13,78 +13,56 @@
 <!-- Extra parameters are detailed after the string. Debug and trace messages are not localized -->
 <!-- Some strings in General and GUI categories may not be used by a particular mod, but are included to support alternate development from the framework -->
 <StringCategories>
-	<Category name="General"> <!-- Used for standard messages created as part of my mod framework -->
-		<String tag="Installed"
-				en="Has been installed" />
-		<String tag="Update"
-				en="Updated to v%1%" /> <!-- %1% = ModVersion -->
-		<String tag="Revert"
-				en="Reverted to v%1%" /> <!-- %1% = ModVersion -->
-		<String tag="NoMigration"
-				en="Setting migration from %1% is not possible, settings will be reset to defaults." /> <!-- %1% = PriorVersion -->
-		<String tag="ReviewSettings"
-				en="Please take a moment to review the settings" />
-		<String tag="ModMessagePrefix"
-				en="&lt;font color='#00FFFF'&gt;%1%&lt;/font&gt;: " /> <!-- %1% = ModName; Yeah it's ugly, xml is not great for storing html -->
-		<String tag="SubsystemMessagePrefix"
-				en="%1% - " /> <!-- %1% = Subsystem name -->
+	<General> <!-- Used for standard messages created as part of my mod framework -->
+		<Installed en="Has been installed" />
+		<Update	en="Updated to v%1%" /> <!-- %1% = ModVersion -->
+		<Revert en="Reverted to v%1%" /> <!-- %1% = ModVersion -->
+		<NoMigration en="Setting migration from %1% is not possible, settings will be reset to defaults." /> <!-- %1% = PriorVersion -->
+		<ReviewSettings en="Please take a moment to review the settings" />
+		<ModMessagePrefix en="&lt;font color='#00FFFF'&gt;%1%&lt;/font&gt;: " /> <!-- %1% = ModName; Yeah it's ugly, xml is not great for storing html -->
+		<SubsystemMessagePrefix	en="%1% - " /> <!-- %1% = Subsystem name -->
 		<!-- Message format strings recieve the following values in standard positions -->
 		<!-- %1% = Message content -->
 		<!-- %2% = ModMessagePrefix (as above or "" if not provided) -->
 		<!-- %3% = SubsystemMessagePrefix (as above or "" if not provided) -->
 		<!-- Further parameters may be provided by the mod, as detailed -->
-		<String tag="FifoMessage"
-				en="%1%" /> <!-- Minimalist output, no non-standard parameters available -->
-		<String tag="ChatMessage"
-				en="%2%%3%%1%" />
+		<FifoMessage en="%1%" /> <!-- Minimalist output, no non-standard parameters available -->
+		<ChatMessage en="%2%%3%%1%" />
 		 <!-- Used by console style mods that lack icon notification -->
-		<String tag="Enabled"
-				en="Has been enabled" />
-		<String tag="Disabled"
-				en="Has been disabled" />
-	</Category>
-	<Category name="GUI"> <!-- Used for all GUI strings. GUI may not expand nicely for longer text -->
-		<String tag="ConfigWindowTitle"
-				en="%1% Settings" /> <!-- %1% = ModName -->
-		<String tag="InterfaceWindowTitle"
-				en="%1%" /> <!-- %1% = ModName -->
-		<String tag="TooltipCredit"
-				en="v%1% by %2%" /> <!-- %1% = ModVersion; %2% = DevName -->
-		<String tag="TooltipLeft"
-				en="Left Click: %1%" /> <!-- %1% = Tooltip for bound action -->
-		<String tag="TooltipRight"
-				en="Right Click: %1%" /> <!-- %1% = Tooltip for bound action -->
-		<String tag="TooltipModOn"
-				en="Enable Mod" />
-		<String tag="TooltipModOff"
-				en="Disable Mod" />
-		<String tag="TooltipShowSettings"
-				en="Show Settings" />
-		<String tag="TooltipShowInterface"
-				en="Display Maps" />
-		<String tag="LayerLabelAnimaWell"
-				en="Anima Wells" />
-		<String tag="LayerLabelChamp"
-				en="Champions" />
-		<String tag="LayerLabelLore"
-				en="Lore" /> <!-- Almost trolling here, 'Lore' would be the default is included for lost souls who insist on calling them 'Legends'. -->
-		<String tag="LayerLabelTransit"
-				en="Zone Transitions" />
-		<String tag="LayerLabelVendor"
-				en="Vendors" />
-	</Category>
-	<Category name="AutoReport"> <!-- Only used for player notifications, report content is internal -->
-		<String tag="ReportQueued"
-				en="A report has been generated and will be sent when you are next at the bank" />
-		<String tag="Submitted"
-				en="All queued reports have been sent. Thank you for your assistance" />
-		<String tag="FailSend"
-				en="One or more reports failed to send and will remain queued" />
-		<String tag="FailDeliver"
-				en="One or more reports could not be delivered and will remain queued" />
-		<String tag="ErrorDesc"
-				en="Reason: %1%" /> <!-- %1% = game provided error message, unknown localization -->
-	</Category>
-	<Category name="Cartographer"> <!-- Chat and fifo messages specific to this mod -->
-	</Category>
+		<Enabled en="Has been enabled" />
+		<Disabled en="Has been disabled" />
+	</General>
+	<GUI> <!-- Used for all GUI strings. GUI may not expand nicely for longer text -->
+		<ConfigWindowTitle en="%1% Settings" /> <!-- %1% = ModName -->
+		<InterfaceWindowTitle en="%1%" /> <!-- %1% = ModName -->
+		<TooltipCredit en="v%1% by %2%" /> <!-- %1% = ModVersion; %2% = DevName -->
+		<TooltipLeft en="Left Click: %1%" /> <!-- %1% = Tooltip for bound action -->
+		<TooltipRight en="Right Click: %1%" /> <!-- %1% = Tooltip for bound action -->
+		<TooltipModOn en="Enable Mod" />
+		<TooltipModOff en="Disable Mod" />
+		<TooltipShowSettings en="Show Settings" />
+		<TooltipShowInterface en="Display Maps" />
+		<LayerLabelAnimaWell en="Anima Wells" />
+		<LayerLabelChamp en="Champions" />
+		<LayerLabelLore	en="Lore" />
+		<LayerLabelTransit en="Zone Transitions" />
+		<LayerLabelVendor en="Vendors" />
+	</GUI>
+	<AutoReport> <!-- Only used for player notifications, report content is internal -->
+		<ReportQueued en="A report has been generated and will be sent when you are next at the bank" />
+		<Submitted en="All queued reports have been sent. Thank you for your assistance" />
+		<FailSend en="One or more reports failed to send and will remain queued" />
+		<FailDeliver en="One or more reports could not be delivered and will remain queued" />
+		<ErrorDesc en="Reason: %1%" /> <!-- %1% = game provided error message, unknown localization -->
+	</AutoReport>
+	<Cartographer> <!-- Chat and fifo messages specific to this mod -->
+	</Cartographer>
+	<MapNoteTooltip> <!-- Commonly used notation tooltip message templates -->
+		<ChampDrop en="Champion mob drop" /> <!-- TODO: Convert to "DropsFrom" -->
+		<DropsFrom en="Drops from: %1%" /> <!-- %1% = Creature name(s) -->
+		<MissionReq en="Requires mission: %1%" /> <!-- %1% = Mission name -->
+		<RngSpawn en="Random spawn point: %1%" /> <!-- %1% = #/# -->
+		<ScarabColour en="Collect one of each colour: %1%" /> <!-- %1% = Colour -->
+		<Summon en="Summon point: %1%" /> <!-- %1% = Summon requirements -->
+	</MapNoteTooltip>
 </StringCategories>

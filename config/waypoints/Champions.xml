@@ -205,10 +205,14 @@
 			<Point x="596" y="513" z="46" />
 		</Champ>
 		<Champ zone="3090" x="555" y="715" champID="9561" group="true"> <!-- Cicatris -->
-			<Note en="Requires summon, 5 people on blue patches" />
+			<Note cat="MapNoteTooltip" str="Summon" fmt="true">
+				<Param en="5 bees on blue spots" />
+			</Note>
 		</Champ>
 		<Champ zone="3090" x="585" y="875" champID="9560" group="true"> <!-- Mak'aal the Hellfire -->
-			<Note en="Requires summon, all cultist wisps must arrive in group" />
+			<Note cat="MapNoteTooltip" str="Summon" fmt="true">
+				<Param en="All cultist souls must arrive in group" />
+			</Note>
 		</Champ>
 		<Champ zone="3100" x="785" y="205" champID="4096" /> <!-- Adrameloch, Chancellor of Hell -->
 		<Champ zone="3100" x="715" y="1000" champID="4098" /> <!-- Akir, the Sun Guardian -->
@@ -432,6 +436,8 @@
 			<Point x="764" y="142" z="75" />
 			<Point x="761" y="125" z="75" />
 			<Point x="765" y="118" z="75" />
+			<Name en="Namahage patrol route" />
+			<Note en="E wall to SW building" />
 		</Champ>
 		<Champ type="path" zone="3070" champID="10203">
 			<!-- SE courtyard to NW corner -->
@@ -446,6 +452,8 @@
 			<Point x="793" y="227" z="79" />
 			<Point x="805" y="271" z="80" />
 			<Point x="753" y="271" z="81" />
+			<Name en="Namahage patrol route" />
+			<Note en="SE courtyard to NW building" />
 		</Champ>
 		<Champ type="path" zone="3070" champID="10203">
 			<!-- Graveyard? to NE corner -->
@@ -464,6 +472,8 @@
 			<Point x="901" y="279" z="81" />
 			<Point x="916" y="273" z="81" />
 			<Point x="927" y="267" z="82" />
+			<Name en="Namahage patrol route" />
+			<Note en="Graveyard to NE alley" />
 		</Champ>
 		<Champ zone="3070" x="343" y="108" z="76" champID="10217" /> <!-- Nkadi the Fungal Lord -->
 		<!-- The Opener of Kimon (multi-spawn) -->
@@ -550,7 +560,9 @@
 			<Point x="73" y="842" z="94" />
 		</Champ>
 		<Champ zone="3070" x="820" y="710" champID="10198" /> <!-- Wrathful Goryo -->
-		<Champ zone="3070" x="551" y="255" z="91" champID="10213" group="true" /> <!-- The Simian Horror -->
-		<!-- Note: Simian Horror doesn't have a self-titled achivement... will have to provide a name override -->
+		<!-- The Simian Horror -->
+		<Champ zone="3070" x="551" y="255" z="91" champID="10213" group="true">
+			<Name en="The Simian Horror" /> <!-- TODO: RDB -->
+		</Champ>
 	</Section>
 </OverlayPack>
