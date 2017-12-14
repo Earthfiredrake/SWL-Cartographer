@@ -13,7 +13,8 @@
 	-->
 
 <!-- Schema notes
-	// Proposed
+	// Coordinates are in game world space with the Z and Y coordinates swapped
+	// (Game uses Y as the vertical axis, which may have some future use, but is not vital)
 	<LayerID [type="wp|path|area"] zone="zoneID">
 		// Waypoint type is assumed if no type attribute present
 		Additional waypoint attributes: x="coord" y="coord" [z="coord"] [icon="filename"]
@@ -188,6 +189,10 @@
 		<Vendor zone="1100" x="227.2" y="346.1" icon="vendor_bank.png">
 			<Name rdb="id=29867 category=51000" />
 		</Vendor> -->
+		<!-- Character edit icon not yet included
+		<Vendor zone="1100" x="422" y="409" icon="vendor_editchar.png">
+			<Name rdb="id=129583427 category=260" />
+		</Vendor> -->
 	</Section>
 	<Section> <!-- London -->
 		<AnimaWell zone="1000" x="153.7" y="274.5" z="28.6">
@@ -233,7 +238,11 @@
 		</Vendor>
 		<Vendor zone="1000" x="221.1" y="235.4" icon="vendor_mail.png">
 			<Name rdb="id=29868 category=51000" />
-		</Vendor> -->
+		</Vendor>
+		<Vendor zone="1000" x="223" y="242" icon="vendor_editchar.png">
+			<Name rdb="id=150569634 category=260" />
+		</Vendor>
+		-->
 	</Section>
 	<Section> <!-- Seoul -->
 		<AnimaWell zone="1200" x="400.2" y="182.7" z="51.8">

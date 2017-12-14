@@ -50,6 +50,7 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 	}
 
 	private function TrimImpl(list:Array, length:Number):Void {
+		if (length == undefined) { length = 0; }
 		for (var i:Number = length; i < list.length; ++i) {
 			var wp:MovieClip = list[i];
 			wp.removeMovieClip();

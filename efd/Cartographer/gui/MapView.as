@@ -45,6 +45,8 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		mask.endFill();
 		setMask(mask);
 
+		onMouseMove = ManageTooltips;
+
 		// Init map layer
 		createEmptyMovieClip("MapLayer", getNextHighestDepth());
 		Loader = new MovieClipLoader();
@@ -133,7 +135,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	}
 
 	private function EndScrollMap():Void {
-		onMouseMove = undefined;
+		onMouseMove = ManageTooltips;
 	}
 
 	private function UpdatePosition(targetPos:Point):Void {
@@ -182,6 +184,30 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 			for (var i:Number = 0; i < LayerDataList.length; ++i) {
 				NotationLayerViews[i].Visible = LayerDataList[i].IsVisible;
 			}
+		}
+	}
+
+	private function ManageTooltips() {
+		var tooltipTargets:Array = new Array;
+		var p:Point = new Point(_xmouse, _ymouse);
+		localToGlobal(p);
+		// Ignore all mouse movement outside the map viewport
+		//   Will close any open tooltip when the mouse is out of bounds
+		if (ViewportMask.hitTest(p.x, p.y)) {
+			for (var i:Number = 0; i < NotationLayerViews.length; ++i) {
+				if (NotationLayerViews[i].Visible) {
+					tooltipTargets = tooltipTargets.concat(NotationLayerViews[i].GetNotationsAtPoint(p));
+				}
+			}
+		}
+		if (tooltipTargets.length > 0) {
+			Mod.TraceMsg("Number of tooltip targets: " + tooltipTargets.length);
+			for (var i:Number = 0; i < tooltipTargets.length; ++i) {
+				Mod.TraceMsg("  " + tooltipTargets[i].Data.GetName());
+			}
+			// TODO: Create/Update tooltip
+		} else {
+			// TODO: Hide/Close tooltip
 		}
 	}
 
@@ -241,9 +267,10 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	private var ClientCharMarker:MovieClip;
 	// Tooltips are displayed at a higher level, so that they don't get clipped
 
-	// Clipping mask initialization
+	// Clipping mask
 	private var Width:Number;
 	private var Height:Number;
+	private var ViewportMask:MovieClip;
 
 	// Constants
 	private static var MaxZoomLevel:Number = 100;

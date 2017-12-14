@@ -43,6 +43,13 @@ class efd.Cartographer.LayerData {
 	public function GetWaypoints(zoneID:Number):Array { return NotationsByZone[zoneID].Waypoints; }
 
 	public function get LayerName():String { return Layer; }
+	public function get IsEmpty():Boolean {
+		for (var zone:String in NotationsByZone) {
+			// Hacky... Objects don't have a length to query though
+			return false;
+		}
+		return true;
+	}
 	public function get IsVisible():Boolean { return Settings.ShowLayer; }
 	public function get ConfigView():Object { return Settings; }
 

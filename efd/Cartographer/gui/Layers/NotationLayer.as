@@ -114,6 +114,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 
 	private function TrimDisplayList():Void {
 		var length:Number = NotationData.GetWaypoints(Zone).length;
+		if (length == undefined) { length = 0; }
 		for (var i:Number = length; i < RenderedWaypoints.length; ++i) {
 			var waypoint:MovieClip = RenderedWaypoints[i];
 			waypoint.removeMovieClip();
@@ -152,6 +153,28 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		LoadDataBlock();
 	}
 
+	/// Tooltip helper tests
+	public function GetNotationsAtPoint(p:Point):Array {
+		var result:Array = new Array();
+		var waypts:Array = RenderedWaypoints;
+		for (var i:Number = 0; i < waypts.length; ++i) {
+			if (waypts[i].hitTest(p.x, p.y, true)) {
+				result.push(waypts[i]);
+			}
+		}
+		for (var i:Number = 0; i < PathLayer.RenderList.length; ++i) {
+			if (PathLayer.RenderList[i].hitTest(p.x, p.y, true)) {
+				result.push(PathLayer.RenderList[i]);
+			}
+		}
+		for (var i:Number = 0; i < AreaLayer.RenderList.length; ++i) {
+			if (AreaLayer.RenderList[i].hitTest(p.x, p.y, true)) {
+				result.push(AreaLayer.RenderList[i]);
+			}
+		}
+		return result;
+	}
+
 	/// Properties
 	public function get RenderedWaypoints():Array {	return _RenderedWaypoints; }
 	// Array of currently displayed waypoints for this layer
@@ -166,6 +189,8 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 			RenderLayer(Zone); // Do whatever redraw is needed
 		}
 	}
+
+	public function get Visible():Boolean { return _visible; }
 
 	public function set Position(pos:Point):Void {
 		AreaLayer._x = pos.x;

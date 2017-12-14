@@ -100,6 +100,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	private function ShowTooltip():Void {
 		if (!Tooltip) {
+			// At HostClip._parent level to circumvent viewport mask
 			Tooltip = LayerClip.HostClip._parent.attachMovie("CartographerWaypointTooltip", "Tooltip", LayerClip.HostClip.getNextHighestDepth(), {Data : Data});
 			var pos:Point = LayerClip.HostClip.MapToViewCoords(new Point(_x, _y));
 			Tooltip._x = pos.x;

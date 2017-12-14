@@ -44,6 +44,7 @@
 		<TooltipShowInterface en="Display Maps" />
 		<LayerLabelAnimaWell en="Anima Wells" />
 		<LayerLabelChamp en="Champions" />
+		<LayerLabelKrampus en="Krampus Spawns" />
 		<LayerLabelLore	en="Lore" />
 		<LayerLabelTransit en="Zone Transitions" />
 		<LayerLabelVendor en="Vendors" />

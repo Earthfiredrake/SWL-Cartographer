@@ -3,18 +3,19 @@ Supplementary world maps for Secret World Legends
 Legacy support for The Secret World is largely untested and provided waypoint packs use SWL locations. I will not be taking the time to generate waypoints for TSW myself, but would be willing to include an alternative pack if one was volunteered.
 
 ## Overview
-This mod intends to provide a supplement to the ingame regional and dungeon maps, with various improvements:
+This mod is in an early state of development, consider this to be a wishlist, and consult the changelog for which parts have been implemented. It intends to provide a supplement to the ingame regional and dungeon maps, with various improvements:
 + Multiple icons for custom map notations
   + Assigned by type, but may be overridden individually (ex: The location to use a password required to access a lore may count as a "lore" marker, but use the "password" icon)
   + User customization of the map icons, including replacing most icons or adding their own, without requiring a flash compiler
 + Zone and path marking in addition to point locations
 + More support for extended descriptions and precise placement based on coordinates
 + Premade packages of related markers which can be loaded or toggled as a package
-  + ex: A package for Samhain might include lore, quests, vendors, rider/summon/empowerment points
+  + ex: A package for Samhain (TSW) might include lore, quests, vendors, rider/summon/empowerment points
   + These packages may also include more general packs of Lore, Rare Spawns, etc.
   + As much as possible the locations included in these packs will use verified exact game locations
     + This may result in one or more utility mods designed to provide absolute locations of various game objects
     + This will also likely result in an automatic marking system from LoreHound
+	+ Had a thought about feeding data back to LoreHound, but lack enough camera info to create my own world-screen calculation, and the existing one requires a dynel and doesn't work on arbitrary points
   + While the native format will likely not be compatible with existing waypoint packs (Lassie's etc.), I may see if I can handle their format as well at least on a transition basis
   + I'd love for this to be a full plugin system, adding custom logic to the provided waypoints
     + I have no idea where to even begin with this part of the concept but no shortage of random ideas if it can be made to work:
@@ -28,17 +29,17 @@ Due to limitations with the API, it does not seem to be possible to:
   + Existing map can not be modded, and renders above all other UI elements, preventing an overlay system
   + Existing map waypoint data can not be used directly
     + Default ones with points of interest are malformed as far as the flash XML loader is concerned
-	+ Flash is unable to reliably access the user's custom waypoint file
+	+ Flash is unable to reliably access the user's custom waypoint file (can only access relative paths on same drive (no C:\ and no %LocalAppData%), could be circumvented with junction points but would require non-trivial additional setup)
   + This mod will be duplicating as much existing functionality as is possible and be a second map window in game
 + Entirely replace the existing map's functionality
   + Anima leap and the long range detection of champion monsters and world bosses is not yet understood
-    + It may be easier to integrate zone teleportation (the Shift-T menu).
+    + It may be easier to integrate zone teleportation (the Shift-T menu)
 + Directly save player added waypoints to the xml files containing pre-packaged info
   + Manual export and sharing features may be supported
   + Custom waypoints will have to be saved with the rest of the mod settings
     + This will likely have a slightly different data layout than the waypoint pack files, because the universe enjoys making me write parsers
 
-The mod is currently in alpha, with limited functionality. Graphics are temporary placeholders of less than desired quality. Settings may be reset while upgrading.
+The mod is currently in alpha, with limited functionality. Some graphics are temporary placeholders of less than desired quality. Settings may be reset while upgrading.
 
 All settings are saved account wide and will be shared across characters. If you'd rather have different settings for each character, renaming the file "LoginPrefs.xml" to "CharPrefs.xml" when installing/upgrading the mod should work without any problems. A clean install of the mod is recommended if doing this, as it will be unable to transfer existing settings anyway.
 
@@ -49,12 +50,18 @@ Any packaged release should be unzipped (including the internal Cartographer fol
 
 When upgrading, existing .bxml files in the Cartographer directory should be deleted to ensure changes in the .xml files are loaded (whichever is newer seems to take precedence).
 
-I intend to permit setting migration from the first public beta to v1.0.x, but this may be subject to change. As with my other mods, this update compatibility window will occasionally be shifted to reduce legacy code clutter in the mod.
+I intend to permit setting migration from the first public beta to v1.0.x, but this may be subject to change. As with my other mods, this update compatibility window will occasionally be shifted to reduce legacy code clutter.
 
 ## Change Log
 
-Version next
+Version 0.1.4-alpha
++ Krampusnacht waypoint pack
+  + All open world lore (added to Lore layer)
+  + Incomplete sample of Krampus spawn points (on a new layer, though it uses the champ mob icon)
+  + The pack *should* automatically stop loading once the event ends (and maybe even come back next year)
 + Circles now more circular
++ Tooltips on paths
+  + Additional mouse interaction TBD
 
 Version 0.1.3-alpha
 + More detailed tooltips
@@ -159,7 +166,7 @@ Once built, 'Cartographer.swf', the contents of 'config' and 'resources' should 
 
 ## License and Attribution
 Copyright (c) 2017 Earthfiredrake<br/>
-Additional Contributions: Aralicia
+Additional code contributions: Aralicia<br/>
 Software and source released under the MIT License
 
 Uses the TSW-AddonUtils library and graphical elements from the UI_Tweaks mod<br/>

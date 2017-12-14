@@ -23,12 +23,15 @@ class efd.Cartographer.Cartographer extends Mod {
 		// Trace : true,
 		GuiFlags : ef_ModGui_NoConfigWindow,
 		Name : "Cartographer",
-		Version : "0.1.3.alpha"
+		Version : "0.1.4.alpha"
 	};
 
 	/// Initialization
 	public function Cartographer(hostMovie:MovieClip) {
 		super(ModInfo, hostMovie);
+
+		SystemsLoaded.ZoneIndex = false;
+
 		// Ingame debug menu registers variables that are initialized here, but not those initialized at class scope
 
 		InitializeConfig();
@@ -50,6 +53,10 @@ class efd.Cartographer.Cartographer extends Mod {
 		defaultPacks.push({ name : "LoreGlobal", load : true });
 		defaultPacks.push({ name : "LoreRegional", load : true });
 		defaultPacks.push({ name : "LoreBestiary", load : true });
+		if (_global.com.GameInterface.DressingRoom.IsEventActive(EventKrampus)) {
+			// Hacky access via _global so I can continue to avoid linking to SWL API
+			defaultPacks.push({ name : "EvKrampusnacht", load : true });
+		}
 		Config.NewSetting("OverlayPacks", defaultPacks);
 
 		Config.NewSetting("LayerSettings", new Object());
@@ -67,9 +74,21 @@ class efd.Cartographer.Cartographer extends Mod {
 			if (packList[i].load) { OverlayList.push(packList[i].name); }
 		}
 		TraceMsg("OverlayPacks to load: " + (OverlayList.length));
-		OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack));
+		if (SystemsLoaded.LocalizedText) {
+			// Overlay loading additionally dependent on LocaleManager being initialized
+			OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack));
+		}
 
 		super.ConfigLoaded();
+	}
+
+	private function StringsLoaded(success:Boolean):Void {
+		if (success && SystemsLoaded.Config) {
+			// Overlay loading additionally dependent on Config being initialized
+			OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack));
+		}
+
+		super.StringsLoaded(success);
 	}
 
 	private function ResetConfig(dv:DistributedValue):Void {
@@ -97,6 +116,8 @@ class efd.Cartographer.Cartographer extends Mod {
 			}
 			delete ZoneIndexLoader;
 			TraceMsg("Zone index loaded");
+			SystemsLoaded.ZoneIndex = true;
+			CheckLoadComplete();
 		} else {
 			ErrorMsg("Unable to load zone index");
 		}
@@ -128,6 +149,7 @@ class efd.Cartographer.Cartographer extends Mod {
 		} else {
 			delete OverlayList;
 			delete OverlayLoader;
+			CleanupLayers();
 			TraceMsg("Waypoints loaded");
 		}
 	}
@@ -146,6 +168,28 @@ class efd.Cartographer.Cartographer extends Mod {
 			}
 		}
 		return entries;
+	}
+
+	// Remove empty layers after load
+	//   Can be caused by removing a particular file from the loading sequence
+	private function CleanupLayers():Void {
+		var removed:Number = 0;
+		var settings:Object = Config.GetValue("LayerSettings");
+		for (var i:Number = 0; i < LayerDataList.length; ++i) {
+			LayerDataList[i].Depth -= removed;
+			if (LayerDataList[i].IsEmpty) {
+				settings[LayerDataList[i].Layer] = undefined;
+				// Shuffle the front up to avoid removal during iteration
+				for (var j:Number = i; j > 0; --j) {
+					LayerDataList[j] = LayerDataList[j-1];
+				}
+				++removed;
+			}
+		}
+		if (removed > 0) {
+			LayerDataList.splice(0, removed);
+			Config.SetValue("LayerSettings", settings);
+		}
 	}
 
 	/// Mod framework extensions and overrides
@@ -186,4 +230,7 @@ class efd.Cartographer.Cartographer extends Mod {
 	private var OverlayList:Array;
 	private var OverlayLoader:XML;
 	private var LayerDataList:Array; // Array of LayerData objects
+
+	private static var EventSamhain:Number = 1;
+	private static var EventKrampus:Number = 2;
 }
