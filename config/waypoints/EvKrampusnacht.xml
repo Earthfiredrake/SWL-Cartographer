@@ -22,6 +22,12 @@
 	</Section>
 	<Section> <!-- Krampus spawn points -->
 		<Section> <!-- KM -->
+			<Krampus zone="3030" x="57" y="642">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3030" x="61" y="45" z="154">
 				<Name rdb="id=33739 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -34,7 +40,31 @@
 					<Param rdb="id=8396923 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3030" x="91" y="835">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3030" x="120" y="585" z="158">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3030" x="134" y="820">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3030" x="145" y="558">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3030" x="189" y="746">
 				<Name rdb="id=33739 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396923 category=50200" />
@@ -82,19 +112,37 @@
 					<Param rdb="id=8396923 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3030" x="316" y="291">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3030" x="316" y="878" z="146">
 				<Name rdb="id=33739 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396923 category=50200" />
 				</Note>
 			</Krampus>
-			<Krampus zone="3030" x="337" y="819" z="140">
+			<Krampus zone="3030" x="326" y="310">
 				<Name rdb="id=33739 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396923 category=50200" />
 				</Note>
 			</Krampus>
-			<Krampus zone="3030" x="372" y="368" z="138">
+			<Krampus zone="3030" x="328" y="837">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3030" x="332" y="349">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3030" x="337" y="819" z="140">
 				<Name rdb="id=33739 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396923 category=50200" />
@@ -112,6 +160,24 @@
 					<Param rdb="id=8396923 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3030" x="372" y="368" z="138">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3030" x="387" y="340">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3030" x="404" y="795">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3030" x="411" y="803" z="142">
 				<Name rdb="id=33739 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -119,6 +185,18 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3030" x="414" y="394" z="138">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3030" x="420" y="838">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3030" x="427" y="684">
 				<Name rdb="id=33739 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396923 category=50200" />
@@ -148,6 +226,12 @@
 					<Param rdb="id=8396923 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3030" x="502" y="835">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3030" x="507" y="689" z="139">
 				<Name rdb="id=33739 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -161,6 +245,12 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3030" x="520" y="133" z="135">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3030" x="536" y="779">
 				<Name rdb="id=33739 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396923 category=50200" />
@@ -184,7 +274,19 @@
 					<Param rdb="id=8396923 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3030" x="564" y="738">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3030" x="578" y="685">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3030" x="586" y="774">
 				<Name rdb="id=33739 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396923 category=50200" />
@@ -221,6 +323,12 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3030" x="657" y="632" z="137">
+				<Name rdb="id=33739 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396923 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3030" x="686" y="682">
 				<Name rdb="id=33739 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396923 category=50200" />
@@ -276,6 +384,24 @@
 					<Param rdb="id=8396925 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3040" x="105" y="901">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3040" x="122" y="94">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3040" x="124" y="863">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3040" x="125" y="920">
 				<Name rdb="id=33738 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -306,6 +432,12 @@
 					<Param rdb="id=8396925 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3040" x="243" y="587">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3040" x="247" y="277" z="143">
 				<Name rdb="id=33738 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -325,6 +457,12 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3040" x="312" y="207" z="143">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3040" x="316" y="634">
 				<Name rdb="id=33738 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396925 category=50200" />
@@ -354,6 +492,12 @@
 					<Param rdb="id=8396925 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3040" x="367" y="776">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3040" x="398" y="761" z="143">
 				<Name rdb="id=33738 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -373,6 +517,12 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3040" x="428" y="360" z="144">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3040" x="431" y="518">
 				<Name rdb="id=33738 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396925 category=50200" />
@@ -408,13 +558,13 @@
 					<Param rdb="id=8396925 category=50200" />
 				</Note>
 			</Krampus>
-			<Krampus zone="3040" x="492" y="328" z="146">
+			<Krampus zone="3040" x="482" y="325">
 				<Name rdb="id=33738 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396925 category=50200" />
 				</Note>
 			</Krampus>
-			<Krampus zone="3040" x="482" y="325">
+			<Krampus zone="3040" x="492" y="328" z="146">
 				<Name rdb="id=33738 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396925 category=50200" />
@@ -444,6 +594,12 @@
 					<Param rdb="id=8396925 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3040" x="567" y="141">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3040" x="590" y="708" z="144">
 				<Name rdb="id=33738 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -462,7 +618,19 @@
 					<Param rdb="id=8396925 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3040" x="644" y="142">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3040" x="656" y="955" z="144">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3040" x="668" y="914">
 				<Name rdb="id=33738 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396925 category=50200" />
@@ -474,7 +642,19 @@
 					<Param rdb="id=8396925 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3040" x="711" y="901">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3040" x="719" y="292">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3040" x="723" y="243">
 				<Name rdb="id=33738 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396925 category=50200" />
@@ -499,6 +679,30 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3040" x="773" y="288">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3040" x="773" y="355">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3040" x="789" y="299">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3040" x="802" y="353">
+				<Name rdb="id=33738 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396925 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3040" x="871" y="327">
 				<Name rdb="id=33738 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396925 category=50200" />
@@ -560,6 +764,12 @@
 					<Param rdb="id=8396935 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3050" x="304" y="655">
+				<Name rdb="id=33737 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396935 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3050" x="338" y="322">
 				<Name rdb="id=33737 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -615,6 +825,12 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3050" x="419" y="557">
+				<Name rdb="id=33737 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396935 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3050" x="443" y="875">
 				<Name rdb="id=33737 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396935 category=50200" />
@@ -716,7 +932,19 @@
 					<Param rdb="id=8396935 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3050" x="735" y="663">
+				<Name rdb="id=33737 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396935 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3050" x="736" y="409" z="166">
+				<Name rdb="id=33737 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396935 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3050" x="761" y="893">
 				<Name rdb="id=33737 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396935 category=50200" />
@@ -735,6 +963,12 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3050" x="835" y="777">
+				<Name rdb="id=33737 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396935 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3050" x="837" y="296">
 				<Name rdb="id=33737 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396935 category=50200" />
@@ -1340,6 +1574,30 @@
 					<Param rdb="id=8396924 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3120" x="508" y="1086">
+				<Name rdb="id=33722 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396924 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3120" x="539" y="842">
+				<Name rdb="id=33722 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396924 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3120" x="539" y="1067">
+				<Name rdb="id=33722 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396924 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3120" x="562" y="1124">
+				<Name rdb="id=33722 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396924 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3120" x="565" y="467">
 				<Name rdb="id=33722 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -1359,6 +1617,12 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3120" x="618" y="687" z="101">
+				<Name rdb="id=33722 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396924 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3120" x="659" y="677">
 				<Name rdb="id=33722 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396924 category=50200" />
@@ -1412,6 +1676,12 @@
 					<Param rdb="id=8396924 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3120" x="734" y="642">
+				<Name rdb="id=33722 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396924 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3120" x="775" y="986" z="102">
 				<Name rdb="id=33722 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -1431,6 +1701,12 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3120" x="795" y="971">
+				<Name rdb="id=33722 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396924 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3120" x="805" y="508">
 				<Name rdb="id=33722 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396924 category=50200" />
@@ -1514,6 +1790,12 @@
 					<Param rdb="id=8396924 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3120" x="985" y="1126">
+				<Name rdb="id=33722 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396924 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3120" x="992" y="1143">
 				<Name rdb="id=33722 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -1533,6 +1815,12 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3120" x="1059" y="604" z="67">
+				<Name rdb="id=33722 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396924 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3120" x="1059" y="1076">
 				<Name rdb="id=33722 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396924 category=50200" />
@@ -1612,6 +1900,12 @@
 					<Param rdb="id=8397024 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3130" x="296" y="825">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3130" x="315" y="827" z="24">
 				<Name rdb="id=33741 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -1619,6 +1913,12 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3130" x="332" y="941">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3130" x="341" y="505">
 				<Name rdb="id=33741 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8397024 category=50200" />
@@ -1642,6 +1942,18 @@
 					<Param rdb="id=8397024 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3130" x="409" y="893">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3130" x="411" y="723">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3130" x="433" y="918" z="12">
 				<Name rdb="id=33741 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -1654,7 +1966,19 @@
 					<Param rdb="id=8397024 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3130" x="484" y="602">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3130" x="484" y="889" z="12">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3130" x="550" y="620">
 				<Name rdb="id=33741 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8397024 category=50200" />
@@ -1696,7 +2020,31 @@
 					<Param rdb="id=8397024 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3130" x="636" y="404">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3130" x="636" y="828">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3130" x="691" y="716">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3130" x="701" y="713" z="25">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3130" x="706" y="1037">
 				<Name rdb="id=33741 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8397024 category=50200" />
@@ -1726,6 +2074,18 @@
 					<Param rdb="id=8397024 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3130" x="780" y="535">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3130" x="780" y="633">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3130" x="782" y="937" z="31">
 				<Name rdb="id=33741 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -1744,7 +2104,19 @@
 					<Param rdb="id=8397024 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3130" x="791" y="596">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3130" x="795" y="611" z="47">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3130" x="797" y="723">
 				<Name rdb="id=33741 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8397024 category=50200" />
@@ -1792,6 +2164,18 @@
 					<Param rdb="id=8397024 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3130" x="854" y="1118">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3130" x="866" y="1034">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3130" x="872" y="918" z="34">
 				<Name rdb="id=33741 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -1799,6 +2183,12 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3130" x="876" y="849" z="32">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3130" x="876" y="970">
 				<Name rdb="id=33741 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8397024 category=50200" />
@@ -1841,6 +2231,12 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3130" x="984" y="776" z="31">
+				<Name rdb="id=33741 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8397024 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3130" x="993" y="1219">
 				<Name rdb="id=33741 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8397024 category=50200" />
@@ -1890,6 +2286,12 @@
 					<Param rdb="id=8396926 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3140" x="405" y="1219">
+				<Name rdb="id=33742 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396926 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3140" x="426" y="665">
 				<Name rdb="id=33742 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -1902,7 +2304,19 @@
 					<Param rdb="id=8396926 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3140" x="508" y="415">
+				<Name rdb="id=33742 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396926 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3140" x="518" y="1189">
+				<Name rdb="id=33742 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396926 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3140" x="540" y="1000">
 				<Name rdb="id=33742 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396926 category=50200" />
@@ -1915,6 +2329,18 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3140" x="612" y="642" z="61">
+				<Name rdb="id=33742 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396926 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3140" x="614" y="871">
+				<Name rdb="id=33742 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396926 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3140" x="627" y="1093">
 				<Name rdb="id=33742 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396926 category=50200" />
@@ -1969,6 +2395,18 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3140" x="698" y="941">
+				<Name rdb="id=33742 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396926 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3140" x="700" y="1123">
+				<Name rdb="id=33742 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396926 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3140" x="717" y="889">
 				<Name rdb="id=33742 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396926 category=50200" />
@@ -2052,6 +2490,24 @@
 					<Param rdb="id=8396926 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3140" x="959" y="1003">
+				<Name rdb="id=33742 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396926 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3140" x="966" y="852">
+				<Name rdb="id=33742 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396926 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3140" x="970" y="916">
+				<Name rdb="id=33742 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396926 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3140" x="972" y="578">
 				<Name rdb="id=33742 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -2109,12 +2565,3 @@
 		</Section>
 	</Section>
 </OverlayPack>
-
-
-
-
-
-
-
-
-
