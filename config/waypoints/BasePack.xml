@@ -117,17 +117,11 @@
 		<Vendor zone="5060" x="531" y="187" z="397">
 			<Name rdb="id=36855 category=51000" />
 		</Vendor>
-		<Vendor zone="5060" x="538" y="165" z="396">
+		<Vendor zone="5060" x="537" y="166" z="396">
 			<Name rdb="id=35952 category=51000" />
 		</Vendor>
-		<Vendor zone="5060" x="537" y="166" z="396">
-			<Name rdb="id=36223 category=51000" />
-		</Vendor>
 		<Vendor zone="5060" x="536" y="167" z="396">
-			<Name rdb="id=36453 category=51000" />
-		</Vendor>
-		<Vendor zone="5060" x="536" y="169" z="396">
-			<Name rdb="id=36579 category=51000" />
+			<Name rdb="id=36223 category=51000" />
 		</Vendor>
 		<Vendor zone="5060" x="550" y="150" z="396">
 			<Name rdb="id=36852 category=51000" />
