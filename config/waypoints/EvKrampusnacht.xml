@@ -17,7 +17,8 @@
 		<Lore zone="3100" x="662" y="579" z="54" loreID="6701" />
 		<Lore zone="3120" x="843" y="1194" z="124" loreID="6702" />
 		<Lore zone="3130" x="891" y="759" z="31" loreID="6703" />
-		<!-- 8-9 -->
+		<Lore zone="6700" x="247" y="222" z="27" loreID="6704" />
+		<Lore zone="6700" x="257" y="293" z="25" loreID="6705" />
 		<Lore zone="3140" x="473" y="1090" z="77" loreID="6706" />
 	</Section>
 	<Section> <!-- Krampus spawn points -->
@@ -1486,6 +1487,12 @@
 					<Param rdb="id=8396934 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3090" x="801" y="548" z="49">
+				<Name rdb="id=33736 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396934 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3090" x="822" y="1072">
 				<Name rdb="id=33736 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -1730,7 +1737,7 @@
 			</Krampus>
 			<Krampus zone="3100" x="376" y="138" z="87">
 				<Name rdb="id=33735 category=51000" />
-				<Note en="Drops: %1%" fmt="true">
+				<Note en="Drops: %1%; Runs through cliff" fmt="true">
 					<Param rdb="id=8396936 category=50200" />
 				</Note>
 			</Krampus>
@@ -2688,6 +2695,12 @@
 					<Param rdb="id=8396926 category=50200" />
 				</Note>
 			</Krampus>
+			<Krampus zone="3140" x="349" y="652" z="40">
+				<Name rdb="id=33742 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396926 category=50200" />
+				</Note>
+			</Krampus>
 			<Krampus zone="3140" x="356" y="727">
 				<Name rdb="id=33742 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -2743,6 +2756,12 @@
 				</Note>
 			</Krampus>
 			<Krampus zone="3140" x="542" y="702" z="46">
+				<Name rdb="id=33742 category=51000" />
+				<Note en="Drops: %1%" fmt="true">
+					<Param rdb="id=8396926 category=50200" />
+				</Note>
+			</Krampus>
+			<Krampus zone="3140" x="551" y="777" z="64">
 				<Name rdb="id=33742 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
 					<Param rdb="id=8396926 category=50200" />
