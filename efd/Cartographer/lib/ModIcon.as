@@ -1,4 +1,4 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake (Peloprata)
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -22,37 +22,110 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 	/// Initialization
 	public function ModIcon() {
 		super();
-		_x = 10; _y = 80;
-		filters = [new DropShadowFilter(50, 1, 0, 0.8, 8, 8, 1, 3, false, false, false)];
 
-		Config.NewSetting("IconPosition", new Point(_x, _y));
+		// Get a unique ID for default layout calculations
+		// Note: System is not without flaws, subsequently added mods may just rearrange the IDs and stomp anyway
+		IconCountDV = DistributedValue.Create(Mod.DVPrefix + "NextIconID");
+		GetID();
+
+		filters = [ShadowFilter];
+
+		// These need to be set with *some* default, so that any saved value is loaded
+		// Actual values/defaults will be sorted out after the load, depending on TopbarIntegration and VTIO states
+		Config.NewSetting("IconPosition", new Point(-1, -1));
 		Config.NewSetting("IconScale", 100);
-		Config.SignalValueChanged.Connect(ConfigChanged, this);
+		// Defer the hookup of the on-change events until after loading is complete, to avoid accidental topbar changes
+		if (Config.IsLoaded) { ConfigLoaded(); }
+		else { Config.SignalConfigLoaded.Connect(ConfigLoaded, this); }
 
 		GlobalSignal.SignalSetGUIEditMode.Connect(ManageGEM, this);
 		SignalGeometryChanged = new Signal();
 
-		// UpdateState customization won't be completed anyway
-		// If custom state could persist between sessions, the mod should confirm it on load
-		UpdateState();
+		ResolutionDV = DistributedValue.Create("DisplayResolution");
+		TopbarLayoutDV = DistributedValue.Create("TopMenuAlignment");
+		ResolutionDV.SignalChanged.Connect(SetTopbarPositions, this);
+		TopbarLayoutDV.SignalChanged.Connect(SetTopbarPositions, this);
 
 		TraceMsg("Icon created");
 	}
 
-	// Reset this icon in preperation for topbar integration
-	// Topbar handles its own layout and effects so remove the defaults
-	public function ConfigureForTopbar():Void {
-		IsTopbarIcon = true;
-		_x = 0; _y = 0;
-		filters = [];
-		// Settings are not used as long as topbar is in use, no need to save them
-		Config.DeleteSetting("IconPosition");
-		Config.DeleteSetting("IconScale");
-		GlobalSignal.SignalSetGUIEditMode.Disconnect(ManageGEM, this);
+	private function VerifyIDCount(dv:DistributedValue):Void {
+		// If ID already in use, push to next value
+		if (dv.GetValue() == IconID) { dv.SetValue(IconID + 1); }
 	}
 
-	// Copy addtional properties and functions to the topbar's copy of the icon
-	public function CopyToTopbar(copy:ModIcon):ModIcon {
+	private function GetID():Void {
+		if ( IconID != -1) { return; } // Icon already has ID value
+		IconID = IconCountDV.GetValue();
+		if (!IconID) { IconID = 0; } // Handle the very first ID of a session
+		IconCountDV.SetValue(IconID + 1);
+		IconCountDV.SignalChanged.Connect(VerifyIDCount, this);
+	}
+
+	// Free the ID when this icon no longer requires it (such as when unloaded)
+	public function FreeID():Void {
+		if ( IconID == -1) { return; } // IconID not assigned
+		IconCountDV.SignalChanged.Disconnect(VerifyIDCount, this);
+		// Next free ID is this one, unless there's already a lower one
+		if (IconCountDV.GetValue() > IconID) { IconCountDV.SetValue(IconID); }
+		IconID = -1;
+	}
+
+	// Apply settings for manual integration with the default topbar
+	// Locks scale and Y coordinate
+	public function ConfigureForDefault():Void {
+		OnBaseTopbar = true;
+		SetTopbarPositions();
+		// TODO: Calculate this position, also consider that the topbar may be positioned at bottom (DV: TopMenuAlignment == 1)
+		// TODO: See if I can actually store arbitrary types in Config (only need the X coord here)
+		Config.DeleteSetting("IconScale");
+	}
+
+	private function SetTopbarPositions():Void {
+		if (OnBaseTopbar) {
+			var resolution:Point = ResolutionDV.GetValue();
+			DefaultTopbarX = (resolution.x / 2 + 110 + IconID * 20);
+			TopbarY = TopbarLayoutDV.GetValue() ? (resolution.y - 25) : 2;
+			Config.ChangeDefault("IconPosition", DefaultTopbarX);
+			_y = TopbarY;
+			var iconScale:Number = 56.25; // HACK: Based on 32x32 initial and 18x18 target icon sizes
+			_xscale = iconScale;
+			_yscale = iconScale;
+		}
+	}
+
+	// Toggles VTIO mode configuration
+	// Note: Not an entirely inverse function, most importantly Config settings are not restored (in the situation this is disabled they need to be reset unconditionally)
+	public function get VTIOMode():Boolean { return _VTIOMode; } // Can't do private properties... not that "private" really means much in flash anyway
+	public function set VTIOMode(value:Boolean) {
+		if (value != _VTIOMode) {
+			_VTIOMode = value;
+			if (value) {
+				// Reset this icon in preperation for VTIO integration
+				// VTIO mods handle own layout and effects
+				FreeID();
+				OnBaseTopbar = false;
+				_x = 0; _y = 0;
+				filters = [];
+				// Settings are not used as long as topbar is in use, no need to save them
+				Config.DeleteSetting("IconPosition");
+				Config.DeleteSetting("IconScale");
+				GlobalSignal.SignalSetGUIEditMode.Disconnect(ManageGEM, this);
+			} else {
+				// Restores the state
+				GetID();
+				filters = [ShadowFilter];
+				// Note: Settings are not restored here,
+				GlobalSignal.SignalSetGUIEditMode.Connect(ManageGEM, this);
+				_visible = true; // If cloned, will have been made invisible
+				Refresh();
+			}
+		}
+	}
+
+	// Copy addtional properties and functions to the VTIO topbar's copy of the icon
+	// Note: ModFolder does not create a copy, so this is not used for that VTIO mod
+	public function CopyToTopbar(copy:ModIcon):Void {
 		// Topbar copies the clip, so all the basic movie clip stuff is moved over by itself
 		//   - The current frame is reset to 0 though
 		// Topbar handles all layout so GEM system is not needed
@@ -67,48 +140,116 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 		copy.ModName = ModName;
 		copy.DevName = DevName;
 		copy.Config = Config;
-		copy.IsTopbarIcon = true;
 		copy.Tooltip = Tooltip;
 
 		// Required functions (and function variables)
 		copy.TraceMsg = TraceMsg;
-		copy.UpdateState = UpdateState;
+		copy.Refresh = Refresh;
+		copy.GetFrame = GetFrame;
 		copy.GetTooltipData = GetTooltipData;
 		copy.OpenTooltip = OpenTooltip;
-		copy.RefreshTooltip = RefreshTooltip;
 		copy.CloseTooltip = CloseTooltip;
 		copy.LeftMouseInfo = LeftMouseInfo;
 		copy.RightMouseInfo = RightMouseInfo;
 		copy.ExtraTooltipInfo = ExtraTooltipInfo;
 		copy.onReleaseOutsideAux = onReleaseOutsideAux; // Not copied by either Meeehr or Viper
 
-		Config.SignalValueChanged.Connect(ConfigChanged, copy);
-
-		copy.gotoAndStop(_currentframe); // Match the current icons
-		return copy;
+		// Minimalist config changed, doesn't handle layout messages and has different behaviour on TopbarIntegration
+		Config.SignalValueChanged.Connect(CloneConfigChanged, copy);
 	}
 
 	/// Config and state changes
-	private function ConfigChanged(setting:String, newValue, oldValue):Void {
-		if (setting == "Enabled") { UpdateState(); }
-		if (!IsTopbarIcon) {
-			switch (setting) {
-				case "IconPosition":
-					_x = newValue.x;
-					_y = newValue.y;
-					break;
-				case "IconScale":
-					UpdateScale();
-					break;
-				default: break;
+	private function ConfigLoaded():Void {
+		// Fires after Mod's version, timing relative to LoadComplete subject to debate
+		Config.SignalValueChanged.Connect(ConfigChanged, this);
+
+		// Set defaults to reflect UseTopbar status
+		// VTIO may not yet be active, and can not be assumed
+		if (Config.GetValue("TopbarIntegration", false)) {
+			ConfigureForDefault();
+		} else {
+			Config.ChangeDefault("IconPosition", new Point(10, 80 + IconID * 40));
+			UpdateScale();
+		}
+
+		// Update to reflect loaded values
+		Refresh();
+		if (!VTIOMode) {
+			var pos = Config.GetValue("IconPosition");
+			if (pos.equals(new Point(-1, -1))) {
+				// No value was loaded (to replace invalid initial default)
+				// Either this is a first load or VTIO has been (but may no longer be) active
+				Config.ResetValue("IconPosition"); // Will update to default position via ConfigChanged callback
+			} else {
+				if (OnBaseTopbar) {
+					_x = pos;
+				} else {
+					_x = pos.x;
+					_y = pos.y;
+				}
 			}
 		}
 	}
 
-	public function UpdateState():Void {
-		gotoAndStop(Config.GetValue("Enabled") ? "active" : "inactive");
-		RefreshTooltip();
+	private function ConfigChanged(setting:String, newValue, oldValue):Void {
+		switch (setting) {
+			case "Enabled": { Refresh(); break; }
+			case "IconPosition": {
+				if (OnBaseTopbar) {	_x = newValue; }
+				else {
+					_x = newValue.x;
+					_y = newValue.y;
+				}
+				break;
+			}
+			case "IconScale": {	UpdateScale(); break; }
+			case "TopbarIntegration": {
+				if (newValue) {
+					// Mod will have already responded, so will already be registered with VTIO if possible
+					if (!VTIOMode) {
+						ConfigureForDefault();
+						Config.ResetValue("IconPosition");
+						if (GemManager != null) {
+							GemManager.lockAxis(2);
+							GemManager.removeEventListener("scrollWheel", this, "ChangeScale");
+							SignalGeometryChanged.Emit();
+						}
+					} else {
+						if (GemManager != null) { ManageGEM(false); }
+					}
+				} else {
+					VTIOMode = false;
+					OnBaseTopbar = false;
+					if (oldValue != undefined) { // DEPRECATED(v1.0.0): Temporary upgrade support (use of undefined)
+						Config.NewSetting("IconScale", 100);
+						Config.NewSetting("IconPosition", new Point(10, 80 + IconID * 40));
+					}
+					if (GemManager != null) {
+						GemManager.lockAxis(0);
+						GemManager.addEventListener("scrollWheel", this, "ChangeScale");
+						SignalGeometryChanged.Emit();
+					}
+				}
+				break;
+			}
+		}
 	}
+
+	// Minimalist ConfigChanged for the cloned copy created by VTIO/Meeehr
+	// This is mostly to split off TopbarIntegration behaviour
+	private function CloneConfigChanged(setting:String, newValue, oldValue):Void {
+		if (setting == "Enabled") { Refresh(); }
+		if (setting == "TopbarIntegration") { _visible = newValue; } // Can't actually remove the cloned icon safely, so just hide/reveal it for now
+	}
+
+	// Trigger a re-evaluation of the current icon frame and reloads the tooltip if open
+	public function Refresh():Void {
+		gotoAndStop(GetFrame());
+		if (Tooltip) { OpenTooltip(); }
+	}
+
+	// Default icon frame selector, may be overriden via init object
+	private function GetFrame():String { return Config.GetValue("Enabled") ? "active" : "inactive"; }
 
 	/// Layout and GEM handling
 	private function UpdateScale():Void {
@@ -116,19 +257,24 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 		_yscale = Config.GetValue("IconScale");
 	}
 
-	private function ManageGEM(unlocked:Boolean):Void {
-		if (unlocked && !GemManager) {
+	private function ManageGEM(unlock:Boolean):Void {
+		if (unlock && !GemManager) {
 			GemManager = GemController.create("GuiEditModeInterface", HostMovie, HostMovie.getNextHighestDepth(), this);
-			GemManager.addEventListener( "scrollWheel", this, "ChangeScale" );
+			GemManager.lockAxis(0);
+			if (OnBaseTopbar) {	GemManager.lockAxis(2); }
+			else { GemManager.addEventListener( "scrollWheel", this, "ChangeScale" ); }
 			GemManager.addEventListener( "endDrag", this, "ChangePosition" );
 		}
-		if (!unlocked) {
+		if (!unlock) {
 			GemManager.removeMovieClip();
 			GemManager = null;
 		}
 	}
 
-	private function ChangePosition(event:Object):Void { Config.SetValue("IconPosition", new Point(_x, _y)); }
+	private function ChangePosition(event:Object):Void {
+		Config.SetValue("IconPosition", OnBaseTopbar ? _x : new Point(_x, _y));
+		SignalGeometryChanged.Emit();
+	}
 
 	private function ChangeScale(event:Object): Void {
 		var newScale:Number = Config.GetValue("IconScale") + event.delta * 5;
@@ -140,15 +286,9 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 	/// Input event handlers
 	private function onMousePress(buttonID:Number):Void {
 		switch(buttonID) {
-			case 1: // Left mouse button
-				LeftMouseInfo.Action();
-				break;
-			case 2: // Right mouse button
-				RightMouseInfo.Action();
-				break;
-			default:
-				TraceMsg("Unexpected mouse button press: " + buttonID);
-				break;
+			case 1: { LeftMouseInfo.Action(); break; }
+			case 2: { RightMouseInfo.Action(); break; }
+			default: { TraceMsg("Unexpected mouse button press: " + buttonID); }
 		}
 	}
 
@@ -183,7 +323,7 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 		if (RightMouseInfo) { tooltipStrings.push(LocaleManager.FormatString("GUI", "TooltipRight", RightMouseInfo.Tooltip())); }
 		var extra:String = ExtraTooltipInfo();
 		if (extra) { tooltipStrings.push(extra); }
-		data.AddDescription("<font " + TooltipTextFont + ">" + tooltipStrings.join('\n') + "</font>");
+		if (tooltipStrings.length > 0) { data.AddDescription("<font " + TooltipTextFont + ">" + tooltipStrings.join('\n') + "</font>"); }
 
 		return data;
 	}
@@ -195,10 +335,6 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 			delay = 0;
 		}
 		Tooltip = TooltipManager.GetInstance().ShowTooltip(undefined, TooltipInterface.e_OrientationVertical, delay, GetTooltipData());
-	}
-
-	public function RefreshTooltip():Void {
-		if (Tooltip) { OpenTooltip(); }
 	}
 
 	private function CloseTooltip():Void {
@@ -214,6 +350,9 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 	}
 
 	/// Variables
+	private static var ShadowFilter:DropShadowFilter =
+		new DropShadowFilter(50, 1, 0, 0.8, 8, 8, 1, 3, false, false, false);
+
 	private static var TooltipPadding = 4;
 	private static var TooltipWidth = 150;
 	private static var TooltipTitleFont:String = "size='13'";
@@ -225,12 +364,22 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 	private var DevName:String;
 
 	private var Config:ConfigWrapper;
-	private var IsTopbarIcon:Boolean = false;
+	private var _VTIOMode:Boolean = false;
+
+	private var Tooltip:TooltipInterface;
 
 	// GUI layout variables do not need to be copied for topbar icon
+	private var OnBaseTopbar:Boolean = false;
 	private var HostMovie:MovieClip;
 	private var GemManager:GemController;
 	private var SignalGeometryChanged:Signal;
 
-	private var Tooltip:TooltipInterface;
+	private var ResolutionDV:DistributedValue;
+	private var TopbarLayoutDV:DistributedValue;
+	private var DefaultTopbarX:Number;
+	private var TopbarY:Number;
+
+	// Used to adjust default icon locations so they no longer stack up awkwardly
+	private var IconCountDV:DistributedValue;
+	private var IconID:Number = -1;
 }

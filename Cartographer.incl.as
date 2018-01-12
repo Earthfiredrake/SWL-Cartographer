@@ -1,4 +1,4 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake (Peloprata)
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -29,4 +29,7 @@ function OnModuleDeactivated():Archive { return efdCartographer.GameToggleModEna
 
 // Called just before the game unloads the clip
 // - When the user logs out, or returns to character selection (unconfirmed)
-function OnUnload():Void { delete efdCartographer; } // May as well be tidy
+function OnUnload():Void {
+	efdCartographer.OnUnload();
+	delete efdCartographer; 
+}

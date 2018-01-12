@@ -15,13 +15,13 @@
 <StringCategories>
 	<General> <!-- Used for standard messages created as part of my mod framework -->
 		<Installed en="Has been installed" />
-		<Update	en="Updated to v%1%" /> <!-- %1% = ModVersion -->
+		<Update en="Updated to v%1%" /> <!-- %1% = ModVersion -->
 		<Revert en="Reverted to v%1%" /> <!-- %1% = ModVersion -->
 		<NoMigration en="Setting migration from %1% is not possible, settings will be reset to defaults." /> <!-- %1% = PriorVersion -->
 		<ReviewSettings en="Please take a moment to review the settings" />
 		<ModMessagePrefix en="&lt;font color='#00FFFF'&gt;%1%&lt;/font&gt;: " /> <!-- %1% = ModName; Yeah it's ugly, xml is not great for storing html -->
 		<SubsystemMessagePrefix	en="%1% - " /> <!-- %1% = Subsystem name -->
-		<!-- Message format strings recieve the following values in standard positions -->
+		<!-- Message format strings receive the following values in standard positions -->
 		<!-- %1% = Message content -->
 		<!-- %2% = ModMessagePrefix (as above or "" if not provided) -->
 		<!-- %3% = SubsystemMessagePrefix (as above or "" if not provided) -->
@@ -31,6 +31,8 @@
 		 <!-- Used by console style mods that lack icon notification -->
 		<Enabled en="Has been enabled" />
 		<Disabled en="Has been disabled" />
+		<!-- Warning for disabling VTIO topbar integration -->
+		<RemoveVTIO en="The topbar mod does not support removal of registered mods at runtime. An attempt to fake it has been made, but may result in unexpected behaviour. It is strongly recommended to properly finish the process with '/reloadui'." />
 	</General>
 	<GUI> <!-- Used for all GUI strings. GUI may not expand nicely for longer text -->
 		<ConfigWindowTitle en="%1% Settings" /> <!-- %1% = ModName -->

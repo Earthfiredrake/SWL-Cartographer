@@ -1,4 +1,4 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake (Peloprata)
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -21,30 +21,46 @@ import efd.Cartographer.lib.ConfigWrapper;
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.ModIcon;
 
-// Base class with general mod utility functions
-// The framework reserves the following Config setting names for internal use:
-//   "Installed": Used to trigger first run events
-//   "Version": Used to detect upgrades (and rollbacks, but that's of limited use)
-//   "Enabled": Provides a "soft" disable for the user that doesn't interfere with loading on restart (the config based toggle var does prevent loading if false)
-//   "IconPosition": Only used if topbar is not handling icon layout
-//   "IconScale": Only used if topbar is not handling icon layout
-// The framework reserves the following DistributedValue names (where [pfx] is a developer specific prefix (I use 'efd'), and [name] is the mod name):
+// Mod Framework v1.1.0
+// See ModInfo.LibUpgrades for upgrade requirements
+
+// The framework reserves the following DistributedValue names (where [pfx] is a developer specific prefix (I use 'efd'), and [Name] is the mod name):
 //   "[pfx][Name]Loaded": Set to true when the mod is fully loaded and initialized
-//   "[pfx][Name]Enabled": If the mod is a reactive mod which can be disabled by the user
-//   "[pfx][Name]ResetConfig": Toggle used to reset the mod config to default states from chat
-//   "VTIO_IsLoaded", "meeehrUI_IsLoaded" and "VTIO_RegisterAddon": Provide VTIO/Meeehr compatible topbar integration
-// If an interace or config window is provided, the following settings and DVs are defined:
-//   "[Interface|Config]WindowPostion": Config setting
-//   "[pfx]Show[Name][ConfigUI|Interface]": Toggle DV
+//   "[pfx][Name]Enabled": Exists for e_ModType_Reactive mods; "Soft" disable that doesn't prevent loading on restart (Modules.xml toggle var does); Corresponds to "Enabled" config setting
+//   "[pfx][Name]ResetConfig": Trigger to reset settings to defaults from chat
+//   "[pfx]Show[Name]Interface": Exists for e_ModType_Interface mods; Toggle mod interface window
+//   "[pfx]Show[Name]ConfigUI": Exists if GuiFlag ef_ModGui_NoConfigWindow is not set; Toggle mod settings window
+//   "[pfx]NextIconID": Used to create unique offsets on default icon placements, hopefully reducing icon pileups when using multiple [pfx] mods
+//   "[pfx]DebugMode": Toggles debug trace messages for all [pfx] mods, may also enable other debug/dev tools
+//   "VTIO_IsLoaded", "VTIO_RegisterAddon": VTIO hooks, use of these for other reasons may cause problems with many mods
+
+// Base for mod classes
+//   Handles initialization and general mod behaviours:
+//     Setting serialization and change notification (via ConfigWrapper)
+//     Versioning and upgrade detection
+//     Icon behaviour and topbar integration (via ModIcon)
+//     Handling interface and configuration windows
+//     Xml datafile loader
+//     Standardized chat output
+//     Text localization and string file (via LocaleManager)
+//   Does not deal with the AutoReport subsystem, which can be optionally added from the subclass
+//   Subclass is responsible for:
+//     Initialization data
+//     Additional setting definitions
+//     Processing version upgrades
+//     Icon and window content (usually in .fla library under default names)
+//     Processing datafile content
+//     Doing something useful (or at least interesting)
 class efd.Cartographer.lib.Mod {
-	// Mod info flags for disabling certain gui elements
-	// Passed as GuiFlags member
+/// Initialization and Cleanup
+	// ModData flags for disabling certain gui elements (ModInfo.GuiFlags)
 	public static var ef_ModGui_NoIcon:Number = 1 << 0;
 	public static var ef_ModGui_NoConfigWindow:Number = 1 << 1;
 	public static var ef_ModGui_Console:Number = ef_ModGui_NoIcon | ef_ModGui_NoConfigWindow;
 	public static var ef_ModGui_NoTopbar:Number = 1 << 2;
 	public static var ef_ModGui_None:Number = (1 << 3) - 1;
 
+	// ModData enum describing basic mod behaviour (ModInfo.Type)
 	//   Mod provides a interface on request which does minimal background processing (ex: Fashionista, UC)
 	//   Standard icon behaviours are open the interface on left, advanced options menu on right
 	//   Not sure what this would look like as a console style mod... some sort of DV triggered effect I suppose
@@ -56,14 +72,12 @@ class efd.Cartographer.lib.Mod {
 	//   Topbar settings icon will open config window, or toggle state if no window is specified
 	public static var e_ModType_Reactive:Number = 2;
 
-	// The new archive loading scheme delays the loading of config settings until the activation stage
-	//   Config object definition can now be spread between the base and subclass constructors
-	// The modData object has the following fields:
+	// The ModInfo object has the following fields:
 	//   Name:String (required, placeholder default "Unnamed")
 	//     The name of the mod, for display and used to generate a variety of default identifiers
 	//   Version:String (required, placeholder default "0.0.0")
 	//     Current build version
-	//     Expects "#.#.#[.alpha|.beta]" format but does not verify
+	//     Expects "#.#.#[.alpha|.beta]" format (does not enforce, but may cause issues with upgrade system)
 	//   Type:e_ModType (optional, default e_ModType_Interface)
 	//     Values described above
 	//   ArchiveName (optional, default undefined (uses parameter passed by game))
@@ -71,32 +85,35 @@ class efd.Cartographer.lib.Mod {
 	//   MinUpgradableVersion:String (optional, default "0.0.0")
 	//     The earliest version from which the current build supports direct update with setting migration
 	//     If a prior version upgrades, settings will be reset to defaults to protect against invalid values
+	//   LibUpgrades:Array of {mod:VersionString, lib:VersionString} Objects (semi-optional, default undefined)
+	//	   Required if library version has changed since the MinUpgradableVersion of the mod
+	//     If library version has changed since the previous build:
+	//		 Mod version should be bumped (to trigger an update) and this array extended with the previous mod and framework versions (so the update includes the framework)
+	//     This will allow the framework to properly handle these infrequent updates
+	//     These only need to be retained back to the MinUpgradableVersion
+	//     Default behaviour assumes the current version has been in use as far back as upgrades are permitted
 	//   GuiFlags:ef_ModGui (optional, default undefined)
 	//     Set flags to disable certain gui elements. Valid flags are:
-	//       ef_ModGui_NoIcon: Display no mod or topbar icon
+	//       ef_ModGui_NoIcon: Display no icon (may still integrate with VTIO topbar to appear on mod list)
 	//       ef_ModGui_NoConfigWindow: Do not use a config window,
-	//         topbar integration will use tne ModEnabledDV as config target
+	//         Topbar integration will use tne ModEnabledDV as config target
 	//       ef_ModGui_Console: (NoIcon | NoConfigWindow) also removes HostMovie variable, so cannot have an interface window either
-	//       ef_ModGui_NoTopbar: Disable VTIO compatible topbar integration
-	//         also useful for testing how it behaves without one
+	//       ef_ModGui_NoTopbar: Disable topbar integration (VTIO or built in)
 	//       ef_ModGui_None: Disables all gui elements
 	//   IconData:Object (optional, any undefined sub-values will use their own defaults)
 	//     ResName:String (optional, default ModName + "Icon")
-	//       The name of the library resource to use as graphical elements to the icon.
-	//     Above values are removed prior to initialization of the ModIcon
-	//     Any overiden functions are wrapped in a Delegate(this) before being passed along
-	//       They unfortunately cannot be wrapped in delegates in advance, as initialization requires compile constants
-	//     Remaining values are applied as initializers prior to construction
-	//     The following values are added to it and should not be overriden or conflicted with:
+	//       The name of the library resource to use as graphical elements to the icon
+	//     All other members are applied as initializers to the ModIcon object prior to construction
+	//     These values are set internally and will not be passed if provided:
 	//       ModName, DevName, HostMovie, Config
-	//     Values which may be overriden by the mod:
-	//       UpdateState:Function Sets the icon frame to be displayed based on current mod state
-	//       LeftMouseInfo:Object Mouse handler as described below
-	//       RightMouseInfo:Object Mouse handler as described below
-	//         A mouse handler object defines two functions, neither of which should specify which mouse button was involved:
-	//           Action: which implements the action taken when that mouse button is pressed on the icon
-	//           Tooltip: which returns a string describing that action for display as part of the tooltip
-	//       ExtraTooltipInfo:Function returning a string of additional tooltip info to display below the basic usage info
+	//     These functions, which will be called in the context of the Mod object, may be provided as overrides:
+	//       GetFrame: Returns the name of the icon frame to be displayed based on current mod state
+	//       LeftMouseInfo: Mouse handler as described below
+	//       RightMouseInfo: Mouse handler as described below
+	//         Mouse handler object defining two functions:
+	//           Action: Called when that mouse button is pressed on the icon
+	//           Tooltip: Returns a string describing the action for part of the tooltip
+	//       ExtraTooltipInfo: Returns a string of additional info to append to the tooltip
 	//   Trace (optional, default false)
 	//     Enables debug trace messages
 	public function Mod(modInfo:Object, hostMovie:MovieClip) {
@@ -124,6 +141,7 @@ class efd.Cartographer.lib.Mod {
 		}
 		if (!modInfo.Type) { modInfo.Type = e_ModType_Interface; }
 		MinUpgradableVersion = modInfo.MinUpgradableVersion ? modInfo.MinUpgradableVersion : "0.0.0";
+		LibUpgrades = modInfo.LibUpgrades;
 
 		SystemsLoaded = { Config: false, LocalizedText: false }
 		ModLoadedDV = DistributedValue.Create(ModLoadedVarName);
@@ -141,8 +159,6 @@ class efd.Cartographer.lib.Mod {
 		if ((modInfo.GuiFlags & ef_ModGui_Console) != ef_ModGui_Console) {
 			HostMovie = hostMovie; // Not needed for console style mods
 			ResolutionScaleDV = DistributedValue.Create("GUIResolutionScale");
-			ResolutionScaleDV.SignalChanged.Connect(SetWindowScale, HostMovie);
-			SetWindowScale.call(HostMovie, ResolutionScaleDV);
 
 			if (!(modInfo.GuiFlags & ef_ModGui_NoConfigWindow)) {
 				ConfigWindowEscTrigger = new EscapeStackNode();
@@ -161,8 +177,6 @@ class efd.Cartographer.lib.Mod {
 		InitializeModConfig(modInfo);
 
 		if (!(modInfo.GuiFlags & ef_ModGui_NoIcon)) { CreateIcon(modInfo); }
-
-		if (!(modInfo.GuiFlags & ef_ModGui_NoTopbar)) { RegisterWithTopbar(); }
 	}
 
 	private function StringsLoaded(success:Boolean):Void {
@@ -172,9 +186,7 @@ class efd.Cartographer.lib.Mod {
 			CheckLoadComplete();
 		} else {
 			// Localization support unavailable, not localized
-			// TODO: This setting of Enabled should ensure that Enabled is actually a thing
-			ErrorMsg("Mod cannot be enabled", { noPrefix : true });
-			Config.SetValue("Enabled", false);
+			ErrorMsg("Unable to load string table", { fatal : true });
 		}
 	}
 
@@ -191,12 +203,40 @@ class efd.Cartographer.lib.Mod {
 	private function LoadComplete():Void {
 		delete SystemsLoaded; // No longer required
 		UpdateInstall();
-		Icon.UpdateState();
 		// TODO: Load icon invisibly, and only make it visible when loading is successfully complete?
+		// DEPRECATED(v1.0.0): Temporary upgrade support (use of 'undefined')
+		var integration:Boolean = Config.GetValue("TopbarIntegration", false);
+		if (integration == undefined || integration) { LinkWithTopbar(); }
 		ModLoadedDV.SetValue(true);
 	}
 
+	// The game itself toggles the mod's activation state (based on modules.xml criteria)
+	public function GameToggleModEnabled(state:Boolean, archive:Archive) {
+		if (!state) {
+			if (Config.GetValue("TopbarIntegration") == undefined) { Config.SetValue("TopbarIntegration", false); } // DEPRECATED(v1.0.0): Temporary upgrade support
+			CloseConfigWindow();
+			return Config.SaveConfig();
+		} else {
+			if (!Config.IsLoaded) {	Config.LoadConfig(archive);	}
+		}
+		EnabledByGame = state;
+		Enabled = state;
+	}
+
+	public function OnUnload():Void { Icon.FreeID(); }
+
+	private function SetDebugMode(dv:DistributedValue):Void { DebugTrace = dv.GetValue(); }
+
 /// Configuration Settings
+	// The framework reserves the following Config setting names for internal use:
+	//   "Installed": Trigger first run events
+	//   "Version": Triggers upgrades (and rollback notifications)
+	//   "Enabled": Exists for e_ModType_Reactive mods
+	//   "TopbarIntegration": Exists if GuiFlag ef_ModGui_NoTopbar is not set
+	//   "IconPosition": Deleted if VTIO mod is handling layout; otherwise, a single (X) coordinate with TopbarIntegration or a Point without it
+	//   "IconScale": Deleted if integrated with any topbar
+	//   "InterfaceWindowPosition": Exists for e_ModType_Interface mods
+	//   "ConfigWindowPosition": Exists if GuiFlag ef_ModGui_NoConfigWindow is not set
 
 	private function InitializeModConfig(modInfo:Object):Void {
 		Config = new ConfigWrapper(modInfo.ArchiveName);
@@ -207,11 +247,18 @@ class efd.Cartographer.lib.Mod {
 		Config.NewSetting("Installed", false); // Will always be saved as true, only remains false if settings do not exist
 		if (ModEnabledDV != undefined) { Config.NewSetting("Enabled", true); } // Whether mod is enabled by the player
 
+		if (!(modInfo.GuiFlags & ef_ModGui_NoTopbar)) {
+			Config.NewSetting("TopbarIntegration", true);
+			// Will have a value before saving, temporary undefined used to coerce consistent behaviour on upgrade
+			Config.SetValue("TopbarIntegration", undefined); // DEPRECATED(v1.0.0): Temporary upgrade support
+			ViperDV = DistributedValue.Create("VTIO_IsLoaded");
+		}
 		if (ShowInterfaceDV != undefined) { Config.NewSetting("InterfaceWindowPosition", new Point(20, 30)); }
 		if (ShowConfigDV != undefined) { Config.NewSetting("ConfigWindowPosition", new Point(20, 30)); }
 
 		Config.SignalConfigLoaded.Connect(ConfigLoaded, this);
 		Config.SignalValueChanged.Connect(ConfigChanged, this);
+		// Change notification hook may be deferred until load, if needed
 	}
 
 	private function ConfigLoaded():Void {
@@ -222,7 +269,7 @@ class efd.Cartographer.lib.Mod {
 
 	private function ConfigChanged(setting:String, newValue, oldValue):Void {
 		switch(setting) {
-			case "Enabled":
+			case "Enabled": {
 				if (newValue && SystemsLoaded != undefined) {
 					// May not have loaded localization system
 					ErrorMsg("Failed to load required information, and cannot be enabled");
@@ -240,6 +287,23 @@ class efd.Cartographer.lib.Mod {
 					}
 				}
 				break;
+			}
+			case "TopbarIntegration": {
+				if (newValue) {
+					BringAboveTopbar(true);
+					if (ViperDV.GetValue()) { LinkWithTopbar(); }
+				} else {
+					BringAboveTopbar(false);
+					if (ViperDV.GetValue()) {
+						Icon = HostMovie.ModIcon;
+						DetachTopbarListeners();
+						// NOTE: A /reloadui is strongly recommended after "detaching" from a VTIO topbar
+						//       As VTIO does not provide a method of de-registering, the mod tries to fake it (to varied success)
+						ChatMsg(LocaleManager.GetString("General", "RemoveVTIO"));
+					}
+				}
+				break;
+			}
 			default: // Setting does not push changes (is checked on demand)
 				break;
 		}
@@ -253,16 +317,18 @@ class efd.Cartographer.lib.Mod {
 	}
 
 /// Versioning and Upgrades
-
 	private function UpdateInstall():Void {
+		Config.ChangeDefault("Installed", true);
 		if (!Config.GetValue("Installed")) {
-			DoInstall();
+			// Fresh install, use the actual default value instead of the update placeholder
+			Config.ResetValue("TopbarIntegration"); // DEPRECATED(v1.0.0): Temporary upgrade support
+			InstallMod(); // Mod specific install behaviour
 			Config.SetValue("Installed", true);
 			ChatMsg(LocaleManager.GetString("General", "Installed"));
 			if (ShowConfigDV != undefined) {
 				ChatMsg(LocaleManager.GetString("General", "ReviewSettings"), { noPrefix : true });
 				// Decided against having the options menu auto open here
-				// Users might not realize that it's a one off event, and consider it a bug
+				// Users might not realize that it's a one off event
 			}
 			return; // No existing version to update
 		}
@@ -275,7 +341,15 @@ class efd.Cartographer.lib.Mod {
 				if (CompareVersions(MinUpgradableVersion, oldVersion) > 0) {
 					ChatMsg(LocaleManager.FormatString("General", "NoMigration", oldVersion));
 					Config.ResetAll();
-				} else { DoUpdate(newVersion, oldVersion); }
+				} else {
+					for (var i:Number = 0; i < LibUpgrades.length; ++i) {
+						if (CompareVersions(LibUpgrades[i].mod, oldVersion) >= 0) {
+							UpdateLib(LibUpgrades[i].lib); // Library updates
+							break;
+						}
+					}
+					UpdateMod(newVersion, oldVersion); // Mod specific updates
+				}
 			}
 			// Reset the version number to the new version
 			Config.ResetValue("Version");
@@ -284,7 +358,31 @@ class efd.Cartographer.lib.Mod {
 				ChatMsg(LocaleManager.GetString("General", "ReviewSettings"), { noPrefix : true });
 			}
 		}
-		delete MinUpgradableVersion; // No longer required
+		// No longer required
+		delete MinUpgradableVersion;
+		delete LibUpgrades;
+	}
+
+	private function UpdateLib(oldVersion:String):Void {
+		// v1.1: changes how GUIResolutionScale is used, and adjusts saved ui locations to compensate
+		if (CompareVersions("1.1.0", oldVersion) > 0) {
+			var scale:Number = ResolutionScaleDV.GetValue();
+			if (Config.HasSetting("InterfaceWindowPosition")) {
+				var pos:Point = Config.GetValue("InterfaceWindowPosition");
+				Config.SetValue("InterfaceWindowPosition", new Point(pos.x * scale, pos.y * scale));
+			}
+			if (Config.HasSetting("ConfigWindowPosition")) {
+				var pos:Point = Config.GetValue("ConfigWindowPosition");
+				Config.SetValue("ConfigWindowPosition", new Point(pos.x * scale, pos.y * scale));
+			}
+			if (Config.HasSetting("IconPosition")) {
+				// Either a Point or a Number, would be much simpler if Point handled the *= operator
+				// Duplication of SetValue is due to error that (pos *= scale) was attempting to assign a Number to a Point
+				//   Despite explicitly restricting that branch to things that aren't points...
+				var pos = Config.GetValue("IconPosition");
+				Config.SetValue("IconPosition", Config.GetValue("TopbarIntegration") ? pos * scale :  new Point(pos.x * scale, pos.y * scale));
+			}
+		}
 	}
 
 	// Compares two version strings (format "#.#.#[.alpha|.beta]")
@@ -312,65 +410,71 @@ class efd.Cartographer.lib.Mod {
 	}
 
 /// Topbar registration
-
-	// MeeehrUI is legacy compatible with the VTIO interface,
-	// but explicit support may make solving unique issues easier
-	// Meeehr's should always trigger first if present, and can be checked during the callback.
-	private function RegisterWithTopbar():Void {
-		MeeehrDV = DistributedValue.Create("meeehrUI_IsLoaded");
-		ViperDV = DistributedValue.Create("VTIO_IsLoaded");
+	// Most container mods support the legacy VTIO interface
+	private function LinkWithTopbar():Void {
 		// Try to register now, in case they loaded first, otherwise signup to detect if they load
-		if (!(DoTopbarRegistration(MeeehrDV) || DoTopbarRegistration(ViperDV))) {
-			MeeehrDV.SignalChanged.Connect(DoTopbarRegistration, this);
-			ViperDV.SignalChanged.Connect(DoTopbarRegistration, this);
+		DoTopbarRegistration(ViperDV);
+		ViperDV.SignalChanged.Connect(DoTopbarRegistration, this);
+		// DEPRECATED(v1.0.0) Temporary upgrade support (condition guard)
+		if (Config.GetValue("TopbarIntegration")) {
+			BringAboveTopbar(true);
 		}
 	}
 
-	private function DoTopbarRegistration(dv:DistributedValue):Boolean {
-		if (dv.GetValue() && !IsTopbarRegistered) {
-			// Adjust our default icon to be better suited for topbar integration
-			if (Icon != undefined) {
-				SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(HostMovie), _global.Enums.ViewLayer.e_ViewLayerTop, 2);
-				Icon.ConfigureForTopbar();
+	private function DoTopbarRegistration(dv:DistributedValue):Void {
+		if (dv.GetValue()) {
+			// DEPRECATED(v1.0.0) Temporary upgrade support (this section)
+			Config.SetValue("TopbarIntegration", true);
+			BringAboveTopbar(true);
+
+			// Adjust icon to be better suited for topbar integration
+			Icon.VTIOMode = true;
+
+			// Doing this more than once messes with Meeehr's, will have to find alternate workaround for ModFolder
+			if (!RegisteredWithTopbar) {
+				// Note: Viper's *requires* all five values, regardless of whether the icon exists or not
+				//       Both are capable of handling "undefined" or otherwise invalid icon names
+				var topbarInfo:Array = [ModName, DevName, Version, ShowConfigDV != undefined ? ConfigWindowVarName : ModEnabledVarName, Icon.toString()];
+				DistributedValue.SetDValue("VTIO_RegisterAddon", topbarInfo.join('|'));
 			}
-			// Note: Viper's *requires* all five values, regardless of whether the icon exists or not
-			//       Both are capable of handling "undefined" or otherwise invalid icon names
-			// Note: Using default version due to an observed instance where registration occured after settings load,
-			//       but before the update is processed, resulting in inaccurate version number
-			//       By extension registration may occur prior to any asynch data loading (such as localized strings)
-			var topbarInfo:Array = new Array(ModName, DevName, Config.GetDefault("Version"), undefined, Icon.toString());
-			topbarInfo[3] = ShowConfigDV != undefined ? ConfigWindowVarName : ModEnabledVarName;
-			DistributedValue.SetDValue("VTIO_RegisterAddon", topbarInfo.join('|'));
 			// VTIO creates its own icon, use it as our target for changes instead
 			// Can't actually remove ours though, Meeehr's redirects event handling oddly
 			// (It calls back to the original clip, using the new clip as the "this" instance)
 			// And just to be different, ModFolder doesn't create a copy at all, it just uses the one we give it
 			// In which case we don't want to lose our current reference
 			if (HostMovie.Icon != undefined) {
-				Icon = Icon.CopyToTopbar(HostMovie.Icon);
+				Icon.CopyToTopbar(HostMovie.Icon);
+				Icon._visible = false; // Usually the topbar will do this for us, but it's not so good about it during a re-register
+				Icon = HostMovie.Icon;
+				Icon.Refresh();
 			}
-			IsTopbarRegistered = true;
-			TopbarRegistered();
-			// Once registered, topbar DVs are no longer required
-			// If discrimination between Viper and Meeehr is needed, consider expanding TopbarRegistered to be an enum
-			// Deferred to prevent mangling the ongoing signal handling
-			setTimeout(Delegate.create(this, DetachTopbarListeners), 1, dv);
-
-			TraceMsg("Topbar registration complete");
+			TopbarRegistered(!RegisteredWithTopbar);
+			RegisteredWithTopbar = true;
+			// Once registered, topbar DVs are no longer required; except by ModFolder which has a nasty habit of failing to register the first time around
+			if (!DistributedValue.GetDValue("ModFolder")) {
+				// Deferred to prevent mangling ongoing signal handling
+				setTimeout(Delegate.create(this, DetachTopbarListeners), 1, dv);
+			}
+		} else {
+			// Workaround for ModFolder, which has a nasty habit of leaving the VTIO_IsLoaded flag set during reloads
+			// Would be very nice to get in contact with Icarus on this
+			// Seem to have found a way to do this that doesn't cause problems with Meeehr's and doesn't require explicit checks for ModFolder
+			RegisteredWithTopbar = false;
 		}
-		return IsTopbarRegistered;
+	}
+
+	private function BringAboveTopbar(above:Boolean):Void {
+		if (above != IsAboveTopbar && Icon != undefined) {
+			if (above) { SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(HostMovie), _global.Enums.ViewLayer.e_ViewLayerTop, 2); }
+			else { SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(HostMovie), _global.Enums.ViewLayer.e_ViewLayerMiddle, 10); }
+			IsAboveTopbar = above;
+		}
 	}
 
 	// This needs to be deferred so that the disconnection doesn't muddle the ongoing processing
-	private function DetachTopbarListeners():Void {
-		MeeehrDV.SignalChanged.Disconnect(DoTopbarRegistration, this);
-		ViperDV.SignalChanged.Disconnect(DoTopbarRegistration, this);
-		delete MeeehrDV;
-		delete ViperDV;
-	}
+	private function DetachTopbarListeners():Void {	ViperDV.SignalChanged.Disconnect(DoTopbarRegistration, this); }
 
-/// Mod Icon
-
+/// Icon
 	private function CreateIcon(modInfo:Object):Void {
 		var iconData:Object = modInfo.IconData ? modInfo.IconData : new Object();
 		var iconName:String = iconData.ResName ? iconData.ResName : ModName + "Icon";
@@ -381,9 +485,7 @@ class efd.Cartographer.lib.Mod {
 		iconData.HostMovie = HostMovie;
 		iconData.Config = Config;
 
-		if (iconData.UpdateState) {
-			iconData.UpdateState = Delegate.create(this, iconData.UpdateState);
-		}
+		if (iconData.GetFrame) { iconData.GetFrame = Delegate.create(this, iconData.GetFrame); }
 
 		if (!iconData.LeftMouseInfo) {
 			if (modInfo.Type == e_ModType_Interface) {
@@ -410,8 +512,8 @@ class efd.Cartographer.lib.Mod {
 		Icon = ModIcon(MovieClipHelper.attachMovieWithRegister(iconName, ModIcon, "ModIcon", HostMovie, HostMovie.getNextHighestDepth(), iconData));
 	}
 
-/// Standard Icon Mouse Handlers
-
+	// Mouse handlers
+	//   See above or ModType descriptions for default hooking
 	private function ChangeModEnabled(dv:DistributedValue):Void {
 		var value:Boolean = dv != undefined ? dv.GetValue() : !Config.GetValue("Enabled");
 		Config.SetValue("Enabled", value);
@@ -439,8 +541,7 @@ class efd.Cartographer.lib.Mod {
 	}
 	private static function ToggleInterfaceTooltip():String { return LocaleManager.GetString("GUI", "TooltipShowInterface"); }
 
-/// Window Displays
-
+/// Window Display
 	private function OpenWindow(windowName:String, loadEvent:Function, closeEvent:Function, escNode:EscapeStackNode):MovieClip {
 		var clip:MovieClip = HostMovie.attachMovie(ModName + windowName, windowName, HostMovie.getNextHighestDepth());
 		clip.SignalContentLoaded.Connect(loadEvent, this); // Defer config bindings until content is loaded
@@ -457,6 +558,9 @@ class efd.Cartographer.lib.Mod {
 		var position:Point = Config.GetValue(windowName + "Position");
 		clip._x = position.x;
 		clip._y = position.y;
+		// TODO: This is causing issues with Cartographer's rendering, will need to look into it further to see if it can be solved or is better just removed
+		//SetWindowScale.call(clip, ResolutionScaleDV);
+		//ResolutionScaleDV.SignalChanged.Connect(SetWindowScale, clip);
 
 		escNode.SignalEscapePressed.Connect(TriggerWindowClose, clip);
 		EscapeStack.Push(escNode);
@@ -466,6 +570,7 @@ class efd.Cartographer.lib.Mod {
 	}
 
 	private function WindowClosed(windowClip:MovieClip, windowName:String, escNode:EscapeStackNode):Void {
+		ResolutionScaleDV.SignalChanged.Disconnect(SetWindowScale, windowClip);
 		escNode.SignalEscapePressed.Disconnect(TriggerWindowClose, windowClip);
 
 		ReturnWindowToVisibleBounds(windowClip, Config.GetDefault(windowName + "Position"));
@@ -544,22 +649,7 @@ class efd.Cartographer.lib.Mod {
 
 	private function CloseInterfaceWindow():Void { ShowInterfaceDV.SetValue(false); }
 
-	// The game itself toggles the mod's activation state (based on modules.xml criteria)
-	public function GameToggleModEnabled(state:Boolean, archive:Archive) {
-		if (!state) {
-			CloseConfigWindow();
-			return Config.SaveConfig();
-		} else {
-			if (!Config.IsLoaded) {	Config.LoadConfig(archive);	}
-		}
-		EnabledByGame = state;
-		Enabled = state;
-	}
-
-	private function SetDebugMode(dv:DistributedValue):Void { DebugTrace = dv.GetValue(); }
-
-	/// Data file loading
-
+/// Data File Loader
 	// Loads an XML file from a path local to the mod's directory
 	// The '.xml' suffix is added if not present
 	public function _LoadXmlAsynch(fileName:String, callback:Function):XML {
@@ -574,7 +664,7 @@ class efd.Cartographer.lib.Mod {
 	}
 	public static var LoadXmlAsynch:Function; // Static delegate
 
-	/// Text output utility functions
+/// Text Output
 	// Options object supports the following properties:
 	//   system:String - Name of subsystem to include in the prefix
 	//   noPrefix:Boolean - Will not display mod or subsystem name if true
@@ -604,13 +694,20 @@ class efd.Cartographer.lib.Mod {
 		Utils.PrintChatText(LocaleManager.FormatString.apply(undefined, args));
 	}
 
-	// Bypasses localization, for fatal errors that can't count on localization support
+	// Bypasses localization, for errors that can't count on localization support
+	// Additional option "fatal": Force disables the mod
 	private function _ErrorMsg(message:String, options:Object):Void {
 		if (!options.noPrefix) {
 			var sysPrefix:String = options.system ? (options.system + " - ") : "";
-			message = "<font color='#EE0000'>" + ModName +"</font>: ERROR - " + sysPrefix + message + "!";
+			message = "<font color='#EE0000'>" + ModName +"</font>:"  + (options.fatal ? " FATAL " : " ") + "ERROR - " + sysPrefix + message + "!";
 		}
 		Utils.PrintChatText(message);
+		if (options.fatal) {
+			_ErrorMsg("  Mod disabled", { noPrefix : true });
+			// TODO: This setting of Enabled should ensure that Enabled is actually a thing
+			//       Should it also ensure that the "Loaded" DV is cleared to lock down interface?
+			Config.SetValue("Enabled", false);
+		}
 	}
 
 	private function _TraceMsg(message:String, options:Object):Void {
@@ -647,19 +744,20 @@ class efd.Cartographer.lib.Mod {
 	public static var TraceMsg:Function;
 	public static var LogMsg:Function;
 
-	/// The following empty functions are provided as override hooks for subclasses to implement
-	private function DoInstall():Void { }
-	private function DoUpdate(newVersion:String, oldVersion:String):Void { }
+/// Subclass Extension Stubs
+	private function InstallMod():Void { }
+	private function UpdateMod(newVersion:String, oldVersion:String):Void { }
 	private function Activate():Void { }
 	private function Deactivate():Void { }
-	private function TopbarRegistered():Void { }
+	private function TopbarRegistered(firstTime:Boolean):Void { }
 
-	/// Properites and variables
+/// Properties and Variables
 	public function get Version():String { return Config.GetValue("Version"); }
 
 	public function get Enabled():Boolean { return _Enabled; }
 	public function set Enabled(value:Boolean):Void {
 		// TODO: This check for Config("Enabled") should be cleaned up for cases where it doesn't exist
+		//       Should game trigger Activate/Deactivate pairs for those mods? (affects fallback value choice)
 		value = EnabledByGame && Config.GetValue("Enabled");
 		if (value != _Enabled) { // State changed
 			_Enabled = value;
@@ -681,6 +779,7 @@ class efd.Cartographer.lib.Mod {
 	public var ModName:String;
 	public var SystemsLoaded:Object; // Tracks asynchronous data loads so that functions aren't called without proper data, removed once loading complete
 	private var MinUpgradableVersion:String; // Minimum installed version for setting migration during update; Discarded after update
+	private var LibUpgrades:Array; // List of library version upgrades as {mod:version, lib:version} pairs; Discarded after update
 	private var ModLoadedDV:DistributedValue; // Locks-out interface when mod fails to load, may also be used for cross-mod integration
 
 	private var _Enabled:Boolean = false;
@@ -704,9 +803,9 @@ class efd.Cartographer.lib.Mod {
 	private var HostMovie:MovieClip;
 	public var Icon:ModIcon;
 
-	private var IsTopbarRegistered:Boolean = false;
-	private var MeeehrDV:DistributedValue;
+	private var IsAboveTopbar:Boolean = false; // Display layer has been changed to render above topbar
 	private var ViperDV:DistributedValue;
+	private var RegisteredWithTopbar:Boolean = false;
 
 	private var DebugTrace:Boolean;
 	private var GlobalDebugDV:DistributedValue; // Used to quickly toggle trace or other debug features of all efd mods

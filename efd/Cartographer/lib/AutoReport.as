@@ -1,4 +1,4 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake (Peloprata)
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -30,7 +30,7 @@ class efd.Cartographer.lib.AutoReport {
 		Config.NewSetting("Enabled", false); // For privacy reasons, this system should be opt-in
 	 	Config.NewSetting("QueuedReports", new Array());
 		Config.NewSetting("PriorReports", new Array());
-		Config.SignalValueChanged.Connect(ConfigChanged);
+		Config.SignalValueChanged.Connect(ConfigChanged); // Unaffected by load-time triggers, no need to defer
 		return Config;
 	}
 

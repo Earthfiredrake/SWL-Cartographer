@@ -1,4 +1,4 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake (Peloprata)
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -23,7 +23,8 @@ class efd.Cartographer.Cartographer extends Mod {
 		// Trace : true,
 		GuiFlags : ef_ModGui_NoConfigWindow,
 		Name : "Cartographer",
-		Version : "0.1.4.alpha"
+		Version : "0.1.5.alpha",
+		LibUpgrades : [{mod : "0.1.4.alpha", lib : "1.0.0"}]
 	};
 
 	/// Initialization
