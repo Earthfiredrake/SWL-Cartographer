@@ -315,7 +315,7 @@
 	<Lore zone="3100" x="713" y="991" z="55" loreID="9298" />
 	<Lore zone="3100" x="32" y="686" z="83" loreID="9299" />
 		<!-- #6 (NYR) -->
-		<!-- #7 (Deep Agartha: Public Raid Bosses) -->
+	<Lore zone="7418" x="207" y="247" z="205" loreID="9301" /> <!-- Drops from public raid bosses, location is tentative -->
 		<!-- #8 (Unknown/NYA/No Location) -->
 	<!-- Ghouls -->
 	<Lore zone="3130" x="1103" y="1071" z="28" loreID="8642" />
