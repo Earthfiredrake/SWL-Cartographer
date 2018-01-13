@@ -558,9 +558,8 @@ class efd.Cartographer.lib.Mod {
 		var position:Point = Config.GetValue(windowName + "Position");
 		clip._x = position.x;
 		clip._y = position.y;
-		// TODO: This is causing issues with Cartographer's rendering, will need to look into it further to see if it can be solved or is better just removed
-		//SetWindowScale.call(clip, ResolutionScaleDV);
-		//ResolutionScaleDV.SignalChanged.Connect(SetWindowScale, clip);
+		SetWindowScale.call(clip, ResolutionScaleDV);
+		ResolutionScaleDV.SignalChanged.Connect(SetWindowScale, clip);
 
 		escNode.SignalEscapePressed.Connect(TriggerWindowClose, clip);
 		EscapeStack.Push(escNode);
