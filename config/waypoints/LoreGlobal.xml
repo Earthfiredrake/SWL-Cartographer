@@ -4,7 +4,7 @@
      https://github.com/Earthfiredrake/TSW-Cartographer -->
 <!-- Lore locations verified with LoreHound -->
 <OverlayPack>
-	<Section> <!-- Global -->
+	<_Section> <!-- Global -->
 		<!-- Agartha -->
 		<Lore zone="5060" x="545" y="420" z="409" loreID="4158" />
 		<Lore zone="5060" x="378" y="347" z="363" loreID="4186" />
@@ -326,8 +326,9 @@
 		<Lore zone="3050" x="323" y="857" z="185" loreID="1481" />
 		<Lore zone="3050" x="201" y="742" z="159" loreID="1480" />
 		<Lore zone="3050" x="631" y="639" z="215" loreID="1479" />
-	</Section>
-	<Section> <!-- Events -->
+	</_Section>
+	<_Section> <!-- Events -->
+		<!-- Note: Lore with temporary availability should be in that event's supplementary files -->
 		<!-- Opening Night -->
 		<Lore zone="1000" x="160" y="280" z="30" loreID="5702" />
 		<Lore zone="7070" x="130" y="214" z="33" loreID="5701" />
@@ -341,5 +342,5 @@
 		<Lore zone="5060" x="257" y="245" z="368" loreID="6328" />
 		<Lore zone="5060" x="489" y="433" z="344" loreID="6329" />
 		<Lore zone="5060" x="521" y="182" z="394" loreID="6330" />
-	</Section>
+	</_Section>
 </OverlayPack>

@@ -9,7 +9,8 @@
 -->
 
 <OverlayPack>
-	<Section> <!-- Lore -->
+	<_Section> <!-- Lore -->
+		<!-- Krampusnacht 2017 -->
 		<Lore zone="3030" x="508" y="684" z="136" loreID="6697" />
 		<Lore zone="3040" x="51" y="230" z="138" loreID="6698" />
 		<Lore zone="3050" x="543" y="755" z="175" loreID="6699" />
@@ -20,9 +21,9 @@
 		<Lore zone="6700" x="247" y="222" z="27" loreID="6704" />
 		<Lore zone="6700" x="257" y="293" z="25" loreID="6705" />
 		<Lore zone="3140" x="473" y="1090" z="77" loreID="6706" />
-	</Section>
-	<Section> <!-- Krampus spawn points -->
-		<Section> <!-- KM -->
+	</_Section>
+	<_Section> <!-- Krampus spawn points -->
+		<_Section> <!-- KM -->
 			<Krampus zone="3030" x="57" y="642">
 				<Name rdb="id=33739 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -515,8 +516,8 @@
 					<Param rdb="id=8396923 category=50200" />
 				</Note>
 			</Krampus>
-		</Section>
-		<Section> <!-- SC -->
+		</_Section>
+		<_Section> <!-- SC -->
 			<Krampus zone="3040" x="39" y="790">
 				<Name rdb="id=33738 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -937,8 +938,8 @@
 					<Param rdb="id=8396925 category=50200" />
 				</Note>
 			</Krampus>
-		</Section>
-		<Section> <!-- BM -->
+		</_Section>
+		<_Section> <!-- BM -->
 			<Krampus zone="3050" x="109" y="363">
 				<Name rdb="id=33737 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -1305,8 +1306,8 @@
 					<Param rdb="id=8396935 category=50200" />
 				</Note>
 			</Krampus>
-		</Section>
-		<Section> <!-- SD -->
+		</_Section>
+		<_Section> <!-- SD -->
 			<Krampus zone="3090" x="197" y="481">
 				<Name rdb="id=33736 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -1679,8 +1680,8 @@
 					<Param rdb="id=8396934 category=50200" />
 				</Note>
 			</Krampus>
-		</Section>
-		<Section> <!-- CotSG -->
+		</_Section>
+		<_Section> <!-- CotSG -->
 			<Krampus zone="3100" x="11" y="383">
 				<Name rdb="id=33735 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -2023,8 +2024,8 @@
 					<Param rdb="id=8396936 category=50200" />
 				</Note>
 			</Krampus>
-		</Section>
-		<Section> <!-- BF -->
+		</_Section>
+		<_Section> <!-- BF -->
 			<Krampus zone="3120" x="333" y="542">
 				<Name rdb="id=33722 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -2391,8 +2392,8 @@
 					<Param rdb="id=8396924 category=50200" />
 				</Note>
 			</Krampus>
-		</Section>
-		<Section> <!-- SF -->
+		</_Section>
+		<_Section> <!-- SF -->
 			<Krampus zone="3130" x="232" y="922">
 				<Name rdb="id=33741 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -2813,8 +2814,8 @@
 					<Param rdb="id=8397024 category=50200" />
 				</Note>
 			</Krampus>
-		</Section>
-		<Section> <!-- CF -->
+		</_Section>
+		<_Section> <!-- CF -->
 			<Krampus zone="3140" x="251" y="221">
 				<Name rdb="id=33742 category=51000" />
 				<Note en="Drops: %1%" fmt="true">
@@ -3145,6 +3146,6 @@
 					<Param rdb="id=8396926 category=50200" />
 				</Note>
 			</Krampus>
-		</Section>
-	</Section>
+		</_Section>
+	</_Section>
 </OverlayPack>

@@ -7,7 +7,7 @@
 	Drops from champion mobs use their waypoint locations
 -->
 <OverlayPack>
-	<Section> <!-- Solomon Island -->
+	<_Section> <!-- Solomon Island -->
 		<!-- 1712 Fire -->
 		<Lore zone="3030" x="252" y="511" z="144" loreID="481" />
 		<Lore zone="3030" x="469" y="524" z="144" loreID="484" />
@@ -128,8 +128,8 @@
 		</Lore>
 		<Lore zone="5040" x="363" y="221" z="197" loreID="5020" />
 		<Lore zone="5040" x="446" y="154" z="198" loreID="5021" />
-	</Section>
-	<Section> <!-- Valley of the Sun God -->
+	</_Section>
+	<_Section> <!-- Valley of the Sun God -->
 		<!-- The Ankh 7/11 -->
 		<Lore zone="5080" x="425" y="241" z="197" loreID="974" />
 		<Lore zone="5080" x="346" y="209" z="185" loreID="973" />
@@ -216,8 +216,8 @@
 		<Lore zone="3090" x="758" y="1115" z="43" loreID="1029" />
 		<Lore zone="3100" x="59" y="877" z="55" loreID="1028" />
 		<Lore zone="3100" x="477" y="444" z="102" loreID="1027" />
-	</Section>
-	<Section> <!-- Transylvania -->
+	</_Section>
+	<_Section> <!-- Transylvania -->
 		<!-- The Abandoned (No lore location, use Mosul??) -->
 		<!-- Anastasia's Wagon -->
 		<Lore zone="3130" x="1035" y="787" z="41" loreID="4506" />
@@ -285,8 +285,8 @@
 		<Lore zone="3130" x="458" y="413" z="42" loreID="4382" />
 		<Lore zone="3140" x="439" y="1013" z="37" loreID="4383" />
 			<!-- #7 (Instance: Castle) -->
-	</Section>
-	<Section> <!-- Tokyo -->
+	</_Section>
+	<_Section> <!-- Tokyo -->
 		<!-- The Black Signal -->
 		<Lore zone="7640" x="286" y="157" z="22" loreID="7186" />
 		<Lore zone="7640" x="363" y="132" z="17" loreID="7187" />
@@ -562,5 +562,5 @@
 			</Note>
 		</Lore>
 		<Lore zone="3070" x="444" y="806" z="87" loreID="7119" />
-	</Section>
+	</_Section>
 </OverlayPack>

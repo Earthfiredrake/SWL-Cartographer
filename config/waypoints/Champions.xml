@@ -9,7 +9,7 @@
 	Longer patrol paths are sampled, though some amount of coercion and cherry-picking has been applied for data size and clarity
 -->
 <OverlayPack>
-	<Section> <!-- Solomon Island -->
+	<_Section> <!-- Solomon Island -->
 		<Champ zone="3030" x="301" y="231" z="136" champID="9478" /> <!-- Dumpster Diver -->
 		<!-- Dunwich Road Horror (patrol) -->
 		<Champ zone="3030" x="828" y="592" z="136" champID="4848" />
@@ -123,8 +123,8 @@
 			<Note en="N,S,E,W" />
 		</Champ>
 		<Champ zone="3050" x="88" y="273" z="130" champID="9532" group="true" /> <!-- Tide Lurker -->
-	</Section>
-	<Section> <!-- Egypt -->
+	</_Section>
+	<_Section> <!-- Egypt -->
 		<Champ zone="3090" x="400" y="390" champID="4079" /> <!-- Ainn the Harbinger -->
 		<!-- Deathstalker (random spawn) #4080 -->
 		<Champ zone="3090" x="480" y="285" champID="9548" /> <!-- Deserter Sabah -->
@@ -234,8 +234,8 @@
 		<Champ zone="3100" x="200" y="1000" champID="9625" /> <!-- Shadestalker -->
 		<Champ zone="3100" x="765" y="20" champID="9618" /> <!-- Sutekh -->
 		<Champ zone="3100" x="345" y="725" champID="9612" group="true" /> <!-- The Bone Harvester -->
-	</Section>
-	<Section> <!-- Transylvania -->
+	</_Section>
+	<_Section> <!-- Transylvania -->
 		<!-- Bitter Harvest Messenger (multi-spawn) -->
 		<Champ zone="3120" x="435" y="1050" champID="9876" />
 		<Champ zone="3120" x="1170" y="800" champID="9876" />
@@ -347,8 +347,8 @@
 		<Champ zone="3140" x="310" y="635" champID="10114" /> <!-- Zmeu of the Fangs -->
 		<Champ zone="3140" x="826" y="1107" z="59" champID="10102" group="true" /> <!-- Burov, Slaughterhouse General -->
 		<Champ zone="3140" x="1130" y="305" champID="10100" group="true" /> <!-- Sergiu -->
-	</Section>
-	<Section> <!-- Tokyo -->
+	</_Section>
+	<_Section> <!-- Tokyo -->
 		<Champ zone="3070" x="873" y="170" z="78" champID="10207" /> <!-- Accountant Bocigammal -->
 		<Champ zone="3070" x="830" y="600" champID="10196" /> <!-- Ancient Kyonshi -->
 		<!-- Behemoth of the Devouring Plague (patrol) -->
@@ -564,5 +564,5 @@
 		<Champ zone="3070" x="551" y="255" z="91" champID="10213" group="true">
 			<Name en="The Simian Horror" /> <!-- TODO: RDB -->
 		</Champ>
-	</Section>
+	</_Section>
 </OverlayPack>

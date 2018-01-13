@@ -115,6 +115,7 @@ class efd.Cartographer.Cartographer extends Mod {
 		} else { ErrorMsg("Unable to load zone index", {fatal : true}); }
 	}
 
+	// TODO: Get those shift() side effects out of the trace messages
 	private function ParseOverlayPack(success:Boolean):Void {
 		if (success) {
 			var pack:Array = ParseSection(OverlayLoader.firstChild);
@@ -133,12 +134,9 @@ class efd.Cartographer.Cartographer extends Mod {
 				LayerDataList[layerConfig.Depth].AddNotation(pack[i]);
 			}
 			TraceMsg("Loaded waypoint file: "  + OverlayList.shift() + ".xml");
-		} else {
-			ErrorMsg("Unable to load waypoint file: " + OverlayList.shift() + ".xml");
-		}
-		if (OverlayList.length > 0) {
-			OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack));
-		} else {
+		} else { ErrorMsg("Unable to load waypoint file: " + OverlayList.shift() + ".xml"); }
+		if (OverlayList.length > 0) { OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack)); }
+		else {
 			delete OverlayList;
 			delete OverlayLoader;
 			CleanupLayers();
@@ -146,17 +144,18 @@ class efd.Cartographer.Cartographer extends Mod {
 		}
 	}
 
-	private static function ParseSection(section:XMLNode):Array {
+	private function ParseSection(section:XMLNode):Array {
 		var entries:Array = new Array();
 		for (var i:Number = 0; i < section.childNodes.length; ++i) {
 			var node:XMLNode = section.childNodes[i];
-			if (node.nodeName == "Section") {
-				entries = entries.concat(ParseSection(node));
+			if (node.nodeName.charAt(0) == '_') {
+				switch (node.nodeName.slice(1)) {
+					case "Section": { entries = entries.concat(ParseSection(node)); break; }
+					default: { ErrorMsg("Tags starting with '_' are reserved for internal use but " + node.nodeName + " is not defined and will be ignored. File: " + OverlayList[0] + ".xml"); }
+				}
 			} else {
 				var entry:INotation = NotationBase.Create(node);
-				if (entry != undefined) {
-					entries.push(entry);
-				}
+				if (entry != undefined) { entries.push(entry); }
 			}
 		}
 		return entries;

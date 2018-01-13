@@ -9,7 +9,7 @@
 	To keep sizes managable and offer selective data loading, it is recommended that other categories be given their own files.
 	The exception is critical waypoint types (such as zone transitions) which are fundamental to the use of the map interface.
 
-	As this file contains critical waypoints, there will not be an option to skip loading it.
+	As this file contains critical waypoints and commonly used standard layer definitions, there will not be an option to skip loading it, and it will always be the first OverlayPack loaded.
 	-->
 
 <!-- Schema notes
@@ -29,14 +29,17 @@
 		<Point x="coord" y="coord" [z="coord"] />
 	</LayerID>
 
-	Waypoints may optionally be grouped under <Section> tags for ease of editing, the parser will ignore these divisions. 'Section' is therefore a reserved tag name which cannot be used for waypoint types.
+	Each unique LayerID value results in the creation of a new overlay layer (there is currently a limit which may or may not be removed as the project progresses) to hold all notations sharing that tag. LayerID is additionally used to find or generate various other UI displays.
+	Tags starting with '_' are reserved for use as parsing instructions or metadata, and will not generate a LayerID.
+	<_Section> is the only current tag of this type, and is presently only used to conveniently group things for editing.
+	Currently unused, but probable tags include <_SectionDefaults> (containing data shared between most or all of the entries in a section, to reduce the redundancy of the data format) and <_LayerDef> (which will allow for data-side definition of advanced layer behaviours)
 -->
 
 <!-- Anima well and respawn locations verified with character location immediately after teleportation -->
 <!-- Agartha outbound transit points are rough estimates, based on character location at confirmation popup when approaching gate -->
 <!-- Other waypoints pulled from default map waypoint files -->
 <OverlayPack>
-    <Section> <!-- Agartha -->
+    <_Section> <!-- Agartha -->
 		<AnimaWell zone="5060" x="502.3" y="412"> <!-- Hub platform -->
 			<Name rdb="id=6719243 category=270" />
 		</AnimaWell>
@@ -155,8 +158,8 @@
 			<Name rdb="id=36859 category=51000" />
 		</Vendor>
 		-->
-	</Section>
-	<Section> <!-- Venice -->
+	</_Section>
+	<_Section> <!-- Venice -->
 		<AnimaWell zone="1300" x="269.1" y="142.2" z="16.3">
 			<Name rdb="id=8372055 category=270" />
 		</AnimaWell>
@@ -167,8 +170,8 @@
 		<Vendor zone="1300" x="246.1" y="311.9">
 			<Name rdb="id=33632 category=51000" />
 		</Vendor>
-	</Section>
-	<Section> <!-- NYC -->
+	</_Section>
+	<_Section> <!-- NYC -->
 		<AnimaWell zone="1100" x="430.5" y="313.8" z="50.3">
 			<Name rdb="id=6814695 category=270" />
 		</AnimaWell>
@@ -187,8 +190,8 @@
 		<Vendor zone="1100" x="422" y="409" icon="vendor_editchar.png">
 			<Name rdb="id=129583427 category=260" />
 		</Vendor> -->
-	</Section>
-	<Section> <!-- London -->
+	</_Section>
+	<_Section> <!-- London -->
 		<AnimaWell zone="1000" x="153.7" y="274.5" z="28.6">
 			<Name rdb="id=5063171 category=270" />
 		</AnimaWell>
@@ -237,8 +240,8 @@
 			<Name rdb="id=150569634 category=260" />
 		</Vendor>
 		-->
-	</Section>
-	<Section> <!-- Seoul -->
+	</_Section>
+	<_Section> <!-- Seoul -->
 		<AnimaWell zone="1200" x="400.2" y="182.7" z="51.8">
 			<Name rdb="id=6814700 category=270" />
 		</AnimaWell>
@@ -262,8 +265,8 @@
 		<Vendor zone="1200" x="313.1" y="316.7" icon="vendor_bank.png">
 			<Name rdb="id=29867 category=51000" />
 		</Vendor> -->
-	</Section>
-	<Section> <!-- KM -->
+	</_Section>
+	<_Section> <!-- KM -->
 		<AnimaWell zone="3030" x="16" y="159.8"> <!-- Agartha Entrance -->
 			<Name rdb="id=5228519 category=270" />
 		</AnimaWell>
@@ -317,8 +320,8 @@
 			<Name rdb="id=29788 category=51000" />
 			<Note en="MoF Buff Consumables" />
 		</Vendor>
-	</Section>
-	<Section> <!-- SC -->
+	</_Section>
+	<_Section> <!-- SC -->
 		<AnimaWell zone="3040" x="658.2" y="1007.8"> <!-- Road to Kingsmouth -->
 			<Name rdb="id=6061607 category=270" />
 		</AnimaWell>
@@ -385,8 +388,8 @@
 			<Name rdb="id=14163 category=51000" />
 			<Note en="MoF Buff Consumables" />
 		</Vendor>
-	</Section>
-	<Section> <!-- BM -->
+	</_Section>
+	<_Section> <!-- BM -->
 		<AnimaWell zone="3050" x="504.7" y="27.3"> <!-- Devore Bridge -->
 			<Name rdb="id=7583174 category=270" />
 		</AnimaWell>
@@ -438,8 +441,8 @@
 				<Name rdb="id=29788 category=51000" />
 				<Note en="MoF Buff Consumables" />
 			</Vendor>
-	</Section>
-	<Section> <!-- SD -->
+	</_Section>
+	<_Section> <!-- SD -->
 		<AnimaWell zone="3090" x="520.6" y="156.5" z="55.6"> <!-- Agartha Entrance -->
 			<Name rdb="id=5228519 category=270" />
 		</AnimaWell>
@@ -487,8 +490,8 @@
 		<Vendor zone="3090" x="592.7" y="435.8">
 			<Name rdb="id=14163 category=51000" />
 		</Vendor>
-	</Section>
-	<Section> <!-- CotSG -->
+	</_Section>
+	<_Section> <!-- CotSG -->
 		<AnimaWell zone="3100" x="370.9" y="37.9" z="76.2"> <!-- The Remains-->
 			<Name rdb="id=6838396 category=270" />
 		</AnimaWell>
@@ -542,8 +545,8 @@
 		<Vendor zone="3100" x="52.7" y="829.6">
 			<Name rdb="id=14163 category=51000" />
 		</Vendor>
-	</Section>
-	<Section> <!-- BF -->
+	</_Section>
+	<_Section> <!-- BF -->
 		<AnimaWell zone="3120" x="1228.7" y="1263.7" z="159.5"> <!-- Bunker Breach -->
 			<Name rdb="id=7352405 category=270" />
 		</AnimaWell>
@@ -588,8 +591,8 @@
 		<Vendor zone="3120" x="948" y="542">
 			<Name rdb="id=14163 category=51000" />
 		</Vendor>
-	</Section>
-	<Section> <!-- SF -->
+	</_Section>
+	<_Section> <!-- SF -->
 		<AnimaWell zone="3130" x="996.9" y="1169.9" z="48.2"> <!-- Fang-Tip Grove -->
 			<Name rdb="id=6885129 category=270" />
 		</AnimaWell>
@@ -641,8 +644,8 @@
 		<Vendor zone="3130" x="1006.4" y="1175.1">
 			<Name rdb="id=14163 category=51000" />
 		</Vendor>
-	</Section>
-	<Section> <!-- CF -->
+	</_Section>
+	<_Section> <!-- CF -->
 		<AnimaWell zone="3140" x="469.3" y="1221.1" z="59.1"> <!-- Agartha Entrance -->
 			<Name rdb="id=5228519 category=270" />
 		</AnimaWell>
@@ -687,8 +690,8 @@
 		<Vendor zone="3140" x="717" y="678.3">
 			<Name rdb="id=14163 category=51000" />
 		</Vendor>
-	</Section>
-	<Section> <!-- KD -->
+	</_Section>
+	<_Section> <!-- KD -->
 		<AnimaWell zone="3070" x="948" y="760.1" z="74.7"> <!-- Ginpachi Park -->
 			<Name rdb="id=7995190 category=270" />
 		</AnimaWell>
@@ -729,5 +732,5 @@
 		<Vendor zone="3070" x="292.3" y="552.1">
 			<Name rdb="id=14163 category=51000" />
 		</Vendor>
-	</Section>
+	</_Section>
 </OverlayPack>
