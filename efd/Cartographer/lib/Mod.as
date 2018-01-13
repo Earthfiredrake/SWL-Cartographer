@@ -180,19 +180,17 @@ class efd.Cartographer.lib.Mod {
 	}
 
 	private function StringsLoaded(success:Boolean):Void {
-		if (success) {
-			TraceMsg("Localized strings loaded");
-			SystemsLoaded.LocalizedText = true;
-			CheckLoadComplete();
-		} else {
-			// Localization support unavailable, not localized
-			ErrorMsg("Unable to load string table", { fatal : true });
-		}
+		if (success) { UpdateLoadProgress("LocalizedText"); }
+		else { ErrorMsg("Unable to load string table", { fatal : true }); } // Localization support unavailable, not localized
 	}
 
-	private function CheckLoadComplete():Void {
-		for (var key:String in SystemsLoaded) {
-			if (!SystemsLoaded[key]) { return; }
+	// Notify when a core subsystem has finished loading to ensure that LoadComplete properly triggers
+	// Also a convenient place to override and trigger events that require multiple subsystems to be loaded
+	private function UpdateLoadProgress(loadedSystem:String):Boolean {
+		TraceMsg(loadedSystem + " Loaded");
+		SystemsLoaded[loadedSystem] = true;
+		for (var system:String in SystemsLoaded) {
+			if (!SystemsLoaded[system]) { return false; }
 		}
 		TraceMsg("Is fully loaded");
 		LoadComplete();
@@ -261,11 +259,7 @@ class efd.Cartographer.lib.Mod {
 		// Change notification hook may be deferred until load, if needed
 	}
 
-	private function ConfigLoaded():Void {
-		TraceMsg("Config loaded");
-		SystemsLoaded.Config = true;
-		CheckLoadComplete();
-	}
+	private function ConfigLoaded():Void { UpdateLoadProgress("Config"); }
 
 	private function ConfigChanged(setting:String, newValue, oldValue):Void {
 		switch(setting) {

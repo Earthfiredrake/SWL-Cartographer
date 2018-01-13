@@ -75,21 +75,16 @@ class efd.Cartographer.Cartographer extends Mod {
 			if (packList[i].load) { OverlayList.push(packList[i].name); }
 		}
 		TraceMsg("OverlayPacks to load: " + (OverlayList.length));
-		if (SystemsLoaded.LocalizedText) {
-			// Overlay loading additionally dependent on LocaleManager being initialized
-			OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack));
-		}
 
 		super.ConfigLoaded();
 	}
-
-	private function StringsLoaded(success:Boolean):Void {
-		if (success && SystemsLoaded.Config) {
-			// Overlay loading additionally dependent on Config being initialized
-			OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack));
-		}
-
-		super.StringsLoaded(success);
+	
+	private function UpdateLoadProgress(loadedSystem:String):Boolean {
+		if ((loadedSystem == "Config" && SystemsLoaded.LocalizedText) ||
+			(loadedSystem == "LocalizedText" && SystemsLoaded.Config)) {
+				OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack));
+			}
+		return super.UpdateLoadProgress(loadedSystem);
 	}
 
 	private function ResetConfig(dv:DistributedValue):Void {
@@ -116,12 +111,8 @@ class efd.Cartographer.Cartographer extends Mod {
 				ZoneIndex[zone.attributes.id] = { worldX : Number(zone.attributes.worldX), worldY : Number(zone.attributes.worldY) };
 			}
 			delete ZoneIndexLoader;
-			TraceMsg("Zone index loaded");
-			SystemsLoaded.ZoneIndex = true;
-			CheckLoadComplete();
-		} else {
-			ErrorMsg("Unable to load zone index");
-		}
+			UpdateLoadProgress("ZoneIndex");
+		} else { ErrorMsg("Unable to load zone index", {fatal : true}); }
 	}
 
 	private function ParseOverlayPack(success:Boolean):Void {
