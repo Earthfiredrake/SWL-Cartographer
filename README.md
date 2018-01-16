@@ -36,7 +36,7 @@ Due to limitations with the API, it does not seem to be possible to:
     + It may be easier to integrate zone teleportation (the Shift-T menu)
 + Directly save player added waypoints to the xml files containing pre-packaged info
   + Manual export and sharing features may be supported
-  + Custom waypoints will have to be saved with the rest of the mod settings
+  + Custom waypoints will have to be saved with other mod settings
     + This will likely have a slightly different data layout than the waypoint pack files, because the universe enjoys making me write parsers
 
 The mod is currently in alpha, with limited functionality. Some graphics are temporary placeholders of less than desired quality. Settings may be reset while upgrading.
@@ -48,11 +48,14 @@ Any packaged release should be unzipped (including the internal Cartographer fol
 <br/>TSW: [TSW Directory]\Data\Gui\Customized\Flash.
 <br/>SWL: [SWL Directory]\Data\Gui\Custom\Flash.
 
-When upgrading, existing .bxml files in the Cartographer directory should be deleted to ensure changes in the .xml files are loaded (whichever is newer seems to take precedence).
+The safest method for upgrading (required for installing) is to have the client closed and delete any existing .bxml files in the Cartographer directory. Hotpatching (using /reloadui) works as long as neither Modules.xml or LoginPrefs.xml (stable since v1.0.0, but I may forget to update this) have changed.
 
 I intend to permit setting migration from the first public beta to v1.0.x, but this may be subject to change. As with my other mods, this update compatibility window will occasionally be shifted to reduce legacy code clutter.
 
 ## Change Log
+
+Version Next
++ Change to Modules.xml & LoginPrefs.xml (standardization of DV names)
 
 Version 0.1.4-alpha
 + Krampusnacht waypoint pack

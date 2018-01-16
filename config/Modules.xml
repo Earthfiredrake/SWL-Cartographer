@@ -4,9 +4,9 @@
     movie       = "Cartographer\Cartographer.swf"
     depth_layer = "Middle"
     sub_depth   = "10"
-    variable    = "efdCartographersGuildLicensed"
+    variable    = "efdGameEnablesCartographer"
 	config_name = "efdCartographerConfig"
-    criteria    = "efdCartographersGuildLicensed &amp;&amp; (guimode &amp; (GUIMODEFLAGS_INPLAY | GUIMODEFLAGS_ENABLEALLGUI))"
+    criteria    = "efdGameEnablesCartographer &amp;&amp; (guimode &amp; (GUIMODEFLAGS_INPLAY | GUIMODEFLAGS_ENABLEALLGUI))"
 	flags       = "GMF_CFG_STORE_USER_CONFIG | GMF_DONT_UNLOAD"
   />
 </Root>

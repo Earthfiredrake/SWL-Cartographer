@@ -24,9 +24,11 @@ import efd.Cartographer.lib.ModIcon;
 // Mod Framework v1.1.0
 // See ModInfo.LibUpgrades for upgrade requirements
 
-// The framework reserves the following DistributedValue names (where [pfx] is a developer specific prefix (I use 'efd'), and [Name] is the mod name):
+// As part of ongoing attempts at standardization, the following DistributedValue names are reserved for use by the framework or Modules.xml (where [pfx] is a developer specific prefix (I use 'efd'), and [Name] is the mod name):
+//   "[pfx]GameEnables[Name]: The variable defined in Modules.xml as a hard disable for the mod; will disable all features (including icon) and prevent loading in future
+//   "[pfx][Name]Enabled": Exists for e_ModType_Reactive mods; "Soft" disable that retains icon and doesn't prevent loading in future; Corresponds to "Enabled" config setting
 //   "[pfx][Name]Loaded": Set to true when the mod is fully loaded and initialized
-//   "[pfx][Name]Enabled": Exists for e_ModType_Reactive mods; "Soft" disable that doesn't prevent loading on restart (Modules.xml toggle var does); Corresponds to "Enabled" config setting
+//   "[pfx][Name]Config: Name of archive in which main settings are saved (Mods may use secondary archives for some settings)
 //   "[pfx][Name]ResetConfig": Trigger to reset settings to defaults from chat
 //   "[pfx]Show[Name]Interface": Exists for e_ModType_Interface mods; Toggle mod interface window
 //   "[pfx]Show[Name]ConfigUI": Exists if GuiFlag ef_ModGui_NoConfigWindow is not set; Toggle mod settings window

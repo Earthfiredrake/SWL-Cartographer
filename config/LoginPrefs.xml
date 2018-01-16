@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Root>
-  <Value name="efdCartographersGuildLicensed" value="true"/>
+  <Value name="efdGameEnablesCartographer" value="true"/>
   <Archive name="efdCartographerConfig"/>
 </Root>
