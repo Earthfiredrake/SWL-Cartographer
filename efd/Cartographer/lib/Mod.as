@@ -17,6 +17,7 @@ import GUIFramework.SFClipLoader;
 
 import efd.Cartographer.lib.etu.MovieClipHelper;
 
+// TODO: Component based behaviour system for lighter weight mods
 import efd.Cartographer.lib.ConfigWrapper;
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.ModIcon;

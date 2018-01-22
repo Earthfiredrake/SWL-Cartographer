@@ -403,7 +403,9 @@
 		<Champ zone="3070" x="340" y="940" champID="10201" /> <!-- Byoudou -->
 		<Champ zone="3070" x="224" y="438" z="85" champID="10200" /> <!-- Compromised Effigy 832 -->
 		<Champ zone="3070" x="755" y="328" z="78" champID="10209" /> <!-- Conductor Topham -->
-		<!-- Congealed Disgust (random spawn) #10210 -->
+		<Champ zone="3070" x="534" y="414" z="83" champID="10210"> <!-- Congealed Disgust -->
+			<Note en="May appear randomly while doing The Tenebrous Sky, which starts here" />
+		</Champ>
 		<Champ zone="3070" x="690" y="371" z="77" champID="10205" /> <!-- Corrupted Prototype Battlefield Barrager -->
 		<Champ zone="3070" x="484" y="215" z="76" champID="7629" /> <!-- Fungal Crawler of Leng -->
 		<Champ zone="3070" x="872" y="21" z="75" champID="7628" /> <!-- Futakuchi-onna -->

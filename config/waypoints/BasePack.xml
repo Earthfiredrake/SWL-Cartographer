@@ -14,8 +14,8 @@
 
 <!-- Schema notes
 	// Coordinates are in game world space with the Z and Y coordinates swapped
-	// (Game uses Y as the vertical axis, which may have some future use, but is not vital)
-	<LayerID [type="wp|path|area"] zone="zoneID">
+	// (Game uses Y as the vertical axis. The value may have some future uses, but should not be vital, as many sources of data will be unable (or decline to) provide it)
+	<LayerID [type="wp|path|area"] zone="zoneID"> // All notation tags 
 		// Waypoint type is assumed if no type attribute present
 		Additional waypoint attributes: x="coord" y="coord" [z="coord"] [icon="filename"]
 		Additional path attributes: None?

@@ -48,7 +48,7 @@ Any packaged release should be unzipped (including the internal Cartographer fol
 <br/>TSW: [TSW Directory]\Data\Gui\Customized\Flash.
 <br/>SWL: [SWL Directory]\Data\Gui\Custom\Flash.
 
-The safest method for upgrading (required for installing) is to have the client closed and delete any existing .bxml files in the Cartographer directory. Hotpatching (using /reloadui) works as long as neither Modules.xml or LoginPrefs.xml (stable since v1.0.0, but I may forget to update this) have changed.
+The safest method for upgrading (required for installing) is to have the client closed and delete any existing .bxml files in the Cartographer directory. Hotpatching (using /reloadui) works as long as neither Modules.xml or LoginPrefs.xml have changed.
 
 I intend to permit setting migration from the first public beta to v1.0.x, but this may be subject to change. As with my other mods, this update compatibility window will occasionally be shifted to reduce legacy code clutter.
 
@@ -136,7 +136,7 @@ There is a known bug when using this mod with ModFolder v1, which causes issues 
 
 ## Testing and Further Developments
 
-Current goals for the next version:
+Current goals for the next versions:
 + Expanding tooltips (continuing)
   + Making more info available (note fields, coordinates, etc.)
   + Handling stacked waypoints
@@ -149,14 +149,16 @@ Current goals for the next version:
 
 Initial feedback has provided the following suggestions which are not yet implemented:
 + Mouse coordinates should be clearly displayed someplace obvious
-+ Window size should account for lower resolutions (1600x900 resolution was cutting things off) (partially implemented, haven't heard any complaints lately)
++ Window size should account for lower resolutions (1600x900 resolution was cutting things off)
+  + Window resizing should be a thing
++ Minimap mode
+  + Small frameless window, centred on player location
+  + No sidebars
 + Mission markers should be filterable by main/side for challenge completion
 
 As always, defect reports, suggestions, and contributions are welcome. They can be sent to Peloprata in SWL (by mail or pm), via the github issues system, or in the official forum post.
 
 Source Repository: https://github.com/Earthfiredrake/TSW-Cartographer
-
-Forum Post: TBD
 
 Curse Mirror: TBD
 
