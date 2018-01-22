@@ -1,4 +1,4 @@
-﻿// Copyright 2017-2018, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 // Based off of the Preferences class of El Torqiro's ModUtils library:
@@ -18,14 +18,15 @@ import efd.Cartographer.lib.Mod;
 //   A config setting holding a reference to a direct ancestor will cause infinite recursion during serialization.
 
 // Basic types, Archive and Point all use built in serialization support
-// Due to an implementation issue, arrays are being repacked as archives
-//   (An array with one item, when saved with the default serialization method, is indistinguishable from a single variable)
-// Object and Config Wrappers are also repacked into archives
+// Array is repacked as Archive
+//   Default serialization does not differentiate between single element array and lone variable
+//   Repacking allows recreation of the datastructure without relying on internal information
+// Object and ConfigWrapper are also repacked as Archive
 //   To differentiate these uses of Archive the setting name "ArchiveType" is reserved for internal use
 //   ConfigWrappers must decend directly from other ConfigWrappers, they won't load properly if nested within other types
 //     TODO: This may be an issue, and should be fixed if possible
 
-class efd.Cartographer.lib.ConfigWrapper {
+class efd.Cartographer.lib.sys.config.ConfigWrapper {
 	// ArchiveName is distributed value to be saved to for top level config wrappers
 	// Leave archiveName undefined for nested config wrappers (unless they are saved seperately)
 	// Also leave it undefined if loading/saving to the game's provided config.

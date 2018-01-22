@@ -1,4 +1,4 @@
-﻿// Copyright 2017-2018, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -8,28 +8,61 @@ import com.GameInterface.DistributedValue;
 
 import efd.Cartographer.lib.ara.BasicMCGraphics;
 
-import efd.Cartographer.lib.ConfigWrapper;
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
+import efd.Cartographer.lib.sys.ConfigManager;
+import efd.Cartographer.lib.sys.config.Versioning;
+import efd.Cartographer.lib.sys.ModIcon;
+import efd.Cartographer.lib.sys.VTIOHelper;
+import efd.Cartographer.lib.sys.Window;
 
 import efd.Cartographer.inf.INotation;
 
 import efd.Cartographer.LayerData;
 import efd.Cartographer.notations.NotationBase;
 
+// ConfigWindow does not have content, should not be used
 class efd.Cartographer.Cartographer extends Mod {
-	private static var ModInfo:Object = {
-		// Debug settings at top so that commenting out leaves no hanging ','
-		// Trace : true,
-		GuiFlags : ef_ModGui_NoConfigWindow,
-		Name : "Cartographer",
-		Version : "0.1.5.alpha",
-		LibUpgrades : [{mod : "0.1.4.alpha", lib : "1.0.0"}]
-	};
+	private function GetModInfo():Object {
+		return {
+			// Debug settings at top so that commenting out leaves no hanging ','
+			// Trace : true,
+			Name : "Cartographer",
+			Version : "0.1.5.alpha",
+			Subsystems : {
+				Config : {
+					Init : ConfigManager.Create,
+					InitObj : {
+						LibUpgrades : [{mod : "0.1.4.alpha", lib : "1.0.0"}]
+					}
+				},
+				Icon : {
+					Init : ModIcon.Create,
+					InitObj : {
+						LeftMouseInfo : IconMouse_ToggleInterfaceWindow
+						//RightMouseInfo : IconMouse_ToggleConfigWindow
+					}
+				},
+				LinkVTIO : {
+					Init : VTIOHelper.Create,
+					InitObj : {
+						//ConfigDV : "efdShowCartographerConfigWindow"
+					}
+				},
+				Interface : {
+					Init : Window.Create,
+					InitObj : {
+						WindowName : "InterfaceWindow",
+						LoadEvent : Delegate.create(this, InterfaceWindowLoaded)
+					}
+				}
+			}			
+		};
+	}
 
 	/// Initialization
 	public function Cartographer(hostMovie:MovieClip) {
-		super(ModInfo, hostMovie);
+		super(GetModInfo(), hostMovie);
 
 		SystemsLoaded.ZoneIndex = false;
 
@@ -61,6 +94,12 @@ class efd.Cartographer.Cartographer extends Mod {
 		Config.NewSetting("OverlayPacks", defaultPacks);
 
 		Config.NewSetting("LayerSettings", new Object());
+		
+		// HACK: Forcibly replace the ResetConfig DV handler
+		if (!ConfigHost.ResetDV.SignalChanged.Disconnect(ConfigHost.ResetConfig, ConfigHost)) {
+			TraceMsg("Warning! Failed to disconnect default config reset handler.");
+		}
+		ConfigHost.ResetDV.SignalChanged.Connect(ResetConfig, this);
 	}
 
 	private function ConfigLoaded():Void {
@@ -89,7 +128,7 @@ class efd.Cartographer.Cartographer extends Mod {
 
 	private function ResetConfig(dv:DistributedValue):Void {
 		if (dv.GetValue()) {
-			super.ResetConfig(dv);
+			Config.ResetAll();
 			var layerConfig:Object = Config.GetValue("LayerSettings");
 			// Rebuild the layer config based on the existing cached views in the LayerData structures
 			for (var i:Number = 0; i < LayerDataList.length; ++i) {
@@ -100,6 +139,7 @@ class efd.Cartographer.Cartographer extends Mod {
 				layerConfig[LayerDataList[i].LayerName] = settings;
 			}
 			Config.NotifyChange("LayerSettings");
+			dv.SetValue(false);
 		}
 	}
 
@@ -195,7 +235,7 @@ class efd.Cartographer.Cartographer extends Mod {
 	private function DoUpdate(newVersion:String, oldVersion:String):Void {
 		// Version specific updates
 		//   Some upgrades may reflect unreleased builds, for consistency on develop branch
-		if (CompareVersions("0.1.2.alpha", oldVersion) > 0) {
+		if (Versioning.CompareVersions("0.1.2.alpha", oldVersion) > 0) {
 			// Adding pen colour to saved layer settings
 			var layerSettings:Object = Config.GetValue("LayerSettings");
 			for (var key:String in layerSettings) {
@@ -210,8 +250,8 @@ class efd.Cartographer.Cartographer extends Mod {
 	private function Deactivate():Void {
 	}
 
-	private function InterfaceWindowLoaded():Void {
-		InterfaceWindowClip.m_Content.SetData(ZoneIndex, LayerDataList, Config);
+	private function InterfaceWindowLoaded(windowContent:Object):Void {
+		windowContent.SetData(ZoneIndex, LayerDataList, Config);
 	}
 
 	/// Variables

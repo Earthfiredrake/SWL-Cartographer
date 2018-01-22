@@ -10,7 +10,7 @@ import com.GameInterface.Game.Character;
 import com.GameInterface.MathLib.Vector3;
 import com.GameInterface.WaypointInterface;
 
-import efd.Cartographer.lib.ConfigWrapper;
+import efd.Cartographer.lib.sys.config.ConfigWrapper;
 import efd.Cartographer.lib.etu.MovieClipHelper;
 import efd.Cartographer.lib.Mod;
 

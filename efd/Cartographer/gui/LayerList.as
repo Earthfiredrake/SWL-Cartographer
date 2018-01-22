@@ -5,7 +5,7 @@
 import gfx.core.UIComponent;
 import gfx.utils.Delegate;
 
-import efd.Cartographer.lib.ConfigWrapper;
+import efd.Cartographer.lib.sys.config.ConfigWrapper;
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
 

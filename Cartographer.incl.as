@@ -1,4 +1,4 @@
-﻿// Copyright 2017-2018, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -6,7 +6,7 @@ import com.Utils.Archive;
 
 import efd.Cartographer.Cartographer;
 
-var efdCartographer:Cartographer;
+var ModObj:Cartographer;
 // Function trigger descriptions are based upon the following settings in Modules.xml
 // flags = "GMF_DONT_UNLOAD" // Don't unload/reload the entire mod every time it's disabled
 // criteria contains "GUIMODEFLAGS_INPLAY | GUIMODEFLAGS_ENABLEALLGUI" // Enable only if the player is in play, or all gui is requested regardless
@@ -15,7 +15,7 @@ var efdCartographer:Cartographer;
 // - When the player logs in a character, including on relogs
 // - When /relaodui is called
 // - If the mod activation distributed value is false, it may skip loading entirely
-function onLoad():Void { efdCartographer = new Cartographer(this); }
+function onLoad():Void { ModObj = new Cartographer(this); }
 
 // Often called in pairs, deactivating and reactivating the mod as the criteria evaluation changes
 // Due to the frequency of this occuring, these should be relatively light functions
@@ -23,13 +23,13 @@ function onLoad():Void { efdCartographer = new Cartographer(this); }
 // Paired calls are made when: Changing zones, cutscenes play, the player anima leaps or is otherwise teleported
 // Deactivate is called once immediately prior to OnUnload
 // Toggling the distributed value will force toggle these
-function OnModuleActivated(archive:Archive):Void { efdCartographer.GameToggleModEnabled(true, archive); }
+function OnModuleActivated(archive:Archive):Void { ModObj.GameToggleModEnabled(true, archive); }
 
-function OnModuleDeactivated():Archive { return efdCartographer.GameToggleModEnabled(false); }
+function OnModuleDeactivated():Archive { return ModObj.GameToggleModEnabled(false); }
 
 // Called just before the game unloads the clip
 // - When the user logs out, or returns to character selection (unconfirmed)
 function OnUnload():Void {
-	efdCartographer.OnUnload();
-	delete efdCartographer; 
+	ModObj.OnUnload();
+	delete ModObj; 
 }

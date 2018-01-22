@@ -1,9 +1,11 @@
-﻿// Copyright 2017-2018, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
 import flash.filters.DropShadowFilter;
 import flash.geom.Point;
+
+import gfx.utils.Delegate;
 
 import com.GameInterface.DistributedValue;
 import com.GameInterface.Tooltip.TooltipData;
@@ -11,17 +13,77 @@ import com.GameInterface.Tooltip.TooltipInterface;
 import com.GameInterface.Tooltip.TooltipManager;
 import com.Utils.GlobalSignal;
 import com.Utils.Signal;
+import GUIFramework.SFClipLoader;
 
 import efd.Cartographer.lib.etu.GemController;
+import efd.Cartographer.lib.etu.MovieClipHelper;
 
-import efd.Cartographer.lib.ConfigWrapper;
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
 
-class efd.Cartographer.lib.ModIcon extends MovieClip {
+// Icon subsystem implementation
+// Dependencies:
+//   Subsystems: Config, Localization
+//   Library Symbols:
+//     [ModName]Icon: Movieclip containing the icon to be displayed, with any alternate icon modes as labeled frames
+//       (Symbol name may be overriden, see InitObj.ResName)
+// InitObj: (optional, any undefined sub-values will use their own defaults)
+//     ResName:String (optional, default ModName + "Icon")
+//       The name of the library resource to use as graphical element for the icon
+//     All other members are applied as initializers to the ModIcon object prior to construction
+//     These functions, which will be called in the context of ModObj, may be provided as overrides:
+//       GetFrame:
+//			Returns the name of the icon frame to be displayed based on current mod state
+//			Default uses existence and state of Config("Enabled") to return "active"|"inactive"
+//       LeftMouseInfo: Mouse handler as described below, default undefined
+//       RightMouseInfo: Mouse handler as described below, default undefined
+//         Mouse handler objects define two functions:
+//           Action: Called when the icon is pressed with the linked mouse button
+//           Tooltip: Returns a descriptive string to add to the tooltip
+//         Standard mouse handlers defined in Mod:
+//           IconMouse_ToggleUserEnabled: Toggles the Config("Enabled") setting
+//           IconMouse_ToggleInterfaceWindow: Toggles the mod interface window DV
+//           IconMouse_ToggleConfigWindow: Toggles the mod config window DV
+//       ExtraTooltipInfo: Returns a string of additional info to append to the tooltip, default undefined
+
+class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 	/// Initialization
-	public function ModIcon() {
+	public static function Create(mod:Mod, initObj:Object):MovieClip {
+		// Check dependencies
+		if (!mod.Config) {
+			Mod.ErrorMsg("Subsystem dependency missing: Config", {system : "ModIcon"});
+			return undefined;
+		}
+
+		if (!initObj) { initObj = new Object(); }
+
+		// Check for overloaded Icon resource name
+		var iconName:String = initObj.ResName ? initObj.ResName : mod.ModName + "Icon";
+		delete initObj.ResName;
+
+		// Add Mod to init object, as unable to pass parameters to constructor
+		initObj.ModObj = mod;
+
+		// Wrap callbacks as delegates in Mod context
+		if (initObj.GetFrame) { initObj.GetFrame = Delegate.create(mod, initObj.GetFrame); }
+		if (initObj.LeftMouseInfo) {
+			initObj.LeftMouseInfo.Action = Delegate.create(mod, initObj.LeftMouseInfo.Action);
+			initObj.LeftMouseInfo.Tooltip = Delegate.create(mod, initObj.LeftMouseInfo.Tooltip);
+		}
+		if (initObj.RightMouseInfo) {
+			initObj.RightMouseInfo.Action = Delegate.create(mod, initObj.RightMouseInfo.Action);
+			initObj.RightMouseInfo.Tooltip = Delegate.create(mod, initObj.RightMouseInfo.Tooltip);
+		}
+		if (initObj.ExtraTooltipInfo) { initObj.ExtraTooltipInfo = Delegate.create(mod, initObj.ExtraTooltipInfo); }
+
+		return MovieClipHelper.attachMovieWithRegister(iconName, ModIcon, "ModIcon", mod.HostMovie, mod.HostMovie.getNextHighestDepth(), initObj);
+	}
+
+	private function ModIcon() {
 		super();
+
+		// Get local copies of commonly used ModObj members
+		Config = ModObj.Config;
 
 		// Get a unique ID for default layout calculations
 		// Note: System is not without flaws, subsequently added mods may just rearrange the IDs and stomp anyway
@@ -30,6 +92,9 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 
 		filters = [ShadowFilter];
 
+		Config.NewSetting("TopbarIntegration", true);
+		// Will have a value before saving, temporary undefined used to coerce consistent behaviour on upgrade
+		Config.SetValue("TopbarIntegration", undefined); // DEPRECATED(v1.0.0): Temporary upgrade support
 		// These need to be set with *some* default, so that any saved value is loaded
 		// Actual values/defaults will be sorted out after the load, depending on TopbarIntegration and VTIO states
 		Config.NewSetting("IconPosition", new Point(-1, -1));
@@ -74,10 +139,9 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 	// Apply settings for manual integration with the default topbar
 	// Locks scale and Y coordinate
 	public function ConfigureForDefault():Void {
+		BringAboveTopbar(true);
 		OnBaseTopbar = true;
 		SetTopbarPositions();
-		// TODO: Calculate this position, also consider that the topbar may be positioned at bottom (DV: TopMenuAlignment == 1)
-		// TODO: See if I can actually store arbitrary types in Config (only need the X coord here)
 		Config.DeleteSetting("IconScale");
 	}
 
@@ -95,7 +159,9 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 	}
 
 	// Toggles VTIO mode configuration
-	// Note: Not an entirely inverse function, most importantly Config settings are not restored (in the situation this is disabled they need to be reset unconditionally)
+	// Note: Not an entirely inverse function, some state will be unconditionally restored outside of this
+	//   Config settings
+	//   Moving below topbar
 	public function get VTIOMode():Boolean { return _VTIOMode; } // Can't do private properties... not that "private" really means much in flash anyway
 	public function set VTIOMode(value:Boolean) {
 		if (value != _VTIOMode) {
@@ -105,6 +171,7 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 				// VTIO mods handle own layout and effects
 				FreeID();
 				OnBaseTopbar = false;
+				BringAboveTopbar(true);
 				_x = 0; _y = 0;
 				filters = [];
 				// Settings are not used as long as topbar is in use, no need to save them
@@ -113,6 +180,7 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 				GlobalSignal.SignalSetGUIEditMode.Disconnect(ManageGEM, this);
 			} else {
 				// Restores the state
+				ModObj.Icon = ModObj.HostMovie.ModIcon;
 				GetID();
 				filters = [ShadowFilter];
 				// Note: Settings are not restored here,
@@ -137,8 +205,7 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 		//     - These two in particular could make further customizing icon behaviour after registration risky
 
 		// Required variables
-		copy.ModName = ModName;
-		copy.DevName = DevName;
+		copy.ModObj = ModObj;
 		copy.Config = Config;
 		copy.Tooltip = Tooltip;
 
@@ -220,6 +287,7 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 				} else {
 					VTIOMode = false;
 					OnBaseTopbar = false;
+					BringAboveTopbar(false);
 					if (oldValue != undefined) { // DEPRECATED(v1.0.0): Temporary upgrade support (use of undefined)
 						Config.NewSetting("IconScale", 100);
 						Config.NewSetting("IconPosition", new Point(10, 80 + IconID * 40));
@@ -249,9 +317,17 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 	}
 
 	// Default icon frame selector, may be overriden via init object
-	private function GetFrame():String { return Config.GetValue("Enabled") ? "active" : "inactive"; }
+	private function GetFrame():String { return Config.GetValue("Enabled", true) ? "active" : "inactive"; }
 
 	/// Layout and GEM handling
+	private function BringAboveTopbar(above:Boolean):Void {
+		if (above != IsAboveTopbar) {
+			if (above) { SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(ModObj.HostMovie), _global.Enums.ViewLayer.e_ViewLayerTop, 2); }
+			else { SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(ModObj.HostMovie), _global.Enums.ViewLayer.e_ViewLayerMiddle, 10); }
+			IsAboveTopbar = above;
+		}
+	}
+
 	private function UpdateScale():Void {
 		_xscale = Config.GetValue("IconScale");
 		_yscale = Config.GetValue("IconScale");
@@ -259,7 +335,7 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 
 	private function ManageGEM(unlock:Boolean):Void {
 		if (unlock && !GemManager) {
-			GemManager = GemController.create("GuiEditModeInterface", HostMovie, HostMovie.getNextHighestDepth(), this);
+			GemManager = GemController.create("GuiEditModeInterface", ModObj.HostMovie, ModObj.HostMovie.getNextHighestDepth(), this);
 			GemManager.lockAxis(0);
 			if (OnBaseTopbar) {	GemManager.lockAxis(2); }
 			else { GemManager.addEventListener( "scrollWheel", this, "ChangeScale" ); }
@@ -310,8 +386,8 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 		data.m_Padding = TooltipPadding;
 		data.m_MaxWidth = TooltipWidth; // The content does not affect the layout, so unless something that does (edge of screen perhaps?) gets in the way, this is how wide it will be
 
-		data.m_Title = "<font " + TooltipTitleFont + "><b>" + ModName + "</b></font>";
-		var credit:String = LocaleManager.FormatString("GUI", "TooltipCredit", Config.GetValue("Version"), DevName);
+		data.m_Title = "<font " + TooltipTitleFont + "><b>" + ModObj.ModName + "</b></font>";
+		var credit:String = LocaleManager.FormatString("GUI", "TooltipCredit", Config.GetValue("Version"), Mod.DevName);
 		data.m_SubTitle = "<font " + TooltipCreditFont + ">" + credit + "</font>";
 		data.m_Color = TooltipTitleColor;
 
@@ -360,17 +436,15 @@ class efd.Cartographer.lib.ModIcon extends MovieClip {
 	private static var TooltipCreditFont:String = "size='10'";
 	private static var TooltipTextFont:String = "size='11'";
 
-	private var ModName:String;
-	private var DevName:String;
-
-	private var Config:ConfigWrapper;
+	private var ModObj:Mod;
+	private var Config:Object; // Local copy of ModObj.Config; Ducktyped ConfigWrapper
 	private var _VTIOMode:Boolean = false;
 
 	private var Tooltip:TooltipInterface;
 
 	// GUI layout variables do not need to be copied for topbar icon
+	private var IsAboveTopbar:Boolean = false;
 	private var OnBaseTopbar:Boolean = false;
-	private var HostMovie:MovieClip;
 	private var GemManager:GemController;
 	private var SignalGeometryChanged:Signal;
 
