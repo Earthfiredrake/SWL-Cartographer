@@ -1,4 +1,4 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -8,8 +8,9 @@ import gfx.utils.Delegate;
 
 import com.Utils.Signal;
 
-import efd.Cartographer.lib.Mod;
+import efd.Cartographer.gui.Layers.NotationLayer;
 import efd.Cartographer.inf.IWaypoint;
+import efd.Cartographer.lib.Mod;
 
 class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	public static var __className:String = "efd.Cartographer.gui.WaypointIcon";
@@ -100,9 +101,9 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	private function ShowTooltip():Void {
 		if (!Tooltip) {
-			// At HostClip._parent level to circumvent viewport mask
-			Tooltip = LayerClip.HostClip._parent.attachMovie("CartographerWaypointTooltip", "Tooltip", LayerClip.HostClip.getNextHighestDepth(), {Data : Data});
-			var pos:Point = LayerClip.HostClip.MapToViewCoords(new Point(_x, _y));
+			// At MapViewClip._parent level to circumvent viewport mask
+			Tooltip = MapViewLayer.MapViewClip._parent.attachMovie("CartographerWaypointTooltip", "Tooltip", MapViewLayer.MapViewClip.getNextHighestDepth(), {Data : Data});
+			var pos:Point = MapViewLayer.MapViewClip.MapToViewCoords(new Point(_x, _y));
 			Tooltip._x = pos.x;
 			Tooltip._y = pos.y;
 		}
@@ -129,7 +130,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	private var Label:TextField;
 
-	private var LayerClip:MovieClip; // The clip containing all of this layer's waypoints (equivalent to _parent on simple layers, but there may be intermediate clips in other layers)
+	private var MapViewLayer:NotationLayer; // The manager for this notation layer
 	private var Tooltip:MovieClip;
 
 	private static var FocusScale:Number = 110;

@@ -1,9 +1,10 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
 import flash.geom.Point;
 
+import efd.Cartographer.gui.Layers.NotationLayer;
 import efd.Cartographer.inf.IArea;
 import efd.Cartographer.lib.Mod;
 
@@ -17,13 +18,13 @@ class efd.Cartographer.gui.WaypointArea extends MovieClip {
 	}
 
 	public function Redraw():Void {
-		var pos:Point = LayerClip.HostClip.WorldToMapCoords(Data.GetCentre());
+		var pos:Point = MapViewLayer.MapViewClip.WorldToMapCoords(Data.GetCentre());
 		_x = pos.x;
 		_y = pos.y;
 
 		// Using only x because y flips the coordinate frame
-		var scaleRad:Number = LayerClip.HostClip.WorldToMapCoords(new Point(Data.GetRadius(), 0)).x;
-		var colour:Number = Data.GetPenColour() ? Data.GetPenColour() : LayerClip.NotationData.ConfigView.PenColour;
+		var scaleRad:Number = MapViewLayer.MapViewClip.WorldToMapCoords(new Point(Data.GetRadius(), 0)).x;
+		var colour:Number = Data.GetPenColour() ? Data.GetPenColour() : MapViewLayer.NotationData.ConfigView.PenColour;
 		clear();
 		lineStyle(2, colour, 100, true, "none", "round", "round");
 		beginFill(colour, 20);
@@ -45,8 +46,8 @@ class efd.Cartographer.gui.WaypointArea extends MovieClip {
 
 	private function ShowTooltip():Void {
 		if (!Tooltip) {
-			Tooltip = LayerClip.HostClip._parent.attachMovie("CartographerWaypointTooltip", "Tooltip", LayerClip.HostClip.getNextHighestDepth(), {Data : Data});
-			var pos:Point = LayerClip.HostClip.MapToViewCoords(new Point(_x, _y));
+			Tooltip = MapViewLayer.MapViewClip._parent.attachMovie("CartographerWaypointTooltip", "Tooltip", MapViewLayer.MapViewClip.getNextHighestDepth(), {Data : Data});
+			var pos:Point = MapViewLayer.MapViewClip.MapToViewCoords(new Point(_x, _y));
 			Tooltip._x = pos.x;
 			Tooltip._y = pos.y;
 		}
@@ -64,6 +65,6 @@ class efd.Cartographer.gui.WaypointArea extends MovieClip {
 	}
 
 	private var Data:IArea;
-	private var LayerClip:MovieClip;
-	private var Tooltip:MovieClip;
+	private var MapViewLayer:NotationLayer;
+	private var Tooltip:MovieClip; // TODO: Tooltip shouldn't be local, should probably be handled at MapViewClip level
 }

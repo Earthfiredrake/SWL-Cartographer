@@ -1,4 +1,4 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -10,7 +10,7 @@ class efd.Cartographer.notations.mix.TransitMixIn {
 
 		target.HookEvents = function(uiElem:MovieClip):Void {
 			uiElem.onPress = function():Void
-				{ this.LayerClip.HostClip.ChangeMap(this.Data.TargetZone); };
+				{ this.MapViewLayer.MapViewClip.ChangeMap(this.Data.TargetZone); };
 		};
 		target.UnhookEvents = function(uiElem:MovieClip):Void {
 			uiElem.onPress = undefined;

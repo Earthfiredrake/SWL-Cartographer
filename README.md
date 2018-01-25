@@ -163,14 +163,14 @@ Source Repository: https://github.com/Earthfiredrake/TSW-Cartographer
 Curse Mirror: TBD
 
 ## Building from Source
-Requires copies of the TSW and Scaleform CLIK APIs. Existing project files are configured for Flash Pro CS5.5.
+Requires copies of the SWL and Scaleform CLIK APIs. Existing project files are configured for Flash Pro CS5.5.
 
 Master/Head is the most recent packaged release. Develop/Head is usually a commit or two behind my current test build. As much as possible I try to avoid regressions or unbuildable commits but new features may be incomplete and unstable and there may be additional debug code that will be removed or disabled prior to release.
 
 Once built, 'Cartographer.swf', the contents of 'config' and 'resources' should be copied to the directory 'Cartographer' in the game's mod directory. '/reloadui' is sufficient to force the game to load an updated swf or mod data file, but changes to the game config files (LoginPrefs.xml and Modules.xml) will require a restart of the client and possible deletion of .bxml caches from the mod directory.
 
 ## License and Attribution
-Copyright (c) 2017 Earthfiredrake<br/>
+Copyright (c) 2017-2018 Earthfiredrake<br/>
 Additional code contributions: Aralicia<br/>
 Software and source released under the MIT License
 
@@ -189,3 +189,4 @@ Special Thanks to:<br/>
 The TSW modding community for neglecting to properly secure important intel in their faction vaults<br/>
 AliceOrwell for https://aliceorwell.github.io/TSW-Mapper/ from which much of the inspiration came<br/>
 Everyone who provided suggestions, testing and feedback
+The Krampus tag and bag team

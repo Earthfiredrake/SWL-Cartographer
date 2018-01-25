@@ -1,4 +1,4 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -7,9 +7,8 @@ import flash.geom.Point;
 import efd.Cartographer.lib.etu.MovieClipHelper;
 import efd.Cartographer.lib.Mod;
 
-import efd.Cartographer.inf.IArea;
-
 import efd.Cartographer.LayerData;
+import efd.Cartographer.gui.MapView;
 import efd.Cartographer.gui.WaypointArea;
 import efd.Cartographer.gui.WaypointPath;
 import efd.Cartographer.gui.WaypointIcon;
@@ -23,14 +22,14 @@ import efd.Cartographer.gui.WaypointIcon;
 
 class efd.Cartographer.gui.Layers.NotationLayer {
 
-	public function NotationLayer(hostClip:MovieClip, data:LayerData, visible:Boolean) {
+	public function NotationLayer(mapView:MapView, data:LayerData, visible:Boolean) {
 		super();
-		HostClip = hostClip;
+		MapViewClip = mapView;
 		NotationData = data;
 
-		AreaLayer = HostClip.NewLayer("Area");
-		PathLayer = HostClip.NewLayer("Path");
-		WaypointLayer = HostClip.NewLayer("Waypoint");
+		if (data.HasAnyAreas) { AreaLayer = MapViewClip.NewLayer("Area"); }
+		if (data.HasAnyPaths) { PathLayer = MapViewClip.NewLayer("Path"); }
+		if (data.HasAnyWaypoints) { WaypointLayer = MapViewClip.NewLayer("Waypoint"); }
 
 		_RenderedWaypoints = new Array();
 		_visible = visible;
@@ -68,7 +67,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		for (var i:Number = 0; i < areas.length; ++i) {
 			AreaLayer.RenderList.push(MovieClipHelper.createMovieWithClass(
 				WaypointArea, "WPA" + AreaLayer.getNextHighestDepth(), AreaLayer, AreaLayer.getNextHighestDepth(),
-				{ Data : areas[i], LayerClip : this }));
+				{ Data : areas[i], MapViewLayer : this }));
 		}
 	}
 
@@ -87,7 +86,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		for (var i:Number = 0; i < paths.length; ++i) {
 			PathLayer.RenderList.push(MovieClipHelper.createMovieWithClass(
 				WaypointPath, "WPP" + PathLayer.getNextHighestDepth(), PathLayer, PathLayer.getNextHighestDepth(),
-				{ Data : paths[i], LayerClip : this }));
+				{ Data : paths[i], MapViewLayer : this }));
 		}
 	}
 
@@ -108,7 +107,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		var waypointList:Array = RenderedWaypoints; // Cache this, some variants have to merge multiple lists for it
 		for (var i:Number = 0; i < waypointList.length; ++i) {
 			var wp:WaypointIcon = waypointList[i];
-			wp.UpdatePosition(HostClip.WorldToMapCoords(wp.Data.GetPosition()));
+			wp.UpdatePosition(MapViewClip.WorldToMapCoords(wp.Data.GetPosition()));
 		}
 	}
 
@@ -128,7 +127,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		// Attempt to reassign as many existing waypoints as possible
 		// If an image needs loading, load will defer and resume through callback for stability reasons
 		for (WaypointCount; WaypointCount < renderList.length; ++WaypointCount) {
-			if (renderList[WaypointCount].Reassign(data[WaypointCount], HostClip.WorldToMapCoords(data[WaypointCount].Position))) {
+			if (renderList[WaypointCount].Reassign(data[WaypointCount], MapViewClip.WorldToMapCoords(data[WaypointCount].Position))) {
 				// Image load requested exit early and wait for callback
 				return;
 			}
@@ -136,11 +135,11 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		// Load any new waypoints required
 		// Each of these will trigger an image load, so will be done sequentially through callback
 		if (WaypointCount < data.length) {
-			var mapPos:Point = HostClip.WorldToMapCoords(data[WaypointCount].Position);
+			var mapPos:Point = MapViewClip.WorldToMapCoords(data[WaypointCount].Position);
 			var targetClip:MovieClip = WaypointLayer;
 			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
 				WaypointIcon, "WP" + targetClip.getNextHighestDepth(), targetClip, targetClip.getNextHighestDepth(),
-				{ Data : data[WaypointCount], _x : mapPos.x, _y : mapPos.y, LayerClip : this }));
+				{ Data : data[WaypointCount], _x : mapPos.x, _y : mapPos.y, MapViewLayer : this }));
 			wp.SignalWaypointLoaded.Connect(LoadNextBlock, this);
 			wp.LoadIcon();
 			renderList.push(wp);
@@ -208,8 +207,8 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 	private var _visible:Boolean;
 
 	// External data caches
-	private var NotationData:LayerData;
-	private var HostClip:MovieClip; // The movie clip that contains all the layers, on which tooltips will be placed
+	public var NotationData:LayerData;
+	public var MapViewClip:MapView; // The MapView, should be in charge of tooltips
 
 	// Display layers
 	private var AreaLayer:MovieClip;

@@ -1,4 +1,4 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -59,8 +59,6 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		WaypointInterface.SignalPlayfieldChanged.Connect(PlayerZoneChanged, this);
 
 		// Init notation layers
-		NextPathDepth = NextAreaDepth + MaxLayerCount;
-		NextWaypointDepth = NextPathDepth + MaxLayerCount;
 		NotationLayerViews = new Array();
 		if (LayerDataList.length > MaxLayerCount) {
 			Mod.ErrorMsg("Too many layers loaded");
@@ -69,6 +67,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 			// In reverse so that the depths here match the order on the sidebar list
 			var layer:LayerData = LayerDataList[i];
 			NotationLayerViews[i] = new layer.LayerType(this, layer, layer.IsVisible);
+			_NextAreaDepth++; // Increment the layer depth count
 		}
 
 		// Init top level elements (player marker)
@@ -81,7 +80,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	/// Notation layer construction callback
 	// Valid types = "Zone", "Path", "Waypoint"
 	public function NewLayer(type:String):MovieClip {
-		var depth:Number = this["Next" + type + "Depth"]++;
+		var depth:Number = this["Next" + type + "Depth"];
 		return createEmptyMovieClip(type + "Layer" + depth, depth);
 	}
 
@@ -92,7 +91,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		CurrentZoneID = newZone;
 		// TODO: See if I can source maps from the RDB in any way
 		// Loader.loadClip("rdb:1000636:9247193", MapLayer); // English map for Museum
-		//Loader.loadClip("rdb:1010013:" + CurrentZoneID, MapLayer); // In theory the right rdb index for a zone map, but doesn't load
+		// Loader.loadClip("rdb:1010013:" + CurrentZoneID, MapLayer); // In theory the right rdb index for a zone map, but doesn't load
 		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
 	}
 
@@ -214,7 +213,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	/// Coordinate Conversions
 	// Converts from world coordinates to a coordinate set based on the full map image size
 	// Any layer which uses this should make sure to lock its origin point to the map's origin when scrolling
-	private function WorldToMapCoords(worldCoords:Point):Point {
+	public function WorldToMapCoords(worldCoords:Point):Point {
 		return new Point(
 			worldCoords.x * MapLayer._width / ZoneIndex[CurrentZoneID].worldX,
 			MapLayer._height - (worldCoords.y * MapLayer._height / ZoneIndex[CurrentZoneID].worldY));
@@ -222,7 +221,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 
 	// Adjusts map coordinates to account for a scrolled map when rendering to the viewport
 	// Used for objects which are positioned relative to the viewport
-	private function MapToViewCoords(mapCoords:Point):Point {
+	public function MapToViewCoords(mapCoords:Point):Point {
 		return new Point(mapCoords.x + MapLayer._x, mapCoords.y + MapLayer._y);
 	}
 
@@ -259,13 +258,14 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	// Notation layers
 	private var LayerDataList:Array;
 	private var NotationLayerViews:Array;
-	private var NextAreaDepth:Number = 100;
-	private var NextPathDepth:Number;
-	private var NextWaypointDepth:Number;
+	private var _NextAreaDepth:Number = 100;
+	public function get NextAreaDepth() { return _NextAreaDepth; }
+	public function get NextPathDepth() { return NextAreaDepth + MaxLayerCount; }
+	public function get NextWaypointDepth() { return NextPathDepth + MaxLayerCount; }
 
 	// Auxillary markings
 	private var ClientCharMarker:MovieClip;
-	// Tooltips are displayed at a higher level, so that they don't get clipped
+	// Tooltips should be attached at _parent level to avoid clipping
 
 	// Clipping mask
 	private var Width:Number;

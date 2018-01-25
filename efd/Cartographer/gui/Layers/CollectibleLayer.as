@@ -1,4 +1,4 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -9,6 +9,7 @@ import efd.Cartographer.lib.Mod;
 
 import efd.Cartographer.LayerData;
 import efd.Cartographer.gui.Layers.NotationLayer;
+import efd.Cartographer.gui.MapView;
 import efd.Cartographer.gui.WaypointIcon;
 
 // Layer type supporting waypoints that can be collected to unlock entries in the lore or achievements
@@ -17,8 +18,8 @@ import efd.Cartographer.gui.WaypointIcon;
 
 class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 
-	public function CollectibleLayer(hostClip:MovieClip, data:LayerData, visible:Boolean) {
-		super(hostClip, data, visible);
+	public function CollectibleLayer(mapView:MapView, data:LayerData, visible:Boolean) {
+		super(mapView, data, visible);
 
 		WaypointLayer.createEmptyMovieClip("CollectedSublayer", WaypointLayer.getNextHighestDepth());
 		WaypointLayer.createEmptyMovieClip("UncollectedSublayer", WaypointLayer.getNextHighestDepth());
@@ -71,7 +72,7 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 		var renderList:Array = this["Rendered" + state];
 		// Reassignment of existing waypoints
 		for (var i:Number = this[state + "Count"]; i < renderList.length; ++i) {
-			if (renderList[i].Reassign(data[i], HostClip.WorldToMapCoords(data[i].Position))) {
+			if (renderList[i].Reassign(data[i], MapViewClip.WorldToMapCoords(data[i].Position))) {
 				return false;
 			}
 			this[state + "Count"] += 1;
@@ -85,7 +86,7 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 		var renderList:Array = this["Rendered" + state];
 		var i:Number = this[state + "Count"]; // This will not change for lifetime of function, can cache
 		if (i < data.length) {
-			var mapPos:Point = HostClip.WorldToMapCoords(data[i].Position);
+			var mapPos:Point = MapViewClip.WorldToMapCoords(data[i].Position);
 			var targetLayer:MovieClip = WaypointLayer[state + "Sublayer"];
 			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
 				WaypointIcon, "WP" + targetLayer.getNextHighestDepth(), targetLayer, targetLayer.getNextHighestDepth(),

@@ -5,6 +5,7 @@
 import gfx.utils.Delegate;
 
 import com.GameInterface.DistributedValue;
+import com.GameInterface.DressingRoom;
 
 import efd.Cartographer.lib.ara.BasicMCGraphics;
 
@@ -21,7 +22,7 @@ import efd.Cartographer.inf.INotation;
 import efd.Cartographer.LayerData;
 import efd.Cartographer.notations.NotationBase;
 
-// ConfigWindow does not have content, should not be used
+// ConfigWindow does not have content, disabling simple access (can still /setoption the DV manually, will probably crash the game)
 class efd.Cartographer.Cartographer extends Mod {
 	private function GetModInfo():Object {
 		return {
@@ -56,7 +57,7 @@ class efd.Cartographer.Cartographer extends Mod {
 						LoadEvent : Delegate.create(this, InterfaceWindowLoaded)
 					}
 				}
-			}			
+			}
 		};
 	}
 
@@ -87,14 +88,14 @@ class efd.Cartographer.Cartographer extends Mod {
 		defaultPacks.push({ name : "LoreGlobal", load : true });
 		defaultPacks.push({ name : "LoreRegional", load : true });
 		defaultPacks.push({ name : "LoreBestiary", load : true });
-		if (_global.com.GameInterface.DressingRoom.IsEventActive(EventKrampus)) {
-			// Hacky access via _global so I can continue to avoid linking to SWL API
-			defaultPacks.push({ name : "EvKrampusnacht", load : true });
+		if (DressingRoom.IsEventActive(EventSamhain)) {
+			// defaultPacks.push({ name : "EvSamhain", load : true }); (Implement mission layer first)
 		}
+		if (DressingRoom.IsEventActive(EventKrampus)) { defaultPacks.push({ name : "EvKrampusnacht", load : true }); }
 		Config.NewSetting("OverlayPacks", defaultPacks);
 
 		Config.NewSetting("LayerSettings", new Object());
-		
+
 		// HACK: Forcibly replace the ResetConfig DV handler
 		if (!ConfigHost.ResetDV.SignalChanged.Disconnect(ConfigHost.ResetConfig, ConfigHost)) {
 			TraceMsg("Warning! Failed to disconnect default config reset handler.");
@@ -117,7 +118,7 @@ class efd.Cartographer.Cartographer extends Mod {
 
 		super.ConfigLoaded();
 	}
-	
+
 	private function UpdateLoadProgress(loadedSystem:String):Boolean {
 		if ((loadedSystem == "Config" && SystemsLoaded.LocalizedText) ||
 			(loadedSystem == "LocalizedText" && SystemsLoaded.Config)) {

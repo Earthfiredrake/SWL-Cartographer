@@ -1,4 +1,4 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -42,6 +42,19 @@ class efd.Cartographer.LayerData {
 	public function GetPaths(zoneID:Number):Array { return NotationsByZone[zoneID].Paths; }
 	public function GetWaypoints(zoneID:Number):Array { return NotationsByZone[zoneID].Waypoints; }
 
+	// TODO: Previously was creating all notation layers for every map layer, which seems excessive
+	//       This section is intended to limit it to just the notation types for which data is loaded (in any zone)
+	//       But it may be better if layers can be created on the fly as the user migrates between zones or adds their own custom notations
+	public function get HasAnyAreas():Boolean { return HasAnyX("Areas"); }
+	public function get HasAnyPaths():Boolean { return HasAnyX("Paths"); }
+	public function get HasAnyWaypoints():Boolean { return HasAnyX("Waypoints"); }
+	private function HasAnyX(type:String):Boolean {
+		for (var s:String in NotationsByZone) {
+			if (NotationsByZone[s][type].length > 0) { return true; }
+		}
+		return false;
+	}
+
 	public function get LayerName():String { return Layer; }
 	public function get IsEmpty():Boolean {
 		for (var zone:String in NotationsByZone) {
@@ -81,4 +94,5 @@ class efd.Cartographer.LayerData {
 	// Notation records stored in a sparse index using zone IDs
 	// Within each index, notations are in arrays based on subtype (Areas, Paths, Waypoints)
 	private var NotationsByZone:Object;
+	// TODO: Something is adding a Depth field, which for reasons unknown is listed as NaN
 }

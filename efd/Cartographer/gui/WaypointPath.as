@@ -1,9 +1,10 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
 import flash.geom.Point;
 
+import efd.Cartographer.gui.Layers.NotationLayer;
 import efd.Cartographer.inf.IPath;
 import efd.Cartographer.lib.Mod;
 
@@ -17,14 +18,14 @@ class efd.Cartographer.gui.WaypointPath extends MovieClip {
 	}
 
 	public function Redraw():Void {
-		var colour:Number = Data.GetPenColour() ? Data.GetPenColour() : LayerClip.NotationData.ConfigView.PenColour;
+		var colour:Number = Data.GetPenColour() ? Data.GetPenColour() : MapViewLayer.NotationData.ConfigView.PenColour;
 		var pathPoints:Array = Data.GetPathPoints();
 		LocalPoints = new Array();
-		LocalPoints.push(LayerClip.HostClip.WorldToMapCoords(pathPoints[0]));
+		LocalPoints.push(MapViewLayer.MapViewClip.WorldToMapCoords(pathPoints[0]));
 		var clipOrigin:Point = LocalPoints[0].clone();
 
 		for (var i:Number = 1; i < pathPoints.length; ++i) {
-			var p:Point = LayerClip.HostClip.WorldToMapCoords(pathPoints[i]);
+			var p:Point = MapViewLayer.MapViewClip.WorldToMapCoords(pathPoints[i]);
 			clipOrigin.x = Math.min(clipOrigin.x, p.x);
 			clipOrigin.y = Math.min(clipOrigin.y, p.y);
 			LocalPoints.push(p);
@@ -82,7 +83,7 @@ class efd.Cartographer.gui.WaypointPath extends MovieClip {
 	private function onMouseMove():Void {
 		var p:Point = new Point(_xmouse, _ymouse);
 		localToGlobal(p);
-		if (Mouse.getTopMostEntity() == LayerClip.HostClip.MapLayer && // Attempting to prevent (for now) path stealing focus from icons above it
+		if (Mouse.getTopMostEntity() == MapViewLayer.MapViewClip["MapLayer"] && // Attempting to prevent (for now) path stealing focus from icons above it, index syntax means I don't have to make member public for this temporary code
 			hitTest(p.x, p.y, true)) {
 				if (!MouseOver) {
 					MouseOver = true;
@@ -112,8 +113,8 @@ class efd.Cartographer.gui.WaypointPath extends MovieClip {
 
 	private function ShowTooltip():Void {
 		if (!Tooltip) {
-			Tooltip = LayerClip.HostClip._parent.attachMovie("CartographerWaypointTooltip", "Tooltip", LayerClip.HostClip.getNextHighestDepth(), {Data : Data});
-			var pos:Point = LayerClip.HostClip.MapToViewCoords(new Point(_x, _y));
+			Tooltip = MapViewLayer.MapViewClip._parent.attachMovie("CartographerWaypointTooltip", "Tooltip", MapViewLayer.MapViewClip.getNextHighestDepth(), {Data : Data});
+			var pos:Point = MapViewLayer.MapViewClip.MapToViewCoords(new Point(_x, _y));
 			Tooltip._x = pos.x;
 			Tooltip._y = pos.y;
 		}
@@ -134,7 +135,7 @@ class efd.Cartographer.gui.WaypointPath extends MovieClip {
 
 	private var Data:IPath;
 	private var LocalPoints:Array; // Copy of path in clip local coords, used for rendering and collision detection
-	private var LayerClip:MovieClip;
+	private var MapViewLayer:NotationLayer;
 	private var Tooltip:MovieClip;
 
 	private var MouseOver:Boolean = false;
