@@ -1,6 +1,6 @@
 ﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
-// https://github.com/Earthfiredrake/TSW-Cartographer
+// https://github.com/Earthfiredrake/SWL-Cartographer
 // Based off of the Preferences class of El Torqiro's ModUtils library:
 //   https://github.com/eltorqiro/TSW-Utils
 //   Copyright 2015, eltorqiro

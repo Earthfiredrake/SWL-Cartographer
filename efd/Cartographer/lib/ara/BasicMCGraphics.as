@@ -1,7 +1,7 @@
 ﻿// Copyright 2017, by Aralicia
 // Used and redistributed under the terms of the MIT License
 // Edited for Cartographer:
-//   https://github.com/Earthfiredrake/TSW-Cartographer
+//   https://github.com/Earthfiredrake/SWL-Cartographer
 
 import flash.geom.Point;
 

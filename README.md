@@ -1,4 +1,4 @@
-# TSW-Cartographer
+# SWL-Cartographer
 Supplementary world maps for Secret World Legends
 Legacy support for The Secret World is largely untested and provided waypoint packs use SWL locations. I will not be taking the time to generate waypoints for TSW myself, but would be willing to include an alternative pack if one was volunteered.
 
@@ -158,7 +158,7 @@ Initial feedback has provided the following suggestions which are not yet implem
 
 As always, defect reports, suggestions, and contributions are welcome. They can be sent to Peloprata in SWL (by mail or pm), via the github issues system, or in the official forum post.
 
-Source Repository: https://github.com/Earthfiredrake/TSW-Cartographer
+Source Repository: https://github.com/Earthfiredrake/SWL-Cartographer
 
 Curse Mirror: TBD
 

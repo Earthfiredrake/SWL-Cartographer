@@ -1,6 +1,6 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017, Earthfiredrake
 // Released under the terms of the MIT License
-// https://github.com/Earthfiredrake/TSW-Cartographer
+// https://github.com/Earthfiredrake/SWL-Cartographer
 
 // Notes on game waypoint files:
 // Default waypoint files are malformed, the XML parser included in flash chokes on them

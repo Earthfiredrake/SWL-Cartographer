@@ -2,9 +2,9 @@
 // Released under the terms of the MIT License
 // https://github.com/eltorqiro/TSW-Utils
 // Modified for Cartographer:
-//   Copyright 2017-2018, Earthfiredrake (Peloprata)
+//   Copyright 2017-2018, Earthfiredrake
 //   Used and released under the terms of the MIT License
-//   https://github.com/Earthfiredrake/TSW-Cartographer
+//   https://github.com/Earthfiredrake/SWL-Cartographer
 
 import gfx.core.UIComponent;
 import com.Utils.Rect;

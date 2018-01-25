@@ -1,6 +1,6 @@
 ﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
-// https://github.com/Earthfiredrake/TSW-Cartographer
+// https://github.com/Earthfiredrake/SWL-Cartographer
 
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
