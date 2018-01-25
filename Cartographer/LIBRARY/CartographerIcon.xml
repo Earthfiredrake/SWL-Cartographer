@@ -1,0 +1,28 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="CartographerIcon" itemID="58db79f2-0000062f" linkageExportForAS="true" linkageIdentifier="CartographerIcon" lastModified="1490778686">
+  <timeline>
+    <DOMTimeline name="CartographerIcon" currentFrame="1">
+      <layers>
+        <DOMLayer name="Icon" color="#4FFF4F" current="true" isSelected="true" autoNamed="false" heightMultiplier="2">
+          <frames>
+            <DOMFrame index="0" name="inactive" labelType="name" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[stop();]]></script>
+              </Actionscript>
+              <elements>
+                <DOMBitmapInstance libraryItemName="Icons/IconTemp.png"/>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="1" name="active" labelType="name" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[stop();]]></script>
+              </Actionscript>
+              <elements>
+                <DOMBitmapInstance selected="true" libraryItemName="Icons/IconTemp.png"/>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

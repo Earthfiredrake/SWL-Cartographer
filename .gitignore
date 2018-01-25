@@ -1,5 +1,4 @@
 # Build and Release Folders
-bin/
 release/
 [Oo]bj/ # FlashDevelop obj
 [Bb]in/ # FlashDevelop bin
@@ -12,6 +11,9 @@ release/
 *.air
 *.ipa
 *.apk
+
+#XFL cache
+/*/bin/SymDepend.cache
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important

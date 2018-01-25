@@ -1,0 +1,56 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Components/CartographerLayerListEntry" itemID="59a0633c-0000026d" linkageExportForAS="true" linkageIdentifier="CartographerLayerToggle" lastModified="1503684453" lastUniqueIdentifier="2">
+  <timeline>
+    <DOMTimeline name="CartographerLayerListEntry">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMComponentInstance libraryItemName="Components/CheckBoxNoneLabel" name="CBLayerVisibility" selected="true" centerPoint3DX="10" centerPoint3DY="10" uniqueID="2">
+                  <transformationPoint>
+                    <Point x="10" y="10"/>
+                  </transformationPoint>
+                  <dataBindingXML><![CDATA[<component metaDataFetched='true' schemaUrl='' schemaOperation='' sceneRootLabel='Scene 1' oldCopiedComponentPath=''>
+</component>
+]]></dataBindingXML>
+                  <parametersAsXML><![CDATA[   <property id="data">
+      <Inspectable name="data" variable="data" category="" verbose="0" defaultValue="" type="String"/>
+   </property>
+   <property id="disableConstraints">
+      <Inspectable name="disableConstraints" variable="disableConstraints" category="" verbose="1" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="disabled">
+      <Inspectable name="disabled" variable="disabled" category="" verbose="1" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="labelID">
+      <Inspectable name="label" variable="labelID" category="" verbose="0" defaultValue="" type="String"/>
+   </property>
+   <property id="selected">
+      <Inspectable name="selected" variable="selected" category="" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="visible">
+      <Inspectable name="visible" variable="visible" category="" verbose="1" defaultValue="true" type="Boolean"/>
+   </property>
+]]></parametersAsXML>
+                </DOMComponentInstance>
+                <DOMDynamicText name="TBLayerLabel" width="196" height="18.45" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="22" ty="2"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>LayerLabel</characters>
+                      <textAttrs>
+                        <DOMTextAttrs aliasText="false" size="14" bitmapSize="280" face="_StandardFont*" fillColor="#FFFFFF"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMDynamicText>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

@@ -1,0 +1,21 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Icons/PlayerMarker" itemID="59703131-00000334" linkageExportForAS="true" linkageIdentifier="CartographerPlayerMarker" lastModified="1505370932">
+  <timeline>
+    <DOMTimeline name="PlayerMarker">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="Icons/PlayerMarker.png">
+                  <matrix>
+                    <Matrix tx="-7" ty="-10.5"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>
