@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!-- Copyright 2017, Earthfiredrake (Peloprata)
+<!-- Copyright 2017-2018, Earthfiredrake
      Released under the terms of the MIT License
      https://github.com/Earthfiredrake/TSW-Cartographer -->
 
@@ -15,8 +15,8 @@
 <!-- Schema notes
 	// Coordinates are in game world space with the Z and Y coordinates swapped
 	// (Game uses Y as the vertical axis. The value may have some future uses, but should not be vital, as many sources of data will be unable (or decline to) provide it)
-	<LayerID [type="wp|path|area"] zone="zoneID"> // All notation tags 
-		// Waypoint type is assumed if no type attribute present
+	<LayerID [type="point|path|area"] zone="zoneID"> // All notation tags 
+		// Point type is assumed if no type attribute present, "wp" is also accepted as an alias for point
 		Additional waypoint attributes: x="coord" y="coord" [z="coord"] [icon="filename"]
 		Additional path attributes: None?
 		Additional area attributes: x="coord" y="coord" [z="coord"] radius="distance"

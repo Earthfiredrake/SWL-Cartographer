@@ -22,6 +22,74 @@ import efd.Cartographer.inf.INotation;
 import efd.Cartographer.LayerData;
 import efd.Cartographer.notations.NotationBase;
 
+// TODO: Area tooltips seem to be conflicting with path tooltips
+//       In South KD, the Namahage path tooltip is being superceded by the Spectres #6 tooltip
+//       - Paths should in general be above areas in the layering system
+//       - Champions should be above Lore in the layering system (though the interleaf may affect this)
+//       This does not prevent the new tooltip system from detecting both tooltip targets, but may impact their ordering
+//       Further investigation suggests that this may be due to one or both of:
+//         Tooltip creation (and the copy used to check if it exists) being local to each waypoint object, but using a common name for the clip they attach to the WindowContent
+//         An attempt to keep path tooltips from stomping overlapping icons that may permit areas to stomp paths
+//       As the new multi-waypoint design should move waypoint management into the MapView (or some other single location) and uses different detection logic, this should come out in the wash
+
+// TODO: Reminder list of things I've been looking at doing, roughly prioritized:
+//       Write the reminder list
+//       Tooltips that can handle multiple data sources at once (ie: everything under the mouse, ideally sorted somewhat sensibly... by layer maybe?)
+//         Look into using it (at least the detection system) to trigger additional notations; ex: to pop up a path or area as additional information on a point icon
+//       Reduce required icon permutations, possible features that might help:
+//         Runtime greyscaling for Collectible layer icons
+//         Runtime tinting for icons based on layer colour? icon data? the reverse of above, advantage here is greater flexibility
+//           ex: I reused Champ markers for Krampii, with this they could have been blue skulls to be obviously different
+//         Icon modifiers; may be particularly useful to identify event/seasonal points (a little snowflake or pumpkin in the corner like in other sections of the UI), could also be used on group champions
+//           Particularly valuable for mission overlay (available, in progress, paused, on cooldown, locked etc.)
+//           A variant system could be used for numbered waypoints (maps of mission farming routes perhaps)?
+//       Mission overlay:
+//         Need to decide how to represent some things: main/side missions, mission types, mission state; particularly in cases where a single quest giver has multiple options
+//         What's important enough, or possible, to squeeze into the map icon, and what will have to stay on the tooltip
+//       Cleaning up the naming conventions. There's a number of identifiers that have more than one meaning, Waypoint and Layer are both suspect, should probably settle on some better names before too many more types get added
+//         Am liking Overlay as a possible replacement for Layer, would Marker work better than Waypoint and Notation in some places?
+//         Remember to check the MixIns and other places the compiler doesn't look at closely when doing renames, would help to minimize ducktyping elsewhere too
+//         The mental picture I have is a projector with a bunch of transparencies on top of a map, not sure any of that terminology is useful though
+//       Change project name. The mod's TSW support is actually minimal so SWL-Cartographer would make more sense
+//         Documentation suggests GitHub will handle this with grace, redirecting both web and git requests to the new repository as long as I don't reuse the old name. They still suggest updating the remotes anyway
+//       Window resizing... should be reasonably simple to enable on the framework/window side, passing that to the content will be more fun
+//         What parts should rescale, and which should just crop differently. How big/small should it be limited to.
+//         Minimap mode should probably be a different (mostly frameless) display, should try to ensure that the MapView can exist independently of a window
+//         On a similar line, would be nice to improve the zoom behaviour so it zooms in on the cursor and isn't stymied by every icon and area along the way
+//       Data extension tags and data defined overlay configurations
+//         Have reserved the set of <_Tag> for special directives, some notes in BasePack.xml, quick definitions here:
+//         _Section: Already exists, currently used to group marker definitions for easier editing
+//         _SectionDefaults: Base data that is shared (with infrequent overrides) by every marker definition in that section
+//           Reduces data duplication for things like Krampii
+//           For some reason my initial attempts at this were hanging the game,
+//         _OverlayDef: Data defined overlay setup, specifying things like overlay type, marker mix-ins
+//           See factory function in NotationBase, LayerData, BasicPoint for inspiration on what can fit in there
+//           Not sure that this will be able to directly include third party mixin/overlay types due to loading issues
+//             Might be able to stall the load long enough for the third party mod to load the mix-in protoypes
+//             An alternative would be to use a VTIO style interface to delay the file load (in one of several ways)
+//         _Strings: Allows an overlay pack to define additional entries for the string tables provided by LocaleManager
+//           They can then be used elsewhere in that overlay pack or as UI labels (though things like overlay naming may be better as part of the _OverlayDef tag)
+//       Harden data structures/parser against bad input
+//         Malformed xml can cause some very interesting and problematic data to end up in the system
+//         This data then has a bad habit of getting stuck in the settings, and causing crashes and other issues when the xml is fixed
+//         Need to identify the causes of those crashes, and fix it so that bad data triggers an error message and is discarded
+//         This is vital for the overlay pack system, as it's very likely that people trying to write their own will muck it up somewhere along the way (I do it regularly, and I wrote the dang thing)
+//       Sidebar layer settings, beyond just toggling the whole layer (show/hide should probably become an icon/button)
+//         Filter out collected sublayers on the lore/champ overlays; Known/unknown anima wells (if I can somehow figure out how to check that); Similar filters for missions
+//         Possibly toggle areas/paths/points here?
+//         Ability to re-order the sidebar/layer orders
+//       Config window for more general settings:
+//         Standard framework settings (Think that's just Topbar Integration here)
+//         Datafile load list (with ability to selectively disable or remove? files, or add new ones)
+//         Other general options:
+//           Toggle between showing paths/areas by default or as a mouseover for an icon?
+//           Mod integration options, probably just a general permit/disable toggle here, leave it up to the other mods whether they offer an option to not integrate
+//             If it turns out Cartog can usefully send data to other mods, should probably list them
+//       Wishlist (Get Daimon on these, they could use some crazed laughter)
+//         Search feature
+//         Custom player waypoints
+//         Default minimap overlay investigation
+
 // ConfigWindow does not have content, disabling simple access (can still /setoption the DV manually, will probably crash the game)
 class efd.Cartographer.Cartographer extends Mod {
 	private function GetModInfo():Object {
@@ -266,3 +334,9 @@ class efd.Cartographer.Cartographer extends Mod {
 	private static var EventSamhain:Number = 1;
 	private static var EventKrampus:Number = 2;
 }
+
+// The big list of future Glaucon questions (stuff to pester him with when I run out of things I can do without it):
+//   Sourcing map backgrounds from RDB
+//   Anima well locks and leaps
+//   Long range champion detection
+//   GetScreenPos() for arbitrary world coordinates

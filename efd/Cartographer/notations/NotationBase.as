@@ -1,4 +1,4 @@
-﻿// Copyright 2017, Earthfiredrake (Peloprata)
+﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/TSW-Cartographer
 
@@ -30,6 +30,7 @@ class efd.Cartographer.notations.NotationBase implements INotation {
 		switch (xml.attributes.type) {
 			case "area": notation = new BasicArea(xml); break;
 			case "path": notation = new BasicPath(xml); break;
+			case "point":
 			case "wp":
 			case undefined:
 				notation = new BasicPoint(xml);	break;
