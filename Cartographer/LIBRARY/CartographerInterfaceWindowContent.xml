@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="CartographerInterfaceWindowContent" itemID="596fa4e6-00000261" linkageExportForAS="true" linkageIdentifier="CartographerInterfaceWindowContent" linkageClassName="efd.Cartographer.gui.InterfaceWindowContent" lastModified="1505370963" lastUniqueIdentifier="1">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="CartographerInterfaceWindowContent" itemID="596fa4e6-00000261" linkageExportForAS="true" linkageIdentifier="CartographerInterfaceWindowContent" linkageClassName="efd.Cartographer.gui.InterfaceWindowContent" lastModified="1516929067" lastUniqueIdentifier="1">
   <timeline>
     <DOMTimeline name="CartographerInterfaceWindowContent">
       <layers>
@@ -6,16 +6,6 @@
           <frames>
             <DOMFrame index="0" keyMode="9728">
               <elements>
-                <DOMShape>
-                  <fills>
-                    <FillStyle index="1">
-                      <SolidColor color="#D6D6D6" alpha="0.00392156862745098"/>
-                    </FillStyle>
-                  </fills>
-                  <edges>
-                    <Edge fillStyle1="1" edges="!15361 15360|0 15360!0 15360|0 0!0 0|15361 0!15361 0|15361 15360"/>
-                  </edges>
-                </DOMShape>
                 <DOMSymbolInstance libraryItemName="Components/CartographerLayerList" name="LayerListDisplay" centerPoint3DX="856" centerPoint3DY="256">
                   <matrix>
                     <Matrix a="1.00004577636719" tx="768"/>

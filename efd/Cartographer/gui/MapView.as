@@ -14,6 +14,7 @@ import efd.Cartographer.lib.sys.config.ConfigWrapper;
 import efd.Cartographer.lib.etu.MovieClipHelper;
 import efd.Cartographer.lib.Mod;
 
+import efd.Cartographer.gui.InterfaceWindowContent;
 import efd.Cartographer.LayerData;
 
 class efd.Cartographer.gui.MapView extends MovieClip {
@@ -37,12 +38,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 
 		// Init clipping mask
 		var mask:MovieClip = createEmptyMovieClip("ViewportMask", getNextHighestDepth());
-		mask.beginFill(0xFFFFFF);
-		mask.lineTo(Width, 0);
-		mask.lineTo(Width, Height);
-		mask.lineTo(0, Height);
-		mask.lineTo(0, 0);
-		mask.endFill();
+		ResizeViewport(Width, Height);
 		setMask(mask);
 
 		onMouseMove = ManageTooltips;
@@ -106,7 +102,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		target._xscale = 100;
 		target._yscale = 100;
 		target._parent.MapImageScale = 100 * Math.min(1,
-			Math.min(Width / target._width ,  Height / target._height));
+			Math.min(InterfaceWindowContent.ViewportWidth / target._width, InterfaceWindowContent.ViewportHeight / target._height));
 		target._parent.RescaleMap(0); // Restore the previous zoom level
 	}
 
@@ -152,7 +148,25 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		}
 	}
 
-	/// Event handlers
+/// Window manipulation
+	public function ResizeViewport(width:Number, height:Number):Void {
+		Width = width;
+		Height = height;
+
+		ViewportMask.clear();
+		ViewportMask.beginFill(0xFFFFFF);
+		ViewportMask.lineTo(Width, 0);
+		ViewportMask.lineTo(Width, Height);
+		ViewportMask.lineTo(0, Height);
+		ViewportMask.lineTo(0, 0);
+		ViewportMask.endFill();
+	}
+
+	public function GetViewportSize():Point {
+		return new Point(Width, Height);
+	}
+
+/// Event handlers
 	private function onEnterFrame():Void {
 		UpdateClientCharMarker();
 	}

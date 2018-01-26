@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Components/CartographerLayerListEntry" itemID="59a0633c-0000026d" linkageExportForAS="true" linkageIdentifier="CartographerLayerToggle" lastModified="1503684453" lastUniqueIdentifier="2">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Components/CartographerLayerListEntry" itemID="59a0633c-0000026d" linkageExportForAS="true" linkageIdentifier="CartographerLayerToggle" lastModified="1516929098" lastUniqueIdentifier="2">
   <timeline>
     <DOMTimeline name="CartographerLayerListEntry">
       <layers>
@@ -10,7 +10,7 @@
                   <transformationPoint>
                     <Point x="10" y="10"/>
                   </transformationPoint>
-                  <dataBindingXML><![CDATA[<component metaDataFetched='true' schemaUrl='' schemaOperation='' sceneRootLabel='Scene 1' oldCopiedComponentPath=''>
+                  <dataBindingXML><![CDATA[<component metaDataFetched='true' schemaUrl='' schemaOperation='' sceneRootLabel='CartographerLayerList' oldCopiedComponentPath=''>
 </component>
 ]]></dataBindingXML>
                   <parametersAsXML><![CDATA[   <property id="data">

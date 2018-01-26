@@ -2,6 +2,8 @@
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-Cartographer
 
+import flash.geom.Point;
+
 import gfx.utils.Delegate;
 
 import com.GameInterface.DistributedValue;
@@ -122,7 +124,11 @@ class efd.Cartographer.Cartographer extends Mod {
 					Init : Window.Create,
 					InitObj : {
 						WindowName : "InterfaceWindow",
-						LoadEvent : Delegate.create(this, InterfaceWindowLoaded)
+						LoadEvent : Delegate.create(this, InterfaceWindowLoaded),
+						ResizeLimits : {
+							Min : new Point(200, 200),
+							Max : new Point(1500, 1000)
+						}
 					}
 				}
 			}
