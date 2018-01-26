@@ -54,12 +54,28 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
-Version Next
-+ Change to Modules.xml & LoginPrefs.xml (standardization of DV names)
+Version Next (Much of this is just for my reference and won't make it into actual release notes)
++ Change to Modules.xml & LoginPrefs.xml, avoid hotpatch and clear bxmls
++ Interface improvements:
+  + Can now resize the window
+    + Ranges from uselessly small to uselessly large, somewhere in the middle it replaces the map with a picture of three bears
+    + The sidebar needs a rework anyway, the priority of which just went up a bit
+      + Also it doesn't fill the space until you resize.. bit silly that
++ Waypoint updates:
+  + Only Deathstalker is un-marked in Champions (I might just guess that it exists in the same area as the lore drops from the scorpions, it's a pita to confirm)
+  + Spectre lore added; still a fair number missing, mostly in Dungeons (moderate priority) and unmapped instances (won't matter until search is a feature or we end up with entirely new maps (from minimap image perhaps? There are a few of those)); Missing lore from currently mapped instances:
+    + Filth and Humans #6 (All Seeing Kawaii)
+	+ Rakshasha #4 (Drops in KD, any rak?)
+	+ Mummies #12 (Can at least mark the spawn point in SD, but pain to do again)
+  + A few more Krampii for next year
++ Backend and development changes
+  + Major overhaul of mod framework, invisible for users, hopefully better for modders
+  + Changed site path (repo name), but GitHub provides a suite of redirects, so all the old links still work anyway
+  + ListMods support, "/setoption efdListMods true" to reveal that LoreHound doesn't have that yet
 
 Version 0.1.4-alpha
 + Krampusnacht waypoint pack
-  + All open world lore (added to Lore layer)
+  + All open world event lore (added to Lore layer)
   + Incomplete sample of Krampus spawn points (on a new layer, though it uses the champ mob icon)
   + The pack *should* automatically stop loading once the event ends (and maybe even come back next year)
 + Circles now more circular

@@ -45,20 +45,25 @@ import efd.Cartographer.notations.NotationBase;
 //         Icon modifiers; may be particularly useful to identify event/seasonal points (a little snowflake or pumpkin in the corner like in other sections of the UI), could also be used on group champions
 //           Particularly valuable for mission overlay (available, in progress, paused, on cooldown, locked etc.)
 //           A variant system could be used for numbered waypoints (maps of mission farming routes perhaps)?
-//       Mission overlay:
-//         Need to decide how to represent some things: main/side missions, mission types, mission state; particularly in cases where a single quest giver has multiple options
-//         What's important enough, or possible, to squeeze into the map icon, and what will have to stay on the tooltip
 //       Cleaning up the naming conventions. There's a number of identifiers that have more than one meaning, Waypoint and Layer are both suspect, should probably settle on some better names before too many more types get added
 //         Am liking Overlay as a possible replacement for Layer, would Marker work better than Waypoint and Notation in some places?
 //         Remember to check the MixIns and other places the compiler doesn't look at closely when doing renames, would help to minimize ducktyping elsewhere too
 //         The mental picture I have is a projector with a bunch of transparencies on top of a map, not sure any of that terminology is useful though
-//       Change project name. The mod's TSW support is actually minimal so SWL-Cartographer would make more sense
-//         Documentation suggests GitHub will handle this with grace, redirecting both web and git requests to the new repository as long as I don't reuse the old name. They still suggest updating the remotes anyway
-//       Window resizing... should be reasonably simple to enable on the framework/window side, passing that to the content will be more fun
-//         What parts should rescale, and which should just crop differently. How big/small should it be limited to.
-//         Minimap mode should probably be a different (mostly frameless) display, should try to ensure that the MapView can exist independently of a window
-//         On a similar line, would be nice to improve the zoom behaviour so it zooms in on the cursor and isn't stymied by every icon and area along the way
-//       Data extension tags and data defined overlay configurations
+//       Zoom behaviour tweaks:
+//         Zoom in to cursor position
+//         Stop being stymied by every icon and area along the way
+//         "Smart" zoom when resizing window to try and make best use of available space
+//           Perhaps if it was an exact fill (when started, or at any point?) attempt to retain that during the resize
+//       Harden data structures/parser against bad input
+//         Malformed xml can cause some very interesting and problematic data to end up in the system
+//         This data then has a bad habit of getting stuck in the settings, and causing crashes and other issues when the xml is fixed
+//         Need to identify the causes of those crashes, and fix it so that bad data triggers an error message and is discarded
+//         This is vital for the overlay pack system, as it's very likely that people trying to write their own will muck it up somewhere along the way (I do it regularly, and I wrote the dang thing)
+//       Sidebar layer settings, beyond just toggling the whole layer (show/hide should probably become an icon/button)
+//         Filter out collected sublayers on the lore/champ overlays; Known/unknown anima wells (if I can somehow figure out how to check that); Similar filters for missions
+//         Possibly toggle areas/paths/points here?
+//         Ability to re-order the sidebar/layer orders
+//       Data extension tags and data defined overlay configurations:
 //         Have reserved the set of <_Tag> for special directives, some notes in BasePack.xml, quick definitions here:
 //         _Section: Already exists, currently used to group marker definitions for easier editing
 //         _SectionDefaults: Base data that is shared (with infrequent overrides) by every marker definition in that section
@@ -71,15 +76,9 @@ import efd.Cartographer.notations.NotationBase;
 //             An alternative would be to use a VTIO style interface to delay the file load (in one of several ways)
 //         _Strings: Allows an overlay pack to define additional entries for the string tables provided by LocaleManager
 //           They can then be used elsewhere in that overlay pack or as UI labels (though things like overlay naming may be better as part of the _OverlayDef tag)
-//       Harden data structures/parser against bad input
-//         Malformed xml can cause some very interesting and problematic data to end up in the system
-//         This data then has a bad habit of getting stuck in the settings, and causing crashes and other issues when the xml is fixed
-//         Need to identify the causes of those crashes, and fix it so that bad data triggers an error message and is discarded
-//         This is vital for the overlay pack system, as it's very likely that people trying to write their own will muck it up somewhere along the way (I do it regularly, and I wrote the dang thing)
-//       Sidebar layer settings, beyond just toggling the whole layer (show/hide should probably become an icon/button)
-//         Filter out collected sublayers on the lore/champ overlays; Known/unknown anima wells (if I can somehow figure out how to check that); Similar filters for missions
-//         Possibly toggle areas/paths/points here?
-//         Ability to re-order the sidebar/layer orders
+//       Mission overlay:
+//         Need to decide how to represent some things: main/side missions, mission types, mission state; particularly in cases where a single quest giver has multiple options
+//         What's important enough, or possible, to squeeze into the map icon, and what will have to stay on the tooltip
 //       Config window for more general settings:
 //         Standard framework settings (Think that's just Topbar Integration here)
 //         Datafile load list (with ability to selectively disable or remove? files, or add new ones)
@@ -90,7 +89,7 @@ import efd.Cartographer.notations.NotationBase;
 //       Wishlist (Get Daimon on these, they could use some crazed laughter)
 //         Search feature
 //         Custom player waypoints
-//         Default minimap overlay investigation
+//         Default minimap overlay investigation, or self supporting minimap mode (try to ensure that the MapView can exist independently of a window)
 
 // ConfigWindow does not have content, disabling simple access (can still /setoption the DV manually, will probably crash the game)
 class efd.Cartographer.Cartographer extends Mod {

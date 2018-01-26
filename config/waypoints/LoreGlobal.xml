@@ -311,7 +311,7 @@
 		<Lore zone="3090" x="197" y="481" z="70" loreID="5058" />
 		<Lore zone="3100" x="849" y="938" z="91" loreID="5059" />
 		<Lore zone="3100" x="186" y="443" z="100" loreID="5060" />
-		<!-- Uta Bloody Valentine 0/3 (Loot drop, no waypoint?) -->
+		<!-- Uta Bloody Valentine 0/3 (Loot drop, use the loot bag) -->
 		<!-- Wabanaki -->
 		<Lore zone="3040" x="160" y="858" z="135" loreID="1491" />
 		<Lore zone="3040" x="131" y="842" z="130" loreID="1490" />

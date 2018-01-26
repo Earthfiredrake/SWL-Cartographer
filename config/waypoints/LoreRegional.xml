@@ -435,8 +435,8 @@
 		<Lore zone="3070" x="751" y="39" z="71" loreID="7577" /> <!-- Has Trigger Condition? -->
 		<Lore zone="3070" x="921" y="139" z="73" loreID="7578" />
 		<Lore zone="3070" x="702" y="162" z="71" loreID="7579" />
-		<!-- The Manufactory 0/7 (NYA - MFA) -->
-		<!-- Manufactory Breached 0/12 (NYA - MFB) -->
+		<!-- The Manufactory 0/7 (NYA - MFA - No longer in lore interface :( ) -->
+		<!-- Manufactory Breached 0/12 (NYA - MFB - No longer in lore interface :( ) -->
 		<!-- Nightmares in the Dream Palace -->
 		<Lore zone="3070" x="928" y="437" z="83" loreID="7603" />
 		<Lore zone="3070" x="517" y="158" z="75" loreID="7604" />
