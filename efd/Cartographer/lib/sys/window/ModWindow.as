@@ -29,21 +29,13 @@ class efd.Cartographer.lib.sys.window.ModWindow extends WinComp {
 	private function configUI():Void {
 		super.configUI();
 		if (m_ShowResize) {
-			// Disable WinComp's buggy event handling
-			m_ResizeButton.onPress = function() {}; // undefined ?? Is there some need to put a no-op function here?
+			// Adjust WinComp event handling
+			m_ResizeButton.onPress = Delegate.create(this, SlotResizePress);
+			m_ResizeButton.onMouseUp = Delegate.create(this, SlotResizeRelease);
 			m_ResizeButton.onRelease = undefined;
 			m_ResizeButton.onReleaseOutside = undefined;
-
-			// Setup alternate resize handler (based on AchivementWindow)
-			m_ResizeButton.onMousePress = Delegate.create(this, SlotResizePress);
-			m_ResizeButton.onMouseUp = Delegate.create(this, SlotResizeRelease);
-			m_ResizeButton.onMouseMove = Delegate.create(this, SlotResizeMove);
 			m_ResizeButton.disableFocus = true;
 		}
-	}
-
-	private function onUnload():Void {
-		super.onUnload();
 	}
 
 	public function PermitResize(limits:Object):Void {
@@ -66,23 +58,9 @@ class efd.Cartographer.lib.sys.window.ModWindow extends WinComp {
 		m_Content.Close();
 	}
 
-	private function SlotResizePress()
-	{
-		if (Mouse["IsMouseOver"](m_ResizeButton)) {
-			IsResizing = true;
-		}
-	}
+	private function SlotResizePress() { m_ResizeButton.onMouseMove = Delegate.create(this, MouseResizeMovingHandler); }
 
-	private function SlotResizeRelease() { IsResizing = false; }
-
-	private function SlotResizeMove()
-	{
-		// Delegate actual calculations back to the WinComp implementation
-		// This will skip the (largely redundant) call to SetSize onRelease
-		if (IsResizing) { MouseResizeMovingHandler(); }
-	}
-
-	private var IsResizing:Boolean = false;
+	private function SlotResizeRelease() { m_ResizeButton.onMouseMove = undefined; }
 
 	private var EscNode:EscapeStackNode;
 	private var ResolutionScaleDV:DistributedValue;

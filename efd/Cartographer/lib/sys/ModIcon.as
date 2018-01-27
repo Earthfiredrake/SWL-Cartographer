@@ -219,7 +219,9 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 		copy.LeftMouseInfo = LeftMouseInfo;
 		copy.RightMouseInfo = RightMouseInfo;
 		copy.ExtraTooltipInfo = ExtraTooltipInfo;
-		copy.onReleaseOutsideAux = onReleaseOutsideAux; // Not copied by either Meeehr or Viper
+		// Not copied by either Meeehr or Viper
+		copy.onDragOut = onDragOut;
+		copy.onDragOutAux = onDragOutAux;
 
 		// Minimalist config changed, doesn't handle layout messages and has different behaviour on TopbarIntegration
 		Config.SignalValueChanged.Connect(CloneConfigChanged, copy);
@@ -370,8 +372,8 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 
 	private function onRollOver():Void { OpenTooltip(); }
 	private function onRollOut():Void { CloseTooltip(); }
-	private function onReleaseOutside():Void { CloseTooltip(); }
-	private function onReleaseOutsideAux():Void { CloseTooltip(); }
+	private function onDragOut():Void { CloseTooltip(); }
+	private function onDragOutAux():Void { CloseTooltip(); }
 
 	// Tuples of an Action to call on mouse click, and a Tooltip returning a descriptive string
 	// The Mod class will assign defaults based on the type of the mod, but they can be overriden if desired

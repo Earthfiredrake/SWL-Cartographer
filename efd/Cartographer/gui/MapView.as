@@ -92,7 +92,6 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	}
 
 	private function MapLoaded(target:MovieClip):Void {
-		target.onMouseWheel = Delegate.create(target._parent, RescaleMap);
 		target.onPress = Delegate.create(target._parent, StartScrollMap);
 		var releaseHandler:Function = Delegate.create(target._parent, EndScrollMap);
 		target.onRelease = releaseHandler;
@@ -106,6 +105,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		target._parent.RescaleMap(0); // Restore the previous zoom level
 	}
 
+	private function onMouseWheel(delta:Number):Void { RescaleMap(delta); }
 	private function RescaleMap(delta:Number):Void {
 		ZoomLevel = Math.min(MaxZoomLevel, Math.max(0, ZoomLevel + delta * 2));
 		MapLayer._xscale = MapImageScale + ZoomLevel;
