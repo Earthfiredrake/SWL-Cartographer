@@ -90,7 +90,7 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 			var targetLayer:MovieClip = WaypointLayer[state + "Sublayer"];
 			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
 				WaypointIcon, "WP" + targetLayer.getNextHighestDepth(), targetLayer, targetLayer.getNextHighestDepth(),
-				{ Data : data[i], _x : mapPos.x, _y : mapPos.y, LayerClip : this }));
+				{ Data : data[i], _x : mapPos.x, _y : mapPos.y, MapViewLayer : this }));
 			wp.SignalIconChanged.Connect(ChangeIcon, this);
 			wp.SignalWaypointLoaded.Connect(LoadNextBlock, this);
 			wp.LoadIcon();
