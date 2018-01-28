@@ -44,22 +44,26 @@ class efd.Cartographer.gui.WaypointPath extends MovieClip {
 		}
 	}
 
+	// Two forms:
+	//   hitTest(target:Object):Boolean - tests against another object
+	//   hitTest(x, y, [shapeFlag], [ignoreInvisibleChildren]): Boolean - tests against a point
 	public function hitTest():Boolean {
 		switch (arguments.length) {
-			case 1: Mod.TraceMsg("WaypointPath hitTest(Object) called"); return super.hitTest(arguments[0]); // Object comparison hit test, not sure how to implement but doesn't seem to be needed?
+			case 1: Mod.TraceMsg("WaypointPath hitTest(Object) called"); return super.hitTest(arguments[0]); // Object comparison hit test, not sure if it works properly but doesn't seem to be needed
 			case 2: return super.hitTest(arguments[0], arguments[1]); // Basic bounding box hit test, works as advertisedish
 			case 3: return super.hitTest(arguments[0], arguments[1]) ? (arguments[2] ? DetailedHitTest(arguments[0], arguments[1]) : true) : false; // Do a basic bounding test before verifying with the detailed test, if needed
+			case 4: return super.hitTest(arguments[0], arguments[1], arguments[2], arguments[3]) ? (arguments[2] ? DetailedHitTest(arguments[0], arguments[1], arguments[3]) : true) : false; // Scaleform extension format
 			default: return false; // Bad call parameters
 		}
 	}
 
-	private function DetailedHitTest(x:Number, y:Number):Boolean {
+	private function DetailedHitTest(x:Number, y:Number, ignoreInvisible:Boolean):Boolean {
 		var p:Point = new Point(x, y);
 		globalToLocal(p);
 		for (var i:Number = 1; i < LocalPoints.length; ++i) {
 			if (SqDist(LocalPoints[i-1], LocalPoints[i], p) <= LineThickness * LineThickness) { return true; }
 		}
-		return super.HitTest(x, y, true); // On off chance there actually is other content in the clip
+		return super.HitTest(x, y, true, ignoreInvisible); // On off chance there actually is other content in the clip
 	}
 
 	// Calculates the squared distance between line segment (a-b) and point (c)

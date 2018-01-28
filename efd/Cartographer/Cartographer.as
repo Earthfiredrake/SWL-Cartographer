@@ -63,6 +63,9 @@ import efd.Cartographer.notations.NotationBase;
 //         Filter out collected sublayers on the lore/champ overlays; Known/unknown anima wells (if I can somehow figure out how to check that); Similar filters for missions
 //         Possibly toggle areas/paths/points here?
 //         Ability to re-order the sidebar/layer orders
+//       Layered map display
+//         Need to be able to handle the maps (such as NYC and Ankh) that have multiple vertical layers
+//         Ideally some combination of automatically detecting which layer the player is in, and being able to peek into the others
 //       Data extension tags and data defined overlay configurations:
 //         Have reserved the set of <_Tag> for special directives, some notes in BasePack.xml, quick definitions here:
 //         _Section: Already exists, currently used to group marker definitions for easier editing
@@ -84,6 +87,7 @@ import efd.Cartographer.notations.NotationBase;
 //         Datafile load list (with ability to selectively disable or remove? files, or add new ones)
 //         Other general options:
 //           Toggle between showing paths/areas by default or as a mouseover for an icon?
+//           For multilayer zones, a choice between hiding the marks that aren't on the current layer, or displaying them with some sort of above/below marker
 //           Mod integration options, probably just a general permit/disable toggle here, leave it up to the other mods whether they offer an option to not integrate
 //             If it turns out Cartog can usefully send data to other mods, should probably list them
 //       Wishlist (Get Daimon on these, they could use some crazed laughter)
@@ -150,8 +154,6 @@ class efd.Cartographer.Cartographer extends Mod {
 		OverlayList = new Array("BasePack");
 		LayerDataList = new Array();
 		BasicMCGraphics.setup();
-
-		TraceMsg("Initialized");
 	}
 
 	private function InitializeConfig():Void {
@@ -170,9 +172,7 @@ class efd.Cartographer.Cartographer extends Mod {
 		Config.NewSetting("LayerSettings", new Object());
 
 		// HACK: Forcibly replace the ResetConfig DV handler
-		if (!ConfigHost.ResetDV.SignalChanged.Disconnect(ConfigHost.ResetConfig, ConfigHost)) {
-			TraceMsg("Warning! Failed to disconnect default config reset handler.");
-		}
+		ConfigHost.ResetDV.SignalChanged.Disconnect(ConfigHost.ResetConfig, ConfigHost);
 		ConfigHost.ResetDV.SignalChanged.Connect(ResetConfig, this);
 	}
 
@@ -187,7 +187,6 @@ class efd.Cartographer.Cartographer extends Mod {
 		for (var i:Number = 0; i < packList.length; ++i) {
 			if (packList[i].load) { OverlayList.push(packList[i].name); }
 		}
-		TraceMsg("OverlayPacks to load: " + (OverlayList.length));
 
 		super.ConfigLoaded();
 	}
@@ -229,11 +228,9 @@ class efd.Cartographer.Cartographer extends Mod {
 		} else { ErrorMsg("Unable to load zone index", {fatal : true}); }
 	}
 
-	// TODO: Get those shift() side effects out of the trace messages
 	private function ParseOverlayPack(success:Boolean):Void {
 		if (success) {
 			var pack:Array = ParseSection(OverlayLoader.firstChild);
-			TraceMsg("Sorting " + pack.length + " entries");
 			for (var i:Number = 0; i < pack.length; ++i) {
 				var layer:String = pack[i].Layer;
 				var layerConfig:Object = Config.GetValue("LayerSettings")[layer];
@@ -247,14 +244,14 @@ class efd.Cartographer.Cartographer extends Mod {
 				}
 				LayerDataList[layerConfig.Depth].AddNotation(pack[i]);
 			}
-			TraceMsg("Loaded waypoint file: "  + OverlayList.shift() + ".xml");
-		} else { ErrorMsg("Unable to load waypoint file: " + OverlayList.shift() + ".xml"); }
+			TraceMsg("Loaded " + pack.length + " waypoints from "  + OverlayList[0] + ".xml");
+		} else { ErrorMsg("Unable to load waypoint file: " + OverlayList[0] + ".xml"); }
+		OverlayList.shift();
 		if (OverlayList.length > 0) { OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack)); }
 		else {
 			delete OverlayList;
 			delete OverlayLoader;
 			CleanupLayers();
-			TraceMsg("Waypoints loaded");
 		}
 	}
 

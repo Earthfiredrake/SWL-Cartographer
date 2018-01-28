@@ -51,7 +51,6 @@ class efd.Cartographer.gui.LayerList extends UIComponent {
 
 	private function LabelPressed():Void {
 		var target:Object = this;
-		Mod.TraceMsg("Toggling layer: " + target.Label.text);
 		target.Settings.ShowLayer = !target.Settings.ShowLayer;
 		target._parent.Config.NotifyChange("LayerSettings");
 	}

@@ -80,7 +80,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		return createEmptyMovieClip(type + "Layer" + depth, depth);
 	}
 
-	/// Map manipulation
+/// Map manipulation
 	private function ChangeMap(newZone:Number):Void {
 		var charZone:Number = ClientChar.GetPlayfieldID();
 		ClientCharMarker._visible = (charZone == newZone);
@@ -129,10 +129,9 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		UpdatePosition(new Point(MapLayer._x + diff.x, MapLayer._y + diff.y));
 	}
 
-	private function EndScrollMap():Void {
-		onMouseMove = ManageTooltips;
-	}
+	private function EndScrollMap():Void { onMouseMove = ManageTooltips; }
 
+	// targetPos is in map coordinates, the point to place at top left corner
 	private function UpdatePosition(targetPos:Point):Void {
 		// Constrain the edges of the map to the viewport
 		// Map can scroll only if it is wider/taller than the viewport (limits of 0 trump)
@@ -162,14 +161,10 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		ViewportMask.endFill();
 	}
 
-	public function GetViewportSize():Point {
-		return new Point(Width, Height);
-	}
+	public function GetViewportSize():Point { return new Point(Width, Height); }
 
 /// Event handlers
-	private function onEnterFrame():Void {
-		UpdateClientCharMarker();
-	}
+	private function onEnterFrame():Void { UpdateClientCharMarker(); }
 
 	private function UpdateClientCharMarker():Void {
 		if (ClientCharMarker._visible) {
@@ -214,9 +209,9 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 			}
 		}
 		if (tooltipTargets.length > 0) {
-			Mod.TraceMsg("Number of tooltip targets: " + tooltipTargets.length);
+			// Mod.TraceMsg("Number of tooltip targets: " + tooltipTargets.length);
 			for (var i:Number = 0; i < tooltipTargets.length; ++i) {
-				Mod.TraceMsg("  " + tooltipTargets[i].Data.GetName());
+				// Mod.TraceMsg("  " + tooltipTargets[i].Data.GetName());
 			}
 			// TODO: Create/Update tooltip
 		} else {
@@ -224,7 +219,10 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		}
 	}
 
-	/// Coordinate Conversions
+/// Coordinate Conversions
+	// World Coordinates: Based on game world locations used for game data and UI invariant coordinates
+	// Image Coordinates: Based on map image at current scale
+	// View Coordinates: Based on viewport, with current map scale and panning offsets
 	// Converts from world coordinates to a coordinate set based on the full map image size
 	// Any layer which uses this should make sure to lock its origin point to the map's origin when scrolling
 	public function WorldToMapCoords(worldCoords:Point):Point {
@@ -235,14 +233,12 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 
 	// Adjusts map coordinates to account for a scrolled map when rendering to the viewport
 	// Used for objects which are positioned relative to the viewport
-	public function MapToViewCoords(mapCoords:Point):Point {
-		return new Point(mapCoords.x + MapLayer._x, mapCoords.y + MapLayer._y);
-	}
+	public function MapToViewCoords(mapCoords:Point):Point { return new Point(mapCoords.x + MapLayer._x, mapCoords.y + MapLayer._y); }
+	private function ViewToMapCoords(viewCoords:Point):Point { return new Point(viewCoords.x - MapLayer._x, viewCoords.y - MapLayer._y); }
 
 	// Converts from world coordinates to ones relative to the viewport
-	private function WorldToViewCoords(worldCoords:Point):Point {
-		return MapToViewCoords(WorldToMapCoords(worldCoords));
-	}
+	private function WorldToViewCoords(worldCoords:Point):Point { return MapToViewCoords(WorldToMapCoords(worldCoords)); }
+	private function ViewToWorldCoords(viewCoords:Point):Point { return MapToWorldCoords(ViewToMapCoords(viewCoords)); }
 
 	private function MapToWorldCoords(mapCoords:Point):Point {
 		return new Point(
@@ -250,9 +246,8 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 			(MapLayer._height - mapCoords.y) * ZoneIndex[CurrentZoneID].worldY / MapLayer._height);
 	}
 
-	private static function RadToDegRotation(radians:Number):Number {
-		return radians * 180 / Math.PI;
-	}
+
+	private static function RadToDegRotation(radians:Number):Number { return radians * 180 / Math.PI; }
 
 	// General state
 	private var ClientChar:Character;
