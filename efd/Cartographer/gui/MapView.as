@@ -23,10 +23,10 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	private function MapView() {
 		// Indirect construction only
 		// Requires following parameters passed via init object
-		//   Height, Width: Viewport dimensions
 		//   ZoneIndex: Zone index data
 		//   LayerDataList: Waypoint data
 		//   Config: Mod config record
+		// A call to ResizeViewport should follow construction promptly
 		super();
 
 		// Init data
@@ -38,7 +38,6 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 
 		// Init clipping mask
 		var mask:MovieClip = createEmptyMovieClip("ViewportMask", getNextHighestDepth());
-		ResizeViewport(Width, Height);
 		setMask(mask);
 
 		onMouseMove = ManageTooltips;
@@ -84,6 +83,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	private function ChangeMap(newZone:Number):Void {
 		var charZone:Number = ClientChar.GetPlayfieldID();
 		ClientCharMarker._visible = (charZone == newZone);
+		PrevZoneID = CurrentZoneID;
 		CurrentZoneID = newZone;
 		// TODO: See if I can source maps from the RDB in any way
 		// Loader.loadClip("rdb:1000636:9247193", MapLayer); // English map for Museum
@@ -102,17 +102,25 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		target._yscale = 100;
 		target._parent.MapImageScale = 100 * Math.min(1,
 			Math.min(InterfaceWindowContent.ViewportWidth / target._width, InterfaceWindowContent.ViewportHeight / target._height));
-		target._parent.RescaleMap(0); // Restore the previous zoom level
+		target._parent.RescaleMap(ZoomLevel); // Restore the previous zoom level
+		target._parent.FocusOnTransit();
 	}
 
-	private function onMouseWheel(delta:Number):Void { RescaleMap(delta); }
-	private function RescaleMap(delta:Number):Void {
-		ZoomLevel = Math.min(MaxZoomLevel, Math.max(0, ZoomLevel + delta * 2));
+	private function onMouseWheel(delta:Number):Void {
+	 	var mouseCoords:Point = new Point(_xmouse, _ymouse);
+		var targetCoords:Point = ViewToWorldCoords(mouseCoords);
+		RescaleMap(ZoomLevel + delta * 2);
+		targetCoords = ViewToMapCoords(mouseCoords).subtract(WorldToMapCoords(targetCoords));
+		targetCoords.x += MapLayer._x;
+		targetCoords.y += MapLayer._y;
+		UpdatePosition(targetCoords);
+	}
+
+	private function RescaleMap(zoomLevel:Number):Void {
+		ZoomLevel = Math.min(MaxZoomLevel, Math.max(0, zoomLevel));
 		MapLayer._xscale = MapImageScale + ZoomLevel;
 		MapLayer._yscale = MapImageScale + ZoomLevel;
-		// Confirm that current position meets the constraints at the new zoom level
-		UpdatePosition(new Point(MapLayer._x, MapLayer._y));
-		// Update all the notation layers
+
 		for (var i:Number = 0; i < NotationLayerViews.length; ++i) {
 			NotationLayerViews[i].RenderLayer(CurrentZoneID);
 		}
@@ -131,7 +139,8 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 
 	private function EndScrollMap():Void { onMouseMove = ManageTooltips; }
 
-	// targetPos is in map coordinates, the point to place at top left corner
+	// TargetPos is offset for top left corner in map/image coordinates
+	// Values are clamped between 0 and a negative value that matches the lower right corners of the image and the viewport
 	private function UpdatePosition(targetPos:Point):Void {
 		// Constrain the edges of the map to the viewport
 		// Map can scroll only if it is wider/taller than the viewport (limits of 0 trump)
@@ -147,10 +156,43 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		}
 	}
 
+	// Try to place the point in the center of the view
+	// targetPos is point to place as close to the middle of the view as possible in map/image coordinates
+	private function AttemptCenterView(targetPos:Point):Void { UpdatePosition(new Point(Width / 2 - targetPos.x, Height / 2 - targetPos.y)); }
+
+	private function FocusOnTransit():Void {
+		if (PrevZoneID) {
+			for (var i:Number = 0; i < LayerDataList.length; ++i) {
+				if (LayerDataList[i].Layer != "Transit") { continue; }
+				var transitPoints:Array = LayerDataList[i].NotationsByZone[CurrentZoneID].Waypoints;
+				for (var j:Number = 0; j < transitPoints.length; ++j) {
+					if (transitPoints[j].TargetZone == PrevZoneID) { AttemptCenterView(WorldToMapCoords(transitPoints[j].Position)); }
+				}
+				break;
+			}
+		}
+		UpdatePosition(new Point(MapLayer._x, MapLayer._y));
+	}
+
 /// Window manipulation
-	public function ResizeViewport(width:Number, height:Number):Void {
+	public function ResizeViewport(width:Number, height:Number, miniMode:Boolean):Void {
+		// Concept here is that if the window is resized the map should:
+		//   Pan back into view if it is being enlarged
+		//   Scale to fill unless it was set at an odd scale
+		// While this works, it's a little bit fudgy, and prone to not locking in correctly
+
+		UpdatePosition(new Point(MapLayer._x + (width > Width ? width - Width : 0),
+								 MapLayer._y + (height > Height ? height - Height : 0)));
+		// Map and view widths are unlikely to be exact, so going with "close enough" to trigger this
+		var scaleWidth:Number = (Math.abs(MapLayer._width - Width) < 5) ? width : 0;
+		var scaleHeight:Number = (Math.abs(MapLayer._height - Height) < 5) ? height : 0;
+		scaleWidth /= MapLayer._width / MapLayer._xscale;
+		scaleHeight /= MapLayer._height / MapLayer._yscale;
+		var targetScale:Number = Math.max(scaleWidth, scaleHeight);
+
 		Width = width;
 		Height = height;
+		MinimapMode = miniMode;
 
 		ViewportMask.clear();
 		ViewportMask.beginFill(0xFFFFFF);
@@ -159,6 +201,8 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		ViewportMask.lineTo(0, Height);
 		ViewportMask.lineTo(0, 0);
 		ViewportMask.endFill();
+
+		if (targetScale > 0) { RescaleMap(targetScale - MapImageScale); }
 	}
 
 	public function GetViewportSize():Point { return new Point(Width, Height); }
@@ -173,6 +217,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 			ClientCharMarker._x = mapPos.x;
 			ClientCharMarker._y = mapPos.y;
 			ClientCharMarker._rotation = RadToDegRotation(-ClientChar.GetRotation());
+			if (MinimapMode) { AttemptCenterView(ViewToMapCoords(mapPos)); }
 		}
 	}
 
@@ -254,6 +299,8 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	private var Config:ConfigWrapper;
 	private var ZoneIndex:Object;
 	private var CurrentZoneID:Number;
+	private var PrevZoneID:Number;
+	private var MinimapMode:Boolean; // Partial minimap behaviour, currently locks view centered on player icon
 
 	// Zoom and scroll
 	private var ZoomLevel:Number;

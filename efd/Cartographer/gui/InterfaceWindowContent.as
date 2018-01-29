@@ -21,7 +21,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 
 	public function SetData(zoneIndex:Object, layerDataList:Array, config:ConfigWrapper):Void {
 		MovieClipHelper.createMovieWithClass(MapView, "MapViewport", this, getNextHighestDepth(),
-			{ ZoneIndex : zoneIndex, LayerDataList : layerDataList, Config : config, Height : ViewportHeight, Width : ViewportWidth });
+			{ ZoneIndex : zoneIndex, LayerDataList : layerDataList, Config : config });
 
 		LayerListDisplay.SetConfig(config);
 		LayerListDisplay.AddLayers(layerDataList);
@@ -53,7 +53,7 @@ class efd.Cartographer.gui.InterfaceWindowContent extends WindowComponentContent
 			LayerListDisplay._height = height;
 			width = LayerListDisplay._x;
 		} else { LayerListDisplay._visible = false; }
-		MapViewport.ResizeViewport(width, height);
+		MapViewport.ResizeViewport(width, height, !LayerListDisplay._visible);
 
 		SignalSizeChanged.Emit();
 	}

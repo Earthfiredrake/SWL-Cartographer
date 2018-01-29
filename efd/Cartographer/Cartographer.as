@@ -49,11 +49,6 @@ import efd.Cartographer.notations.NotationBase;
 //         Am liking Overlay as a possible replacement for Layer, would Marker work better than Waypoint and Notation in some places?
 //         Remember to check the MixIns and other places the compiler doesn't look at closely when doing renames, would help to minimize ducktyping elsewhere too
 //         The mental picture I have is a projector with a bunch of transparencies on top of a map, not sure any of that terminology is useful though
-//       Zoom behaviour tweaks:
-//         Zoom in to cursor position
-//         Stop being stymied by every icon and area along the way
-//         "Smart" zoom when resizing window to try and make best use of available space
-//           Perhaps if it was an exact fill (when started, or at any point?) attempt to retain that during the resize
 //       Harden data structures/parser against bad input
 //         Malformed xml can cause some very interesting and problematic data to end up in the system
 //         This data then has a bad habit of getting stuck in the settings, and causing crashes and other issues when the xml is fixed
@@ -65,7 +60,7 @@ import efd.Cartographer.notations.NotationBase;
 //         Ability to re-order the sidebar/layer orders
 //       Layered map display
 //         Need to be able to handle the maps (such as NYC and Ankh) that have multiple vertical layers
-//         Ideally some combination of automatically detecting which layer the player is in, and being able to peek into the others
+//         Ideally some combination of automatically detecting which layer the player is in, and being able to peek into the others, similar to how it deals with zones at the moment
 //       Data extension tags and data defined overlay configurations:
 //         Have reserved the set of <_Tag> for special directives, some notes in BasePack.xml, quick definitions here:
 //         _Section: Already exists, currently used to group marker definitions for easier editing
@@ -93,7 +88,7 @@ import efd.Cartographer.notations.NotationBase;
 //       Wishlist (Get Daimon on these, they could use some crazed laughter)
 //         Search feature
 //         Custom player waypoints
-//         Default minimap overlay investigation, or self supporting minimap mode (try to ensure that the MapView can exist independently of a window)
+//         Default minimap overlay investigation, or an improved self supporting minimap mode (try to ensure that the MapView can exist independently of a window)
 
 // ConfigWindow does not have content, disabling simple access (can still /setoption the DV manually, will probably crash the game)
 class efd.Cartographer.Cartographer extends Mod {

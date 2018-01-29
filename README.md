@@ -59,8 +59,14 @@ Version Next (Much of this is just for my reference and won't make it into actua
 + Interface improvements:
   + Can now resize the window
     + Ranges from uselessly small to uselessly large, somewhere in the middle it replaces the map with a picture of three bears
+	+ Will attempt to fill the new window space with the map, provided it was previously filling (or overfilling) the space
+	+ Prototype Minimap Mode: If made narrow enough (height can be whatever), the sidebar vanishes and it locks the view to the player's location (if displaying the current zone)
+	  + For a slightly interesting proximity tooltip trick, place the mouse over the player location marker and then start moving/hit alt (Currently unintended behaviour, does it look like a useful feature?)
     + The sidebar needs a rework anyway, the priority of which just went up a bit
       + Also it doesn't fill the space until you resize.. bit silly that
+  + Zoom behaviour improved
+    + Zoom now (mostly) focuses on the mouse cursor, and can be done while over a map marker
+	+ Unless following player position, when zone changes while zoomed in it will focus on the matching transition point in the new zone (might not be where you are if you used a zone teleport)
 + Waypoint updates:
   + Only Deathstalker is un-marked in Champions (I might just guess that it exists in the same area as the lore drops from the scorpions, it's a pita to confirm)
   + Spectre lore added; still a fair number missing, mostly in Dungeons (moderate priority) and unmapped instances (won't matter until search is a feature or we end up with entirely new maps (from minimap image perhaps? There are a few of those)); Missing lore from currently mapped instances:
