@@ -80,9 +80,8 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	}
 
 /// Map manipulation
-	private function ChangeMap(newZone:Number):Void {
-		var charZone:Number = ClientChar.GetPlayfieldID();
-		ClientCharMarker._visible = (charZone == newZone);
+	private function ChangeMap(newZone:Number, playerZone:Boolean):Void {
+		ClientCharMarker._visible = ClientChar.GetPlayfieldID() == newZone;
 		PrevZoneID = CurrentZoneID;
 		CurrentZoneID = newZone;
 		// TODO: See if I can source maps from the RDB in any way
@@ -92,18 +91,18 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	}
 
 	private function MapLoaded(target:MovieClip):Void {
-		target.onPress = Delegate.create(target._parent, StartScrollMap);
-		var releaseHandler:Function = Delegate.create(target._parent, EndScrollMap);
+		target.onPress = Delegate.create(this, StartScrollMap);
+		var releaseHandler:Function = Delegate.create(this, EndScrollMap);
 		target.onRelease = releaseHandler;
 		target.onReleaseOutside = releaseHandler;
 
 		// Calculate the scale adjustment to contain the image in full at lowest zoom
 		target._xscale = 100;
 		target._yscale = 100;
-		target._parent.MapImageScale = 100 * Math.min(1,
+		MapImageScale = 100 * Math.min(1,
 			Math.min(InterfaceWindowContent.ViewportWidth / target._width, InterfaceWindowContent.ViewportHeight / target._height));
-		target._parent.RescaleMap(ZoomLevel); // Restore the previous zoom level
-		target._parent.FocusOnTransit();
+		RescaleMap(ZoomLevel); // Restore the previous zoom level
+		FocusOnTransit();
 	}
 
 	private function onMouseWheel(delta:Number):Void {
@@ -117,7 +116,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	}
 
 	private function RescaleMap(zoomLevel:Number):Void {
-		ZoomLevel = Math.min(MaxZoomLevel, Math.max(0, zoomLevel));
+		ZoomLevel = Math.min(MaxZoomLevel, Math.max(MinZoomLevel, zoomLevel));
 		MapLayer._xscale = MapImageScale + ZoomLevel;
 		MapLayer._yscale = MapImageScale + ZoomLevel;
 
@@ -211,7 +210,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	private function onEnterFrame():Void { UpdateClientCharMarker(); }
 
 	private function UpdateClientCharMarker():Void {
-		if (ClientCharMarker._visible) {
+		if (ClientChar.GetPlayfieldID() == CurrentZoneID) {
 			var worldPos:Vector3 = ClientChar.GetPosition(0);
 			var mapPos:Point = WorldToViewCoords(new Point(worldPos.x, worldPos.z));
 			ClientCharMarker._x = mapPos.x;
@@ -222,6 +221,11 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	}
 
 	private function PlayerZoneChanged(newZone:Number):Void {
+		if (ClientChar.GetPlayfieldID() == 0) {
+			setTimeout(Delegate.create(this, PlayerZoneChanged), 1000, newZone);
+			return;
+		}
+
 		if (ClientCharMarker._visible) { // Player on previous map
 			if (ZoneIndex[newZone]) { ChangeMap(newZone); }
 			else { ClientCharMarker._visible = false; }
@@ -329,6 +333,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	private var ViewportMask:MovieClip;
 
 	// Constants
+	private static var MinZoomLevel:Number = -20;
 	private static var MaxZoomLevel:Number = 100;
 	private static var MaxLayerCount:Number = 50;
 }

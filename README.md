@@ -162,7 +162,6 @@ Current goals for the next versions:
 + Expanding tooltips (continuing)
   + Making more info available (note fields, coordinates, etc.)
   + Handling stacked waypoints
-  + Enabling tooltips on Paths
   + Considering making path/area notations behave as tooltips for icons
 + Mission layer
 + Work on config settings
@@ -171,11 +170,8 @@ Current goals for the next versions:
 
 Initial feedback has provided the following suggestions which are not yet implemented:
 + Mouse coordinates should be clearly displayed someplace obvious
-+ Window size should account for lower resolutions (1600x900 resolution was cutting things off)
-  + Window resizing should be a thing
-+ Minimap mode
-  + Small frameless window, centred on player location
-  + No sidebars
++ Minimap mode (Partially implemented, but could by improved)
+  + Frameless view
 + Mission markers should be filterable by main/side for challenge completion
 
 As always, defect reports, suggestions, and contributions are welcome. They can be sent to Peloprata in SWL (by mail or pm), via the github issues system, or in the official forum post.
