@@ -1,0 +1,46 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="CartographerPointMarkerModifier" itemID="5a709722-000001f7" linkageExportForAS="true" linkageIdentifier="CartographerPointMarkerModifier" lastModified="1517347761">
+  <timeline>
+    <DOMTimeline name="CartographerPointMarkerModifier" currentFrame="4">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" duration="4" name="none" labelType="name" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+            <DOMFrame index="4" duration="5" name="text" labelType="name" keyMode="9728">
+              <elements>
+                <DOMDynamicText name="ModifierText" selected="true" width="12" height="15.8" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="-13" ty="2"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters></characters>
+                      <textAttrs>
+                        <DOMTextAttrs aliasText="false" bitmapSize="240" face="_StandardFont*" fillColor="#FFFFFF"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMDynamicText>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="9" name="star" labelType="name" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#990000"/>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle1="1" edges="!-62 320|-160 249!-160 249|-260 320!-260 320|-225 200!-225 200|-320 122!-320 122|-201 119!-201 119|-160 0!-160 0|-120 119!-120 119|0 122!0 122|-96 200!-96 200|-62 320"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

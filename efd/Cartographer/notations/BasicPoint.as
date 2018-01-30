@@ -63,6 +63,7 @@ class efd.Cartographer.notations.BasicPoint extends NotationBase implements IWay
 
 	public function GetPosition():Point { return Position; }
 	public function GetIcon():String { return Icon; }
+	public function GetIconModifier():Array { return ["none"]; }
 
 	/// Data fields
 	private var Position:Point; // World space coordinates

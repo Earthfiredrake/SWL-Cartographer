@@ -42,9 +42,13 @@ import efd.Cartographer.notations.NotationBase;
 //         Runtime greyscaling for Collectible layer icons
 //         Runtime tinting for icons based on layer colour? icon data? the reverse of above, advantage here is greater flexibility
 //           ex: I reused Champ markers for Krampii, with this they could have been blue skulls to be obviously different
-//         Icon modifiers; may be particularly useful to identify event/seasonal points (a little snowflake or pumpkin in the corner like in other sections of the UI), could also be used on group champions
-//           Particularly valuable for mission overlay (available, in progress, paused, on cooldown, locked etc.)
+//         Icon modifiers: There's a basic system in, demonstrating possible use with group champions
+//           Particularly valuable for mission overlay (available, in progress, paused, on cooldown, locked etc.) (consider putting this on a different corner/layer as a state identifier)
+//           Also for identifying seasonal items (see about jacking snowflake/pumpkin graphics from game somewhere?)
 //           A variant system could be used for numbered waypoints (maps of mission farming routes perhaps)?
+//           Going to need a certain amount of standardization when designing icons, so that they are easily identified underneath any modifiers
+//             See if an icon could be identified with just the top half?
+//           Should the tint possibilities above apply to the modifier as well as the base icon?
 //       Cleaning up the naming conventions. There's a number of identifiers that have more than one meaning, Waypoint and Layer are both suspect, should probably settle on some better names before too many more types get added
 //         Am liking Overlay as a possible replacement for Layer, would Marker work better than Waypoint and Notation in some places?
 //         Remember to check the MixIns and other places the compiler doesn't look at closely when doing renames, would help to minimize ducktyping elsewhere too
@@ -74,6 +78,7 @@ import efd.Cartographer.notations.NotationBase;
 //             An alternative would be to use a VTIO style interface to delay the file load (in one of several ways)
 //         _Strings: Allows an overlay pack to define additional entries for the string tables provided by LocaleManager
 //           They can then be used elsewhere in that overlay pack or as UI labels (though things like overlay naming may be better as part of the _OverlayDef tag)
+//         Icon: Should be elevated to a full sub-element of the marker record, as it is likely to pick up additional attributes (filename, modifiers, etc.)
 //       Mission overlay:
 //         Need to decide how to represent some things: main/side missions, mission types, mission state; particularly in cases where a single quest giver has multiple options
 //         What's important enough, or possible, to squeeze into the map icon, and what will have to stay on the tooltip

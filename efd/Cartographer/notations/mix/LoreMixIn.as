@@ -53,6 +53,11 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 				return Lore.GetTagViewpoint(this.LoreID) == 1 ? "lore_sig.png" : "lore_buzz.png";
 			};
 		}
+		if (target["GetIconModifier"] != undefined) {
+			target["GetIconModifier"] = function():Array {
+				return Lore.GetTagViewpoint(this.LoreID) == 1 ? ["text", "BS"] : ["none"];
+			}
+		}
 	}
 
 	private static function GetLoreName(loreID:Number):String {

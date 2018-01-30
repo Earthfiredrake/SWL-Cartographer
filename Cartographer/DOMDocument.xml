@@ -23,6 +23,7 @@
           <Include href="Assets/GemOverlay.xml" itemID="55fd2a2d-0000c82e" lastModified="1500152978"/>
           <Include href="CartographerIcon.xml" itemID="58db79f2-0000062f" lastModified="1490778686"/>
           <Include href="CartographerInterfaceWindowContent.xml" itemID="596fa4e6-00000261" lastModified="1516929067"/>
+          <Include href="CartographerPointMarkerModifier.xml" itemID="5a709722-000001f7" lastModified="1517347761"/>
           <Include href="Components/CartographerLayerList.xml" itemID="59a060ba-000001fa" lastModified="1516932567"/>
           <Include href="Components/CartographerLayerListEntry.xml" itemID="59a0633c-0000026d" lastModified="1516929098"/>
           <Include href="Components/CartographerWaypointTooltip.xml" itemID="598cf3b6-000002ab" lastModified="1508976986"/>
@@ -60,25 +61,25 @@
      </timelines>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="101960" publishTime="1517347704"/>
+          <PublishItem publishSize="101967" publishTime="1517347686"/>
+          <PublishItem publishSize="101751" publishTime="1517300408"/>
+          <PublishItem publishSize="101746" publishTime="1517300096"/>
+          <PublishItem publishSize="101749" publishTime="1517299959"/>
+          <PublishItem publishSize="101758" publishTime="1517299758"/>
+          <PublishItem publishSize="101758" publishTime="1517299671"/>
+          <PublishItem publishSize="101794" publishTime="1517299638"/>
+          <PublishItem publishSize="101791" publishTime="1517299532"/>
+          <PublishItem publishSize="101856" publishTime="1517298617"/>
+          <PublishItem publishSize="101828" publishTime="1517298546"/>
+          <PublishItem publishSize="101823" publishTime="1517298515"/>
+          <PublishItem publishSize="95542" publishTime="1517298442"/>
+          <PublishItem publishSize="98880" publishTime="1517298350"/>
+          <PublishItem publishSize="101758" publishTime="1517297781"/>
+          <PublishItem publishSize="101786" publishTime="1517297131"/>
+          <PublishItem publishSize="101749" publishTime="1517297065"/>
           <PublishItem publishSize="1023" publishTime="1516946432"/>
           <PublishItem publishSize="1327" publishTime="1516946432"/>
           <PublishItem publishSize="3518" publishTime="1516946432"/>
-          <PublishItem publishSize="101080" publishTime="1516932346"/>
-          <PublishItem publishSize="101135" publishTime="1516931729"/>
-          <PublishItem publishSize="101149" publishTime="1516931064"/>
-          <PublishItem publishSize="101146" publishTime="1516930950"/>
-          <PublishItem publishSize="101089" publishTime="1516929933"/>
-          <PublishItem publishSize="101070" publishTime="1516929810"/>
-          <PublishItem publishSize="101082" publishTime="1516929142"/>
-          <PublishItem publishSize="1054" publishTime="1516929063"/>
-          <PublishItem publishSize="101045" publishTime="1516928896"/>
-          <PublishItem publishSize="100913" publishTime="1516928885"/>
-          <PublishItem publishSize="98568" publishTime="1516928864"/>
-          <PublishItem publishSize="100968" publishTime="1516927831"/>
-          <PublishItem publishSize="100976" publishTime="1516927736"/>
-          <PublishItem publishSize="1014" publishTime="1516605608"/>
-          <PublishItem publishSize="1318" publishTime="1516605607"/>
-          <PublishItem publishSize="3507" publishTime="1516605607"/>
-          <PublishItem publishSize="98687" publishTime="1515800744"/>
      </publishHistory>
 </DOMDocument>

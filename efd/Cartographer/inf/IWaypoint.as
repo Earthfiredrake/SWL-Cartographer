@@ -13,4 +13,5 @@ interface efd.Cartographer.inf.IWaypoint extends INotation {
 	// Data accessors
 	public function GetPosition():Point; // Position is in game world coordinates
 	public function GetIcon():String;
+	public function GetIconModifier():Array; // [0] is frame name/number for the modifier icon, remainder are additional parameters needed
 }

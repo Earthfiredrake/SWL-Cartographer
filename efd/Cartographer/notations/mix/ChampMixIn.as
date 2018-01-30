@@ -48,10 +48,15 @@ class efd.Cartographer.notations.mix.ChampMixIn {
 			target["GetIcon"] = function():String {
 				if (this.Icon) { return this.Icon; }
 				var filename:String = "champ";
-				if (this.IsGroup) { filename += "_group"; }
+				// if (this.IsGroup) { filename += "_group"; }
 				if (this.ChampID != undefined && this.IsCollected) { filename += "_defeated"; }
 				return filename + ".png";
 			};
+		}
+		if (target["GetIconModifier"] != undefined) {
+			target["GetIconModifier"] = function():Array {
+				return [this.IsGroup ? "star" : "none"];
+			}
 		}
 	}
 

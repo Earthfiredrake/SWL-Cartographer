@@ -39,7 +39,7 @@
                   <transformationPoint>
                     <Point x="9.05" y="9.15"/>
                   </transformationPoint>
-                  <dataBindingXML><![CDATA[<component metaDataFetched='true' schemaUrl='' schemaOperation='' sceneRootLabel='CartographerWindow' oldCopiedComponentPath='3'>
+                  <dataBindingXML><![CDATA[<component metaDataFetched='true' schemaUrl='' schemaOperation='' sceneRootLabel='CartographerPointMarkerOverlay' oldCopiedComponentPath=''>
 </component>
 ]]></dataBindingXML>
                   <parametersAsXML><![CDATA[   <property id="autoSize">
