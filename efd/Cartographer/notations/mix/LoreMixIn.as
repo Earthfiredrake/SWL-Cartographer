@@ -49,14 +49,9 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 			target["GetIcon"] = function():String {
 				if (this.Icon) { return this.Icon; }
 				if (this.LoreID == undefined) { return "lore_buzz.png"; }
-				if (this.IsCollected) { return "lore_claimed.png"; }
+				//if (this.IsCollected) { return "lore_claimed.png"; }
 				return Lore.GetTagViewpoint(this.LoreID) == 1 ? "lore_sig.png" : "lore_buzz.png";
 			};
-		}
-		if (target["GetIconModifier"] != undefined) {
-			target["GetIconModifier"] = function():Array {
-				return Lore.GetTagViewpoint(this.LoreID) == 1 ? ["text", "BS"] : ["none"];
-			}
 		}
 	}
 

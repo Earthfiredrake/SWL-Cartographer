@@ -39,10 +39,12 @@ import efd.Cartographer.notations.NotationBase;
 //       Tooltips that can handle multiple data sources at once (ie: everything under the mouse, ideally sorted somewhat sensibly... by layer maybe?)
 //         Look into using it (at least the detection system) to trigger additional notations; ex: to pop up a path or area as additional information on a point icon
 //       Reduce required icon permutations, possible features that might help:
-//         Runtime greyscaling for Collectible layer icons
+//         CollectibleLayer now provides automatic greyscale for completed icons
+//           May need some tweaking, and is having issues converting black signal icons to be identifiably greyed out without washing out other icons
 //         Runtime tinting for icons based on layer colour? icon data? the reverse of above, advantage here is greater flexibility
 //           ex: I reused Champ markers for Krampii, with this they could have been blue skulls to be obviously different
 //         Icon modifiers: There's a basic system in, demonstrating possible use with group champions
+//           Consider adding a few "error" marks, for faster detection of mistakes in data (invalid lore/champ ids etc.)
 //           Particularly valuable for mission overlay (available, in progress, paused, on cooldown, locked etc.) (consider putting this on a different corner/layer as a state identifier)
 //           Also for identifying seasonal items (see about jacking snowflake/pumpkin graphics from game somewhere?)
 //           A variant system could be used for numbered waypoints (maps of mission farming routes perhaps)?

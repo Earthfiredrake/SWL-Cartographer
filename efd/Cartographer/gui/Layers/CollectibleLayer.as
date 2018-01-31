@@ -2,6 +2,7 @@
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-Cartographer
 
+import flash.filters.ColorMatrixFilter;
 import flash.geom.Point;
 
 import efd.Cartographer.lib.etu.MovieClipHelper;
@@ -82,6 +83,7 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 
 	private function LoadPoints(state:String):Boolean {
 		// New waypoints
+		var filters:Array = (state == "Collected") ? [GreyscaleConverter] : undefined;
 		var data:Array = this[state + "Data"];
 		var renderList:Array = this["Rendered" + state];
 		var i:Number = this[state + "Count"]; // This will not change for lifetime of function, can cache
@@ -90,7 +92,7 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 			var targetLayer:MovieClip = WaypointLayer[state + "Sublayer"];
 			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
 				WaypointIcon, "WP" + targetLayer.getNextHighestDepth(), targetLayer, targetLayer.getNextHighestDepth(),
-				{ Data : data[i], _x : mapPos.x, _y : mapPos.y, MapViewLayer : this }));
+				{ Data : data[i], _x : mapPos.x, _y : mapPos.y, filters : filters, MapViewLayer : this }));
 			wp.SignalIconChanged.Connect(ChangeIcon, this);
 			wp.SignalWaypointLoaded.Connect(LoadNextBlock, this);
 			wp.LoadIcon();
@@ -111,7 +113,7 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 		var targetLayer:MovieClip = WaypointLayer.CollectedSublayer;
 		var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
 			WaypointIcon, "WP" + targetLayer.getNextHighestDepth(), targetLayer, targetLayer.getNextHighestDepth(),
-			{ Data : icon.Data, _x : icon._x, _y : icon._y, LayerClip : this }));
+			{ Data : icon.Data, _x : icon._x, _y : icon._y, filters : [GreyscaleConverter], MapViewLayer : this }));
 		wp.SignalIconChanged.Connect(ChangeIcon, this);
 		wp.SignalWaypointLoaded.Connect(DeferLoadBehaviour, this);
 		wp.LoadIcon();
@@ -140,6 +142,18 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 	}
 
 	public function get RenderedWaypoints():Array { return RenderedUncollected.concat(RenderedCollected); }
+
+	// Needs a greyscale converter that brightened blacks without overly brightening other values
+	// This isn't great, but it's close, original suggested values for pure greyscale conversion below
+	private static var GreyscaleConverter:ColorMatrixFilter =
+		new ColorMatrixFilter([0.18516, 0.36564, 0.0492, 0, 0.4,
+							   0.18516, 0.36564, 0.0492, 0, 0.4,
+							   0.18516, 0.36564, 0.0492, 0, 0.4,
+							   0, 0, 0, 1, 0]);
+//		new ColorMatrixFilter([0.3086, 0.6094, 0.0820, 0, 0,
+//							   0.3086, 0.6094, 0.0820, 0, 0,
+//							   0.3086, 0.6094, 0.0820, 0, 0,
+//							   0, 0, 0, 1, 0]);
 
 	private var UncollectedData:Array;
 	private var UncollectedCount:Number;

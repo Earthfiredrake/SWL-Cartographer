@@ -49,7 +49,7 @@ class efd.Cartographer.notations.mix.ChampMixIn {
 				if (this.Icon) { return this.Icon; }
 				var filename:String = "champ";
 				// if (this.IsGroup) { filename += "_group"; }
-				if (this.ChampID != undefined && this.IsCollected) { filename += "_defeated"; }
+				// if (this.ChampID != undefined && this.IsCollected) { filename += "_defeated"; }
 				return filename + ".png";
 			};
 		}
