@@ -2,6 +2,8 @@
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-Cartographer
 
+import flash.filters.ColorMatrixFilter;
+
 import com.GameInterface.Game.Character;
 import com.GameInterface.Lore;
 import com.Utils.ID32;
@@ -53,6 +55,11 @@ class efd.Cartographer.notations.mix.ChampMixIn {
 				return filename + ".png";
 			};
 		}
+		if (target["GetIconTintFilter"] != undefined) {
+			target["GetIconTintFilter"] = function():ColorMatrixFilter {
+				return TintFilter;
+			}
+		}
 		if (target["GetIconModifier"] != undefined) {
 			target["GetIconModifier"] = function():Array {
 				return [this.IsGroup ? "star" : "none"];
@@ -68,4 +75,10 @@ class efd.Cartographer.notations.mix.ChampMixIn {
 		}
 		return name;
 	}
+	
+	private static var TintFilter:ColorMatrixFilter =
+		new ColorMatrixFilter([1, 0, 0, 0, 0,
+							   0, 0.5625, 0, 0, 0,
+							   0, 0, 0, 0, 0,
+							   0, 0, 0, 1, 0]);
 }

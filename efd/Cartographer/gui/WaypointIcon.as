@@ -2,6 +2,7 @@
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-Cartographer
 
+import flash.filters.ColorMatrixFilter;
 import flash.geom.Point;
 
 import gfx.utils.Delegate;
@@ -28,9 +29,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		listener.onLoadError = function(target:MovieClip, error:String):Void {
 			// Attempt to filter out spurious error messsages caused by closing the window during loading
 			// While still detecting conditions where Data is corrupt or missing.
-			if (target._parent) {
-				Mod.ErrorMsg("Unable to load icon (" + target._parent.Data.GetIcon() + "): " + error);
-			}
+			if (target._parent) { Mod.ErrorMsg("Unable to load icon (" + target._parent.Data.GetIcon() + "): " + error); }
 		};
 		Loader.addListener(listener);
 	}
@@ -51,6 +50,8 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	private function IconLoaded(target:MovieClip):Void {
 		CenterIcon(target);
+		var filter:ColorMatrixFilter = Data.GetIconTintFilter();
+		if (filter != undefined) { target.filters = [filter]; }
 		SignalWaypointLoaded.Emit(this);
 	}
 
