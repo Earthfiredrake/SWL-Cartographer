@@ -35,6 +35,7 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 		target.UnhookEvents = function(uiElem:MovieClip):Void {
 			Lore.SignalTagAdded.Disconnect(this.CollectibleUnlocked, uiElem);
 		};
+		// This event is called in the context of the WaypointIcon
 		target["CollectibleUnlocked"] = function(unlockedID:Number, charID:ID32):Void {
 			// I have no idea why this event might be triggered for a non-client character
 			// Am following the examples in the existing API code
@@ -49,7 +50,6 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 			target["GetIcon"] = function():String {
 				if (this.Icon) { return this.Icon; }
 				if (this.LoreID == undefined) { return "lore_buzz.png"; }
-				//if (this.IsCollected) { return "lore_claimed.png"; }
 				return Lore.GetTagViewpoint(this.LoreID) == 1 ? "lore_sig.png" : "lore_buzz.png";
 			};
 		}
