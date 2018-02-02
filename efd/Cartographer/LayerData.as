@@ -82,6 +82,7 @@ class efd.Cartographer.LayerData {
 		switch (layer) {
 			case "Champ": return 0xFF9000;
 			case "Lore": return 0xFFAA00;
+			case "Krampus": return 0x20C5CA;
 			default: return 0x000000;
 		}
 	}

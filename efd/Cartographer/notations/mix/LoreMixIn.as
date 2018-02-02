@@ -22,11 +22,6 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 			return this.Name;
 		};
 
-		target.GetPenColour = function():Number {
-			if (this.IsCollected) { return 0x888888; }
-			else { return undefined; }
-		};
-
 		target.HookEvents = function(uiElem:MovieClip):Void {
 			if (!this.IsCollected) { // No need to be notified for collected items
 				Lore.SignalTagAdded.Connect(this.CollectibleUnlocked, uiElem);
@@ -51,6 +46,13 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 				if (this.Icon) { return this.Icon; }
 				if (this.LoreID == undefined) { return "lore_buzz.png"; }
 				return Lore.GetTagViewpoint(this.LoreID) == 1 ? "lore_sig.png" : "lore_buzz.png";
+			};
+		}
+		if (target["GetIconModifier"] != undefined) {
+			target["GetIconModifier"] = function():Array {
+				// Flags the icon if the ID isn't a lore item
+				return (Lore.GetTagType(this.LoreID) == _global.Enums.LoreNodeType.e_Lore) ?
+					undefined : ["error"];
 			};
 		}
 	}

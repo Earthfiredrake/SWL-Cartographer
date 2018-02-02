@@ -42,6 +42,7 @@ class efd.Cartographer.notations.NotationBase implements INotation {
 			case "Champ": ChampMixIn.ApplyMixIn(notation); break;
 			case "Lore": LoreMixIn.ApplyMixIn(notation); break;
 			case "Transit": TransitMixIn.ApplyMixIn(notation); break;
+			case "Krampus": notation["TintIcon"] = function():Boolean { return true; }; break; // TEMP: Mini mixin
 		}
 		return notation;
 	}

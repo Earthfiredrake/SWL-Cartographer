@@ -2,8 +2,6 @@
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-Cartographer
 
-import flash.filters.ColorMatrixFilter;
-
 import com.GameInterface.Game.Character;
 import com.GameInterface.Lore;
 import com.Utils.ID32;
@@ -22,11 +20,6 @@ class efd.Cartographer.notations.mix.ChampMixIn {
 		target.GetName = function():String {
 			if (this.Name == undefined) { this.Name = ChampMixIn.GetChampName(this.ChampID); }
 			return this.Name;
-		};
-
-		target.GetPenColour = function():Number {
-			if (this.IsCollected) { return 0x888888; }
-			else { return undefined; }
 		};
 
 		target.HookEvents = function(uiElem:MovieClip):Void {
@@ -53,15 +46,21 @@ class efd.Cartographer.notations.mix.ChampMixIn {
 				return "champ.png";
 			};
 		}
-		if (target["GetIconTintFilter"] != undefined) {
-			target["GetIconTintFilter"] = function():ColorMatrixFilter {
-				return TintFilter;
-			};
+		if (target["TintIcon"] != undefined) {
+			target["TintIcon"] = function():Boolean { return true; };
 		}
 		if (target["GetIconModifier"] != undefined) {
 			target["GetIconModifier"] = function():Array {
-				return [this.IsGroup ? "star" : "none"];
-			}
+				// Flags the icon if the ID isn't an achievement or sub-achievement under the Champions topic
+				//   Also flags the collective "Hunter" achievements
+				if ((Lore.GetTagType(this.ChampID) == _global.Enums.LoreNodeType.e_Achievement &&
+					 Lore.GetTagParent(Lore.GetTagParent(this.ChampID)) == 4061 &&
+					 Lore.GetTagChildrenIdArray(this.ChampID, _global.Enums.LoreNodeType.e_Achievement).length == 0) ||
+					(Lore.GetTagType(this.ChampID) == _global.Enums.LoreNodeType.e_SubAchievement &&
+					 Lore.GetTagParent(Lore.GetTagParent(Lore.GetTagParent(this.ChampID))) == 4061)) {
+					return this.IsGroup ? ["star"] : undefined;
+				} else { return ["error"]; }
+			};
 		}
 	}
 
@@ -73,10 +72,4 @@ class efd.Cartographer.notations.mix.ChampMixIn {
 		}
 		return name;
 	}
-	
-	private static var TintFilter:ColorMatrixFilter =
-		new ColorMatrixFilter([1, 0, 0, 0, 0,
-							   0, 0.5625, 0, 0, 0,
-							   0, 0, 0, 0, 0,
-							   0, 0, 0, 1, 0]);
 }

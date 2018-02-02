@@ -12,6 +12,7 @@ import efd.Cartographer.gui.MapView;
 import efd.Cartographer.gui.WaypointArea;
 import efd.Cartographer.gui.WaypointPath;
 import efd.Cartographer.gui.WaypointIcon;
+import efd.Cartographer.inf.INotation;
 
 // Implementation Plan:
 // Each notation layer is actually three seperate movie clips, at significantly different depth levels (to permit interleaving of those layers)
@@ -150,6 +151,12 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 	private function LoadNextBlock(icon:WaypointIcon):Void {
 		WaypointCount += 1;
 		LoadDataBlock();
+	}
+
+	/// Render effects
+	public function GetPenColour(data:INotation):Number {
+		var colour:Number = data.GetPenColour();
+		return colour != undefined ? colour : NotationData.ConfigView.PenColour;
 	}
 
 	/// Tooltip helper tests

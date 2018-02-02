@@ -44,30 +44,35 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		//   Not sure how useful this is, as I have limited knowledge of what is actually tucked away in there
 		// TODO: Wonder if other paths could be loaded from the rdb in a similar fashion
 		Loader.loadClip("Cartographer\\icons\\" + Data.GetIcon(), icon);
-		if (!Modifier) { attachMovie("CartographerPointMarkerModifier", "Modifier", getNextHighestDepth()); }
 		ApplyModifier();
 	}
 
 	private function IconLoaded(target:MovieClip):Void {
 		CenterIcon(target);
-		var filter:ColorMatrixFilter = Data.GetIconTintFilter();
-		if (filter != undefined) { target.filters = [filter]; }
+		ApplyTint(target);
 		SignalWaypointLoaded.Emit(this);
+	}
+
+	private function ApplyTint(target:MovieClip):Void {
+		if (Data.TintIcon()) {
+			target.filters = [CreateTintFilter(MapViewLayer.GetPenColour(Data))];
+		}
 	}
 
 	private function ApplyModifier():Void {
 		var modifier:Array = Data.GetIconModifier();
-		Modifier.gotoAndStop(modifier[0]);
-
-		switch (modifier[0]) {
-			case "text" : {
-				var fmt:TextFormat = Modifier.ModifierText.getNewTextFormat();
-				fmt.bold = true;
-				//fmt.size = 12;
-				//fmt.color = 0xFFFFFF;
-				Modifier.ModifierText.setNewTextFormat(fmt);
-				Modifier.ModifierText.text = modifier[1];
-				break;
+		if (modifier != undefined) {
+			if (!Modifier) { attachMovie("CartographerPointMarkerModifier", "Modifier", getNextHighestDepth()); }
+			Modifier.gotoAndStop(modifier[0]);
+	
+			switch (modifier[0]) {
+				case "text" : {
+					var fmt:TextFormat = Modifier.ModifierText.getNewTextFormat();
+					fmt.bold = true;
+					Modifier.ModifierText.setNewTextFormat(fmt);
+					Modifier.ModifierText.text = modifier[1];
+					break;
+				}
 			}
 		}
 	}
@@ -140,10 +145,21 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		RemoveTooltip();
 	}
 
+	private static function CreateTintFilter(color:Number):ColorMatrixFilter {
+		var r:Number = ((color & 0xFF0000) >> 16) / 255;
+		var g:Number = ((color & 0x00FF00) >> 8) / 255;
+		var b:Number =  (color & 0x0000FF) / 255;
+		return new ColorMatrixFilter(
+			[r, 0, 0, 0, 0,
+			 0, g, 0, 0, 0,
+			 0, 0, b, 0, 0,
+			 0, 0, 0, 1, 0]);
+	}
+
 	public var Data:IWaypoint;
 
 	public var SignalIconChanged:Signal; // Used to notify host layer that this icon has changed due to outside events
-	public var SignalWaypointLoaded:Signal;
+	public var SignalWaypointLoaded:Signal; // WARNING: Adding additional hooks to this may be an issue, see HACK in CollectibleLayer
 	private var Loader:MovieClipLoader;
 
 	private var Icon:MovieClip;

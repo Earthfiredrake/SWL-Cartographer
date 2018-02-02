@@ -12,6 +12,7 @@ import efd.Cartographer.LayerData;
 import efd.Cartographer.gui.Layers.NotationLayer;
 import efd.Cartographer.gui.MapView;
 import efd.Cartographer.gui.WaypointIcon;
+import efd.Cartographer.inf.INotation;
 
 // Layer type supporting waypoints that can be collected to unlock entries in the lore or achievements
 // Splits waypoint icons between two layers, so that collected entries don't hide uncollected ones
@@ -83,16 +84,16 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 
 	private function LoadPoints(state:String):Boolean {
 		// New waypoints
-		var filters:Array = (state == "Collected") ? [GreyscaleConverter] : undefined;
 		var data:Array = this[state + "Data"];
 		var renderList:Array = this["Rendered" + state];
 		var i:Number = this[state + "Count"]; // This will not change for lifetime of function, can cache
 		if (i < data.length) {
 			var mapPos:Point = MapViewClip.WorldToMapCoords(data[i].Position);
 			var targetLayer:MovieClip = WaypointLayer[state + "Sublayer"];
+			var filter:Array = (state == "Collected") ? [GreyscaleConverter] : undefined;
 			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
 				WaypointIcon, "WP" + targetLayer.getNextHighestDepth(), targetLayer, targetLayer.getNextHighestDepth(),
-				{ Data : data[i], _x : mapPos.x, _y : mapPos.y, filters : filters, MapViewLayer : this }));
+				{ Data : data[i], _x : mapPos.x, _y : mapPos.y, filters : filter, MapViewLayer : this }));
 			wp.SignalIconChanged.Connect(ChangeIcon, this);
 			wp.SignalWaypointLoaded.Connect(LoadNextBlock, this);
 			wp.LoadIcon();
@@ -106,6 +107,10 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 		var state:String = icon.Data["IsCollected"] ? "Collected" : "Uncollected";
 		this[state + "Count"] += 1;
 		LoadDataBlock();
+	}
+
+	public function GetPenColour(data:INotation):Number {
+		return data["IsCollected"] ? GreyPenColour : super.GetPenColour(data);
 	}
 
 	private function ChangeIcon(icon:WaypointIcon):Void {
@@ -143,17 +148,22 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 
 	public function get RenderedWaypoints():Array { return RenderedUncollected.concat(RenderedCollected); }
 
-	// Needs a greyscale converter that brightened blacks without overly brightening other values
-	// This isn't great, but it's close, original suggested values for pure greyscale conversion below
+	// Needs a greyscale converter that brightens black (signal) without overly affecting other values
+	// Adding a flat value and scaling the conversion down comes close
 	private static var GreyscaleConverter:ColorMatrixFilter =
-		new ColorMatrixFilter([0.18516, 0.36564, 0.0492, 0, 0.4,
-							   0.18516, 0.36564, 0.0492, 0, 0.4,
-							   0.18516, 0.36564, 0.0492, 0, 0.4,
+		new ColorMatrixFilter([0.20059, 0.39611, 0.0533, 0, 0.35,
+							   0.20059, 0.39611, 0.0533, 0, 0.35,
+							   0.20059, 0.39611, 0.0533, 0, 0.35,
 							   0, 0, 0, 1, 0]);
-//		new ColorMatrixFilter([0.3086, 0.6094, 0.0820, 0, 0,
-//							   0.3086, 0.6094, 0.0820, 0, 0,
-//							   0.3086, 0.6094, 0.0820, 0, 0,
-//							   0, 0, 0, 1, 0]);
+	// Original suggested values for pure greyscale conversion below
+	//	new ColorMatrixFilter([0.3086, 0.6094, 0.0820, 0, 0,
+	//						   0.3086, 0.6094, 0.0820, 0, 0,
+	//						   0.3086, 0.6094, 0.0820, 0, 0,
+	//						   0, 0, 0, 1, 0]);
+	// Adjusted midrange grey to match converter's output
+	// By happy coincidence, when passed through the converter it actually looks not bad
+	//   which is good, because the converter is still required to grey out any modifier sprites
+	private static var GreyPenColour:Number = 0xACACAC;
 
 	private var UncollectedData:Array;
 	private var UncollectedCount:Number;

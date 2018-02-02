@@ -10,12 +10,14 @@
           <DOMFolderItem name="Components/Window Assets/Components/Component Assets/Checkbox Assets" itemID="4f6b75df-000047eb"/>
           <DOMFolderItem name="Fonts" itemID="58bddfcb-00000218"/>
           <DOMFolderItem name="Icons" itemID="58bf2a12-00000934"/>
+          <DOMFolderItem name="MarkerModifierSprites" itemID="5a72b4e3-00000201" isExpanded="true"/>
      </folders>
      <fonts>
           <DOMFontItem name="Fonts/_StandardFont" itemID="4dd10cd6-00000f53" linkageExportForAS="true" linkageIdentifier="_StandardFont" font="FuturaStd-BookFix" size="0" id="1" sourceLastImported="1488855578" embedRanges="4|5|17|18|20"/>
      </fonts>
      <media>
           <DOMBitmapItem name="Components/Window Assets/Drop Shadow Bitmap" itemID="4f8da942-00001f90" sourceExternalFilepath="./LIBRARY/Components/Window Assets/Drop Shadow Bitmap" sourceLastImported="1334683970" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Components/Window Assets/Drop Shadow Bitmap./LIBRARY/Components/Window Assets/Drop Shadow Bitmap" bitmapDataHRef="M 3 1500488659.dat" frameRight="3080" frameBottom="5040"/>
+          <DOMBitmapItem name="MarkerModifierSprites/error.png" itemID="5a72b50c-00000208" sourceExternalFilepath="./LIBRARY/MarkerModifierSprites/error.png" sourceLastImported="1517466776" externalFileSize="2910" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="MarkerModifierSprites/error.png" bitmapDataHRef="M 4 1517466807.dat" frameRight="320" frameBottom="320"/>
           <DOMBitmapItem name="Icons/IconTemp.png" itemID="58db79b9-000005fe" sourceExternalFilepath="./LIBRARY/Icons/IconTemp.png" sourceLastImported="1490778519" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Icons/IconTemp.png" bitmapDataHRef="M 1 1490778553.dat" frameRight="640" frameBottom="640"/>
           <DOMBitmapItem name="Icons/PlayerMarker.png" itemID="5972fb78-000001f0" sourceExternalFilepath="./LIBRARY/Icons/PlayerMarker.png" sourceLastImported="1500762473" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Icons/PlayerMarker.png" bitmapDataHRef="M 8 1500524748.dat" frameRight="320" frameBottom="460"/>
      </media>
@@ -23,7 +25,7 @@
           <Include href="Assets/GemOverlay.xml" itemID="55fd2a2d-0000c82e" lastModified="1500152978"/>
           <Include href="CartographerIcon.xml" itemID="58db79f2-0000062f" lastModified="1490778686"/>
           <Include href="CartographerInterfaceWindowContent.xml" itemID="596fa4e6-00000261" lastModified="1516929067"/>
-          <Include href="CartographerPointMarkerModifier.xml" itemID="5a709722-000001f7" lastModified="1517347761"/>
+          <Include href="CartographerPointMarkerModifier.xml" itemID="5a709722-000001f7" lastModified="1517467080"/>
           <Include href="Components/CartographerLayerList.xml" itemID="59a060ba-000001fa" lastModified="1516932567"/>
           <Include href="Components/CartographerLayerListEntry.xml" itemID="59a0633c-0000026d" lastModified="1516929098"/>
           <Include href="Components/CartographerWaypointTooltip.xml" itemID="598cf3b6-000002ab" lastModified="1508976986"/>
@@ -61,6 +63,7 @@
      </timelines>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="102249" publishTime="1517466901"/>
           <PublishItem publishSize="101960" publishTime="1517347704"/>
           <PublishItem publishSize="101967" publishTime="1517347686"/>
           <PublishItem publishSize="101751" publishTime="1517300408"/>
@@ -80,6 +83,5 @@
           <PublishItem publishSize="101749" publishTime="1517297065"/>
           <PublishItem publishSize="1023" publishTime="1516946432"/>
           <PublishItem publishSize="1327" publishTime="1516946432"/>
-          <PublishItem publishSize="3518" publishTime="1516946432"/>
      </publishHistory>
 </DOMDocument>

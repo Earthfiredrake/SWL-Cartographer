@@ -37,7 +37,6 @@
 // What other useful bits and pieces of information might there be?
 // How much of this can be done on a default or tiered basis to avoid redundancy or duplication?
 
-import flash.filters.ColorMatrixFilter;
 import flash.geom.Point;
 
 import efd.Cartographer.inf.IWaypoint;
@@ -64,8 +63,8 @@ class efd.Cartographer.notations.BasicPoint extends NotationBase implements IWay
 
 	public function GetPosition():Point { return Position; }
 	public function GetIcon():String { return Icon; }
-	public function GetIconModifier():Array { return ["none"]; }
-	public function GetIconTintFilter():ColorMatrixFilter { return undefined; }
+	public function TintIcon():Boolean { return false; }
+	public function GetIconModifier():Array { return undefined; }
 
 	/// Data fields
 	private var Position:Point; // World space coordinates

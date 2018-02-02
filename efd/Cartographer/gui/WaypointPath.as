@@ -18,7 +18,7 @@ class efd.Cartographer.gui.WaypointPath extends MovieClip {
 	}
 
 	public function Redraw():Void {
-		var colour:Number = Data.GetPenColour() ? Data.GetPenColour() : MapViewLayer.NotationData.ConfigView.PenColour;
+		var colour:Number = MapViewLayer.GetPenColour(Data);
 		var pathPoints:Array = Data.GetPathPoints();
 		LocalPoints = new Array();
 		LocalPoints.push(MapViewLayer.MapViewClip.WorldToMapCoords(pathPoints[0]));

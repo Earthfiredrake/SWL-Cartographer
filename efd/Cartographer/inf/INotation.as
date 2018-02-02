@@ -21,6 +21,8 @@ interface efd.Cartographer.inf.INotation {
 	public function GetLayer():String;
 	public function GetZoneID():Number;
 
+	// TODO: Probably unhook this, having problems seeing a use case since collectible colour selection was placed at the Layer level
+	// ... Nope Train paths? Alternate tinting?
 	public function GetPenColour():Number; // Return undefined for layer defined colour
 
 	public function GetName():String;

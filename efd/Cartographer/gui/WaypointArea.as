@@ -24,7 +24,7 @@ class efd.Cartographer.gui.WaypointArea extends MovieClip {
 
 		// Using only x because y flips the coordinate frame
 		var scaleRad:Number = MapViewLayer.MapViewClip.WorldToMapCoords(new Point(Data.GetRadius(), 0)).x;
-		var colour:Number = Data.GetPenColour() ? Data.GetPenColour() : MapViewLayer.NotationData.ConfigView.PenColour;
+		var colour:Number = MapViewLayer.GetPenColour(Data);
 		clear();
 		lineStyle(2, colour, 100, true, "none", "round", "round");
 		beginFill(colour, 20);
