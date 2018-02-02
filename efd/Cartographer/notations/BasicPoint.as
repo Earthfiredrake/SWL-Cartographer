@@ -53,7 +53,7 @@ class efd.Cartographer.notations.BasicPoint extends NotationBase implements IWay
 		switch (typeName) {
 			case "AnimaWell": return "well.png";
 			case "Krampus": return "champ.png";
-			case "Vendor": return "vendor.png";
+			case "Vendor": return "service_vendor.png";
 			default: return undefined;
 		}
 	}

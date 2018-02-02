@@ -45,7 +45,7 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 			target["GetIcon"] = function():String {
 				if (this.Icon) { return this.Icon; }
 				if (this.LoreID == undefined) { return "lore_buzz.png"; }
-				return Lore.GetTagViewpoint(this.LoreID) == 1 ? "lore_sig.png" : "lore_buzz.png";
+				return Lore.GetTagViewpoint(this.LoreID) == 1 ? "lore_blsig.png" : "lore_buzz.png";
 			};
 		}
 		if (target["GetIconModifier"] != undefined) {
