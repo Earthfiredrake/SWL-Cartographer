@@ -9,46 +9,50 @@
 -->
 <OverlayPack>
 	<!-- TEMP: Preloading for layering reasons until multi-tips are implemented-->
+	<!-- Ghouls #8 -->
 	<Lore type="area" zone="3100" x="847.5" y="485" radius="126" loreID="8649">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Pnathian Willbreaker" /> <!-- TODO: RDB -->
+			<Param rdb="id=16344 category=51000" />
 		</Note>
 	</Lore>
+	<!-- Golems #6-->
 	<Lore type="area" zone="3100" x="747.5" y="299" radius="128" loreID="9273">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Mop Slop Riser" /> <!-- TODO: RDB -->
+			<Param rdb="id=31228 category=51000" />
 		</Note>
 	</Lore>
+	<!-- Spectres #6 -->
 	<Lore zone="3070" x="800" y="176" z="77" loreID="8832" type="area" radius="155">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Onryo" /> <!-- TODO: RDB -->
+			<Param rdb="id=34740 category=51000" />
 		</Note>
 	</Lore>
+	<!-- Zombies #6 -->
 	<Lore type="area" zone="3040" x="399" y="359.5" radius="202" loreID="8585">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Innsmouth Track &amp; Field" /> <!-- TODO: RDB -->
+			<Param rdb="id=19381 category=51000" />
 		</Note>
 	</Lore>
 	<!-- Ak'ab 7/8 -->
 	<Lore zone="3040" x="420" y="947" z="153" loreID="8485" />
 	<Lore type="area" zone="3050" x="228.5" y="259.5" radius="41" loreID="8486">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Broodmark" /> <!-- TODO: RDB -->
+			<Param rdb="id=15605 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3050" x="434.5" y="656" radius="89" loreID="8486">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Broodmark" /> <!-- TODO: RDB -->
+			<Param rdb="id=15605 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3050" x="595" y="63.5" radius="31" loreID="8486">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Broodmark" /> <!-- TODO: RDB -->
+			<Param rdb="id=15605 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3050" x="849" y="237" radius="203.5" loreID="8486">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Broodmark" /> <!-- TODO: RDB -->
+			<Param rdb="id=15605 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3040" x="568" y="923" z="158" loreID="8487" />
@@ -62,32 +66,32 @@
 	<Lore zone="3100" x="545" y="488" z="54" loreID="8655" />
 	<Lore type="area" zone="3090" x="429" y="996.5" radius="44" loreID="8656">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Burrowing Sunstalker" /> <!-- TODO: RDB -->
+			<Param rdb="id=37082 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3090" x="491" y="656" radius="67" loreID="8656">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Burrowing Sunstalker" /> <!-- TODO: RDB -->
+			<Param rdb="id=37082 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3090" x="543.5" y="811.5" radius="67" loreID="8656">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Burrowing Sunstalker" /> <!-- TODO: RDB -->
+			<Param rdb="id=37082 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3090" x="578" y="984" radius="37" loreID="8656">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Burrowing Sunstalker" /> <!-- TODO: RDB -->
+			<Param rdb="id=37082 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3090" x="679" y="492.5" radius="91" loreID="8656">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Burrowing Sunstalker" /> <!-- TODO: RDB -->
+			<Param rdb="id=37082 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3090" x="747.5" y="905" radius="25" loreID="8656">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Burrowing Sunstalker" /> <!-- TODO: RDB -->
+			<Param rdb="id=37082 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3090" x="891" y="432" z="75" loreID="8657" />
@@ -184,12 +188,12 @@
 	<Lore zone="3090" x="386" y="371" z="50" loreID="8632" />
 	<Lore type="area" zone="3100" x="715" y="308.5" radius="59" loreID="8633">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Cultist Bomber" /> <!-- TODO: RDB -->
+			<Param rdb="id=36315 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3100" x="930" y="483" radius="30" loreID="8633">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Cultist Bomber" /> <!-- TODO: RDB -->
+			<Param rdb="id=36315 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3100" x="155" y="89" z="79" loreID="8634" />
@@ -203,40 +207,47 @@
 	<Lore zone="3140" x="1078" y="386" z="44" loreID="8860" />
 	<Lore zone="3130" x="212" y="855" z="30" loreID="8861">
 		<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
-			<Param en="The Lurking Horrors" /> <!-- TODO: RDB -->
+			<Param rdb="id=3057 category=50300" />
 		</Note>
 	</Lore>
 	<Lore zone="3140" x="1121" y="372.5" z="55" loreID="8862">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Damned Congregation" /> <!-- TODO: RDB -->
+			<Param rdb="id=28771 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3130" x="321.5" y="830.5" radius="153" loreID="8863">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Ascetic or Bleeding Vigil" /> <!-- TODO: RDB -->
+			<Param en="%1% | %2%" fmt="true">
+				<Param rdb="id=29515 category=51000" />
+				<Param rdb="id=29516 category=51000" />
+			</Param>
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3130" x="359" y="850.5" radius="116" loreID="8864">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Stripped Preacher" /> <!-- TODO: RDB -->
+			<Param rdb="id=20580 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3130" x="305" y="826" z="24" loreID="8865" />
 	<!-- Draug - Deep Ones -->
 	<Lore zone="3050" x="57" y="672" z="130" loreID="8524" />
 	<Lore zone="3050" x="88" y="273" z="130" loreID="8525">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=27832 category=51000" />
+		</Note>
 	</Lore>
 	<Lore zone="3070" x="909" y="866" z="76" loreID="8526" />
 	<Lore zone="3050" x="55" y="291" z="131" loreID="8527" />
-	<Lore type="area" zone="3050" x="81" y="607" radius="68" loreID="8528">
+	<Lore type="area" zone="3050" x="62" y="620" radius="54" loreID="8528">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Cold Seep Deep Ones" /> <!-- TODO: RDB -->
+			<Param rdb="id=16908 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3050" x="98" y="434" z="140" loreID="8529" />
 	<Lore zone="3070" x="781" y="916" z="72" loreID="8530">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=33991 category=51000" />
+		</Note>
 	</Lore>
 	<!-- Draug - Drones -->
 	<Lore zone="3050" x="446" y="14" z="131" loreID="8532" />
@@ -244,7 +255,10 @@
 	<Lore zone="3030" x="75" y="579" z="188" loreID="8534" />
 	<Lore type="area" zone="3050" x="937" y="866" radius="76" loreID="8535">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Vetr Bludgeoner &amp; Hacker" /> <!-- TODO: RDB -->
+			<Param en="%1% | %2%" fmt="true">
+				<Param rdb="id=14850 category=51000" />
+				<Param rdb="id=14858 category=51000" />
+			</Param>
 		</Note>
 	</Lore>
 	<Lore zone="3030" x="515" y="253" z="129" loreID="8536" />
@@ -268,14 +282,14 @@
 	<Lore zone="3040" x="258" y="177" z="141" loreID="8570" />
 	<Lore type="area" zone="3040" x="239" y="223.5" radius="71" loreID="8571">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Corrective Familiar" /> <!-- TODO: RDB -->
+			<Param rdb="id=16687 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3040" x="272" y="343" z="145" loreID="8572" />
 	<Lore zone="3100" x="132" y="26" z="86" loreID="8573" />
 	<Lore zone="3040" x="277" y="363" z="160" loreID="8574">
 		<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
-			<Param en="The Faculty" /> <!-- TODO: RDB -->
+			<Param rdb="id=2734 category=50300" />
 		</Note>
 	</Lore>
 	<Lore zone="6071" x="126" y="144" z="39" loreID="8575" />
@@ -283,11 +297,13 @@
 	<Lore zone="3130" x="323" y="548" z="51" loreID="9222" />
 	<Lore type="area" zone="3130" x="442.5" y="563.5" radius="106" loreID="9223">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Turned Faun" /> <!-- TODO: RDB -->
+			<Param rdb="id=30500 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3130" x="418" y="555" z="37" loreID="9224">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=30944 category=51000" />
+		</Note>
 	</Lore>
 	<Lore zone="3120" x="1182" y="511" z="55" loreID="9225" />
 	<Lore zone="3120" x="1040" y="1010" z="115" loreID="9226" />
@@ -300,10 +316,10 @@
 	<Lore zone="3070" x="389" y="558" z="114" loreID="9290">
 		<Note en="%1%; %2%" fmt="true">
 			<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
-				<Param en="The All-Seeing Kawaii" /> <!-- TODO: RDB -->
+				<Param rdb="id=3646 category=50300" />
 			</Param>
 			<Param cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-				<Param en="Spawned Filth Beast" /> <!-- TODO: RDB -->
+				<Param rdb="id=34512 category=51000" />
 			</Param>
 		</Note>
 	</Lore>
@@ -313,7 +329,9 @@
 	<Lore zone="3070" x="251" y="206" z="85" loreID="9278" />
 	<Lore zone="3100" x="147" y="950" z="55" loreID="9279" />
 	<Lore zone="3130" x="784" y="470" z="32" loreID="9280">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=30943 category=51000" />
+		</Note>
 	</Lore>
 	<Lore zone="3070" x="463" y="178" z="81" loreID="9281" />
 	<Lore zone="3070" x="554" y="246" z="89" loreID="9282" />
@@ -340,13 +358,13 @@
 	<Lore zone="3100" x="629" y="204" z="86" loreID="8648" />
 	<!-- TEMP: Topload <Lore type="area" zone="3100" x="847.5" y="485" radius="126" loreID="8649">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Pnathian Willbreaker" /> --> <!-- TODO: RDB --> <!--
+			<Param rdb="id=16344 category=51000" />
 		</Note>
 	</Lore> -->
 	<Lore zone="3130" x="1270" y="1052" z="78" loreID="8650" />
 	<Lore type="area" zone="3120" x="1098" y="1098" radius="74" loreID="8651">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Ghoul Ringleader" /> <!-- TODO: RDB -->
+			<Param rdb="id=25380 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3120" x="673" y="1274" z="132" loreID="8652" />
@@ -355,10 +373,13 @@
 	<Lore zone="3090" x="344" y="513" z="57" loreID="9269" />
 	<Lore zone="3090" x="707" y="495" z="51" loreID="9270">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Kaphiri, Moving Mountain" /> <!-- TODO: RDB -->
+			<Param rdb="id=14771 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="path" zone="3090" loreID="9270">
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=14771 category=51000" />
+		</Note>
 		<Point x="738" y="409" z="50" />
 		<Point x="745" y="435" z="52" />
 		<Point x="707" y="495" z="51" />
@@ -375,48 +396,45 @@
 		<Point x="674" y="424" z="52" />
 		<Point x="697" y="425" z="52" />
 		<Point x="738" y="409" z="50" />
-		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Kaphiri, Moving Mountain" /> <!-- TODO: RDB -->
-		</Note>
 	</Lore>
 	<Lore type="area" zone="3050" x="495.5" y="575.5" radius="50" loreID="9271">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Junkpile Bombardier" /> <!-- TODO: RDB -->
+			<Param rdb="id=16488 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3100" x="738" y="866" radius="43" loreID="9272">
 		<Note en="%1%; %2%" fmt="true">
-			<Param cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-				<Param en="Primary Melt" /> <!-- TODO: RDB -->
-			</Param>
 			<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
-				<Param en="Points of Impact" /> <!-- TODO: RDB -->
+				<Param rdb="id=3083 category=50300" />
+			</Param>
+			<Param cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+				<Param rdb="id=22982 category=51000" />
 			</Param>
 		</Note>
 	</Lore>
 	<!-- TEMP: Topload <Lore type="area" zone="3100" x="747.5" y="299" radius="128" loreID="9273">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Mop Slop Riser" /> --><!-- TODO: RDB --><!--
+			<Param rdb="id=31228 category=51000" />
 		</Note>
 	</Lore> -->
 	<Lore type="area" zone="3140" x="274" y="668.5" radius="28" loreID="9274">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Accursed Ice" /> <!-- TODO: RDB -->
+			<Param rdb="id=36473 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3140" x="331.5" y="481" radius="20" loreID="9274">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Accursed Ice" /> <!-- TODO: RDB -->
+			<Param rdb="id=36473 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3140" x="381.5" y="984" radius="95" loreID="9274">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Accursed Ice" /> <!-- TODO: RDB -->
+			<Param rdb="id=36473 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3140" x="441" y="600" radius="80" loreID="9274">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Accursed Ice" /> <!-- TODO: RDB -->
+			<Param rdb="id=36473 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="5060" x="553" y="22" z="225" loreID="9275">
@@ -430,7 +448,9 @@
 	<Lore zone="5160" x="388" y="522" z="73" loreID="9204" />
 	<Lore zone="5160" x="691" y="281" z="103" loreID="9205" />
 	<Lore zone="3090" x="585" y="875" loreID="9206">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=30806 category=51000" />
+		</Note>
 	</Lore>
 		<!-- #8 (Instance: Eats Its Name) -->
 	<Lore zone="5160" x="298" y="571" z="91" loreID="9208" />
@@ -452,32 +472,43 @@
 	<Lore zone="3090" x="153" y="733" z="58" loreID="8613" />
 	<Lore type="area" zone="3100" x="156.5" y="729.5" radius="97" loreID="8615">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Embalmed Emptiness" /> <!-- TODO: RDB -->
+			<Param rdb="id=16971 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3100" x="158" y="807" z="95" loreID="8617" />
 	<Lore zone="3090" x="793" y="878" z="65" loreID="8619" />
 	<Lore zone="3100" x="629" y="720" z="82" loreID="8621">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=30823 category=51000" />
+		</Note>
 	</Lore>
 	<Lore zone="3100" x="645" y="640" z="82" loreID="8621">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=30824 category=51000" />
+		</Note>
 	</Lore>
 	<Lore zone="3100" x="669" y="764" z="78" loreID="8624" />
 	<Lore zone="3090" x="161" y="574" z="67" loreID="8627">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=29947 category=51000" />
+		</Note>
 	</Lore>
 		<!-- #12 (SD, Instance, PITA) -->
 	<!-- Namahage -->
 	<Lore zone="3070" x="815" y="218" z="76" loreID="8748" />
 	<Lore zone="3070" x="771" y="282" z="83" loreID="8749" />
 	<Lore zone="3070" x="830" y="147" z="77" loreID="8750">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="%1% | %2%" fmt="true">
+				<Param rdb="id=35218 category=51000" />
+				<Param rdb="id=35219 category=51000" />
+			</Param>
+		</Note>
 	</Lore>
 	<!-- Oni -->
 	<Lore zone="3070" x="96" y="861" z="103" loreID="9251">
 		<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
-			<Param en="Brotherly Loathe" /> <!-- TODO: RDB -->
+			<Param rdb="id=3516 category=50300" />
 		</Note>
 	</Lore>
 	<Lore zone="5150" x="491" y="668" z="80" loreID="9252" />
@@ -491,34 +522,36 @@
 	<Lore zone="3070" x="319" y="351" z="84" loreID="8745" />
 	<Lore zone="3070" x="128" y="517" z="85" loreID="8746">
 		<Note en="%1%; Kill fast" fmt="true">
-			<Param cat="MapNoteTooltip" str="ChampDrop" />
+			<Param cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+				<Param rdb="id=33951 category=51000" />
+			</Param>
 		</Note>
 	</Lore>
 	<!-- Padurii -->
 	<Lore type="area" zone="3130" x="1027" y="625" radius="117" loreID="8879">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Keening Forest Spirit" /> <!-- TODO: RDB -->
+			<Param rdb="id=30363 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3130" x="1138" y="745" z="50" loreID="8880" />
 	<Lore zone="3130" x="1078" y="657" z="29" loreID="8881">
 		<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
-			<Param en="The Abandoned" /> <!-- TODO: RDB -->
+			<Param rdb="id=3598 category=50300" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3130" x="1027" y="625" radius="117" loreID="8882">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Clamouring Forest Spirit" /> <!-- TODO: RDB -->
+			<Param rdb="id=30362 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3130" x="1031.5" y="713" radius="97" loreID="8883" >
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Enslaved Forest Spirit" /> <!-- TODO: RDB -->
+			<Param rdb="id=30365 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3130" x="1027" y="625" radius="117" loreID="8884">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Shrilling Forest Spirit" /> <!-- TODO: RDB -->
+			<Param rdb="id=30364 category=51000" />
 		</Note>
 	</Lore>
 		<!-- #7 (Padurii race, multiple initial spawns, figure the race path out yourself) -->
@@ -541,32 +574,47 @@
 	<Lore zone="5150" x="169" y="713" z="20" loreID="9246" />
 	<Lore zone="3070" x="144" y="669" z="95" loreID="9247">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Hound of Jigoku or champion mob" />
+			<Param en="%1% | %2%" fmt="true">
+				<Param rdb="id=34343 category=51000" />
+				<Param rdb="id=37211 category=51000" />
+			</Param>
 		</Note>
 	</Lore>
 	<Lore zone="3070" x="272" y="716" z="92" loreID="9247">
-			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Hound of Jigoku or champion mob" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="%1% | %2%" fmt="true">
+				<Param rdb="id=34343 category=51000" />
+				<Param rdb="id=37211 category=51000" />
+			</Param>
 		</Note>
 	</Lore>
 	<Lore zone="3070" x="376" y="785" z="85" loreID="9247">
-			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Hound of Jigoku or champion mob" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="%1% | %2%" fmt="true">
+				<Param rdb="id=34343 category=51000" />
+				<Param rdb="id=37211 category=51000" />
+			</Param>
 		</Note>
 	</Lore>
 	<Lore zone="3070" x="546" y="783" z="85" loreID="9247">
-			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Hound of Jigoku or champion mob" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="%1% | %2%" fmt="true">
+				<Param rdb="id=34343 category=51000" />
+				<Param rdb="id=37211 category=51000" />
+			</Param>
 		</Note>
 	</Lore>
 	<Lore zone="3070" x="721" y="802" z="85" loreID="9247">
-			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Hound of Jigoku or champion mob" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="%1% | %2%" fmt="true">
+				<Param rdb="id=34343 category=51000" />
+				<Param rdb="id=37211 category=51000" />
+			</Param>
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3100" x="862" y="150" radius="58" loreID="9248">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Breachbeast" /> <!-- TODO: RDB -->
+			<Param rdb="id=27900 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="5140" x="448" y="459" z="115" loreID="9249">
@@ -595,7 +643,7 @@
 	<Lore zone="3040" x="869" y="437" z="154" loreID="8561" />
 	<Lore type="area" zone="3040" x="471" y="334" radius="26" loreID="8562">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Sackcloth Scarecrows" /> <!-- TODO: RDB -->
+			<Param rdb="id=15946 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3040" x="116" y="268" z="131" loreID="8563" />
@@ -604,12 +652,15 @@
 	<Lore zone="3040" x="829" y="367" z="160" loreID="8566" />
 	<Lore type="area" zone="3040" x="509" y="564" radius="46" loreID="8567">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="His Daughter's Keeper" /> <!-- TODO: RDB -->
+			<Param rdb="id=17421 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3040" x="509" y="564" radius="46" loreID="8568">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Henderson's Legacy or Night Watchman" /> <!-- TODO: RDB -->
+			<Param en="%1% | %2%" fmt="true">
+				<Param rdb="id=17422 category=51000" />
+				<Param rdb="id=17423 category=51000" />
+			</Param>
 		</Note>
 	</Lore>
 	<!-- Soldiers of Hell -->
@@ -623,52 +674,52 @@
 	<Lore zone="3070" x="906" y="132" z="77" loreID="8829" />
 	<Lore zone="3070" x="739" y="284" z="87" loreID="8830" type="area" radius="26">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
+			<Param rdb="id=34842 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3070" x="746" y="232" z="86" loreID="8830" type="area" radius="27">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
+			<Param rdb="id=34842 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3070" x="749" y="640" z="95" loreID="8830" type="area" radius="12">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
+			<Param rdb="id=34842 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3070" x="799" y="643" z="99" loreID="8830" type="area" radius="15">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
+			<Param rdb="id=34842 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3070" x="803" y="598" z="100" loreID="8830" type="area" radius="12">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
+			<Param rdb="id=34842 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3070" x="803" y="706" z="95" loreID="8830" type="area" radius="21">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
+			<Param rdb="id=34842 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3070" x="908" y="228" z="79" loreID="8830" type="area" radius="31">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
+			<Param rdb="id=34842 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3050" x="366" y="525" z="154" loreID="8831" />
 	<!-- TEMP Topload <Lore zone="3070" x="800" y="176" z="77" loreID="8832" type="area" radius="155">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Onryo" /> --> <!-- TODO: RDB -->
-		<!-- </Note>
+			<Param rdb="id=34740 category=51000" />
+		</Note>
 	</Lore> -->
 	<Lore zone="3130" x="724" y="852" z="31" loreID="8833">
 		<Note en="%1%; %2%" fmt="true">
 			<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
-				<Param en="A Trail of Breadcrumbs" /> <!-- TODO: RDB -->
+				<Param rdb="id=3486 category=50300" />
 			</Param>
 			<Param cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-				<Param en="Boss" /> <!-- TODO: RDB -->
+				<Param rdb="id=32900 category=51000" />
 			</Param>
 		</Note>
 	</Lore>
@@ -697,7 +748,7 @@
 		<!-- #4 HE -->
 	<Lore type="area" zone="3040" x="871" y="901.5" radius="95" loreID="9214">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Rift Martyr" /> <!-- TODO: RDB -->
+			<Param rdb="id=15773 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="5140" x="555" y="468" z="73" loreID="9215" />
@@ -713,14 +764,14 @@
 	<Lore zone="3140" x="845" y="980" z="100" loreID="8896" />
 	<Lore type="area" zone="3120" x="368" y="1054.5" radius="109" loreID="8897">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Blood Stock" /> <!-- TODO: RDB -->
+			<Param rdb="id=29581 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3140" x="370" y="800" z="76" loreID="8898" />
 	<Lore zone="3120" x="478" y="1094" z="102" loreID="8899" />
 	<Lore type="area" zone="3140" x="1112.5" y="1008.5" radius="146" loreID="8900">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Type-X Controller" /> <!-- TODO: RDB -->
+			<Param rdb="id=23502 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3120" x="898" y="1214" z="124" loreID="8901" />
@@ -728,21 +779,32 @@
 	<Lore zone="3140" x="355" y="996" z="110" loreID="9077" />
 	<Lore zone="3120" x="263" y="755" z="95" loreID="9078" />
 	<Lore zone="3120" x="855" y="1160" z="147" loreID="9079">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=29172 category=51000" />
+		</Note>
 	</Lore>
 	<Lore zone="3140" x="547" y="983" z="64" loreID="9080" />
 	<Lore zone="3140" x="540" y="1056" z="75" loreID="9081">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=30720 category=51000" />
+		</Note>
 	</Lore>
 		<!-- #6-7 (Instance: Castle) -->
 	<Lore zone="3120" x="250" y="866" z="76" loreID="9084" />
 	<Lore zone="3140" x="919" y="1030" z="51" loreID="9237">
-		<Note en="Chase down vampire survivalist" />
+		<Note en="%1%; %2%" fmt="true">
+			<Param cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+				<Param rdb="id=36472 category=51000" />
+			</Param>
+			<Param en="Chase him down" />
+		</Note>
 	</Lore>
 	<!-- Vampire Super Soliders 1/5 -->
 		<!-- #1 (SH) -->
 	<Lore zone="3120" x="338" y="918" z="130" loreID="8904">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=29562 category=51000" />
+		</Note>
 	</Lore>
 		<!-- #3 (Fac) -->
 		<!-- #4-5 (SH) -->
@@ -765,11 +827,13 @@
 	<Lore zone="3120" x="662" y="683" z="102" loreID="8871" />
 	<Lore type="area" zone="3120" x="462" y="540.5" radius="52" loreID="8872">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Custurii Scalper" /> <!-- TODO: RDB -->
+			<Param rdb="id=30178 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3140" x="344" y="1199" z="34" loreID="8873">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=30526 category=51000" />
+		</Note>
 	</Lore>
 	<Lore zone="3120" x="955" y="218" z="84" loreID="8874" />
 	<!-- Wisps -->
@@ -777,12 +841,12 @@
 	<Lore zone="3030" x="254" y="126" z="144" loreID="8551" />
 	<Lore type="area" zone="3040" x="451.5" y="278.5" radius="36" loreID="8552">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Ghostlight" /> <!-- TODO: RDB -->
+			<Param rdb="id=16243 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3040" x="460" y="413" radius="26" loreID="8554">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Ghostlight" /> <!-- TODO: RDB -->
+			<Param rdb="id=16243 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3040" x="512" y="296" z="154" loreID="8555" />
@@ -793,7 +857,10 @@
 	<Lore zone="3140" x="862" y="559" z="16" loreID="9235" />
 	<Lore type="area" zone="3140" x="781.5" y="546.5" radius="92" loreID="9236">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Black Springs Zmeu &amp; Earthshaker" /> <!-- TODO: RDB -->
+			<Param en="%1% | %2%" fmt="true">
+				<Param rdb="id=20560 category=51000" />
+				<Param rdb="id=20562 category=51000" />
+			</Param>
 		</Note>
 	</Lore>
 	<!-- Zombies -->
@@ -804,31 +871,36 @@
 	<Lore zone="3040" x="359" y="522" z="148" loreID="8584" />
 	<!-- TEMP: Topload <Lore type="area" zone="3040" x="399" y="359.5" radius="202" loreID="8585">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Innsmouth Track &amp; Field" /> --><!-- TODO: RDB --><!--
+			<Param rdb="id=19381 category=51000" />
 		</Note>
 	</Lore> -->
 	<Lore type="area" zone="3030" x="277" y="503" radius="35" loreID="8586">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Dearly Departed" /> <!-- TODO: RDB -->
+			<Param rdb="id=15404 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3030" x="152" y="948.5" radius="122" loreID="8587">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Zombie Hulks" /> <!-- TODO: RDB -->
+			<Param en="%1% | %2%" fmt="true">
+				<Param rdb="id=14039 category=51000" />
+				<Param rdb="id=16711 category=51000" />
+			</Param>
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3030" x="466" y="208" radius="119" loreID="8588">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Drowned Mariner" /> <!-- TODO: RDB -->
+			<Param rdb="id=14074 category=51000" />
 		</Note>
 	</Lore>
 	<Lore type="area" zone="3030" x="530.5" y="83.5" radius="115.5" loreID="8589">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
-			<Param en="Zombie Cultists" /> <!-- TODO: RDB -->
+			<Param rdb="id=17277 category=51000" />
 		</Note>
 	</Lore>
 	<Lore zone="3050" x="250" y="505" loreID="8590">
-		<Note cat="MapNoteTooltip" str="ChampDrop" />
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="id=16291 category=51000" />
+		</Note>
 	</Lore>
 	<Lore zone="3040" x="722" y="241" z="146" loreID="8591" />
 	<Lore zone="3050" x="492" y="125" z="129" loreID="8592">

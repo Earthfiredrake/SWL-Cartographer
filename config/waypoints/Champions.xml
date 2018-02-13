@@ -453,7 +453,7 @@
 		<Champ zone="3070" x="534" y="414" z="83" champID="10210"> <!-- Congealed Disgust -->
 			<Note en="%1%; Spawns randomly after tagging" fmt="true">
 				<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
-					<Param en="The Tenebrous Sky (here)" /> <!-- TODO: RDB -->
+					<Param rdb="id=3669 category=50300" />
 				</Param>
 			</Note>
 		</Champ>
@@ -622,7 +622,7 @@
 		<Champ zone="3070" x="820" y="710" champID="10198" /> <!-- Wrathful Goryo -->
 		<!-- The Simian Horror -->
 		<Champ zone="3070" x="551" y="255" z="91" champID="10213" group="true">
-			<Name en="The Simian Horror" /> <!-- TODO: RDB -->
+			<Name rdb="id=34568 category=51000" />
 		</Champ>
 	</_Section>
 </OverlayPack>

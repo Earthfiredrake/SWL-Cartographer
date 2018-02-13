@@ -61,7 +61,6 @@
 	<Cartographer> <!-- Chat and fifo messages specific to this mod -->
 	</Cartographer>
 	<MapNoteTooltip> <!-- Commonly used notation tooltip message templates -->
-		<ChampDrop en="Champion mob drop" /> <!-- TODO: Convert to "DropsFrom" -->
 		<DropsFrom en="Drops from: %1%" /> <!-- %1% = Creature name(s) -->
 		<MissionReq en="Requires mission: %1%" /> <!-- %1% = Mission name -->
 		<RngSpawn en="Random spawn" /> <!-- Has multiple spawn points with placeholders, appearing randomly -->
