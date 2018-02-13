@@ -237,7 +237,9 @@
 		<Lore zone="1000" x="143" y="248" z="29" loreID="4017">
 			<Note en="Literature" />
 		</Lore>
-		<Lore zone="1100" x="397" y="343" z="51" loreID="4017" />
+		<Lore zone="1100" x="397" y="343" z="51" loreID="4017">
+			<Note en="Literature" />
+		</Lore>
 		<Lore zone="1100" x="401" y="343" z="50" loreID="4041" />
 		<Lore zone="1000" x="145" y="252" z="28" loreID="4037" />
 		<Lore zone="1100" x="336" y="427" z="50" loreID="4038" />

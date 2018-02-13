@@ -64,7 +64,8 @@
 		<ChampDrop en="Champion mob drop" /> <!-- TODO: Convert to "DropsFrom" -->
 		<DropsFrom en="Drops from: %1%" /> <!-- %1% = Creature name(s) -->
 		<MissionReq en="Requires mission: %1%" /> <!-- %1% = Mission name -->
-		<RngSpawn en="Random spawn point: %1%" /> <!-- %1% = #/# -->
+		<RngSpawn en="Random spawn" /> <!-- Has multiple spawn points with placeholders, appearing randomly -->
+		<CndSpawn en="Possible spawn: %1%" /> <!-- %1% = Conditions; Spawns at one of several points if condition -->
 		<ScarabColour en="Collect one of each colour: %1%" /> <!-- %1% = Colour -->
 		<Summon en="Summon point: %1%" /> <!-- %1% = Summon requirements -->
 	</MapNoteTooltip>

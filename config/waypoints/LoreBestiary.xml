@@ -28,7 +28,7 @@
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
 			<Param en="Innsmouth Track &amp; Field" /> <!-- TODO: RDB -->
 		</Note>
-	</Lore>	
+	</Lore>
 	<!-- Ak'ab 7/8 -->
 	<Lore zone="3040" x="420" y="947" z="153" loreID="8485" />
 	<Lore type="area" zone="3050" x="228.5" y="259.5" radius="41" loreID="8486">
@@ -93,7 +93,7 @@
 	<Lore zone="3090" x="891" y="432" z="75" loreID="8657" />
 	<Lore zone="3090" x="906" y="457" z="62" loreID="8658" />
 		<!-- #6 (Instance: Dusty Dark) -->
-		<!-- #7 Multi points, inexhaustive survey -->
+		<!-- #7 Multi points (in-exhaustive survey) -->
 		<!-- Black -->
 	<Lore zone="3100" x="28" y="999" z="55" loreID="8660">
 		<Note cat="MapNoteTooltip" str="ScarabColour" fmt="true">
@@ -156,33 +156,28 @@
 	<Lore zone="3040" x="662" y="547" z="142" loreID="8480" />
 	<Lore zone="3040" x="525" y="502" z="142" loreID="8481" />
 	<Lore zone="3040" x="626" y="577" z="139" loreID="8482">
-		<!-- Sideshow shacks east of entrance -->
-		<Note cat="MapNoteTooltip" str="RngSpawn" fmt="true">
-			<Param en="1/5" />
+		<Note cat="MapNoteTooltip" str="CndSpawn" fmt="true">
+			<Param en="Midnight" />
 		</Note>
 	</Lore>
 	<Lore zone="3040" x="597" y="507" z="142" loreID="8482">
-		<!-- Arch near Ferris Wheel -->
-		<Note cat="MapNoteTooltip" str="RngSpawn" fmt="true">
-			<Param en="2/5" />
+		<Note cat="MapNoteTooltip" str="CndSpawn" fmt="true">
+			<Param en="Midnight" />
 		</Note>
 	</Lore>
 	<Lore zone="3040" x="620" y="480" z="142" loreID="8482">
-		<!-- Central shack -->
-		<Note cat="MapNoteTooltip" str="RngSpawn" fmt="true">
-			<Param en="3/5" />
+		<Note cat="MapNoteTooltip" str="CndSpawn" fmt="true">
+			<Param en="Midnight" />
 		</Note>
 	</Lore>
 	<Lore zone="3040" x="691" y="459" z="145" loreID="8482">
-		<!-- Cliff, SE of Flamer -->
-		<Note cat="MapNoteTooltip" str="RngSpawn" fmt="true">
-			<Param en="4/5" />
+		<Note cat="MapNoteTooltip" str="CndSpawn" fmt="true">
+			<Param en="Midnight" />
 		</Note>
 	</Lore>
 	<Lore zone="3040" x="570" y="389" z="142" loreID="8482">
-		<!-- Shed north of Lover's Lake -->
-		<Note cat="MapNoteTooltip" str="RngSpawn" fmt="true">
-			<Param en="5/5" />
+		<Note cat="MapNoteTooltip" str="CndSpawn" fmt="true">
+			<Param en="Midnight" />
 		</Note>
 	</Lore>
 	<!-- Cultists 5/6 -->
@@ -296,13 +291,22 @@
 	</Lore>
 	<Lore zone="3120" x="1182" y="511" z="55" loreID="9225" />
 	<Lore zone="3120" x="1040" y="1010" z="115" loreID="9226" />
-	<!-- Filth and Humans 7/8 -->
+	<!-- Filth and Humans -->
 	<Lore zone="6730" x="408" y="330" z="20" loreID="9285" />
 	<Lore zone="3090" x="361" y="850" z="66" loreID="9286" />
 	<Lore zone="3070" x="980" y="410" z="87" loreID="9287" />
 	<Lore zone="3070" x="458" y="260" z="95" loreID="9288" />
 	<Lore zone="3070" x="344" y="186" z="85" loreID="9289" />
-		<!-- #6 (Penthouse or All Seeing?, Drop) -->
+	<Lore zone="3070" x="389" y="558" z="114" loreID="9290">
+		<Note en="%1%; %2%" fmt="true">
+			<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param en="The All-Seeing Kawaii" /> <!-- TODO: RDB -->
+			</Param>
+			<Param cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+				<Param en="Spawned Filth Beast" /> <!-- TODO: RDB -->
+			</Param>
+		</Note>
+	</Lore>
 	<Lore zone="3090" x="270" y="855" z="64" loreID="9291" />
 	<Lore zone="3100" x="205" y="1022" z="60" loreID="9292" />
 	<!-- Filth and Nature -->
@@ -313,14 +317,18 @@
 	</Lore>
 	<Lore zone="3070" x="463" y="178" z="81" loreID="9281" />
 	<Lore zone="3070" x="554" y="246" z="89" loreID="9282" />
-	<!-- Filth Guardians 5/8 -->
+	<!-- Filth Guardians 6/8 -->
 	<Lore zone="6075" x="265" y="290" z="31" loreID="9295" />
 	<Lore zone="3140" x="625" y="650" z="65" loreID="9296" />
 	<Lore zone="3140" x="1233" y="675" z="31" loreID="9297" />
 	<Lore zone="3100" x="713" y="991" z="55" loreID="9298" />
 	<Lore zone="3100" x="32" y="686" z="83" loreID="9299" />
 		<!-- #6 (NYR) -->
-	<Lore zone="7418" x="207" y="247" z="205" loreID="9301" /> <!-- Drops from public raid bosses, location is tentative -->
+	<Lore zone="7418" x="207" y="247" z="205" loreID="9301"> <!-- Location is tentative -->
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="Public raid bosses" />
+		</Note>
+	</Lore>
 		<!-- #8 (Unknown/NYA/No Location) -->
 	<!-- Ghouls -->
 	<Lore zone="3130" x="1103" y="1071" z="28" loreID="8642" />
@@ -386,7 +394,7 @@
 			</Param>
 		</Note>
 	</Lore>
-	<!-- TEMP: topload <Lore type="area" zone="3100" x="747.5" y="299" radius="128" loreID="9273">
+	<!-- TEMP: Topload <Lore type="area" zone="3100" x="747.5" y="299" radius="128" loreID="9273">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
 			<Param en="Mop Slop Riser" /> --><!-- TODO: RDB --><!--
 		</Note>
@@ -515,19 +523,47 @@
 	</Lore>
 		<!-- #7 (Padurii race, multiple initial spawns, figure the race path out yourself) -->
 	<Lore zone="3130" x="1084" y="519" z="58" loreID="8885">
-		<Note en="Possible spawn; Chase" />
+		<Note cat="MapNoteTooltip" str="CndSpawn" fmt="true">
+			<Param en="05:00 - 07:00; Chase and fight" />
+		</Note>
 	</Lore>
 	<Lore zone="3130" x="1178" y="645" z="47" loreID="8885">
-		<Note en="Possible spawn; Chase" />
+		<Note cat="MapNoteTooltip" str="CndSpawn" fmt="true">
+			<Param en="05:00 - 07:00; Chase and fight" />
+		</Note>
 	</Lore>
 	<Lore zone="3130" x="982" y="741" z="32" loreID="8885">
-		<Note en="Race Destination" />
+		<Note en="Destination for chase" />
 	</Lore>
-	<!-- Rakshasa 5/6 -->
+	<!-- Rakshasa -->
 	<Lore zone="3070" x="276" y="718" z="90" loreID="9244" />
 	<Lore zone="3040" x="805" y="999" z="147" loreID="9245" />
 	<Lore zone="5150" x="169" y="713" z="20" loreID="9246" />
-		<!-- #4 (Drop, KD) -->
+	<Lore zone="3070" x="144" y="669" z="95" loreID="9247">
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="Hound of Jigoku or champion mob" />
+		</Note>
+	</Lore>
+	<Lore zone="3070" x="272" y="716" z="92" loreID="9247">
+			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="Hound of Jigoku or champion mob" />
+		</Note>
+	</Lore>
+	<Lore zone="3070" x="376" y="785" z="85" loreID="9247">
+			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="Hound of Jigoku or champion mob" />
+		</Note>
+	</Lore>
+	<Lore zone="3070" x="546" y="783" z="85" loreID="9247">
+			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="Hound of Jigoku or champion mob" />
+		</Note>
+	</Lore>
+	<Lore zone="3070" x="721" y="802" z="85" loreID="9247">
+			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="Hound of Jigoku or champion mob" />
+		</Note>
+	</Lore>
 	<Lore type="area" zone="3100" x="862" y="150" radius="58" loreID="9248">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
 			<Param en="Breachbeast" /> <!-- TODO: RDB -->
@@ -585,12 +621,37 @@
 	<Lore zone="3140" x="648" y="850" z="51" loreID="8827" />
 	<Lore zone="3050" x="309" y="496" z="172" loreID="8828" />
 	<Lore zone="3070" x="906" y="132" z="77" loreID="8829" />
-	<Lore zone="3070" x="799" y="622" z="100" loreID="8830" type="area" radius="30">
+	<Lore zone="3070" x="739" y="284" z="87" loreID="8830" type="area" radius="26">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
 			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
 		</Note>
 	</Lore>
-	<Lore zone="3070" x="738" y="282" z="86" loreID="8830" type="area" radius="24">
+	<Lore zone="3070" x="746" y="232" z="86" loreID="8830" type="area" radius="27">
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
+		</Note>
+	</Lore>
+	<Lore zone="3070" x="749" y="640" z="95" loreID="8830" type="area" radius="12">
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
+		</Note>
+	</Lore>
+	<Lore zone="3070" x="799" y="643" z="99" loreID="8830" type="area" radius="15">
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
+		</Note>
+	</Lore>
+	<Lore zone="3070" x="803" y="598" z="100" loreID="8830" type="area" radius="12">
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
+		</Note>
+	</Lore>
+	<Lore zone="3070" x="803" y="706" z="95" loreID="8830" type="area" radius="21">
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
+		</Note>
+	</Lore>
+	<Lore zone="3070" x="908" y="228" z="79" loreID="8830" type="area" radius="31">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
 			<Param en="Drifting Onryo" /> <!-- TODO: RDB -->
 		</Note>
@@ -615,10 +676,14 @@
 	<Lore zone="6640" x="218" y="270" z="23" loreID="8835" />
 	<Lore zone="3070" x="886" y="178" z="76" loreID="8836" />
 	<Lore zone="3070" x="809" y="645" z="93" loreID="8837">
-		<Note en="Midnight game time, in anima form" />
+		<Note cat="MapNoteTooltip" str="CndSpawn" fmt="true">
+			<Param en="Midnight; Anima form" />
+		</Note>
 	</Lore>
 	<Lore zone="3070" x="735" y="154" z="75" loreID="8837">
-		<Note en="Midnight game time, in anima form" />
+		<Note cat="MapNoteTooltip" str="CndSpawn" fmt="true">
+			<Param en="Midnight; Anima form" />
+		</Note>
 	</Lore>
 	<!-- Spirits of Flame -->
 	<Lore zone="3090" x="530" y="669" z="65" loreID="8662" />
@@ -767,26 +832,26 @@
 	</Lore>
 	<Lore zone="3040" x="722" y="241" z="146" loreID="8591" />
 	<Lore zone="3050" x="492" y="125" z="129" loreID="8592">
-		<Note en="Head, part 1/6" />
+		<Note en="Joe's Head" />
 	</Lore>
 	<Lore zone="3040" x="551" y="191" z="152" loreID="8592">
-		<Note en="Left Arm, part 2/6" />
+		<Note en="Joe's Left Arm" />
 	</Lore>
 	<Lore zone="3030" x="389" y="21" z="139" loreID="8592">
-		<Note en="Torso, part 3/6" />
+		<Note en="Joe's Torso" />
 	</Lore>
 	<Lore zone="3050" x="352" y="767" z="139" loreID="8592">
-		<Note en="Right Arm, part 4/6" />
+		<Note en="Joe's Right Arm" />
 	</Lore>
 	<Lore zone="3040" x="130" y="647" z="154" loreID="8592">
-		<Note en="Left Leg, part 5/6" />
+		<Note en="Joe's Left Leg" />
 	</Lore>
 	<Lore zone="3030" x="179" y="617" z="165" loreID="8592">
-		<Note en="Right Leg, part 6/6" />
+		<Note en="Joe's Right Leg" />
 	</Lore>
 	<Lore zone="3030" x="290" y="512" z="144" loreID="8592">
 		<Note cat="MapNoteTooltip" str="Summon" fmt="true">
-			<Param en="All Joe's bits" />
+			<Param en="All 6 parts of Joe" />
 		</Note>
 	</Lore>
 </OverlayPack>

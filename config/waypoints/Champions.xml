@@ -126,7 +126,25 @@
 	</_Section>
 	<_Section> <!-- Egypt -->
 		<Champ zone="3090" x="400" y="390" champID="4079" /> <!-- Ainn the Harbinger -->
-		<!-- Deathstalker (random spawn) #4080 -->
+		<!-- Deathstalker (best guess, based on lore scorpion range) -->
+		<Champ type="area" zone="3090" x="429" y="996.5" radius="44" champID="4080">
+			<Note cat="MapNoteTooltip" str="RngSpawn" />
+		</Champ>
+		<Champ type="area" zone="3090" x="491" y="656" radius="67" champID="4080">
+			<Note cat="MapNoteTooltip" str="RngSpawn" />
+		</Champ>
+		<Champ type="area" zone="3090" x="543.5" y="811.5" radius="67" champID="4080">
+			<Note cat="MapNoteTooltip" str="RngSpawn" />
+		</Champ>
+		<Champ type="area" zone="3090" x="578" y="984" radius="37" champID="4080">
+			<Note cat="MapNoteTooltip" str="RngSpawn" />
+		</Champ>
+		<Champ type="area" zone="3090" x="679" y="492.5" radius="91" champID="4080">
+			<Note cat="MapNoteTooltip" str="RngSpawn" />
+		</Champ>
+		<Champ type="area" zone="3090" x="747.5" y="905" radius="25" champID="4080">
+			<Note cat="MapNoteTooltip" str="RngSpawn" />
+		</Champ>
 		<Champ zone="3090" x="480" y="285" champID="9548" /> <!-- Deserter Sabah -->
 		<Champ zone="3090" x="755" y="1125" champID="9566" /> <!-- Disciple of the First Jinn -->
 		<!-- Elemental Scourge (patrol) -->
@@ -149,7 +167,9 @@
 			<Point x="303" y="498" z="54" />
 		</Champ>
 		<Champ zone="3090" x="635" y="280" champID="9547" /> <!-- Evangelist of Aten -->
-		<Champ zone="3090" x="720" y="680" champID="9553" /> <!-- Frenzied Tunneler -->
+		<Champ zone="3090" x="720" y="680" champID="9553"> <!-- Frenzied Tunneler -->
+			<Note en="Access from hotel side" />
+		</Champ>
 		<Champ zone="3090" x="675" y="80" champID="4083" /> <!-- Gronarch the Exiled -->
 		<Champ zone="3090" x="345" y="95" champID="9550" /> <!-- Hanif the Repentant -->
 		<Champ zone="3090" x="645" y="180" champID="9546" /> <!-- Indoctrinator -->
@@ -276,7 +296,9 @@
 		<Champ zone="3120" x="1206" y="240" z="43" champID="4859" group="true" /> <!-- Village Eater -->
 		<Champ zone="3130" x="1080" y="805" champID="9895" /> <!-- Ancestral Cankermouth -->
 		<Champ zone="3130" x="418" y="555" z="37" champID="9888" /> <!-- Black Antlers -->
-		<Champ zone="3130" x="840" y="800" champID="10087" /> <!-- Blackwater -->
+		<Champ zone="3130" x="840" y="800" champID="10087"> <!-- Blackwater -->
+			<Note en="Poke it with a stick" />
+		</Champ>
 		<Champ zone="3130" x="605" y="375" champID="10085" /> <!-- Enflamed Mutt -->
 		<Champ zone="3130" x="245" y="950" champID="9886" /> <!-- Eternal Confessor -->
 		<Champ zone="3130" x="960" y="1215" champID="9896" /> <!-- Fang Run Primal-->
@@ -369,32 +391,57 @@
 		<!-- The Broken Vow (patrol) -->
 		<Champ zone="3070" x="751" y="665" z="95" champID="10199" />
 		<Champ type="path" zone="3070" champID="10199">
-			<Point x="819" y="560" z="100" />
-			<Point x="829" y="593" z="101" />
-			<Point x="850" y="593" z="98" />
-			<Point x="866" y="659" z="107" />
-			<Point x="850" y="673" z="107" />
-			<Point x="806" y="681" z="107" />
-			<Point x="751" y="665" z="95" />
-			<Point x="740" y="644" z="104" />
-			<Point x="745" y="622" z="103" />
-			<Point x="707" y="572" z="87" />
-			<Point x="760" y="569" z="104" />
-			<Point x="762" y="595" z="103" />
-			<Point x="793" y="664" z="100" />
-			<Point x="808" y="666" z="100" />
-			<Point x="808" y="718" z="104" />
-			<Point x="738" y="744" z="92" />
-			<Point x="702" y="722" z="100" />
-			<Point x="711" y="708" z="100" />
-			<Point x="711" y="636" z="91" />
+			<Point x="816" y="558" z="100" />
+			<Point x="828" y="578" z="101" />
+			<Point x="828" y="590" z="101" />
+			<Point x="862" y="596" z="98" />
+			<Point x="873" y="616" z="103" />
+			<Point x="875" y="632" z="108" />
+			<Point x="860" y="668" z="107" />
+			<Point x="839" y="679" z="107" />
+			<Point x="804" y="681" z="107" />
+			<Point x="774" y="675" z="108" />
+			<Point x="741" y="659" z="97" />
+			<Point x="740" y="642" z="104" />
+			<Point x="748" y="616" z="103" />
+			<Point x="735" y="585" z="96" />
+			<Point x="704" y="567" z="87" />
+			<Point x="706" y="552" z="87" />
+			<Point x="723" y="537" z="87" />
+			<Point x="747" y="537" z="93" />
+			<Point x="758" y="549" z="106" />
+			<Point x="761" y="590" z="103" />
+			<Point x="770" y="606" z="105" />
+			<Point x="784" y="655" z="101" />
+			<Point x="795" y="664" z="100" />
+			<Point x="809" y="666" z="100" />
+			<Point x="823" y="694" z="105" />
+			<Point x="815" y="712" z="105" />
+			<Point x="797" y="728" z="103" />
+			<Point x="763" y="728" z="95" />
+			<Point x="747" y="715" z="92" />
+			<Point x="733" y="723" z="91" />
+			<Point x="734" y="738" z="92" />
+			<Point x="746" y="755" z="92" />
+			<Point x="743" y="767" z="92" />
+			<Point x="713" y="774" z="89" />
+			<Point x="686" y="770" z="91" />
+			<Point x="675" y="750" z="91" />
+			<Point x="686" y="732" z="91" />
+			<Point x="701" y="724" z="100" />
+			<Point x="715" y="698" z="98" />
+			<Point x="713" y="644" z="91" />
 			<Point x="699" y="619" z="88" />
-			<Point x="703" y="611" z="88" />
-			<Point x="738" y="617" z="93" />
-			<Point x="730" y="607" z="91" />
-			<Point x="743" y="570" z="96" />
-			<Point x="786" y="556" z="97" />
-			<Point x="819" y="560" z="100" />
+			<Point x="702" y="611" z="88" />
+			<Point x="714" y="612" z="91" />
+			<Point x="732" y="625" z="93" />
+			<Point x="740" y="617" z="93" />
+			<Point x="732" y="603" z="91" />
+			<Point x="744" y="587" z="91" />
+			<Point x="743" y="566" z="96" />
+			<Point x="748" y="560" z="96" />
+			<Point x="787" y="556" z="97" />
+			<Point x="816" y="558" z="100" />
 		</Champ>
 		<!-- Bubbling Commuter (multi-spawn) -->
 		<Champ zone="3070" x="344" y="768" z="85" champID="10191" />
@@ -426,7 +473,8 @@
 		<Champ zone="3070" x="830" y="147" z="77" champID="10204" />
 		<Champ zone="3070" x="826" y="147" z="77" champID="10203" />
 		<Champ type="path" zone="3070" champID="10203">
-			<!-- E wall to SW corner -->
+			<Name en="Namahage patrol route" />
+			<Note en="E wall to SW building" />
 			<Point x="925" y="179" z="75" />
 			<Point x="904" y="179" z="75" />
 			<Point x="904" y="198" z="76" />
@@ -442,11 +490,10 @@
 			<Point x="764" y="142" z="75" />
 			<Point x="761" y="125" z="75" />
 			<Point x="765" y="118" z="75" />
-			<Name en="Namahage patrol route" />
-			<Note en="E wall to SW building" />
 		</Champ>
 		<Champ type="path" zone="3070" champID="10203">
-			<!-- SE courtyard to NW corner -->
+			<Name en="Namahage patrol route" />
+			<Note en="SE courtyard to NW building" />
 			<Point x="892" y="114" z="75" />
 			<Point x="866" y="118" z="75" />
 			<Point x="858" y="135" z="76" />
@@ -458,11 +505,10 @@
 			<Point x="793" y="227" z="79" />
 			<Point x="805" y="271" z="80" />
 			<Point x="753" y="271" z="81" />
-			<Name en="Namahage patrol route" />
-			<Note en="SE courtyard to NW building" />
 		</Champ>
 		<Champ type="path" zone="3070" champID="10203">
-			<!-- Graveyard? to NE corner -->
+			<Name en="Namahage patrol route" />
+			<Note en="Graveyard to NE alley" />
 			<Point x="765" y="170" z="78" />
 			<Point x="773" y="170" z="78" />
 			<Point x="773" y="209" z="78" />
@@ -478,16 +524,24 @@
 			<Point x="901" y="279" z="81" />
 			<Point x="916" y="273" z="81" />
 			<Point x="927" y="267" z="82" />
-			<Name en="Namahage patrol route" />
-			<Note en="Graveyard to NE alley" />
 		</Champ>
 		<Champ zone="3070" x="343" y="108" z="76" champID="10217" /> <!-- Nkadi the Fungal Lord -->
 		<!-- The Opener of Kimon (multi-spawn) -->
-		<Champ zone="3070" x="34" y="835" z="95" champID="7075" />
-		<Champ zone="3070" x="141" y="938" z="81" champID="7075" />
-		<Champ zone="3070" x="326" y="919" z="81" champID="7075" />
-		<Champ zone="3070" x="538" y="896" z="81" champID="7075" />
-		<Champ zone="3070" x="736" y="897" z="81" champID="7075" />
+		<Champ zone="3070" x="34" y="835" z="95" champID="7075">
+			<Note en="Teleports between spawns" />
+		</Champ>
+		<Champ zone="3070" x="141" y="938" z="81" champID="7075">
+			<Note en="Teleports between spawns" />
+		</Champ>
+		<Champ zone="3070" x="326" y="919" z="81" champID="7075">
+			<Note en="Teleports between spawns" />
+		</Champ>
+		<Champ zone="3070" x="538" y="896" z="81" champID="7075">
+			<Note en="Teleports between spawns" />
+		</Champ>
+		<Champ zone="3070" x="736" y="897" z="81" champID="7075">
+			<Note en="Teleports between spawns" />
+		</Champ>
 		<Champ zone="3070" x="128" y="517" z="85" champID="7074"> <!-- Orochi Prototype Smiler Mark 1.1 -->
 			<Note en="Kill drones to activate" />
 		</Champ>

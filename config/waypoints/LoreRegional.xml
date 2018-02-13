@@ -218,7 +218,31 @@
 		<Lore zone="3100" x="477" y="444" z="102" loreID="1027" />
 	</_Section>
 	<_Section> <!-- Transylvania -->
-		<!-- The Abandoned (No lore location, use Mosul??) -->
+		<!-- The Abandoned -->
+		<Lore zone="3130" x="570" y="615" z="32" loreID="6900">
+			<Note en="%1%; %2%" fmt="true">
+				<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+					<Param en="The Abandoned" />
+				</Param>
+				<Param en="Give to other bees" />
+			</Note>
+		</Lore>
+		<Lore zone="3130" x="570" y="615" z="32" loreID="6901">
+			<Note en="%1%; %2%" fmt="true">
+				<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+					<Param en="The Abandoned" />
+				</Param>
+				<Param en="Give to other bees" />
+			</Note>
+		</Lore>
+		<Lore zone="3130" x="570" y="615" z="32" loreID="6902">
+			<Note en="%1%; %2%" fmt="true">
+				<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+					<Param en="The Abandoned" />
+				</Param>
+				<Param en="Give to other bees" />
+			</Note>
+		</Lore>
 		<!-- Anastasia's Wagon -->
 		<Lore zone="3130" x="1035" y="787" z="41" loreID="4506" />
 		<Lore zone="3130" x="934" y="812" z="28" loreID="4507" />
@@ -398,7 +422,7 @@
 		<Lore zone="3070" x="565" y="915" z="73" loreID="7168" />
 		<Lore zone="3070" x="114" y="640" z="93" loreID="7169" />
 		<Lore zone="3070" x="822" y="709" z="92" loreID="7170" />
-			<!-- BS#3 (Drop: Hyperinfected/Commuter multiple spawns) -->
+			<!-- BS#3 (Drop: Hyperinfected/Commuter/Infected multiple spawns) -->
 			<!-- TODO: Verify that both drop it -->
 		<Lore zone="3070" x="344" y="768" z="85" loreID="7171"> <!-- Bubbles -->
 			<Note cat="MapNoteTooltip" str="ChampDrop" />
@@ -412,11 +436,21 @@
 		<Lore zone="3070" x="539" y="424" z="85" loreID="7171">
 			<Note cat="MapNoteTooltip" str="ChampDrop" />
 		</Lore>
+		<Lore zone="3070" x="576" y="612" z="85" loreID="7171">
+			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+				<Param en="Infected Citizen" />
+			</Note>
+		</Lore>
 		<Lore zone="3070" x="583" y="795" z="85" loreID="7171">
 			<Note cat="MapNoteTooltip" str="ChampDrop" />
 		</Lore>
 		<Lore zone="3070" x="649" y="854" z="85" loreID="7171"> <!-- Bubbles -->
 			<Note cat="MapNoteTooltip" str="ChampDrop" />
+		</Lore>
+		<Lore zone="3070" x="695" y="722" z="85" loreID="7171">
+			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+				<Param en="Infected Citizen" />
+			</Note>
 		</Lore>
 		<Lore zone="3070" x="744" y="791" z="85" loreID="7171">
 			<Note cat="MapNoteTooltip" str="ChampDrop" />
@@ -493,7 +527,7 @@
 		<Lore zone="3070" x="300" y="544" z="83" loreID="7109" />
 		<Lore zone="3070" x="273" y="551" z="87" loreID="7110" />
 		<Lore zone="3070" x="279" y="552" z="83" loreID="7111">
-			<Note en="Take a seat, politely" />
+			<Note en="Pay your respects to the owners" />
 		</Lore>
 		<Lore zone="3070" x="271" y="553" z="87" loreID="7112" />
 		<!-- Tale of Momotaro -->
