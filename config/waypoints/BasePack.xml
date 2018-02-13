@@ -144,20 +144,18 @@
 		<Vendor zone="5060" x="602" y="197" z="411">
 			<Name rdb="id=37384 category=51000" />
 		</Vendor>
-		<!-- Icons not yet available
-		<Vendor zone="5060" x="570" y="185" z="395" icon="vendor_bank.png">
+		<Vendor zone="5060" x="570" y="185" z="395" icon="service_bank.png">
 			<Name rdb="id=29867 category=51000" />
 		</Vendor>
-		<Vendor zone="5060" x="576" y="185" z="395" icon="vendor_bank.png">
+		<Vendor zone="5060" x="576" y="185" z="395" icon="service_bank.png">
 			<Name rdb="id=29867 category=51000" />
 		</Vendor>
-		<Vendor zone="5060" x="562" y="169" z="395" icon="vendor_mail.png">
+		<Vendor zone="5060" x="562" y="169" z="395" icon="service_auction.png">
 			<Name rdb="id=36859 category=51000" />
 		</Vendor>
-		<Vendor zone="5060" x="562" y="174" z="395" icon="vendor_mail.png">
+		<Vendor zone="5060" x="562" y="174" z="395" icon="service_auction.png">
 			<Name rdb="id=36859 category=51000" />
 		</Vendor>
-		-->
 	</_Section>
 	<_Section> <!-- Venice -->
 		<AnimaWell zone="1300" x="269.1" y="142.2" z="16.3">
@@ -182,14 +180,12 @@
 		<Vendor zone="1100" x="382.6" y="380.4">
 			<Name rdb="id=35460 category=51000" />
 		</Vendor>
-		<!-- Bank icon not yet included
-		<Vendor zone="1100" x="227.2" y="346.1" icon="vendor_bank.png">
+		<Vendor zone="1100" x="227.2" y="346.1" icon="service_bank.png">
 			<Name rdb="id=29867 category=51000" />
-		</Vendor> -->
-		<!-- Character edit icon not yet included
-		<Vendor zone="1100" x="422" y="409" icon="vendor_editchar.png">
+		</Vendor>
+		<Vendor zone="1100" x="422" y="409" icon="service_surgeon.png">
 			<Name rdb="id=129583427 category=260" />
-		</Vendor> -->
+		</Vendor>
 	</_Section>
 	<_Section> <!-- London -->
 		<AnimaWell zone="1000" x="153.7" y="274.5" z="28.6">
@@ -226,20 +222,18 @@
 		<Vendor zone="1000" x="170.9" y="186.7">
 			<Name rdb="id=105862994 category=260" />
 		</Vendor>
-		<!-- Icons not yet included
-		<Vendor zone="1000" x="164.3" y="358" icon="vendor_bank.png">
+		<Vendor zone="1000" x="164.3" y="358" icon="service_bank.png">
 			<Name rdb="id=29867 category=51000" />
 		</Vendor>
-		<Vendor zone="1000" x="364.3" y="301.3" icon="vendor_bank.png">
+		<Vendor zone="1000" x="364.3" y="301.3" icon="service_bank.png">
 			<Name rdb="id=29867 category=51000" />
 		</Vendor>
-		<Vendor zone="1000" x="221.1" y="235.4" icon="vendor_mail.png">
+		<Vendor zone="1000" x="221.1" y="235.4" icon="service_postal.png">
 			<Name rdb="id=29868 category=51000" />
 		</Vendor>
-		<Vendor zone="1000" x="223" y="242" icon="vendor_editchar.png">
+		<Vendor zone="1000" x="223" y="242" icon="service_barber.png">
 			<Name rdb="id=150569634 category=260" />
 		</Vendor>
-		-->
 	</_Section>
 	<_Section> <!-- Seoul -->
 		<AnimaWell zone="1200" x="400.2" y="182.7" z="51.8">
@@ -261,10 +255,9 @@
 		<Vendor zone="1200" x="364.5" y="278.3">
 			<Name rdb="id=35461 category=51000" />
 		</Vendor>
-		<!-- Bank icon not yet included
-		<Vendor zone="1200" x="313.1" y="316.7" icon="vendor_bank.png">
+		<Vendor zone="1200" x="313.1" y="316.7" icon="service_bank.png">
 			<Name rdb="id=29867 category=51000" />
-		</Vendor> -->
+		</Vendor>
 	</_Section>
 	<_Section> <!-- KM -->
 		<AnimaWell zone="3030" x="16" y="159.8"> <!-- Agartha Entrance -->
