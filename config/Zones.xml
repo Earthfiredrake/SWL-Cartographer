@@ -24,5 +24,4 @@
 	<Zone code="SF" id="3130" worldX="1536" worldY="1536" />
 	<Zone code="CF" id="3140" worldX="1536" worldY="1536" />
 	<Zone code="KD" id="3070" worldX="1024" worldY="1024" />
-	<!-- <Zone code="Museum" id="7190" /> <!-- Unknown world dimensions -->
  </Zones>

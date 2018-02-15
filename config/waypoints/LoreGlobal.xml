@@ -6,343 +6,343 @@
 <OverlayPack>
 	<_Section> <!-- Global -->
 		<!-- Agartha -->
-		<Lore zone="5060" x="545" y="420" z="409" loreID="4158" />
-		<Lore zone="5060" x="378" y="347" z="363" loreID="4186" />
-		<Lore zone="5060" x="490" y="432" z="223" loreID="4187" />
-		<Lore zone="5060" x="443" y="144" z="189" loreID="4188" />
-		<Lore zone="5060" x="280" y="407" z="201" loreID="4189" />
-		<Lore zone="5060" x="536" y="440" z="307" loreID="4190" />
-		<Lore zone="5060" x="567" y="176" z="408" loreID="4191" />
-		<Lore zone="5060" x="542" y="156" z="394" loreID="4192" />
-		<Lore zone="5060" x="631" y="120" z="394" loreID="4193" />
+		<Lore loreID="4158" zone="5060" x="545" y="420" z="409" />
+		<Lore loreID="4186" zone="5060" x="378" y="347" z="363" />
+		<Lore loreID="4187" zone="5060" x="490" y="432" z="223" />
+		<Lore loreID="4188" zone="5060" x="443" y="144" z="189" />
+		<Lore loreID="4189" zone="5060" x="280" y="407" z="201" />
+		<Lore loreID="4190" zone="5060" x="536" y="440" z="307" />
+		<Lore loreID="4191" zone="5060" x="567" y="176" z="408" />
+		<Lore loreID="4192" zone="5060" x="542" y="156" z="394" />
+		<Lore loreID="4193" zone="5060" x="631" y="120" z="394" />
 		<!-- The Buzzing -->
-		<Lore zone="1000" x="227" y="383" z="28" loreID="3572" />
-		<Lore zone="1100" x="288" y="368" z="46" loreID="3572" />
-		<Lore zone="1200" x="342" y="299" z="43" loreID="3572" />
-		<Lore zone="1000" x="198" y="262" z="28" loreID="3573" />
-		<Lore zone="1100" x="259" y="307" z="35" loreID="3573" />
-		<Lore zone="1200" x="283" y="288" z="35" loreID="3573" />
-		<Lore zone="1000" x="379" y="305" z="34" loreID="3574" />
-		<Lore zone="1100" x="360" y="325" z="50" loreID="3574" />
-		<Lore zone="1200" x="345" y="336" z="43" loreID="3574" />
-		<Lore zone="5060" x="505" y="383" z="405" loreID="3575" />
-		<Lore zone="5060" x="423" y="146" z="414" loreID="3576" />
-		<Lore zone="3030" x="22" y="164" z="165" loreID="3577" />
-		<Lore zone="3030" x="59" y="142" z="154" loreID="3578" />
-		<Lore zone="3030" x="90" y="188" z="153" loreID="3579" />
-		<!-- The Collective Unconsious -->
-		<Lore zone="6760" x="849" y="200" z="77" loreID="8148" />
-		<Lore zone="6760" x="841" y="218" z="77" loreID="8149" />
-		<Lore zone="6760" x="779" y="166" z="76" loreID="8150" />
-		<Lore zone="6760" x="832" y="283" z="79" loreID="8151" />
+		<Lore loreID="3572" zone="1000" x="227" y="383" z="28" />
+		<Lore loreID="3572" zone="1100" x="288" y="368" z="46" />
+		<Lore loreID="3572" zone="1200" x="342" y="299" z="43" />
+		<Lore loreID="3573" zone="1000" x="198" y="262" z="28" />
+		<Lore loreID="3573" zone="1100" x="259" y="307" z="35" />
+		<Lore loreID="3573" zone="1200" x="283" y="288" z="35" />
+		<Lore loreID="3574" zone="1000" x="379" y="305" z="34" />
+		<Lore loreID="3574" zone="1100" x="360" y="325" z="50" />
+		<Lore loreID="3574" zone="1200" x="345" y="336" z="43" />
+		<Lore loreID="3575" zone="5060" x="505" y="383" z="405" />
+		<Lore loreID="3576" zone="5060" x="423" y="146" z="414" />
+		<Lore loreID="3577" zone="3030" x="22" y="164" z="165" />
+		<Lore loreID="3578" zone="3030" x="59" y="142" z="154" />
+		<Lore loreID="3579" zone="3030" x="90" y="188" z="153" />
+		<!-- The Collective Unconscious -->
+		<Lore loreID="8148" zone="6760" x="849" y="200" z="77" />
+		<Lore loreID="8149" zone="6760" x="841" y="218" z="77" />
+		<Lore loreID="8150" zone="6760" x="779" y="166" z="76" />
+		<Lore loreID="8151" zone="6760" x="832" y="283" z="79" />
 		<!-- Council of Venice -->
-		<Lore zone="3030" x="155" y="377" z="149" loreID="4138" />
-		<Lore zone="3040" x="488" y="652" z="141" loreID="4137" />
-		<Lore zone="3050" x="821" y="644" z="147" loreID="4139" />
-		<Lore zone="3090" x="596" y="433" z="76" loreID="4140" />
-		<Lore zone="3100" x="632" y="915" z="77" loreID="4141" />
-		<Lore zone="3120" x="497" y="1108" z="102" loreID="4142" />
-		<Lore zone="3130" x="844" y="887" z="31" loreID="4143" />
-		<Lore zone="3090" x="602" y="436" z="71" loreID="4144" />
-		<Lore zone="3140" x="712" y="679" z="46" loreID="4145" />
+		<Lore loreID="4138" zone="3030" x="155" y="377" z="149" />
+		<Lore loreID="4137" zone="3040" x="488" y="652" z="141" />
+		<Lore loreID="4139" zone="3050" x="821" y="644" z="147" />
+		<Lore loreID="4140" zone="3090" x="596" y="433" z="76" />
+		<Lore loreID="4141" zone="3100" x="632" y="915" z="77" />
+		<Lore loreID="4142" zone="3120" x="497" y="1108" z="102" />
+		<Lore loreID="4143" zone="3130" x="844" y="887" z="31" />
+		<Lore loreID="4144" zone="3090" x="602" y="436" z="71" />
+		<Lore loreID="4145" zone="3140" x="712" y="679" z="46" />
 		<!-- Draculesti 7/9 -->
-		<Lore zone="3120" x="442" y="613" z="69" loreID="1503" />
-		<Lore zone="3120" x="320" y="723" z="68" loreID="1502" />
-		<Lore zone="3130" x="824" y="848" z="47" loreID="1501" />
-		<Lore zone="3130" x="785" y="552" z="46" loreID="1500" />
-		<Lore zone="3130" x="663" y="589" z="38" loreID="1499" />
-		<Lore zone="3130" x="831" y="850" z="31" loreID="1498" />
-		<Lore zone="3140" x="386" y="973" z="56" loreID="1497" />
+		<Lore loreID="1503" zone="3120" x="442" y="613" z="69" />
+		<Lore loreID="1502" zone="3120" x="320" y="723" z="68" />
+		<Lore loreID="1501" zone="3130" x="824" y="848" z="47" />
+		<Lore loreID="1500" zone="3130" x="785" y="552" z="46" />
+		<Lore loreID="1499" zone="3130" x="663" y="589" z="38" />
+		<Lore loreID="1498" zone="3130" x="831" y="850" z="31" />
+		<Lore loreID="1497" zone="3140" x="386" y="973" z="56" />
 			<!-- #8-9 (Instance: Castle) -->
 		<!-- Dragon -->
-		<Lore zone="1200" x="342" y="320" z="43" loreID="3617" />
-		<Lore zone="1200" x="362" y="311" z="45" loreID="3618" />
-		<Lore zone="1200" x="385" y="271" z="50" loreID="3619" />
-		<Lore zone="1200" x="390" y="261" z="55" loreID="3620" />
-		<Lore zone="1200" x="385" y="185" z="56" loreID="3621" />
-		<Lore zone="1200" x="314" y="171" z="46" loreID="3622" />
-		<Lore zone="1200" x="333" y="199" z="50" loreID="3623" />
-		<Lore zone="1200" x="349" y="273" z="50" loreID="3624" />
-		<Lore zone="1200" x="338" y="287" z="44" loreID="3625" />
-		<Lore zone="1200" x="353" y="242" z="46" loreID="3626" />
-		<Lore zone="1200" x="329" y="176" z="47" loreID="3627" />
-		<Lore zone="1200" x="374" y="226" z="53" loreID="3628" />
-		<Lore zone="1200" x="354" y="257" z="50" loreID="3976" />
+		<Lore loreID="3617" zone="1200" x="342" y="320" z="43" />
+		<Lore loreID="3618" zone="1200" x="362" y="311" z="45" />
+		<Lore loreID="3619" zone="1200" x="385" y="271" z="50" />
+		<Lore loreID="3620" zone="1200" x="390" y="261" z="55" />
+		<Lore loreID="3621" zone="1200" x="385" y="185" z="56" />
+		<Lore loreID="3622" zone="1200" x="314" y="171" z="46" />
+		<Lore loreID="3623" zone="1200" x="333" y="199" z="50" />
+		<Lore loreID="3624" zone="1200" x="349" y="273" z="50" />
+		<Lore loreID="3625" zone="1200" x="338" y="287" z="44" />
+		<Lore loreID="3626" zone="1200" x="353" y="242" z="46" />
+		<Lore loreID="3627" zone="1200" x="329" y="176" z="47" />
+		<Lore loreID="3628" zone="1200" x="374" y="226" z="53" />
+		<Lore loreID="3976" zone="1200" x="354" y="257" z="50" />
 		<!-- Fear Nothing Foundation -->
-		<Lore zone="6640" x="285" y="276" z="8" loreID="7174" />
-		<Lore zone="6640" x="213" y="251" z="15" loreID="7175" />
-		<Lore zone="6640" x="295" y="273" z="15" loreID="7176" />
-		<Lore zone="6640" x="265" y="284" z="15" loreID="7177" />
-		<Lore zone="6640" x="213" y="229" z="8" loreID="7178" />
-		<Lore zone="6640" x="257" y="237" z="23" loreID="7179" />
-		<Lore zone="6640" x="265" y="219" z="23" loreID="7180" />
-		<Lore zone="6640" x="287" y="265" z="52" loreID="7181" />
-		<Lore zone="6640" x="295" y="243" z="15" loreID="7182" />
-		<Lore zone="6640" x="219" y="237" z="23" loreID="7183" />
-		<Lore zone="6640" x="223" y="228" z="52" loreID="7184" />
+		<Lore loreID="7174" zone="6640" x="285" y="276" z="8" />
+		<Lore loreID="7175" zone="6640" x="213" y="251" z="15" />
+		<Lore loreID="7176" zone="6640" x="295" y="273" z="15" />
+		<Lore loreID="7177" zone="6640" x="265" y="284" z="15" />
+		<Lore loreID="7178" zone="6640" x="213" y="229" z="8" />
+		<Lore loreID="7179" zone="6640" x="257" y="237" z="23" />
+		<Lore loreID="7180" zone="6640" x="265" y="219" z="23" />
+		<Lore loreID="7181" zone="6640" x="287" y="265" z="52" />
+		<Lore loreID="7182" zone="6640" x="295" y="243" z="15" />
+		<Lore loreID="7183" zone="6640" x="219" y="237" z="23" />
+		<Lore loreID="7184" zone="6640" x="223" y="228" z="52" />
 		<!-- The Flith -->
-		<Lore zone="6600" x="251" y="216" z="14" loreID="3486" />
-		<Lore zone="6003" x="288" y="223" z="5" loreID="3486" />
-		<Lore zone="5060" x="258" y="220" z="368" loreID="3495" />
-		<Lore zone="3050" x="873" y="593" z="138" loreID="3487" />
-		<Lore zone="3050" x="856" y="634" z="138" loreID="3488" />
-		<Lore zone="3050" x="880" y="476" z="138" loreID="3489" />
-		<Lore zone="3090" x="311" y="805" z="49" loreID="3490" />
-		<Lore zone="3120" x="862" y="146" z="105" loreID="3491" />
-		<Lore zone="3100" x="340" y="915" z="53" loreID="3492" />
-		<Lore zone="3130" x="810" y="458" z="29" loreID="3493" />
-		<Lore zone="3140" x="323" y="587" z="55" loreID="3494" />
-		<Lore zone="3030" x="390" y="315" z="136" loreID="3496" />
-		<Lore zone="3040" x="862" y="567" z="131" loreID="3497" />
+		<Lore loreID="3486" zone="6600" x="251" y="216" z="14" />
+		<Lore loreID="3486" zone="6003" x="288" y="223" z="5" />
+		<Lore loreID="3495" zone="5060" x="258" y="220" z="368" />
+		<Lore loreID="3487" zone="3050" x="873" y="593" z="138" />
+		<Lore loreID="3488" zone="3050" x="856" y="634" z="138" />
+		<Lore loreID="3489" zone="3050" x="880" y="476" z="138" />
+		<Lore loreID="3490" zone="3090" x="311" y="805" z="49" />
+		<Lore loreID="3491" zone="3120" x="862" y="146" z="105" />
+		<Lore loreID="3492" zone="3100" x="340" y="915" z="53" />
+		<Lore loreID="3493" zone="3130" x="810" y="458" z="29" />
+		<Lore loreID="3494" zone="3140" x="323" y="587" z="55" />
+		<Lore loreID="3496" zone="3030" x="390" y="315" z="136" />
+		<Lore loreID="3497" zone="3040" x="862" y="567" z="131" />
 		<!-- Gaia Engines (Auto/Story) -->
 		<!-- The Hell Dimensions -->
-		<Lore zone="5140" x="203" y="288" z="85" loreID="4807" />
-		<Lore zone="5140" x="375" y="273" z="105" loreID="4808" />
-		<Lore zone="5140" x="387" y="340" z="84" loreID="4809" />
-		<Lore zone="5140" x="308" y="319" z="92" loreID="4810" />
-		<Lore zone="5140" x="220" y="295" z="85" loreID="4811" />
-		<Lore zone="5140" x="504" y="384" z="55" loreID="4812" />
-		<Lore zone="5140" x="390" y="284" z="98" loreID="4813" />
-		<Lore zone="5140" x="298" y="318" z="109" loreID="4814" />
-		<Lore zone="5140" x="399" y="334" z="75" loreID="4815" />
-		<Lore zone="5140" x="570" y="493" z="78" loreID="4816" />
-		<Lore zone="5140" x="386" y="352" z="78" loreID="4817" />
-		<Lore zone="5140" x="251" y="264" z="85" loreID="4818" />
-		<Lore zone="5140" x="587" y="528" z="82" loreID="4819" />
-		<Lore zone="5140" x="450" y="475" z="117" loreID="4820" />
-		<Lore zone="5140" x="379" y="437" z="111" loreID="4821" />
-		<Lore zone="5150" x="203" y="724" z="9" loreID="4822" />
-		<Lore zone="5150" x="350" y="718" z="23" loreID="4823" />
-		<Lore zone="5150" x="374" y="659" z="45" loreID="4824" />
-		<Lore zone="5150" x="321" y="633" z="58" loreID="4825" />
-		<Lore zone="5150" x="491" y="541" z="70" loreID="4826" />
-		<Lore zone="5150" x="524" y="660" z="93" loreID="4827" />
-		<Lore zone="5150" x="514" y="674" z="93" loreID="4828" />
-		<Lore zone="5160" x="212" y="513" z="103" loreID="4829" />
-		<Lore zone="5160" x="407" y="478" z="63" loreID="4830" />
-		<Lore zone="5160" x="656" y="282" z="102" loreID="4831" />
-		<Lore zone="5160" x="273" y="569" z="96" loreID="4832" />
-		<Lore zone="5160" x="749" y="304" z="102" loreID="4833" />
-		<Lore zone="5160" x="702" y="553" z="196" loreID="4834" />
-		<Lore zone="5160" x="690" y="235" z="102" loreID="4835" />
+		<Lore loreID="4807" zone="5140" x="203" y="288" z="85" />
+		<Lore loreID="4808" zone="5140" x="375" y="273" z="105" />
+		<Lore loreID="4809" zone="5140" x="387" y="340" z="84" />
+		<Lore loreID="4810" zone="5140" x="308" y="319" z="92" />
+		<Lore loreID="4811" zone="5140" x="220" y="295" z="85" />
+		<Lore loreID="4812" zone="5140" x="504" y="384" z="55" />
+		<Lore loreID="4813" zone="5140" x="390" y="284" z="98" />
+		<Lore loreID="4814" zone="5140" x="298" y="318" z="109" />
+		<Lore loreID="4815" zone="5140" x="399" y="334" z="75" />
+		<Lore loreID="4816" zone="5140" x="570" y="493" z="78" />
+		<Lore loreID="4817" zone="5140" x="386" y="352" z="78" />
+		<Lore loreID="4818" zone="5140" x="251" y="264" z="85" />
+		<Lore loreID="4819" zone="5140" x="587" y="528" z="82" />
+		<Lore loreID="4820" zone="5140" x="450" y="475" z="117" />
+		<Lore loreID="4821" zone="5140" x="379" y="437" z="111" />
+		<Lore loreID="4822" zone="5150" x="203" y="724" z="9" />
+		<Lore loreID="4823" zone="5150" x="350" y="718" z="23" />
+		<Lore loreID="4824" zone="5150" x="374" y="659" z="45" />
+		<Lore loreID="4825" zone="5150" x="321" y="633" z="58" />
+		<Lore loreID="4826" zone="5150" x="491" y="541" z="70" />
+		<Lore loreID="4827" zone="5150" x="524" y="660" z="93" />
+		<Lore loreID="4828" zone="5150" x="514" y="674" z="93" />
+		<Lore loreID="4829" zone="5160" x="212" y="513" z="103" />
+		<Lore loreID="4830" zone="5160" x="407" y="478" z="63" />
+		<Lore loreID="4831" zone="5160" x="656" y="282" z="102" />
+		<Lore loreID="4832" zone="5160" x="273" y="569" z="96" />
+		<Lore loreID="4833" zone="5160" x="749" y="304" z="102" />
+		<Lore loreID="4834" zone="5160" x="702" y="553" z="196" />
+		<Lore loreID="4835" zone="5160" x="690" y="235" z="102" />
 		<!-- The Host (Auto/Story) -->
 		<!-- The House-in-Exile -->
-		<Lore zone="3070" x="382" y="911" z="73" loreID="6987" />
-		<Lore zone="6630" x="152" y="191" z="14" loreID="6988" />
-		<Lore zone="3070" x="128" y="915" z="100" loreID="6989" />
-		<Lore zone="3070" x="458" y="666" z="83" loreID="6990" />
-		<Lore zone="3070" x="362" y="817" z="85" loreID="6991" />
-		<Lore zone="3070" x="169" y="813" z="94" loreID="6992">
+		<Lore loreID="6987" zone="3070" x="382" y="911" z="73" />
+		<Lore loreID="6988" zone="6630" x="152" y="191" z="14" />
+		<Lore loreID="6989" zone="3070" x="128" y="915" z="100" />
+		<Lore loreID="6990" zone="3070" x="458" y="666" z="83" />
+		<Lore loreID="6991" zone="3070" x="362" y="817" z="85" />
+		<Lore loreID="6992" zone="3070" x="169" y="813" z="94">
 			<Note en="Talk to Inbeda" />
 		</Lore>
-		<Lore zone="3070" x="830" y="654" z="93" loreID="6993" />
-		<Lore zone="6630" x="142" y="200" z="18" loreID="6994" />
-		<Lore zone="3070" x="685" y="792" z="83" loreID="6995" />
-		<Lore zone="6630" x="119" y="165" z="15" loreID="7202" />
-		<Lore zone="6630" x="155" y="217" z="18" loreID="7203" />
-		<Lore zone="3070" x="40" y="1010" z="71" loreID="7204" />
+		<Lore loreID="6993" zone="3070" x="830" y="654" z="93" />
+		<Lore loreID="6994" zone="6630" x="142" y="200" z="18" />
+		<Lore loreID="6995" zone="3070" x="685" y="792" z="83" />
+		<Lore loreID="7202" zone="6630" x="119" y="165" z="15" />
+		<Lore loreID="7203" zone="6630" x="155" y="217" z="18" />
+		<Lore loreID="7204" zone="3070" x="40" y="1010" z="71" />
 		<!-- Illuminati -->
-		<Lore zone="1100" x="443" y="325" z="50" loreID="3536" />
-		<Lore zone="1100" x="381" y="442" z="56" loreID="3542" />
-		<Lore zone="1100" x="398" y="438" z="51" loreID="3543" />
-		<Lore zone="1100" x="389" y="457" z="51" loreID="3544" />
-		<Lore zone="1100" x="354" y="439" z="50" loreID="3545" />
-		<Lore zone="1100" x="294" y="400" z="55" loreID="3546" />
-		<Lore zone="1100" x="328" y="360" z="50" loreID="3547" />
-		<Lore zone="1100" x="334" y="336" z="50" loreID="3548" />
-		<Lore zone="1100" x="309" y="347" z="39" loreID="3549" />
-		<Lore zone="1100" x="335" y="321" z="39" loreID="3550" />
-		<Lore zone="1100" x="324" y="354" z="39" loreID="3551" />
-		<Lore zone="1100" x="290" y="286" z="55" loreID="3552" />
-		<Lore zone="1100" x="281" y="392" z="55" loreID="3553" />
-		<Lore zone="1100" x="308" y="263" z="50" loreID="3554" />
-		<Lore zone="1100" x="358" y="334" z="50" loreID="3555" />
+		<Lore loreID="3536" zone="1100" x="443" y="325" z="50" />
+		<Lore loreID="3542" zone="1100" x="381" y="442" z="56" />
+		<Lore loreID="3543" zone="1100" x="398" y="438" z="51" />
+		<Lore loreID="3544" zone="1100" x="389" y="457" z="51" />
+		<Lore loreID="3545" zone="1100" x="354" y="439" z="50" />
+		<Lore loreID="3546" zone="1100" x="294" y="400" z="55" />
+		<Lore loreID="3547" zone="1100" x="328" y="360" z="50" />
+		<Lore loreID="3548" zone="1100" x="334" y="336" z="50" />
+		<Lore loreID="3549" zone="1100" x="309" y="347" z="39" />
+		<Lore loreID="3550" zone="1100" x="335" y="321" z="39" />
+		<Lore loreID="3551" zone="1100" x="324" y="354" z="39" />
+		<Lore loreID="3552" zone="1100" x="290" y="286" z="55" />
+		<Lore loreID="3553" zone="1100" x="281" y="392" z="55" />
+		<Lore loreID="3554" zone="1100" x="308" y="263" z="50" />
+		<Lore loreID="3555" zone="1100" x="358" y="334" z="50" />
 		<!-- The Jingu Clan -->
-		<Lore zone="3070" x="274" y="653" z="88" loreID="6960" />
-		<Lore zone="3070" x="772" y="518" z="84" loreID="6961" />
-		<Lore zone="3070" x="310" y="609" z="84" loreID="6962" />
-		<Lore zone="3070" x="181" y="541" z="83" loreID="6963" />
-		<Lore zone="3070" x="93" y="868" z="94" loreID="6964" />
-		<Lore zone="3070" x="442" y="562" z="83" loreID="6965" />
-		<Lore zone="3070" x="468" y="524" z="83" loreID="6966" />
-		<Lore zone="3070" x="277" y="558" z="83" loreID="6967">
+		<Lore loreID="6960" zone="3070" x="274" y="653" z="88" />
+		<Lore loreID="6961" zone="3070" x="772" y="518" z="84" />
+		<Lore loreID="6962" zone="3070" x="310" y="609" z="84" />
+		<Lore loreID="6963" zone="3070" x="181" y="541" z="83" />
+		<Lore loreID="6964" zone="3070" x="93" y="868" z="94" />
+		<Lore loreID="6965" zone="3070" x="442" y="562" z="83" />
+		<Lore loreID="6966" zone="3070" x="468" y="524" z="83" />
+		<Lore loreID="6967" zone="3070" x="277" y="558" z="83">
 			<Note en="Talk to Gozen" />
 		</Lore>
-		<Lore zone="3070" x="386" y="706" z="83" loreID="6968" />
-		<Lore zone="3070" x="386" y="706" z="83" loreID="7199" />
-		<Lore zone="3070" x="318" y="941" z="70" loreID="7200" />
-		<Lore zone="3070" x="809" y="546" z="93" loreID="7201" />
+		<Lore loreID="6968" zone="3070" x="386" y="706" z="83" />
+		<Lore loreID="7199" zone="3070" x="386" y="706" z="83" />
+		<Lore loreID="7200" zone="3070" x="318" y="941" z="70" />
+		<Lore loreID="7201" zone="3070" x="809" y="546" z="93" />
 		<!-- The Jinn and the Third Age -->
-		<Lore zone="6860" x="342" y="218" z="64" loreID="7869" />
+		<Lore loreID="7869" zone="6860" x="342" y="218" z="64" />
 		<!-- King Solomon 4/8 -->
-		<Lore zone="3100" x="610" y="693" z="73" loreID="8246" />
+		<Lore loreID="8246" zone="3100" x="610" y="693" z="73" />
 			<!-- #2 (Instance: Dusty Dark) -->
-		<Lore zone="3090" x="743" y="1116" z="46" loreID="8248" />
+		<Lore loreID="8248" zone="3090" x="743" y="1116" z="46" />
 			<!-- #4 (Instance: Angry Earth) -->
-		<Lore zone="3100" x="864" y="881" z="76" loreID="8250" />
-		<Lore zone="3100" x="184" y="736" z="85" loreID="8251" />
+		<Lore loreID="8250" zone="3100" x="864" y="881" z="76" />
+		<Lore loreID="8251" zone="3100" x="184" y="736" z="85" />
 			<!-- #7-8 (Instance: Dusty Dark) -->
 		<!-- The Korinto-kai -->
-		<Lore zone="3070" x="484" y="817" z="83" loreID="7025" />
-		<Lore zone="3070" x="450" y="886" z="79" loreID="7026" />
-		<Lore zone="3070" x="302" y="710" z="91" loreID="7027" />
-		<Lore zone="3070" x="670" y="592" z="83" loreID="7028" />
-		<Lore zone="3070" x="770" y="592" z="91" loreID="7029" />
-		<Lore zone="3070" x="344" y="455" z="86" loreID="7030" />
-		<Lore zone="3070" x="234" y="872" z="84" loreID="7031" />
-		<Lore zone="3070" x="448" y="808" z="86" loreID="7032">
+		<Lore loreID="7025" zone="3070" x="484" y="817" z="83" />
+		<Lore loreID="7026" zone="3070" x="450" y="886" z="79" />
+		<Lore loreID="7027" zone="3070" x="302" y="710" z="91" />
+		<Lore loreID="7028" zone="3070" x="670" y="592" z="83" />
+		<Lore loreID="7029" zone="3070" x="770" y="592" z="91" />
+		<Lore loreID="7030" zone="3070" x="344" y="455" z="86" />
+		<Lore loreID="7031" zone="3070" x="234" y="872" z="84" />
+		<Lore loreID="7032" zone="3070" x="448" y="808" z="86">
 			<Note en="Talk to Daimon"/>
 		</Lore>
-		<Lore zone="3070" x="532" y="748" z="83" loreID="7033" />
-		<Lore zone="3070" x="532" y="748" z="83" loreID="7034" />
-		<Lore zone="3070" x="779" y="917" z="70" loreID="7035" />
-		<Lore zone="3070" x="744" y="565" z="91" loreID="7036" />
-		<Lore zone="3070" x="388" y="791" z="83" loreID="7037" />
-		<Lore zone="3070" x="511" y="747" z="83" loreID="7038" />
-		<Lore zone="3070" x="874" y="711" z="88" loreID="7039" />
-		<Lore zone="3070" x="455" y="542" z="83" loreID="7040" />
+		<Lore loreID="7033" zone="3070" x="532" y="748" z="83" />
+		<Lore loreID="7034" zone="3070" x="532" y="748" z="83" />
+		<Lore loreID="7035" zone="3070" x="779" y="917" z="70" />
+		<Lore loreID="7036" zone="3070" x="744" y="565" z="91" />
+		<Lore loreID="7037" zone="3070" x="388" y="791" z="83" />
+		<Lore loreID="7038" zone="3070" x="511" y="747" z="83" />
+		<Lore loreID="7039" zone="3070" x="874" y="711" z="88" />
+		<Lore loreID="7040" zone="3070" x="455" y="542" z="83" />
 		<!-- Lilith -->
-		<Lore zone="6840" x="237" y="308" z="64" loreID="7852" />
-		<Lore zone="6850" x="261" y="216" z="66" loreID="7853" />
-		<Lore zone="6860" x="210" y="293" z="64" loreID="7854" />
-		<Lore zone="6860" x="266" y="312" z="65" loreID="7855" />
-		<Lore zone="6830" x="268" y="216" z="64" loreID="7856" />
-		<Lore zone="6820" x="229" y="238" z="64" loreID="7857" />
-		<Lore zone="6840" x="228" y="231" z="64" loreID="7862" />
-		<Lore zone="6860" x="236" y="237" z="64" loreID="7863" />
-		<Lore zone="6890" x="278" y="254" z="256" loreID="7864" />
-		<Lore zone="6880" x="267" y="243" z="64" loreID="7865" />
-		<Lore zone="6870" x="228" y="239" z="64" loreID="7866" />
-		<Lore zone="6890" x="265" y="270" z="256" loreID="7867" />
+		<Lore loreID="7852" zone="6840" x="237" y="308" z="64" />
+		<Lore loreID="7853" zone="6850" x="261" y="216" z="66" />
+		<Lore loreID="7854" zone="6860" x="210" y="293" z="64" />
+		<Lore loreID="7855" zone="6860" x="266" y="312" z="65" />
+		<Lore loreID="7856" zone="6830" x="268" y="216" z="64" />
+		<Lore loreID="7857" zone="6820" x="229" y="238" z="64" />
+		<Lore loreID="7862" zone="6840" x="228" y="231" z="64" />
+		<Lore loreID="7863" zone="6860" x="236" y="237" z="64" />
+		<Lore loreID="7864" zone="6890" x="278" y="254" z="256" />
+		<Lore loreID="7865" zone="6880" x="267" y="243" z="64" />
+		<Lore loreID="7866" zone="6870" x="228" y="239" z="64" />
+		<Lore loreID="7867" zone="6890" x="265" y="270" z="256" />
 		<!-- The Marya -->
-		<Lore zone="3090" x="534" y="174" z="57" loreID="1462" />
-		<Lore zone="3090" x="579" y="445" z="71" loreID="1461" />
-		<Lore zone="3090" x="886" y="292" z="54" loreID="1460" />
-		<Lore zone="3090" x="516" y="360" z="76" loreID="1459" />
-		<Lore zone="3090" x="615" y="458" z="51" loreID="1458" />
-		<Lore zone="3090" x="809" y="230" z="48" loreID="1457" />
-		<Lore zone="3100" x="404" y="40" z="77" loreID="1456" />
-		<Lore zone="3100" x="491" y="204" z="90" loreID="1455" />
-		<Lore zone="3100" x="944" y="367" z="54" loreID="1454" />
-		<Lore zone="3100" x="106" y="71" z="80" loreID="1453" />
+		<Lore loreID="1462" zone="3090" x="534" y="174" z="57" />
+		<Lore loreID="1461" zone="3090" x="579" y="445" z="71" />
+		<Lore loreID="1460" zone="3090" x="886" y="292" z="54" />
+		<Lore loreID="1459" zone="3090" x="516" y="360" z="76" />
+		<Lore loreID="1458" zone="3090" x="615" y="458" z="51" />
+		<Lore loreID="1457" zone="3090" x="809" y="230" z="48" />
+		<Lore loreID="1456" zone="3100" x="404" y="40" z="77" />
+		<Lore loreID="1455" zone="3100" x="491" y="204" z="90" />
+		<Lore loreID="1454" zone="3100" x="944" y="367" z="54" />
+		<Lore loreID="1453" zone="3100" x="106" y="71" z="80" />
 		<!-- The Mitsubachi -->
-		<Lore zone="6830" x="311" y="263" z="64" loreID="7830" />
-		<Lore zone="6830" x="279" y="237" z="64" loreID="7831" />
-		<Lore zone="6860" x="302" y="263" z="64" loreID="7832" />
-		<Lore zone="6840" x="262" y="318" z="64" loreID="7833" />
-		<Lore zone="6890" x="128" y="324" z="220" loreID="7834" />
-		<Lore zone="6860" x="282" y="219" z="65" loreID="7835" />
-		<Lore zone="6890" x="78" y="308" z="220" loreID="7836" />
+		<Lore loreID="7830" zone="6830" x="311" y="263" z="64" />
+		<Lore loreID="7831" zone="6830" x="279" y="237" z="64" />
+		<Lore loreID="7832" zone="6860" x="302" y="263" z="64" />
+		<Lore loreID="7833" zone="6840" x="262" y="318" z="64" />
+		<Lore loreID="7834" zone="6890" x="128" y="324" z="220" />
+		<Lore loreID="7835" zone="6860" x="282" y="219" z="65" />
+		<Lore loreID="7836" zone="6890" x="78" y="308" z="220" />
 		<!-- Morninglight -->
-		<Lore zone="1000" x="143" y="248" z="29" loreID="4017">
+		<Lore loreID="4017" zone="1000" x="143" y="248" z="29">
 			<Note en="Literature" />
 		</Lore>
-		<Lore zone="1100" x="397" y="343" z="51" loreID="4017">
+		<Lore loreID="4017" zone="1100" x="397" y="343" z="51">
 			<Note en="Literature" />
 		</Lore>
-		<Lore zone="1100" x="401" y="343" z="50" loreID="4041" />
-		<Lore zone="1000" x="145" y="252" z="28" loreID="4037" />
-		<Lore zone="1100" x="336" y="427" z="50" loreID="4038" />
-		<Lore zone="3030" x="140" y="689" z="158" loreID="4039" />
-		<Lore zone="3090" x="494" y="311" z="71" loreID="4040" />
-		<Lore zone="3120" x="631" y="656" z="87" loreID="4043" />
-		<Lore zone="3130" x="712" y="1134" z="31" loreID="4042" />
-		<Lore zone="3140" x="314" y="711" z="37" loreID="4044" />
-		<Lore zone="3140" x="516" y="769" z="53" loreID="4045" />
+		<Lore loreID="4041" zone="1100" x="401" y="343" z="50" />
+		<Lore loreID="4037" zone="1000" x="145" y="252" z="28" />
+		<Lore loreID="4038" zone="1100" x="336" y="427" z="50" />
+		<Lore loreID="4039" zone="3030" x="140" y="689" z="158" />
+		<Lore loreID="4040" zone="3090" x="494" y="311" z="71" />
+		<Lore loreID="4043" zone="3120" x="631" y="656" z="87" />
+		<Lore loreID="4042" zone="3130" x="712" y="1134" z="31" />
+		<Lore loreID="4044" zone="3140" x="314" y="711" z="37" />
+		<Lore loreID="4045" zone="3140" x="516" y="769" z="53" />
 		<!-- Museum of the Occult 3/4 -->
-		<Lore zone="1000" x="314" y="268" z="28" loreID="9304" />
-		<Lore zone="7190" x="505" y="538" z="517" loreID="9305" />
-		<Lore zone="7190" x="590" y="590" z="507" loreID="9306" />
+		<Lore loreID="9304" zone="1000" x="314" y="268" z="28" />
+		<Lore loreID="9305" zone="7190" x="505" y="538" z="517" />
+		<Lore loreID="9306" zone="7190" x="590" y="590" z="507" />
 			<!-- #4 (Instance: Museum) -->
 		<!-- The Orochi Group -->
-		<Lore zone="3030" x="386" y="997" z="144" loreID="1477" />
-		<Lore zone="3040" x="908" y="95" z="226" loreID="1476" />
-		<Lore zone="3050" x="745" y="791" z="156" loreID="1475" />
-		<Lore zone="3090" x="262" y="765" z="62" loreID="1474" />
-		<Lore zone="3120" x="812" y="518" z="72" loreID="1473" />
-		<Lore zone="1000" x="226" y="268" z="17" loreID="1472" />
-		<Lore zone="1100" x="293" y="286" z="50" loreID="1471" />
-		<Lore zone="3100" x="226" y="844" z="77" loreID="1470" />
-		<Lore zone="3100" x="72" y="987" z="57" loreID="1469" />
-		<Lore zone="3040" x="343" y="730" z="146" loreID="1468" />
-		<Lore zone="3030" x="398" y="314" z="140" loreID="1467" />
-		<Lore zone="3030" x="697" y="908" z="130" loreID="1466" />
-		<Lore zone="3050" x="657" y="745" z="157" loreID="1465" />
-		<Lore zone="1000" x="162" y="364" z="28" loreID="1464" />
-		<Lore zone="3050" x="689" y="397" z="175" loreID="1463" />
-		<Lore zone="3090" x="647" y="329" z="56" loreID="3978" />
-		<Lore zone="3140" x="409" y="408" z="47" loreID="3977" />
+		<Lore loreID="1477" zone="3030" x="386" y="997" z="144" />
+		<Lore loreID="1476" zone="3040" x="908" y="95" z="226" />
+		<Lore loreID="1475" zone="3050" x="745" y="791" z="156" />
+		<Lore loreID="1474" zone="3090" x="262" y="765" z="62" />
+		<Lore loreID="1473" zone="3120" x="812" y="518" z="72" />
+		<Lore loreID="1472" zone="1000" x="226" y="268" z="17" />
+		<Lore loreID="1471" zone="1100" x="293" y="286" z="50" />
+		<Lore loreID="1470" zone="3100" x="226" y="844" z="77" />
+		<Lore loreID="1469" zone="3100" x="72" y="987" z="57" />
+		<Lore loreID="1468" zone="3040" x="343" y="730" z="146" />
+		<Lore loreID="1467" zone="3030" x="398" y="314" z="140" />
+		<Lore loreID="1466" zone="3030" x="697" y="908" z="130" />
+		<Lore loreID="1465" zone="3050" x="657" y="745" z="157" />
+		<Lore loreID="1464" zone="1000" x="162" y="364" z="28" />
+		<Lore loreID="1463" zone="3050" x="689" y="397" z="175" />
+		<Lore loreID="3978" zone="3090" x="647" y="329" z="56" />
+		<Lore loreID="3977" zone="3140" x="409" y="408" z="47" />
 		<!-- Phoenicians -->
-		<Lore zone="3030" x="905" y="697" z="143" loreID="1401" />
-		<Lore zone="3040" x="573" y="456" z="154" loreID="1400" />
-		<Lore zone="3050" x="566" y="371" z="190" loreID="1399" />
-		<Lore zone="3090" x="548" y="448" z="81" loreID="1397" />
-		<Lore zone="3090" x="487" y="209" z="64" loreID="1396" />
-		<Lore zone="3100" x="48" y="80" z="86" loreID="1395" />
-		<Lore zone="3100" x="425" y="500" z="81" loreID="1394" />
-		<Lore zone="3120" x="1310" y="205" z="64" loreID="1393" />
-		<Lore zone="3120" x="805" y="388" z="82" loreID="1392" />
-		<Lore zone="3130" x="1157" y="1112" z="39" loreID="1391" />
-		<Lore zone="3130" x="1208" y="642" z="36" loreID="1390" />
-		<Lore zone="3140" x="1005" y="921" z="42" loreID="1389" />
-		<Lore zone="3140" x="897" y="644" z="63" loreID="1388" />
+		<Lore loreID="1401" zone="3030" x="905" y="697" z="143" />
+		<Lore loreID="1400" zone="3040" x="573" y="456" z="154" />
+		<Lore loreID="1399" zone="3050" x="566" y="371" z="190" />
+		<Lore loreID="1397" zone="3090" x="548" y="448" z="81" />
+		<Lore loreID="1396" zone="3090" x="487" y="209" z="64" />
+		<Lore loreID="1395" zone="3100" x="48" y="80" z="86" />
+		<Lore loreID="1394" zone="3100" x="425" y="500" z="81" />
+		<Lore loreID="1393" zone="3120" x="1310" y="205" z="64" />
+		<Lore loreID="1392" zone="3120" x="805" y="388" z="82" />
+		<Lore loreID="1391" zone="3130" x="1157" y="1112" z="39" />
+		<Lore loreID="1390" zone="3130" x="1208" y="642" z="36" />
+		<Lore loreID="1389" zone="3140" x="1005" y="921" z="42" />
+		<Lore loreID="1388" zone="3140" x="897" y="644" z="63" />
 		<!-- The Sinking City -->
-		<Lore zone="1300" x="257" y="165" z="24" loreID="6459" />
-		<Lore zone="5060" x="454" y="459" z="415" loreID="6460" />
-		<Lore zone="1300" x="237" y="242" z="32" loreID="6461" />
-		<Lore zone="1300" x="281" y="249" z="32" loreID="6462" />
-		<Lore zone="7640" x="83" y="273" z="10" loreID="6463" />
-		<Lore zone="7640" x="387" y="150" z="11" loreID="6464" />
+		<Lore loreID="6459" zone="1300" x="257" y="165" z="24" />
+		<Lore loreID="6460" zone="5060" x="454" y="459" z="415" />
+		<Lore loreID="6461" zone="1300" x="237" y="242" z="32" />
+		<Lore loreID="6462" zone="1300" x="281" y="249" z="32" />
+		<Lore loreID="6463" zone="7640" x="83" y="273" z="10" />
+		<Lore loreID="6464" zone="7640" x="387" y="150" z="11" />
 		<!-- Templars -->
-		<Lore zone="1000" x="310" y="349" z="28" loreID="3504" />
-		<Lore zone="1000" x="207" y="293" z="28" loreID="3505" />
-		<Lore zone="1000" x="254" y="209" z="26" loreID="3506" />
-		<Lore zone="1000" x="151" y="161" z="29" loreID="3507" />
-		<Lore zone="1000" x="219" y="165" z="25" loreID="3508" />
-		<Lore zone="1000" x="173" y="213" z="33" loreID="3509" />
-		<Lore zone="1000" x="378" y="385" z="28" loreID="3511" />
-		<Lore zone="1000" x="206" y="198" z="19" loreID="3516" />
-		<Lore zone="1000" x="247" y="398" z="23" loreID="3517" />
-		<Lore zone="1000" x="242" y="195" z="17" loreID="3518" />
-		<Lore zone="1000" x="198" y="152" z="20" loreID="3519" />
-		<Lore zone="1000" x="287" y="268" z="28" loreID="3520" />
-		<Lore zone="1000" x="207" y="309" z="28" loreID="3521" />
-		<Lore zone="1000" x="249" y="280" z="19" loreID="3522" />
-		<Lore zone="1000" x="275" y="260" z="15" loreID="3523" />
+		<Lore loreID="3504" zone="1000" x="310" y="349" z="28" />
+		<Lore loreID="3505" zone="1000" x="207" y="293" z="28" />
+		<Lore loreID="3506" zone="1000" x="254" y="209" z="26" />
+		<Lore loreID="3507" zone="1000" x="151" y="161" z="29" />
+		<Lore loreID="3508" zone="1000" x="219" y="165" z="25" />
+		<Lore loreID="3509" zone="1000" x="173" y="213" z="33" />
+		<Lore loreID="3511" zone="1000" x="378" y="385" z="28" />
+		<Lore loreID="3516" zone="1000" x="206" y="198" z="19" />
+		<Lore loreID="3517" zone="1000" x="247" y="398" z="23" />
+		<Lore loreID="3518" zone="1000" x="242" y="195" z="17" />
+		<Lore loreID="3519" zone="1000" x="198" y="152" z="20" />
+		<Lore loreID="3520" zone="1000" x="287" y="268" z="28" />
+		<Lore loreID="3521" zone="1000" x="207" y="309" z="28" />
+		<Lore loreID="3522" zone="1000" x="249" y="280" z="19" />
+		<Lore loreID="3523" zone="1000" x="275" y="260" z="15" />
 		<!-- The Third Age -->
-		<Lore zone="3090" x="197" y="481" z="70" loreID="5058" />
-		<Lore zone="3100" x="849" y="938" z="91" loreID="5059" />
-		<Lore zone="3100" x="186" y="443" z="100" loreID="5060" />
+		<Lore loreID="5058" zone="3090" x="197" y="481" z="70" />
+		<Lore loreID="5059" zone="3100" x="849" y="938" z="91" />
+		<Lore loreID="5060" zone="3100" x="186" y="443" z="100" />
 		<!-- Uta Bloody Valentine 0/3 (Loot drop, use the loot bag) -->
 		<!-- Wabanaki -->
-		<Lore zone="3040" x="160" y="858" z="135" loreID="1491" />
-		<Lore zone="3040" x="131" y="842" z="130" loreID="1490" />
-		<Lore zone="3040" x="192" y="915" z="160" loreID="1489" />
-		<Lore zone="3040" x="294" y="1019" z="161" loreID="1488" />
-		<Lore zone="3040" x="363" y="946" z="158" loreID="1487" />
-		<Lore zone="6070" x="318" y="244" z="27" loreID="1486" />
-		<Lore zone="3050" x="187" y="630" z="146" loreID="1485" />
-		<Lore zone="3050" x="254" y="387" z="130" loreID="1484" />
-		<Lore zone="3050" x="326" y="372" z="149" loreID="1483" />
-		<Lore zone="3050" x="842" y="297" z="162" loreID="1482" />
-		<Lore zone="3050" x="323" y="857" z="185" loreID="1481" />
-		<Lore zone="3050" x="201" y="742" z="159" loreID="1480" />
-		<Lore zone="3050" x="631" y="639" z="215" loreID="1479" />
+		<Lore loreID="1491" zone="3040" x="160" y="858" z="135" />
+		<Lore loreID="1490" zone="3040" x="131" y="842" z="130" />
+		<Lore loreID="1489" zone="3040" x="192" y="915" z="160" />
+		<Lore loreID="1488" zone="3040" x="294" y="1019" z="161" />
+		<Lore loreID="1487" zone="3040" x="363" y="946" z="158" />
+		<Lore loreID="1486" zone="6070" x="318" y="244" z="27" />
+		<Lore loreID="1485" zone="3050" x="187" y="630" z="146" />
+		<Lore loreID="1484" zone="3050" x="254" y="387" z="130" />
+		<Lore loreID="1483" zone="3050" x="326" y="372" z="149" />
+		<Lore loreID="1482" zone="3050" x="842" y="297" z="162" />
+		<Lore loreID="1481" zone="3050" x="323" y="857" z="185" />
+		<Lore loreID="1480" zone="3050" x="201" y="742" z="159" />
+		<Lore loreID="1479" zone="3050" x="631" y="639" z="215" />
 	</_Section>
 	<_Section> <!-- Events -->
 		<!-- Note: Lore with temporary availability should be in that event's supplementary files -->
 		<!-- Opening Night -->
-		<Lore zone="1000" x="160" y="280" z="30" loreID="5702" />
-		<Lore zone="7070" x="130" y="214" z="33" loreID="5701" />
-		<Lore zone="7070" x="108" y="216" z="30" loreID="5700" />
+		<Lore loreID="5702" zone="1000" x="160" y="280" z="30" />
+		<Lore loreID="5701" zone="7070" x="130" y="214" z="33" />
+		<Lore loreID="5700" zone="7070" x="108" y="216" z="30" />
 		<!-- Whispering Tide -->
-		<Lore zone="5060" x="405" y="320" z="240" loreID="6323" />
-		<Lore zone="5060" x="557" y="228" z="394" loreID="6324" />
-		<Lore zone="5060" x="593" y="367" z="298" loreID="6325" />
-		<Lore zone="5060" x="394" y="334" z="236" loreID="6326" />
-		<Lore zone="5060" x="545" y="292" z="287" loreID="6327" />
-		<Lore zone="5060" x="257" y="245" z="368" loreID="6328" />
-		<Lore zone="5060" x="489" y="433" z="344" loreID="6329" />
-		<Lore zone="5060" x="521" y="182" z="394" loreID="6330" />
+		<Lore loreID="6323" zone="5060" x="405" y="320" z="240" />
+		<Lore loreID="6324" zone="5060" x="557" y="228" z="394" />
+		<Lore loreID="6325" zone="5060" x="593" y="367" z="298" />
+		<Lore loreID="6326" zone="5060" x="394" y="334" z="236" />
+		<Lore loreID="6327" zone="5060" x="545" y="292" z="287" />
+		<Lore loreID="6328" zone="5060" x="257" y="245" z="368" />
+		<Lore loreID="6329" zone="5060" x="489" y="433" z="344" />
+		<Lore loreID="6330" zone="5060" x="521" y="182" z="394" />
 	</_Section>
 </OverlayPack>

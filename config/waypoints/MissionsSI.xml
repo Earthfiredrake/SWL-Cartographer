@@ -9,198 +9,198 @@
 -->
 <OverlayPack>
 	Jack Boone <QuestGiver zone="3030" x="62" y="136" z="156">
-		<Name rdb="id=12900 category=51000" />
+		<Name rdb="category=51000 id=12900" />
 		For a Fistful of Zombies <Quest id="2612" />
 	</QuestGiver>
 	Policeman's corpse <QuestGiver zone="3030" x="105" y="303" z="150">
-		<Name rdb="id=6763177 category=50200" />
+		<Name rdb="category=50200 id=6763177" />
 		Bullets for Andy <Quest id="3176" />
 	</QuestGiver>
 	Trapped survivor <QuestGiver zone="3030" x="24" y="371" z="161">
-		<Name rdb="id=7095942 category=50200" />
+		<Name rdb="category=50200 id=7095942" />
 		That'll Leave a Mark <Quest id="3249" />
 	</QuestGiver>
 	Helen Bannerman <QuestGiver zone="3030" x="185" y="321" z="148">
-		<Name rdb="id=12675 category=51000" />
+		<Name rdb="category=51000 id=12675" />
 		Horror Show <Quest id="2318" />
 		Supply Run <Quest id="2208" />
 	</QuestGiver>
 	Missing persons list <QuestGiver zone="3030" x="187" y="318" z="148">
-		<Name rdb="id=5959096 category=50200" />
+		<Name rdb="category=50200 id=5959096" />
 		Missing Persons <Quest id="2893" />
 	</QuestGiver>
 	Incomplete report <QuestGiver zone="3030" x="193" y="320" z="147">
-		<Name rdb="id=6160075 category=50200" />
+		<Name rdb="category=50200 id=6160075" />
 		The Curious Case of Joe Slater <Quest id="2859" />
 	</QuestGiver>
 	Sandy "Moose" Jansen <QuestGiver zone="3030" x="197" y="346" z="147">
-		<Name rdb="id=13467 category=51000" />
+		<Name rdb="category=51000 id=13467" />
 		A Piece of the Road <Quest id="3707" />
 		Appetite for Destruction <Quest id="2342" />
 		Death, and the Instruments Thereof <Quest id="2676" />
 	</QuestGiver>
 	Deputy Andy <QuestGiver zone="3030" x="201" y="329" z="153">
-		<Name rdb="id=12719 category=51000" />
+		<Name rdb="category=51000 id=12719" />
 		Elm Street Blues <Quest id="2081" />
 		Draugnet <Quest id="2064" />
 	</QuestGiver>
 	Madame Rogêt <QuestGiver zone="3030" x="290" y="334" z="140">
-		<Name rdb="id=12928 category=51000" />
+		<Name rdb="category=51000 id=12928" />
 		The Raven <Quest id="2687" />
 		The Vision <Quest id="2671" />
 	</QuestGiver>
 	To the Raven's Knock <QuestGiver zone="3030" x="286" y="398" z="144">
-		<Name rdb="id=5959106 category=50200" />
+		<Name rdb="category=50200 id=5959106" />
 		Neither Snow nor Rain nor Zombies <Quest id="2894" />
 	</QuestGiver>
 	To Kingsmouth Congregational Church <QuestGiver zone="3030" x="287" y="401" z="144">
-		<Name rdb="id=9268883 category=50200" />
+		<Name rdb="category=50200 id=9268883" />
 		Neither Snow nor Rain nor Zombies <Quest id="3186" />
 	</QuestGiver>
 	Henry Hawthorne <QuestGiver zone="3030" x="283" y="476" z="148">
-		<Name rdb="id=12983 category=51000" />
+		<Name rdb="category=51000 id=12983" />
 		The Kingsmouth Code <Quest id="2297" />
 		Digging Deeper <Quest id="2678" />
 		Dust to Dust <Quest id="2334" />
 		A Sacred Place <Quest id="2329" />
 	</QuestGiver>
 	Kingsmouth war memorial <QuestGiver zone="3030" x="267" y="493" z="145">
-		<Name rdb="id=5960246 category=50200" />
+		<Name rdb="category=50200 id=5960246" />
 		Veterans Day <Quest id="2907" />
 	</QuestGiver>
 	Severed hand <QuestGiver zone="3030" x="365" y="472" z="141">
-		<Name rdb="id=5960020 category=50200" />
+		<Name rdb="category=50200 id=5960020" />
 		Tomb Raider <Quest id="2901" />
 	</QuestGiver>
 	Cleaner's corpse <QuestGiver zone="3030" x="415" y="470" z="139">
-		<Name rdb="id=7096322 category=50200" />
+		<Name rdb="category=50200 id=7096322" />
 		Dirty Laundry <Quest id="3251" />
 	</QuestGiver>
 	Lost cell phone <QuestGiver zone="3030" x="481" y="466" z="137">
-		<Name rdb="id=5960115 category=50200" />
+		<Name rdb="category=50200 id=5960115" />
 		I Phone Home <Quest id="2904" />
 	</QuestGiver>
 	Box of squid <QuestGiver zone="3030" x="463" y="481" z="137">
-		<Name rdb="id=5970927 category=50200" />
+		<Name rdb="category=50200 id=5970927" />
 		The Tentacle Trail <Quest id="2912" />
 	</QuestGiver>
 	Book of voodoo <QuestGiver zone="3030" x="568" y="417" z="136">
-		<Name rdb="id=5959168 category=50200" />
+		<Name rdb="category=50200 id=5959168" />
 		Book of the Bokor <Quest id="2895" />
 	</QuestGiver>
 	Suicide note <QuestGiver zone="3030" x="686" y="395" z="136">
-		<Name rdb="id=5960043 category=50200" />
+		<Name rdb="category=50200 id=5960043" />
 		Journey's End <Quest id="2902" />
 	</QuestGiver>
 	Abandoned ammo <QuestGiver zone="3030" x="512" y="256" z="133">
-		<Name rdb="id=9306552 category=50200" />
+		<Name rdb="category=50200 id=9306552" />
 		More Bullets for Andy <Quest id="4025" />
 	</QuestGiver>
 	Box of flares <QuestGiver zone="3030" x="440" y="171" z="131">
-		<Name rdb="id=7527806 category=50200" />
+		<Name rdb="category=50200 id=7527806" />
 		A Light in the Sky <Quest id="2911" />
 	</QuestGiver>
 	Mutilated corpse <QuestGiver zone="3030" x="336" y="179" z="135">
-		<Name rdb="id=6986377 category=50200" />
+		<Name rdb="category=50200 id=6986377" />
 		The Hunger <Quest id="2629" />
 	</QuestGiver>
 	Norma Creed <QuestGiver zone="3030" x="359" y="106" z="137">
-		<Name rdb="id=12674 category=51000" />
+		<Name rdb="category=51000 id=12674" />
 		Something Wicked <Quest id="2682" />
 		They Never Stop Coming <Quest id="2683" />
 	</QuestGiver>
 	Ancient idol <QuestGiver zone="3030" x="469" y="14" z="133">
-		<Name rdb="id=5970882 category=50200" />
+		<Name rdb="category=50200 id=5970882" />
 		Idol of Nergal <Quest id="2910" />
 	</QuestGiver>
 	Flushed brochure <QuestGiver zone="3030" x="140" y="514" z="154">
-		<Name rdb="id=7107023 category=50200" />
+		<Name rdb="category=50200 id=7107023" />
 		The Coming Dawn <Quest id="3252" />
 	</QuestGiver>
 	Che Garcia Hansson <QuestGiver zone="3030" x="117" y="690" z="159">
-		<Name rdb="id=12698 category=51000" />
+		<Name rdb="category=51000 id=12698" />
 		Rolls Downhill <Quest id="2686" />
 		The Pick-Up <Quest id="2688" />
 	</QuestGiver>
 	Complaint form <QuestGiver zone="3030" x="29" y="689" z="157">
-		<Name rdb="id=5970962 category=50200" />
+		<Name rdb="category=50200 id=5970962" />
 		Trespassers <Quest id="2918" />
 	</QuestGiver>
 	Abandoned orochi van <QuestGiver zone="3030" x="324" y="844" z="143">
-		<Name rdb="id=5970938 category=50200" />
+		<Name rdb="category=50200 id=5970938" />
 		Badge of Honour <Quest id="2913" />
 	</QuestGiver>
 	Broken Orochi canister <QuestGiver zone="3030" x="292" y="983" z="130">
-		<Name rdb="id=5970953 category=50200" />
+		<Name rdb="category=50200 id=5970953" />
 		What the Tide Brought In <Quest id="2917" />
 	</QuestGiver>
 	Captain's log <QuestGiver zone="3030" x="380" y="1006" z="131">
-		<Name rdb="id=5960077 category=50200" />
+		<Name rdb="category=50200 id=5960077" />
 		The Captain's Playlist <Quest id="2903" />
 	</QuestGiver>
 	Ann Radcliffe <QuestGiver zone="3030" x="389" y="989" z="145">
-		<Name rdb="id=12690 category=51000" />
+		<Name rdb="category=51000 id=12690" />
 		Hulk Smash <Quest id="2399" />
 		Black Helicopters <Quest id="2673" />
 		Dead in the Water <Quest id="2800" />
 		Dead in the Water Revisited <Quest id="3134" />
 	</QuestGiver>
 	Harrison Blake <QuestGiver zone="3030" x="391" y="990" z="145">
-		<Name rdb="id=12697 category=51000" />
+		<Name rdb="category=51000 id=12697" />
 		Evolution of the Species <Quest id="2317" />
 	</QuestGiver>
 	Broken RC plane <QuestGiver zone="3030" x="409" y="929" z="143">
-		<Name rdb="id=7096935 category=50200" />
+		<Name rdb="category=50200 id=7096935" />
 		Boys Will Be Boys <Quest id="3253" />
 	</QuestGiver>
 	Half-finished flamethrower <QuestGiver zone="3030" x="420" y="657" z="139">
-		<Name rdb="id=7114088 category=50200" />
+		<Name rdb="category=50200 id=7114088" />
 		Flame Away <Quest id="3257" />
 	</QuestGiver>
 	Danny Dufresne <QuestGiver zone="3030" x="420" y="655" z="140">
-		<Name rdb="id=12695 category=51000" />
+		<Name rdb="category=51000 id=12695" />
 		ATC <Quest id="2675" />
 		Men in Black Vans <Quest id="2674" />
 	</QuestGiver>
 	To Edgar Stone <QuestGiver zone="3030" x="568" y="593" z="136">
-		<Name rdb="id=9268886 category=50200" />
+		<Name rdb="category=50200 id=9268886" />
 		Neither Snow nor Rain nor Zombies <Quest id="3187" />
 	</QuestGiver>
 	Scrapyard Edgar <QuestGiver zone="3030" x="612" y="673" z="136">
-		<Name rdb="id=12923 category=51000" />
+		<Name rdb="category=51000 id=12923" />
 		Full Metal Golem <Quest id="2679" />
 		Scrapyard Defence <Quest id="2689" />
 	</QuestGiver>
 	Old toilet <QuestGiver zone="3030" x="621" y="753" z="138">
-		<Name rdb="id=5970952 category=50200" />
+		<Name rdb="category=50200 id=5970952" />
 		Floater <Quest id="2916" />
 	</QuestGiver>
 	Dead draug <QuestGiver zone="3030" x="633" y="791" z="131">
-		<Name rdb="id=7067346 category=50200" />
+		<Name rdb="category=50200 id=7067346" />
 		Trapped <Quest id="3245" />
 	</QuestGiver>
 	Unfortunate corpse <QuestGiver zone="3030" x="589" y="853" z="130">
-		<Name rdb="id=5959253 category=50200" />
+		<Name rdb="category=50200 id=5959253" />
 		The Body <Quest id="2896" />
 	</QuestGiver>
 	Ellis Hill <QuestGiver zone="3030" x="900" y="700" z="138">
-		<Name rdb="id=12703 category=51000" />
+		<Name rdb="category=51000 id=12703" />
 		Dead Air <Quest id="2672" />
 		Runaway Lights <Quest id="2684" />
 	</QuestGiver>
 	Beaten body <QuestGiver zone="3030" x="941" y="742" z="133">
-		<Name rdb="id=6961962 category=50200" />
+		<Name rdb="category=50200 id=6961962" />
 		There's Something About Ellis Hill <Quest id="2919" />
 	</QuestGiver>
 	Mound of red seaweed <QuestGiver zone="3030" x="885" y="863" z="131">
-		<Name rdb="id=7913935 category=50200" />
+		<Name rdb="category=50200 id=7913935" />
 		<Note en="Lair" />
 		Coralations <Quest id="3434" />
 		The Last Strand <Quest id="3445" />
 		Unto the Beach <Quest id="3422" />
 	</QuestGiver>
 	Black gravestone <QuestGiver zone="3030" x="938" y="322" z="130">
-		<Name rdb="id=5960259 category=50200" />
+		<Name rdb="category=50200 id=5960259" />
 		The Slaying of Dixie Bull <Quest id="2908" />
 	</QuestGiver>
 </OverlayPack>
