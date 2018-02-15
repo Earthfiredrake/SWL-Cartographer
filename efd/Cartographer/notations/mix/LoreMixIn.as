@@ -12,48 +12,46 @@ import efd.Cartographer.inf.INotation;
 
 class efd.Cartographer.notations.mix.LoreMixIn {
 	public static function ApplyMixIn(target:INotation):Void {
+		var loreID:Number = Number(target.GetXmlView().attributes.loreID);
+		var isValid:Boolean = Lore.GetTagType(loreID) == _global.Enums.LoreNodeType.e_Lore;
+		var isIcon:Boolean = target["GetIcon"] != undefined;
+
 		// General mixin parts, applied to all notation types
 		// Applies to required data members and INotation interface
-		target["LoreID"] = Number(target.GetXmlView().attributes.loreID);
-		target.addProperty("IsCollected", function():Boolean { return !Lore.IsLocked(this.LoreID); }, null);
 
-		target.GetName = function():String {
-			if (this.Name == undefined) { this.Name = LoreMixIn.GetLoreName(this.LoreID); }
-			return this.Name;
-		};
+		if (isValid) {
+			if (target["Name"] == undefined) { target["Name"] = GetLoreName(loreID); }
+			target["LoreID"] = loreID;
+			target["IsCollected"] = !Lore.IsLocked(loreID);
 
-		target.HookEvents = function(uiElem:MovieClip):Void {
-			if (!this.IsCollected) { // No need to be notified for collected items
-				Lore.SignalTagAdded.Connect(this.CollectibleUnlocked, uiElem);
-			}
-		};
-		target.UnhookEvents = function(uiElem:MovieClip):Void {
-			Lore.SignalTagAdded.Disconnect(this.CollectibleUnlocked, uiElem);
-		};
-		// This event is called in the context of the WaypointIcon
-		target["CollectibleUnlocked"] = function(unlockedID:Number, charID:ID32):Void {
-			// I have no idea why this event might be triggered for a non-client character
-			// Am following the examples in the existing API code
-			if (unlockedID == this.Data.LoreID && charID.Equal(Character.GetClientCharID())) {
-				this.StateChanged();
-			}
-		};
+			target.HookEvents = function(uiElem:MovieClip):Void {
+				if (!this.IsCollected) { // No need to be notified for already collected items
+					Lore.SignalTagAdded.Connect(this.CollectibleUnlocked, uiElem);
+				}
+			};
+			target.UnhookEvents = function(uiElem:MovieClip):Void {
+				Lore.SignalTagAdded.Disconnect(this.CollectibleUnlocked, uiElem);
+			};
+			// This event is called in the context of the WaypointIcon
+			target["CollectibleUnlocked"] = function(unlockedID:Number, charID:ID32):Void {
+				// I have no idea why this event might be triggered for a non-client character
+				// Am following example of existing API code
+				if (unlockedID == this.Data.LoreID && charID.Equal(Character.GetClientCharID())) {
+					this.Data.IsCollected = true;
+					this.StateChanged();
+				}
+			};
+		} else {
+			// Avoid stomping existing name, it may identify the offending record
+			target["Name"] = (target["Name"] == undefined ? "" : target["Name"] + ": ") + "Unknown LoreID";
+			if (isIcon) { target["IconMod"] = "error"; }
+		}
 
 		// Override restricted mixin parts will only be applied if type already supports function
 		// Applies to interface specializations below INotation
-		if (target["GetIcon"] != undefined) {
-			target["GetIcon"] = function():String {
-				if (this.Icon) { return this.Icon; }
-				if (this.LoreID == undefined) { return "lore_buzz.png"; }
-				return Lore.GetTagViewpoint(this.LoreID) == 1 ? "lore_blsig.png" : "lore_buzz.png";
-			};
-		}
-		if (target["GetIconModifier"] != undefined) {
-			target["GetIconModifier"] = function():Array {
-				// Flags the icon if the ID isn't a lore item
-				return (Lore.GetTagType(this.LoreID) == _global.Enums.LoreNodeType.e_Lore) ?
-					undefined : ["error"];
-			};
+		if (isIcon && target["Icon"] == undefined) {
+			target["Icon"] = isValid && Lore.GetTagViewpoint(loreID) == 1 ?
+				"lore_blsig.png" : "lore_buzz.png";
 		}
 	}
 
@@ -71,13 +69,11 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 
 	private static function GetLoreIndex(loreID:Number, source:Number):Number {
 		var siblings:Array = Lore.GetDataNodeById(loreID).m_Parent.m_Children;
-		var index:Number = 1; // Lore entries start count at 1
+		var index:Number = 1; // Lore entries display index starting at 1
 		for (var i:Number = 0; i < siblings.length; ++i) {
 			var sibling:Number = siblings[i].m_Id;
 			if (loreID == sibling) { return index; }
-			if (Lore.GetTagViewpoint(sibling) == source) {
-				++index;
-			}
+			if (Lore.GetTagViewpoint(sibling) == source) { ++index; } // Only count the same source (BS #1 may be i == 11)
 		}
 	}
 }

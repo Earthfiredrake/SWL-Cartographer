@@ -10,6 +10,7 @@ import efd.Cartographer.inf.INotation;
 // TODO: Plugin System
 // A registration system so that I can add these without changing the factory method
 // Seems that plugins will be creating mix-ins rather than directly overriding basic classes
+import efd.Cartographer.Cartographer;
 import efd.Cartographer.notations.BasicArea;
 import efd.Cartographer.notations.BasicPath;
 import efd.Cartographer.notations.BasicPoint;
@@ -25,7 +26,14 @@ import efd.Cartographer.notations.mix.TransitMixIn;
 // Note: Mix-ins may fully override base class behaviour, and are unlikely to cooperate if more than one is applied
 
 class efd.Cartographer.notations.NotationBase implements INotation {
-		public static function Create(xml:XMLNode):INotation {
+	// The second parameter bugs me
+	//   It's provided because the TransitMixIn wants ZoneIndex info to determine if there's a map on the other side of a transition
+	//   And on further consideration I don't know in advance what state info might be useful for a mixin to have access to
+	//   But it feels like an invitation to some seriously messy code
+	// TODO: Going to have to handle loading from alternate serialization systems at some point
+	//   (Config packs, DV interop (strings or whole objects?), a "share this waypoint" button and a helper chat script (like the lag scripts) would be awesome (and would be a string based DV) etc.)
+	//   Need to abstract away the serialization format
+	public static function Create(xml:XMLNode, mod:Cartographer):INotation {
 		var notation:INotation;
 		switch (xml.attributes.type) {
 			case "area": notation = new BasicArea(xml); break;
@@ -38,11 +46,11 @@ class efd.Cartographer.notations.NotationBase implements INotation {
 				Mod.TraceMsg("Unknown notation type=" + xml.attributes.type);
 				return undefined;
 		}
-		switch (xml.nodeName) {
-			case "Champ": ChampMixIn.ApplyMixIn(notation); break;
-			case "Lore": LoreMixIn.ApplyMixIn(notation); break;
-			case "Transit": TransitMixIn.ApplyMixIn(notation); break;
-			case "Krampus": notation["TintIcon"] = function():Boolean { return true; }; break; // TEMP: Mini mixin
+		switch (notation.GetLayer()) {
+			case "Champ": ChampMixIn.ApplyMixIn(notation, mod); break;
+			case "Lore": LoreMixIn.ApplyMixIn(notation, mod); break;
+			case "Transit": TransitMixIn.ApplyMixIn(notation, mod); break;
+			case "Krampus": notation["UseTint"] = true; break; // TEMP: Mini mixin
 		}
 		return notation;
 	}

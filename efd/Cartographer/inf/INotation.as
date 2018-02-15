@@ -9,8 +9,16 @@
 //       or extend an appropriate base class
 interface efd.Cartographer.inf.INotation {
 
-	// GUI interaction hooks, to be called after notation is initialized
-	// Target will be the gui data wrapper which is handling mouse events
+	// GUI interaction hooks, to be called by notation gui initialization, prior to loading/rendering
+	// Target will be the gui wrapper clip which is handling mouse events
+	// At the moment Unhook is only used by Icons when the icon clip is being reused with new data
+	//   This causes an unhook call, followed by a hook call to the new datasource
+	//   Again this occurs before the icon is reloaded (if needed) and any modifier clips are applied
+	// Can therefore be used as a slightly hacky place to get last minute state info before committing to a particular icon set
+	//   Would prefer to only do this in cases where that state can change during runtime though
+	// Note: Unhook is not explicitly called when the gui element is destroyed,
+	//   Be wary of things which will not automatically clean up (ie: state changes to other objects)
+	//   Changes to the target and Signal connections (which use a weak reference system) should be safe
 	public function HookEvents(target:MovieClip):Void;
 	public function UnhookEvents(target:MovieClip):Void;
 

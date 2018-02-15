@@ -30,7 +30,7 @@ class efd.Cartographer.LayerData {
 			case "path":
 				NotationsByZone[zoneID].Paths.push(notation);
 				break;
-			case "wp":
+			case "point":
 				NotationsByZone[zoneID].Waypoints.push(notation);
 				break;
 			default:

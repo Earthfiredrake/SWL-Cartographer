@@ -12,64 +12,59 @@ import efd.Cartographer.inf.INotation;
 
 class efd.Cartographer.notations.mix.ChampMixIn {
 	public static function ApplyMixIn(target:INotation):Void {
+		var champID:Number = Number(target.GetXmlView().attributes.champID);
+		var champType:Number = GetChampType(champID);
+
 		// General mixin parts, applied to all notation types
-		target["ChampID"] = Number(target.GetXmlView().attributes.champID);
-		target["IsGroup"] = Boolean(target.GetXmlView().attributes.group);
-		target.addProperty("IsCollected", function():Boolean { return !Lore.IsLocked(this.ChampID); }, null);
+		if (champType > 0) {
+			if (target["Name"] == undefined) { target["Name"] = Lore.GetDataNodeById(champID).m_Name; }
+			target["ChampID"] = champID;
+			target["IsCollected"] = !Lore.IsLocked(champID);
 
-		target.GetName = function():String {
-			if (this.Name == undefined) { this.Name = ChampMixIn.GetChampName(this.ChampID); }
-			return this.Name;
-		};
-
-		target.HookEvents = function(uiElem:MovieClip):Void {
-			if (!this.IsCollected) { // No need to be notified for collected items
-				Lore.SignalTagAdded.Connect(this.CollectibleUnlocked, uiElem);
-			}
-		};
-		target.UnhookEvents = function(uiElem:MovieClip):Void {
-			Lore.SignalTagAdded.Disconnect(this.CollectibleUnlocked, uiElem);
-		};
-		// This event is called in the context of the WaypointIcon
-		target["CollectibleUnlocked"] = function(unlockedID:Number, charID:ID32):Void {
-			// I have no idea why this event might be triggered for a non-client character
-			// Am following the examples in the existing API code
-			if (unlockedID == this.Data.ChampID && charID.Equal(Character.GetClientCharID())) {
-				this.StateChanged();
-			}
-		};
+			target.HookEvents = function(uiElem:MovieClip):Void {
+				if (!this.IsCollected) { // No need to be notified for collected items
+					Lore.SignalTagAdded.Connect(this.CollectibleUnlocked, uiElem);
+				}
+			};
+			target.UnhookEvents = function(uiElem:MovieClip):Void {
+				Lore.SignalTagAdded.Disconnect(this.CollectibleUnlocked, uiElem);
+			};
+			// This event is called in the context of the WaypointIcon
+			target["CollectibleUnlocked"] = function(unlockedID:Number, charID:ID32):Void {
+				// I have no idea why this event might be triggered for a non-client character
+				// Am following the examples in the existing API code
+				if (unlockedID == this.Data.ChampID && charID.Equal(Character.GetClientCharID())) {
+					this.Data.IsCollected = true;
+					this.StateChanged();
+				}
+			};
+		} else {
+			// Avoid stomping existing name, it may identify the offending record
+			target["Name"] = (target["Name"] == undefined ? "" : target["Name"] + ": ") + "Unknown ChampID";
+		}
 
 		// Override restricted mixin parts will only be applied if type already supports function
 		if (target["GetIcon"] != undefined) {
-			target["GetIcon"] = function():String {
-				if (this.Icon) { return this.Icon; }
-				return "champ.png";
-			};
-		}
-		if (target["TintIcon"] != undefined) {
-			target["TintIcon"] = function():Boolean { return true; };
-		}
-		if (target["GetIconModifier"] != undefined) {
-			target["GetIconModifier"] = function():Array {
-				// Flags the icon if the ID isn't an achievement or sub-achievement under the Champions topic
-				//   Also flags the collective "Hunter" achievements
-				if ((Lore.GetTagType(this.ChampID) == _global.Enums.LoreNodeType.e_Achievement &&
-					 Lore.GetTagParent(Lore.GetTagParent(this.ChampID)) == 4061 &&
-					 Lore.GetTagChildrenIdArray(this.ChampID, _global.Enums.LoreNodeType.e_Achievement).length == 0) ||
-					(Lore.GetTagType(this.ChampID) == _global.Enums.LoreNodeType.e_SubAchievement &&
-					 Lore.GetTagParent(Lore.GetTagParent(Lore.GetTagParent(this.ChampID))) == 4061)) {
-					return this.IsGroup ? ["star"] : undefined;
-				} else { return ["error"]; }
-			};
+			target["UseTint"] = true;
+			if (target["IconMod"] == undefined || champType == 0) {
+				target["IconMod"] = champType == 2 ? "star" : (champType == 1 ? target["IconMod"] : "error");
+			}
 		}
 	}
 
-	private static function GetChampName(champID:Number):String {
-		var name:String = Lore.GetDataNodeById(champID).m_Name;
-		if (!name) {
-			Mod.TraceMsg("Unknown champion, malformed ID: " + champID);
-			return "Unknown ChampID";
-		}
-		return name;
+	// 0 is not a champ, 1 is a normal champ, 2 is group
+	private static function GetChampType(champID:Number):Number {
+		var tagType = Lore.GetTagType(champID);
+		var grandparent = Lore.GetTagParent(Lore.GetTagParent(champID));
+		if (tagType == _global.Enums.LoreNodeType.e_Achievement &&
+			grandparent == 4061 &&
+			Lore.GetTagChildrenIdArray(champID, _global.Enums.LoreNodeType.e_SubAchievement).length == 0) {
+				return 2; // Group champ
+			}
+		if (tagType == _global.Enums.LoreNodeType.e_SubAchievement &&
+			Lore.GetTagParent(grandparent) == 4061) {
+				return 1; // Normal champ
+			}
+		return 0; // Nota champ
 	}
 }

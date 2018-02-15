@@ -39,15 +39,12 @@ import efd.Cartographer.notations.NotationBase;
 //       Tooltips that can handle multiple data sources at once (ie: everything under the mouse, ideally sorted somewhat sensibly... by layer maybe?)
 //         Look into using it (at least the detection system) to trigger additional notations; ex: to pop up a path or area as additional information on a point icon
 //       Reduce required icon permutations, possible features that might help:
-//         CollectibleLayer now provides automatic greyscale for completed icons
-//           May need some tweaking, and is having issues converting black signal icons to be identifiably greyed out without washing out other icons
-//         Runtime tinting for icons based on layer colour? icon data? the reverse of above, advantage here is greater flexibility
-//           ex: I reused Champ markers for Krampii, with this they could have been blue skulls to be obviously different
-//         Icon modifiers: There's a basic system in, demonstrating possible use with group champions
-//           Consider adding a few "error" marks, for faster detection of mistakes in data (invalid lore/champ ids etc.)
+//         Icon modifiers: There's a basic system in, demonstrating possible use with group champions and error detection on lore, champs, and map transitions
+//           Expanding on this: Faction locked vendors in KD and other faction walled things (quests, lore locations in bases, etc.)
+//           Identify anima wells that are also zone teleport destinations? Consider how/if to handle the zone teleport possibilities in general.
 //           Particularly valuable for mission overlay (available, in progress, paused, on cooldown, locked etc.) (consider putting this on a different corner/layer as a state identifier)
 //           Also for identifying seasonal items (see about jacking snowflake/pumpkin graphics from game somewhere?)
-//           A variant system could be used for numbered waypoints (maps of mission farming routes perhaps)?
+//           A variant system could be used for numbered waypoints (maps of mission farming routes perhaps, for that see also Interop)?
 //           Going to need a certain amount of standardization when designing icons, so that they are easily identified underneath any modifiers
 //             See if an icon could be identified with just the top half?
 //           Should the tint possibilities above apply to the modifier as well as the base icon?
@@ -60,6 +57,13 @@ import efd.Cartographer.notations.NotationBase;
 //         This data then has a bad habit of getting stuck in the settings, and causing crashes and other issues when the xml is fixed
 //         Need to identify the causes of those crashes, and fix it so that bad data triggers an error message and is discarded
 //         This is vital for the overlay pack system, as it's very likely that people trying to write their own will muck it up somewhere along the way (I do it regularly, and I wrote the dang thing)
+//       Reduce the amount of repetitive data that is required in the NotationPacks
+//          This may help with making it more resilient (above); by simplifying the parser, limiting the number of ways data can be bad
+//			Some of this can be accomplished with the data extension tags (below)
+//			Restrict str="" localized string definitions to a category based on the requesting object type (eliminates need for cat="" in the same field)
+//			See if I can permit construction of rdb="" source strings with placeholders using the fmt="true" flag
+//            Noticed that some of the common strings (RequiresMission, DropsFrom) always draw from the same rdb category, being able to reduce that to a single instance in the str def would be nice
+//            This gets tricky though, as I'll have to deal with having a half initialized string lying around in the string table (should check to see if the order of an rdb id cat pair matters)
 //       Sidebar layer settings, beyond just toggling the whole layer (show/hide should probably become an icon/button)
 //         Filter out collected sublayers on the lore/champ overlays; Known/unknown anima wells (if I can somehow figure out how to check that); Similar filters for missions
 //         Possibly toggle areas/paths/points here?
@@ -84,6 +88,7 @@ import efd.Cartographer.notations.NotationBase;
 //       Mission overlay:
 //         Need to decide how to represent some things: main/side missions, mission types, mission state; particularly in cases where a single quest giver has multiple options
 //         What's important enough, or possible, to squeeze into the map icon, and what will have to stay on the tooltip
+//         Should this have current mission objectives? or should that be a separate (near top stacked?) layer. (See also Interop for other uses of that)
 //       Config window for more general settings:
 //         Standard framework settings (Think that's just Topbar Integration here)
 //         Datafile load list (with ability to selectively disable or remove? files, or add new ones)
@@ -95,7 +100,10 @@ import efd.Cartographer.notations.NotationBase;
 //       Wishlist (Get Daimon on these, they could use some crazed laughter)
 //         Search feature
 //         Custom player waypoints
+//         The new easy source of transition data has suggested that adding conditions to marking displays might be an interesting endeavor
+//           Consider having markers for mission related instance entrances that would only render if that mission is currently active
 //         Default minimap overlay investigation, or an improved self supporting minimap mode (try to ensure that the MapView can exist independently of a window)
+//         I've a couple *very* unlikely ideas to look into for the main map as well... will have to see
 
 // ConfigWindow does not have content, disabling simple access (can still /setoption the DV manually, will probably crash the game)
 class efd.Cartographer.Cartographer extends Mod {
@@ -246,7 +254,7 @@ class efd.Cartographer.Cartographer extends Mod {
 				}
 				LayerDataList[layerConfig.Depth].AddNotation(pack[i]);
 			}
-			TraceMsg("Loaded " + pack.length + " waypoints from "  + OverlayList[0] + ".xml");
+			TraceMsg("Loaded " + pack.length + " waypoints from " + OverlayList[0] + ".xml");
 		} else { ErrorMsg("Unable to load waypoint file: " + OverlayList[0] + ".xml"); }
 		OverlayList.shift();
 		if (OverlayList.length > 0) { OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack)); }
@@ -267,7 +275,7 @@ class efd.Cartographer.Cartographer extends Mod {
 					default: { ErrorMsg("Tags starting with '_' are reserved for internal use but " + node.nodeName + " is not defined and will be ignored. File: " + OverlayList[0] + ".xml"); }
 				}
 			} else {
-				var entry:INotation = NotationBase.Create(node);
+				var entry:INotation = NotationBase.Create(node, this);
 				if (entry != undefined) { entries.push(entry); }
 			}
 		}
@@ -329,7 +337,7 @@ class efd.Cartographer.Cartographer extends Mod {
 
 	/// Variables
 	private var ZoneIndexLoader:XML;
-	private var ZoneIndex:Object;
+	public var ZoneIndex:Object;
 
 	private var OverlayList:Array;
 	private var OverlayLoader:XML;
@@ -344,3 +352,6 @@ class efd.Cartographer.Cartographer extends Mod {
 //   Anima well locks and leaps
 //   Long range champion detection
 //   GetScreenPos() for arbitrary world coordinates
+//   Thread-safety of game API calls 
+//     Hypothesis on some stability issues is that loading multiple icons simultaniously occasionally resulted in multiple calls to the game API, which didn't handle it well
+//     Will see if increased pre-processing (sequentially) improves the situation

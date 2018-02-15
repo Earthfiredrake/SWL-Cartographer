@@ -81,6 +81,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 
 /// Map manipulation
 	private function ChangeMap(newZone:Number, playerZone:Boolean):Void {
+		if (!ZoneIndex[newZone]) return; // No map to load
 		ClientCharMarker._visible = ClientChar.GetPlayfieldID() == newZone;
 		PrevZoneID = CurrentZoneID;
 		CurrentZoneID = newZone;

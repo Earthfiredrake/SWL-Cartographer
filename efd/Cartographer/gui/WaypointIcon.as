@@ -60,11 +60,11 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	}
 
 	private function ApplyModifier():Void {
-		var modifier:Array = Data.GetIconModifier();
+		var modifier:Array = Data.GetIconModifier().split("|");
 		if (modifier != undefined) {
 			if (!Modifier) { attachMovie("CartographerPointMarkerModifier", "Modifier", getNextHighestDepth()); }
 			Modifier.gotoAndStop(modifier[0]);
-	
+
 			switch (modifier[0]) {
 				case "text" : {
 					var fmt:TextFormat = Modifier.ModifierText.getNewTextFormat();
@@ -74,6 +74,8 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 					break;
 				}
 			}
+		} else {
+			if (Modifier) { Modifier.removeMovieClip(); }
 		}
 	}
 
@@ -111,12 +113,12 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		Data = data;
 		Data.HookEvents(this);
 		UpdatePosition(pos);
-		if (oldData.GetIcon() != data.GetIcon()) {
+		var loading:Boolean = oldData.GetIcon() != data.GetIcon();
+		if (loading) {
 			Loader.loadClip("Cartographer\\icons\\" + data.GetIcon(), Icon);
-			return true;
 		}
 		ApplyModifier();
-		return false;
+		return loading;
 	}
 
 	// Usually means the icon or overlay needs to be changed

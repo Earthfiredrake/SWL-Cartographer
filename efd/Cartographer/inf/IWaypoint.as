@@ -14,5 +14,7 @@ interface efd.Cartographer.inf.IWaypoint extends INotation {
 	public function GetPosition():Point; // Position is in game world coordinates
 	public function GetIcon():String; // Filename to load from Icons\[filename]
 	public function TintIcon():Boolean; // Apply the layer pen colour as a tint to the icon (white(or light grey) areas will be tinted, black or transparent areas will not)
-	public function GetIconModifier():Array; // [0] is frame name/number for the modifier icon, remainder are additional parameters needed
+	// Frame name (or number) to use from the modifier clip
+	//   Some frames ('text') need additional parameters, the '|' character is used as a separator
+	public function GetIconModifier():String;
 }

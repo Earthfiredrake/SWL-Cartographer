@@ -45,13 +45,15 @@ import efd.Cartographer.notations.NotationBase;
 class efd.Cartographer.notations.BasicPoint extends NotationBase implements IWaypoint {
 	public function BasicPoint(xml:XMLNode) {
 		super(xml);
-		Icon = xml.attributes.icon ? xml.attributes.icon : GetDefaultIcon(xml.nodeName);
+		Icon = xml.attributes.icon ? xml.attributes.icon : GetDefaultIcon(GetLayer());
+		IconMod = xml.attributes.iconMod;
 		Position = new Point(Number(xml.attributes.x), Number(xml.attributes.y));
 	}
 
 	private static function GetDefaultIcon(typeName:String):String {
 		switch (typeName) {
 			case "AnimaWell": return "well.png";
+			case "Champ":
 			case "Krampus": return "champ.png";
 			case "Vendor": return "service_vendor.png";
 			default: return undefined;
@@ -59,15 +61,17 @@ class efd.Cartographer.notations.BasicPoint extends NotationBase implements IWay
 	}
 
 	// Interface implementation
-	public function GetType():String { return "wp"; }
+	public function GetType():String { return "point"; }
 
 	public function GetPosition():Point { return Position; }
 	public function GetIcon():String { return Icon; }
-	public function TintIcon():Boolean { return false; }
-	public function GetIconModifier():Array { return undefined; }
+	public function GetIconModifier():String { return IconMod; }
+	public function TintIcon():Boolean { return UseTint; }
 
 	/// Data fields
 	private var Position:Point; // World space coordinates
 
 	private var Icon:String;
+	private var IconMod:String;
+	private var UseTint:Boolean = false;
 }
