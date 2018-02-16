@@ -54,7 +54,7 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
-Version Next (Much of this is just for my reference and won't make it into actual release notes)
+Version Next
 + Change to Modules.xml & LoginPrefs.xml, avoid hotpatch and clear bxmls
 + Interface improvements:
   + Can now resize the window
@@ -66,18 +66,35 @@ Version Next (Much of this is just for my reference and won't make it into actua
       + Also it doesn't fill the space until you resize.. bit silly that
   + Zoom behaviour improved
     + Zoom now (mostly) focuses on the mouse cursor, and can be done while over a map marker
-	+ Unless following player position, when zone changes while zoomed in it will focus on the matching transition point in the new zone (might not be where you are if you used a zone teleport)
+	+ Unless following player position, when zone changes while zoomed it will focus on the matching transition point in the new zone (might not be where you are if you used a zone teleport... focus on the player if they are in the new zone?)
+  + Point markers adjusted for easier extension
+    + Some can now be tinted different colours, making it easier for one icon to serve multiple roles
+	+ Layers for collectibles now do greyscale conversion in code, reducing the number of needed icons
+	+ Icons can have modifiers applied
+	  + Pre-defined library of marks to go on the lower left corner of any other point marker
+	  + Stars have replaced the old group champion icon (another icon fewer)
+	  + Exclamation points can be seen on some of the new transition points, and indicate that there is no map currently available for the other side
+	    + If you see an exclamation point on a lore or champ marker, there's a typo in the data files and I'd appreciate being told about it
+		+ The "no map here" symbol may change eventually, reserving the exclamation mark for error conditions
+	  + Faction marks to be added to things that are members only (in HQs, or vendors whose inventory is restricted)
+	  + Seasonal event markers for the things that pop up only then
+	  + Currency marks for vendors who deal in cache coins only? This would conflict with faction marks on tokyo vendors. Maybe for MoF vendors... tbc.
 + Waypoint updates:
-  + Only Deathstalker is un-marked in Champions (I might just guess that it exists in the same area as the lore drops from the scorpions, it's a pita to confirm)
-  + Spectre lore added; still a fair number missing, mostly in Dungeons (moderate priority) and unmapped instances (won't matter until search is a feature or we end up with entirely new maps (from minimap image perhaps? There are a few of those)); Missing lore from currently mapped instances:
-	+ Mummies #12 (Can at least mark the spawn point in SD, but pain to do again)
-  + The new tracking tool might make it viable to path the padurii chase
-    + Works but keep losing the tracking range, may adjust the tool to work with TSW and attempt it there
-  + A few more Krampii for next year
+  + All champions now have map markers
+  + Lore on currently provided maps is nearly complete (Mummies #12, and Padurii #7 race paths if I can get them)
+    + Dungeon maps still need populating (moderate priority, not providing dungeon maps yet)
+	+ Other instances have a few in them as well (low priority, search feature is on the eventually list)
+  + Dungeons, and open (non-mission) buildings had transition markers added (not hooked up to maps yet)
+    + This and slight changes in anima wells were testing an auto-gen tool that should make zones far simpler to update in the future
+  + Felt guilty about all the removed icons, so, for a limited time only, added a bunch of vendor one-offs
+    + No idea what limit, but will likely change my mind and take some out again
+  + Added the last of the Krampii so we can wait in ambush for their return
+  + Assorted corrections, improved data samples, and other minor 
 + Backend and development changes
   + Major overhaul of mod framework, invisible for users, hopefully better for modders
-  + Changed site path (repo name), but GitHub provides a suite of redirects, so all the old links still work anyway
-  + ListMods support, "/setoption efdListMods true" to reveal that LoreHound doesn't have that yet
+  + Converted .fla to .xfl format, which may make it play nicer with source control
+  + Changed repo name (website path), GitHub provides a suite of redirects so all the old links still work anyway
+  + ListMods support: "/setoption efdListMods true" to reveal that LoreHound doesn't have that yet
 
 Version 0.1.4-alpha
 + Krampusnacht waypoint pack
@@ -151,10 +168,10 @@ Version 0.0.2-alpha
 
 ## Known Issues
 
-This is a very early version of this mod. Everything is an issue, some of them are known.
-I'm always open to hearing comments and suggestions though, better to start with the good ideas than rewrite from the bad ones.
+This is an early version of this mod. There are many issues, some of them are known.
+I'm always open to hearing comments and suggestions as well, easier to start with good ideas than rewrite from bad ones.
 
-There is a known bug when using this mod with ModFolder v1, which causes issues when using /reloadui or swapping characters. As a temporary workaround, use "/setoption VTIO_IsLoaded false" before /reloadui.
+Vector based marks (paths and areas) jiggle annoyingly like jello in minimap mode.
 
 ## Testing and Further Developments
 
@@ -173,8 +190,9 @@ Initial feedback has provided the following suggestions which are not yet implem
 + Minimap mode (Partially implemented, but could by improved)
   + Frameless view
 + Mission markers should be filterable by main/side for challenge completion
++ It should be easy to set exact coordinates for custom marks
 
-As always, defect reports, suggestions, and contributions are welcome. They can be sent to Peloprata in SWL (by mail or pm), via the github issues system, or in the official forum post.
+As always, defect reports, suggestions, and contributions are welcome. They can be sent to Peloprata in SWL (by mail or pm), via the github issues system, or @Peloprata in #modding on discord.
 
 Source Repository: https://github.com/Earthfiredrake/SWL-Cartographer
 
@@ -206,5 +224,5 @@ CC0 1.0 Public Domain Dedication
 Special Thanks to:<br/>
 The TSW modding community for neglecting to properly secure important intel in their faction vaults<br/>
 AliceOrwell for https://aliceorwell.github.io/TSW-Mapper/ from which much of the inspiration came<br/>
-Everyone who provided suggestions, testing and feedback
+Everyone who provided suggestions, testing and feedback<br/>
 The Krampus tag and bag team

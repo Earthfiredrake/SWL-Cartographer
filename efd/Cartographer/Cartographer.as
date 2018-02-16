@@ -68,6 +68,18 @@ import efd.Cartographer.notations.NotationBase;
 //         Filter out collected sublayers on the lore/champ overlays; Known/unknown anima wells (if I can somehow figure out how to check that); Similar filters for missions
 //         Possibly toggle areas/paths/points here?
 //         Ability to re-order the sidebar/layer orders
+//       Interop with other mods
+//         Note: This is relatively non-urgent, but am going to start work on the base interop protocols so that they have plenty of time for peer review
+//               VTIO has demonstrated the ability of a dominant protocol to lock in modders far down the line, so I don't want this to be half baked when it actually goes into use
+//         Discussions with Starfox turned to an idea I had of an interop plugin between Cartographer and GuideFox
+//         While they feel that GuideFox files are too dense to display usefully in whole, it might be enough to display just the next target
+//         Am thinking of an "Objectives" layer which could hold temp waypoints as well as those made by missions ingame
+//           Will have to see if I can find a place to hook on to that which won't cause issues with LoreHound/LairTracker (I think the waypoints get registered in there... the trick would be identifying the right ones)
+//         For interop am thinking of providing two interfaces:
+//           The first will be a basic DV with a text based data format. Its primary role will be to (hopefully) support a chat/script based "share" button
+//             Other mods can make use of it, but it will have limited options, likely only being able to add new map markers in a fire and forget manner
+//           The second will be a more powerful system, built on top of a generic interop protocol (MIP, see the forthcoming files in lib.sys for details)
+//             It will permit significantly more control, letting the external mod edit or delete map markers it has placed, and providing the registration interface for the layer plugin system
 //       Layered map display
 //         Need to be able to handle the maps (such as NYC and Ankh) that have multiple vertical layers
 //         Ideally some combination of automatically detecting which layer the player is in, and being able to peek into the others, similar to how it deals with zones at the moment
@@ -352,6 +364,6 @@ class efd.Cartographer.Cartographer extends Mod {
 //   Anima well locks and leaps
 //   Long range champion detection
 //   GetScreenPos() for arbitrary world coordinates
-//   Thread-safety of game API calls 
+//   Thread-safety of game API calls
 //     Hypothesis on some stability issues is that loading multiple icons simultaniously occasionally resulted in multiple calls to the game API, which didn't handle it well
 //     Will see if increased pre-processing (sequentially) improves the situation
