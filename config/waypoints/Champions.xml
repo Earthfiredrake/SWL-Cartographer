@@ -49,7 +49,7 @@
 		<Champ champID="9519" zone="3030" x="394" y="318" z="138" /> <!-- Suzie -->
 		<Champ champID="9607" zone="3030" x="262" y="113" z="139" /> <!-- Traveler's Torment -->
 		<Champ champID="9484" zone="3030" x="685" y="690" /> <!-- Unearthed Rubble-->
-		<Champ champID="9487" zone="3030" x="885" y="165" group="true" /> <!-- Lutefisk-->
+		<Champ champID="9487" zone="3030" x="885" y="165" /> <!-- Lutefisk-->
 		<Champ champID="9504" zone="3040" x="400" y="113" z="157" /> <!-- Ashen Son -->
 		<Champ champID="9502" zone="3040" x="495" y="570" /> <!-- Blackchaff -->
 		<Champ champID="9501" zone="3040" x="285" y="355" /> <!-- Byblos, Zombie Janitor -->
@@ -96,7 +96,7 @@
 		<Champ champID="4843" zone="3040" x="490" y="895" /> <!-- Umbral Brood King -->
 		<Champ champID="9495" zone="3040" x="445" y="995" /> <!-- Umbral Brood Royal Guard -->
 		<Champ champID="9498" zone="3040" x="870" y="330" /> <!-- Unrequited -->
-		<Champ champID="9512" zone="3040" x="140" y="35" group="true" /> <!-- Creature from the Deep -->
+		<Champ champID="9512" zone="3040" x="140" y="35" /> <!-- Creature from the Deep -->
 		<Champ champID="9533" zone="3050" x="55" y="175" /> <!-- Abyssal Captain -->
 		<Champ champID="4850" zone="3050" x="665" y="440" /> <!-- Algernon -->
 		<Champ champID="4851" zone="3050" x="185" y="880" /> <!-- Bastard of the Brine -->
@@ -119,10 +119,10 @@
 		<Champ champID="9538" zone="3050" x="315" y="665" /> <!-- Tourist Guide -->
 		<Champ champID="9537" zone="3050" x="125" y="435" /> <!-- Undying Postman -->
 		<Champ champID="9564" zone="3050" x="965" y="945" /> <!-- Vetr Berserker -->
-		<Champ champID="9534" zone="3050" x="250" y="505" group="true"> <!-- Decomposed Kodiak -->
+		<Champ champID="9534" zone="3050" x="250" y="505"> <!-- Decomposed Kodiak -->
 			<Note en="N,S,E,W" />
 		</Champ>
-		<Champ champID="9532" zone="3050" x="88" y="273" z="130" group="true" /> <!-- Tide Lurker -->
+		<Champ champID="9532" zone="3050" x="88" y="273" z="130" /> <!-- Tide Lurker -->
 	</_Section>
 	<_Section> <!-- Egypt -->
 		<Champ champID="4079" zone="3090" x="400" y="390" /> <!-- Ainn the Harbinger -->
@@ -224,12 +224,12 @@
 			<Point x="571" y="523" z="46" />
 			<Point x="596" y="513" z="46" />
 		</Champ>
-		<Champ champID="9561" zone="3090" x="555" y="715" group="true"> <!-- Cicatris -->
+		<Champ champID="9561" zone="3090" x="555" y="715"> <!-- Cicatris -->
 			<Note cat="MapNoteTooltip" str="Summon" fmt="true">
 				<Param en="5 bees on blue spots" />
 			</Note>
 		</Champ>
-		<Champ champID="9560" zone="3090" x="585" y="875" group="true"> <!-- Mak'aal the Hellfire -->
+		<Champ champID="9560" zone="3090" x="585" y="875"> <!-- Mak'aal the Hellfire -->
 			<Note cat="MapNoteTooltip" str="Summon" fmt="true">
 				<Param en="All cultist souls must arrive in group" />
 			</Note>
@@ -253,7 +253,7 @@
 		<Champ champID="9617" zone="3100" x="40" y="505" /> <!-- Royal Craftsman Parennfar -->
 		<Champ champID="9625" zone="3100" x="200" y="1000" /> <!-- Shadestalker -->
 		<Champ champID="9618" zone="3100" x="765" y="20" /> <!-- Sutekh -->
-		<Champ champID="9612" zone="3100" x="345" y="725" group="true" /> <!-- The Bone Harvester -->
+		<Champ champID="9612" zone="3100" x="345" y="725" /> <!-- The Bone Harvester -->
 	</_Section>
 	<_Section> <!-- Transylvania -->
 		<!-- Bitter Harvest Messenger (multi-spawn) -->
@@ -292,8 +292,8 @@
 			<Note en="Use skeletons on riverbank" />
 		</Champ>
 		<Champ champID="9880" zone="3120" x="180" y="695" /> <!-- Wallachian Juggernaut-->
-		<Champ champID="4863" zone="3120" x="165" y="665" group="true" /> <!-- Demolisher -->
-		<Champ champID="4859" zone="3120" x="1206" y="240" z="43" group="true" /> <!-- Village Eater -->
+		<Champ champID="4863" zone="3120" x="165" y="665" /> <!-- Demolisher -->
+		<Champ champID="4859" zone="3120" x="1206" y="240" z="43" /> <!-- Village Eater -->
 		<Champ champID="9895" zone="3130" x="1080" y="805" /> <!-- Ancestral Cankermouth -->
 		<Champ champID="9888" zone="3130" x="418" y="555" z="37" /> <!-- Black Antlers -->
 		<Champ champID="10087" zone="3130" x="840" y="800"> <!-- Blackwater -->
@@ -331,7 +331,7 @@
 		<Champ champID="10088" zone="3130" x="640" y="780" /> <!-- The Trophic -->
 		<Champ champID="9893" zone="3130" x="784" y="470" z="32" /> <!-- Vagrant Colonist -->
 		<Champ champID="10086" zone="3130" x="800" y="580" /> <!-- Wanderless Gypsy -->
-		<Champ champID="9894" zone="3130" x="849" y="1252" z="62" group="true" /> <!-- Tiberiu, Fang Run Alpha -->
+		<Champ champID="9894" zone="3130" x="849" y="1252" z="62" /> <!-- Tiberiu, Fang Run Alpha -->
 		<Champ champID="10105" zone="3140" x="1125" y="360" /> <!-- The Ascetic -->
 		<Champ champID="10106" zone="3140" x="540" y="1056" z="75" /> <!-- Danansi Pain Artist -->
 		<Champ champID="10113" zone="3140" x="865" y="605" /> <!-- Deep Spring Awoken -->
@@ -367,8 +367,8 @@
 		<Champ champID="10112" zone="3140" x="645" y="1205" /> <!-- Winterkill Longtooth -->
 		<Champ champID="10108" zone="3140" x="730" y="755" /> <!-- Winter's Bride -->
 		<Champ champID="10114" zone="3140" x="310" y="635" /> <!-- Zmeu of the Fangs -->
-		<Champ champID="10102" zone="3140" x="826" y="1107" z="59" group="true" /> <!-- Burov, Slaughterhouse General -->
-		<Champ champID="10100" zone="3140" x="1130" y="305" group="true" /> <!-- Sergiu -->
+		<Champ champID="10102" zone="3140" x="826" y="1107" z="59" /> <!-- Burov, Slaughterhouse General -->
+		<Champ champID="10100" zone="3140" x="1130" y="305" /> <!-- Sergiu -->
 	</_Section>
 	<_Section> <!-- Tokyo -->
 		<Champ champID="10207" zone="3070" x="873" y="170" z="78" /> <!-- Accountant Bocigammal -->
@@ -621,7 +621,7 @@
 		</Champ>
 		<Champ champID="10198" zone="3070" x="820" y="710" /> <!-- Wrathful Goryo -->
 		<!-- The Simian Horror -->
-		<Champ champID="10213" zone="3070" x="551" y="255" z="91" group="true">
+		<Champ champID="10213" zone="3070" x="551" y="255" z="91">
 			<Name rdb="category=51000 id=34568" />
 		</Champ>
 	</_Section>
