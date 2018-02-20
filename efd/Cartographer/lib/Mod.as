@@ -34,6 +34,8 @@ import efd.Cartographer.lib.LocaleManager;
 //     "emfListMods": Mods report their current version and author to system chat
 //     "emfNextIconID": Used to create unique offsets on default icon placements, reducing icon pileups when installing multiple mods
 //     "emfDebugMode": Toggles debug trace messages globally, may also enable other debug/dev tools (persists through /reloadui)
+//   Mod interop protocol is tentatively reserving DVs named:
+//     "mip[*]Port", "mip[*]Err" and "mip[*]IDSource"
 //   From other mods:
 //     "VTIO_IsLoaded", "VTIO_RegisterAddon": VTIO hooks, use of these for other reasons may cause problems with many mods
 
@@ -208,6 +210,11 @@ class efd.Cartographer.lib.Mod {
 		if (dv.GetValue()) { dv.SetValue(false); }
 		if (!VersionReported) { ChatMsg(Version + " : " + DevName); }
 		VersionReported = !VersionReported;
+	}
+	
+	// Helper function that compiles some mod info for use with MIP systems
+	private function GetModInteropInfo():Object {
+		return { ModName:ModName, ModVersion:Version, DevName:DevName };
 	}
 
 /// Configuration Settings

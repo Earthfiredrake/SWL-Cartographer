@@ -24,6 +24,8 @@ import efd.Cartographer.inf.INotation;
 import efd.Cartographer.LayerData;
 import efd.Cartographer.notations.NotationBase;
 
+import efd.Cartographer.CartogProtocol;
+
 // TODO: Area tooltips seem to be conflicting with path tooltips
 //       In South KD, the Namahage path tooltip is being superceded by the Spectres #6 tooltip
 //       - Paths should in general be above areas in the layering system
@@ -176,6 +178,28 @@ class efd.Cartographer.Cartographer extends Mod {
 		OverlayList = new Array("BasePack");
 		LayerDataList = new Array();
 		BasicMCGraphics.setup();
+		
+		CIP = new CartogProtocol(true, GetModInteropInfo());
+		CIP.SignalRemoteOpen.Connect(CIPRemoteOpened, this);
+		CIP.SignalRemoteClosed.Connect(CIPRemoteClosed, this);
+		CIP.SignalError.Connect(CIPError, this);
+		CIP.SignalTestMsg.Connect(CIPTest, this);
+		CIP.Connect();
+	}
+	
+	private function CIPRemoteOpened(id:Number, info:Object):Void {
+		TraceMsg("CIP RO: [" + id + "] " + info.ModName);
+		CIP.SendMsg("TestMsg", undefined, id);
+	}
+	private function CIPRemoteClosed(id:Number):Void {
+		TraceMsg("CIP RC: [" + id + "]");		
+	}
+	private function CIPError(desc:String):Void {
+		TraceMsg("CIP Err: " + desc);
+	}
+	private function CIPTest():Void {
+		TraceMsg("CIP Test");
+		CIP.SendMsg("Fail");
 	}
 
 	private function InitializeConfig():Void {
@@ -343,6 +367,11 @@ class efd.Cartographer.Cartographer extends Mod {
 	private function Deactivate():Void {
 	}
 
+	public function OnUnload():Void { 
+		super.OnUnload();
+		CIP.Disconnect();
+	}
+
 	private function InterfaceWindowLoaded(windowContent:Object):Void {
 		windowContent.SetData(ZoneIndex, LayerDataList, Config);
 	}
@@ -357,6 +386,8 @@ class efd.Cartographer.Cartographer extends Mod {
 
 	private static var EventSamhain:Number = 1;
 	private static var EventKrampus:Number = 2;
+	
+	private var CIP:CartogProtocol;
 }
 
 // The big list of future Glaucon questions (stuff to pester him with when I run out of things I can do without it):
