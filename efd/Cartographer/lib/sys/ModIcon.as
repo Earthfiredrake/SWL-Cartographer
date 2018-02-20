@@ -87,7 +87,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 
 		// Get a unique ID for default layout calculations
 		// Note: System is not without flaws, subsequently added mods may just rearrange the IDs and stomp anyway
-		IconCountDV = DistributedValue.Create(Mod.DVPrefix + "NextIconID");
+		IconCountDV = DistributedValue.Create("emfNextIconID");
 		GetID();
 
 		filters = [ShadowFilter];

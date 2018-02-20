@@ -26,13 +26,14 @@ import efd.Cartographer.lib.LocaleManager;
 //     "[pfx][Name]Enabled": Exists for e_ModType_Reactive mods; "Soft" disable that retains icon and doesn't prevent loading in future; Corresponds to "Enabled" config setting
 //     "[pfx][Name]Loaded": Set to true when the mod is fully loaded and initialized
 //     "[pfx][Name]Config: Name of archive in which main settings are saved (Mods may use secondary archives for some settings), defined in xml configuration, usually used with the Config system
+//     "[pfx][Name]DebugMode: Toggles debug trace messages and other debug/dev tools in an individual mod (persists through /reloadui)
 //     "[pfx][Name]ResetConfig": Trigger to reset settings to defaults from chat, created by the Config subsystem
 //     "[pfx]Show[Name]ConfigWindow": Toggles the settings window, created by the Config subsystem
 //     "[pfx]Show[Name]InterfaceWindow": Toggles an interface window, if one was included in ModData
-//   Framework shared (Unique per developer, but that may change):
-//     "[pfx]ListMods": Causes all installed framework mods to report their current version to system chat
-//     "[pfx]NextIconID": Used to create unique offsets on default icon placements, hopefully reducing icon pileups when using multiple [pfx] mods
-//     "[pfx]DebugMode": Toggles debug trace messages for all [pfx] mods, may also enable other debug/dev tools
+//   Framework shared; use "emf" prefix and affect all mods built with default versions of this framework:
+//     "emfListMods": Mods report their current version and author to system chat
+//     "emfNextIconID": Used to create unique offsets on default icon placements, reducing icon pileups when installing multiple mods
+//     "emfDebugMode": Toggles debug trace messages globally, may also enable other debug/dev tools (persists through /reloadui)
 //   From other mods:
 //     "VTIO_IsLoaded", "VTIO_RegisterAddon": VTIO hooks, use of these for other reasons may cause problems with many mods
 
@@ -57,6 +58,16 @@ import efd.Cartographer.lib.LocaleManager;
 //     Icon and window content (usually in .fla library under default names)
 //     Processing datafile content
 //     Doing something useful (or at least interesting)
+
+// When adapting any code for another mod:
+//   Always use a unique namespace for the mod on all class, import and __className definitions
+//     The flash environment caches classes by fully namespace qualified identifier when first encountered
+//     Whichever mod loads first gets to be the authoritive definition for all classes it defines
+//     This can be helpful if loading order is known (Game API loads before mods), but mods can't otherwise depend on being loaded in any particular order
+//   Use similarly unique names, or dynamic linking, for clip library assets
+//     Due to similar caching behaviour, where anybody's library asset by that name will use whatever class was linked
+//     See etu.MovieClipHelper for functions to do dynamic linking
+
 class efd.Cartographer.lib.Mod {
 /// Initialization and Cleanup
 	// ModData enum describing basic mod behaviour (ModInfo.Type, being phased out)
@@ -90,16 +101,13 @@ class efd.Cartographer.lib.Mod {
 		TraceMsg = Delegate.create(this, _TraceMsg);
 		LogMsg = Delegate.create(this, _LogMsg);
 
+		GlobalDebugDV = DistributedValue.Create("emfDebugMode");
+		GlobalDebugDV.SignalChanged.Connect(SetDebugMode, this);
+		DebugTrace = GlobalDebugDV.GetValue() || modInfo.Trace;
+
 		LoadXmlAsynch = Delegate.create(this, _LoadXmlAsynch);
 
-		GlobalDebugDV = DistributedValue.Create(DVPrefix + "DebugMode");
-		GlobalDebugDV.SignalChanged.Connect(SetDebugMode, this);
-		DebugTrace = modInfo.Trace || GlobalDebugDV.GetValue();
-
  		SignalLoadCompleted = new Signal();
-
-		ModListDV = DistributedValue.Create(DVPrefix + "ListMods");
-		ModListDV.SignalChanged.Connect(ReportVersion, this);
 
 		if (modInfo.Name == undefined || modInfo.Name == "") {
 			ModName = "Unnamed";
@@ -112,6 +120,14 @@ class efd.Cartographer.lib.Mod {
 			ErrorMsg("Mod expects a version number");
 		}
 		Version = modInfo.Version;
+
+		LocalDebugDV = DistributedValue.Create(DVPrefix + ModName +  "DebugMode");
+		if (LocalDebugDV.GetValue()) { DebugTrace = true; }
+		else { LocalDebugDV.SetValue(DebugTrace); }
+		LocalDebugDV.SignalChanged.Connect(SetDebugMode, this);
+
+		ModListDV = DistributedValue.Create("emfListMods");
+		ModListDV.SignalChanged.Connect(ReportVersion, this);
 
 		SystemsLoaded = { LocalizedText: false };
 		if (modInfo.Subsystems.Config != undefined) {
@@ -190,7 +206,7 @@ class efd.Cartographer.lib.Mod {
 	// Each mod ends up getting two notifications, whichever mod is "first" gets a true+false, other mods get false+false
 	private function ReportVersion(dv:DistributedValue):Void {
 		if (dv.GetValue()) { dv.SetValue(false); }
-		if (!VersionReported) { ChatMsg(Version); }
+		if (!VersionReported) { ChatMsg(Version + " : " + DevName); }
 		VersionReported = !VersionReported;
 	}
 
@@ -388,5 +404,6 @@ class efd.Cartographer.lib.Mod {
 	public var SignalLoadCompleted:Signal;
 
 	private var DebugTrace:Boolean;
-	private var GlobalDebugDV:DistributedValue; // Used to quickly toggle trace or other debug features of all efd mods
+	private var GlobalDebugDV:DistributedValue; // Used to quickly toggle trace or other debug features of all framework based mods
+	private var LocalDebugDV:DistributedValue; // Same as above, only local (Both persist through /reloadui, allowing loadtime traces on mods compiled with them disabled)
 }
