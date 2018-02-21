@@ -14,7 +14,8 @@ import com.Utils.Archive;
 
 class efd.Cartographer.lib.sys.mip.MipPacket {
 
-	public function MipPacket(sender:Number, recipient:Number, msg:String, data:Object, archive:Archive) {
+	public function MipPacket(recNum:Number, sender:Number, recipient:Number, msg:String, data:Object, archive:Archive) {
+		_RecNum = recNum;
 		_Sender = sender;
 		_Recipient = recipient;
 		_Message = msg;
@@ -25,11 +26,12 @@ class efd.Cartographer.lib.sys.mip.MipPacket {
 	public function ToArchive():Archive {
 		var archive:Archive = new Archive();
 		archive.AddEntry("ArchiveType", "MipPack");
+		archive.AddEntry("RecNum", RecNum);
 		archive.AddEntry("Sender", Sender);
 		archive.AddEntry("Recipient", Recipient);
 		archive.AddEntry("Message", Message);
-		archive.AddEntry("Data", Package(Data));
-		return archive;
+		archive.AddEntry("Data", Package(Data));		
+		return archive;		
 	}
 	
 	private static function Package(value:Object) {
@@ -50,7 +52,7 @@ class efd.Cartographer.lib.sys.mip.MipPacket {
 	}
 
 	public static function FromArchive(archive:Archive):MipPacket {
-		return new MipPacket(null, null, null, null, archive);
+		return new MipPacket(null, null, null, null, null, archive);
 	}
 
 	private static function Unpack(element:Object) {
@@ -76,12 +78,14 @@ class efd.Cartographer.lib.sys.mip.MipPacket {
 		return element; // Basic type
 	}
 	
+	public function get RecNum():Number { return _RecNum == null ? _RecNum = _Archive.FindEntry("RecNum") : _RecNum; }
 	public function get Sender():Number { return _Sender == null ? _Sender = _Archive.FindEntry("Sender") : _Sender; }
 	public function get Recipient():Number { return _Recipient == null ? _Recipient = _Archive.FindEntry("Recipient") : _Recipient; }
 	public function get Message():String { return _Message == null ? _Message = _Archive.FindEntry("Message") : _Message; }
 	public function get Data():Object { return _Data == null ? _Data = Unpack(_Archive.FindEntry("Data")) : _Data; }
 	
 	private var _Archive:Archive;
+	private var _RecNum:Number;
 	private var _Sender:Number;
 	private var _Recipient:Number;
 	private var _Message:String;

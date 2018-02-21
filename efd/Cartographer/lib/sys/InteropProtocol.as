@@ -6,35 +6,28 @@
 //   Early adoptors may find things changing underfoot
 
 // Base class for inter-mod communication protocols
-// Allows mods to declare that they are either server or client for the subclassing protocol
-//   and provides limited duplex communication (addressed or broadcast) with those in the other mode
-// Handles basic functions (DV based 'ports', unique IDs, mod discovery, and error reporting?) with a minimal protocol definition
+//   DV based communication port for mods with a shared protocol to transfer messages (addressed or broadcast)
+//   Minimalist base protocol offering mod query and error notifications for extending protocols
 
 // Custom protocols are expected to be implemented as subclasses overriding ProcessUserProtocol
-//   General advice for using code from other developers also applies, which can be found in Mod.as of the EFD Mod Framework
+//   General advice for using code from other developers applies, which can be found in Mod.as of the EFD Mod Framework
 //   Notifications back to the local mod can be handled in whatever way the author feels is reasonable
 //     This implementation makes use of Signals, but they could be changed with no affect on the compatibility of the system
 //     Recommend that an author remove or simplify Signals they don't need (though keep the "return true" to avoid errors)
 //       This will reduce the amount of processing needed by the somewhat awkward MipPacket system
 //   (once finalized) Most other code should remain functionally unchanged in order to maintain compatibility with the standard
 
-// The DV ports are unique to the protocol, but are shared by all the registered mods
+// The DV port is shared by all mods that make use of a partcular (named) protocol
 // DV listeners are notified immediately and sequentially when the DV is changed, with no queuing, which can cause several issues:
-//   Broadcast messages run a major risk of having the original message stomped by anything longer than a basic reply
-//     Error messages have been given their own exclusive DV ports so that they don't stomp data
-//     I may have a solution that involves stashing packets,
-//       How to prevent a mod from replying to a packet a second time when it comes back up
-//       but ensure that a mod does reply to every packet it should
-//       My current thoughts on this may require moving everything into a single DV port
-//     QUERY: Anybody got a better solution?
-//   Particularly long message chains could cause noticable performance hitches, or possibly cause a stack overflow
-//     Recommend that communications be limited to shout notifications or paired request-response
+//   Particularly long message sequences, especially between large sets of mods, could cause noticable performance hitches or possibly a stack overflow
 //   ProcessUserProtocol may end up being called recursively, and should be designed to be re-entrant
+//   Messages can often be processed out of order when triggered by previous messages
+//     'A', 'B' and 'C' are mods that have been created in that order. 'A' broadcasts a message, 'B' responds by sending a message to 'C' which 'C' will process before it handles the broadcast from 'A'
+//     A somewhat Indiana Jonesy distributed queue will ensure that all messages do eventually get processed, and only once
+//     Unsure what happens if you disconnect in the middle of messages being processed, though side effects should be isolated to the disconnecting mod
 
-// Registration as both a client and server for a single protocol may cause difficult behaviour
-//   there is no allowance to detect self originating broadcast messages in this case
-//   QUERY: Is there a reasonable use case for which this would be the best option?
-// Multiple different protocols, as long as they have independent interface objects, should not be a problem
+// A single mod can have multiple protocol interfaces, even of the same protocol if that is useful:
+//   It will consider them to be different mods, so cross communication between the interfaces should be anticipated
 
 // Once released, protocols should be maintained as backwards compatible to avoid breaking mods that make use of them
 //   This includes supported message identifiers, their expected supporting data types, and any communication patterns
@@ -43,30 +36,26 @@
 import com.GameInterface.DistributedValue;
 import com.Utils.Signal;
 
-import efd.Cartographer.lib.Mod;
 import efd.Cartographer.lib.sys.mip.MipPacket;
 
 class efd.Cartographer.lib.sys.InteropProtocol {
 
-	// The info object is the one which will be passed with any MipOpen/MipAckOpen messages for this mod
+	// The info object is the one which will be passed with any Join/Info messages from this mod
 	//   It should already be largely initialized by the mod and the subclass, only requiring the MIP version to be added
-	// Protocol name should be provided by the subclass, while isServer will be passed through from the mod's initialization
-	private function InteropProtocol(protocol:String, isServer:Boolean, info:Object) { // Abstract base
+	// Protocol name should be provided by the subclass
+	private function InteropProtocol(protocol:String, info:Object) { // Abstract base
 		Protocol = protocol;
-		IsServer = isServer;
 		LocalInfo = info;
 		LocalInfo.MipVersion = MipVersion;
 
-		var mode:String = IsServer ? "Server" : "Client";
-		var other:String = IsServer ? "Client" : "Server";
-		InPort = DistributedValue.Create("mip" + Protocol + mode + "Port");
-		OutPort = DistributedValue.Create("mip" + Protocol + other + "Port");
-		InErr = DistributedValue.Create("mip" + Protocol + mode + "Err");
-		OutErr = DistributedValue.Create("mip" + Protocol + other + "Err");
-		IDSource = DistributedValue.Create("mip" + Protocol + mode + "IDSource");
+		ComPort = DistributedValue.Create("mip" + Protocol + "Port");
+		RecursionCounter = DistributedValue.Create("mip" + Protocol + "RecurCount");
+		if (RecursionCounter.GetValue() == null) { RecursionCounter.SetValue(0); }
+		IDSource = DistributedValue.Create("mip" + Protocol + "IDSource");
 
-		SignalRemoteOpen = new Signal();
-		SignalRemoteClosed = new Signal();
+		SignalModJoined = new Signal();
+		SignalModLeft = new Signal();
+		SignalModInfo = new Signal();
 		SignalError = new Signal();
 	}
 
@@ -76,20 +65,18 @@ class efd.Cartographer.lib.sys.InteropProtocol {
 	public function Connect():Void {
 		if (LocalID != -1) { return; }
 		GetID();
-		InErr.SignalChanged.Connect(ReceiveErr, this);
-		InPort.SignalChanged.Connect(ReceivePacket, this);		
-		SendMsg(MipOpen, LocalInfo);
+		ComPort.SignalChanged.Connect(ReceivePacket, this);		
+		SendMsg(MipJoin, LocalInfo);
 	}
 
 	// Data field may be ommited/undefined depending on the message being sent
 	// Recipient field is left undefined if doing a broadcast
 	public function SendMsg(msg:String, data:Object, recipient:Number):Void {
-		OutPort.SetValue(new MipPacket(LocalID, recipient, msg, data).ToArchive());
-	}
-
-	// All fields should be filled, no broadcast for errors
-	private function SendErr(msg:String, data:Object, recipient:Number):Void {
-		OutErr.SetValue(new MipPacket(LocalID, recipient, msg, data).ToArchive());
+		// Stashes the previous message (if any) then sends the new one, when that returns (indicating that all recipients have processed it) restore the previous message
+		// The restored message will have the wrong recursion number, suppressing change notification until it resumes the original set of change notifications
+		PacketStash.push(ComPort.GetValue());
+		ComPort.SetValue(new MipPacket(RecursionCounter.GetValue(), LocalID, recipient, msg, data).ToArchive());
+		ComPort.SetValue(PacketStash.pop());
 	}
 
 	// Call this if your mod will not be accepting further messages on this protocol
@@ -97,59 +84,51 @@ class efd.Cartographer.lib.sys.InteropProtocol {
 	//   /reloadui doesn't explicitly reset DVs, IDSource values can end up artificially inflated, resulting in empty blocks at the bottom of arrays
 	public function Disconnect():Void {
 		if (LocalID == -1) { return; }
-		SendMsg(MipClose);
-		InPort.SignalChanged.Disconnect(ReceivePacket, this);
-		InErr.SignalChanged.Disconnect(ReceiveErr, this);
+		SendMsg(MipLeave);
+		ComPort.SignalChanged.Disconnect(ReceivePacket, this);
 		FreeID();
 	}
 
 	private function ReceivePacket(dv:DistributedValue):Void {
+		var recNum = RecursionCounter.GetValue();
+		RecursionCounter.SetValue(recNum + 1);
 		var msg:MipPacket = MipPacket.FromArchive(dv.GetValue());
-		if (msg.Recipient == undefined || msg.Recipient == LocalID) {
-			if (ProcessMipCore(msg)) { return; }
-			if (ProcessUserProtocol(msg)) { return; }
-			SendErr(ErrUnknownMsg, msg, msg.Sender);
+		// Ignore the packet if:
+		//   Sequence number is wrong (it's a newly unstashed message with handlers already waiting)
+		//   Broadcast originating from self
+		//   Addressed to different mod
+		if (msg.RecNum == recNum && ((msg.Recipient == undefined && msg.Sender != LocalID) || msg.Recipient == LocalID)) {
+			if (!(ProcessMipCore(msg) || ProcessUserProtocol(msg))) {
+				SendMsg(ErrUnknownMsg, msg, msg.Sender);
+			}
 		}
-	}
-
-	private function ReceiveErr(dv:DistributedValue):Void {
-		var err:MipPacket = MipPacket.FromArchive(dv.GetValue());
-		if (err.Recipient == LocalID) {
-			if (ProcessMipErr(err)) { return; }
-			if (ProcessUserProtocolErr(err)) { return; }
-			SignalError.Emit("Error (" + err.Message + ") when sending message (" + err.Data.Message + ") was not handled by protocol (" + Protocol + ")");
-		}
+		RecursionCounter.SetValue(recNum);
 	}
 
 /// Protocol porcessing
 
+	// QUERY: Does it make sense to treat Join as an implicit Query?
 	private function ProcessMipCore(msg:MipPacket):Boolean {
-		switch (msg.Message) {
-			case MipOpen: {
-				SignalRemoteOpen.Emit(msg.Sender, msg.Data);
-				SendMsg(MipAckOpen, LocalInfo, msg.Sender);
+		switch (msg.Message) {			
+			case MipJoin: { SignalModJoined.Emit(msg.Sender, msg.Data); } // Fallthrough intended
+			case MipQuery: {
+				SendMsg(MipInfo, LocalInfo, msg.Sender);
 				return true;
 			}
-			case MipAckOpen: {
-				SignalRemoteOpen.Emit(msg.Sender, msg.Data);
+			case MipInfo: {
+				SignalModInfo.Emit(msg.Sender, msg.Data);
 				return true;
 			}
-			case MipClose: {
-				SignalRemoteClosed.Emit(msg.Sender);
+			case MipLeave: {
+				SignalModLeft.Emit(msg.Sender);
 				return true;
 			}
-			default: { return false; }
-		}
-	}
-
-	private function ProcessMipErr(err:MipPacket):Boolean {
-		switch (err.Message) {
 			case ErrUnknownMsg: {
-				SignalError.Emit("Message (" + err.Data.Message + ") is not part of protocol (" + Protocol + ")");
+				SignalError.Emit("Message (" + msg.Data.Message + ") is not part of protocol (" + Protocol + ")");
 				return true;
 			}
 			case ErrInvalidData: {
-				SignalError.Emit("Data for message (" + err.Data.Message + ") did not have values expected by protocol (" + Protocol + ")");
+				SignalError.Emit("Data for message (" + msg.Data.Message + ") did not have values expected by protocol (" + Protocol + ")");
 				return true;
 			}
 			default: { return false; }
@@ -160,7 +139,6 @@ class efd.Cartographer.lib.sys.InteropProtocol {
 	//   You will only recieve messages not defined in the core MIP protocol
 	//   Return true if the protocol defines and handles the provided message
 	private function ProcessUserProtocol(msg:MipPacket):Boolean { return false; }
-	private function ProcessUserProtocolErr(err:MipPacket):Boolean { return false; }
 
 /// ID system
 	// Gets an ID from the IDSource, and pushes it to the next free value
@@ -186,30 +164,31 @@ class efd.Cartographer.lib.sys.InteropProtocol {
 	}
 
 /// Variables
-	private static var MipVersion:String = "0.0.1"; // Placeholder version
+	private static var MipVersion:String = "0.0.2"; // Placeholder version
 	private var Protocol:String; // Name of this protocol; Used to create DV names and provide error report details; subclasses should pass overriden name to constructor
 
-	private var InPort:DistributedValue; // Port for inbound messages (matching requested client/server mode)
-	private var OutPort:DistributedValue; // Port for sent messages (matching other mode)
-	// Dedicated error ports
-	private var InErr:DistributedValue;
-	private var OutErr:DistributedValue;
+	private var ComPort:DistributedValue; // Communications port, across which all messages are sent
 	private var IDSource:DistributedValue; // Source for the LocalID (a slightly glorified counter)
+	private var RecursionCounter:DistributedValue; // Used to avoid multi-processing messages (a counter, no glory)
 
-	private var IsServer:Boolean; // Useful when a protocol has different behaviour between server and client modes
-	private var LocalID:Number = -1; // This mod's ID for this particular protocol
-	private var LocalInfo:Object; // Assorted identifying information passed with an Open or AckOpen message
+	private var PacketStash:Array = []; // For stashing the contents of ComPort when this mod needs to send a message
 
+	private var LocalID:Number = -1; // This mod's ID for this particular protocol interface
+	private var LocalInfo:Object; // Assorted identifying information passed with Join messages or in response to Query requests
+
+	//
+	public static var MipQuery:String = "MipQuery"; // Requests that each recipient reply with an Info packet
 	// Internal MIP messages
-	private static var MipOpen:String = "MipOpen"; // Data = { ModName:String, ModVersion:String, DevName:String, MipVersion:String, ProtocolVersion:String }
-	private static var MipAckOpen:String = "MipAckOpen"; // Response to a MipOpen request; same data format
-	private static var MipClose:String = "MipClose"; // No data, senderID available if needed
+	private static var MipJoin:String = "MipJoin"; // Uses Info data format
+	private static var MipInfo:String = "MipInfo"; // Response to Join or Query request; Data = { ModName:String, ModVersion:String, DevName:String, MipVersion:String, ProtocolVersion:String }	
+	private static var MipLeave:String = "MipLeave"; // No data
 	// Error messages, include the offending MipPacket in the Data field
 	private static var ErrUnknownMsg:String = "ErrUnknownMsg";
 	private static var ErrInvalidData:String = "ErrInvalidData";
 
 	// Local mod notifications, not required by the interop interface
-	public var SignalRemoteOpen:Signal; // Func(senderID:Number, info:Object); info object with information used to identify the mod and protocol version support
-	public var SignalRemoteClosed:Signal; // Func(senderID:Number); sender can still receive replies but be careful about triggering message chains
-	public var SignalError:Signal; // Func(desc:String); string describing the error; used for all error messages
+	public var SignalModJoined:Signal; // Func(senderID:Number, info:Object); Info message data format
+	public var SignalModLeft:Signal; // Func(senderID:Number); sender can still receive replies
+	public var SignalModInfo:Signal; // Func(senderID:Number, info:Object); Info message data format
+	public var SignalError:Signal; // Func(desc:String); string describing the error; shared by all error messages
 }

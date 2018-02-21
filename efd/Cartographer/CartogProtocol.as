@@ -11,8 +11,8 @@ import efd.Cartographer.lib.sys.InteropProtocol;
 import efd.Cartographer.lib.sys.mip.MipPacket;
 
 class efd.Cartographer.CartogProtocol extends InteropProtocol {
-	public function CartogProtocol(isServer: Boolean, info:Object) {
-		super("Cartog", isServer, AdjustInfo(info));
+	public function CartogProtocol(info:Object) {
+		super("Cartog", AdjustInfo(info));
 		
 		SignalTestMsg = new Signal();
 	}

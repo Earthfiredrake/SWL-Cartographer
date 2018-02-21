@@ -179,9 +179,10 @@ class efd.Cartographer.Cartographer extends Mod {
 		LayerDataList = new Array();
 		BasicMCGraphics.setup();
 		
-		CIP = new CartogProtocol(true, GetModInteropInfo());
-		CIP.SignalRemoteOpen.Connect(CIPRemoteOpened, this);
-		CIP.SignalRemoteClosed.Connect(CIPRemoteClosed, this);
+		CIP = new CartogProtocol(GetModInteropInfo());
+		CIP.SignalModJoined.Connect(CIPRemoteOpened, this);
+		CIP.SignalModInfo.Connect(CIPInfo, this);
+		CIP.SignalModLeft.Connect(CIPRemoteClosed, this);		
 		CIP.SignalError.Connect(CIPError, this);
 		CIP.SignalTestMsg.Connect(CIPTest, this);
 		CIP.Connect();
@@ -190,6 +191,9 @@ class efd.Cartographer.Cartographer extends Mod {
 	private function CIPRemoteOpened(id:Number, info:Object):Void {
 		TraceMsg("CIP RO: [" + id + "] " + info.ModName);
 		CIP.SendMsg("TestMsg", undefined, id);
+	}
+	private function CIPInfo(id:Number, info:Object):Void {
+		TraceMsg("CIP Info: [" + id + "] " + info.ModName);
 	}
 	private function CIPRemoteClosed(id:Number):Void {
 		TraceMsg("CIP RC: [" + id + "]");		
