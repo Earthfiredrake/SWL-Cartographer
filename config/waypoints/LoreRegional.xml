@@ -424,6 +424,11 @@
 		<Lore loreID="7170" zone="3070" x="822" y="709" z="92" />
 			<!-- BS#3 (Drop: Hyperinfected/Commuter/Infected multiple spawns) -->
 			<!-- TODO: Verify that both BC and HIC drop it (IC already verified)-->
+		<Lore loreID="7171" zone="3070" x="196" y="677" z="95"> <!-- HIC -->
+			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+				<Param rdb="category=51000 id=34529" />
+			</Note>
+		</Lore>
 		<Lore loreID="7171" zone="3070" x="344" y="768" z="85"> <!-- BC -->
 			<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
 				<Param rdb="category=51000 id=34296" />

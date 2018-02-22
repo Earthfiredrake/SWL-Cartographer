@@ -249,11 +249,11 @@
 		<Lore loreID="4042" zone="3130" x="712" y="1134" z="31" />
 		<Lore loreID="4044" zone="3140" x="314" y="711" z="37" />
 		<Lore loreID="4045" zone="3140" x="516" y="769" z="53" />
-		<!-- Museum of the Occult 3/4 -->
+		<!-- Museum of the Occult -->
 		<Lore loreID="9304" zone="1000" x="314" y="268" z="28" />
 		<Lore loreID="9305" zone="7190" x="505" y="538" z="517" />
 		<Lore loreID="9306" zone="7190" x="590" y="590" z="507" />
-			<!-- #4 (Instance: Museum) -->
+		<Lore loreID="9307" zone="7190" x="373" y="479" z="507" />
 		<!-- The Orochi Group -->
 		<Lore loreID="1477" zone="3030" x="386" y="997" z="144" />
 		<Lore loreID="1476" zone="3040" x="908" y="95" z="226" />
@@ -313,7 +313,10 @@
 		<Lore loreID="5058" zone="3090" x="197" y="481" z="70" />
 		<Lore loreID="5059" zone="3100" x="849" y="938" z="91" />
 		<Lore loreID="5060" zone="3100" x="186" y="443" z="100" />
-		<!-- Uta Bloody Valentine 0/3 (Loot drop, use the loot bag) -->
+		<!-- Uta Bloody Valentine (Loot bag location) -->
+		<Lore loreID="7915" zone="6890" x="264" y="249" z="256" />
+		<Lore loreID="7921" zone="6890" x="264" y="249" z="256" />
+		<Lore loreID="7922" zone="6890" x="264" y="249" z="256" />
 		<!-- Wabanaki -->
 		<Lore loreID="1491" zone="3040" x="160" y="858" z="135" />
 		<Lore loreID="1490" zone="3040" x="131" y="842" z="130" />
