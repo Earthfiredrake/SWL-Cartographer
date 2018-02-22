@@ -18,7 +18,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	private function WaypointIcon() { // Indirect construction only
 		super();
-		SignalWaypointLoaded = new Signal();
 		SignalIconChanged = new Signal();
 		Loader = new MovieClipLoader();
 
@@ -50,7 +49,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	private function IconLoaded(target:MovieClip):Void {
 		CenterIcon(target);
 		ApplyTint(target);
-		SignalWaypointLoaded.Emit(this);
 	}
 
 	private function ApplyTint(target:MovieClip):Void {
@@ -161,7 +159,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	public var Data:IWaypoint;
 
 	public var SignalIconChanged:Signal; // Used to notify host layer that this icon has changed due to outside events
-	public var SignalWaypointLoaded:Signal; // WARNING: Adding additional hooks to this may be an issue, see HACK in CollectibleLayer
 	private var Loader:MovieClipLoader;
 
 	private var Icon:MovieClip;
@@ -176,11 +173,16 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 }
 
 /// Notes:
+//   Most recent update on this:
+//     Preprocessing the notation data to the point that the icon loading/rendering step involves only pre-cached data
+//     lead to noticiable stability improvements. The hypothisis was revised to the possibility that the API calls
+//     were responsible, due to multi-threaded use of a non-threadsafe API. The staggered loading system was subsequently
+//     disabled to test this, and stability has not become an issue. Therefore the staggered loading has been removed to simplify the Layer code.
+//   Retaining the remainder of the analysis for informational purposes
 //   The following problem has been largely fixed by forcing image loading into a largely sequential process
 //     At the moment the main map image is loaded prior to any icon images, overlay layers start loading in parallel, but each layer loads a single icon file at a time
 //     Efforts have also been made to minimize the amount of loading, with layers attempting to reuse existing icons if possible
 //     While this has a noticable impact on map loading and transition times, the game has been much more stable since these changes were implemented
-//   Retaining the remainder of the analysis for informational purposes
 //   I've been experiencing some instablity that randomly crashes the game when opening/changing maps
 //   The cause has not yet been determined, and the process of narrowing it down has proven challenging, as it exits immediately with limited feedback
 //   Current hypothesis is that it is related to io failure or delay, possibly caused by trying to read too much data from disk too quickly

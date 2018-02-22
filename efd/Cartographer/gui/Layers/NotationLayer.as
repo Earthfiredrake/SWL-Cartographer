@@ -55,6 +55,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 				ReloadAreas();
 				ReloadPaths()
 				ReloadWaypoints();
+				Refresh = true;
 			}
 		}
 	}
@@ -97,12 +98,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		}
 	}
 
-	private function ReloadWaypoints():Void {
-		WaypointCount = 0;
-		Refresh = true; // Unless they actually change maps, we only want one reload process to be running at a time
-		TrimDisplayList(); // Trim excess waypoints
-		LoadDataBlock(); // Start the loading process
-	}
+	private function ReloadWaypoints():Void { UpdateDisplayList(RenderedWaypoints, NotationData.GetWaypoints(Zone)); }
 
 	private function RefreshWaypoints():Void {
 		var waypointList:Array = RenderedWaypoints; // Cache this, some variants have to merge multiple lists for it
@@ -112,45 +108,47 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		}
 	}
 
-	private function TrimDisplayList():Void {
-		var length:Number = NotationData.GetWaypoints(Zone).length;
-		if (length == undefined) { length = 0; }
-		for (var i:Number = length; i < RenderedWaypoints.length; ++i) {
-			var waypoint:MovieClip = RenderedWaypoints[i];
-			waypoint.removeMovieClip();
-		}
-		RenderedWaypoints.splice(length);
-	}
-
-	public function LoadDataBlock():Void {
-		var data:Array = NotationData.GetWaypoints(Zone);
-		var renderList:Array = RenderedWaypoints;
-		// Attempt to reassign as many existing waypoints as possible
-		// If an image needs loading, load will defer and resume through callback for stability reasons
-		for (WaypointCount; WaypointCount < renderList.length; ++WaypointCount) {
-			if (renderList[WaypointCount].Reassign(data[WaypointCount], MapViewClip.WorldToMapCoords(data[WaypointCount].Position))) {
-				// Image load requested exit early and wait for callback
-				return;
+	private function UpdateDisplayList(list:Array, data:Array, targetClip:MovieClip):Void {
+		var i:Number = 0;
+		for (; i < list.length; ++i) {
+			if (i < data.length) {
+				list[i].Reassign(data[i], MapViewClip.WorldToMapCoords(data[i].Position));
+			} else {
+				list[i].removeMovieClip();
 			}
 		}
-		// Load any new waypoints required
-		// Each of these will trigger an image load, so will be done sequentially through callback
-		if (WaypointCount < data.length) {
-			var mapPos:Point = MapViewClip.WorldToMapCoords(data[WaypointCount].Position);
-			var targetClip:MovieClip = WaypointLayer;
+		list.splice(data.length);
+		for (; i < data.length; ++i) {
+			var mapPos:Point = MapViewClip.WorldToMapCoords(data[i].Position);
+			if (targetClip == undefined) { targetClip = WaypointLayer; }
+			var depth:Number = targetClip.getNextHighestDepth();
 			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
-				WaypointIcon, "WP" + targetClip.getNextHighestDepth(), targetClip, targetClip.getNextHighestDepth(),
-				{ Data : data[WaypointCount], _x : mapPos.x, _y : mapPos.y, MapViewLayer : this }));
-			wp.SignalWaypointLoaded.Connect(LoadNextBlock, this);
+				WaypointIcon, "WP" + depth, targetClip, depth,
+				{ Data : data[i], _x : mapPos.x, _y : mapPos.y, MapViewLayer : this }));
+			wp.SignalIconChanged.Connect(ChangeIcon, this);
 			wp.LoadIcon();
-			renderList.push(wp);
+			list.push(wp);
 		}
 	}
 
-	// Loader callback
-	private function LoadNextBlock(icon:WaypointIcon):Void {
-		WaypointCount += 1;
-		LoadDataBlock();
+	// For icons that can change while map is open
+	// TODO: It would shuffle the render order slightly... might be worth considering a bug
+	private function ChangeIcon(icon:WaypointIcon):Void {
+		var targetClip:MovieClip = WaypointLayer;
+		var depth:Number = targetClip.getNextHighestDepth();
+		var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
+			WaypointIcon, "WP" + depth, targetClip, depth,
+			{ Data : icon.Data, _x : icon._x, _y : icon._y, MapViewLayer : this }));
+		wp.SignalIconChanged.Connect(ChangeIcon, this);
+		wp.LoadIcon();
+		RenderedWaypoints.push(wp);
+		for (var i:Number = 0; i < RenderedWaypoints.length; ++i) {
+			if (RenderedWaypoints[i] == icon) {
+				RenderedWaypoints.splice(i, 1);
+				break;
+			}
+		}
+		icon.removeMovieClip();
 	}
 
 	/// Render effects
@@ -210,7 +208,6 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 	/// Variables
 	private var Zone:Number;
 	private var Refresh:Boolean;
-	private var WaypointCount:Number; // Number of loaded waypoints, used exclusively during load, may not be valid
 	private var _visible:Boolean;
 
 	// External data caches
