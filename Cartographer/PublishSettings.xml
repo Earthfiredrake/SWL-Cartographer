@@ -1,5 +1,5 @@
-<flash_profiles>
-<flash_profile version="1.0" name="Default" current="true">
+﻿<flash_profiles>
+<flash_profile version="1.0" name="SWL" current="true">
   <PublishFormatProperties enabled="true">
     <defaultNames>1</defaultNames>
     <flash>1</flash>
@@ -76,7 +76,7 @@
     <ExternalPlayer></ExternalPlayer>
     <ActionScriptVersion>2</ActionScriptVersion>
     <PackageExportFrame>1</PackageExportFrame>
-    <PackagePaths>.;../../../Library/Flash/AS2/CLIK;../../../Library/Flash/AS2/SWL;$(LocalData)/Classes;</PackagePaths>
+    <PackagePaths>.;../../../Library/Flash/AS2/CLIK;../../../Library/Flash/AS2/SWL;</PackagePaths>
     <AS3PackagePaths>.</AS3PackagePaths>
     <AS3ConfigConst>CONFIG::FLASH_AUTHORING=&quot;true&quot;;</AS3ConfigConst>
     <DebuggingPermitted>0</DebuggingPermitted>

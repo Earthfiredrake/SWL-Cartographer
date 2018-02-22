@@ -100,39 +100,29 @@ class efd.Cartographer.lib.Mod {
 		ErrorMsg = Delegate.create(this, _ErrorMsg);
 		TraceMsg = Delegate.create(this, _TraceMsg);
 		LogMsg = Delegate.create(this, _LogMsg);
-
-		GlobalDebugDV = DistributedValue.Create("emfDebugMode");
-		GlobalDebugDV.SignalChanged.Connect(SetDebugMode, this);
-		DebugTrace = GlobalDebugDV.GetValue() || modInfo.Trace;
-
 		LoadXmlAsynch = Delegate.create(this, _LoadXmlAsynch);
 
- 		SignalLoadCompleted = new Signal();
-
-		if (modInfo.Name == undefined || modInfo.Name == "") {
+		if (!modInfo.Name) {
 			ModName = "Unnamed";
 			// Dev message, not localized
 			ErrorMsg("Mod requires a name");
 		} else { ModName = modInfo.Name; }
-		if (modInfo.Version == undefined || modInfo.Version == "") {
+		if (!modInfo.Version) {
 			modInfo.Version = "0.0.0";
 			// Dev message, not localized
 			ErrorMsg("Mod expects a version number");
 		}
 		Version = modInfo.Version;
 
+		GlobalDebugDV = DistributedValue.Create("emfDebugMode");
+		GlobalDebugDV.SignalChanged.Connect(SetDebugMode, this);
 		LocalDebugDV = DistributedValue.Create(DVPrefix + ModName +  "DebugMode");
-		if (LocalDebugDV.GetValue()) { DebugTrace = true; }
-		else { LocalDebugDV.SetValue(DebugTrace); }
 		LocalDebugDV.SignalChanged.Connect(SetDebugMode, this);
+		DebugTrace = GlobalDebugDV.GetValue() || LocalDebugDV.GetValue() || modInfo.Trace;
 
-		ModListDV = DistributedValue.Create("emfListMods");
-		ModListDV.SignalChanged.Connect(ReportVersion, this);
-
+ 		SignalLoadCompleted = new Signal();
 		SystemsLoaded = { LocalizedText: false };
-		if (modInfo.Subsystems.Config != undefined) {
-			SystemsLoaded.Config = false;
-		}
+		if (modInfo.Subsystems.Config != undefined) { SystemsLoaded.Config = false; }
 		ModLoadedDV = DistributedValue.Create(ModLoadedVarName);
 		ModLoadedDV.SetValue(false);
 		if (modInfo.Type == e_ModType_Reactive) {
@@ -140,6 +130,9 @@ class efd.Cartographer.lib.Mod {
 			ModEnabledDV.SetValue(true);
 			ModEnabledDV.SignalChanged.Connect(ToggleUserEnabled, this);
 		}
+
+		ModListDV = DistributedValue.Create("emfListMods");
+		ModListDV.SignalChanged.Connect(ReportVersion, this);
 
 		LocaleManager.Initialize();
 		LocaleManager.SignalStringsLoaded.Connect(StringsLoaded, this);
