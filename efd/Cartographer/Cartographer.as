@@ -176,6 +176,9 @@ class efd.Cartographer.Cartographer extends Mod {
 		OverlayList = new Array("BasePack");
 		LayerDataList = new Array();
 		BasicMCGraphics.setup();
+
+		DefaultMapDV = DistributedValue.Create("fullscreen_map");
+		DefaultMapDV.SignalChanged.Connect(HookDefaultMapShortcut, this);
 	}
 
 	private function InitializeConfig():Void {
@@ -193,6 +196,8 @@ class efd.Cartographer.Cartographer extends Mod {
 
 		Config.NewSetting("LayerSettings", new Object());
 
+		Config.NewSetting("EnableKBShortcut", true);
+
 		// HACK: Forcibly replace the ResetConfig DV handler
 		ConfigHost.ResetDV.SignalChanged.Disconnect(ConfigHost.ResetConfig, ConfigHost);
 		ConfigHost.ResetDV.SignalChanged.Connect(ResetConfig, this);
@@ -209,6 +214,10 @@ class efd.Cartographer.Cartographer extends Mod {
 		for (var i:Number = 0; i < packList.length; ++i) {
 			if (packList[i].load) { OverlayList.push(packList[i].name); }
 		}
+
+		KBShortcutToggleDV = DistributedValue.Create("efdCartographerKBShortcut");
+		KBShortcutToggleDV.SetValue(Config.GetValue("EnableKBShortcut"));
+		KBShortcutToggleDV.SignalChanged.Connect(KBSToggle, this);
 
 		super.ConfigLoaded();
 	}
@@ -319,6 +328,10 @@ class efd.Cartographer.Cartographer extends Mod {
 	/// Mod framework extensions and overrides
 	private function ConfigChanged(setting:String, newValue, oldValue):Void {
 		switch(setting) {
+			case "EnableKBShortcut":
+				if (newValue) { DefaultMapDV.SignalChanged.Connect(HookDefaultMapShortcut, this); }
+				else { DefaultMapDV.SignalChanged.Disconnect(HookDefaultMapShortcut, this); }
+				break;
 			default:
 				super.ConfigChanged(setting, newValue, oldValue);
 				break;
@@ -337,10 +350,17 @@ class efd.Cartographer.Cartographer extends Mod {
 		}
 	}
 
-	private function Activate():Void {
-	}
+	private function Activate():Void { }
 
-	private function Deactivate():Void {
+	private function Deactivate():Void { }
+
+	private function KBSToggle(dv:DistributedValue):Void { Config.SetValue("EnableKBShortcut", dv.GetValue()); }
+
+	private function HookDefaultMapShortcut(dv:DistributedValue):Void {
+		if (dv.GetValue() && Key.isDown(Key.CONTROL)) {
+			dv.SetValue(false);
+			InterfaceWindow.ToggleWindow();
+		}
 	}
 
 	private function InterfaceWindowLoaded(windowContent:Object):Void {
@@ -348,6 +368,9 @@ class efd.Cartographer.Cartographer extends Mod {
 	}
 
 	/// Variables
+	private var DefaultMapDV:DistributedValue;
+	private var KBShortcutToggleDV:DistributedValue;
+
 	private var ZoneIndexLoader:XML;
 	public var ZoneIndex:Object;
 
