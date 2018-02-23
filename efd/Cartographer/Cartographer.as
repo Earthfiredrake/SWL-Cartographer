@@ -124,7 +124,7 @@ class efd.Cartographer.Cartographer extends Mod {
 			// Debug settings at top so that commenting out leaves no hanging ','
 			// Trace : true,
 			Name : "Cartographer",
-			Version : "0.1.5.alpha",
+			Version : "0.1.6.alpha",
 			Subsystems : {
 				Config : {
 					Init : ConfigManager.Create,

@@ -54,7 +54,7 @@ I intend to permit setting migration from the first public beta to v1.0.x, but t
 
 ## Change Log
 
-Version Next
+Version 0.1.6-alpha
 + Change to Modules.xml & LoginPrefs.xml, avoid hotpatch and clear bxmls
 + Interface improvements:
   + Can now resize the window
@@ -67,18 +67,11 @@ Version Next
   + Zoom behaviour improved
     + Zoom now (mostly) focuses on the mouse cursor, and can be done while over a map marker
 	+ Unless following player position, when zone changes while zoomed it will focus on the matching transition point in the new zone (might not be where you are if you used a zone teleport... focus on the player if they are in the new zone?)
-  + Point markers adjusted for easier extension
-    + Some can now be tinted different colours, making it easier for one icon to serve multiple roles
-	+ Layers for collectibles now do greyscale conversion in code, reducing the number of needed icons
-	+ Icons can have modifiers applied
-	  + Pre-defined library of marks to go on the lower left corner of any other point marker
-	  + Stars have replaced the old group champion icon (another icon fewer)
-	  + Exclamation points can be seen on some of the new transition points, and indicate that there is no map currently available for the other side
-	    + If you see an exclamation point on a lore or champ marker, there's a typo in the data files and I'd appreciate being told about it
-		+ The "no map here" symbol may change eventually, reserving the exclamation mark for error conditions
-	  + Faction marks to be added to things that are members only (in HQs, or vendors whose inventory is restricted)
-	  + Seasonal event markers for the things that pop up only then
-	  + Currency marks for vendors who deal in cache coins only? This would conflict with faction marks on tokyo vendors. Maybe for MoF vendors... tbc.
+  + Keyboard shortcut (hack):
+    + Holding ctrl while opening the default map will instead toggle Cartographer's map window
+	+ Doesn't actually matter if the map is being opened with the keyboard, mouse or chat command
+	+ It's tied to the map keybind and not customizable, but can be disabled with '/setoption efdCartographerKBShortcut false'
+  + Default topbar integration (there's no easy way to change this setting yet, so it should stay where it is unless doing a clean reinstall)
 + Waypoint updates:
   + All champions now have map markers
   + Lore on currently provided maps is nearly complete (Mummies #12, and Padurii #7 race paths if I can get them)
@@ -90,11 +83,23 @@ Version Next
     + No idea what limit, but will likely change my mind and take some out again
   + Added the last of the Krampii so we can wait in ambush for their return
   + Assorted corrections, improved data samples, and other minor 
-+ Backend and development changes
-  + Major overhaul of mod framework, invisible for users, hopefully better for modders
++ Back-end and developer changes
+  + Point markers adjusted for easier extension
+    + Some can now be tinted different colours, making it easier for one icon to serve multiple roles
+	+ Layers for collectibles now do greyscale conversion in code, reducing the number of needed icons
+	+ Icons can have modifier sub-icons applied
+	  + Pre-defined library of marks to go on the lower left corner of any other point marker
+	  + Stars have replaced the old group champion icon (another icon fewer)
+	  + Exclamation points can be seen on some of the new transition points, and indicate that there is no map currently available for the other side
+	    + If you see an exclamation point on a lore or champ marker, there's a typo in the data files and I'd appreciate being told about it
+		+ The "no map here" symbol will change eventually, reserving the exclamation mark for error conditions
+	  + Various other ideas for this, but not yet implemented fully
+  + Pre-processes as much as possible
+    + Longer initial loading time, but more stable and faster map viewing
+  + Major overhaul of mod framework, invisible for users, hopefully better for development
   + Converted .fla to .xfl format, which may make it play nicer with source control
   + Changed repo name (website path), GitHub provides a suite of redirects so all the old links still work anyway
-  + ListMods support: "/setoption efdListMods true" to reveal that LoreHound doesn't have that yet
+  + Mod version query "/setoption emfListMods true" (Clockwatcher and LoreHound will support this on their next framwork updates)
 
 Version 0.1.4-alpha
 + Krampusnacht waypoint pack
