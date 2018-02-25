@@ -31,15 +31,30 @@ class efd.Cartographer.notations.mix.ChampMixIn {
 			};
 			// This event is called in the context of the WaypointIcon
 			target["CollectibleUnlocked"] = function(unlockedID:Number, charID:ID32):Void {
-				// I have no idea why this event might be triggered for a non-client character
-				// Am following the examples in the existing API code
-				if (unlockedID == this.Data.ChampID && charID.Equal(Character.GetClientCharID())) {
+				if (unlockedID == this.Data.ChampID) {
 					this.Data.IsCollected = true;
 					this.StateChanged();
 				}
 			};
+			// TODO: This is a bit of a hack patch, needs further evaluation before next actual release
+			if (!target["IsCollected"]) { Lore.SignalTagAdded.Connect(
+				function(unlockedID:Number, charID:ID32):Void {
+					// I have no idea why this event might be triggered for a non-client character
+					// Am following example of existing API code here on a debug basis
+					var clientChar:ID32 = Character.GetClientCharID();
+					if (!charID.Equal(clientChar)) {
+						Mod.ErrorMsg("(Oddity) SignalTagAdded raised for non-client character (ID): " + charID.toString());
+						Mod.ErrorMsg("  Client charID (for reference): " + clientChar.toString());
+					}
+					if (unlockedID == this.ChampID) {
+						Mod.TraceMsg("Collecting champ: " + this.Name);
+						this.IsCollected = true;
+					}
+				}, target);
+			}
 		} else {
 			// Avoid stomping existing name, it may identify the offending record
+			Mod.ErrorMsg("Unknown ChampID: " + champID);
 			target["Name"] = (target["Name"] == undefined ? "" : target["Name"] + ": ") + "Unknown ChampID";
 		}
 

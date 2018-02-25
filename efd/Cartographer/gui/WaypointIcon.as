@@ -35,20 +35,22 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 
 	public function LoadIcon():Void {
 		// Loading the icon overwrites the data in the clip, so wrap it in an empty subclip
-		var icon:MovieClip = createEmptyMovieClip("Icon", getNextHighestDepth());
+		createEmptyMovieClip("Icon", getNextHighestDepth());
 		// NOTE: It seems that loadClip can also be used to access the rdb
 		//   Path syntax is "rdb:[Type]:[ID]"
 		//   Type 1000624 contains swf files
 		//   Type 1000636 contains png files
 		//   Not sure how useful this is, as I have limited knowledge of what is actually tucked away in there
 		// TODO: Wonder if other paths could be loaded from the rdb in a similar fashion
-		Loader.loadClip("Cartographer\\icons\\" + Data.GetIcon(), icon);
+		Loader.loadClip("Cartographer\\icons\\" + Data.GetIcon(), Icon);
 		ApplyModifier();
 	}
 
 	private function IconLoaded(target:MovieClip):Void {
 		CenterIcon(target);
 		ApplyTint(target);
+
+		Data["VerifyListener"](this);
 	}
 
 	private function ApplyTint(target:MovieClip):Void {
@@ -116,6 +118,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 			Loader.loadClip("Cartographer\\icons\\" + data.GetIcon(), Icon);
 		}
 		ApplyModifier();
+		Data["VerifyListener"](this);
 		return loading;
 	}
 
