@@ -23,15 +23,13 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 			if (target["Name"] == undefined) { target["Name"] = GetLoreName(loreID); }
 			target["LoreID"] = loreID;
 			target["IsCollected"] = !Lore.IsLocked(loreID);
-			if (target["IsCollected"] !== false && target["IsCollected"] !== true) {
-				Mod.ErrorMsg("(Oddity) Lore IsCollected is not a boolean value: " + target["IsCollected"]);
+			target["VerifyCollected"] = function():Boolean {
+				return this.IsCollected || (this.IsCollected = !Lore.IsLocked(this.LoreID));
 			}
 
 			target.HookEvents = function(uiElem:MovieClip):Void {
 				if (!this.IsCollected) { // No need to be notified for already collected items
-					if (!Lore.SignalTagAdded.Connect(this.CollectibleUnlocked, uiElem)) {
-						Mod.ErrorMsg("Attempt to hook SignalTagAdded failed? Lore: " + this.Name);
-					}
+					Lore.SignalTagAdded.Connect(this.CollectibleUnlocked, uiElem);
 				}
 			};
 			target.UnhookEvents = function(uiElem:MovieClip):Void {
@@ -44,23 +42,6 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 					this.StateChanged();
 				}
 			};
-			// TODO: This is a bit of a hack patch, needs further evaluation before next actual release
-			//       There's also some extra instrumentation around (error and log messages) that could probably be cleaned up if the issue is fixed
-			if (!target["IsCollected"]) { Lore.SignalTagAdded.Connect(
-				function(unlockedID:Number, charID:ID32):Void {
-					// I have no idea why this event might be triggered for a non-client character
-					// Am following example of existing API code here on a debug basis
-					var clientChar:ID32 = Character.GetClientCharID();
-					if (!charID.Equal(clientChar)) {
-						Mod.ErrorMsg("(Oddity) SignalTagAdded raised for non-client character (ID): " + charID.toString());
-						Mod.ErrorMsg("  Client charID (for reference): " + clientChar.toString());
-					}
-					if (unlockedID == this.LoreID) {
-						Mod.TraceMsg("Collecting lore: " + this.Name);
-						this.IsCollected = true;
-					}
-				}, target);
-			}
 		} else {
 			// Avoid stomping existing name, it may identify the offending record
 			Mod.ErrorMsg("Unknown LoreID: " + loreID);

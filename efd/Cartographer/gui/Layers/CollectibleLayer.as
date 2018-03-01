@@ -36,7 +36,7 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 		var collectedData:Array = new Array();
 		var waypoints:Array = NotationData.GetWaypoints(Zone);
 		for (var i:Number = 0; i < waypoints.length; ++i) {
-			if (waypoints[i].IsCollected) { collectedData.push(waypoints[i]); }
+			if (waypoints[i].VerifyCollected()) { collectedData.push(waypoints[i]); }
 			else { uncollectedData.push(waypoints[i]); }
 		}
 

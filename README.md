@@ -82,7 +82,7 @@ Version 0.1.6-alpha
   + Felt guilty about all the removed icons, so, for a limited time only, added a bunch of vendor one-offs
     + No idea what limit, but will likely change my mind and take some out again
   + Added the last of the Krampii so we can wait in ambush for their return
-  + Assorted corrections, improved data samples, and other minor 
+  + Assorted corrections, improved data samples, and other minor tweaks
 + Back-end and developer changes
   + Point markers adjusted for easier extension
     + Some can now be tinted different colours, making it easier for one icon to serve multiple roles
@@ -192,10 +192,13 @@ Current goals for the next versions:
 
 Initial feedback has provided the following suggestions which are not yet implemented:
 + Mouse coordinates should be clearly displayed someplace obvious
++ It should be easy to set exact coordinates for custom marks (text input)
 + Minimap mode (Partially implemented, but could by improved)
   + Frameless view
 + Mission markers should be filterable by main/side for challenge completion
-+ It should be easy to set exact coordinates for custom marks
++ Player path tracking, (for self, though something like my DevTool targeted tracker might be useful too)
+  + Originally a thought related to generating pseudo maps (or at least "been there" notes) for Ak'ab caves, but I can see more general use for it elsewhere as well
+  + Will have to adjust things to let the map follow the player into unmapped locations though, probably should be an option (and automatically start the player path tracking when they do, at least for now)
 
 As always, defect reports, suggestions, and contributions are welcome. They can be sent to Peloprata in SWL (by mail or pm), via the github issues system, or @Peloprata in #modding on discord.
 

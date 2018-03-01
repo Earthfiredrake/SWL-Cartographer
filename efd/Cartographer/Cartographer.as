@@ -8,6 +8,7 @@ import gfx.utils.Delegate;
 
 import com.GameInterface.DistributedValue;
 import com.GameInterface.DressingRoom;
+import com.GameInterface.Game.Character;
 
 import efd.Cartographer.lib.ara.BasicMCGraphics;
 
@@ -359,7 +360,8 @@ class efd.Cartographer.Cartographer extends Mod {
 	private function HookDefaultMapShortcut(dv:DistributedValue):Void {
 		if (dv.GetValue() && Key.isDown(Key.CONTROL)) {
 			dv.SetValue(false);
-			InterfaceWindow.ToggleWindow();
+			// Closing default map forces reticule mode; Ok when closing Cartog, override when opening
+			if(InterfaceWindow.ToggleWindow()) { Character.ExitReticuleMode(); }
 		}
 	}
 

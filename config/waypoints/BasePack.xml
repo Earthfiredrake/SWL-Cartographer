@@ -87,6 +87,30 @@
 			<Name rdb="category=50025 id=147549093" />
 		</Transit>
 		<!-- TODO: Prune the vendor knot? -->
+		<Vendor zone="5060" x="570" y="185" z="395" icon="service_bank.png">
+			<Name rdb="category=51000 id=29867" />
+		</Vendor>
+		<Vendor zone="5060" x="576" y="185" z="395" icon="service_bank.png">
+			<Name rdb="category=51000 id=29867" />
+		</Vendor>
+		<Vendor zone="5060" x="562" y="169" z="395" icon="service_auction.png">
+			<Name rdb="category=51000 id=36859" />
+		</Vendor>
+		<Vendor zone="5060" x="562" y="174" z="395" icon="service_auction.png">
+			<Name rdb="category=51000 id=36859" />
+		</Vendor>
+		<Vendor zone="5060" x="537" y="166" z="396">
+			<Name rdb="category=51000 id=35952" />
+		</Vendor>
+		<Vendor zone="5060" x="536" y="167" z="396">
+			<Name rdb="category=51000 id=36223" />
+		</Vendor>
+		<Vendor zone="5060" x="550" y="150" z="396">
+			<Name rdb="category=51000 id=36852" />
+		</Vendor>
+		<Vendor zone="5060" x="571" y="149" z="396">
+			<Name rdb="category=51000 id=37762" />
+		</Vendor>
 		<Vendor zone="5060" x="603" y="174" z="396">
 			<Name rdb="category=51000 id=36858" />
 		</Vendor>
@@ -99,23 +123,14 @@
 		<Vendor zone="5060" x="579" y="217" z="396">
 			<Name rdb="category=51000 id=36857" />
 		</Vendor>
-		<Vendor zone="5060" x="554" y="217" z="397">
-			<Name rdb="category=51000 id=36856" />
-		</Vendor>
 		<Vendor zone="5060" x="529" y="185" z="396">
 			<Name rdb="category=51000 id=36854" />
 		</Vendor>
+		<Vendor zone="5060" x="554" y="217" z="397">
+			<Name rdb="category=51000 id=36856" />
+		</Vendor>
 		<Vendor zone="5060" x="531" y="187" z="397">
 			<Name rdb="category=51000 id=36855" />
-		</Vendor>
-		<Vendor zone="5060" x="537" y="166" z="396">
-			<Name rdb="category=51000 id=35952" />
-		</Vendor>
-		<Vendor zone="5060" x="536" y="167" z="396">
-			<Name rdb="category=51000 id=36223" />
-		</Vendor>
-		<Vendor zone="5060" x="550" y="150" z="396">
-			<Name rdb="category=51000 id=36852" />
 		</Vendor>
 		<Vendor zone="5060" x="561" y="181" z="410">
 			<Name rdb="category=51000 id=36861" />
@@ -132,18 +147,7 @@
 		<Vendor zone="5060" x="602" y="197" z="411">
 			<Name rdb="category=51000 id=37384" />
 		</Vendor>
-		<Vendor zone="5060" x="570" y="185" z="395" icon="service_bank.png">
-			<Name rdb="category=51000 id=29867" />
-		</Vendor>
-		<Vendor zone="5060" x="576" y="185" z="395" icon="service_bank.png">
-			<Name rdb="category=51000 id=29867" />
-		</Vendor>
-		<Vendor zone="5060" x="562" y="169" z="395" icon="service_auction.png">
-			<Name rdb="category=51000 id=36859" />
-		</Vendor>
-		<Vendor zone="5060" x="562" y="174" z="395" icon="service_auction.png">
-			<Name rdb="category=51000 id=36859" />
-		</Vendor>
+
 	</_Section>
 	<_Section> <!-- Venice -->
 		<AnimaWell zone="1300" x="269" y="142" z="16">
