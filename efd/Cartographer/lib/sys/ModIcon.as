@@ -18,6 +18,7 @@ import GUIFramework.SFClipLoader;
 import efd.Cartographer.lib.etu.GemController;
 import efd.Cartographer.lib.etu.MovieClipHelper;
 
+import efd.Cartographer.lib.DebugUtils;
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
 
@@ -48,10 +49,10 @@ import efd.Cartographer.lib.Mod;
 
 class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 	/// Initialization
-	public static function Create(mod:Mod, initObj:Object):MovieClip {
+	public static function Create(mod:Mod, initObj:Object):MovieClip {		
 		// Check dependencies
 		if (!mod.Config) {
-			Mod.ErrorMsg("Subsystem dependency missing: Config", {system : "ModIcon"});
+			DebugUtils.ErrorMsgS("Subsystem dependency missing: Config", {system : "ModIcon"});
 			return undefined;
 		}
 
@@ -76,11 +77,12 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 		}
 		if (initObj.ExtraTooltipInfo) { initObj.ExtraTooltipInfo = Delegate.create(mod, initObj.ExtraTooltipInfo); }
 
-		return MovieClipHelper.attachMovieWithRegister(iconName, ModIcon, "ModIcon", mod.HostMovie, mod.HostMovie.getNextHighestDepth(), initObj);
+		return MovieClipHelper.attachMovieWithRegister(iconName, ModIcon, "ModIcon", mod.HostClip, mod.HostClip.getNextHighestDepth(), initObj);
 	}
 
 	private function ModIcon() {
 		super();
+		Debug = new DebugUtils("ModIcon");
 
 		// Get local copies of commonly used ModObj members
 		Config = ModObj.Config;
@@ -111,7 +113,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 		ResolutionDV.SignalChanged.Connect(SetTopbarPositions, this);
 		TopbarLayoutDV.SignalChanged.Connect(SetTopbarPositions, this);
 
-		TraceMsg("Icon created");
+		Debug.TraceMsg("Icon created");
 	}
 
 	private function VerifyIDCount(dv:DistributedValue):Void {
@@ -180,7 +182,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 				GlobalSignal.SignalSetGUIEditMode.Disconnect(ManageGEM, this);
 			} else {
 				// Restores the state
-				ModObj.Icon = ModObj.HostMovie.ModIcon;
+				ModObj.Icon = ModObj.HostClip.ModIcon;
 				GetID();
 				filters = [ShadowFilter];
 				// Note: Settings are not restored here,
@@ -210,7 +212,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 		copy.Tooltip = Tooltip;
 
 		// Required functions (and function variables)
-		copy.TraceMsg = TraceMsg;
+		copy.Debug = Debug;
 		copy.Refresh = Refresh;
 		copy.GetFrame = GetFrame;
 		copy.GetTooltipData = GetTooltipData;
@@ -324,8 +326,8 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 	/// Layout and GEM handling
 	private function BringAboveTopbar(above:Boolean):Void {
 		if (above != IsAboveTopbar) {
-			if (above) { SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(ModObj.HostMovie), _global.Enums.ViewLayer.e_ViewLayerTop, 2); }
-			else { SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(ModObj.HostMovie), _global.Enums.ViewLayer.e_ViewLayerMiddle, 10); }
+			if (above) { SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(ModObj.HostClip), _global.Enums.ViewLayer.e_ViewLayerTop, 2); }
+			else { SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(ModObj.HostClip), _global.Enums.ViewLayer.e_ViewLayerMiddle, 10); }
 			IsAboveTopbar = above;
 		}
 	}
@@ -337,7 +339,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 
 	private function ManageGEM(unlock:Boolean):Void {
 		if (unlock && !GemManager) {
-			GemManager = GemController.create("GuiEditModeInterface", ModObj.HostMovie, ModObj.HostMovie.getNextHighestDepth(), this);
+			GemManager = GemController.create("GuiEditModeInterface", ModObj.HostClip, ModObj.HostClip.getNextHighestDepth(), this);
 			GemManager.lockAxis(0);
 			if (OnBaseTopbar) {	GemManager.lockAxis(2); }
 			else { GemManager.addEventListener( "scrollWheel", this, "ChangeScale" ); }
@@ -366,7 +368,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 		switch(buttonID) {
 			case 1: { LeftMouseInfo.Action(); break; }
 			case 2: { RightMouseInfo.Action(); break; }
-			default: { TraceMsg("Unexpected mouse button press: " + buttonID); }
+			default: { Debug.TraceMsg("Unexpected mouse button press: " + buttonID); }
 		}
 	}
 
@@ -420,13 +422,6 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 		delete Tooltip;
 	}
 
-	/// Trace Wrapper
-	private function TraceMsg(msg:String, options:Object):Void {
-		if (options == undefined) { options = new Object(); }
-		options.system = "ModIcon";
-		Mod.TraceMsg(msg, options);
-	}
-
 	/// Variables
 	private static var ShadowFilter:DropShadowFilter =
 		new DropShadowFilter(50, 1, 0, 0.8, 8, 8, 1, 3, false, false, false);
@@ -458,4 +453,6 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 	// Used to adjust default icon locations so they no longer stack up awkwardly
 	private var IconCountDV:DistributedValue;
 	private var IconID:Number = -1;
+	
+	private var Debug:DebugUtils;
 }

@@ -255,4 +255,24 @@ class efd.Cartographer.lib.LocaleManager {
 //  *55800: [clothing_tree_node] Clothing (and weapon skin) names
 //   55801: [clothing_tree_node] Clothing aquisition source strings
 //   55802: [clothing_tree_node] Clothing colours (could steal scarab colours from here...)
+//   55901: [agent_agents] Spoilers! Agent names
+//   55902: [agent_agents] Spoilers! Agent bios
+//   55903: [agent_traits] Agent trait names
+//   55904: [agent_traits_category] Agent trait category names
+//   55905: [agent_traits] Agent trait effect descriptions
+//   55906: [agent_archetypes] Broad agent categories
+//   55907: [agent_rarity] Rarity names again
+//   55908: [agent_agents] Spoilers! Success comments
+//   55909: [agent_agents] Spoilers! Failure comments
+//   55910: [agent_agents] Agent occupations
+//   55911: [agent_missions] Mission names
+//   55912: [agent_missions] Spoilers! Mission briefings
+//   55914: [agent_bonuses] Mission reward descriptions?
+//   55915: [agent_successlevels] Three tiers of success ("Complete", "Success", "Outstanding Results")
+//   55916: [agent_missions] Spoilers! Mission success debriefings
+//   55917: [agent_missions] Spoilers! Mission failure debriefings
+//   55918: [agent_agents] Agent genders
+//   55919: [agent_agents] Agent species
+//   55920: [agent_agents] Agent ages
+//   55921: [agent_mission_difficulties] Mission difficulty strings
 //   56000: Cabal activity log strings

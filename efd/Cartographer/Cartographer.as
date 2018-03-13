@@ -122,10 +122,10 @@ import efd.Cartographer.notations.NotationBase;
 class efd.Cartographer.Cartographer extends Mod {
 	private function GetModInfo():Object {
 		return {
-			// Debug settings at top so that commenting out leaves no hanging ','
-			// Trace : true,
+			// Debug flag at top so that commenting out leaves no hanging ','
+			// Debug : true,
 			Name : "Cartographer",
-			Version : "0.1.6.alpha",
+			Version : "0.1.7.alpha",
 			Subsystems : {
 				Config : {
 					Init : ConfigManager.Create,

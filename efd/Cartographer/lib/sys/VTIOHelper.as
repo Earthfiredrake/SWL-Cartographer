@@ -78,10 +78,10 @@ class efd.Cartographer.lib.sys.VTIOHelper {
 			// (It calls back to the original clip, using the new clip as the "this" instance)
 			// And just to be different, ModFolder doesn't create a copy at all, it just uses the one we give it
 			// In which case we don't want to lose our current reference
-			if (ModObj.HostMovie.Icon != undefined) {
-				ModObj.Icon.CopyToTopbar(ModObj.HostMovie.Icon);
+			if (ModObj.HostClip.Icon != undefined) {
+				ModObj.Icon.CopyToTopbar(ModObj.HostClip.Icon);
 				ModObj.Icon._visible = false; // Usually the topbar will do this for us, but it's not so good about it during a re-register
-				ModObj.Icon = ModObj.HostMovie.Icon;
+				ModObj.Icon = ModObj.HostClip.Icon;
 				ModObj.Icon.Refresh();
 			}
 			RegisteredWithTopbar = true;

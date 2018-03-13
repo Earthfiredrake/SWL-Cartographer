@@ -84,8 +84,9 @@ class efd.Cartographer.lib.sys.Window {
 	}
 
 	private function ShowWindowChanged(dv:DistributedValue):Void {
+		// TODO: There's a problem with this being used directly to close a window, it skips a set of closure events that were added into the ModWindow interface
 		if (dv.GetValue()) {
-			if (ModObj.ModLoadedDV.GetValue() == false) {
+			if (!ModObj.ModLoadedDV.GetValue()) {
 				dv.SetValue(false);
 				Mod.ErrorMsg("Did not load properly, and has been disabled.");
 				return;
@@ -100,14 +101,14 @@ class efd.Cartographer.lib.sys.Window {
 		}
 	}
 
-	public function ToggleWindow():Void {
-		if (!ShowDV.GetValue()) { ShowDV.SetValue(true); }
-		else { WindowClip.TriggerWindowClose(); }
+	public function ToggleWindow():Boolean {
+		if (!ShowDV.GetValue()) { ShowDV.SetValue(true); return true; }
+		else { WindowClip.TriggerWindowClose(); return false; }
 	}
 
 	public function OpenWindow():MovieClip {
 		// Can't pass a useful cached initObj here, constructors stomp almost all the things I would set
-		var clip:MovieClip = ModObj.HostMovie.attachMovie(ModObj.ModName + "Window", WindowName, ModObj.HostMovie.getNextHighestDepth());
+		var clip:MovieClip = ModObj.HostClip.attachMovie(ModObj.ModName + "Window", WindowName, ModObj.HostClip.getNextHighestDepth());
 
 		clip.SignalContentLoaded.Connect(TriggerLoadEvent, this); // Defer config bindings until content is loaded
 		clip.SetContent(ModObj.ModName + WindowName + "Content");
