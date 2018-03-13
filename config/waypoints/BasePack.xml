@@ -171,6 +171,9 @@
 		<Transit zone="1100" x="383" y="461" z="49" targetZone="7230" /> <!-- Fight Club -->
 		<Transit zone="1100" x="415" y="333" z="50" targetZone="5710" icon="exit_dungeon.png" /> <!-- Manhattan Exclusion Zone -->
 		<Transit zone="1100" x="423" y="408" z="52" targetZone="7251" /> <!-- Modern Prometheus -->
+		<Vendor zone="1100" x="352" y="324" z="53">
+			<Name rdb="category=51000 id=32096" />
+		</Vendor>
 		<Vendor zone="1100" x="382.6" y="380.4">
 			<Name rdb="category=51000 id=35460" />
 		</Vendor>
@@ -195,11 +198,8 @@
 		<Transit zone="1000" x="224" y="243" z="30" targetZone="7110" /> <!-- Ockham's Razor -->
 		<Transit zone="1000" x="234" y="125" z="19" targetZone="7020" /> <!-- Fight Club -->
 		<Transit zone="1000" x="298" y="267" z="32" targetZone="7190" /> <!-- Museum of the Occult -->
-		<Vendor zone="1000" x="200.8" y="339.7">
-			<Name rdb="category=50025 id=251201569" />
-		</Vendor>
-		<Vendor zone="1000" x="173.6" y="222.4">
-			<Name rdb="category=51000 id=14061" />
+		<Vendor zone="1000" x="126.9" y="159.2">
+			<Name rdb="category=51000 id=29785" />
 		</Vendor>
 		<Vendor zone="1000" x="145.8" y="221.7">
 			<Name rdb="category=51000 id=29792" />
@@ -207,32 +207,41 @@
 		<Vendor zone="1000" x="145.7" y="205">
 			<Name rdb="category=51000 id=32097" />
 		</Vendor>
-		<Vendor zone="1000" x="126.9" y="159.2">
-			<Name rdb="category=51000 id=29785" />
-		</Vendor>
-		<Vendor zone="1000" x="148.2" y="149.9">
+		<Vendor zone="1000" x="146" y="143" z="26">
 			<Name rdb="category=51000 id=32096" />
 		</Vendor>
-		<Vendor zone="1000" x="176.3" y="172.5">
-			<Name rdb="category=51000 id=31216" />
-		</Vendor>
-		<Vendor zone="1000" x="204.5" y="291.8">
-			<Name rdb="category=51000 id=29793" />
-		</Vendor>
-		<Vendor zone="1000" x="170.9" y="186.7">
-			<Name rdb="category=260 id=105862994" />
+		<Vendor zone="1000" x="148" y="149" z="26">
+			<Name rdb="category=51000 id=32096" />
 		</Vendor>
 		<Vendor zone="1000" x="164.3" y="358" icon="service_bank.png">
 			<Name rdb="category=51000 id=29867" />
 		</Vendor>
-		<Vendor zone="1000" x="364.3" y="301.3" icon="service_bank.png">
-			<Name rdb="category=51000 id=29867" />
+		<Vendor zone="1000" x="170.9" y="186.7">
+			<Name rdb="category=260 id=105862994" />
+		</Vendor>
+		<Vendor zone="1000" x="173.6" y="222.4">
+			<Name rdb="category=51000 id=14061" />
+		</Vendor>
+		<Vendor zone="1000" x="176.3" y="172.5">
+			<Name rdb="category=51000 id=31216" />
+		</Vendor>
+		<Vendor zone="1000" x="200.8" y="339.7">
+			<Name rdb="category=50025 id=251201569" />
+		</Vendor>
+		<Vendor zone="1000" x="204.5" y="291.8">
+			<Name rdb="category=51000 id=29793" />
+		</Vendor>
+		<Vendor zone="1000" x="215" y="233" z="30">
+			<Name rdb="category=51000 id=32096" />
 		</Vendor>
 		<Vendor zone="1000" x="221.1" y="235.4" icon="service_postal.png">
 			<Name rdb="category=51000 id=29868" />
 		</Vendor>
 		<Vendor zone="1000" x="223" y="242" icon="service_barber.png">
 			<Name rdb="category=260 id=150569634" />
+		</Vendor>
+		<Vendor zone="1000" x="364.3" y="301.3" icon="service_bank.png">
+			<Name rdb="category=51000 id=29867" />
 		</Vendor>
 	</_Section>
 	<_Section> <!-- Seoul -->

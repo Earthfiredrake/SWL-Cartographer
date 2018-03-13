@@ -125,6 +125,11 @@
 			<Param en="Green" />
 		</Note>
 	</Lore>
+	<Lore loreID="8660" zone="3100" x="360" y="712" z="71">
+		<Note cat="MapNoteTooltip" str="ScarabColour" fmt="true">
+			<Param en="Green" />
+		</Note>
+	</Lore>
 	<Lore loreID="8660" zone="3100" x="435" y="145" z="87">
 		<Note cat="MapNoteTooltip" str="ScarabColour" fmt="true">
 			<Param en="Green" />

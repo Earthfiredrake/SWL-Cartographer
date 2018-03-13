@@ -45,11 +45,14 @@
 		<Lore loreID="596" zone="6152" x="242" y="163" z="2" />
 		<Lore loreID="615" zone="6152" x="161" y="246" z="2" />
 		<Lore loreID="614" zone="6152" x="217" y="165" z="1" />
-		<!-- The Darkness War 5/12 -->
-			<!-- #1-4 (DW) -->
+		<!-- The Darkness War 8/12 -->
+			<!-- #1 (DW) -->
+		<Lore loreID="834" zone="5170" x="182" y="649" z="150" />
+		<Lore loreID="833" zone="5170" x="186" y="590" z="153" />
+			<!-- #4 (DW) -->
 		<Lore loreID="831" zone="5170" x="96" y="507" z="130" />
 		<Lore loreID="830" zone="5170" x="103" y="601" z="136" />
-			<!-- #7 -->
+		<Lore loreID="829" zone="5170" x="68" y="452" z="131" />
 		<Lore loreID="828" zone="5170" x="57" y="571" z="132" />
 		<Lore loreID="827" zone="5170" x="139" y="804" z="131" />
 			<!-- #10 -->
