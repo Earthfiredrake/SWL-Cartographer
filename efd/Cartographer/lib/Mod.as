@@ -85,6 +85,9 @@ class efd.Cartographer.lib.Mod {
 	//     Some subsystems have dependencies, Mod ensures correct initialization order but the mod author is responsible for including all dependencies
 	//     For full details on dependencies, and param contents, consult the subsystem .as files
 
+	// TODO: Subsystems are currently locked into particular keys
+	//       Would like to make this a more flexible component based system
+
 	public function Mod(modInfo:Object, hostClip:MovieClip) {
 		Debug = DebugUtils.StaticInit(modInfo.Name || "Unnamed", DVPrefix, modInfo.Debug);
 		DebugUtils.SignalFatalError.Connect(OnFatalError, this);
@@ -96,7 +99,7 @@ class efd.Cartographer.lib.Mod {
 
 		FifoMsg = Delegate.create(this, _FifoMsg);
 		ChatMsg = Delegate.create(this, _ChatMsg);
-		
+
 		LoadXmlAsynch = Delegate.create(this, _LoadXmlAsynch);
 
 		if (!modInfo.Name) {
@@ -115,7 +118,8 @@ class efd.Cartographer.lib.Mod {
 		if (modInfo.Subsystems.Config != undefined) { SystemsLoaded.Config = false; }
 		ModLoadedDV = DistributedValue.Create(ModLoadedVarName);
 		ModLoadedDV.SetValue(false);
-		ModEnabledDV = DistributedValue.Create(ModEnabledVarName); // null until config load, or load completes
+		ModEnabledDV = DistributedValue.Create(ModEnabledVarName);
+		ModEnabledDV.SetValue(undefined);
 		ModEnabledDV.SignalChanged.Connect(ModEnabledChanged, this);
 
 		ModListDV = DistributedValue.Create("emfListMods");
@@ -164,7 +168,7 @@ class efd.Cartographer.lib.Mod {
 		SignalLoadCompleted.Emit();
 		ModLoadedDV.SetValue(Version);
 		// No errors force disabled during load, assume things are working and fetch the serialized state (or true)
-		if (ModEnabledDV.GetValue() === null) { ModEnabledDV.SetValue(Config.GetValue("Enabled", true)); }
+		if (ModEnabledDV.GetValue() === undefined) { ModEnabledDV.SetValue(Config.GetValue("Enabled", true)); }
 	}
 
 	// The game itself toggles the mod's activation state (based on modules.xml criteria)
@@ -173,8 +177,8 @@ class efd.Cartographer.lib.Mod {
 		if (!state) {
 			// DEPRECATED(v1.0.0): Temporary upgrade support
 			if (Config.GetValue("TopbarIntegration") == undefined) { Config.SetValue("TopbarIntegration", false); }
+
 			ConfigHost.ConfigWindow.CloseWindow();
-			// NOTE: This is going to partially hide the circular reference problem
 			EnabledByGame = false;
 			CheckEnableState();
 			return Config.SaveConfig();
@@ -184,7 +188,7 @@ class efd.Cartographer.lib.Mod {
 			CheckEnableState();
 		}
 	}
-	
+
 	//  Flash triggered enable state DV has changed
 	private function ModEnabledChanged(dv:DistributedValue):Void {
 		var newValue:Boolean = dv.GetValue();
@@ -205,10 +209,10 @@ class efd.Cartographer.lib.Mod {
 		}
 	}
 
-	private function CheckEnableState() {		
+	private function CheckEnableState() {
 		var newState:Boolean = (Boolean)(EnabledByGame && ModEnabledDV.GetValue()); // Cast due to ModEnabledDV possibly null
-		if (newState != _Enabled) { // State changed
-			_Enabled = newState;
+		if (newState != Enabled) { // State changed
+			Enabled = newState;
 			if (newState) { Activate(); }
 			else { Deactivate(); }
 		}
@@ -220,9 +224,7 @@ class efd.Cartographer.lib.Mod {
 	public function OnUnload():Void {
 		ModLoadedDV.SetValue(false);
 		Icon.FreeID(); // TODO: Move this into Icon, probably by raising an event
-		// TODO: Clean up potential cyclical references
 		removeMovieClip(Icon);
-		
 	}
 
 	// Each mod ends up getting two notifications, whichever mod is first gets a true+false, other mods get false+false
@@ -246,9 +248,7 @@ class efd.Cartographer.lib.Mod {
 
 	// Implementations
 	private function ToggleUserEnabled():Void { ModEnabledDV.SetValue(!ModEnabledDV.GetValue()); }
-	private function ToggleUserEnabledTooltip():String {
-		return LocaleManager.GetString("GUI", ModEnabledDV.GetValue() ? "TooltipModOff" : "TooltipModOn");
-	}
+	private function ToggleUserEnabledTooltip():String { return LocaleManager.GetString("GUI", ModEnabledDV.GetValue() ? "TooltipModOff" : "TooltipModOn"); }
 
 	private function ToggleInterfaceWindow():Void { InterfaceWindow.ToggleWindow(); }
 	private function ToggleInterfaceWindowTooltip():String { return LocaleManager.GetString("GUI", "TooltipShowInterface"); }
@@ -300,7 +300,7 @@ class efd.Cartographer.lib.Mod {
 		var args:Array = new Array("General", "ChatMessage").concat(arguments);
 		Utils.PrintChatText(LocaleManager.FormatString.apply(undefined, args));
 	}
-	
+
 	private function GetPrefixes(options:Object):Array {
 		var prefixes:Array = new Array("", "");
 		if (!options.noPrefix) {
@@ -336,20 +336,16 @@ class efd.Cartographer.lib.Mod {
 
 	public function get ModLoadedVarName():String { return DVPrefix + ModName + "Loaded"; }
 	public var ModLoadedDV:DistributedValue; // Locks-out interface when mod fails to load, may also be used for basic cross-mod integration
-	public var SystemsLoaded:Object; // Tracks asynchronous data loads so that functions aren't called without proper data, removed once loading complete	
+	public var SystemsLoaded:Object; // Tracks asynchronous data loads so that functions aren't called without proper data, removed once loading complete
 	public var SignalLoadCompleted:Signal;
-	
+
 	public function get ModEnabledVarName():String { return DVPrefix + ModName + "Enabled"; }
 	private var ModEnabledDV:DistributedValue; // Doesn't reflect game toggles, only the player or internal mod disabling
-	private var EnabledByGame:Boolean = false;	
-	private var _Enabled:Boolean = false;
-	public function get Enabled():Boolean { return _Enabled; } // EnabledByGame && EnabledByPlayer (_Enabled is so that change notifications can be generated)
-	
+	private var EnabledByGame:Boolean = false;
+	private var Enabled:Boolean = false; // PlayerEnabled && GameEnabled
+
 	private var ModListDV:DistributedValue;
 	private var VersionReported:Boolean = false;
-
-	// TODO: I suspect some of these ducktyped objects of holding cyclical references that cause problems on character/server swaps
-	//       Should sort them out. In the meantime will attempt to add some cleanup code above
 
 	public var ConfigHost:Object; // Ducktyped ConfigManager
 	public var Config:Object; // Ducktyped ConfigWrapper

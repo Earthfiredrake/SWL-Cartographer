@@ -58,7 +58,6 @@ class efd.Cartographer.lib.sys.VTIOHelper {
 		ViperDV.SignalChanged.Connect(DoTopbarRegistration, this);
 	}
 
-// TODO: ModObj needs to be either a: removed, or b: weak-pointered
 	private function DoTopbarRegistration(dv:DistributedValue):Void {
 		if (dv.GetValue()) {
 			var mod:Mod = ModPtr.Get();
@@ -75,7 +74,6 @@ class efd.Cartographer.lib.sys.VTIOHelper {
 				var topbarInfo:Array = [mod.ModName, Mod.DevName, mod.Version, ConfigDV, mod.Icon.toString()];
 				DistributedValue.SetDValue("VTIO_RegisterAddon", topbarInfo.join('|'));
 			}
-			// TODO: Completing icon extraction
 			// VTIO creates its own icon, use it as our target for changes instead
 			// Can't actually remove ours though, Meeehr's redirects event handling oddly
 			// (It calls back to the original clip, using the new clip as the "this" instance)

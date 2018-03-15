@@ -112,9 +112,6 @@ class efd.Cartographer.lib.sys.Window {
 		// Can't pass a useful cached initObj here, constructors stomp almost all the things I would set
 		var clip:MovieClip = mod.HostClip.attachMovie(mod.ModName + "Window", WindowName, mod.HostClip.getNextHighestDepth());
 
-		clip.SignalContentLoaded.Connect(TriggerLoadEvent, this); // Defer config bindings until content is loaded
-		clip.SetContent(mod.ModName + WindowName + "Content");
-
 		var localeTitle:String = LocaleManager.FormatString("GUI", WindowName + "Title", mod.ModName);
 		clip.SetTitle(localeTitle, "left");
 
@@ -128,6 +125,9 @@ class efd.Cartographer.lib.sys.Window {
 		}
 
 		clip.SignalClose.Connect(CloseWindow, this);
+
+		clip.SignalContentLoaded.Connect(TriggerLoadEvent, this); // Defer data binding until display is loaded
+		clip.SetContent(mod.ModName + WindowName + "Content");
 
 		return clip;
 	}
