@@ -31,12 +31,12 @@
                     </FillStyle>
                   </fills>
                   <edges>
+                    <Edge fillStyle1="1" edges="!2440 20S2|2442 140"/>
                     <Edge fillStyle1="3" edges="!2442 140S2|2442 679!2442 679[2442 879 2242 879!2242 879|202 879!202 879[2 879 2 679!2 679|2 140"/>
                     <Edge fillStyle1="1" edges="!2 140S2|0 20!0 20|2 20"/>
                     <Edge fillStyle1="2" edges="!2 20S2|2 0!2 0|2442 0!2442 0|2442 20!2442 20|2440 20"/>
-                    <Edge fillStyle0="1" fillStyle1="2" edges="!2440 20S3|2 20"/>
-                    <Edge fillStyle1="1" edges="!2440 20S2|2442 140"/>
                     <Edge fillStyle0="3" fillStyle1="1" edges="!2442 140S3|2 140"/>
+                    <Edge fillStyle0="1" fillStyle1="2" edges="!2440 20S3|2 20"/>
                   </edges>
                 </DOMShape>
               </elements>

@@ -1,19 +1,19 @@
-<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" backgroundColor="#666666" width="100" height="100" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" viewAngle3D="10.8137112665991" nextSceneIdentifier="427" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" autoSaveHasPrompted="true">
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" backgroundColor="#666666" width="100" height="100" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" viewAngle3D="10.8137112665991" nextSceneIdentifier="430" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" autoSaveHasPrompted="true">
      <folders>
-          <DOMFolderItem name="Assets" itemID="596a8481-0000022b"/>
-          <DOMFolderItem name="Components" itemID="596fa3d3-00000204"/>
+          <DOMFolderItem name="Assets" itemID="596a8481-0000022b" isExpanded="true"/>
+          <DOMFolderItem name="Components" itemID="596fa3d3-00000204" isExpanded="true"/>
           <DOMFolderItem name="Components/Component Assets" itemID="59a06293-0000022e"/>
           <DOMFolderItem name="Components/Component Assets/Checkbox Assets" itemID="59a06293-0000022f"/>
           <DOMFolderItem name="Components/Window Assets" itemID="596fa3e1-00000223"/>
           <DOMFolderItem name="Components/Window Assets/Components" itemID="52499070-000009df"/>
           <DOMFolderItem name="Components/Window Assets/Components/Component Assets" itemID="49d65944-000001cb"/>
           <DOMFolderItem name="Components/Window Assets/Components/Component Assets/Checkbox Assets" itemID="4f6b75df-000047eb"/>
-          <DOMFolderItem name="Fonts" itemID="58bddfcb-00000218"/>
+          <DOMFolderItem name="Fonts" itemID="58bddfcb-00000218" isExpanded="true"/>
           <DOMFolderItem name="Icons" itemID="58bf2a12-00000934"/>
-          <DOMFolderItem name="MarkerModifierSprites" itemID="5a72b4e3-00000201" isExpanded="true"/>
+          <DOMFolderItem name="MarkerModifierSprites" itemID="5a72b4e3-00000201"/>
      </folders>
      <fonts>
-          <DOMFontItem name="Fonts/_StandardFont" itemID="4dd10cd6-00000f53" linkageExportForAS="true" linkageIdentifier="_StandardFont" font="FuturaStd-BookFix" size="0" id="1" sourceLastImported="1488855578" embedRanges="4|5|17|18|20"/>
+          <DOMFontItem name="Fonts/_StandardFont" itemID="4dd10cd6-00000f53" linkageExportForAS="true" linkageIdentifier="_StandardFont" font="Futura-Medium" size="0" id="1" sourceLastImported="1521072722" embedRanges="4|5|17|18|20"/>
      </fonts>
      <media>
           <DOMBitmapItem name="Components/Window Assets/Drop Shadow Bitmap" itemID="4f8da942-00001f90" sourceExternalFilepath="./LIBRARY/Components/Window Assets/Drop Shadow Bitmap" sourceLastImported="1334683970" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Components/Window Assets/Drop Shadow Bitmap./LIBRARY/Components/Window Assets/Drop Shadow Bitmap" bitmapDataHRef="M 3 1500488659.dat" frameRight="3080" frameBottom="5040"/>
@@ -29,7 +29,7 @@
           <Include href="Components/CartographerLayerList.xml" itemID="59a060ba-000001fa" lastModified="1516932567"/>
           <Include href="Components/CartographerLayerListEntry.xml" itemID="59a0633c-0000026d" lastModified="1516929098"/>
           <Include href="Components/CartographerWaypointTooltip.xml" itemID="598cf3b6-000002ab" lastModified="1508976986"/>
-          <Include href="Components/CartographerWindow.xml" itemID="5a6590af-0000055c" lastModified="1516946503"/>
+          <Include href="Components/CartographerWindow.xml" itemID="5a6590af-0000055c" lastModified="1521072722"/>
           <Include href="Components/CheckBoxNoneLabel.xml" itemID="4b1533e5-00002615" lastModified="1489526147"/>
           <Include href="Components/Component Assets/Checkbox Assets/box.xml" loadImmediate="false" itemID="59a06293-00000237" lastModified="1332427849"/>
           <Include href="Components/Component Assets/Checkbox Assets/check.xml" loadImmediate="false" itemID="59a06293-00000236" lastModified="1316610748"/>
@@ -63,6 +63,9 @@
      </timelines>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="1043" publishTime="1521072659"/>
+          <PublishItem publishSize="1357" publishTime="1521072659"/>
+          <PublishItem publishSize="3544" publishTime="1521072658"/>
           <PublishItem publishSize="102249" publishTime="1517466901"/>
           <PublishItem publishSize="101960" publishTime="1517347704"/>
           <PublishItem publishSize="101967" publishTime="1517347686"/>
@@ -80,8 +83,5 @@
           <PublishItem publishSize="98880" publishTime="1517298350"/>
           <PublishItem publishSize="101758" publishTime="1517297781"/>
           <PublishItem publishSize="101786" publishTime="1517297131"/>
-          <PublishItem publishSize="101749" publishTime="1517297065"/>
-          <PublishItem publishSize="1023" publishTime="1516946432"/>
-          <PublishItem publishSize="1327" publishTime="1516946432"/>
      </publishHistory>
 </DOMDocument>

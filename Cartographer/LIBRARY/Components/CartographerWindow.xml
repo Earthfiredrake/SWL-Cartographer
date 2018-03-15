@@ -1,12 +1,12 @@
-<DOMComponentItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Components/CartographerWindow" itemID="5a6590af-0000055c" linkageExportForAS="true" linkageIdentifier="CartographerWindow" linkageClassName="efd.Cartographer.lib.sys.window.ModWindow" lastModified="1516946503" lastUniqueIdentifier="13" displayAsComponent="false" customIconID="0" persistLivePreview11="true" editFrameIndex="1" requiredMinimumPlayerVersion="0" requiredMinimumASVersion="0" parametersAreLocked="true">
+<DOMComponentItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Components/CartographerWindow" itemID="5a6590af-0000055c" linkageExportForAS="true" linkageIdentifier="CartographerWindow" linkageClassName="efd.Cartographer.lib.sys.window.ModWindow" lastModified="1521072722" lastUniqueIdentifier="13" displayAsComponent="false" customIconID="0" persistLivePreview11="true" editFrameIndex="1" requiredMinimumPlayerVersion="0" requiredMinimumASVersion="0" parametersAreLocked="true">
   <timeline>
     <DOMTimeline name="CartographerWindow">
       <layers>
-        <DOMLayer name="Title" color="#9933CC" autoNamed="false">
+        <DOMLayer name="Title" color="#9933CC" current="true" isSelected="true" autoNamed="false">
           <frames>
             <DOMFrame index="0" keyMode="9728">
               <elements>
-                <DOMDynamicText name="m_Title" width="56" height="21.05" includeOutlines="true" isSelectable="false">
+                <DOMDynamicText name="m_Title" selected="true" width="56" height="21.05" includeOutlines="true" isSelectable="false">
                   <matrix>
                     <Matrix tx="42" ty="12"/>
                   </matrix>
@@ -39,7 +39,7 @@
                   <transformationPoint>
                     <Point x="9.05" y="9.15"/>
                   </transformationPoint>
-                  <dataBindingXML><![CDATA[<component metaDataFetched='true' schemaUrl='' schemaOperation='' sceneRootLabel='CartographerPointMarkerOverlay' oldCopiedComponentPath=''>
+                  <dataBindingXML><![CDATA[<component metaDataFetched='true' schemaUrl='' schemaOperation='' sceneRootLabel='CartographerWindow' oldCopiedComponentPath='3'>
 </component>
 ]]></dataBindingXML>
                   <parametersAsXML><![CDATA[   <property id="autoSize">
@@ -75,7 +75,7 @@
             </DOMFrame>
           </frames>
         </DOMLayer>
-        <DOMLayer name="Stroke" color="#FF4FFF" current="true" isSelected="true" autoNamed="false">
+        <DOMLayer name="Stroke" color="#FF4FFF" autoNamed="false">
           <frames>
             <DOMFrame index="0" keyMode="9728">
               <elements>
