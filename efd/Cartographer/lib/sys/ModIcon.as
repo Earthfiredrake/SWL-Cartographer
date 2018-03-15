@@ -13,6 +13,7 @@ import com.GameInterface.Tooltip.TooltipInterface;
 import com.GameInterface.Tooltip.TooltipManager;
 import com.Utils.GlobalSignal;
 import com.Utils.Signal;
+import com.Utils.WeakPtr;
 import GUIFramework.SFClipLoader;
 
 import efd.Cartographer.lib.etu.GemController;
@@ -49,7 +50,7 @@ import efd.Cartographer.lib.Mod;
 
 class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 	/// Initialization
-	public static function Create(mod:Mod, initObj:Object):MovieClip {		
+	public static function Create(mod:Mod, initObj:Object):MovieClip {
 		// Check dependencies
 		if (!mod.Config) {
 			DebugUtils.ErrorMsgS("Subsystem dependency missing: Config", {system : "ModIcon"});
@@ -63,19 +64,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 		delete initObj.ResName;
 
 		// Add Mod to init object, as unable to pass parameters to constructor
-		initObj.ModObj = mod;
-
-		// Wrap callbacks as delegates in Mod context
-		if (initObj.GetFrame) { initObj.GetFrame = Delegate.create(mod, initObj.GetFrame); }
-		if (initObj.LeftMouseInfo) {
-			initObj.LeftMouseInfo.Action = Delegate.create(mod, initObj.LeftMouseInfo.Action);
-			initObj.LeftMouseInfo.Tooltip = Delegate.create(mod, initObj.LeftMouseInfo.Tooltip);
-		}
-		if (initObj.RightMouseInfo) {
-			initObj.RightMouseInfo.Action = Delegate.create(mod, initObj.RightMouseInfo.Action);
-			initObj.RightMouseInfo.Tooltip = Delegate.create(mod, initObj.RightMouseInfo.Tooltip);
-		}
-		if (initObj.ExtraTooltipInfo) { initObj.ExtraTooltipInfo = Delegate.create(mod, initObj.ExtraTooltipInfo); }
+		initObj.ModPtr = new WeakPtr(mod);
 
 		return MovieClipHelper.attachMovieWithRegister(iconName, ModIcon, "ModIcon", mod.HostClip, mod.HostClip.getNextHighestDepth(), initObj);
 	}
@@ -85,7 +74,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 		Debug = new DebugUtils("ModIcon");
 
 		// Get local copies of commonly used ModObj members
-		Config = ModObj.Config;
+		Config = ModPtr.Get().Config;
 
 		// Get a unique ID for default layout calculations
 		// Note: System is not without flaws, subsequently added mods may just rearrange the IDs and stomp anyway
@@ -182,7 +171,8 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 				GlobalSignal.SignalSetGUIEditMode.Disconnect(ManageGEM, this);
 			} else {
 				// Restores the state
-				ModObj.Icon = ModObj.HostClip.ModIcon;
+				var mod:Mod = ModPtr.Get();
+				mod.Icon = mod.HostClip.ModIcon;
 				GetID();
 				filters = [ShadowFilter];
 				// Note: Settings are not restored here,
@@ -207,7 +197,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 		//     - These two in particular could make further customizing icon behaviour after registration risky
 
 		// Required variables
-		copy.ModObj = ModObj;
+		copy.ModPtr = ModPtr;
 		copy.Config = Config;
 		copy.Tooltip = Tooltip;
 
@@ -316,7 +306,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 
 	// Trigger a re-evaluation of the current icon frame and reloads the tooltip if open
 	public function Refresh():Void {
-		gotoAndStop(GetFrame());
+		gotoAndStop(GetFrame.call(ModPtr.Get()));
 		if (Tooltip) { OpenTooltip(); }
 	}
 
@@ -326,8 +316,9 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 	/// Layout and GEM handling
 	private function BringAboveTopbar(above:Boolean):Void {
 		if (above != IsAboveTopbar) {
-			if (above) { SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(ModObj.HostClip), _global.Enums.ViewLayer.e_ViewLayerTop, 2); }
-			else { SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(ModObj.HostClip), _global.Enums.ViewLayer.e_ViewLayerMiddle, 10); }
+			var mod:Mod = ModPtr.Get();
+			if (above) { SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(mod.HostClip), _global.Enums.ViewLayer.e_ViewLayerTop, 2); }
+			else { SFClipLoader.SetClipLayer(SFClipLoader.GetClipIndex(mod.HostClip), _global.Enums.ViewLayer.e_ViewLayerMiddle, 10); }
 			IsAboveTopbar = above;
 		}
 	}
@@ -339,7 +330,8 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 
 	private function ManageGEM(unlock:Boolean):Void {
 		if (unlock && !GemManager) {
-			GemManager = GemController.create("GuiEditModeInterface", ModObj.HostClip, ModObj.HostClip.getNextHighestDepth(), this);
+			var mod:Mod = ModPtr.Get();
+			GemManager = GemController.create("GuiEditModeInterface", mod.HostClip, mod.HostClip.getNextHighestDepth(), this);
 			GemManager.lockAxis(0);
 			if (OnBaseTopbar) {	GemManager.lockAxis(2); }
 			else { GemManager.addEventListener( "scrollWheel", this, "ChangeScale" ); }
@@ -366,8 +358,8 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 	/// Input event handlers
 	private function onMousePress(buttonID:Number):Void {
 		switch(buttonID) {
-			case 1: { LeftMouseInfo.Action(); break; }
-			case 2: { RightMouseInfo.Action(); break; }
+			case 1: { LeftMouseInfo.Action.call(ModPtr.Get()); break; }
+			case 2: { RightMouseInfo.Action.call(ModPtr.Get()); break; }
 			default: { Debug.TraceMsg("Unexpected mouse button press: " + buttonID); }
 		}
 	}
@@ -386,11 +378,12 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 	/// Tooltip
 	// Tooltip data can be overriden entirely, but is easiset to do with customization of mouse actions and extra info
 	private function GetTooltipData():TooltipData {
+		var mod:Mod = ModPtr.Get();
 		var data:TooltipData = new TooltipData();
 		data.m_Padding = TooltipPadding;
 		data.m_MaxWidth = TooltipWidth; // The content does not affect the layout, so unless something that does (edge of screen perhaps?) gets in the way, this is how wide it will be
 
-		data.m_Title = "<font " + TooltipTitleFont + "><b>" + ModObj.ModName + "</b></font>";
+		data.m_Title = "<font " + TooltipTitleFont + "><b>" + mod.ModName + "</b></font>";
 		var credit:String = LocaleManager.FormatString("GUI", "TooltipCredit", Config.GetValue("Version"), Mod.DevName);
 		data.m_SubTitle = "<font " + TooltipCreditFont + ">" + credit + "</font>";
 		data.m_Color = TooltipTitleColor;
@@ -399,9 +392,9 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 		// It's a bit tight like this, but the spacing was excessive the other way
 		// The array.join makes it easy to skip the \n if there are less than two lines
 		var tooltipStrings:Array = new Array();
-		if (LeftMouseInfo) { tooltipStrings.push(LocaleManager.FormatString("GUI", "TooltipLeft", LeftMouseInfo.Tooltip())); }
-		if (RightMouseInfo) { tooltipStrings.push(LocaleManager.FormatString("GUI", "TooltipRight", RightMouseInfo.Tooltip())); }
-		var extra:String = ExtraTooltipInfo();
+		if (LeftMouseInfo) { tooltipStrings.push(LocaleManager.FormatString("GUI", "TooltipLeft", LeftMouseInfo.Tooltip.call(ModPtr.Get()))); }
+		if (RightMouseInfo) { tooltipStrings.push(LocaleManager.FormatString("GUI", "TooltipRight", RightMouseInfo.Tooltip.call(ModPtr.Get()))); }
+		var extra:String = ExtraTooltipInfo.call(ModPtr.Get());
 		if (extra) { tooltipStrings.push(extra); }
 		if (tooltipStrings.length > 0) { data.AddDescription("<font " + TooltipTextFont + ">" + tooltipStrings.join('\n') + "</font>"); }
 
@@ -433,7 +426,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 	private static var TooltipCreditFont:String = "size='10'";
 	private static var TooltipTextFont:String = "size='11'";
 
-	private var ModObj:Mod;
+	private var ModPtr:WeakPtr;
 	private var Config:Object; // Local copy of ModObj.Config; Ducktyped ConfigWrapper
 	private var _VTIOMode:Boolean = false;
 
@@ -453,6 +446,6 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 	// Used to adjust default icon locations so they no longer stack up awkwardly
 	private var IconCountDV:DistributedValue;
 	private var IconID:Number = -1;
-	
+
 	private var Debug:DebugUtils;
 }

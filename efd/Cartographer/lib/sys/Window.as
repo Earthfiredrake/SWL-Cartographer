@@ -5,6 +5,7 @@
 import flash.geom.Point;
 
 import com.GameInterface.DistributedValue;
+import com.Utils.WeakPtr;
 
 import efd.Cartographer.lib.LocaleManager;
 import efd.Cartographer.lib.Mod;
@@ -52,14 +53,14 @@ class efd.Cartographer.lib.sys.Window {
 	}
 
 	private function Window(mod:Mod, initObj:Object) {
-		ModObj = mod;
+		ModPtr = new WeakPtr(mod);
 		WindowName = initObj.WindowName;
 		LoadEvent = initObj.LoadEvent;
 
-		ModObj.Config.NewSetting(WindowName + "Position", new Point(20, 30));
+		mod.Config.NewSetting(WindowName + "Position", new Point(20, 30));
 		if (CheckResizeLimits(initObj.ResizeLimits)) {
 			ResizeLimits = initObj.ResizeLimits;
-			ModObj.Config.NewSetting(WindowName + "Size", new Point(-1, -1));
+			mod.Config.NewSetting(WindowName + "Size", new Point(-1, -1));
 		}
 
 		ShowDV = DistributedValue.Create(Mod.DVPrefix + "Show" + mod.ModName + WindowName);
@@ -86,7 +87,7 @@ class efd.Cartographer.lib.sys.Window {
 	private function ShowWindowChanged(dv:DistributedValue):Void {
 		// TODO: There's a problem with this being used directly to close a window, it skips a set of closure events that were added into the ModWindow interface
 		if (dv.GetValue()) {
-			if (!ModObj.ModLoadedDV.GetValue()) {
+			if (!ModPtr.Get().ModLoadedDV.GetValue()) {
 				dv.SetValue(false);
 				Mod.ErrorMsg("Did not load properly, and has been disabled.");
 				return;
@@ -107,16 +108,17 @@ class efd.Cartographer.lib.sys.Window {
 	}
 
 	public function OpenWindow():MovieClip {
+		var mod:Mod = ModPtr.Get();
 		// Can't pass a useful cached initObj here, constructors stomp almost all the things I would set
-		var clip:MovieClip = ModObj.HostClip.attachMovie(ModObj.ModName + "Window", WindowName, ModObj.HostClip.getNextHighestDepth());
+		var clip:MovieClip = mod.HostClip.attachMovie(mod.ModName + "Window", WindowName, mod.HostClip.getNextHighestDepth());
 
 		clip.SignalContentLoaded.Connect(TriggerLoadEvent, this); // Defer config bindings until content is loaded
-		clip.SetContent(ModObj.ModName + WindowName + "Content");
+		clip.SetContent(mod.ModName + WindowName + "Content");
 
-		var localeTitle:String = LocaleManager.FormatString("GUI", WindowName + "Title", ModObj.ModName);
+		var localeTitle:String = LocaleManager.FormatString("GUI", WindowName + "Title", mod.ModName);
 		clip.SetTitle(localeTitle, "left");
 
-		var position:Point = ModObj.Config.GetValue(WindowName + "Position");
+		var position:Point = mod.Config.GetValue(WindowName + "Position");
 		clip._x = position.x;
 		clip._y = position.y;
 
@@ -130,15 +132,16 @@ class efd.Cartographer.lib.sys.Window {
 		return clip;
 	}
 
-	private function UpdateSize():Void { ModObj.Config.SetValue(WindowName + "Size", WindowClip.GetSize()); }
+	private function UpdateSize():Void { ModPtr.Get().Config.SetValue(WindowName + "Size", WindowClip.GetSize()); }
 
 	private function TriggerLoadEvent():Void { LoadEvent(WindowClip.m_Content); }
 
 	private function CloseWindow():Void { ShowDV.SetValue(false); }
 
 	private function WindowClosed():Void {
-		ReturnWindowToVisibleBounds(WindowClip, ModObj.Config.GetDefault(WindowName + "Position"));
-		ModObj.Config.SetValue(WindowName + "Position", new Point(WindowClip._x, WindowClip._y));
+		var mod = ModPtr.Get();
+		ReturnWindowToVisibleBounds(WindowClip, mod.Config.GetDefault(WindowName + "Position"));
+		mod.Config.SetValue(WindowName + "Position", new Point(WindowClip._x, WindowClip._y));
 
 		WindowClip.removeMovieClip();
 	}
@@ -155,7 +158,7 @@ class efd.Cartographer.lib.sys.Window {
 		}
 	}
 
-	private var ModObj:Mod;
+	private var ModPtr:WeakPtr;
 
 	private var WindowName:String;
 	private var LoadEvent:Function;
