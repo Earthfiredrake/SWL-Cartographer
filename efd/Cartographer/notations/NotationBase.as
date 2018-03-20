@@ -2,8 +2,8 @@
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-Cartographer
 
+import efd.Cartographer.lib.DebugUtils;
 import efd.Cartographer.lib.LocaleManager;
-import efd.Cartographer.lib.Mod;
 
 import efd.Cartographer.inf.INotation;
 
@@ -43,7 +43,7 @@ class efd.Cartographer.notations.NotationBase implements INotation {
 			case undefined:
 				notation = new BasicPoint(xml);	break;
 			default:
-				Mod.TraceMsg("Unknown notation type=" + xml.attributes.type);
+				DebugUtils.ErrorMsgS("Unknown notation type=" + xml.attributes.type);
 				return undefined;
 		}
 		switch (notation.GetLayer()) {

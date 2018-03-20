@@ -2,7 +2,7 @@
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-Cartographer
 
-import efd.Cartographer.lib.Mod;
+import efd.Cartographer.lib.DebugUtils;
 
 import efd.Cartographer.gui.Layers.NotationLayer;
 import efd.Cartographer.gui.Layers.CollectibleLayer;
@@ -34,7 +34,7 @@ class efd.Cartographer.LayerData {
 				NotationsByZone[zoneID].Waypoints.push(notation);
 				break;
 			default:
-				Mod.TraceMsg('A notation class declared an unknown Type="' + notation.GetType() + '" and could not be sorted.');
+				DebugUtils.ErrorMsgS('A notation class declared an unknown Type="' + notation.GetType() + '" and could not be sorted.');
 		}
 	}
 

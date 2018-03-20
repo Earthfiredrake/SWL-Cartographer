@@ -4,9 +4,10 @@
 
 import flash.geom.Point;
 
+import efd.Cartographer.lib.DebugUtils;
+
 import efd.Cartographer.gui.Layers.NotationLayer;
 import efd.Cartographer.inf.IPath;
-import efd.Cartographer.lib.Mod;
 
 class efd.Cartographer.gui.WaypointPath extends MovieClip {
 	public static var __className:String = "efd.Cartographer.gui.WaypointPath";
@@ -49,7 +50,7 @@ class efd.Cartographer.gui.WaypointPath extends MovieClip {
 	//   hitTest(x, y, [shapeFlag], [ignoreInvisibleChildren]): Boolean - tests against a point
 	public function hitTest():Boolean {
 		switch (arguments.length) {
-			case 1: Mod.TraceMsg("WaypointPath hitTest(Object) called"); return super.hitTest(arguments[0]); // Object comparison hit test, not sure if it works properly but doesn't seem to be needed
+			case 1: DebugUtils.DevMsgS("WaypointPath hitTest(Object) called"); return super.hitTest(arguments[0]); // Object comparison hit test, not sure if it works properly but doesn't seem to be needed
 			case 2: return super.hitTest(arguments[0], arguments[1]); // Basic bounding box hit test, works as advertisedish
 			case 3: return super.hitTest(arguments[0], arguments[1]) ? (arguments[2] ? DetailedHitTest(arguments[0], arguments[1]) : true) : false; // Do a basic bounding test before verifying with the detailed test, if needed
 			case 4: return super.hitTest(arguments[0], arguments[1], arguments[2], arguments[3]) ? (arguments[2] ? DetailedHitTest(arguments[0], arguments[1], arguments[3]) : true) : false; // Scaleform extension format

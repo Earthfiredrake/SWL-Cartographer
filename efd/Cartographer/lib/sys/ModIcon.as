@@ -35,8 +35,8 @@ import efd.Cartographer.lib.Mod;
 //     All other members are applied as initializers to the ModIcon object prior to construction
 //     These functions, which will be called in the context of ModObj, may be provided as overrides:
 //       GetFrame:
-//			Returns the name of the icon frame to be displayed based on current mod state
-//			Default uses existence and state of Config("Enabled") to return "active"|"inactive"
+//          Returns the name of the icon frame to be displayed based on current mod state
+//          Default uses existence and state of Config("Enabled") to return "active"|"inactive"
 //       LeftMouseInfo: Mouse handler as described below, default undefined
 //       RightMouseInfo: Mouse handler as described below, default undefined
 //         Mouse handler objects define two functions:
@@ -53,7 +53,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 	public static function Create(mod:Mod, initObj:Object):MovieClip {
 		// Check dependencies
 		if (!mod.Config) {
-			DebugUtils.ErrorMsgS("Subsystem dependency missing: Config", {system : "ModIcon"});
+			DebugUtils.ErrorMsgS("Subsystem dependency missing: Config", {sysName:"ModIcon"});
 			return undefined;
 		}
 
@@ -254,9 +254,8 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 
 	private function ConfigChanged(setting:String, newValue, oldValue):Void {
 		switch (setting) {
-			case "Enabled": { Refresh(); break; }
 			case "IconPosition": {
-				if (OnBaseTopbar) {	_x = newValue; }
+				if (OnBaseTopbar) { _x = newValue; }
 				else {
 					_x = newValue.x;
 					_y = newValue.y;
@@ -300,7 +299,6 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 	// Minimalist ConfigChanged for the cloned copy created by VTIO/Meeehr
 	// This is mostly to split off TopbarIntegration behaviour
 	private function CloneConfigChanged(setting:String, newValue, oldValue):Void {
-		if (setting == "Enabled") { Refresh(); }
 		if (setting == "TopbarIntegration") { _visible = newValue; } // Can't actually remove the cloned icon safely, so just hide/reveal it for now
 	}
 
@@ -311,7 +309,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 	}
 
 	// Default icon frame selector, may be overriden via init object
-	private function GetFrame():String { return Config.GetValue("Enabled", true) ? "active" : "inactive"; }
+	private function GetFrame():String { return this["Enabled"] ? "active" : "inactive"; }
 
 	/// Layout and GEM handling
 	private function BringAboveTopbar(above:Boolean):Void {
@@ -333,7 +331,7 @@ class efd.Cartographer.lib.sys.ModIcon extends MovieClip {
 			var mod:Mod = ModPtr.Get();
 			GemManager = GemController.create("GuiEditModeInterface", mod.HostClip, mod.HostClip.getNextHighestDepth(), this);
 			GemManager.lockAxis(0);
-			if (OnBaseTopbar) {	GemManager.lockAxis(2); }
+			if (OnBaseTopbar) { GemManager.lockAxis(2); }
 			else { GemManager.addEventListener( "scrollWheel", this, "ChangeScale" ); }
 			GemManager.addEventListener( "endDrag", this, "ChangePosition" );
 		}

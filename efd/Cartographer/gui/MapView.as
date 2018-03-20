@@ -10,9 +10,9 @@ import com.GameInterface.Game.Character;
 import com.GameInterface.MathLib.Vector3;
 import com.GameInterface.WaypointInterface;
 
-import efd.Cartographer.lib.sys.config.ConfigWrapper;
+import efd.Cartographer.lib.DebugUtils;
 import efd.Cartographer.lib.etu.MovieClipHelper;
-import efd.Cartographer.lib.Mod;
+import efd.Cartographer.lib.sys.config.ConfigWrapper;
 
 import efd.Cartographer.gui.InterfaceWindowContent;
 import efd.Cartographer.LayerData;
@@ -48,7 +48,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		var listener:Object = new Object();
 		listener.onLoadInit = Delegate.create(this, MapLoaded);
 		listener.onLoadError = function(target:MovieClip, error:String):Void {
-			Mod.ErrorMsg("Unable to load map: " + error);
+			DebugUtils.ErrorMsgS("Unable to load map: " + error);
 		};
 		Loader.addListener(listener);
 		WaypointInterface.SignalPlayfieldChanged.Connect(PlayerZoneChanged, this);
@@ -56,7 +56,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		// Init notation layers
 		NotationLayerViews = new Array();
 		if (LayerDataList.length > MaxLayerCount) {
-			Mod.ErrorMsg("Too many layers loaded");
+			DebugUtils.ErrorMsgS("Too many layers loaded");
 		}
 		for (var i:Number = LayerDataList.length -1; i >= 0; --i) {
 			// In reverse so that the depths here match the order on the sidebar list
@@ -259,9 +259,9 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 			}
 		}
 		if (tooltipTargets.length > 0) {
-			// Mod.TraceMsg("Number of tooltip targets: " + tooltipTargets.length);
+			// DebugUtils.TraceMsgS("Number of tooltip targets: " + tooltipTargets.length);
 			for (var i:Number = 0; i < tooltipTargets.length; ++i) {
-				// Mod.TraceMsg("  " + tooltipTargets[i].Data.GetName());
+				// DebugUtils.TraceMsgS("  " + tooltipTargets[i].Data.GetName());
 			}
 			// TODO: Create/Update tooltip
 		} else {

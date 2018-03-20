@@ -9,9 +9,10 @@ import gfx.utils.Delegate;
 
 import com.Utils.Signal;
 
+import efd.Cartographer.lib.DebugUtils;
+
 import efd.Cartographer.gui.Layers.NotationLayer;
 import efd.Cartographer.inf.IWaypoint;
-import efd.Cartographer.lib.Mod;
 
 class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	public static var __className:String = "efd.Cartographer.gui.WaypointIcon";
@@ -28,7 +29,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		listener.onLoadError = function(target:MovieClip, error:String):Void {
 			// Attempt to filter out spurious error messsages caused by closing the window during loading
 			// While still detecting conditions where Data is corrupt or missing.
-			if (target._parent) { Mod.ErrorMsg("Unable to load icon (" + target._parent.Data.GetIcon() + "): " + error); }
+			if (target._parent) { DebugUtils.ErrorMsgS("Unable to load icon (" + target._parent.Data.GetIcon() + "): " + error); }
 		};
 		Loader.addListener(listener);
 	}
@@ -200,4 +201,4 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 //     Attemptng to be clean with the code, explicitly tidy up memory leaks and close things off when they are no longer in use
 //     Avoid loading more than required, notation layers can defer loading of markers if they are hidden and can reuse existing markers when changing maps
 //     Stage the loading, ensure that the map and layers load sequentially rather than asynchronously, possibly with delays so that large data sets don't devour entire time blocks
-//     Extensive use of Mod.LogMsg() in an effort to trace/locate any replicatable crash locations
+//     Extensive use of DebugUtils in an effort to trace/locate any replicatable crash locations

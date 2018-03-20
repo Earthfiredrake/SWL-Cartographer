@@ -257,7 +257,7 @@ class efd.Cartographer.Cartographer extends Mod {
 			}
 			delete ZoneIndexLoader;
 			UpdateLoadProgress("ZoneIndex");
-		} else { ErrorMsg("Unable to load zone index", {fatal : true}); }
+		} else { Debug.ErrorMsg("Unable to load zone index", {fatal : true}); }
 	}
 
 	private function ParseOverlayPack(success:Boolean):Void {
@@ -276,8 +276,8 @@ class efd.Cartographer.Cartographer extends Mod {
 				}
 				LayerDataList[layerConfig.Depth].AddNotation(pack[i]);
 			}
-			TraceMsg("Loaded " + pack.length + " waypoints from " + OverlayList[0] + ".xml");
-		} else { ErrorMsg("Unable to load waypoint file: " + OverlayList[0] + ".xml"); }
+			Debug.TraceMsg("Loaded " + pack.length + " waypoints from " + OverlayList[0] + ".xml");
+		} else { Debug.ErrorMsg("Unable to load waypoint file: " + OverlayList[0] + ".xml"); }
 		OverlayList.shift();
 		if (OverlayList.length > 0) { OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack)); }
 		else {
@@ -294,7 +294,7 @@ class efd.Cartographer.Cartographer extends Mod {
 			if (node.nodeName.charAt(0) == '_') {
 				switch (node.nodeName.slice(1)) {
 					case "Section": { entries = entries.concat(ParseSection(node)); break; }
-					default: { ErrorMsg("Tags starting with '_' are reserved for internal use but " + node.nodeName + " is not defined and will be ignored. File: " + OverlayList[0] + ".xml"); }
+					default: { Debug.ErrorMsg("Tags starting with '_' are reserved for internal use but " + node.nodeName + " is not defined and will be ignored. File: " + OverlayList[0] + ".xml"); }
 				}
 			} else {
 				var entry:INotation = NotationBase.Create(node, this);

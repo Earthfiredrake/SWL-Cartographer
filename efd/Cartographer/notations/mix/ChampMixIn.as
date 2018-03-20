@@ -6,7 +6,7 @@ import com.GameInterface.Game.Character;
 import com.GameInterface.Lore;
 import com.Utils.ID32;
 
-import efd.Cartographer.lib.Mod;
+import efd.Cartographer.lib.DebugUtils;
 
 import efd.Cartographer.inf.INotation;
 
@@ -41,7 +41,7 @@ class efd.Cartographer.notations.mix.ChampMixIn {
 			};
 		} else {
 			// Avoid stomping existing name, it may identify the offending record
-			Mod.ErrorMsg("Unknown ChampID: " + champID);
+			DebugUtils.ErrorMsgS("Unknown ChampID: " + champID);
 			target["Name"] = (target["Name"] == undefined ? "" : target["Name"] + ": ") + "Unknown ChampID";
 		}
 

@@ -6,7 +6,7 @@ import com.GameInterface.Game.Character;
 import com.GameInterface.Lore;
 import com.Utils.ID32;
 
-import efd.Cartographer.lib.Mod;
+import efd.Cartographer.lib.DebugUtils;
 
 import efd.Cartographer.inf.INotation;
 
@@ -44,7 +44,7 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 			};
 		} else {
 			// Avoid stomping existing name, it may identify the offending record
-			Mod.ErrorMsg("Unknown LoreID: " + loreID);
+			DebugUtils.DevMsgS("Unknown LoreID: " + loreID);
 			target["Name"] = (target["Name"] == undefined ? "" : target["Name"] + ": ") + "Unknown LoreID";
 			if (isIcon) { target["IconMod"] = "error"; }
 		}
@@ -61,7 +61,7 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 		var topic:String = Lore.GetDataNodeById(loreID).m_Parent.m_Name;
 		var index:Number = GetLoreIndex(loreID, Lore.GetTagViewpoint(loreID));
 		if (!(topic && index)) {
-			Mod.TraceMsg("Unknown topic or entry #, malformed lore ID: " + loreID);
+			DebugUtils.DevMsgS("Unknown topic or entry #, malformed lore ID: " + loreID);
 			//return LocaleManager.GetString("LoreHound", "InvalidLoreID");
 			return "Unknown LoreID";
 		}
