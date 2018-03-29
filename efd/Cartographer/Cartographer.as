@@ -19,6 +19,7 @@ import efd.Cartographer.lib.sys.config.Versioning;
 import efd.Cartographer.lib.sys.ModIcon;
 import efd.Cartographer.lib.sys.VTIOHelper;
 import efd.Cartographer.lib.sys.Window;
+import efd.Cartographer.lib.util.WeakDelegate;
 
 import efd.Cartographer.inf.INotation;
 
@@ -150,7 +151,7 @@ class efd.Cartographer.Cartographer extends Mod {
 					Init : Window.Create,
 					InitObj : {
 						WindowName : "InterfaceWindow",
-						LoadEvent : Delegate.create(this, InterfaceWindowLoaded),
+						LoadEvent : WeakDelegate.Create(this, InterfaceWindowLoaded),
 						ResizeLimits : {
 							Min : new Point(200, 200),
 							Max : new Point(1500, 1000)
@@ -255,9 +256,9 @@ class efd.Cartographer.Cartographer extends Mod {
 				var zone:XMLNode = xmlRoot.childNodes[i];
 				ZoneIndex[zone.attributes.id] = { worldX : Number(zone.attributes.worldX), worldY : Number(zone.attributes.worldY) };
 			}
-			delete ZoneIndexLoader;
 			UpdateLoadProgress("ZoneIndex");
 		} else { Debug.ErrorMsg("Unable to load zone index", {fatal : true}); }
+		delete ZoneIndexLoader;
 	}
 
 	private function ParseOverlayPack(success:Boolean):Void {
