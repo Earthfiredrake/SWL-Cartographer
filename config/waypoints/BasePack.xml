@@ -86,6 +86,9 @@
 		<Transit zone="5060" x="256" y="232" z="372" targetZone="3070"> <!-- KD -->
 			<Name rdb="category=50025 id=147549093" />
 		</Transit>
+		<Transit zone="5060" x="436" y="186" z="359" targetZone="3150"> <!-- ND -->
+			<Name rdb="category=50025 id=150788852" />
+		</Transit>
 		<!-- TODO: Prune the vendor knot? -->
 		<Vendor zone="5060" x="570" y="185" z="395" icon="service_bank.png">
 			<Name rdb="category=51000 id=29867" />
@@ -720,6 +723,29 @@
 		</Vendor>
 		<Vendor zone="3070" x="292.3" y="552.1">
 			<Name rdb="category=51000 id=14163" />
+		</Vendor>
+	</_Section>
+	<_Section> <!-- ND -->
+		<AnimaWell zone="3150" x="422" y="422" z="77">
+			<Name rdb="category=270 id=9406258" />
+		</AnimaWell>
+		<AnimaWell zone="3150" x="452" y="790" z="65">
+			<Name rdb="category=270 id=9406257" />
+		</AnimaWell>
+		<AnimaWell zone="3155" x="422" y="422" z="77">
+			<Name rdb="category=270 id=9398721" />
+		</AnimaWell>
+		<AnimaWell zone="3155" x="452" y="790" z="65">
+			<Name rdb="category=270 id=9398722" />
+		</AnimaWell>
+		<Transit zone="3150" x="414" y="728" z="67" targetZone="5060" />
+		<Transit zone="3150" x="447" y="445" z="77" targetZone="3155" />
+		<Transit zone="3150" x="532" y="748" z="70" targetZone="3155" />
+		<Transit zone="3155" x="414" y="728" z="67" targetZone="5060" />
+		<Transit zone="3155" x="446" y="444" z="77" targetZone="3150" />
+		<Transit zone="3155" x="532" y="748" z="70" targetZone="3150" />
+		<Vendor zone="3150" x="440" y="438" z="79">
+			<Name rdb="category=51000 id=37766" />
 		</Vendor>
 	</_Section>
 </OverlayPack>

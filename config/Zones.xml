@@ -24,4 +24,8 @@
 	<Zone code="SF" id="3130" worldX="1536" worldY="1536" />
 	<Zone code="CF" id="3140" worldX="1536" worldY="1536" />
 	<Zone code="KD" id="3070" worldX="1024" worldY="1024" />
+	<Zone code="ND" id="3150" worldX="1024" worldY="1024" />
+	<Zone code="ND" id="3155" mapID="3150">
+		<Merge zone="3159" />
+	</Zone>
  </Zones>

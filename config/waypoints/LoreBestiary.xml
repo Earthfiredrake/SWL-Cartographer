@@ -33,9 +33,67 @@
 			<Param rdb="category=51000 id=19381" />
 		</Note>
 	</Lore>
+	<!-- Aigamuxa -->
+	<!-- See South Africa regional notes -->
+	<Lore loreID="10824" zone="3155" x="442" y="385" z="82">
+		<Note en="%1%; %2%" fmt="true">
+			<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param rdb="category=50300 id=4077" />
+			</Param>
+			<Param cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+				<Param rdb="category=50200 id=9420649" />
+			</Param>
+		</Note>
+    </Lore>
+	<Lore loreID="10825" zone="3155" x="595" y="346" z="82">
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param rdb="category=50300 id=4077" />
+			</Note>
+		</Lore>
+	<Lore loreID="10826" zone="3155" x="580" y="384" z="82">
+		<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+			<Param rdb="category=50300 id=4077" />
+		</Note>
+	</Lore>
+	<Lore loreID="10827" zone="3155" x="462" y="372" z="82">
+		<Note en="%1%; %2%" fmt="true">
+			<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param rdb="category=50300 id=4077" />
+			</Param>
+			<Param en="Use defective drone after fight" />
+		</Note>
+	</Lore>
+	<Lore loreID="10828" zone="3155" x="472" y="771" z="65">
+		<Note en="%1%; %2%" fmt="true">
+			<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param rdb="category=50300 id=4071" />
+			</Param>
+			<Param en="Use the gym door" />
+		</Note>
+	</Lore>
+	<Lore loreID="10829" zone="3155" x="620" y="401" z="84">
+		<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+			<Param rdb="category=50300 id=4071" />
+		</Note>
+	</Lore>
+	<Lore loreID="10830" zone="3155" x="547" y="385" z="82">
+		<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+			<Param rdb="category=50300 id=4071" />
+		</Note>
+	</Lore>
+	<Lore loreID="10831" zone="3155" x="512" y="549" z="73">
+		<Note en="%1%; %2%" fmt="true">
+			<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param rdb="category=50300 id=4071" />
+			</Param>
+			<Param cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+				<Param en="Brother Stone" /> <!-- Intentionally not RDB, to minimize spoiler -->
+			</Param>
+		</Note>
+	</Lore>
 	<!-- Ak'ab 7/8 -->
 	<Lore loreID="8485" zone="3040" x="420" y="947" z="153" />
-	<Lore  loreID="8486" zone="3050" x="229" y="260" type="area" radius="41">
+	<Lore loreID="8486" zone="3050" x="229" y="260" type="area" radius="41">
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
 			<Param rdb="category=51000 id=15605" />
 		</Note>
@@ -234,6 +292,42 @@
 		</Note>
 	</Lore>
 	<Lore loreID="8865" zone="3130" x="305" y="826" z="24" />
+	<!-- Demon Hyena -->
+	<Lore loreID="10833" zone="3155" x="615" y="756" z="67" />
+	<Lore loreID="10834" zone="3155" x="529" y="791" z="65" />
+	<Lore loreID="10835" zone="3155" x="479" y="572" z="70" />
+	<Lore loreID="10836" zone="3155" x="449" y="673" z="71" type="area" radius="57">
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="category=55701 id=10832" />
+		</Note>
+	</Lore>
+	<Lore loreID="10836" zone="3155" x="478" y="577" z="71" type="area" radius="34">
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="category=55701 id=10832" />
+		</Note>
+	</Lore>
+	<Lore loreID="10836" zone="3155" x="571" y="607" z="71" type="area" radius="60">
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="category=55701 id=10832" />
+		</Note>
+	</Lore>
+	<Lore loreID="10836" zone="3155" x="575" y="730" z="69" type="area" radius="72">
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="category=55701 id=10832" />
+		</Note>
+	</Lore>
+	<Lore loreID="10837" zone="3155" x="445" y="721" z="67" />
+	<Lore loreID="10838" zone="3155" x="459" y="356" z="82">
+		<Note en="%1%; %2%" fmt="true">
+			<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param rdb="category=50300 id=4077" />
+			</Param>
+			<Param en="Use computer" />
+		</Note>
+	</Lore>
+	<Lore loreID="10839" zone="7820" x="236" y="252" z="250">
+		<Note en="'The Buzzing' at terminal D-2" />
+	</Lore>
 	<!-- Draug - Deep Ones -->
 	<Lore loreID="8524" zone="3050" x="57" y="672" z="130" />
 	<Lore loreID="8525" zone="3050" x="88" y="273" z="130">
@@ -459,6 +553,29 @@
 	</Lore>
 		<!-- #8 (Instance: Eats Its Name) -->
 	<Lore loreID="9208" zone="5160" x="298" y="571" z="91" />
+	<!-- Kongamato -->
+	<Lore loreID="10841" zone="3155" x="582" y="687" z="70" />
+	<Lore loreID="10842" zone="7820" x="262" y="275" z="250" />
+	<Lore loreID="10843" zone="3155" x="421" y="668" z="74" />
+	<Lore loreID="10844" zone="3155" x="458" y="679" z="75" type="area" radius="53">
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="category=51000 id=37476" />
+		</Note>
+	</Lore>
+	<Lore loreID="10844" zone="3155" x="587" y="738" z="73" type="area" radius="46">
+		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
+			<Param rdb="category=51000 id=37476" />
+		</Note>
+	</Lore>
+	<Lore loreID="10845" zone="3155" x="469" y="676" z="76" />
+	<Lore loreID="10846" zone="3155" x="482" y="349" z="85">
+		<Note en="%1%; %2%" fmt="true">
+				<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+					<Param rdb="category=50300 id=4077" />
+				</Param>
+				<Param en="Watch lone egg hatch" />
+			</Note>
+	</Lore>
 	<!-- Kyonshi -->
 	<Lore loreID="8817" zone="3070" x="782" y="171" z="76" />
 	<Lore loreID="8818" zone="3070" x="820" y="603" z="93" />

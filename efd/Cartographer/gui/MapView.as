@@ -80,15 +80,16 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	}
 
 /// Map manipulation
-	private function ChangeMap(newZone:Number, playerZone:Boolean):Void {
+	private function ChangeMap(newZone:Number):Void {
 		if (!ZoneIndex[newZone]) return; // No map to load
-		ClientCharMarker._visible = ClientChar.GetPlayfieldID() == newZone;
+		newZone = ZoneIndex[newZone].masterZone || newZone;
+		ClientCharMarker._visible = IsPlayerOnMap(newZone);
 		PrevZoneID = CurrentZoneID;
 		CurrentZoneID = newZone;
 		// TODO: See if I can source maps from the RDB in any way
 		// Loader.loadClip("rdb:1000636:9247193", MapLayer); // English map for Museum
 		// Loader.loadClip("rdb:1010013:" + CurrentZoneID, MapLayer); // In theory the right rdb index for a zone map, but doesn't load
-		Loader.loadClip("Cartographer\\maps\\" + CurrentZoneID + ".png", MapLayer);
+		Loader.loadClip("Cartographer\\maps\\" + ZoneIndex[newZone].mapID + ".png", MapLayer);
 	}
 
 	private function MapLoaded(target:MovieClip):Void {
@@ -174,6 +175,16 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 		UpdatePosition(new Point(MapLayer._x, MapLayer._y));
 	}
 
+	private function IsPlayerOnMap(zoneID:Number):Boolean {
+		var playerZone:Number = ClientChar.GetPlayfieldID();
+		if (playerZone == zoneID) { return true; }
+		var mergeZones:Array = ZoneIndex[zoneID].mergeZones;
+		for (var i:Number = 0; i < mergeZones.length; ++i) {
+			if (playerZone == mergeZones[i]) { return true; }
+		}
+		return false;
+	}
+
 /// Window manipulation
 	public function ResizeViewport(width:Number, height:Number, miniMode:Boolean):Void {
 		// Concept here is that if the window is resized the map should:
@@ -211,7 +222,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 	private function onEnterFrame():Void { UpdateClientCharMarker(); }
 
 	private function UpdateClientCharMarker():Void {
-		if (ClientChar.GetPlayfieldID() == CurrentZoneID) {
+		if (IsPlayerOnMap(CurrentZoneID)) {
 			var worldPos:Vector3 = ClientChar.GetPosition(0);
 			var mapPos:Point = WorldToViewCoords(new Point(worldPos.x, worldPos.z));
 			ClientCharMarker._x = mapPos.x;
@@ -231,7 +242,7 @@ class efd.Cartographer.gui.MapView extends MovieClip {
 			if (ZoneIndex[newZone]) { ChangeMap(newZone); }
 			else { ClientCharMarker._visible = false; }
 		} else {
-			if (CurrentZoneID == newZone) { ClientCharMarker._visible = true; }
+			if (IsPlayerOnMap(CurrentZoneID)) { ClientCharMarker._visible = true; }
 		}
 	}
 

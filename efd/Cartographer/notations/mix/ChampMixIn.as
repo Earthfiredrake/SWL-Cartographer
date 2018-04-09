@@ -33,6 +33,7 @@ class efd.Cartographer.notations.mix.ChampMixIn {
 				Lore.SignalTagAdded.Disconnect(this.CollectibleUnlocked, uiElem);
 			};
 			// This event is called in the context of the WaypointIcon
+			// TODO: Make sure this method works for waypoint paths as well :/
 			target["CollectibleUnlocked"] = function(unlockedID:Number, charID:ID32):Void {
 				if (unlockedID == this.Data.ChampID) {
 					this.Data.IsCollected = true;

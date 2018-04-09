@@ -626,4 +626,96 @@
 			<Name rdb="category=51000 id=34568" />
 		</Champ>
 	</_Section>
+	<_Section> <!-- South Africa -->
+		<Champ champID="10776" zone="3155" x="476" y="633" z="72" /> <!-- Bloodtalon -->
+		<Champ champID="10663" zone="3155" x="612" y="509" z="79" /> <!-- Chittering Plague -->
+		<Champ champID="10775" zone="3155" x="620" y="401" z="86" /> <!-- Favoured Kowalski -->
+		<!-- Marika's Devotion (patrol) -->
+		<Champ champID="10778" zone="3155" x="609" y="713" z="69">
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param rdb="category=50300 id=4071" />
+			</Note>
+		</Champ>
+		<Champ champID="10778" zone="3155" type="path">
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param rdb="category=50300 id=4071" />
+			</Note>
+			<Point x="585" y="708" z="69" />
+			<Point x="583" y="706" z="69" />
+			<Point x="583" y="697" z="68" />
+			<Point x="581" y="695" z="68" />
+			<Point x="574" y="695" z="68" />
+			<Point x="569" y="696" z="68" />
+			<Point x="565" y="698" z="68" />
+			<Point x="564" y="700" z="68" />
+			<Point x="559" y="702" z="68" />
+			<Point x="556" y="706" z="68" />
+			<Point x="556" y="713" z="70" />
+			<Point x="555" y="716" z="69" />
+			<Point x="558" y="720" z="69" />
+			<Point x="564" y="721" z="69" />
+			<Point x="573" y="730" z="69" />
+			<Point x="574" y="733" z="69" />
+			<Point x="574" y="737" z="69" />
+			<Point x="575" y="738" z="69" />
+			<Point x="575" y="750" z="68" />
+			<Point x="576" y="752" z="68" />
+			<Point x="580" y="756" z="68" />
+			<Point x="580" y="762" z="68" />
+			<Point x="583" y="768" z="68" />
+			<Point x="588" y="769" z="67" />
+			<Point x="593" y="766" z="68" />
+			<Point x="596" y="766" z="69" />
+			<Point x="600" y="762" z="69" />
+			<Point x="603" y="761" z="69" />
+			<Point x="604" y="759" z="69" />
+			<Point x="607" y="758" z="69" />
+			<Point x="608" y="754" z="69" />
+			<Point x="606" y="751" z="69" />
+			<Point x="606" y="749" z="69" />
+			<Point x="604" y="747" z="69" />
+			<Point x="603" y="741" z="69" />
+			<Point x="604" y="741" z="69" />
+			<Point x="604" y="737" z="69" />
+			<Point x="607" y="735" z="69" />
+			<Point x="612" y="730" z="69" />
+			<Point x="613" y="728" z="69" />
+			<Point x="613" y="721" z="69" />
+			<Point x="611" y="718" z="69" />
+			<Point x="611" y="715" z="69" />
+			<Point x="609" y="713" z="69" />
+			<Point x="608" y="710" z="69" />
+			<Point x="605" y="710" z="69" />
+			<Point x="602" y="708" z="69" />
+			<Point x="601" y="709" z="69" />
+			<Point x="596" y="709" z="69" />
+			<Point x="595" y="708" z="70" />
+			<Point x="585" y="708" z="69" />
+		</Champ>
+		<!-- Unbound Kishi (patrol) -->
+		<Champ champID="10777" zone="3155" x="403" y="636" z="72" />
+		<Champ champID="10777" zone="3155" type="path">
+			<Point x="412" y="606" z="72" />
+			<Point x="418" y="610" z="72" />
+			<Point x="415" y="612" z="72" />
+			<Point x="409" y="607" z="71" />
+			<Point x="405" y="608" z="72" />
+			<Point x="405" y="624" z="72" />
+			<Point x="402" y="636" z="72" />
+			<Point x="404" y="651" z="72" />
+			<Point x="403" y="671" z="72" />
+			<Point x="403" y="691" z="72" />
+			<Point x="407" y="698" z="71" />
+			<Point x="402" y="697" z="72" />
+			<Point x="403" y="685" z="72" />
+			<Point x="402" y="677" z="72" />
+			<Point x="405" y="662" z="72" />
+			<Point x="404" y="650" z="72" />
+			<Point x="402" y="642" z="72" />
+			<Point x="405" y="665" z="72" />
+			<Point x="403" y="681" z="72" />
+			<Point x="404" y="693" z="72" />
+			<Point x="406" y="700" z="71" />
+		</Champ>
+	</_Section>
 </OverlayPack>

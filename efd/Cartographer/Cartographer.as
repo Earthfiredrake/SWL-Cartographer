@@ -126,7 +126,7 @@ class efd.Cartographer.Cartographer extends Mod {
 			// Debug flag at top so that commenting out leaves no hanging ','
 			// Debug : true,
 			Name : "Cartographer",
-			Version : "0.1.7.alpha",
+			Version : "0.1.7.beta",
 			Subsystems : {
 				Config : {
 					Init : ConfigManager.Create,
@@ -254,7 +254,20 @@ class efd.Cartographer.Cartographer extends Mod {
 			var xmlRoot:XMLNode = ZoneIndexLoader.firstChild;
 			for (var i:Number = 0; i < xmlRoot.childNodes.length; ++i) {
 				var zone:XMLNode = xmlRoot.childNodes[i];
-				ZoneIndex[zone.attributes.id] = { worldX : Number(zone.attributes.worldX), worldY : Number(zone.attributes.worldY) };
+				var zoneID:String = zone.attributes.id;
+				if (!zone.attributes.mapID) {
+					ZoneIndex[zoneID] = { mapID : zoneID, worldX : zone.attributes.worldX, worldY : zone.attributes.worldY, mergeZones : new Array()};
+				} else {
+					ZoneIndex[zoneID] = {  mapID : zone.attributes.mapID, worldX : ZoneIndex[zone.attributes.mapID].worldX, worldY : ZoneIndex[zone.attributes.mapID].worldX, mergeZones : new Array() };
+				}
+				for (var j:Number = 0; j < zone.childNodes.length; ++j) {
+					var subNode:XMLNode = zone.childNodes[j];
+					if (subNode.nodeName == "Merge") {
+						var mergeID:String = subNode.attributes.zone;
+						ZoneIndex[zoneID].mergeZones.push(mergeID);
+						ZoneIndex[mergeID] = { masterZone : zoneID };
+					}
+				}
 			}
 			UpdateLoadProgress("ZoneIndex");
 		} else { Debug.ErrorMsg("Unable to load zone index", {fatal : true}); }
@@ -393,3 +406,150 @@ class efd.Cartographer.Cartographer extends Mod {
 //   Thread-safety of game API calls
 //     Hypothesis on some stability issues is that loading multiple icons simultaniously occasionally resulted in multiple calls to the game API, which didn't handle it well
 //     Will see if increased pre-processing (sequentially) improves the situation
+
+/// List of map IDs from TSW
+// 1000 : London
+// 1100 : New York
+// 1120 : Co-op City Parking Garage
+// 1123 : Co-op City Parking Garage
+// 1124 : Co-op City Parking Garage
+// 1200 : Seoul
+// 1300 : The Sunken Library
+// 2200 : Seoul
+// 3030 : Kingsmouth Town
+// 3035 : Kingsmouth Sewer Junction
+// 3040 : The Savage Coast
+// 3050 : The Blue Mountain
+// 3070 : Kaidan
+// 3090 : The Scorched Desert
+// 3100 : City of the Sun God
+// 3120 : The Besieged Farmlands
+// 3130 : The Shadowy Forest
+// 3140 : The Carpathian Fangs
+// 5000 : The Slaughterhouse
+// 5040 : The Polaris
+// 5060 : Agartha
+// 5080 : The Ankh
+// 5110 : Beyond the Sargasso Sea
+// 5120 : Dreaming Prison
+// 5140 : Hell Raised
+// 5150 : Hell Fallen
+// 5160 : Hell Eternal
+// 5170 : The Darkness War
+// 5190 : The Facility
+// 5200 : The Gate
+// 5300 : Road to Xibalba
+// 5710 : Manhattan Exclusion Zone
+// 5720 : N'Gha-Pei the Corpse-Island
+// 5811 : Seoul Fight Club
+// 5820 : El Dorado
+// 5840 : Stonehenge
+// 6001 : Illuminati Cellar
+// 6003 : Mining Museum Basement
+// 6007 : Kingsmouth Sewer
+// 6008 : Illuminati Underground
+// 6009 : Maintenance Tunnels
+// 6010 : Illuminati Archives
+// 6012 : Well of Our Forefathers
+// 6013 : Dr Bannerman's Clinic
+// 6014 : The Illuminati Tunnels
+// 6020 : Room 13
+// 6030 : Memory of Stonehenge
+// 6070 : Lair of Darkness
+// 6071 : Innsmouth Academy Basement
+// 6072 : Safehouse
+// 6073 : Atlantic Island Park Shadow
+// 6074 : Mancave
+// 6075 : The Guardian's Cave
+// 6076 : The Fog
+// 6120 : Devore Mansion Crypt
+// 6130 : Organ Smugglers' Basement
+// 6152 : Blue Ridge Mine
+// 6154 : The Ak'ab Abyss
+// 6161 : The Shadow World
+// 6163 : The Devore Mansion
+// 6200 : Hotel Wahid Basement
+// 6201 : Ancient Marya Atheneum
+// 6202 : Butcher Shop Cellar
+// 6203 : Al-Merayah Tunnels
+// 6206 : The Howling
+// 6207 : Aten Temple
+// 6208 : The Black Pyramid
+// 6209 : Ancient Tomb
+// 6210 : The Pinnacle
+// 6213 : The Last Train to Cairo
+// 6215 : Date Factory
+// 6220 : Sol Glorificus, 329 AD
+// 6222 : Old Al-Merayah
+// 6224 : Thinis, 1897 BCE
+// 6401 : Underground Bunker
+// 6404 : Dutchman's lair
+// 6407 : The Lonely Patriot
+// 6461 : Dimir Farm Cellar
+// 6471 : Occulted Crypt
+// 6536 : Emma's Dream
+// 6537 : Dracula's Castle
+// 6540 : The Palace Below
+// 6550 : Tomb of the Prince
+// 6560 : Dracul's Rest
+// 6570 : Hatchet Falls Facility
+// 6580 : The Nursery
+// 6590 : Emma's Dreamscape
+// 6600 : Ground Zero Flashback
+// 6620 : Kaidan Station
+// 6630 : Akiyama Building Parking Garage
+// 6640 : The Fear Nothing Foundation
+// 6660 : Ibaraki's Lair
+// 6670 : Yuichi's Apartment
+// 6672 : Yasuraka House
+// 6680 : Kaidan District Sewers
+// 6690 : Mefisto Security
+// 6700 : Niflheim
+// 6710 : Hell
+// 6730 : The Clubhouse
+// 6740 : The AV Suite
+// 7000 : The Crucible
+// 7010 : The Crucible
+// 7020 : London Fight Club
+// 7050 : Cold Room
+// 7070 : Albion Ballroom Theatre
+// 7071 : Albion Ballroom Theatre
+// 7075 : Albion Rehearsal Stage
+// 7080 : Tabula Rasa
+// 7090 : Amity House
+// 7100 : The Mithraeum
+// 7103 : The Mithraeum
+// 7110 : Ockham's Razor
+// 7120 : Squatter's Den
+// 7130 : Phoenician Warehouse
+// 7140 : Londinium Excavation
+// 7142 : The San Nicolo al Lido Catacombs
+// 7160 : The Crusades Club
+// 7200 : Test Chamber
+// 7203 : Test Chamber
+// 7210 : Warehouse
+// 7220 : Illuminati Office
+// 7230 : Brooklyn Fight Club
+// 7240 : Orochi Office
+// 7251 : The Modern Prometheus
+// 7252 : Dr. Aldini's Meat Locker
+// 7260 : New York Sewers
+// 7280 : The Creature's Abode
+// 7400 : Dojang
+// 7403 : Dojang
+// 7410 : Agartha
+// 7416 : Corrupted Agartha
+// 7420 : Shambala
+// 7440 : The Abandoned Asylum
+// 7450 : Orochi Office
+// 7600 : Hotel Wahid
+// 7602 : The Hotel - Elite
+// 7603 : The Hotel - Nightmare
+// 7610 : Franklin Mansion
+// 7612 : Mansion - Elite
+// 7613 : Mansion - Nightmare
+// 7620 : The Castle
+// 7622 : The Castle - Elite
+// 7623 : The Castle - Nightmare
+// 7640 : Arturo Castiglion's Office
+// 34171 : Fusang Projects

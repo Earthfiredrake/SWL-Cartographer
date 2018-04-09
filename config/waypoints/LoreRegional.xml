@@ -623,4 +623,74 @@
 		</Lore>
 		<Lore loreID="7119" zone="3070" x="444" y="806" z="87" />
 	</_Section>
+	<_Section> <!-- South Africa -->
+		<!-- If MissionReq is 4071, zone is actually 3159, but am combining maps -->
+		<!-- New Dawn -->
+		<Lore loreID="10802" zone="3150" x="454" y="652" z="77" />
+		<Lore loreID="10803" zone="3150" x="569" y="513" z="77" />
+		<Lore loreID="10804" zone="3150" x="530" y="789" z="65" />
+		<Lore loreID="10805" zone="3150" x="519" y="537" z="76" />
+		<Lore loreID="10806" zone="3155" x="577" y="757" z="68" />
+		<Lore loreID="10807" zone="3155" x="409" y="484" z="77">
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param rdb="category=50300 id=4071" />
+			</Note>
+		</Lore>
+		<Lore loreID="10808" zone="3155" x="428" y="346" z="82">
+			<Note en="%1%; %2%" fmt="true">
+				<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+					<Param rdb="category=50300 id=4077" />
+				</Param>
+				<Param en="Use tablet" />
+			</Note>
+		</Lore>
+		<Lore loreID="10809" zone="7800" x="264" y="355" z="256" />
+		<!-- Marquard's Mansion -->
+		<Lore loreID="10817" zone="7800" x="269" y="282" z="256" />
+		<Lore loreID="10818" zone="3155" x="402" y="402" z="82">
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param rdb="category=50300 id=4071" />
+			</Note>
+		</Lore>
+		<Lore loreID="10819" zone="3150" x="462" y="480" z="78">
+			<Note en="Use the poster" />
+		</Lore>
+		<Lore loreID="10820" zone="7800" x="241" y="419" z="264" />
+		<Lore loreID="10821" zone="7800" x="274" y="405" z="255" />
+		<Lore loreID="10822" zone="7800" x="275" y="417" z="257">
+			<Note en="Release the kitten" />
+		</Lore>
+		<!-- Binding of the Aigamuxa -->
+		<Lore loreID="10811" zone="3155" x="585" y="394" z="81">
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param rdb="category=50300 id=4077" />
+			</Note>
+		</Lore>
+		<Lore loreID="10812" zone="3155" x="512" y="312" z="81">
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param rdb="category=50300 id=4077" />
+			</Note>
+		</Lore>
+		<Lore loreID="10814" zone="3155" x="494" y="742" z="65">
+			<Note cat="MapNoteTooltip" str="MissionReq" fmt="true">
+				<Param rdb="category=50300 id=4071" />
+			</Note>
+		</Lore>
+		<Lore loreID="10813" zone="3155" x="556" y="386" z="82">
+			<Note en="%1%; %2%" fmt="true">
+				<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+					<Param rdb="category=50300 id=4077" />
+				</Param>
+				<Param en="Extinguish candles" />
+			</Note>
+		</Lore>
+		<Lore loreID="10815" zone="3155" x="440" y="385" z="82">
+			<Note en="%1%; %2%" fmt="true">
+				<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
+					<Param rdb="category=50300 id=4071" />
+				</Param>
+				<Param en="Keycard dropped by guards" />
+			</Note>
+		</Lore>
+	</_Section>
 </OverlayPack>
