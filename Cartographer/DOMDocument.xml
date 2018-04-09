@@ -1,14 +1,14 @@
 <DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" backgroundColor="#666666" width="100" height="100" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" viewAngle3D="10.8137112665991" nextSceneIdentifier="430" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" autoSaveHasPrompted="true">
      <folders>
-          <DOMFolderItem name="Assets" itemID="596a8481-0000022b" isExpanded="true"/>
-          <DOMFolderItem name="Components" itemID="596fa3d3-00000204" isExpanded="true"/>
+          <DOMFolderItem name="Assets" itemID="596a8481-0000022b"/>
+          <DOMFolderItem name="Components" itemID="596fa3d3-00000204"/>
           <DOMFolderItem name="Components/Component Assets" itemID="59a06293-0000022e"/>
           <DOMFolderItem name="Components/Component Assets/Checkbox Assets" itemID="59a06293-0000022f"/>
           <DOMFolderItem name="Components/Window Assets" itemID="596fa3e1-00000223"/>
           <DOMFolderItem name="Components/Window Assets/Components" itemID="52499070-000009df"/>
           <DOMFolderItem name="Components/Window Assets/Components/Component Assets" itemID="49d65944-000001cb"/>
           <DOMFolderItem name="Components/Window Assets/Components/Component Assets/Checkbox Assets" itemID="4f6b75df-000047eb"/>
-          <DOMFolderItem name="Fonts" itemID="58bddfcb-00000218" isExpanded="true"/>
+          <DOMFolderItem name="Fonts" itemID="58bddfcb-00000218"/>
           <DOMFolderItem name="Icons" itemID="58bf2a12-00000934"/>
           <DOMFolderItem name="MarkerModifierSprites" itemID="5a72b4e3-00000201"/>
      </folders>
@@ -18,7 +18,7 @@
      <media>
           <DOMBitmapItem name="Components/Window Assets/Drop Shadow Bitmap" itemID="4f8da942-00001f90" sourceExternalFilepath="./LIBRARY/Components/Window Assets/Drop Shadow Bitmap" sourceLastImported="1334683970" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Components/Window Assets/Drop Shadow Bitmap./LIBRARY/Components/Window Assets/Drop Shadow Bitmap" bitmapDataHRef="M 3 1500488659.dat" frameRight="3080" frameBottom="5040"/>
           <DOMBitmapItem name="MarkerModifierSprites/error.png" itemID="5a72b50c-00000208" sourceExternalFilepath="./LIBRARY/MarkerModifierSprites/error.png" sourceLastImported="1517466776" externalFileSize="2910" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="MarkerModifierSprites/error.png" bitmapDataHRef="M 4 1517466807.dat" frameRight="320" frameBottom="320"/>
-          <DOMBitmapItem name="Icons/IconTemp.png" itemID="58db79b9-000005fe" sourceExternalFilepath="./LIBRARY/Icons/IconTemp.png" sourceLastImported="1490778519" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Icons/IconTemp.png" bitmapDataHRef="M 1 1490778553.dat" frameRight="640" frameBottom="640"/>
+          <DOMBitmapItem name="Icons/Icon.png" itemID="5acbebfd-000002a7" sourceExternalFilepath="./LIBRARY/Icons/Icon.png" sourceLastImported="1523313528" externalFileSize="4564" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Icons/Icon.png" bitmapDataHRef="M 1 1490778553.dat" frameRight="640" frameBottom="640"/>
           <DOMBitmapItem name="Icons/PlayerMarker.png" itemID="5972fb78-000001f0" sourceExternalFilepath="./LIBRARY/Icons/PlayerMarker.png" sourceLastImported="1500762473" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Icons/PlayerMarker.png" bitmapDataHRef="M 8 1500524748.dat" frameRight="320" frameBottom="460"/>
      </media>
      <symbols>
@@ -63,6 +63,8 @@
      </timelines>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="103264" publishTime="1523309599"/>
+          <PublishItem publishSize="103264" publishTime="1523309535"/>
           <PublishItem publishSize="1043" publishTime="1521072659"/>
           <PublishItem publishSize="1357" publishTime="1521072659"/>
           <PublishItem publishSize="3544" publishTime="1521072658"/>
@@ -81,7 +83,5 @@
           <PublishItem publishSize="101823" publishTime="1517298515"/>
           <PublishItem publishSize="95542" publishTime="1517298442"/>
           <PublishItem publishSize="98880" publishTime="1517298350"/>
-          <PublishItem publishSize="101758" publishTime="1517297781"/>
-          <PublishItem publishSize="101786" publishTime="1517297131"/>
      </publishHistory>
 </DOMDocument>

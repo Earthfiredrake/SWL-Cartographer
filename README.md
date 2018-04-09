@@ -3,43 +3,15 @@ Supplementary world maps for Secret World Legends
 Legacy support for The Secret World is largely untested and provided waypoint packs use SWL locations. I will not be taking the time to generate waypoints for TSW myself, but would be willing to include an alternative pack if one was volunteered.
 
 ## Overview
-This mod is in an early state of development, consider this to be a wishlist, and consult the changelog for which parts have been implemented. It intends to provide a supplement to the ingame regional and dungeon maps, with various improvements:
-+ Multiple icons for custom map notations
-  + Assigned by type, but may be overridden individually (ex: The location to use a password required to access a lore may count as a "lore" marker, but use the "password" icon)
-  + User customization of the map icons, including replacing most icons or adding their own, without requiring a flash compiler
-+ Zone and path marking in addition to point locations
-+ More support for extended descriptions and precise placement based on coordinates
-+ Premade packages of related markers which can be loaded or toggled as a package
-  + ex: A package for Samhain (TSW) might include lore, quests, vendors, rider/summon/empowerment points
-  + These packages may also include more general packs of Lore, Rare Spawns, etc.
-  + As much as possible the locations included in these packs will use verified exact game locations
-    + This may result in one or more utility mods designed to provide absolute locations of various game objects
-    + This will also likely result in an automatic marking system from LoreHound
-	+ Had a thought about feeding data back to LoreHound, but lack enough camera info to create my own world-screen calculation, and the existing one requires a dynel and doesn't work on arbitrary points
-  + While the native format will likely not be compatible with existing waypoint packs (Lassie's etc.), I may see if I can handle their format as well at least on a transition basis
-  + I'd love for this to be a full plugin system, adding custom logic to the provided waypoints
-    + I have no idea where to even begin with this part of the concept but no shortage of random ideas if it can be made to work:
-	  + Extracting lore and worldboss packs, with the logic required to provide ids and verify completion into optional plugins
-      + A pack for the museum, showing exhibit locations and an overview of their levels, upgradability, requirements etc.
-+ Filter, highlight and search for particular map marks:
-  + ex: Unclaimed lore, missing rare spawn achivements
-
-Due to limitations with the API, it does not seem to be possible to:
-+ Integrate with the existing map in any meaningful way
-  + Existing map can not be modded, and renders above all other UI elements, preventing an overlay system
-  + Existing map waypoint data can not be used directly
-    + Default ones with points of interest are malformed as far as the flash XML loader is concerned
-	+ Flash is unable to reliably access the user's custom waypoint file (can only access relative paths on same drive (no C:\ and no %LocalAppData%), could be circumvented with junction points but would require non-trivial additional setup)
-  + This mod will be duplicating as much existing functionality as is possible and be a second map window in game
-+ Entirely replace the existing map's functionality
-  + Anima leap and the long range detection of champion monsters and world bosses is not yet understood
-    + It may be easier to integrate zone teleportation (the Shift-T menu)
-+ Directly save player added waypoints to the xml files containing pre-packaged info
-  + Manual export and sharing features may be supported
-  + Custom waypoints will have to be saved with other mod settings
-    + This will likely have a slightly different data layout than the waypoint pack files, because the universe enjoys making me write parsers
-
-The mod is currently in alpha, with limited functionality. Some graphics are temporary placeholders of less than desired quality. Settings may be reset while upgrading.
+The mod is currently in early beta, with a minimal useful set of capabilities. Still buggy as all bother, it may just crash your game but if it's working:
++ Maps for all open world zones with additional layers for Lore and Champion locations
+  + Also has Krampus spawn points, which should load automatically when the event is active
++ Customizable and extensible without a flash compiler
+  + Change or add map/icon files (this feature may be cut or pushed onto an unstable version if sideloading crashes can't be solved)
+  + Add new data (currently limited to loading from existing file names)
++ Resizable window that can behave similarly to the minimap if made small enough (sidebar goes away)
++ Adjustible view: Mousewheel scales, drag it around if not in locked minimap mode
++ View any mapped world zone by clicking through the region transition icons (exclamation mark means the zone has no map)
 
 All settings are saved account wide and will be shared across characters. If you'd rather have different settings for each character, renaming the file "LoginPrefs.xml" to "CharPrefs.xml" when installing/upgrading the mod should work without any problems. A clean install of the mod is recommended if doing this, as it will be unable to transfer existing settings anyway.
 
@@ -53,6 +25,11 @@ The safest method for upgrading (required for installing) is to have the client 
 I intend to permit setting migration from the first public beta to v1.0.x, but this may be subject to change. As with my other mods, this update compatibility window will occasionally be shifted to reduce legacy code clutter.
 
 ## Change Log
+Version 0.1.7-beta
++ Calling it a beta, mostly just tired of alphas, and I want to put it on curse already
++ SAF update, includes all lore and champion locations from New Dawn
+  + Use bed transition markers to move between day and night (including Wrath of the Dawn) maps
++ More backend reworks, bug fixes etc.
 
 Version 0.1.6-alpha
 + Change to Modules.xml & LoginPrefs.xml, avoid hotpatch and clear bxmls
@@ -173,10 +150,12 @@ Version 0.0.2-alpha
 
 ## Known Issues
 
-This is an early version of this mod. There are many issues, some of them are known.
-I'm always open to hearing comments and suggestions as well, easier to start with good ideas than rewrite from bad ones.
-
-Vector based marks (paths and areas) jiggle annoyingly like jello in minimap mode.
+This is an early version of this mod. There are many issues:
++ Occasionally crashes game when opening the map, changing zones, or rescaling the map view
++ Adds significant loading time to player login and /reloadui
++ Vector based marks (paths and areas) jiggle annoyingly like jello in minimap mode
++ Sidebar scales weirdly when resizing window
++ Stacked icons hide each other's tooltips
 
 ## Testing and Further Developments
 
@@ -190,6 +169,43 @@ Current goals for the next versions:
   + Layer options (hiding the collected lore)
   + Adding/Removing files (preferably without /reloadui)
 
+Further stuff (slightly out of date)
+This mod is in an early state of development, consider this to be a wishlist, and consult the changelog for which parts have been implemented. It intends to provide a supplement to the ingame regional and dungeon maps, with various improvements:
++ Multiple icons for custom map notations
+  + Assigned by type, but may be overridden individually (ex: The location to use a password required to access a lore may count as a "lore" marker, but use the "password" icon)
+  + User customization of the map icons, including replacing most icons or adding their own, without requiring a flash compiler
++ Zone and path marking in addition to point locations
++ More support for extended descriptions and precise placement based on coordinates
++ Premade packages of related markers which can be loaded or toggled as a package
+  + ex: A package for Samhain (TSW) might include lore, quests, vendors, rider/summon/empowerment points
+  + These packages may also include more general packs of Lore, Rare Spawns, etc.
+  + As much as possible the locations included in these packs will use verified exact game locations
+    + This may result in one or more utility mods designed to provide absolute locations of various game objects
+    + This will also likely result in an automatic marking system from LoreHound
+	+ Had a thought about feeding data back to LoreHound, but lack enough camera info to create my own world-screen calculation, and the existing one requires a dynel and doesn't work on arbitrary points
+  + While the native format will likely not be compatible with existing waypoint packs (Lassie's etc.), I may see if I can handle their format as well at least on a transition basis
+  + I'd love for this to be a full plugin system, adding custom logic to the provided waypoints
+    + I have no idea where to even begin with this part of the concept but no shortage of random ideas if it can be made to work:
+	  + Extracting lore and worldboss packs, with the logic required to provide ids and verify completion into optional plugins
+      + A pack for the museum, showing exhibit locations and an overview of their levels, upgradability, requirements etc.
++ Filter, highlight and search for particular map marks:
+  + ex: Unclaimed lore, missing rare spawn achivements
+
+Due to limitations with the API, it does not seem to be possible to:
++ Integrate with the existing map in any meaningful way
+  + Existing map can not be modded, and renders above all other UI elements, preventing an overlay system
+  + Existing map waypoint data can not be used directly
+    + Default ones with points of interest are malformed as far as the flash XML loader is concerned
+	+ Flash is unable to reliably access the user's custom waypoint file (can only access relative paths on same drive (no C:\ and no %LocalAppData%), could be circumvented with junction points but would require non-trivial additional setup)
+  + This mod will be duplicating as much existing functionality as is possible and be a second map window in game
++ Entirely replace the existing map's functionality
+  + Anima leap and the long range detection of champion monsters and world bosses is not yet understood
+    + It may be easier to integrate zone teleportation (the Shift-T menu)
++ Directly save player added waypoints to the xml files containing pre-packaged info
+  + Manual export and sharing features may be supported
+  + Custom waypoints will have to be saved with other mod settings
+    + This will likely have a slightly different data layout than the waypoint pack files, because the universe enjoys making me write parsers
+  
 Initial feedback has provided the following suggestions which are not yet implemented:
 + Mouse coordinates should be clearly displayed someplace obvious
 + It should be easy to set exact coordinates for custom marks (text input)
@@ -202,9 +218,11 @@ Initial feedback has provided the following suggestions which are not yet implem
 
 As always, defect reports, suggestions, and contributions are welcome. They can be sent to Peloprata in SWL (by mail or pm), via the github issues system, or @Peloprata in #modding on discord.
 
+Forum Topic: https://forums.funcom.com/t/cartographer-supplementary-maps/2075
+
 Source Repository: https://github.com/Earthfiredrake/SWL-Cartographer
 
-Curse Mirror: TBD
+Curse Mirror: https://www.curseforge.com/swlegends/tswl-mods/cartographer
 
 ## Building from Source
 Requires copies of the SWL and Scaleform CLIK APIs. Existing project files are configured for Flash Pro CS5.5.
