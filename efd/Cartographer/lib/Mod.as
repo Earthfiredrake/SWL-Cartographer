@@ -131,7 +131,6 @@ class efd.Cartographer.lib.Mod {
 		// TODO: Some mods won't have to serialize this, because it only makes sense as an error disable
 		Config.NewSetting("Enabled", true); // This should be used for serialization only, not to trigger a change in state
 		Config.SignalConfigLoaded.Connect(ConfigLoaded, this);
-		Config.SignalValueChanged.Connect(ConfigChanged, this);
 
 		InterfaceWindow = modInfo.Subsystems.Interface.Init(this, modInfo.Subsystems.Interface.InitObj);
 		LinkVTIO = modInfo.Subsystems.LinkVTIO.Init(this, modInfo.Subsystems.LinkVTIO.InitObj);
@@ -236,11 +235,14 @@ class efd.Cartographer.lib.Mod {
 	}
 
 /// Configuration Settings
-	private function ConfigLoaded():Void { UpdateLoadProgress("Config"); }
-
-	private function ConfigChanged(setting:String, newValue, oldValue):Void {
-
+	private function ConfigLoaded():Void {
+		Config.SignalValueChanged.Connect(ConfigChanged, this);
+		UpdateLoadProgress("Config");
 	}
+
+	// Config changed handler will not be triggered by initial loading
+	// Update handlers get an initial shot at the loaded settings
+	private function ConfigChanged(setting:String, newValue, oldValue):Void { }
 
 /// Standard Icon Mouse Behaviour Packages
 	public var IconMouse_ToggleUserEnabled:Object = { Action : ToggleUserEnabled, Tooltip : ToggleUserEnabledTooltip };

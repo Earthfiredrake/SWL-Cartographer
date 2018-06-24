@@ -18,7 +18,7 @@
      <media>
           <DOMBitmapItem name="Components/Window Assets/Drop Shadow Bitmap" itemID="4f8da942-00001f90" sourceExternalFilepath="./LIBRARY/Components/Window Assets/Drop Shadow Bitmap" sourceLastImported="1334683970" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Components/Window Assets/Drop Shadow Bitmap./LIBRARY/Components/Window Assets/Drop Shadow Bitmap" bitmapDataHRef="M 3 1500488659.dat" frameRight="3080" frameBottom="5040"/>
           <DOMBitmapItem name="MarkerModifierSprites/error.png" itemID="5a72b50c-00000208" sourceExternalFilepath="./LIBRARY/MarkerModifierSprites/error.png" sourceLastImported="1517466776" externalFileSize="2910" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="MarkerModifierSprites/error.png" bitmapDataHRef="M 4 1517466807.dat" frameRight="320" frameBottom="320"/>
-          <DOMBitmapItem name="Icons/Icon.png" itemID="5acbebfd-000002a7" sourceExternalFilepath="./LIBRARY/Icons/Icon.png" sourceLastImported="1523313528" externalFileSize="4564" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Icons/Icon.png" bitmapDataHRef="M 1 1490778553.dat" frameRight="640" frameBottom="640"/>
+          <DOMBitmapItem name="Icons/Icon.png" itemID="5acc7277-000001f9" sourceExternalFilepath="./LIBRARY/Icons/Icon.png" sourceLastImported="1523315631" externalFileSize="4564" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Icons/Icon.png" bitmapDataHRef="M 1 1490778553.dat" frameRight="640" frameBottom="640"/>
           <DOMBitmapItem name="Icons/PlayerMarker.png" itemID="5972fb78-000001f0" sourceExternalFilepath="./LIBRARY/Icons/PlayerMarker.png" sourceLastImported="1500762473" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Icons/PlayerMarker.png" bitmapDataHRef="M 8 1500524748.dat" frameRight="320" frameBottom="460"/>
      </media>
      <symbols>
@@ -63,6 +63,7 @@
      </timelines>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="103338" publishTime="1523313679"/>
           <PublishItem publishSize="103264" publishTime="1523309599"/>
           <PublishItem publishSize="103264" publishTime="1523309535"/>
           <PublishItem publishSize="1043" publishTime="1521072659"/>
@@ -82,6 +83,5 @@
           <PublishItem publishSize="101828" publishTime="1517298546"/>
           <PublishItem publishSize="101823" publishTime="1517298515"/>
           <PublishItem publishSize="95542" publishTime="1517298442"/>
-          <PublishItem publishSize="98880" publishTime="1517298350"/>
      </publishHistory>
 </DOMDocument>
