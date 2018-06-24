@@ -434,19 +434,19 @@
 	</Lore>
 	<Lore loreID="9281" zone="3070" x="463" y="178" z="81" />
 	<Lore loreID="9282" zone="3070" x="554" y="246" z="89" />
-	<!-- Filth Guardians 6/8 -->
+	<!-- Filth Guardians 7/8 -->
 	<Lore loreID="9295" zone="6075" x="265" y="290" z="31" />
 	<Lore loreID="9296" zone="3140" x="625" y="650" z="65" />
 	<Lore loreID="9297" zone="3140" x="1233" y="675" z="31" />
 	<Lore loreID="9298" zone="3100" x="713" y="991" z="55" />
 	<Lore loreID="9299" zone="3100" x="32" y="686" z="83" />
-		<!-- #6 (NYR) -->
+	<Lore loreID="9300" zone="5710" x="468" y="593" z="234" />
 	<Lore loreID="9301" zone="7418" x="207" y="247" z="205"> <!-- Location is tentative -->
 		<Note cat="MapNoteTooltip" str="DropsFrom" fmt="true">
 			<Param en="Public raid bosses" />
 		</Note>
 	</Lore>
-		<!-- #8 (Unknown/NYA/No Location) -->
+		<!-- #8 (No Location... unify regional boss materials... use summoning sites?) -->
 	<!-- Ghouls -->
 	<Lore loreID="8642" zone="3130" x="1103" y="1071" z="28" />
 	<Lore loreID="8643" zone="3130" x="568" y="1030" z="42" />

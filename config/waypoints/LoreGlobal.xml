@@ -125,6 +125,20 @@
 		<Lore loreID="4833" zone="5160" x="749" y="304" z="102" />
 		<Lore loreID="4834" zone="5160" x="702" y="553" z="196" />
 		<Lore loreID="4835" zone="5160" x="690" y="235" z="102" />
+		<!-- Golems and the Fourth Age -->
+		<Lore loreID="6222" zone="3090" x="542" y="879" z="52" />
+		<Lore loreID="6223" zone="3050" x="542" y="424" z="192" />
+		<Lore loreID="6224" zone="3100" x="716" y="933" z="76" />
+		<Lore loreID="6225" zone="3040" x="293" y="299" z="141" />
+		<Lore loreID="6226" zone="3030" x="629" y="553" z="142" />
+		<Lore loreID="6227" zone="3070" x="573" y="396" z="98">
+			<Note en="On bridge" />
+		</Lore>
+		<Lore loreID="6228" zone="3140" x="381" y="640" z="30" />
+		<Lore loreID="6229" zone="3120" x="317" y="615" z="82">
+			<Note en="On Vântoase Hill" />
+		</Lore>
+		<Lore loreID="6230" zone="3140" x="676" y="947" z="91" />
 		<!-- The Host (Auto/Story) -->
 		<!-- The House-in-Exile -->
 		<Lore loreID="6987" zone="3070" x="382" y="911" z="73" />

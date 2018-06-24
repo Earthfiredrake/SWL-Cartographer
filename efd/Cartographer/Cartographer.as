@@ -9,6 +9,7 @@ import gfx.utils.Delegate;
 import com.GameInterface.DistributedValue;
 import com.GameInterface.DressingRoom;
 import com.GameInterface.Game.Character;
+import com.GameInterface.Utils;
 
 import efd.Cartographer.lib.ara.BasicMCGraphics;
 
@@ -194,6 +195,10 @@ class efd.Cartographer.Cartographer extends Mod {
 			// defaultPacks.push({ name : "EvSamhain", load : true }); (Implement mission layer first)
 		}
 		if (DressingRoom.IsEventActive(EventKrampus)) { defaultPacks.push({ name : "EvKrampusnacht", load : true }); }
+		// TEMP: *really* dislike the game tweak method of detecting an event for this
+		//       mostly as it looks to need annual updates, but also because it's a special case for this particular event
+		//       replace as soon as an alternative is available
+		if (Utils.GetGameTweak("Seasonal_SWL_Anniversary2018") > 0) { defaultPacks.push({ name : "EvAnniversary", load : true}); }
 		Config.NewSetting("OverlayPacks", defaultPacks);
 
 		Config.NewSetting("LayerSettings", new Object());
