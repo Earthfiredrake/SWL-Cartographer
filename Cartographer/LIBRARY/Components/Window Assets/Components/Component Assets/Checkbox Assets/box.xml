@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Components/Window Assets/Components/Component Assets/Checkbox Assets/box" itemID="4f6b3c49-00002695" sourceFlashFilepath="../../../LoreHound/LoreHound.fla" sourceLibraryItemHRef="Components/Windows Assets/Components/Component Assets/Checkbox Assets/box" sourceLastModified="1332427849" lastModified="1332427849" sourceItemID="4e79ddea-00000275">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Components/Window Assets/Components/Component Assets/Checkbox Assets/box" itemID="4f6b3c49-00002695" lastModified="1332427849" sourceItemID="4e79ddea-00000275">
   <timeline>
     <DOMTimeline name="box">
       <layers>
@@ -31,7 +31,7 @@
                     </FillStyle>
                   </fills>
                   <edges>
-                    <Edge fillStyle0="1" edges="!220 220|20 220!20 220|20 20!20 20|220 20!220 20|220 220!240 0|0 0!0 0|0 240!0 240|240 240!240 240|240 0"/>
+                    <Edge fillStyle0="1" edges="!240 0|0 0!0 0|0 240!0 240|240 240!240 240|240 0!220 220|20 220!20 220|20 20!20 20|220 20!220 20|220 220"/>
                   </edges>
                 </DOMShape>
               </elements>

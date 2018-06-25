@@ -19,11 +19,6 @@
                     </DOMTextRun>
                   </textRuns>
                 </DOMDynamicText>
-                <DOMBitmapInstance libraryItemName="Icons/IconTemp.png">
-                  <matrix>
-                    <Matrix tx="5" ty="5"/>
-                  </matrix>
-                </DOMBitmapInstance>
               </elements>
             </DOMFrame>
           </frames>
@@ -39,7 +34,7 @@
                   <transformationPoint>
                     <Point x="9.05" y="9.15"/>
                   </transformationPoint>
-                  <dataBindingXML><![CDATA[<component metaDataFetched='true' schemaUrl='' schemaOperation='' sceneRootLabel='CartographerWindow' oldCopiedComponentPath='3'>
+                  <dataBindingXML><![CDATA[<component metaDataFetched='true' schemaUrl='' schemaOperation='' sceneRootLabel='CartographerIcon' oldCopiedComponentPath=''>
 </component>
 ]]></dataBindingXML>
                   <parametersAsXML><![CDATA[   <property id="autoSize">

@@ -9,8 +9,8 @@
           <DOMFolderItem name="Components/Window Assets/Components/Component Assets" itemID="49d65944-000001cb"/>
           <DOMFolderItem name="Components/Window Assets/Components/Component Assets/Checkbox Assets" itemID="4f6b75df-000047eb"/>
           <DOMFolderItem name="Fonts" itemID="58bddfcb-00000218"/>
-          <DOMFolderItem name="Icons" itemID="58bf2a12-00000934"/>
-          <DOMFolderItem name="MarkerModifierSprites" itemID="5a72b4e3-00000201"/>
+          <DOMFolderItem name="Icons" itemID="58bf2a12-00000934" isExpanded="true"/>
+          <DOMFolderItem name="MarkerModifierSprites" itemID="5a72b4e3-00000201" isExpanded="true"/>
      </folders>
      <fonts>
           <DOMFontItem name="Fonts/_StandardFont" itemID="4dd10cd6-00000f53" linkageExportForAS="true" linkageIdentifier="_StandardFont" font="Futura-Medium" size="0" id="1" sourceLastImported="1521072722" embedRanges="4|5|17|18|20"/>
@@ -23,9 +23,9 @@
      </media>
      <symbols>
           <Include href="Assets/GemOverlay.xml" itemID="55fd2a2d-0000c82e" lastModified="1500152978"/>
-          <Include href="CartographerIcon.xml" itemID="58db79f2-0000062f" lastModified="1490778686"/>
+          <Include href="CartographerIcon.xml" itemID="58db79f2-0000062f" lastModified="1529911718"/>
           <Include href="CartographerInterfaceWindowContent.xml" itemID="596fa4e6-00000261" lastModified="1516929067"/>
-          <Include href="CartographerPointMarkerModifier.xml" itemID="5a709722-000001f7" lastModified="1517467080"/>
+          <Include href="CartographerPointMarkerModifier.xml" itemID="5a709722-000001f7" lastModified="1529911677"/>
           <Include href="Components/CartographerLayerList.xml" itemID="59a060ba-000001fa" lastModified="1516932567"/>
           <Include href="Components/CartographerLayerListEntry.xml" itemID="59a0633c-0000026d" lastModified="1516929098"/>
           <Include href="Components/CartographerWaypointTooltip.xml" itemID="598cf3b6-000002ab" lastModified="1508976986"/>
@@ -63,6 +63,7 @@
      </timelines>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="103408" publishTime="1529911708"/>
           <PublishItem publishSize="103338" publishTime="1523313679"/>
           <PublishItem publishSize="103264" publishTime="1523309599"/>
           <PublishItem publishSize="103264" publishTime="1523309535"/>
@@ -82,6 +83,5 @@
           <PublishItem publishSize="101856" publishTime="1517298617"/>
           <PublishItem publishSize="101828" publishTime="1517298546"/>
           <PublishItem publishSize="101823" publishTime="1517298515"/>
-          <PublishItem publishSize="95542" publishTime="1517298442"/>
      </publishHistory>
 </DOMDocument>

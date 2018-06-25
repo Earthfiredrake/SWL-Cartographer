@@ -10,7 +10,7 @@
                   <transformationPoint>
                     <Point x="10" y="10"/>
                   </transformationPoint>
-                  <dataBindingXML><![CDATA[<component metaDataFetched='true' schemaUrl='' schemaOperation='' sceneRootLabel='CartographerWindow' oldCopiedComponentPath=''>
+                  <dataBindingXML><![CDATA[<component metaDataFetched='true' schemaUrl='' schemaOperation='' sceneRootLabel='CartographerIcon' oldCopiedComponentPath=''>
 </component>
 ]]></dataBindingXML>
                   <parametersAsXML><![CDATA[   <property id="data">

@@ -1,6 +1,6 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="CartographerPointMarkerModifier" itemID="5a709722-000001f7" linkageExportForAS="true" linkageIdentifier="CartographerPointMarkerModifier" lastModified="1517467080">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="CartographerPointMarkerModifier" itemID="5a709722-000001f7" linkageExportForAS="true" linkageIdentifier="CartographerPointMarkerModifier" lastModified="1529911677">
   <timeline>
-    <DOMTimeline name="CartographerPointMarkerModifier" currentFrame="3">
+    <DOMTimeline name="CartographerPointMarkerModifier">
       <layers>
         <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
           <frames>
@@ -18,7 +18,7 @@
             </DOMFrame>
             <DOMFrame index="2" duration="5" name="text" labelType="name" keyMode="9728">
               <elements>
-                <DOMDynamicText name="ModifierText" selected="true" width="12" height="15.8" isSelectable="false">
+                <DOMDynamicText name="ModifierText" width="12" height="15.8" isSelectable="false">
                   <matrix>
                     <Matrix tx="-13" ty="2"/>
                   </matrix>

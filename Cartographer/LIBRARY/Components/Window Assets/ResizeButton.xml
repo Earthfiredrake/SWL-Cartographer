@@ -17,8 +17,8 @@
                     </StrokeStyle>
                   </strokes>
                   <edges>
-                    <Edge strokeStyle="1" edges="!313 71|67 318"/>
                     <Edge strokeStyle="1" edges="!313 167S4|162 318"/>
+                    <Edge strokeStyle="1" edges="!313 71|67 318"/>
                     <Edge cubics="!313 251(;313,251 247,318 247,318q313 251 247 318);"/>
                     <Edge cubics="!313 71(;313,71 67,318 67,318q313 71 67 318);"/>
                     <Edge cubics="!313 167(;313,167 162,318 162,318q313 167 162 318);"/>
@@ -43,7 +43,7 @@
                     </StrokeStyle>
                   </strokes>
                   <edges>
-                    <Edge strokeStyle="1" edges="!304 68|58 314!304 164|153 314"/>
+                    <Edge strokeStyle="1" edges="!304 164|153 314!304 68|58 314"/>
                     <Edge cubics="!304 248(;304,248 238,314 238,314q304 248 238 314);"/>
                     <Edge cubics="!304 68(;304,68 58,314 58,314q304 68 58 314);"/>
                     <Edge cubics="!304 164(;304,164 153,314 153,314q304 164 153 314);"/>
@@ -64,8 +64,8 @@
                     </FillStyle>
                   </fills>
                   <edges>
-                    <Edge fillStyle0="1" fillStyle1="1" edges="!9 10S1|9 375"/>
                     <Edge fillStyle0="1" edges="!9 375S1|207 375!207 375[365 375 365 217!365 217|365 10!365 10|9 10"/>
+                    <Edge fillStyle0="1" fillStyle1="1" edges="!9 10S1|9 375"/>
                     <Edge fillStyle1="1" edges="!9 375|-4 375!-4 375|-4 10!-4 10|9 10"/>
                   </edges>
                 </DOMShape>
