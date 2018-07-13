@@ -25,6 +25,10 @@ The safest method for upgrading (required for installing) is to have the client 
 I intend to permit setting migration from the first public beta to v1.0.x, but this may be subject to change. As with my other mods, this update compatibility window will occasionally be shifted to reduce legacy code clutter.
 
 ## Change Log
+Version 0.1.8-beta
++ Data update: Lore and event locations from Anniversary patch
++ Not any more stable than it's ever been, sorry. I've a plan for an overhaul that may sacrifice some design goals for something that doesn't crash
+
 Version 0.1.7-beta
 + Calling it a beta, mostly just tired of alphas, and I want to put it on curse already
 + SAF update, includes all lore and champion locations from New Dawn

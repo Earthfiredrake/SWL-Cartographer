@@ -39,6 +39,7 @@ import efd.Cartographer.notations.NotationBase;
 
 // TODO: Reminder list of things I've been looking at doing, roughly prioritized:
 //       Write the reminder list
+//       STABILITY: This is a big one right now, but I'll need to talk to Glaucon about a few things, see the bottom
 //       Tooltips that can handle multiple data sources at once (ie: everything under the mouse, ideally sorted somewhat sensibly... by layer maybe?)
 //         Look into using it (at least the detection system) to trigger additional notations; ex: to pop up a path or area as additional information on a point icon
 //       Reduce required icon permutations, possible features that might help:
@@ -127,7 +128,7 @@ class efd.Cartographer.Cartographer extends Mod {
 			// Debug flag at top so that commenting out leaves no hanging ','
 			// Debug : true,
 			Name : "Cartographer",
-			Version : "0.1.7.beta",
+			Version : "0.1.8.beta",
 			Subsystems : {
 				Config : {
 					Init : ConfigManager.Create,
@@ -404,7 +405,8 @@ class efd.Cartographer.Cartographer extends Mod {
 }
 
 // The big list of future Glaucon questions (stuff to pester him with when I run out of things I can do without it):
-//   Sourcing map backgrounds from RDB
+//   Sourcing map backgrounds from RDB (would be more stable than loading loose images, still extendable, and would significantly reduce the game assets I need to redistribute)
+//   Stabilize the loading of loose images (still valuable if I'm going to permit extending the icon set)
 //   Anima well locks and leaps
 //   Long range champion detection
 //   GetScreenPos() for arbitrary world coordinates

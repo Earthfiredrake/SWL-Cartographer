@@ -7,13 +7,21 @@
 	Currently invalid for loading
 -->
 <OverlayPack>
+	<!-- Event Raids/Dungeons -->
+	<Transit zone="5060" x="552" y="251" z="394" targetZone="7710" icon="exit_dungeon.png"> <!-- Forgotten Pumpkin Patch (SuperJack) -->
+			<Note en="Open for ten minutes starting 2 min after each hour" />
+	</Transit>
+	<!-- TODO: Cat God -->
+
+	<!-- Lore -->
 	<!-- Samhain 2017 -->
 	<Lore loreID="5601" zone="1000" x="129" y="155" z="24" />
 	<Lore loreID="5600" zone="3050" x="856" y="210" z="159" />
 	<Lore loreID="5599" zone="6030" x="213" y="219" z="20" />
 	<Lore loreID="5603" zone="3030" x="297" y="505" z="144" />
 	<Lore loreID="5604" zone="3030" x="705" y="420" z="130" />
-
+	
+	<!-- Event Quests (Not yet supported) -->
 	Madame Rogêt <QuestGiver zone="3030" x="290" y="334" z="140" >
 		<Name rdb="category=51000 id=12928" />
 		The Meowling <Quest id="3431" />

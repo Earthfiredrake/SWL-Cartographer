@@ -6,6 +6,17 @@
 	Anniversary event content
 -->
 <OverlayPack>
+	<!-- Event Raids -->
+	<Transit zone="5060" x="503" y="179" z="395" targetZone="" icon="exit_dungeon.png"> <!-- Deep Agartha (Gatekeeper) -->
+		<Name rdb="category=50025 id=166496208" />
+		<Note en="Requires summon with all 11 shards in single instance, gate opens in all instances" />
+	</Transit>
+	<Transit zone="5060" x="552" y="251" z="394" targetZone="7730" icon="exit_dungeon.png"> <!-- Vibrant Agartha (Talos) -->
+		<Note en="Open for ten minutes starting 2 min after each hour.\n For spawn info see: https://aliceorwell.github.io/SWL-Talos-Countdown/" />
+		<!-- TODO: Web-link on click? -->
+	</Transit>
+	
+	<!-- Lore -->
 	<!-- The Talos of Gaia 10/11 -->
 	<Lore loreID="10936" zone="5060" x="546" y="243" z="394" />
 	<Lore loreID="10937" zone="7730" x="216" y="298" z="227" />
@@ -21,5 +32,9 @@
 	<Lore loreID="10943" zone="5740" x="208" y="196" z="230" />
 	<Lore loreID="10944" zone="5060" x="551" y="188" z="393" />
 	<Lore loreID="10945" zone="5740" x="141" y="289" z="202" />
-	<!-- #11 is random drop from hourly golem loot bag -->
+	<Lore loreID="10946" zone="7730" x="0" y="0" z="0"> <!-- Arbitrary position used -->
+		<Note en="RNG from loot bag (with angry feet shard)" />
+	</Lore>
+	
+	<!-- TODO: Pinata positions, just because I can? -->
 </OverlayPack>
