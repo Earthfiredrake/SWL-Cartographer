@@ -248,7 +248,7 @@ class efd.Cartographer.lib.LocaleManager {
 //  *52000: [regions] Names for playfields (by playfield ID)
 //   52001: Server names (Fun fact: the full list includes several of the 17)
 //   53000: [feat_specialized_trees] Not sure, it's got some weapon tree mentions in there and a lot of filler
-//   54000: [breedenum] Names of creature types, (compare to monster kill count achievements, and GetStat results)
+//   54000: [breedenum] Names of creature types, seems to be in GetStat[89] for monster dynels
 //   55000: [simpledynels] Internal names for non-interactive dynel objects?
 //   55200: [stackinglines] Unsure, seems to be some debuffs
 //   55700: Spoilers! Lore texts (also achievement, pet, and sprint descriptions, emotes, tutorial messages... stuff that ends up under Lore.as)
