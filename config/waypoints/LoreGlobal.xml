@@ -46,7 +46,9 @@
 		<Lore loreID="4144" zone="3090" x="602" y="436" z="71" />
 		<Lore loreID="4145" zone="3140" x="712" y="679" z="46" />
 		<!-- Draculesti 7/9 -->
-		<Lore loreID="1503" zone="3120" x="442" y="613" z="69" />
+		<Lore loreID="1503" zone="3120" x="442" y="613" z="69">
+			<Note en="Jumping puzzle" />
+		</Lore>
 		<Lore loreID="1502" zone="3120" x="320" y="723" z="68" />
 		<Lore loreID="1501" zone="3130" x="824" y="848" z="47" />
 		<Lore loreID="1500" zone="3130" x="785" y="552" z="46" />
@@ -68,6 +70,17 @@
 		<Lore loreID="3627" zone="1200" x="329" y="176" z="47" />
 		<Lore loreID="3628" zone="1200" x="374" y="226" z="53" />
 		<Lore loreID="3976" zone="1200" x="354" y="257" z="50" />
+		<!-- Faction Conflict -->
+		<Lore loreID="10921" zone="7410" x="646" y="741" z="726"/>
+		<Lore loreID="10922" zone="7130" x="247" y="182" z="30" />
+		<Lore loreID="10923" zone="1120" x="111" y="190" z="3">
+			<Note en="Proximity, on way out?" />
+		</Lore>
+		<Lore loreID="10924" zone="7420" x="298" y="333" z="160" />
+		<Lore loreID="10925" zone="1120" x="153" y="190" z="18">
+			<Note en="Proximity, on way out?" />
+		</Lore>
+		<Lore loreID="10926" zone="7130" x="279" y="172" z="34" />
 		<!-- Fear Nothing Foundation -->
 		<Lore loreID="7174" zone="6640" x="285" y="276" z="8" />
 		<Lore loreID="7175" zone="6640" x="213" y="251" z="15" />

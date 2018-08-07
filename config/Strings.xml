@@ -51,13 +51,6 @@
 		<LayerLabelTransit en="Zone Transitions" />
 		<LayerLabelVendor en="Vendors" />
 	</GUI>
-	<AutoReport> <!-- Only used for player notifications, report content is internal -->
-		<ReportQueued en="A report has been generated and will be sent when you are next at the bank" />
-		<Submitted en="All queued reports have been sent. Thank you for your assistance" />
-		<FailSend en="One or more reports failed to send and will remain queued" />
-		<FailDeliver en="One or more reports could not be delivered and will remain queued" />
-		<ErrorDesc en="Reason: %1%" /> <!-- %1% = game provided error message, unknown localization -->
-	</AutoReport>
 	<Cartographer> <!-- Chat and fifo messages specific to this mod -->
 	</Cartographer>
 	<MapNoteTooltip> <!-- Commonly used notation tooltip message templates -->

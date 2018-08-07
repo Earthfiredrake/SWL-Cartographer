@@ -17,7 +17,7 @@
 	</Transit>
 	
 	<!-- Lore -->
-	<!-- The Talos of Gaia 10/11 -->
+	<!-- The Talos of Gaia -->
 	<Lore loreID="10936" zone="5060" x="546" y="243" z="394" />
 	<Lore loreID="10937" zone="7730" x="216" y="298" z="227" />
 	<Lore loreID="10938" zone="5060" x="594" y="522" z="349" />

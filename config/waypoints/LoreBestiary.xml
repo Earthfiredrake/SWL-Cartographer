@@ -504,7 +504,7 @@
 	<Lore loreID="9272" zone="3100" x="738" y="866" type="area" radius="43">
 		<Note en="%1%; %2%" fmt="true">
 			<Param cat="MapNoteTooltip" str="MissionReq" fmt="true">
-				<Param rdb="category=50300 id=3083" />
+				<Param rdb="category=50300 id=3084" />
 			</Param>
 			<Param cat="MapNoteTooltip" str="DropsFrom" fmt="true">
 				<Param rdb="category=51000 id=22982" />
