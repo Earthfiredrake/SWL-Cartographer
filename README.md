@@ -10,7 +10,7 @@ The mod is currently in early beta, with a minimal useful set of capabilities. S
   + Change or add map/icon files (this feature may be cut or pushed onto an unstable version if sideloading crashes can't be solved)
   + Add new data (currently limited to loading from existing file names)
 + Resizable window that can behave similarly to the minimap if made small enough (sidebar goes away)
-+ Adjustible view: Mousewheel scales, drag it around if not in locked minimap mode
++ Adjustable view: Mousewheel scales, drag it around if not in locked minimap mode
 + View any mapped world zone by clicking through the region transition icons (exclamation mark means the zone has no map)
 
 All settings are saved account wide and will be shared across characters. If you'd rather have different settings for each character, renaming the file "LoginPrefs.xml" to "CharPrefs.xml" when installing/upgrading the mod should work without any problems. A clean install of the mod is recommended if doing this, as it will be unable to transfer existing settings anyway.

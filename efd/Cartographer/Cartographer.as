@@ -405,7 +405,7 @@ class efd.Cartographer.Cartographer extends Mod {
 }
 
 // The big list of future Glaucon questions (stuff to pester him with when I run out of things I can do without it):
-//   Sourcing map backgrounds from RDB (would be more stable than loading loose images, still extendable, and would significantly reduce the game assets I need to redistribute)
+//   Sourcing map backgrounds from RDB (would be more stable than loading loose images?, still extendable, and would significantly reduce the game assets I need to redistribute)
 //   Stabilize the loading of loose images (still valuable if I'm going to permit extending the icon set)
 //   Anima well locks and leaps
 //   Long range champion detection
