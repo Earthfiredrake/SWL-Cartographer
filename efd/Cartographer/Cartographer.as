@@ -169,6 +169,7 @@ class efd.Cartographer.Cartographer extends Mod {
 		super(GetModInfo(), hostMovie);
 
 		SystemsLoaded.ZoneIndex = false;
+		SystemsLoaded.MapNotations = false;
 
 		// Ingame debug menu registers variables that are initialized here, but not those initialized at class scope
 
@@ -231,8 +232,9 @@ class efd.Cartographer.Cartographer extends Mod {
 	}
 
 	private function UpdateLoadProgress(loadedSystem:String):Boolean {
-		if ((loadedSystem == "Config" && SystemsLoaded.LocalizedText) ||
-			(loadedSystem == "LocalizedText" && SystemsLoaded.Config)) {
+		if ((loadedSystem == "Config" && SystemsLoaded.LocalizedText && SystemsLoaded.ZoneIndex) ||
+			(loadedSystem == "LocalizedText" && SystemsLoaded.Config && SystemsLoaded.ZoneIndex) ||
+			(loadedSystem == "ZoneIndex" && SystemsLoaded.Config && SystemsLoaded.LocalizedText)) {
 				OverlayLoader = LoadXmlAsynch("waypoints\\" + OverlayList[0], Delegate.create(this, ParseOverlayPack));
 			}
 		return super.UpdateLoadProgress(loadedSystem);
@@ -304,6 +306,7 @@ class efd.Cartographer.Cartographer extends Mod {
 			delete OverlayList;
 			delete OverlayLoader;
 			CleanupLayers();
+			UpdateLoadProgress("MapNotations");
 		}
 	}
 
