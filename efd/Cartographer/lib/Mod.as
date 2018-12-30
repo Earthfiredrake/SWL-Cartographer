@@ -1,22 +1,10 @@
 ﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
-// https://github.com/Earthfiredrake/SWL-Cartographer
+// https://github.com/Earthfiredrake/SWL-FrameworkMod
 
-import gfx.utils.Delegate;
-
-import com.GameInterface.Chat; // FIFO messages
-import com.GameInterface.DistributedValue;
-import com.GameInterface.Utils; // Chat messages *shrug*
-import com.Utils.Archive;
-import com.Utils.Signal;
-
-import efd.Cartographer.lib.DebugUtils;
-// TODO: Finish tidying up the last components
-import efd.Cartographer.lib.LocaleManager;
-
-// Mod Framework v1.1.1
+// Mod Framework v1.1.2
 // Revision numbers are for internal merge tracking only, and do not require an upgrade notification
-// See ConfigManager for notification format
+// See ConfigManager for notification format for major/minor upgrades
 
 //   The following DistributedValue names are reserved for use by the framework; some are hard-coded, some are just convenient standardized names:
 //   [pfx] is a developer unique prefix (I use 'efd'), [Name] is the name of the mod
@@ -61,7 +49,7 @@ import efd.Cartographer.lib.LocaleManager;
 //     Doing something useful (or at least interesting)
 
 // When adapting any code for another mod:
-//   Always use a unique namespace for the mod on all class, import and __className definitions
+//   Always use a unique namespace for the mod on all class, import and __className definitions (in *.lcl.as files)
 //     The flash environment caches classes by fully namespace qualified identifier when first encountered
 //     Whichever mod loads first gets to be the authoritive definition for all classes it defines
 //     This can be helpful if loading order is known (Game API loads before mods), but mods can't otherwise depend on being loaded in any particular order
@@ -69,7 +57,16 @@ import efd.Cartographer.lib.LocaleManager;
 //     Due to similar caching behaviour, where anybody's library asset by that name will use whatever class was linked
 //     See etu.MovieClipHelper for functions to do dynamic linking
 
-class efd.Cartographer.lib.Mod {
+import gfx.utils.Delegate;
+
+import com.GameInterface.Chat; // FIFO messages
+import com.GameInterface.DistributedValue;
+import com.GameInterface.Utils; // Chat messages *shrug*
+import com.Utils.Archive;
+import com.Utils.Signal;
+
+// Mod namespace qualified imports and class definition are #included from locally overriden file
+#include "Mod.lcl.as"
 /// Initialization and Cleanup
 	// The ModInfo object has the following fields:
 	//   Debug (optional, default false)
@@ -129,7 +126,7 @@ class efd.Cartographer.lib.Mod {
 
 		ConfigHost = modInfo.Subsystems.Config.Init(this, modInfo.Subsystems.Config.InitObj);
 		// TODO: Some mods won't have to serialize this, because it only makes sense as an error disable
-		Config.NewSetting("Enabled", true); // This should be used for serialization only, not to trigger a change in state
+		Config.NewSetting("Enabled", true);
 		Config.SignalConfigLoaded.Connect(ConfigLoaded, this);
 
 		InterfaceWindow = modInfo.Subsystems.Interface.Init(this, modInfo.Subsystems.Interface.InitObj);
@@ -144,13 +141,13 @@ class efd.Cartographer.lib.Mod {
 
 	// Notify when a core subsystem has finished loading to ensure that LoadComplete properly triggers
 	// Also a convenient place to override and trigger events that require multiple subsystems to be loaded
+	// TODO: Timeout warning to notify of systems that fail to properly register their state
 	private function UpdateLoadProgress(loadedSystem:String):Boolean {
 		Debug.TraceMsg(loadedSystem + " Loaded");
 		SystemsLoaded[loadedSystem] = true;
 		for (var system:String in SystemsLoaded) {
 			if (!SystemsLoaded[system]) { return false; }
 		}
-		Debug.TraceMsg("Is fully loaded");
 		LoadComplete();
 	}
 
@@ -162,8 +159,8 @@ class efd.Cartographer.lib.Mod {
 		// TODO: Load icon invisibly, and only make it visible when loading is successfully complete?
 		SignalLoadCompleted.Emit();
 		ModLoadedDV.SetValue(Version);
-		// No errors force disabled during load, assume things are working and fetch the serialized state (or true)
-		if (ModEnabledDV.GetValue() === undefined) { ModEnabledDV.SetValue(Config.GetValue("Enabled", true)); }
+		Debug.TraceMsg("Is fully loaded");
+		ModEnabledDV.SetValue(Config != undefined ? Config.GetValue("Enabled", true) : true);
 	}
 
 	// The game itself toggles the mod's activation state (based on modules.xml criteria)
@@ -178,7 +175,7 @@ class efd.Cartographer.lib.Mod {
 			CheckEnableState();
 			return Config.SaveConfig();
 		} else {
-			if (!Config.IsLoaded) {	Config.LoadConfig(archive);	}
+			if (!Config.IsLoaded) { Config.LoadConfig(archive); }
 			EnabledByGame = true;
 			CheckEnableState();
 		}
@@ -187,21 +184,28 @@ class efd.Cartographer.lib.Mod {
 	//  Flash triggered enable state DV has changed
 	private function ModEnabledChanged(dv:DistributedValue):Void {
 		var newValue:Boolean = dv.GetValue();
+		// Certain bugs (cyclic strong references) can result in an instance of the mod remaining in memory despite being removed from the visual tree during a /reloadui
+		// This attempts to detect those instances, by hooking a warning that will be triggered if the mod constructor is called while another instance still exists
 		if (newValue == undefined) { Debug.DevMsg("A prior instance was not fully cleaned up before construction of a new instance"); }
-		if (newValue && SystemsLoaded != undefined) {
-			Debug.ErrorMsg("Failed to load required components, and cannot be enabled");
-			for (var key:String in SystemsLoaded) {
-				if (!SystemsLoaded[key]) { Debug.ErrorMsg("Missing: " + key, { noHeader : true }); }
-			}
+		if (newValue && (FatalError || SystemsLoaded != undefined)) {
+			if (FatalError) {
+				Debug.ErrorMsg("Unable to activate due to a previous fatal error");
+				Debug.ErrorMsg("Original Error: " + FatalError, { noHeader : true });
+			} else {
+				Debug.ErrorMsg("Failed to load required components, and cannot be enabled");
+				for (var key:String in SystemsLoaded) {
+					if (!SystemsLoaded[key]) { Debug.ErrorMsg("Missing: " + key, { noHeader : true }); }
+				}
+			}	
 			dv.SetValue(false);
-		} else {
-			CheckEnableState();
-			Config.SetValue("Enabled", ModEnabledDV.GetValue());
-			if (Icon == undefined) {
-				// No Icon, probably means it's a console style mod
-				// Provide alternate notification
-				ChatMsg(LocaleManager.GetString("General", newValue ? "Enabled" : "Disabled"));
-			}
+			return;
+		}
+		CheckEnableState();
+		Config.SetValue("Enabled", dv.GetValue());
+		if (Icon == undefined) {
+			// No Icon, probably means it's a console style mod
+			// Provide alternate notification
+			ChatMsg(LocaleManager.GetString("General", newValue ? "Enabled" : "Disabled"));
 		}
 	}
 
@@ -216,7 +220,7 @@ class efd.Cartographer.lib.Mod {
 	}
 
 	// TODO: Figure out what else needs to be hooked up to DebugUtils.SignalFatalError
-    private function OnFatalError(error:String) { ModEnabledDV.SetValue(false); }
+    private function OnFatalError(error:String) { FatalError = error; }
 
 	public function OnUnload():Void {
 		ModLoadedDV.SetValue(false);
@@ -242,7 +246,14 @@ class efd.Cartographer.lib.Mod {
 
 	// Config changed handler will not be triggered by initial loading
 	// Update handlers get an initial shot at the loaded settings
-	private function ConfigChanged(setting:String, newValue, oldValue):Void { }
+	private function ConfigChanged(setting:String, newValue, oldValue):Void {
+		switch(setting) {
+			case "Enabled" : {
+				ModEnabledDV.SetValue(newValue);
+				break;
+			}
+		}
+	}
 
 /// Standard Icon Mouse Behaviour Packages
 	public var IconMouse_ToggleUserEnabled:Object = { Action : ToggleUserEnabled, Tooltip : ToggleUserEnabledTooltip };
@@ -337,6 +348,7 @@ class efd.Cartographer.lib.Mod {
 	public function get ModLoadedVarName():String { return DVPrefix + ModName + "Loaded"; }
 	public var ModLoadedDV:DistributedValue; // Locks-out interface when mod fails to load, may also be used for basic cross-mod integration
 	public var SystemsLoaded:Object; // Tracks asynchronous data loads so that functions aren't called without proper data, removed once loading complete
+	public var FatalError:String;
 	public var SignalLoadCompleted:Signal;
 
 	public function get ModEnabledVarName():String { return DVPrefix + ModName + "Enabled"; }

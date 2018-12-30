@@ -1,18 +1,10 @@
 ﻿// Copyright 2015, eltorqiro
 // Released under the terms of the MIT License
 // https://github.com/eltorqiro/TSW-Utils
-// Modified for Cartographer:
+// Modified for EFD SWL Mod Framework:
 //   Copyright 2017-2018, Earthfiredrake
 //   Used and released under the terms of the MIT License
-//   https://github.com/Earthfiredrake/SWL-Cartographer
-
-import gfx.core.UIComponent;
-
-import flash.geom.Point;
-
-import efd.Cartographer.lib.etu.MovieClipHelper;
-import efd.Cartographer.lib.etu.GemOverlay;
-
+//   https://github.com/Earthfiredrake/SWL-FrameworkMod
 
 /**
  *
@@ -24,10 +16,13 @@ import efd.Cartographer.lib.etu.GemOverlay;
  * - only create instance of the controller using the create() factory method, do not instantiate using new GemController()
  *
  */
-class efd.Cartographer.lib.etu.GemController extends UIComponent {
 
-	public static var __className:String = "efd.Cartographer.lib.etu.GemController";
+import flash.geom.Point;
 
+import gfx.core.UIComponent;
+
+// Mod namespace qualified imports and class definition are #included from locally overriden file
+#include "GemController.lcl.as"
 	/**
 	 * do not call this directly
 	 */

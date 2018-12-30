@@ -1,13 +1,6 @@
 ﻿// Copyright 2017-2018, Earthfiredrake
 // Released under the terms of the MIT License
-// https://github.com/Earthfiredrake/SWL-Cartographer
-
-import com.Utils.Format;
-import com.Utils.LDBFormat;
-import com.Utils.Signal;
-
-import efd.Cartographer.lib.DebugUtils;
-import efd.Cartographer.lib.Mod;
+// https://github.com/Earthfiredrake/SWL-FrameworkMod
 
 // Provides string localization features, consisting of two major components:
 //   Parses xml files containing categorized strings (ie: Strings.xml) and stores the localized strings in a globally available lookup table
@@ -22,7 +15,7 @@ import efd.Cartographer.lib.Mod;
 //   Where:
 //     CategoryKey and StringKey are lookup keys (generally making unique pairs)
 //       Categories may be re-opened and extended after initial definition, but re-defined StringKeys will replace the originals
-//     fmtSrc -> (cat="CategoryKey" str="StringKey") | rbd="id=# category=#" | (en="english/default" [fr="french"][de="german"])
+//     fmtSrc -> (cat="CategoryKey" str="StringKey") | rdb="category=# id=#" | (en="english/default" [fr="french"][de="german"])
 
 //   Multiple fmtSrcs are permitted, but they will be evaluated in order of precidence, and will ignore any results after finding a valid source
 //     str: Sourced from the string file, and must be already loaded, mostly used when other mod data repeatedly uses generic string segments
@@ -40,7 +33,12 @@ import efd.Cartographer.lib.Mod;
 
 // Also provides some formatting utilities for strings and simplified lookups for common UI elements
 
-class efd.Cartographer.lib.LocaleManager {
+import com.Utils.Format;
+import com.Utils.LDBFormat;
+import com.Utils.Signal;
+
+// Mod namespace qualified imports and class definition are #included from locally overriden file
+#include "LocaleManager.lcl.as"
 	private function LocaleManager() { } // Static class for ease of access and singleton nature
 
 	public static function Initialize(testLocale:String):Void {
@@ -190,9 +188,9 @@ class efd.Cartographer.lib.LocaleManager {
 //   10050: Very out of date tutorial text
 //   10058: Spoilers! Various story texts... seems to be a mix of computer terminals, found notes and phone texts
 //   10059: Video playback status messages
-//   10060: Achivement/Lore window boilerplate
+//   10060: Achievement/Lore window boilerplate
 //   10062: TSW scenario console strings
-//   10063: Museum strings (exhibit descriptions, upgrade prompts, player achivements)
+//   10063: Museum strings (exhibit descriptions, upgrade prompts, player achievements)
 //   13000: Installer text
 //   14000: Patcher text
 //   14250: Character rename prompts
@@ -244,6 +242,7 @@ class efd.Cartographer.lib.LocaleManager {
 //   50311: Spoilers! Illuminati mission reports
 //   50312: Spoilers! Dragon mission reports
 //   50313: Mission unlock requirements
+//   50316: Spoilers! Dragon mission reports (post Tokyo variants)
 //  *51000: [npc_template] Names for NPCs, pets, monsters
 //  *52000: [regions] Names for playfields (by playfield ID)
 //   52001: Server names (Fun fact: the full list includes several of the 17)
