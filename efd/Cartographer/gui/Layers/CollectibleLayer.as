@@ -82,9 +82,9 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 	// Needs a greyscale converter that brightens black (signal) without overly affecting other values
 	// Adding a flat value and scaling the conversion down comes close
 	private static var GreyscaleConverter:ColorMatrixFilter =
-		new ColorMatrixFilter([0.20059, 0.39611, 0.0533, 0, 0.35,
-							   0.20059, 0.39611, 0.0533, 0, 0.35,
-							   0.20059, 0.39611, 0.0533, 0, 0.35,
+		new ColorMatrixFilter([0.18516, 0.36564, 0.0492, 0, 0.4,
+							   0.18516, 0.36564, 0.0492, 0, 0.4,
+							   0.18516, 0.36564, 0.0492, 0, 0.4,
 							   0, 0, 0, 1, 0]);
 	// Original suggested values for pure greyscale conversion below
 	//	new ColorMatrixFilter([0.3086, 0.6094, 0.0820, 0, 0,
@@ -94,7 +94,6 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 	// Adjusted midrange grey to match converter's output
 	// By happy coincidence, when passed through the converter it actually looks not bad
 	//   which is good, because the converter is still required to grey out any modifier sprites
-	private static var GreyPenColour:Number = 0xACACAC;
 
 	private var UncollectedData:Array;
 	private var UncollectedCount:Number;
@@ -103,4 +102,5 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 	private var CollectedData:Array;
 	private var CollectedCount:Number;
 	private var RenderedCollected:Array;
+	private static var GreyPenColour:Number = 0xBCBCBC;
 }
