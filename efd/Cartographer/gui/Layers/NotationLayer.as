@@ -32,7 +32,6 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		if (data.HasAnyPaths) { PathLayer = MapViewClip.NewLayer("Path"); }
 		if (data.HasAnyWaypoints) { WaypointLayer = MapViewClip.NewLayer("Waypoint"); }
 
-		_RenderedWaypoints = new Array();
 		_visible = visible;
 		AreaLayer._visible = visible;
 		PathLayer._visible = visible;
@@ -98,7 +97,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		}
 	}
 
-	private function ReloadWaypoints():Void { UpdateDisplayList(RenderedWaypoints, NotationData.GetWaypoints(Zone)); }
+	private function ReloadWaypoints():Void { UpdateWaypointLayer(WaypointLayer, NotationData.GetWaypoints(Zone)); }
 
 	private function RefreshWaypoints():Void {
 		var waypointList:Array = RenderedWaypoints; // Cache this, some variants have to merge multiple lists for it
@@ -108,47 +107,26 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 		}
 	}
 
-	private function UpdateDisplayList(list:Array, data:Array, targetClip:MovieClip):Void {
-		var i:Number = 0;
-		for (; i < list.length; ++i) {
-			if (i < data.length) {
-				list[i].Reassign(data[i], MapViewClip.WorldToMapCoords(data[i].Position));
-			} else {
-				list[i].removeMovieClip();
-			}
+	private function UpdateWaypointLayer(targetClip:MovieClip, data:Array):Void {
+		for (var i:Number = 0; i < targetClip.RenderList.length; ++i) {
+			targetClip.RenderList[i].removeMovieClip();
 		}
-		list.splice(data.length);
-		for (; i < data.length; ++i) {
+		targetClip.RenderList = new Array();		
+		for (var i:Number = 0; i < data.length; ++i) {
 			var mapPos:Point = MapViewClip.WorldToMapCoords(data[i].Position);
-			if (targetClip == undefined) { targetClip = WaypointLayer; }
 			var depth:Number = targetClip.getNextHighestDepth();
-			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
-				WaypointIcon, "WP" + depth, targetClip, depth,
+			var wp:WaypointIcon = WaypointIcon(MovieClipHelper.attachMovieWithRegister(
+				"CartographerPointMarker", WaypointIcon, "WP" + depth, targetClip, depth,
 				{ Data : data[i], _x : mapPos.x, _y : mapPos.y, MapViewLayer : this }));
 			wp.SignalIconChanged.Connect(ChangeIcon, this);
 			wp.LoadIcon();
-			list.push(wp);
+			targetClip.RenderList.push(wp);
 		}
 	}
 
 	// For icons that can change while map is open
-	// TODO: It would shuffle the render order slightly... might be worth considering a bug
 	private function ChangeIcon(icon:WaypointIcon):Void {
-		var targetClip:MovieClip = WaypointLayer;
-		var depth:Number = targetClip.getNextHighestDepth();
-		var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
-			WaypointIcon, "WP" + depth, targetClip, depth,
-			{ Data : icon.Data, _x : icon._x, _y : icon._y, MapViewLayer : this }));
-		wp.SignalIconChanged.Connect(ChangeIcon, this);
-		wp.LoadIcon();
-		RenderedWaypoints.push(wp);
-		for (var i:Number = 0; i < RenderedWaypoints.length; ++i) {
-			if (RenderedWaypoints[i] == icon) {
-				RenderedWaypoints.splice(i, 1);
-				break;
-			}
-		}
-		icon.removeMovieClip();
+		icon.LoadIcon();
 	}
 
 	/// Render effects
@@ -180,7 +158,7 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 	}
 
 	/// Properties
-	public function get RenderedWaypoints():Array {	return _RenderedWaypoints; }
+	public function get RenderedWaypoints():Array { return WaypointLayer.RenderList; }
 	// Array of currently displayed waypoints for this layer
 
 	public function set Visible(value:Boolean):Void {
@@ -218,5 +196,4 @@ class efd.Cartographer.gui.Layers.NotationLayer {
 	private var AreaLayer:MovieClip;
 	private var PathLayer:MovieClip;
 	private var WaypointLayer:MovieClip;
-	private var _RenderedWaypoints:Array;
 }

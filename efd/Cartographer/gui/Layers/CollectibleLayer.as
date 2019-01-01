@@ -25,9 +25,6 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 
 		WaypointLayer.createEmptyMovieClip("CollectedSublayer", WaypointLayer.getNextHighestDepth());
 		WaypointLayer.createEmptyMovieClip("UncollectedSublayer", WaypointLayer.getNextHighestDepth());
-
-		RenderedUncollected = new Array();
-		RenderedCollected = new Array();
 	}
 
 	private function ReloadWaypoints():Void {
@@ -40,8 +37,8 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 			else { uncollectedData.push(waypoints[i]); }
 		}
 
-		UpdateDisplayList(RenderedUncollected, uncollectedData, WaypointLayer.UncollectedSublayer);
-		UpdateDisplayList(RenderedCollected, collectedData, WaypointLayer.CollectedSublayer);
+		UpdateWaypointLayer(WaypointLayer.UncollectedSublayer, uncollectedData);
+		UpdateWaypointLayer(WaypointLayer.CollectedSublayer, collectedData);
 
 		for (var i:Number = 0; i < RenderedCollected.length; ++i) {
 			RenderedCollected[i].filters = [GreyscaleConverter];
@@ -55,8 +52,8 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 	private function ChangeIcon(icon:WaypointIcon):Void {
 		// Create a replacement icon on the collected sublayer
 		var targetLayer:MovieClip = WaypointLayer.CollectedSublayer;
-		var wp:WaypointIcon = WaypointIcon(MovieClipHelper.createMovieWithClass(
-			WaypointIcon, "WP" + targetLayer.getNextHighestDepth(), targetLayer, targetLayer.getNextHighestDepth(),
+		var wp:WaypointIcon = WaypointIcon(MovieClipHelper.attachMovieWithRegister(
+			"CartographerPointMarker", WaypointIcon, "WP" + targetLayer.getNextHighestDepth(), targetLayer, targetLayer.getNextHighestDepth(),
 			{ Data : icon.Data, _x : icon._x, _y : icon._y, filters : [GreyscaleConverter], MapViewLayer : this }));
 		wp.SignalIconChanged.Connect(ChangeIcon, this);
 		wp.LoadIcon();
@@ -78,6 +75,8 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 	}
 
 	public function get RenderedWaypoints():Array { return RenderedUncollected.concat(RenderedCollected); }
+	public function get RenderedUncollected():Array { return WaypointLayer.UncollectedSublayer.RenderList; }
+	public function get RenderedCollected():Array { return WaypointLayer.CollectedSublayer.RenderList; }
 
 	// Needs a greyscale converter that brightens black (signal) without overly affecting other values
 	// Adding a flat value and scaling the conversion down comes close
@@ -94,13 +93,5 @@ class efd.Cartographer.gui.Layers.CollectibleLayer extends NotationLayer {
 	// Adjusted midrange grey to match converter's output
 	// By happy coincidence, when passed through the converter it actually looks not bad
 	//   which is good, because the converter is still required to grey out any modifier sprites
-
-	private var UncollectedData:Array;
-	private var UncollectedCount:Number;
-	private var RenderedUncollected:Array;
-
-	private var CollectedData:Array;
-	private var CollectedCount:Number;
-	private var RenderedCollected:Array;
 	private static var GreyPenColour:Number = 0xBCBCBC;
 }

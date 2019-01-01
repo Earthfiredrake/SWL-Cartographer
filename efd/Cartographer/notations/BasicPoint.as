@@ -52,10 +52,10 @@ class efd.Cartographer.notations.BasicPoint extends NotationBase implements IWay
 
 	private static function GetDefaultIcon(typeName:String):String {
 		switch (typeName) {
-			case "AnimaWell": return "well.png";
+			case "AnimaWell": return "well";
 			case "Champ":
-			case "Krampus": return "champ.png";
-			case "Vendor": return "service_vendor.png";
+			case "Krampus": return "mob";
+			case "Vendor": return "sv_vendor";
 			default: return undefined;
 		}
 	}

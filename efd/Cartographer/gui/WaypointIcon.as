@@ -20,39 +20,16 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	private function WaypointIcon() { // Indirect construction only
 		super();
 		SignalIconChanged = new Signal();
-		Loader = new MovieClipLoader();
 
 		Data.HookEvents(this);
-
-		var listener:Object = new Object();
-		listener.onLoadInit = Delegate.create(this, IconLoaded);
-		listener.onLoadError = function(target:MovieClip, error:String):Void {
-			// Attempt to filter out spurious error messsages caused by closing the window during loading
-			// While still detecting conditions where Data is corrupt or missing.
-			if (target._parent) { DebugUtils.ErrorMsgS("Unable to load icon (" + target._parent.Data.GetIcon() + "): " + error); }
-		};
-		Loader.addListener(listener);
 	}
 
 	public function LoadIcon():Void {
-		// Loading the icon overwrites the data in the clip, so wrap it in an empty subclip
-		createEmptyMovieClip("Icon", getNextHighestDepth());
-		// NOTE: It seems that loadClip can also be used to access the rdb
-		//   Path syntax is "rdb:[Type]:[ID]"
-		//   Type 1000624 contains swf files
-		//   Type 1000636 contains png files
-		//   Not sure how useful this is, as I have limited knowledge of what is actually tucked away in there
-		// TODO: Wonder if other paths could be loaded from the rdb in a similar fashion
-		Loader.loadClip("Cartographer\\icons\\" + Data.GetIcon(), Icon);
+		Icon.gotoAndStop(Data.GetIcon());
+		ApplyTint(Icon);
 		ApplyModifier();
 	}
 
-	private function IconLoaded(target:MovieClip):Void {
-		CenterIcon(target);
-		ApplyTint(target);
-
-		Data["VerifyListener"](this);
-	}
 
 	private function ApplyTint(target:MovieClip):Void {
 		if (Data.TintIcon()) {
@@ -63,7 +40,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	private function ApplyModifier():Void {
 		var modifier:Array = Data.GetIconModifier().split("|");
 		if (modifier != undefined) {
-			if (!Modifier) { attachMovie("CartographerPointMarkerModifier", "Modifier", getNextHighestDepth()); }
 			Modifier.gotoAndStop(modifier[0]);
 
 			switch (modifier[0]) {
@@ -76,7 +52,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 				}
 			}
 		} else {
-			if (Modifier) { Modifier.removeMovieClip(); }
+			Modifier.gotoAndStop("none");
 		}
 	}
 
@@ -94,19 +70,12 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	private function onDragOut():Void { onRollOut(); }
 	private function onDragOutAux():Void { onRollOut(); }
 
-	// Doesn't center the registration point for the subclip,
-	//   so has to be called whenever subclip is rescaled independently
-	private static function CenterIcon(target:MovieClip):Void {
-		target._x = -target._width / 2;
-		target._y = -target._height / 2;
-	}
-
 	public function UpdatePosition(pos:Point):Void {
 		_x = pos.x;
 		_y = pos.y;
 	}
 
-	public function Reassign(data:IWaypoint, pos:Point):Boolean {
+	public function Reassign(data:IWaypoint, pos:Point):Void { //:Boolean {
 		RemoveTooltip();
 		Data.UnhookEvents(this);
 
@@ -114,13 +83,7 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 		Data = data;
 		Data.HookEvents(this);
 		UpdatePosition(pos);
-		var loading:Boolean = oldData.GetIcon() != data.GetIcon();
-		if (loading) {
-			Loader.loadClip("Cartographer\\icons\\" + data.GetIcon(), Icon);
-		}
-		ApplyModifier();
-		Data["VerifyListener"](this);
-		return loading;
+		LoadIcon();
 	}
 
 	// Usually means the icon or overlay needs to be changed
@@ -163,7 +126,6 @@ class efd.Cartographer.gui.WaypointIcon extends MovieClip {
 	public var Data:IWaypoint;
 
 	public var SignalIconChanged:Signal; // Used to notify host layer that this icon has changed due to outside events
-	private var Loader:MovieClipLoader;
 
 	private var Icon:MovieClip;
 	private var Modifier:MovieClip;

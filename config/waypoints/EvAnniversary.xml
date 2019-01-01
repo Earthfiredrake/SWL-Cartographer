@@ -7,11 +7,11 @@
 -->
 <OverlayPack>
 	<!-- Event Raids -->
-	<Transit zone="5060" x="503" y="179" z="395" targetZone="" icon="exit_dungeon.png"> <!-- Deep Agartha (Gatekeeper) -->
+	<Transit zone="5060" x="503" y="179" z="395" targetZone="" icon="ex_dungeon"> <!-- Deep Agartha (Gatekeeper) -->
 		<Name rdb="category=50025 id=166496208" />
 		<Note en="Requires summon with all 11 shards in single instance, gate opens in all instances" />
 	</Transit>
-	<Transit zone="5060" x="552" y="251" z="394" targetZone="7730" icon="exit_dungeon.png"> <!-- Vibrant Agartha (Talos) -->
+	<Transit zone="5060" x="552" y="251" z="394" targetZone="7730" icon="ex_dungeon"> <!-- Vibrant Agartha (Talos) -->
 		<Note en="Open for ten minutes starting 2 min after each hour.\n For spawn info see: https://aliceorwell.github.io/SWL-Talos-Countdown/" />
 		<!-- TODO: Web-link on click? -->
 	</Transit>

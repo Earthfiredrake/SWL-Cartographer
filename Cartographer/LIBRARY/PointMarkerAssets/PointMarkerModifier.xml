@@ -1,6 +1,6 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="CartographerPointMarkerModifier" itemID="5a709722-000001f7" linkageExportForAS="true" linkageIdentifier="CartographerPointMarkerModifier" lastModified="1529911677">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="PointMarkerAssets/PointMarkerModifier" itemID="5c2c1cec-0000020a" lastModified="1546394908">
   <timeline>
-    <DOMTimeline name="CartographerPointMarkerModifier">
+    <DOMTimeline name="PointMarkerModifier">
       <layers>
         <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
           <frames>
@@ -9,7 +9,7 @@
             </DOMFrame>
             <DOMFrame index="1" name="error" labelType="name" keyMode="9728">
               <elements>
-                <DOMBitmapInstance libraryItemName="MarkerModifierSprites/error.png">
+                <DOMBitmapInstance libraryItemName="PointMarkerAssets/MarkerModifierSprites/error.png">
                   <matrix>
                     <Matrix tx="-16"/>
                   </matrix>
@@ -42,7 +42,7 @@
                     </FillStyle>
                   </fills>
                   <edges>
-                    <Edge fillStyle1="1" edges="!-62 320|-160 249!-160 249|-260 320!-260 320|-225 200!-225 200|-320 122!-320 122|-201 119!-201 119|-160 0!-160 0|-120 119!-120 119|0 122!0 122|-96 200!-96 200|-62 320"/>
+                    <Edge fillStyle1="1" edges="!-62 320S2|-160 249!-160 249|-260 320!-260 320|-225 200!-225 200|-320 122!-320 122|-201 119!-201 119|-160 0!-160 0|-120 119!-120 119|0 122!0 122|-96 200!-96 200|-62 320"/>
                   </edges>
                 </DOMShape>
               </elements>

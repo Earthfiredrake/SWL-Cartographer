@@ -29,7 +29,7 @@ class efd.Cartographer.notations.mix.TransitMixIn {
 		}
 
 		if (isPoint && target["Icon"] == undefined) {
-			target["Icon"] = targetZone == AgarthaZoneID ? "exit_agartha.png" : "exit_zone.png";
+			target["Icon"] = targetZone == AgarthaZoneID ? "ex_agartha" : "ex_zone";
 		}
 	}
 

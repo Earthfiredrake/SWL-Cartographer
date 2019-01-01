@@ -10,7 +10,7 @@
 
 <OverlayPack>
 	<_Section> <!-- Event Raids -->
-		<Transit zone="5060" x="552" y="251" z="394" targetZone="7720" icon="exit_dungeon.png"> <!-- Steps to Niflheim (SuperHel) -->
+		<Transit zone="5060" x="552" y="251" z="394" targetZone="7720" icon="ex_dungeon"> <!-- Steps to Niflheim (SuperHel) -->
 			<Note en="Open for ten minutes starting 2 min after each hour" />
 		</Transit>
 	</_Section>

@@ -53,7 +53,7 @@ class efd.Cartographer.notations.mix.LoreMixIn {
 		// Applies to interface specializations below INotation
 		if (isIcon && target["Icon"] == undefined) {
 			target["Icon"] = isValid && Lore.GetTagViewpoint(loreID) == 1 ?
-				"lore_blsig.png" : "lore_buzz.png";
+				"lore_bs" : "lore_bz";
 		}
 	}
 

@@ -9,23 +9,38 @@
           <DOMFolderItem name="Components/Window Assets/Components/Component Assets" itemID="49d65944-000001cb"/>
           <DOMFolderItem name="Components/Window Assets/Components/Component Assets/Checkbox Assets" itemID="4f6b75df-000047eb"/>
           <DOMFolderItem name="Fonts" itemID="58bddfcb-00000218"/>
-          <DOMFolderItem name="Icons" itemID="58bf2a12-00000934" isExpanded="true"/>
-          <DOMFolderItem name="MarkerModifierSprites" itemID="5a72b4e3-00000201" isExpanded="true"/>
+          <DOMFolderItem name="Icons" itemID="58bf2a12-00000934"/>
+          <DOMFolderItem name="PointMarkerAssets" itemID="5c2c1d14-0000020e"/>
+          <DOMFolderItem name="PointMarkerAssets/MarkerModifierSprites" itemID="5a72b4e3-00000201"/>
+          <DOMFolderItem name="PointMarkerAssets/MarkerSymbols" itemID="5c294c46-00000210"/>
      </folders>
      <fonts>
           <DOMFontItem name="Fonts/_StandardFont" itemID="4dd10cd6-00000f53" linkageExportForAS="true" linkageIdentifier="_StandardFont" font="Futura-Medium" size="0" id="1" sourceLastImported="1521072722" embedRanges="4|5|17|18|20"/>
      </fonts>
      <media>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerSymbols/champ.png" itemID="5c294f32-000002a2" sourceExternalFilepath="./LIBRARY/MarkerSymbols/champ.png" sourceLastImported="1519366451" externalFileSize="2912" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerSymbols/champ.png" bitmapDataHRef="M 5 1546210473.dat" frameRight="480" frameBottom="480"/>
           <DOMBitmapItem name="Components/Window Assets/Drop Shadow Bitmap" itemID="4f8da942-00001f90" sourceExternalFilepath="./LIBRARY/Components/Window Assets/Drop Shadow Bitmap" sourceLastImported="1334683970" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Components/Window Assets/Drop Shadow Bitmap./LIBRARY/Components/Window Assets/Drop Shadow Bitmap" bitmapDataHRef="M 3 1500488659.dat" frameRight="3080" frameBottom="5040"/>
-          <DOMBitmapItem name="MarkerModifierSprites/error.png" itemID="5a72b50c-00000208" sourceExternalFilepath="./LIBRARY/MarkerModifierSprites/error.png" sourceLastImported="1517466776" externalFileSize="2910" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="MarkerModifierSprites/error.png" bitmapDataHRef="M 4 1517466807.dat" frameRight="320" frameBottom="320"/>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerModifierSprites/error.png" itemID="5a72b50c-00000208" sourceExternalFilepath="./LIBRARY/MarkerModifierSprites/error.png" sourceLastImported="1517466776" externalFileSize="2910" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerModifierSprites/error.png" bitmapDataHRef="M 4 1517466807.dat" frameRight="320" frameBottom="320"/>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerSymbols/exit_agartha.png" itemID="5c294f32-000002a3" sourceExternalFilepath="./LIBRARY/MarkerSymbols/exit_agartha.png" sourceLastImported="1519366451" externalFileCRC32="1014071804" externalFileSize="3523" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerSymbols/exit_agartha.png" bitmapDataHRef="M 6 1546210496.dat" frameRight="480" frameBottom="480"/>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerSymbols/exit_dungeon.png" itemID="5c294f32-000002a4" sourceExternalFilepath="./LIBRARY/MarkerSymbols/exit_dungeon.png" sourceLastImported="1519366451" externalFileSize="3254" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerSymbols/exit_dungeon.png" bitmapDataHRef="M 7 1546210503.dat" frameRight="480" frameBottom="480"/>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerSymbols/exit_zone.png" itemID="5c294f32-000002a5" sourceExternalFilepath="./LIBRARY/MarkerSymbols/exit_zone.png" sourceLastImported="1519366451" externalFileSize="3110" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerSymbols/exit_zone.png" bitmapDataHRef="M 8 1546210508.dat" frameRight="480" frameBottom="480"/>
           <DOMBitmapItem name="Icons/Icon.png" itemID="5acc7277-000001f9" sourceExternalFilepath="./LIBRARY/Icons/Icon.png" sourceLastImported="1523315631" externalFileSize="4564" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Icons/Icon.png" bitmapDataHRef="M 1 1490778553.dat" frameRight="640" frameBottom="640"/>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerSymbols/lore_blsig.png" itemID="5c294f32-000002a6" sourceExternalFilepath="./LIBRARY/MarkerSymbols/lore_blsig.png" sourceLastImported="1519366451" externalFileSize="4597" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerSymbols/lore_blsig.png" bitmapDataHRef="M 9 1546210514.dat" frameRight="480" frameBottom="480"/>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerSymbols/lore_buzz.png" itemID="5c294f32-000002a7" sourceExternalFilepath="./LIBRARY/MarkerSymbols/lore_buzz.png" sourceLastImported="1519366451" externalFileSize="4419" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerSymbols/lore_buzz.png" bitmapDataHRef="M 10 1546210514.dat" frameRight="480" frameBottom="480"/>
           <DOMBitmapItem name="Icons/PlayerMarker.png" itemID="5972fb78-000001f0" sourceExternalFilepath="./LIBRARY/Icons/PlayerMarker.png" sourceLastImported="1500762473" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Icons/PlayerMarker.png" bitmapDataHRef="M 8 1500524748.dat" frameRight="320" frameBottom="460"/>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerSymbols/service_auction.png" itemID="5c294f32-000002a8" sourceExternalFilepath="./LIBRARY/MarkerSymbols/service_auction.png" sourceLastImported="1519366451" externalFileSize="3433" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerSymbols/service_auction.png" bitmapDataHRef="M 11 1546210514.dat" frameRight="480" frameBottom="480"/>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerSymbols/service_bank.png" itemID="5c294f32-000002a9" sourceExternalFilepath="./LIBRARY/MarkerSymbols/service_bank.png" sourceLastImported="1519366451" externalFileSize="3473" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerSymbols/service_bank.png" bitmapDataHRef="M 12 1546210514.dat" frameRight="480" frameBottom="480"/>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerSymbols/service_barber.png" itemID="5c294f32-000002aa" sourceExternalFilepath="./LIBRARY/MarkerSymbols/service_barber.png" sourceLastImported="1519366451" externalFileSize="3407" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerSymbols/service_barber.png" bitmapDataHRef="M 13 1546210514.dat" frameRight="480" frameBottom="480"/>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerSymbols/service_postal.png" itemID="5c294f32-000002ab" sourceExternalFilepath="./LIBRARY/MarkerSymbols/service_postal.png" sourceLastImported="1519366451" externalFileSize="3443" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerSymbols/service_postal.png" bitmapDataHRef="M 14 1546210514.dat" frameRight="480" frameBottom="480"/>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerSymbols/service_surgeon.png" itemID="5c294f32-000002ac" sourceExternalFilepath="./LIBRARY/MarkerSymbols/service_surgeon.png" sourceLastImported="1519366451" externalFileSize="3211" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerSymbols/service_surgeon.png" bitmapDataHRef="M 15 1546210514.dat" frameRight="480" frameBottom="480"/>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerSymbols/service_vendor.png" itemID="5c294f32-000002ad" sourceExternalFilepath="./LIBRARY/MarkerSymbols/service_vendor.png" sourceLastImported="1519366451" externalFileSize="3128" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerSymbols/service_vendor.png" bitmapDataHRef="M 16 1546210514.dat" frameRight="480" frameBottom="480"/>
+          <DOMBitmapItem name="PointMarkerAssets/MarkerSymbols/well.png" itemID="5c294f32-000002ae" sourceExternalFilepath="./LIBRARY/MarkerSymbols/well.png" sourceLastImported="1501269941" externalFileSize="3311" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="PointMarkerAssets/MarkerSymbols/well.png" bitmapDataHRef="M 17 1546210514.dat" frameRight="480" frameBottom="480"/>
      </media>
      <symbols>
           <Include href="Assets/GemOverlay.xml" itemID="55fd2a2d-0000c82e" lastModified="1500152978"/>
           <Include href="CartographerIcon.xml" itemID="58db79f2-0000062f" lastModified="1529911718"/>
           <Include href="CartographerInterfaceWindowContent.xml" itemID="596fa4e6-00000261" lastModified="1516929067"/>
-          <Include href="CartographerPointMarkerModifier.xml" itemID="5a709722-000001f7" lastModified="1529911677"/>
+          <Include href="CartographerPointMarker.xml" itemID="5c294b28-000001ff" lastModified="1546394780"/>
           <Include href="Components/CartographerLayerList.xml" itemID="59a060ba-000001fa" lastModified="1516932567"/>
           <Include href="Components/CartographerLayerListEntry.xml" itemID="59a0633c-0000026d" lastModified="1516929098"/>
           <Include href="Components/CartographerWaypointTooltip.xml" itemID="598cf3b6-000002ab" lastModified="1508976986"/>
@@ -44,6 +59,8 @@
           <Include href="Components/Window Assets/ResizeButton.xml" itemID="4cdd0f78-0000489b" lastModified="1297760571"/>
           <Include href="Components/Window Assets/Stroke.xml" loadImmediate="false" itemID="4f8dac5f-00002035" lastModified="1500524687"/>
           <Include href="Icons/PlayerMarker.xml" itemID="59703131-00000334" lastModified="1505370932"/>
+          <Include href="PointMarkerAssets/PointMarkerModifier.xml" loadImmediate="false" itemID="5c2c1cec-0000020a" lastModified="1546394908"/>
+          <Include href="PointMarkerAssets/PointMarkerSymbol.xml" loadImmediate="false" itemID="5c2c1ce3-00000209" lastModified="1546394851"/>
      </symbols>
      <timelines>
           <DOMTimeline name="Scene 1">
@@ -63,6 +80,7 @@
      </timelines>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="109251" publishTime="1546298834"/>
           <PublishItem publishSize="103408" publishTime="1529911708"/>
           <PublishItem publishSize="103338" publishTime="1523313679"/>
           <PublishItem publishSize="103264" publishTime="1523309599"/>
@@ -82,6 +100,5 @@
           <PublishItem publishSize="101791" publishTime="1517299532"/>
           <PublishItem publishSize="101856" publishTime="1517298617"/>
           <PublishItem publishSize="101828" publishTime="1517298546"/>
-          <PublishItem publishSize="101823" publishTime="1517298515"/>
      </publishHistory>
 </DOMDocument>

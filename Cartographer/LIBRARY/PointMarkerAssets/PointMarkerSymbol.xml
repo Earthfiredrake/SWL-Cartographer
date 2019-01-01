@@ -1,0 +1,129 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="PointMarkerAssets/PointMarkerSymbol" itemID="5c2c1ce3-00000209" lastModified="1546394851">
+  <timeline>
+    <DOMTimeline name="PointMarkerSymbol">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" name="well" labelType="name" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance selected="true" libraryItemName="PointMarkerAssets/MarkerSymbols/well.png">
+                  <matrix>
+                    <Matrix tx="-12" ty="-12"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="1" name="ex_zone" labelType="name" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="PointMarkerAssets/MarkerSymbols/exit_zone.png">
+                  <matrix>
+                    <Matrix tx="-12" ty="-12"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="2" name="ex_agartha" labelType="name" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="PointMarkerAssets/MarkerSymbols/exit_agartha.png">
+                  <matrix>
+                    <Matrix tx="-12" ty="-12"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="3" name="ex_dungeon" labelType="name" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="PointMarkerAssets/MarkerSymbols/exit_dungeon.png">
+                  <matrix>
+                    <Matrix tx="-12" ty="-12"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="4" name="sv_vendor" labelType="name" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="PointMarkerAssets/MarkerSymbols/service_vendor.png">
+                  <matrix>
+                    <Matrix tx="-12" ty="-12"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="5" name="sv_bank" labelType="name" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="PointMarkerAssets/MarkerSymbols/service_bank.png">
+                  <matrix>
+                    <Matrix tx="-12" ty="-12"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="6" name="sv_auction" labelType="name" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="PointMarkerAssets/MarkerSymbols/service_auction.png">
+                  <matrix>
+                    <Matrix tx="-12" ty="-12"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="7" name="sv_postal" labelType="name" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="PointMarkerAssets/MarkerSymbols/service_postal.png">
+                  <matrix>
+                    <Matrix tx="-12" ty="-12"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="8" name="sv_surgeon" labelType="name" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="PointMarkerAssets/MarkerSymbols/service_surgeon.png">
+                  <matrix>
+                    <Matrix tx="-12" ty="-12"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="9" name="sv_barber" labelType="name" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="PointMarkerAssets/MarkerSymbols/service_barber.png">
+                  <matrix>
+                    <Matrix tx="-12" ty="-12"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="10" name="mob" labelType="name" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="PointMarkerAssets/MarkerSymbols/champ.png">
+                  <matrix>
+                    <Matrix tx="-12" ty="-12"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="11" name="lore_bz" labelType="name" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="PointMarkerAssets/MarkerSymbols/lore_buzz.png">
+                  <matrix>
+                    <Matrix tx="-12" ty="-12"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="12" name="lore_bs" labelType="name" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="PointMarkerAssets/MarkerSymbols/lore_blsig.png">
+                  <matrix>
+                    <Matrix tx="-12" ty="-12"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>
