@@ -1,4 +1,4 @@
-﻿// Copyright 2017-2018, Earthfiredrake
+﻿// Copyright 2017-2019, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-Cartographer
 

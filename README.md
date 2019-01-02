@@ -236,7 +236,7 @@ Master/Head is the most recent packaged release. Develop/Head is usually a commi
 Once built, 'Cartographer.swf', the contents of 'config' and 'resources' should be copied to the directory 'Cartographer' in the game's mod directory. '/reloadui' is sufficient to force the game to load an updated swf or mod data file, but changes to the game config files (LoginPrefs.xml and Modules.xml) will require a restart of the client and possible deletion of .bxml caches from the mod directory.
 
 ## License and Attribution
-Copyright (c) 2017-2018 Earthfiredrake<br/>
+Copyright (c) 2017-2019 Earthfiredrake<br/>
 Additional code contributions: Aralicia<br/>
 Software and source released under the MIT License
 
