@@ -2,7 +2,7 @@
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-FrameworkMod
 
-// Mod Framework v1.1.3
+// Mod Framework v1.1.4
 // Revision numbers are for internal merge tracking only, and do not require an upgrade notification
 // See ConfigManager for notification format for major/minor upgrades
 
@@ -235,7 +235,8 @@ import com.Utils.Signal;
 	}
 
 /// DistributedValue Utility Functions
-	public function CreateFrameworkDV(dvName:String, initialValue:Object, callback:Function, callbackContext:Object):DistributedValue {
+	// An 'undefined' initialValue will be ignored (but a 'null' will be used)
+	public static function CreateFrameworkDV(dvName:String, initialValue:Object, callback:Function, callbackContext:Object):DistributedValue {
 		return CreateDV("emf" + dvName, initialValue, callback, callbackContext);
 	}
 
@@ -245,7 +246,7 @@ import com.Utils.Signal;
 
 	public static function CreateDV(dvName:String, initialValue:Object, callback:Function, callbackContext:Object):DistributedValue {
 		var dv:DistributedValue = DistributedValue.Create(dvName);
-		dv.SetValue(initialValue);
+		if (initialValue !== undefined) { dv.SetValue(initialValue); }
 		if (callback != undefined) { dv.SignalChanged.Connect(callback, callbackContext); }
 		return dv;
 	}

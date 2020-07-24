@@ -77,10 +77,8 @@ import com.Utils.Signal;
 		SignalFatalError = new Signal();
 
 		// Avoid using DV generation util function to avoid stomping values on reload
-		GlobalDebugDV = DistributedValue.Create("emfDebugMode");
-		GlobalDebugDV.SignalChanged.Connect(SetDebugMode);
-		LocalDebugDV = DistributedValue.Create(dvPrefix + modName + "DebugMode");
-		LocalDebugDV.SignalChanged.Connect(SetDebugMode);
+		GlobalDebugDV = Mod.CreateFrameworkDV("DebugMode", undefined, SetDebugMode, null);
+		LocalDebugDV = Mod.CreateDV(dvPrefix + modName + "DebugMode", undefined, SetDebugMode, null);
 		var localDebug:Boolean = LocalDebugDV.GetValue();
 		var globalDebug:Boolean = GlobalDebugDV.GetValue();
 		DebugMode = localDebug != undefined ? localDebug : globalDebug != undefined ? globalDebug : debug;
