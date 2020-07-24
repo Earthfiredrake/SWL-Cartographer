@@ -1,8 +1,8 @@
-﻿// Copyright 2017-2018, Earthfiredrake
+﻿// Copyright 2017-2020, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-FrameworkMod
 
-// Mod Framework v1.1.2
+// Mod Framework v1.1.3
 // Revision numbers are for internal merge tracking only, and do not require an upgrade notification
 // See ConfigManager for notification format for major/minor upgrades
 
@@ -35,11 +35,11 @@
 //     Config (ConfigManager.as):
 //       Setting serialization and change notification
 //       Versioning and upgrade detection
-//       Configuration window
+//       Configuration window or DistributedValue exposure for changing settings
 //     Icon (ModIcon.as): Icon display with topbar integration and GEM layout options
 //     VTIOHelper: Integration with VTIO compatible mod containers and topbars
 //     Window: Interface window management
-//     AutoReport: Mail based reporting system for errors or other information
+//     AutoReport: DEPRECATED Mail based reporting system for errors or other information
 //   Subclass is responsible for:
 //     Initialization data, including subsystems and their dependencies
 //     Additional setting definitions
@@ -109,14 +109,10 @@ import com.Utils.Signal;
  		SignalLoadCompleted = new Signal();
 		SystemsLoaded = { LocalizedText: false };
 		if (modInfo.Subsystems.Config != undefined) { SystemsLoaded.Config = false; }
-		ModLoadedDV = DistributedValue.Create(ModLoadedVarName);
-		ModLoadedDV.SetValue(false);
-		ModEnabledDV = DistributedValue.Create(ModEnabledVarName);
-		ModEnabledDV.SetValue(undefined);
-		ModEnabledDV.SignalChanged.Connect(ModEnabledChanged, this);
+		ModLoadedDV = CreateModDV("Loaded", false);
+		ModEnabledDV = CreateModDV("Enabled", undefined, ModEnabledChanged, this);
 
-		ModListDV = DistributedValue.Create("emfListMods");
-		ModListDV.SignalChanged.Connect(ReportVersion, this);
+		ModListDV = CreateFrameworkDV("ListMods", false, ReportVersion, this);
 
 		LocaleManager.Initialize();
 		LocaleManager.SignalStringsLoaded.Connect(StringsLoaded, this);
@@ -196,7 +192,7 @@ import com.Utils.Signal;
 				for (var key:String in SystemsLoaded) {
 					if (!SystemsLoaded[key]) { Debug.ErrorMsg("Missing: " + key, { noHeader : true }); }
 				}
-			}	
+			}
 			dv.SetValue(false);
 			return;
 		}
@@ -236,6 +232,22 @@ import com.Utils.Signal;
 		if (!VersionReported) { ChatMsg(Version + " : " + DevName); }
 		VersionReported = !VersionReported;
 		if (dv.GetValue()) { dv.SetValue(false); }
+	}
+
+/// DistributedValue Utility Functions
+	public function CreateFrameworkDV(dvName:String, initialValue:Object, callback:Function, callbackContext:Object):DistributedValue {
+		return CreateDV("emf" + dvName, initialValue, callback, callbackContext);
+	}
+
+	public function CreateModDV(dvName:String, initialValue:Object, callback:Function, callbackContext:Object):DistributedValue {
+		return CreateDV(DVPrefix + ModName + dvName, initialValue, callback, callbackContext);
+	}
+
+	public static function CreateDV(dvName:String, initialValue:Object, callback:Function, callbackContext:Object):DistributedValue {
+		var dv:DistributedValue = DistributedValue.Create(dvName);
+		dv.SetValue(initialValue);
+		if (callback != undefined) { dv.SignalChanged.Connect(callback, callbackContext); }
+		return dv;
 	}
 
 /// Configuration Settings
@@ -345,13 +357,11 @@ import com.Utils.Signal;
 	public static var DevName:String = "Peloprata";
 	public static var DVPrefix:String = "efd";
 
-	public function get ModLoadedVarName():String { return DVPrefix + ModName + "Loaded"; }
 	public var ModLoadedDV:DistributedValue; // Locks-out interface when mod fails to load, may also be used for basic cross-mod integration
 	public var SystemsLoaded:Object; // Tracks asynchronous data loads so that functions aren't called without proper data, removed once loading complete
 	public var FatalError:String;
 	public var SignalLoadCompleted:Signal;
 
-	public function get ModEnabledVarName():String { return DVPrefix + ModName + "Enabled"; }
 	private var ModEnabledDV:DistributedValue; // Doesn't reflect game toggles, only the player or internal mod disabling
 	private var EnabledByGame:Boolean = false;
 	private var Enabled:Boolean = false; // PlayerEnabled && GameEnabled

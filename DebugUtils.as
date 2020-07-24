@@ -1,4 +1,4 @@
-﻿// Copyright 2018, Earthfiredrake
+﻿// Copyright 2018-2020, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-FrameworkMod
 
@@ -76,6 +76,7 @@ import com.Utils.Signal;
 		IsDev = Character.GetClientCharacter().GetName() == devName;
 		SignalFatalError = new Signal();
 
+		// Avoid using DV generation util function to avoid stomping values on reload
 		GlobalDebugDV = DistributedValue.Create("emfDebugMode");
 		GlobalDebugDV.SignalChanged.Connect(SetDebugMode);
 		LocalDebugDV = DistributedValue.Create(dvPrefix + modName + "DebugMode");

@@ -1,4 +1,4 @@
-﻿// Copyright 2018, Earthfiredrake
+﻿// Copyright 2018-2020, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-FrameworkMod
 
@@ -61,9 +61,7 @@ import com.Utils.WeakPtr;
 			mod.Config.NewSetting(WindowName + "Size", new Point(-1, -1));
 		}
 
-		ShowDV = DistributedValue.Create(Mod.DVPrefix + "Show" + mod.ModName + WindowName);
-		ShowDV.SetValue(false);
-		ShowDV.SignalChanged.Connect(ShowWindowChanged, this);
+		ShowDV = Mod.CreateDV(Mod.DVPrefix + "Show" + mod.ModName + WindowName, false, ShowWindowChanged, this);
 	}
 
 	private function CheckResizeLimits(limits:Object):Boolean {
