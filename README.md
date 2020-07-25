@@ -7,8 +7,8 @@ The mod is currently in early beta, with a minimal useful set of capabilities. S
 + Maps for all open world zones with additional layers for Lore and Champion locations
   + Also has Krampus spawn points, which should load automatically when the event is active
 + Customizable and extensible without a flash compiler
-  + Change or add map/icon files (this feature may be cut or pushed onto an unstable version if sideloading crashes can't be solved)
-  + Add new data (currently limited to loading from existing file names)
+  + Change or add map files (this feature may be cut or pushed onto an unstable version if sideloading crashes can't be solved)
+  + Add new waypoint data (currently limited to loading from existing file names)
 + Resizable window that can behave similarly to the minimap if made small enough (sidebar goes away)
 + Adjustable view: Mousewheel scales, drag it around if not in locked minimap mode
 + View any mapped world zone by clicking through the region transition icons (exclamation mark means the zone has no map)
@@ -25,6 +25,21 @@ The safest method for upgrading (required for installing) is to have the client 
 I intend to permit setting migration from the first public beta to v1.0.x, but this may be subject to change. As with my other mods, this update compatibility window will occasionally be shifted to reduce legacy code clutter.
 
 ## Change Log
+Version 0.2.0-beta
++ Moved icons into flash archive, which should increase stability somewhat, though the maps themselves continue to use the problematic free file loading technique
+  + Unfortunately this means that custom icon replacement is no longer possible
++ Tweaked the automated greyscale filter that marks collected lore/bosses etc.
+  + This was an attempt to make collected and uncollected Black Signal lore more clearly defined, let me know if it worked
++ Keyboard Shortcut toggle DV has changed to "efdCartographerEnableKBShortcut"
++ Bug fixes:
+  + Zone index should now reliably load before transition waypoints, ensuring map links load correctly
++ Data updates:
+  + Faction Conflict lore topic
+  + Fixed an incorrect mission requirement for Golems #5
+  + Spare Krampus locations
++ Framework update:
+  + Improved workflow so that framework library is easier to use and update between projects
+
 Version 0.1.8-beta
 + Data update: Lore and event locations from Anniversary patch
 + Not any more stable than it's ever been, sorry. I've a plan for an overhaul that may sacrifice some design goals for something that doesn't crash
@@ -177,8 +192,7 @@ Further stuff (slightly out of date)
 This mod is in an early state of development, consider this to be a wishlist, and consult the changelog for which parts have been implemented. It intends to provide a supplement to the ingame regional and dungeon maps, with various improvements:
 + Multiple icons for custom map notations
   + Assigned by type, but may be overridden individually (ex: The location to use a password required to access a lore may count as a "lore" marker, but use the "password" icon)
-  + User customization of the map icons, including replacing most icons or adding their own, without requiring a flash compiler
-+ Zone and path marking in addition to point locations
+  + Not currently viable: User customization of the map icons, including replacing most icons or adding their own, without requiring a flash compiler
 + More support for extended descriptions and precise placement based on coordinates
 + Premade packages of related markers which can be loaded or toggled as a package
   + ex: A package for Samhain (TSW) might include lore, quests, vendors, rider/summon/empowerment points
@@ -186,7 +200,7 @@ This mod is in an early state of development, consider this to be a wishlist, an
   + As much as possible the locations included in these packs will use verified exact game locations
     + This may result in one or more utility mods designed to provide absolute locations of various game objects
     + This will also likely result in an automatic marking system from LoreHound
-	+ Had a thought about feeding data back to LoreHound, but lack enough camera info to create my own world-screen calculation, and the existing one requires a dynel and doesn't work on arbitrary points
+	+ Had a thought about feeding data back to LoreHound for onscreen waypoints, but lack enough camera info to create my own world-screen calculation, and the existing one requires a dynel and doesn't work on arbitrary points
   + While the native format will likely not be compatible with existing waypoint packs (Lassie's etc.), I may see if I can handle their format as well at least on a transition basis
   + I'd love for this to be a full plugin system, adding custom logic to the provided waypoints
     + I have no idea where to even begin with this part of the concept but no shortage of random ideas if it can be made to work:
@@ -236,7 +250,7 @@ Master/Head is the most recent packaged release. Develop/Head is usually a commi
 Once built, 'Cartographer.swf', the contents of 'config' and 'resources' should be copied to the directory 'Cartographer' in the game's mod directory. '/reloadui' is sufficient to force the game to load an updated swf or mod data file, but changes to the game config files (LoginPrefs.xml and Modules.xml) will require a restart of the client and possible deletion of .bxml caches from the mod directory.
 
 ## License and Attribution
-Copyright (c) 2017-2019 Earthfiredrake<br/>
+Copyright (c) 2017-2020 Earthfiredrake<br/>
 Additional code contributions: Aralicia<br/>
 Software and source released under the MIT License
 

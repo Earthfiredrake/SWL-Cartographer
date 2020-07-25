@@ -1,4 +1,4 @@
-﻿// Copyright 2017-2018, Earthfiredrake
+﻿// Copyright 2017-2020, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-FrameworkMod
 // Based off of the Preferences class of El Torqiro's ModUtils library:
@@ -30,9 +30,10 @@ import com.Utils.Signal;
 	// ArchiveName is distributed value name used by top level config wrappers
 	// Leave archiveName undefined for nested config wrappers (unless they are saved externally)
 	// Also leave undefined if loading/saving to the default config specified in Modules.xml
-	public function ConfigWrapper(archiveName:String) {
+	public function ConfigWrapper(archiveName:String, dvGenFunc:Function) {
 		Debug = new DebugUtils("Config");
 		ArchiveName = archiveName;
+		CreateModDV = dvGenFunc;
 		Settings = new Object();
 		SignalValueChanged = new Signal();
 		SignalConfigLoaded = new Signal();
@@ -43,7 +44,12 @@ import com.Utils.Signal;
 	// - If a module needs to add additional settings it should either:
 	//   - Provide a subconfig wrapper, if the settings are specific to the mod
 	//   - Provide its own archive, if it's a static module that can share the settings between uses
-	public function NewSetting(key:String, defaultValue):Void {
+	// - dvName is optional, for exposing a config setting with a DistributedValue (for /setoption)
+	//   - This should only be used for simple types (numbers and strings), not objects or collections
+	//   - undefined will result in no DistributedValue being created
+	//   - "" will result in a prefixed dv based on the key name
+	//   - any other string will be used as the base for a prefixed dv name
+	public function NewSetting(key:String, defaultValue, dvName:String):Void {
 		if (key == "ArchiveType") { Debug.ErrorMsg("'" + key + "' is a reserved setting name."); return; } // Reserved
 		if (Settings[key] != undefined) { Debug.TraceMsg("Setting '" + key + "' redefined, existing definition will be overwritten."); }
 		if (IsLoaded) { Debug.TraceMsg("Setting '" + key + "' added after loading archive will have default values."); }
@@ -56,6 +62,15 @@ import com.Utils.Signal;
 		// Change event is raised, as the setting may be created after the initialization step
 		// Initialization creation should occur prior to change events being hooked to avoid incidental notifications at that time
 		SignalValueChanged.Emit(key, defaultValue); // oldValue will be undefined (not to be used to identify this situation though)
+
+		// Generate DV
+		if (dvName != undefined) {
+			if (dvName == "") { dvName = key; }
+			var callback = function(dv:DistributedValue):Void {
+				SetValue(key, dv.GetValue());
+			};
+			Settings[key].dv = CreateModDV(dvName, defaultValue, callback, this);
+		}
 	}
 
 	public function DeleteSetting(key:String):Void {
@@ -99,6 +114,7 @@ import com.Utils.Signal;
 			if (value instanceof Point && oldVal.equals(value)) { return oldVal; }
 			Settings[key].value = value;
 			DirtyFlag = true;
+			Settings[key].dv.SetValue(value);
 			SignalValueChanged.Emit(key, value, oldVal);
 		}
 		return value;
@@ -129,6 +145,7 @@ import com.Utils.Signal;
 	// oldValue is optional, and may not be provided
 	public function NotifyChange(key:String, oldValue):Void {
 		DirtyFlag = true;
+		// Would flag changes for DV here, but composite items should not have DVs
 		SignalValueChanged.Emit(key, GetValue(key), oldValue);
 	}
 
@@ -307,6 +324,8 @@ import com.Utils.Signal;
 	// A cache of the last loaded/saved archive
 	private var CurrentArchive:Archive;
 	private var DirtyFlag:Boolean = false;
+
+	private var CreateModDV:Function;
 
 	private var Debug:DebugUtils;
 }

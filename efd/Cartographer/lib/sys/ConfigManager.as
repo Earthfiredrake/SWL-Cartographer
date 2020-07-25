@@ -1,4 +1,4 @@
-﻿// Copyright 2018, Earthfiredrake
+﻿// Copyright 2018-2020, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-FrameworkMod
 
@@ -38,13 +38,12 @@ import com.Utils.Archive;
 	}
 
 	public function ConfigManager(mod:Mod, initObj:Object) {
-		Config = new ConfigWrapper(initObj.ArchiveName);
+		Config = new ConfigWrapper(initObj.ArchiveName, WeakDelegate.Create(mod, mod.CreateModDV));
 		mod.Config = Config;
 
 		UpdateManager = new Versioning(mod, initObj);
 
-		ResetDV = DistributedValue.Create(Mod.DVPrefix + mod.ModName + "ResetConfig");
-		ResetDV.SignalChanged.Connect(ResetConfig, this);
+		ResetDV = mod.CreateModDV("ResetConfig", false, ResetConfig, this);
 
 		ConfigWindow = Window.Create(mod, {WindowName : "ConfigWindow", LoadEvent : WeakDelegate.Create(this, ConfigWindowLoaded)});
 	}

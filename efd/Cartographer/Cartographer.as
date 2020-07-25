@@ -128,7 +128,7 @@ class efd.Cartographer.Cartographer extends Mod {
 			// Debug flag at top so that commenting out leaves no hanging ','
 			// Debug : true,
 			Name : "Cartographer",
-			Version : "0.1.8.beta",
+			Version : "0.2.0.beta",
 			Subsystems : {
 				Config : {
 					Init : ConfigManager.Create,
@@ -182,8 +182,7 @@ class efd.Cartographer.Cartographer extends Mod {
 		LayerDataList = new Array();
 		BasicMCGraphics.setup();
 
-		DefaultMapDV = DistributedValue.Create("fullscreen_map");
-		DefaultMapDV.SignalChanged.Connect(HookDefaultMapShortcut, this);
+		DefaultMapDV = CreateDV("fullscreen_map", undefined, HookDefaultMapShortcut, this);
 	}
 
 	private function InitializeConfig():Void {
@@ -205,7 +204,7 @@ class efd.Cartographer.Cartographer extends Mod {
 
 		Config.NewSetting("LayerSettings", new Object());
 
-		Config.NewSetting("EnableKBShortcut", true);
+		Config.NewSetting("EnableKBShortcut", true, "");
 
 		// HACK: Forcibly replace the ResetConfig DV handler
 		ConfigHost.ResetDV.SignalChanged.Disconnect(ConfigHost.ResetConfig, ConfigHost);
@@ -223,10 +222,6 @@ class efd.Cartographer.Cartographer extends Mod {
 		for (var i:Number = 0; i < packList.length; ++i) {
 			if (packList[i].load) { OverlayList.push(packList[i].name); }
 		}
-
-		KBShortcutToggleDV = DistributedValue.Create("efdCartographerKBShortcut");
-		KBShortcutToggleDV.SetValue(Config.GetValue("EnableKBShortcut"));
-		KBShortcutToggleDV.SignalChanged.Connect(KBSToggle, this);
 
 		super.ConfigLoaded();
 	}

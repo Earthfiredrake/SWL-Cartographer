@@ -1,4 +1,4 @@
-﻿// Copyright 2018, Earthfiredrake
+﻿// Copyright 2018-2020, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-FrameworkMod
 
@@ -22,8 +22,7 @@ import com.GameInterface.EscapeStackNode;
 		EscNode.SignalEscapePressed.Connect(TriggerWindowClose, this);
 		EscapeStack.Push(EscNode);
 
-		ResolutionScaleDV = DistributedValue.Create("GUIResolutionScale");
-		ResolutionScaleDV.SignalChanged.Connect(SetResolutionScale, this);
+		ResolutionScaleDV = Mod.CreateDV("GUIResolutionScale", undefined, SetResolutionScale, this);
 		SetResolutionScale(ResolutionScaleDV);
 	}
 

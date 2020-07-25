@@ -1,4 +1,4 @@
-﻿// Copyright 2017-2018, Earthfiredrake
+﻿// Copyright 2017-2020, Earthfiredrake
 // Released under the terms of the MIT License
 // https://github.com/Earthfiredrake/SWL-FrameworkMod
 
@@ -91,10 +91,8 @@ import GUIFramework.SFClipLoader;
 		GlobalSignal.SignalSetGUIEditMode.Connect(ManageGEM, this);
 		SignalGeometryChanged = new Signal();
 
-		ResolutionDV = DistributedValue.Create("DisplayResolution");
-		TopbarLayoutDV = DistributedValue.Create("TopMenuAlignment");
-		ResolutionDV.SignalChanged.Connect(SetTopbarPositions, this);
-		TopbarLayoutDV.SignalChanged.Connect(SetTopbarPositions, this);
+		ResolutionDV = Mod.CreateDV("DisplayResolution", undefined, SetTopbarPositions, this);
+		TopbarLayoutDV = Mod.CreateDV("TopMenuAlignment", undefined, SetTopbarPositions, this);
 
 		Debug.TraceMsg("Icon created");
 	}
